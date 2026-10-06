@@ -1,0 +1,25 @@
+{
+  "protocol": "새로 작성한 고정 후속 평가셋. 기존 Q01-Q08과 문구는 다르지만 일부 규칙·의도는 겹칩니다. 같은 개발자가 작성했으므로 외부 독립/맹검 평가로 주장하지 않습니다. 실행 결과를 보고 검색 설정을 재조정하지 않습니다.",
+  "cases": [
+    {"id":"K01","question":"충전기 압력이 3.2 bar인데 어디를 언제까지 점검해야 해?","sensor":"ST01_FILLING_PRS","status":"ready","gold":[["RULE-ST01-03"]]},
+    {"id":"K02","question":"충전 온도가 27도로 올라갔어. 속도 변경과 통보 대상은?","sensor":"ST01_FILLING_TMP","status":"ready","gold":[["RULE-ST01-02"]]},
+    {"id":"K03","question":"밀봉기 전류가 공칭값보다 1.6A 높은 상태로 6분째야. 어떤 절차를 따라?","sensor":"ST02_SEALING_CUR","status":"ready","gold":[["RULE-ST02-03"]]},
+    {"id":"K04","question":"포장기 속도가 명령 없이 떨어졌어. 관련 설비의 전류까지 확인하려면 어떤 규칙을 봐야 해?","sensor":"ST04_PACKAGING_SPD","status":"ready","gold":[["RULE-ST04-03"],["RULE-ST02-04"]]},
+    {"id":"K05","question":"화학물질 보관소 습도 46%RH면 50 미만이니 아무 조치도 안 해도 돼?","sensor":"CHM01_CHEMICALSTORAGE_HUM","status":"ready","gold":[["RULE-CHM01-02"]]},
+    {"id":"K06","question":"냉장창고 습도가 86%RH야. 도어 쪽을 어떻게 확인하지?","sensor":"WRH01_WAREHOUSE_HUM","status":"ready","gold":[["RULE-WRH01-02"]]},
+    {"id":"K07","question":"구내식당 온도가 27도일 때 점검할 것은?","sensor":"CAF01_CAFETERIA_TMP","status":"ready","gold":[["RULE-CAF01-01"]]},
+    {"id":"K08","question":"연구실 습도가 76%RH야. 실험은 계속해도 되나?","sensor":"RND01_RDLAB_HUM","status":"ready","gold":[["RULE-RND01-02"]]},
+    {"id":"K09","question":"라벨링 생산량이 분당 99개로 줄었어. 라벨 경로를 확인만 하면 되나?","sensor":"ST03_LABELLING_CNT","status":"ready","gold":[["RULE-ST03-02"]]},
+    {"id":"K10","question":"밀봉기 전류 경보 상한과 센서의 연속 운전 정격이 같은지 두 문서를 비교해줘.","sensor":"ST02_SEALING_CUR","status":"ready","gold":[["THRESHOLDS-ST02_SEALING"],["DOC:datasheets/DS_Electrical_Sensors.pdf"]]},
+    {"id":"K11","question":"충전기 압력 경고 기준은 센서 정확도를 고려한 권장 여유와 맞아?","sensor":"ST01_FILLING_PRS","status":"ready","gold":[["THRESHOLDS-ST01_FILLING"],["DOC:datasheets/DS_Mechanical_Sensors.pdf"]]},
+    {"id":"K12","question":"밀봉기 온도 위험 임계값과 열 센서 연속 측정 상한을 함께 찾아줘.","sensor":"ST02_SEALING_TMP","status":"ready","gold":[["THRESHOLDS-ST02_SEALING"],["DOC:datasheets/DS_Thermal_Sensors.pdf"]]},
+    {"id":"K13","question":"ST99 온도 센서의 긴급 정지 기준은?","sensor":null,"status":"unsupported","gold":[]},
+    {"id":"K14","question":"온도가 올라갔는데 어떻게 해야 해?","sensor":null,"status":"needs_clarification","gold":[]},
+    {"id":"K15","question":"ST02 센서가 이상해. 어떤 조치가 필요하지?","sensor":null,"status":"needs_clarification","gold":[]},
+    {"id":"K16","question":"밀봉기 전압이 높아졌어. 기준을 알려줘.","sensor":null,"status":"unsupported","gold":[]},
+    {"id":"K17","question":"내일 서울 날씨가 어때?","sensor":null,"status":"unsupported","gold":[]},
+    {"id":"K18","question":"포장기 속도 하락은 밀봉기 전류 때문이라고 확정할 수 있나?","sensor":null,"status":"needs_clarification","gold":[]},
+    {"id":"K19","question":"서버실 온도 29도에서는 PLC를 어떻게 처리해?","sensor":"SRV01_SERVERROOM_TMP","status":"ready","gold":[["RULE-SRV01-02"]]},
+    {"id":"K20","question":"포장기 속도가 0.9인데 작업자 명령 여부를 모르겠어. 연관 규칙은?","sensor":"ST04_PACKAGING_SPD","status":"ready","gold":[["RULE-ST04-03"],["RULE-ST02-04"]]}
+  ]
+}

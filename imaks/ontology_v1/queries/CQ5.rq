@@ -1,0 +1,11 @@
+PREFIX im: <https://example.org/imaks/v1#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT ?personId ?role ?zoneName ?conditionDocId ?condition ?matrixDocId ?matrixExcerpt WHERE {
+        ?person a im:Person; im:identifier "P043"; im:identifier ?personId;
+                im:role ?role; im:authorizedFor ?zone.
+        ?zone a im:Zone; im:name "Chemical Storage"; im:name ?zoneName.
+        ?doc a im:Document; im:identifier "SOP-001"; im:identifier ?conditionDocId; im:documentText ?fullText.
+        BIND(STRBEFORE(STRAFTER(?fullText, "RULE-CHM01-03:"), "2.8 RND01_RDLAB") AS ?condition)
+        ?matrixDoc a im:Document; im:identifier "SOP-004"; im:identifier ?matrixDocId; im:documentText ?matrixText.
+        BIND(STRBEFORE(STRAFTER(?matrixText, "1. Role-Zone Authorisation Matrix"), "2. Maximum Occupancy per Zone") AS ?matrixExcerpt)
+    }

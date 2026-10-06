@@ -1,0 +1,26 @@
+{
+  "builder_sha256": "2233f43c71694280c22bb138b2307129808909d85c6362d60d8e2826ea282ff2",
+  "output_files_sha256": {
+    "build_summary.json": "8b97305d14425ca11c5f5b2b8e06910219637514975e8b4f0648ac61166a6f2d",
+    "ml_metadata.ttl": "a50bd70f41618bd3ab0ab7b98dd9a2330294c1a6a93f20500fd54b60f877abb1",
+    "rule_context.ttl": "ddf5e7f10131141bf716068e52e85888a1f5d6252fb872beb42228ad20bbaec1",
+    "rule_lineage.json": "6d0c4e1aba06777cecd273d35888a52b7970bd5b8bd5d3fd6a46316141b33645"
+  },
+  "common_files_sha256": {
+    "manifest.json": "b013511f30b5c4452ed12d43fb7449bde28b2c6c535d6906054e021b0a832230",
+    "inputs/kg/nodes_static.csv": "19f52f89640eac2f40be76741b96f6aaca131ac2f9dcc6f1b9d4103938668002",
+    "inputs/kg/edges_static.csv": "038c520732007d5435888461b313dea6abab47ba43f0b4cd5228a59a0fc89e9e",
+    "metadata/sensor_id_mapping.csv": "fc0c42e25f310796284bfca6197ee6e9466a31b999ba1115e60ecf37569ff0f5",
+    "documents/document_manifest.json": "3d2d0b0dbfb290cc1d649b69b75be9d675b100c34d1afb64c1c6e3d745e56cad",
+    "documents/pages.json": "3da8ffc0e0fac1056dec732969703b30cdcc03c8161e3460192a2e81183d5020",
+    "documents/originals/DS_Electrical_Sensors.pdf": "8692d87e9aa21f4dadd97d56735b40241fccd795b49b3874ad87d9e49c24b3b8",
+    "documents/originals/DS_Mechanical_Sensors.pdf": "79a4e8e381c9e7b761d3bfee3023bbb0d0d439728ef308641d00a7b3e18b0072",
+    "documents/originals/DS_Thermal_Sensors.pdf": "bcc131019cdc8cf65bf34b684d0cd4b4df0a05b4cf0f759298750c044110e2db",
+    "documents/originals/SOP_001_OperatingProcedures.pdf": "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89",
+    "documents/originals/SOP_002_AlarmThresholds.pdf": "f9cd382e743add947ac0b311be9474ca726a8faf6a31f8b1e0e72a62c6fd5f7e",
+    "documents/originals/SOP_003_MaintenanceRules.pdf": "89bb8bebc3e0bc6ac9a157a9bc30b6de09fb526711cbc1c9631258444fe865b7",
+    "documents/originals/SOP_004_PersonnelZoneAccess.pdf": "925d9454d536f4510afb43cf58ca7646c6fd79676c65990bbaca233b56c763d9",
+    "documents/tables.json": "d4ec783a4cd6f5302478893c1cc1ae144576e0005aae77aaa1590b5d702e6176",
+    "inputs/sensors/timeseries_ml_input.csv": "a9e343c051f2e98cc76f7ee6a00dcc61638f270274cb4c7aff14e13b06761ea5"
+  }
+}

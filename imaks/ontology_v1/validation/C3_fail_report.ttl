@@ -1,0 +1,10 @@
+_:cb0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/shacl#ValidationReport> .
+_:cb0 <http://www.w3.org/ns/shacl#conforms> "false"^^<http://www.w3.org/2001/XMLSchema#boolean> .
+_:cb0 <http://www.w3.org/ns/shacl#result> _:cbd0f7558df899cf82670671498ba000b00f9155bc79787fd5b486e4f4117e73ab .
+_:cbd0f7558df899cf82670671498ba000b00f9155bc79787fd5b486e4f4117e73ab <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/shacl#ValidationResult> .
+_:cbd0f7558df899cf82670671498ba000b00f9155bc79787fd5b486e4f4117e73ab <http://www.w3.org/ns/shacl#focusNode> <https://example.org/imaks/id/rule/RULE-ST02-02> .
+_:cbd0f7558df899cf82670671498ba000b00f9155bc79787fd5b486e4f4117e73ab <http://www.w3.org/ns/shacl#resultMessage> "C3 규칙과 문서의 출처 메타데이터"@ko .
+_:cbd0f7558df899cf82670671498ba000b00f9155bc79787fd5b486e4f4117e73ab <http://www.w3.org/ns/shacl#resultSeverity> <http://www.w3.org/ns/shacl#Violation> .
+_:cbd0f7558df899cf82670671498ba000b00f9155bc79787fd5b486e4f4117e73ab <http://www.w3.org/ns/shacl#sourceConstraintComponent> <http://www.w3.org/ns/shacl#OrConstraintComponent> .
+_:cbd0f7558df899cf82670671498ba000b00f9155bc79787fd5b486e4f4117e73ab <http://www.w3.org/ns/shacl#sourceShape> <https://example.org/imaks/v1#RuleShape> .
+_:cbd0f7558df899cf82670671498ba000b00f9155bc79787fd5b486e4f4117e73ab <http://www.w3.org/ns/shacl#value> <https://example.org/imaks/id/rule/RULE-ST02-02> .

@@ -1,0 +1,13 @@
+PREFIX im: <https://example.org/imaks/v1#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT ?measured ?limit ?targetId ?ruleId ?response ?docId ?page WHERE {
+        VALUES ?measured { 2.12e2 }
+        ?sensor im:identifier "ST02_SEALING_TMP".
+        ?thresholdRule a im:ThresholdRule; im:appliesToSensor ?sensor; im:critHi ?limit.
+        FILTER (?measured > ?limit)
+        ?rule a im:Rule; im:identifier "RULE-ST02-02"; im:identifier ?ruleId;
+              im:appliesToSensor ?sensor; im:actionTarget ?target; im:responseText ?response;
+              im:sourceDocument ?doc; im:sourcePage ?page.
+        ?target im:identifier ?targetId.
+        ?doc im:identifier ?docId.
+    } ORDER BY ?targetId

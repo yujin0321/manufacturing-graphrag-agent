@@ -1,0 +1,4265 @@
+@prefix im: <https://example.org/imaks/v1#> .
+@prefix inst: <https://example.org/imaks/id/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.org/imaks/id/document/DS_ELECTRICAL_SENSORS> a im:Document ;
+    im:documentText """[page 1]
+Industrial Current Transformer Series 3300 — Datasheet
+Document: DS-ELEC-3300 | Rev: Rev C | Date: 2024-09-10 | Author: ElectroMeasure AG — Applications Engineering
+1. Electrical Specifications
+Parameter
+Value
+Unit
+Notes
+Nominal current range
+0 to 20
+A rms
+Accuracy class
+Class 0.5
+—
+IEC 61869-2
+Continuous overload rating
+14
+A
+See note 2
+Short-time overload
+20
+A
+< 1 second
+Output signal
+4–20
+mA
+Operating temperature
+-25 to +70
+°C
+Note 2 — Continuous Overload Rating: The sensor is rated for continuous operation up to 14 A. Operation between
+14 A and 20 A is permissible for short durations (< 60 seconds). Sustained operation above 14 A will cause
+progressive accuracy drift. ElectroMeasure recommends that process alarm thresholds triggering corrective action be
+set no higher than the continuous overload rating.
+""" ;
+    im:identifier "DS_ELECTRICAL_SENSORS" ;
+    im:pageCount "1"^^xsd:positiveInteger ;
+    im:sourcePath "datasheets/DS_Electrical_Sensors.pdf" ;
+    im:sourceSha256 "8692d87e9aa21f4dadd97d56735b40241fccd795b49b3874ad87d9e49c24b3b8" ;
+    im:title "Industrial Current Transformer Series 3300 — Datasheet" .
+
+<https://example.org/imaks/id/document/DS_MECHANICAL_SENSORS> a im:Document ;
+    im:documentText """[page 1]
+Industrial Mechanical Sensor Series 4400 — Datasheet
+Document: DS-MECH-4400 | Rev: Rev B | Date: 2024-03-15 | Author: MechSens Italia S.r.l. — Technical Division
+1. Pressure Transmitter PRS-4410
+Parameter
+Value
+Unit
+Measuring range
+0 to 10
+bar
+Accuracy (total error)
+±0.10
+bar (±0.075% FS)
+Repeatability
+±0.025
+bar
+Long-term stability
+±0.05/year
+bar
+Media temperature
+-10 to +80
+°C
+Application Note — Alarm Threshold Setting: With a total accuracy of ±0.10 bar, alarm thresholds should be set at
+least 5× the accuracy (0.50 bar) from the nominal operating point to avoid nuisance alarms. Thresholds closer than
+3× accuracy (0.30 bar) are not recommended for process control.
+2. Electromagnetic Flowmeter FLW-4450
+Parameter
+Value
+Unit
+Measuring range
+0 to 500
+L/min
+Accuracy
+±0.5% of reading
+—
+Max fluid temp
++80
+°C
+3. Piezoelectric Accelerometer VIB-4480
+Parameter
+Value
+Unit
+Measuring range
+0 to 50
+mm/s RMS
+Frequency range
+10 to 1000
+Hz
+Accuracy
+±3%
+of reading
+Resonant frequency
+≥ 18
+kHz
+4. Inductive Speed Encoder SPD-4490
+Parameter
+Value
+Unit
+Speed range
+0.1 to 10
+m/s
+Resolution
+0.001
+m/s
+Max amb. temp
+80
+°C
+""" ;
+    im:identifier "DS_MECHANICAL_SENSORS" ;
+    im:pageCount "1"^^xsd:positiveInteger ;
+    im:sourcePath "datasheets/DS_Mechanical_Sensors.pdf" ;
+    im:sourceSha256 "79a4e8e381c9e7b761d3bfee3023bbb0d0d439728ef308641d00a7b3e18b0072" ;
+    im:title "Industrial Mechanical Sensor Series 4400 — Datasheet" .
+
+<https://example.org/imaks/id/document/DS_THERMAL_SENSORS> a im:Document ;
+    im:documentText """[page 1]
+Industrial Thermal Sensor Series 2200 — Datasheet
+Document: DS-THERM-2200 | Rev: Rev D | Date: 2024-06-01 | Author: ThermoSense GmbH — Engineering Division
+1. Temperature Sensor TMP-2210 — Specifications
+Parameter
+Value
+Unit
+Notes
+Measurement range
+-40 to +200
+°C
+Continuous; see note 1
+Accuracy (IEC 60584)
+±1.5 (class 2)
+°C
+At 20°C reference
+Response time (t90)
+< 3
+s
+In still air
+Output signal
+4–20
+mA
+Linear to range
+Max intermittent
+220
+°C
+< 10 min; not for control
+Note 1 — Maximum Operating Temperature: The rated maximum for continuous operation is 200°C. Exposure
+above this value accelerates thermocouple ageing and may cause drift of up to ±5°C within 500 hours. For
+applications requiring sustained operation above 200°C, ThermoSense recommends the Series 2400 (Pt100 RTD,
+rated to 250°C continuous).
+2. Humidity Sensor HUM-2250 — Specifications
+Parameter
+Value
+Unit
+Measurement range
+0 to 100
+%RH
+Accuracy
+±2.0
+%RH
+Operating temp
+-20 to +60
+°C
+Response time
+< 8
+s
+""" ;
+    im:identifier "DS_THERMAL_SENSORS" ;
+    im:pageCount "1"^^xsd:positiveInteger ;
+    im:sourcePath "datasheets/DS_Thermal_Sensors.pdf" ;
+    im:sourceSha256 "bcc131019cdc8cf65bf34b684d0cd4b4df0a05b4cf0f759298750c044110e2db" ;
+    im:title "Industrial Thermal Sensor Series 2200 — Datasheet" .
+
+<https://example.org/imaks/id/document/SOP-003> a im:Document ;
+    im:documentText """[page 1]
+Predictive & Corrective Maintenance Rules — Production
+ Line A
+Document: SOP-003 | Rev: 1.5 | Date: 2025-09-01 | Author: Ing. A. Conti — Maintenance Engineering
+1. Predictive Maintenance Rules
+Rule ID
+Sens
+or
+Station
+Trigger
+Action
+Priority
+MAINT-01
+VIB
+ST04_PACKAGING
+VIB DRIFT >0.05 mm/s
+over 60 min
+Inspect and lubricate
+bearing
+HIGH
+MAINT-02
+CUR
+ST02_SEALING
+CUR DRIFT >1.0 A for
+30+ min
+Inspect sealing jaw
+HIGH
+MAINT-03
+TEN
+ST03_LABELLING
+TEN STUCK >10 samples
+Replace sensor
+MEDIUM
+MAINT-04
+PRS
+ST01_FILLING
+PRS <3.3 bar for >15 min
+Inspect filter and pump
+MEDIUM
+MAINT-05
+TMP
+SRV01_SERVERRO
+OM
+TMP >25°C for >5 min
+Activate secondary
+cooling
+CRITICAL
+MAINT-06
+TMP
+WRH01_WAREHOU
+SE
+TMP DRIFT >2°C over 2 h
+Inspect compressor;
+notify QC
+CRITICAL
+MAINT-07
+TMP
+CHM01_CHEMICALS
+TORAGE
+TMP >20°C for >10 min
+Emergency ventilation;
+notify safety officer
+CRITICAL
+MAINT-08
+HUM
+RND01_RDLAB
+HUM DRIFT >10%RH
+over 60 min
+Activate dehumidifier;
+check HVAC drain
+HIGH
+2. Correlated Fault Resolution
+Pattern
+Primary Fault
+Secondary Effect
+Resolution
+ST02_SEALING-CUR↑
+→ ST04_PACKAGING-
+SPD↓
+Sealing motor
+overload
+Conveyor speed drop
+via electrical coupling
+1.Verify ST02-CUR trend. 2.Inspect sealing jaw.
+3.Reset ST04 speed setpoint.
+SRV01-TMP↑ →
+SCADA latency↑
+Server Room
+overheating
+Increased scan time →
+apparent STUCK
+readings
+1.Reduce SRV01-TMP <25°C. 2.Verify PLC 
+heartbeats. 3.Clear STUCK alarms.
+WRH01-TMP↑ → QC
+HOLD
+Cold warehouse
+drift
+Product quality risk
+1.Restore WRH01-TMP <8°C. 2.Notify QC. 
+3.Place batch on HOLD in ERP.
+""" ;
+    im:identifier "SOP-003" ;
+    im:pageCount "1"^^xsd:positiveInteger ;
+    im:sourcePath "rules/SOP_003_MaintenanceRules.pdf" ;
+    im:sourceSha256 "89bb8bebc3e0bc6ac9a157a9bc30b6de09fb526711cbc1c9631258444fe865b7" ;
+    im:title "Predictive & Corrective Maintenance Rules — Production Line A" .
+
+<https://example.org/imaks/id/document/SOP-004> a im:Document ;
+    im:documentText """[page 1]
+Personnel Zone Access and Alarm Response Procedures
+Document: SOP-004 | Rev: 1.0 | Date: 2025-12-01 | Author: Ing. F. Ferrari — Safety & Compliance
+1. Role-Zone Authorisation Matrix
+Role
+Prod. Area
+Server Room
+Gen. Warehous
+e
+Main Entranc
+e
+Chem. Stora
+ge
+R&D; Lab
+Cafeteria
+operator
+YES
+NO
+YES
+YES
+NO
+NO
+YES
+technician
+YES
+YES
+YES
+YES
+YES
+YES
+YES
+supervisor
+YES
+YES
+YES
+YES
+YES
+YES
+YES
+manager
+YES
+YES
+YES
+YES
+YES
+YES
+YES
+security
+YES
+YES
+YES
+YES
+YES
+YES
+YES
+visitor
+YES
+NO
+NO
+YES
+NO
+NO
+YES
+2. Maximum Occupancy per Zone
+Zone
+Max Persons
+Enforcement
+Production Area
+12
+WARNING above 10; CRITICAL above 12
+Server Room
+2
+CRITICAL above 2; access badge required
+General Warehouse
+4
+WARNING above 3
+Main Entrance
+8
+Monitoring only
+Chemical Storage
+4
+CRITICAL above 4; hazmat training required — see RULE-CHM01-03
+R&D; Lab
+6
+WARNING above 5; precision experiments may be disturbed
+Cafeteria
+20
+Monitoring only — occupant comfort
+3. Maximum Acknowledgment Times by Role and Severity
+Role
+Max Ack — WARNING (min)
+Max Ack — CRITICAL (min)
+operator
+15
+3
+technician
+10
+2
+supervisor
+5
+1
+manager
+15
+5
+security
+20
+5
+4. Unauthorised Access Rules
+RULE-ACCESS-01: Any entry by an unauthorised role MUST be logged as OccupancyEvent::UnauthorisedAccess
+with person_id, zone, and timestamp.
+RULE-ACCESS-02: Security personnel MUST be notified within 2 minutes of detection.
+RULE-ACCESS-03: The KG node MUST include authorized=NO and a reference to this rule.
+
+[page 2]
+RULE-ACCESS-04: Chemical Storage has zero-tolerance policy. Any UNAUTHORIZED_ACCESS triggers
+immediate escalation to the Safety Officer regardless of role.
+""" ;
+    im:identifier "SOP-004" ;
+    im:pageCount "2"^^xsd:positiveInteger ;
+    im:sourcePath "rules/SOP_004_PersonnelZoneAccess.pdf" ;
+    im:sourceSha256 "925d9454d536f4510afb43cf58ca7646c6fd79676c65990bbaca233b56c763d9" ;
+    im:title "Personnel Zone Access and Alarm Response Procedures" .
+
+<https://example.org/imaks/id/edge/E0001> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:contains ;
+    rdf:subject inst:N0001 ;
+    im:identifier "E0001" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0002> a rdf:Statement ;
+    rdf:object inst:N0003 ;
+    rdf:predicate im:contains ;
+    rdf:subject inst:N0001 ;
+    im:identifier "E0002" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0003> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:contains ;
+    rdf:subject inst:N0001 ;
+    im:identifier "E0003" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0004> a rdf:Statement ;
+    rdf:object inst:N0005 ;
+    rdf:predicate im:contains ;
+    rdf:subject inst:N0001 ;
+    im:identifier "E0004" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0005> a rdf:Statement ;
+    rdf:object inst:N0006 ;
+    rdf:predicate im:contains ;
+    rdf:subject inst:N0001 ;
+    im:identifier "E0005" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0006> a rdf:Statement ;
+    rdf:object inst:N0007 ;
+    rdf:predicate im:contains ;
+    rdf:subject inst:N0001 ;
+    im:identifier "E0006" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0007> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:contains ;
+    rdf:subject inst:N0001 ;
+    im:identifier "E0007" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0008> a rdf:Statement ;
+    rdf:object inst:N0009 ;
+    rdf:predicate im:contains ;
+    rdf:subject inst:N0002 ;
+    im:identifier "E0008" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0009> a rdf:Statement ;
+    rdf:object inst:N0001 ;
+    rdf:predicate im:partOf ;
+    rdf:subject inst:N0009 ;
+    im:identifier "E0009" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0010> a rdf:Statement ;
+    rdf:object inst:N0010 ;
+    rdf:predicate im:hasSensor ;
+    rdf:subject inst:N0009 ;
+    im:identifier "E0010" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0011> a rdf:Statement ;
+    rdf:object inst:N0011 ;
+    rdf:predicate im:hasSensor ;
+    rdf:subject inst:N0009 ;
+    im:identifier "E0011" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0012> a rdf:Statement ;
+    rdf:object inst:N0012 ;
+    rdf:predicate im:hasSensor ;
+    rdf:subject inst:N0009 ;
+    im:identifier "E0012" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0013> a rdf:Statement ;
+    rdf:object inst:N0013 ;
+    rdf:predicate im:contains ;
+    rdf:subject inst:N0002 ;
+    im:identifier "E0013" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0014> a rdf:Statement ;
+    rdf:object inst:N0001 ;
+    rdf:predicate im:partOf ;
+    rdf:subject inst:N0013 ;
+    im:identifier "E0014" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0015> a rdf:Statement ;
+    rdf:object inst:N0014 ;
+    rdf:predicate im:hasSensor ;
+    rdf:subject inst:N0013 ;
+    im:identifier "E0015" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0016> a rdf:Statement ;
+    rdf:object inst:N0015 ;
+    rdf:predicate im:hasSensor ;
+    rdf:subject inst:N0013 ;
+    im:identifier "E0016" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0017> a rdf:Statement ;
+    rdf:object inst:N0016 ;
+    rdf:predicate im:hasSensor ;
+    rdf:subject inst:N0013 ;
+    im:identifier "E0017" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0018> a rdf:Statement ;
+    rdf:object inst:N0017 ;
+    rdf:predicate im:contains ;
+    rdf:subject inst:N0002 ;
+    im:identifier "E0018" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0019> a rdf:Statement ;
+    rdf:object inst:N0001 ;
+    rdf:predicate im:partOf ;
+    rdf:subject inst:N0017 ;
+    im:identifier "E0019" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0020> a rdf:Statement ;
+    rdf:object inst:N0018 ;
+    rdf:predicate im:hasSensor ;
+    rdf:subject inst:N0017 ;
+    im:identifier "E0020" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0021> a rdf:Statement ;
+    rdf:object inst:N0019 ;
+    rdf:predicate im:hasSensor ;
+    rdf:subject inst:N0017 ;
+    im:identifier "E0021" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0022> a rdf:Statement ;
+    rdf:object inst:N0020 ;
+    rdf:predicate im:hasSensor ;
+    rdf:subject inst:N0017 ;
+    im:identifier "E0022" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0023> a rdf:Statement ;
+    rdf:object inst:N0021 ;
+    rdf:predicate im:contains ;
+    rdf:subject inst:N0002 ;
+    im:identifier "E0023" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0024> a rdf:Statement ;
+    rdf:object inst:N0001 ;
+    rdf:predicate im:partOf ;
+    rdf:subject inst:N0021 ;
+    im:identifier "E0024" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0025> a rdf:Statement ;
+    rdf:object inst:N0022 ;
+    rdf:predicate im:hasSensor ;
+    rdf:subject inst:N0021 ;
+    im:identifier "E0025" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0026> a rdf:Statement ;
+    rdf:object inst:N0023 ;
+    rdf:predicate im:hasSensor ;
+    rdf:subject inst:N0021 ;
+    im:identifier "E0026" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0027> a rdf:Statement ;
+    rdf:object inst:N0024 ;
+    rdf:predicate im:hasSensor ;
+    rdf:subject inst:N0021 ;
+    im:identifier "E0027" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0028> a rdf:Statement ;
+    rdf:object inst:N0025 ;
+    rdf:predicate im:contains ;
+    rdf:subject inst:N0003 ;
+    im:identifier "E0028" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0029> a rdf:Statement ;
+    rdf:object inst:N0001 ;
+    rdf:predicate im:partOf ;
+    rdf:subject inst:N0025 ;
+    im:identifier "E0029" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0030> a rdf:Statement ;
+    rdf:object inst:N0026 ;
+    rdf:predicate im:hasSensor ;
+    rdf:subject inst:N0025 ;
+    im:identifier "E0030" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0031> a rdf:Statement ;
+    rdf:object inst:N0027 ;
+    rdf:predicate im:hasSensor ;
+    rdf:subject inst:N0025 ;
+    im:identifier "E0031" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0032> a rdf:Statement ;
+    rdf:object inst:N0028 ;
+    rdf:predicate im:contains ;
+    rdf:subject inst:N0004 ;
+    im:identifier "E0032" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0033> a rdf:Statement ;
+    rdf:object inst:N0001 ;
+    rdf:predicate im:partOf ;
+    rdf:subject inst:N0028 ;
+    im:identifier "E0033" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0034> a rdf:Statement ;
+    rdf:object inst:N0029 ;
+    rdf:predicate im:hasSensor ;
+    rdf:subject inst:N0028 ;
+    im:identifier "E0034" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0035> a rdf:Statement ;
+    rdf:object inst:N0030 ;
+    rdf:predicate im:hasSensor ;
+    rdf:subject inst:N0028 ;
+    im:identifier "E0035" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0036> a rdf:Statement ;
+    rdf:object inst:N0031 ;
+    rdf:predicate im:contains ;
+    rdf:subject inst:N0006 ;
+    im:identifier "E0036" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0037> a rdf:Statement ;
+    rdf:object inst:N0001 ;
+    rdf:predicate im:partOf ;
+    rdf:subject inst:N0031 ;
+    im:identifier "E0037" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0038> a rdf:Statement ;
+    rdf:object inst:N0032 ;
+    rdf:predicate im:hasSensor ;
+    rdf:subject inst:N0031 ;
+    im:identifier "E0038" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0039> a rdf:Statement ;
+    rdf:object inst:N0033 ;
+    rdf:predicate im:hasSensor ;
+    rdf:subject inst:N0031 ;
+    im:identifier "E0039" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0040> a rdf:Statement ;
+    rdf:object inst:N0034 ;
+    rdf:predicate im:contains ;
+    rdf:subject inst:N0007 ;
+    im:identifier "E0040" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0041> a rdf:Statement ;
+    rdf:object inst:N0001 ;
+    rdf:predicate im:partOf ;
+    rdf:subject inst:N0034 ;
+    im:identifier "E0041" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0042> a rdf:Statement ;
+    rdf:object inst:N0035 ;
+    rdf:predicate im:hasSensor ;
+    rdf:subject inst:N0034 ;
+    im:identifier "E0042" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0043> a rdf:Statement ;
+    rdf:object inst:N0036 ;
+    rdf:predicate im:hasSensor ;
+    rdf:subject inst:N0034 ;
+    im:identifier "E0043" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0044> a rdf:Statement ;
+    rdf:object inst:N0037 ;
+    rdf:predicate im:contains ;
+    rdf:subject inst:N0008 ;
+    im:identifier "E0044" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0045> a rdf:Statement ;
+    rdf:object inst:N0001 ;
+    rdf:predicate im:partOf ;
+    rdf:subject inst:N0037 ;
+    im:identifier "E0045" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0046> a rdf:Statement ;
+    rdf:object inst:N0038 ;
+    rdf:predicate im:hasSensor ;
+    rdf:subject inst:N0037 ;
+    im:identifier "E0046" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0047> a rdf:Statement ;
+    rdf:object inst:N0039 ;
+    rdf:predicate im:hasSensor ;
+    rdf:subject inst:N0037 ;
+    im:identifier "E0047" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0048> a rdf:Statement ;
+    rdf:object inst:N0013 ;
+    rdf:predicate im:feedsInto ;
+    rdf:subject inst:N0009 ;
+    im:identifier "E0048" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0049> a rdf:Statement ;
+    rdf:object inst:N0017 ;
+    rdf:predicate im:feedsInto ;
+    rdf:subject inst:N0013 ;
+    im:identifier "E0049" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0050> a rdf:Statement ;
+    rdf:object inst:N0021 ;
+    rdf:predicate im:feedsInto ;
+    rdf:subject inst:N0017 ;
+    im:identifier "E0050" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0051> a rdf:Statement ;
+    rdf:object inst:N0024 ;
+    rdf:predicate im:correlatesWith ;
+    rdf:subject inst:N0016 ;
+    im:identifier "E0051" ;
+    im:ruleReference "RULE-ST02-04" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0052> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0062 ;
+    im:identifier "E0052" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0053> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0062 ;
+    im:identifier "E0053" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0054> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0062 ;
+    im:identifier "E0054" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0055> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0063 ;
+    im:identifier "E0055" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0056> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0063 ;
+    im:identifier "E0056" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0057> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0063 ;
+    im:identifier "E0057" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0058> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0064 ;
+    im:identifier "E0058" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0059> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0064 ;
+    im:identifier "E0059" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0060> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0064 ;
+    im:identifier "E0060" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0061> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0065 ;
+    im:identifier "E0061" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0062> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0065 ;
+    im:identifier "E0062" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0063> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0065 ;
+    im:identifier "E0063" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0064> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0066 ;
+    im:identifier "E0064" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0065> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0066 ;
+    im:identifier "E0065" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0066> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0066 ;
+    im:identifier "E0066" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0067> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0067 ;
+    im:identifier "E0067" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0068> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0067 ;
+    im:identifier "E0068" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0069> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0067 ;
+    im:identifier "E0069" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0070> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0068 ;
+    im:identifier "E0070" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0071> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0068 ;
+    im:identifier "E0071" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0072> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0068 ;
+    im:identifier "E0072" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0073> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0069 ;
+    im:identifier "E0073" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0074> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0069 ;
+    im:identifier "E0074" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0075> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0069 ;
+    im:identifier "E0075" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0076> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0070 ;
+    im:identifier "E0076" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0077> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0070 ;
+    im:identifier "E0077" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0078> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0070 ;
+    im:identifier "E0078" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0079> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0071 ;
+    im:identifier "E0079" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0080> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0071 ;
+    im:identifier "E0080" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0081> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0071 ;
+    im:identifier "E0081" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0082> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0072 ;
+    im:identifier "E0082" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0083> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0072 ;
+    im:identifier "E0083" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0084> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0072 ;
+    im:identifier "E0084" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0085> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0073 ;
+    im:identifier "E0085" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0086> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0073 ;
+    im:identifier "E0086" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0087> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0073 ;
+    im:identifier "E0087" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0088> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0074 ;
+    im:identifier "E0088" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0089> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0074 ;
+    im:identifier "E0089" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0090> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0074 ;
+    im:identifier "E0090" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0091> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0075 ;
+    im:identifier "E0091" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0092> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0075 ;
+    im:identifier "E0092" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0093> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0075 ;
+    im:identifier "E0093" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0094> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0076 ;
+    im:identifier "E0094" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0095> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0076 ;
+    im:identifier "E0095" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0096> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0076 ;
+    im:identifier "E0096" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0097> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0077 ;
+    im:identifier "E0097" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0098> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0077 ;
+    im:identifier "E0098" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0099> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0077 ;
+    im:identifier "E0099" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0100> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0078 ;
+    im:identifier "E0100" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0101> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0078 ;
+    im:identifier "E0101" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0102> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0078 ;
+    im:identifier "E0102" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0103> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0079 ;
+    im:identifier "E0103" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0104> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0079 ;
+    im:identifier "E0104" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0105> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0079 ;
+    im:identifier "E0105" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0106> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0080 ;
+    im:identifier "E0106" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0107> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0080 ;
+    im:identifier "E0107" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0108> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0080 ;
+    im:identifier "E0108" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0109> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0081 ;
+    im:identifier "E0109" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0110> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0081 ;
+    im:identifier "E0110" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0111> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0081 ;
+    im:identifier "E0111" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0112> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0082 ;
+    im:identifier "E0112" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0113> a rdf:Statement ;
+    rdf:object inst:N0003 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0082 ;
+    im:identifier "E0113" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0114> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0082 ;
+    im:identifier "E0114" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0115> a rdf:Statement ;
+    rdf:object inst:N0006 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0082 ;
+    im:identifier "E0115" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0116> a rdf:Statement ;
+    rdf:object inst:N0007 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0082 ;
+    im:identifier "E0116" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0117> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0082 ;
+    im:identifier "E0117" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0118> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0083 ;
+    im:identifier "E0118" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0119> a rdf:Statement ;
+    rdf:object inst:N0003 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0083 ;
+    im:identifier "E0119" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0120> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0083 ;
+    im:identifier "E0120" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0121> a rdf:Statement ;
+    rdf:object inst:N0006 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0083 ;
+    im:identifier "E0121" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0122> a rdf:Statement ;
+    rdf:object inst:N0007 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0083 ;
+    im:identifier "E0122" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0123> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0083 ;
+    im:identifier "E0123" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0124> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0084 ;
+    im:identifier "E0124" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0125> a rdf:Statement ;
+    rdf:object inst:N0003 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0084 ;
+    im:identifier "E0125" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0126> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0084 ;
+    im:identifier "E0126" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0127> a rdf:Statement ;
+    rdf:object inst:N0006 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0084 ;
+    im:identifier "E0127" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0128> a rdf:Statement ;
+    rdf:object inst:N0007 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0084 ;
+    im:identifier "E0128" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0129> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0084 ;
+    im:identifier "E0129" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0130> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0085 ;
+    im:identifier "E0130" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0131> a rdf:Statement ;
+    rdf:object inst:N0003 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0085 ;
+    im:identifier "E0131" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0132> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0085 ;
+    im:identifier "E0132" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0133> a rdf:Statement ;
+    rdf:object inst:N0006 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0085 ;
+    im:identifier "E0133" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0134> a rdf:Statement ;
+    rdf:object inst:N0007 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0085 ;
+    im:identifier "E0134" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0135> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0085 ;
+    im:identifier "E0135" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0136> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0086 ;
+    im:identifier "E0136" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0137> a rdf:Statement ;
+    rdf:object inst:N0003 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0086 ;
+    im:identifier "E0137" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0138> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0086 ;
+    im:identifier "E0138" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0139> a rdf:Statement ;
+    rdf:object inst:N0006 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0086 ;
+    im:identifier "E0139" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0140> a rdf:Statement ;
+    rdf:object inst:N0007 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0086 ;
+    im:identifier "E0140" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0141> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0086 ;
+    im:identifier "E0141" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0142> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0087 ;
+    im:identifier "E0142" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0143> a rdf:Statement ;
+    rdf:object inst:N0003 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0087 ;
+    im:identifier "E0143" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0144> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0087 ;
+    im:identifier "E0144" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0145> a rdf:Statement ;
+    rdf:object inst:N0006 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0087 ;
+    im:identifier "E0145" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0146> a rdf:Statement ;
+    rdf:object inst:N0007 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0087 ;
+    im:identifier "E0146" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0147> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0087 ;
+    im:identifier "E0147" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0148> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0088 ;
+    im:identifier "E0148" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0149> a rdf:Statement ;
+    rdf:object inst:N0003 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0088 ;
+    im:identifier "E0149" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0150> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0088 ;
+    im:identifier "E0150" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0151> a rdf:Statement ;
+    rdf:object inst:N0006 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0088 ;
+    im:identifier "E0151" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0152> a rdf:Statement ;
+    rdf:object inst:N0007 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0088 ;
+    im:identifier "E0152" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0153> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0088 ;
+    im:identifier "E0153" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0154> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0089 ;
+    im:identifier "E0154" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0155> a rdf:Statement ;
+    rdf:object inst:N0003 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0089 ;
+    im:identifier "E0155" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0156> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0089 ;
+    im:identifier "E0156" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0157> a rdf:Statement ;
+    rdf:object inst:N0006 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0089 ;
+    im:identifier "E0157" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0158> a rdf:Statement ;
+    rdf:object inst:N0007 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0089 ;
+    im:identifier "E0158" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0159> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0089 ;
+    im:identifier "E0159" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0160> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0090 ;
+    im:identifier "E0160" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0161> a rdf:Statement ;
+    rdf:object inst:N0003 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0090 ;
+    im:identifier "E0161" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0162> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0090 ;
+    im:identifier "E0162" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0163> a rdf:Statement ;
+    rdf:object inst:N0006 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0090 ;
+    im:identifier "E0163" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0164> a rdf:Statement ;
+    rdf:object inst:N0007 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0090 ;
+    im:identifier "E0164" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0165> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0090 ;
+    im:identifier "E0165" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0166> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0091 ;
+    im:identifier "E0166" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0167> a rdf:Statement ;
+    rdf:object inst:N0003 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0091 ;
+    im:identifier "E0167" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0168> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0091 ;
+    im:identifier "E0168" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0169> a rdf:Statement ;
+    rdf:object inst:N0006 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0091 ;
+    im:identifier "E0169" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0170> a rdf:Statement ;
+    rdf:object inst:N0007 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0091 ;
+    im:identifier "E0170" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0171> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0091 ;
+    im:identifier "E0171" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0172> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0092 ;
+    im:identifier "E0172" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0173> a rdf:Statement ;
+    rdf:object inst:N0003 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0092 ;
+    im:identifier "E0173" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0174> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0092 ;
+    im:identifier "E0174" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0175> a rdf:Statement ;
+    rdf:object inst:N0006 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0092 ;
+    im:identifier "E0175" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0176> a rdf:Statement ;
+    rdf:object inst:N0007 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0092 ;
+    im:identifier "E0176" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0177> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0092 ;
+    im:identifier "E0177" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0178> a rdf:Statement ;
+    rdf:object inst:N0005 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0092 ;
+    im:identifier "E0178" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0179> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0093 ;
+    im:identifier "E0179" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0180> a rdf:Statement ;
+    rdf:object inst:N0003 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0093 ;
+    im:identifier "E0180" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0181> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0093 ;
+    im:identifier "E0181" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0182> a rdf:Statement ;
+    rdf:object inst:N0006 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0093 ;
+    im:identifier "E0182" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0183> a rdf:Statement ;
+    rdf:object inst:N0007 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0093 ;
+    im:identifier "E0183" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0184> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0093 ;
+    im:identifier "E0184" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0185> a rdf:Statement ;
+    rdf:object inst:N0005 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0093 ;
+    im:identifier "E0185" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0186> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0094 ;
+    im:identifier "E0186" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0187> a rdf:Statement ;
+    rdf:object inst:N0003 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0094 ;
+    im:identifier "E0187" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0188> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0094 ;
+    im:identifier "E0188" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0189> a rdf:Statement ;
+    rdf:object inst:N0006 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0094 ;
+    im:identifier "E0189" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0190> a rdf:Statement ;
+    rdf:object inst:N0007 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0094 ;
+    im:identifier "E0190" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0191> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0094 ;
+    im:identifier "E0191" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0192> a rdf:Statement ;
+    rdf:object inst:N0005 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0094 ;
+    im:identifier "E0192" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0193> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0095 ;
+    im:identifier "E0193" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0194> a rdf:Statement ;
+    rdf:object inst:N0003 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0095 ;
+    im:identifier "E0194" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0195> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0095 ;
+    im:identifier "E0195" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0196> a rdf:Statement ;
+    rdf:object inst:N0006 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0095 ;
+    im:identifier "E0196" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0197> a rdf:Statement ;
+    rdf:object inst:N0007 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0095 ;
+    im:identifier "E0197" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0198> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0095 ;
+    im:identifier "E0198" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0199> a rdf:Statement ;
+    rdf:object inst:N0005 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0095 ;
+    im:identifier "E0199" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0200> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0096 ;
+    im:identifier "E0200" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0201> a rdf:Statement ;
+    rdf:object inst:N0003 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0096 ;
+    im:identifier "E0201" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0202> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0096 ;
+    im:identifier "E0202" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0203> a rdf:Statement ;
+    rdf:object inst:N0006 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0096 ;
+    im:identifier "E0203" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0204> a rdf:Statement ;
+    rdf:object inst:N0007 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0096 ;
+    im:identifier "E0204" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0205> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0096 ;
+    im:identifier "E0205" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0206> a rdf:Statement ;
+    rdf:object inst:N0005 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0096 ;
+    im:identifier "E0206" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0207> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0097 ;
+    im:identifier "E0207" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0208> a rdf:Statement ;
+    rdf:object inst:N0003 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0097 ;
+    im:identifier "E0208" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0209> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0097 ;
+    im:identifier "E0209" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0210> a rdf:Statement ;
+    rdf:object inst:N0006 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0097 ;
+    im:identifier "E0210" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0211> a rdf:Statement ;
+    rdf:object inst:N0007 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0097 ;
+    im:identifier "E0211" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0212> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0097 ;
+    im:identifier "E0212" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0213> a rdf:Statement ;
+    rdf:object inst:N0005 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0097 ;
+    im:identifier "E0213" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0214> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0098 ;
+    im:identifier "E0214" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0215> a rdf:Statement ;
+    rdf:object inst:N0003 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0098 ;
+    im:identifier "E0215" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0216> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0098 ;
+    im:identifier "E0216" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0217> a rdf:Statement ;
+    rdf:object inst:N0006 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0098 ;
+    im:identifier "E0217" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0218> a rdf:Statement ;
+    rdf:object inst:N0007 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0098 ;
+    im:identifier "E0218" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0219> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0098 ;
+    im:identifier "E0219" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0220> a rdf:Statement ;
+    rdf:object inst:N0005 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0098 ;
+    im:identifier "E0220" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0221> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0099 ;
+    im:identifier "E0221" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0222> a rdf:Statement ;
+    rdf:object inst:N0003 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0099 ;
+    im:identifier "E0222" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0223> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0099 ;
+    im:identifier "E0223" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0224> a rdf:Statement ;
+    rdf:object inst:N0006 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0099 ;
+    im:identifier "E0224" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0225> a rdf:Statement ;
+    rdf:object inst:N0007 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0099 ;
+    im:identifier "E0225" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0226> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0099 ;
+    im:identifier "E0226" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0227> a rdf:Statement ;
+    rdf:object inst:N0005 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0099 ;
+    im:identifier "E0227" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0228> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0100 ;
+    im:identifier "E0228" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0229> a rdf:Statement ;
+    rdf:object inst:N0003 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0100 ;
+    im:identifier "E0229" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0230> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0100 ;
+    im:identifier "E0230" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0231> a rdf:Statement ;
+    rdf:object inst:N0006 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0100 ;
+    im:identifier "E0231" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0232> a rdf:Statement ;
+    rdf:object inst:N0007 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0100 ;
+    im:identifier "E0232" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0233> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0100 ;
+    im:identifier "E0233" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0234> a rdf:Statement ;
+    rdf:object inst:N0005 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0100 ;
+    im:identifier "E0234" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0235> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0101 ;
+    im:identifier "E0235" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0236> a rdf:Statement ;
+    rdf:object inst:N0003 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0101 ;
+    im:identifier "E0236" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0237> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0101 ;
+    im:identifier "E0237" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0238> a rdf:Statement ;
+    rdf:object inst:N0006 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0101 ;
+    im:identifier "E0238" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0239> a rdf:Statement ;
+    rdf:object inst:N0007 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0101 ;
+    im:identifier "E0239" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0240> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0101 ;
+    im:identifier "E0240" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0241> a rdf:Statement ;
+    rdf:object inst:N0005 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0101 ;
+    im:identifier "E0241" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0242> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0102 ;
+    im:identifier "E0242" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0243> a rdf:Statement ;
+    rdf:object inst:N0003 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0102 ;
+    im:identifier "E0243" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0244> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0102 ;
+    im:identifier "E0244" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0245> a rdf:Statement ;
+    rdf:object inst:N0006 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0102 ;
+    im:identifier "E0245" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0246> a rdf:Statement ;
+    rdf:object inst:N0007 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0102 ;
+    im:identifier "E0246" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0247> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0102 ;
+    im:identifier "E0247" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0248> a rdf:Statement ;
+    rdf:object inst:N0005 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0102 ;
+    im:identifier "E0248" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0249> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0103 ;
+    im:identifier "E0249" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0250> a rdf:Statement ;
+    rdf:object inst:N0003 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0103 ;
+    im:identifier "E0250" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0251> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0103 ;
+    im:identifier "E0251" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0252> a rdf:Statement ;
+    rdf:object inst:N0006 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0103 ;
+    im:identifier "E0252" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0253> a rdf:Statement ;
+    rdf:object inst:N0007 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0103 ;
+    im:identifier "E0253" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0254> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0103 ;
+    im:identifier "E0254" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0255> a rdf:Statement ;
+    rdf:object inst:N0005 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0103 ;
+    im:identifier "E0255" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0256> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0104 ;
+    im:identifier "E0256" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0257> a rdf:Statement ;
+    rdf:object inst:N0003 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0104 ;
+    im:identifier "E0257" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0258> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0104 ;
+    im:identifier "E0258" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0259> a rdf:Statement ;
+    rdf:object inst:N0006 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0104 ;
+    im:identifier "E0259" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0260> a rdf:Statement ;
+    rdf:object inst:N0007 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0104 ;
+    im:identifier "E0260" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0261> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0104 ;
+    im:identifier "E0261" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0262> a rdf:Statement ;
+    rdf:object inst:N0005 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0104 ;
+    im:identifier "E0262" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0263> a rdf:Statement ;
+    rdf:object inst:N0002 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0105 ;
+    im:identifier "E0263" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0264> a rdf:Statement ;
+    rdf:object inst:N0003 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0105 ;
+    im:identifier "E0264" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0265> a rdf:Statement ;
+    rdf:object inst:N0004 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0105 ;
+    im:identifier "E0265" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0266> a rdf:Statement ;
+    rdf:object inst:N0006 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0105 ;
+    im:identifier "E0266" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0267> a rdf:Statement ;
+    rdf:object inst:N0007 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0105 ;
+    im:identifier "E0267" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0268> a rdf:Statement ;
+    rdf:object inst:N0008 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0105 ;
+    im:identifier "E0268" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/edge/E0269> a rdf:Statement ;
+    rdf:object inst:N0005 ;
+    rdf:predicate im:authorizedFor ;
+    rdf:subject inst:N0105 ;
+    im:identifier "E0269" ;
+    im:sourcePath "inputs/kg/edges_static.csv" .
+
+<https://example.org/imaks/id/observation/CAF01_CAFETERIA_HUM%402026-01-06T06%3A00%3A00> a im:Observation ;
+    im:observedBy inst:N0039 ;
+    im:sourcePath "inputs/sensors/timeseries_ml_input.csv" ;
+    im:timestamp "2026-01-06T06:00:00"^^xsd:dateTime ;
+    im:unit "%RH" ;
+    im:value 5.58419e+01 .
+
+<https://example.org/imaks/id/observation/CAF01_CAFETERIA_TMP%402026-01-06T06%3A00%3A00> a im:Observation ;
+    im:observedBy inst:N0038 ;
+    im:sourcePath "inputs/sensors/timeseries_ml_input.csv" ;
+    im:timestamp "2026-01-06T06:00:00"^^xsd:dateTime ;
+    im:unit "°C" ;
+    im:value 2.0592e+01 .
+
+<https://example.org/imaks/id/observation/CHM01_CHEMICALSTORAGE_HUM%402026-01-06T06%3A00%3A00> a im:Observation ;
+    im:observedBy inst:N0033 ;
+    im:sourcePath "inputs/sensors/timeseries_ml_input.csv" ;
+    im:timestamp "2026-01-06T06:00:00"^^xsd:dateTime ;
+    im:unit "%RH" ;
+    im:value 3.51926e+01 .
+
+<https://example.org/imaks/id/observation/CHM01_CHEMICALSTORAGE_TMP%402026-01-06T06%3A00%3A00> a im:Observation ;
+    im:observedBy inst:N0032 ;
+    im:sourcePath "inputs/sensors/timeseries_ml_input.csv" ;
+    im:timestamp "2026-01-06T06:00:00"^^xsd:dateTime ;
+    im:unit "°C" ;
+    im:value 1.51856e+01 .
+
+<https://example.org/imaks/id/observation/RND01_RDLAB_HUM%402026-01-06T06%3A00%3A00> a im:Observation ;
+    im:observedBy inst:N0036 ;
+    im:sourcePath "inputs/sensors/timeseries_ml_input.csv" ;
+    im:timestamp "2026-01-06T06:00:00"^^xsd:dateTime ;
+    im:unit "%RH" ;
+    im:value 4.93268e+01 .
+
+<https://example.org/imaks/id/observation/RND01_RDLAB_TMP%402026-01-06T06%3A00%3A00> a im:Observation ;
+    im:observedBy inst:N0035 ;
+    im:sourcePath "inputs/sensors/timeseries_ml_input.csv" ;
+    im:timestamp "2026-01-06T06:00:00"^^xsd:dateTime ;
+    im:unit "°C" ;
+    im:value 2.18616e+01 .
+
+<https://example.org/imaks/id/observation/SRV01_SERVERROOM_HUM%402026-01-06T06%3A00%3A00> a im:Observation ;
+    im:observedBy inst:N0027 ;
+    im:sourcePath "inputs/sensors/timeseries_ml_input.csv" ;
+    im:timestamp "2026-01-06T06:00:00"^^xsd:dateTime ;
+    im:unit "%RH" ;
+    im:value 4.58103e+01 .
+
+<https://example.org/imaks/id/observation/SRV01_SERVERROOM_TMP%402026-01-06T06%3A00%3A00> a im:Observation ;
+    im:observedBy inst:N0026 ;
+    im:sourcePath "inputs/sensors/timeseries_ml_input.csv" ;
+    im:timestamp "2026-01-06T06:00:00"^^xsd:dateTime ;
+    im:unit "°C" ;
+    im:value 2.09211e+01 .
+
+<https://example.org/imaks/id/observation/ST01_FILLING_FLW%402026-01-06T06%3A00%3A00> a im:Observation ;
+    im:observedBy inst:N0012 ;
+    im:sourcePath "inputs/sensors/timeseries_ml_input.csv" ;
+    im:timestamp "2026-01-06T06:00:00"^^xsd:dateTime ;
+    im:unit "L/min" ;
+    im:value 1.208955e+02 .
+
+<https://example.org/imaks/id/observation/ST01_FILLING_PRS%402026-01-06T06%3A00%3A00> a im:Observation ;
+    im:observedBy inst:N0011 ;
+    im:sourcePath "inputs/sensors/timeseries_ml_input.csv" ;
+    im:timestamp "2026-01-06T06:00:00"^^xsd:dateTime ;
+    im:unit "bar" ;
+    im:value 3.808e+00 .
+
+<https://example.org/imaks/id/observation/ST01_FILLING_TMP%402026-01-06T06%3A00%3A00> a im:Observation ;
+    im:observedBy inst:N0010 ;
+    im:sourcePath "inputs/sensors/timeseries_ml_input.csv" ;
+    im:timestamp "2026-01-06T06:00:00"^^xsd:dateTime ;
+    im:unit "°C" ;
+    im:value 2.25711e+01 .
+
+<https://example.org/imaks/id/observation/ST02_SEALING_CUR%402026-01-06T06%3A00%3A00> a im:Observation ;
+    im:observedBy inst:N0016 ;
+    im:sourcePath "inputs/sensors/timeseries_ml_input.csv" ;
+    im:timestamp "2026-01-06T06:00:00"^^xsd:dateTime ;
+    im:unit "A" ;
+    im:value 1.23802e+01 .
+
+<https://example.org/imaks/id/observation/ST02_SEALING_PRS%402026-01-06T06%3A00%3A00> a im:Observation ;
+    im:observedBy inst:N0015 ;
+    im:sourcePath "inputs/sensors/timeseries_ml_input.csv" ;
+    im:timestamp "2026-01-06T06:00:00"^^xsd:dateTime ;
+    im:unit "bar" ;
+    im:value 5.2246e+00 .
+
+<https://example.org/imaks/id/observation/ST02_SEALING_TMP%402026-01-06T06%3A00%3A00> a im:Observation ;
+    im:observedBy inst:N0014 ;
+    im:sourcePath "inputs/sensors/timeseries_ml_input.csv" ;
+    im:timestamp "2026-01-06T06:00:00"^^xsd:dateTime ;
+    im:unit "°C" ;
+    im:value 1.846558e+02 .
+
+<https://example.org/imaks/id/observation/ST03_LABELLING_CNT%402026-01-06T06%3A00%3A00> a im:Observation ;
+    im:observedBy inst:N0020 ;
+    im:sourcePath "inputs/sensors/timeseries_ml_input.csv" ;
+    im:timestamp "2026-01-06T06:00:00"^^xsd:dateTime ;
+    im:unit "pcs/min" ;
+    im:value 1.221226e+02 .
+
+<https://example.org/imaks/id/observation/ST03_LABELLING_SPD%402026-01-06T06%3A00%3A00> a im:Observation ;
+    im:observedBy inst:N0018 ;
+    im:sourcePath "inputs/sensors/timeseries_ml_input.csv" ;
+    im:timestamp "2026-01-06T06:00:00"^^xsd:dateTime ;
+    im:unit "m/s" ;
+    im:value 8.508e-01 .
+
+<https://example.org/imaks/id/observation/ST03_LABELLING_TEN%402026-01-06T06%3A00%3A00> a im:Observation ;
+    im:observedBy inst:N0019 ;
+    im:sourcePath "inputs/sensors/timeseries_ml_input.csv" ;
+    im:timestamp "2026-01-06T06:00:00"^^xsd:dateTime ;
+    im:unit "N" ;
+    im:value 2.242e+00 .
+
+<https://example.org/imaks/id/observation/ST04_PACKAGING_CUR%402026-01-06T06%3A00%3A00> a im:Observation ;
+    im:observedBy inst:N0023 ;
+    im:sourcePath "inputs/sensors/timeseries_ml_input.csv" ;
+    im:timestamp "2026-01-06T06:00:00"^^xsd:dateTime ;
+    im:unit "A" ;
+    im:value 9.0608e+00 .
+
+<https://example.org/imaks/id/observation/ST04_PACKAGING_SPD%402026-01-06T06%3A00%3A00> a im:Observation ;
+    im:observedBy inst:N0024 ;
+    im:sourcePath "inputs/sensors/timeseries_ml_input.csv" ;
+    im:timestamp "2026-01-06T06:00:00"^^xsd:dateTime ;
+    im:unit "m/s" ;
+    im:value 1.1971e+00 .
+
+<https://example.org/imaks/id/observation/ST04_PACKAGING_VIB%402026-01-06T06%3A00%3A00> a im:Observation ;
+    im:observedBy inst:N0022 ;
+    im:sourcePath "inputs/sensors/timeseries_ml_input.csv" ;
+    im:timestamp "2026-01-06T06:00:00"^^xsd:dateTime ;
+    im:unit "mm/s" ;
+    im:value 1.235e-01 .
+
+<https://example.org/imaks/id/observation/WRH01_WAREHOUSE_HUM%402026-01-06T06%3A00%3A00> a im:Observation ;
+    im:observedBy inst:N0030 ;
+    im:sourcePath "inputs/sensors/timeseries_ml_input.csv" ;
+    im:timestamp "2026-01-06T06:00:00"^^xsd:dateTime ;
+    im:unit "%RH" ;
+    im:value 7.37184e+01 .
+
+<https://example.org/imaks/id/observation/WRH01_WAREHOUSE_TMP%402026-01-06T06%3A00%3A00> a im:Observation ;
+    im:observedBy inst:N0029 ;
+    im:sourcePath "inputs/sensors/timeseries_ml_input.csv" ;
+    im:timestamp "2026-01-06T06:00:00"^^xsd:dateTime ;
+    im:unit "°C" ;
+    im:value 3.6658e+00 .
+
+<https://example.org/imaks/id/rule/RULE-ST02-02> a im:Rule ;
+    im:actionTarget inst:N0013,
+        inst:N0017,
+        inst:N0021 ;
+    im:appliesToSensor inst:N0014 ;
+    im:conditionText "TMP > 210°C (CRITICAL)" ;
+    im:extractionMethod "manual source-grounded example; not LLM extraction" ;
+    im:identifier "RULE-ST02-02" ;
+    im:responseText "emergency stop ST02, ST03, ST04." ;
+    im:sourceDocument <https://example.org/imaks/id/document/SOP-001> ;
+    im:sourcePage "1"^^xsd:positiveInteger ;
+    im:sourceQuote "RULE-ST02-02: TMP > 210°C (CRITICAL) — emergency stop ST02, ST03, ST04." .
+
+<https://example.org/imaks/id/rule/RULE-ST02-04> a im:Rule ;
+    im:appliesToSensor inst:N0016 ;
+    im:conditionText "CUR drift at ST02_SEALING; CUR triggers a WARNING" ;
+    im:extractionMethod "manual source-grounded example; not LLM extraction" ;
+    im:identifier "RULE-ST02-04" ;
+    im:monitorsSensor inst:N0024 ;
+    im:responseText "Monitor ST04_PACKAGING-SPD whenever ST02_SEALING-CUR triggers a WARNING." ;
+    im:sourceDocument <https://example.org/imaks/id/document/SOP-001> ;
+    im:sourcePage "1"^^xsd:positiveInteger ;
+    im:sourceQuote """RULE-ST02-04: CUR drift at ST02_SEALING CORRELATES with speed reduction at ST04_PACKAGING due to
+shared electrical coupling. Monitor ST04_PACKAGING-SPD whenever ST02_SEALING-CUR triggers a
+WARNING.""" .
+
+<https://example.org/imaks/id/rule/SOP002-THRESHOLD-CAF01_CAFETERIA_HUM> a im:Rule,
+        im:ThresholdRule ;
+    im:appliesToSensor inst:N0039 ;
+    im:conditionText "CRIT_LO < WARN_LO < NOMINAL < WARN_HI < CRIT_HI; CRITICAL response applies outside critical bounds." ;
+    im:critHi 8e+01 ;
+    im:critLo 2.5e+01 ;
+    im:extractionMethod "deterministic SOP-002 corrected table mapping; not LLM extraction" ;
+    im:identifier "SOP002-THRESHOLD-CAF01_CAFETERIA_HUM" ;
+    im:nominal 5.5e+01 ;
+    im:nominalText "55.0 ± 1.5" ;
+    im:nominalTolerance 1.5e+00 ;
+    im:responseText "Inspect and notify maintenance" ;
+    im:sourceDocument <https://example.org/imaks/id/document/SOP-002> ;
+    im:sourcePage "2"^^xsd:positiveInteger ;
+    im:sourceQuote "[\"HUM\", \"%RH\", \"25.0\", \"35.0\", \"55.0 ± 1.5\", \"70.0\", \"80.0\", \"Inspect and notify maintenance\"]" ;
+    im:sourceRow "3"^^xsd:positiveInteger ;
+    im:sourceTable "SOP-002:p2:table5" ;
+    im:unit "%RH" ;
+    im:warnHi 7e+01 ;
+    im:warnLo 3.5e+01 .
+
+<https://example.org/imaks/id/rule/SOP002-THRESHOLD-CAF01_CAFETERIA_TMP> a im:Rule,
+        im:ThresholdRule ;
+    im:appliesToSensor inst:N0038 ;
+    im:conditionText "CRIT_LO < WARN_LO < NOMINAL < WARN_HI < CRIT_HI; CRITICAL response applies outside critical bounds." ;
+    im:critHi 3e+01 ;
+    im:critLo 1.4e+01 ;
+    im:extractionMethod "deterministic SOP-002 corrected table mapping; not LLM extraction" ;
+    im:identifier "SOP002-THRESHOLD-CAF01_CAFETERIA_TMP" ;
+    im:nominal 2.1e+01 ;
+    im:nominalText "21.0 ± 0.4" ;
+    im:nominalTolerance 4e-01 ;
+    im:responseText "Inspect and notify maintenance" ;
+    im:sourceDocument <https://example.org/imaks/id/document/SOP-002> ;
+    im:sourcePage "2"^^xsd:positiveInteger ;
+    im:sourceQuote "[\"TMP\", \"°C\", \"14.0\", \"17.0\", \"21.0 ± 0.4\", \"26.0\", \"30.0\", \"Inspect and notify maintenance\"]" ;
+    im:sourceRow "2"^^xsd:positiveInteger ;
+    im:sourceTable "SOP-002:p2:table5" ;
+    im:unit "°C" ;
+    im:warnHi 2.6e+01 ;
+    im:warnLo 1.7e+01 .
+
+<https://example.org/imaks/id/rule/SOP002-THRESHOLD-CHM01_CHEMICALSTORAGE_HUM> a im:Rule,
+        im:ThresholdRule ;
+    im:appliesToSensor inst:N0033 ;
+    im:conditionText "CRIT_LO < WARN_LO < NOMINAL < WARN_HI < CRIT_HI; CRITICAL response applies outside critical bounds." ;
+    im:critHi 6e+01 ;
+    im:critLo 1.5e+01 ;
+    im:extractionMethod "deterministic SOP-002 corrected table mapping; not LLM extraction" ;
+    im:identifier "SOP002-THRESHOLD-CHM01_CHEMICALSTORAGE_HUM" ;
+    im:nominal 3.5e+01 ;
+    im:nominalText "35.0 ± 1.0" ;
+    im:nominalTolerance 1e+00 ;
+    im:responseText "Activate desiccant system; inspect storage containers for leaks" ;
+    im:sourceDocument <https://example.org/imaks/id/document/SOP-002> ;
+    im:sourcePage "2"^^xsd:positiveInteger ;
+    im:sourceQuote "[\"HUM\", \"%RH\", \"15.0\", \"20.0\", \"35.0 ± 1.0\", \"50.0\", \"60.0\", \"Activate desiccant system; inspect\\nstorage containers for leaks\"]" ;
+    im:sourceRow "3"^^xsd:positiveInteger ;
+    im:sourceTable "SOP-002:p2:table3" ;
+    im:unit "%RH" ;
+    im:warnHi 5e+01 ;
+    im:warnLo 2e+01 .
+
+<https://example.org/imaks/id/rule/SOP002-THRESHOLD-CHM01_CHEMICALSTORAGE_TMP> a im:Rule,
+        im:ThresholdRule ;
+    im:appliesToSensor inst:N0032 ;
+    im:conditionText "CRIT_LO < WARN_LO < NOMINAL < WARN_HI < CRIT_HI; CRITICAL response applies outside critical bounds." ;
+    im:critHi 2.5e+01 ;
+    im:critLo 5e+00 ;
+    im:extractionMethod "deterministic SOP-002 corrected table mapping; not LLM extraction" ;
+    im:identifier "SOP002-THRESHOLD-CHM01_CHEMICALSTORAGE_TMP" ;
+    im:nominal 1.5e+01 ;
+    im:nominalText "15.0 ± 0.3" ;
+    im:nominalTolerance 3e-01 ;
+    im:responseText "Activate emergency ventilation; notify safety officer immediately" ;
+    im:sourceDocument <https://example.org/imaks/id/document/SOP-002> ;
+    im:sourcePage "2"^^xsd:positiveInteger ;
+    im:sourceQuote "[\"TMP\", \"°C\", \"5.0\", \"10.0\", \"15.0 ± 0.3\", \"20.0\", \"25.0\", \"Activate emergency ventilation; notify\\nsafety officer immediately\"]" ;
+    im:sourceRow "2"^^xsd:positiveInteger ;
+    im:sourceTable "SOP-002:p2:table3" ;
+    im:unit "°C" ;
+    im:warnHi 2e+01 ;
+    im:warnLo 1e+01 .
+
+<https://example.org/imaks/id/rule/SOP002-THRESHOLD-RND01_RDLAB_HUM> a im:Rule,
+        im:ThresholdRule ;
+    im:appliesToSensor inst:N0036 ;
+    im:conditionText "CRIT_LO < WARN_LO < NOMINAL < WARN_HI < CRIT_HI; CRITICAL response applies outside critical bounds." ;
+    im:critHi 7.5e+01 ;
+    im:critLo 2.5e+01 ;
+    im:extractionMethod "deterministic SOP-002 corrected table mapping; not LLM extraction" ;
+    im:identifier "SOP002-THRESHOLD-RND01_RDLAB_HUM" ;
+    im:nominal 5e+01 ;
+    im:nominalText "50.0 ± 1.0" ;
+    im:nominalTolerance 1e+00 ;
+    im:responseText "Suspend experiments; inspect HVAC system" ;
+    im:sourceDocument <https://example.org/imaks/id/document/SOP-002> ;
+    im:sourcePage "2"^^xsd:positiveInteger ;
+    im:sourceQuote "[\"HUM\", \"%RH\", \"25.0\", \"35.0\", \"50.0 ± 1.0\", \"65.0\", \"75.0\", \"Suspend experiments; inspect HVAC\\nsystem\"]" ;
+    im:sourceRow "3"^^xsd:positiveInteger ;
+    im:sourceTable "SOP-002:p2:table4" ;
+    im:unit "%RH" ;
+    im:warnHi 6.5e+01 ;
+    im:warnLo 3.5e+01 .
+
+<https://example.org/imaks/id/rule/SOP002-THRESHOLD-RND01_RDLAB_TMP> a im:Rule,
+        im:ThresholdRule ;
+    im:appliesToSensor inst:N0035 ;
+    im:conditionText "CRIT_LO < WARN_LO < NOMINAL < WARN_HI < CRIT_HI; CRITICAL response applies outside critical bounds." ;
+    im:critHi 3e+01 ;
+    im:critLo 1.5e+01 ;
+    im:extractionMethod "deterministic SOP-002 corrected table mapping; not LLM extraction" ;
+    im:identifier "SOP002-THRESHOLD-RND01_RDLAB_TMP" ;
+    im:nominal 2.2e+01 ;
+    im:nominalText "22.0 ± 0.2" ;
+    im:nominalTolerance 2e-01 ;
+    im:responseText "Inspect and notify maintenance" ;
+    im:sourceDocument <https://example.org/imaks/id/document/SOP-002> ;
+    im:sourcePage "2"^^xsd:positiveInteger ;
+    im:sourceQuote "[\"TMP\", \"°C\", \"15.0\", \"18.0\", \"22.0 ± 0.2\", \"26.0\", \"30.0\", \"Inspect and notify maintenance\"]" ;
+    im:sourceRow "2"^^xsd:positiveInteger ;
+    im:sourceTable "SOP-002:p2:table4" ;
+    im:unit "°C" ;
+    im:warnHi 2.6e+01 ;
+    im:warnLo 1.8e+01 .
+
+<https://example.org/imaks/id/rule/SOP002-THRESHOLD-SRV01_SERVERROOM_HUM> a im:Rule,
+        im:ThresholdRule ;
+    im:appliesToSensor inst:N0027 ;
+    im:conditionText "CRIT_LO < WARN_LO < NOMINAL < WARN_HI < CRIT_HI; CRITICAL response applies outside critical bounds." ;
+    im:critHi 7e+01 ;
+    im:critLo 2.5e+01 ;
+    im:extractionMethod "deterministic SOP-002 corrected table mapping; not LLM extraction" ;
+    im:identifier "SOP002-THRESHOLD-SRV01_SERVERROOM_HUM" ;
+    im:nominal 4.5e+01 ;
+    im:nominalText "45.0 ± 1.0" ;
+    im:nominalTolerance 1e+00 ;
+    im:responseText "Inspect and notify maintenance" ;
+    im:sourceDocument <https://example.org/imaks/id/document/SOP-002> ;
+    im:sourcePage "2"^^xsd:positiveInteger ;
+    im:sourceQuote "[\"HUM\", \"%RH\", \"25.0\", \"30.0\", \"45.0 ± 1.0\", \"60.0\", \"70.0\", \"Inspect and notify maintenance\"]" ;
+    im:sourceRow "1"^^xsd:positiveInteger ;
+    im:sourceTable "SOP-002:p2:table1" ;
+    im:unit "%RH" ;
+    im:warnHi 6e+01 ;
+    im:warnLo 3e+01 .
+
+<https://example.org/imaks/id/rule/SOP002-THRESHOLD-SRV01_SERVERROOM_TMP> a im:Rule,
+        im:ThresholdRule ;
+    im:appliesToSensor inst:N0026 ;
+    im:conditionText "CRIT_LO < WARN_LO < NOMINAL < WARN_HI < CRIT_HI; CRITICAL response applies outside critical bounds." ;
+    im:critHi 2.8e+01 ;
+    im:critLo 1.6e+01 ;
+    im:extractionMethod "deterministic SOP-002 corrected table mapping; not LLM extraction" ;
+    im:identifier "SOP002-THRESHOLD-SRV01_SERVERROOM_TMP" ;
+    im:nominal 2.1e+01 ;
+    im:nominalText "21.0 ± 0.3" ;
+    im:nominalTolerance 3e-01 ;
+    im:responseText "Activate backup cooling; prepare controlled PLC shutdown" ;
+    im:sourceDocument <https://example.org/imaks/id/document/SOP-002> ;
+    im:sourcePage "1"^^xsd:positiveInteger ;
+    im:sourceQuote "[\"TMP\", \"°C\", \"16.0\", \"18.0\", \"21.0 ± 0.3\", \"25.0\", \"28.0\", \"Activate backup cooling; prepare\\ncontrolled PLC shutdown\"]" ;
+    im:sourceRow "2"^^xsd:positiveInteger ;
+    im:sourceTable "SOP-002:p1:table5" ;
+    im:unit "°C" ;
+    im:warnHi 2.5e+01 ;
+    im:warnLo 1.8e+01 .
+
+<https://example.org/imaks/id/rule/SOP002-THRESHOLD-ST01_FILLING_FLW> a im:Rule,
+        im:ThresholdRule ;
+    im:appliesToSensor inst:N0012 ;
+    im:conditionText "CRIT_LO < WARN_LO < NOMINAL < WARN_HI < CRIT_HI; CRITICAL response applies outside critical bounds." ;
+    im:critHi 1.35e+02 ;
+    im:critLo 1.05e+02 ;
+    im:extractionMethod "deterministic SOP-002 corrected table mapping; not LLM extraction" ;
+    im:identifier "SOP002-THRESHOLD-ST01_FILLING_FLW" ;
+    im:nominal 1.2e+02 ;
+    im:nominalText "120.0 ± 1.5" ;
+    im:nominalTolerance 1.5e+00 ;
+    im:responseText "Inspect and notify maintenance" ;
+    im:sourceDocument <https://example.org/imaks/id/document/SOP-002> ;
+    im:sourcePage "1"^^xsd:positiveInteger ;
+    im:sourceQuote "[\"FLW\", \"L/min\", \"105.0\", \"112.0\", \"120.0 ± 1.5\", \"128.0\", \"135.0\", \"Inspect and notify maintenance\"]" ;
+    im:sourceRow "4"^^xsd:positiveInteger ;
+    im:sourceTable "SOP-002:p1:table1" ;
+    im:unit "L/min" ;
+    im:warnHi 1.28e+02 ;
+    im:warnLo 1.12e+02 .
+
+<https://example.org/imaks/id/rule/SOP002-THRESHOLD-ST01_FILLING_PRS> a im:Rule,
+        im:ThresholdRule ;
+    im:appliesToSensor inst:N0011 ;
+    im:conditionText "CRIT_LO < WARN_LO < NOMINAL < WARN_HI < CRIT_HI; CRITICAL response applies outside critical bounds." ;
+    im:critHi 4.8e+00 ;
+    im:critLo 3e+00 ;
+    im:extractionMethod "deterministic SOP-002 corrected table mapping; not LLM extraction" ;
+    im:identifier "SOP002-THRESHOLD-ST01_FILLING_PRS" ;
+    im:nominal 3.8e+00 ;
+    im:nominalText "3.8 ± 0.05" ;
+    im:nominalTolerance 5e-02 ;
+    im:responseText "Inspect and notify maintenance" ;
+    im:sourceDocument <https://example.org/imaks/id/document/SOP-002> ;
+    im:sourcePage "1"^^xsd:positiveInteger ;
+    im:sourceQuote "[\"PRS\", \"bar\", \"3.0\", \"3.3\", \"3.8 ± 0.05\", \"4.2\", \"4.8\", \"Inspect and notify maintenance\"]" ;
+    im:sourceRow "3"^^xsd:positiveInteger ;
+    im:sourceTable "SOP-002:p1:table1" ;
+    im:unit "bar" ;
+    im:warnHi 4.2e+00 ;
+    im:warnLo 3.3e+00 .
+
+<https://example.org/imaks/id/rule/SOP002-THRESHOLD-ST01_FILLING_TMP> a im:Rule,
+        im:ThresholdRule ;
+    im:appliesToSensor inst:N0010 ;
+    im:conditionText "CRIT_LO < WARN_LO < NOMINAL < WARN_HI < CRIT_HI; CRITICAL response applies outside critical bounds." ;
+    im:critHi 3e+01 ;
+    im:critLo 1.5e+01 ;
+    im:extractionMethod "deterministic SOP-002 corrected table mapping; not LLM extraction" ;
+    im:identifier "SOP002-THRESHOLD-ST01_FILLING_TMP" ;
+    im:nominal 2.2e+01 ;
+    im:nominalText "22.0 ± 0.4" ;
+    im:nominalTolerance 4e-01 ;
+    im:responseText "Inspect and notify maintenance" ;
+    im:sourceDocument <https://example.org/imaks/id/document/SOP-002> ;
+    im:sourcePage "1"^^xsd:positiveInteger ;
+    im:sourceQuote "[\"TMP\", \"°C\", \"15.0\", \"18.0\", \"22.0 ± 0.4\", \"26.0\", \"30.0\", \"Inspect and notify maintenance\"]" ;
+    im:sourceRow "2"^^xsd:positiveInteger ;
+    im:sourceTable "SOP-002:p1:table1" ;
+    im:unit "°C" ;
+    im:warnHi 2.6e+01 ;
+    im:warnLo 1.8e+01 .
+
+<https://example.org/imaks/id/rule/SOP002-THRESHOLD-ST02_SEALING_CUR> a im:Rule,
+        im:ThresholdRule ;
+    im:appliesToSensor inst:N0016 ;
+    im:conditionText "CRIT_LO < WARN_LO < NOMINAL < WARN_HI < CRIT_HI; CRITICAL response applies outside critical bounds." ;
+    im:critHi 1.5e+01 ;
+    im:critLo 9.5e+00 ;
+    im:extractionMethod "deterministic SOP-002 corrected table mapping; not LLM extraction" ;
+    im:identifier "SOP002-THRESHOLD-ST02_SEALING_CUR" ;
+    im:nominal 1.24e+01 ;
+    im:nominalText "12.4 ± 0.3" ;
+    im:nominalTolerance 3e-01 ;
+    im:responseText "E-STOP; inspect load; verify ST04-SPD (RULE-ST02-04)" ;
+    im:sourceDocument <https://example.org/imaks/id/document/SOP-002> ;
+    im:sourcePage "1"^^xsd:positiveInteger ;
+    im:sourceQuote "[\"CUR\", \"A\", \"9.5\", \"11.0\", \"12.4 ± 0.3\", \"13.5\", \"15.0\", \"E-STOP; inspect load; verify ST04-SPD\\n(RULE-ST02-04)\"]" ;
+    im:sourceRow "4"^^xsd:positiveInteger ;
+    im:sourceTable "SOP-002:p1:table2" ;
+    im:unit "A" ;
+    im:warnHi 1.35e+01 ;
+    im:warnLo 1.1e+01 .
+
+<https://example.org/imaks/id/rule/SOP002-THRESHOLD-ST02_SEALING_PRS> a im:Rule,
+        im:ThresholdRule ;
+    im:appliesToSensor inst:N0015 ;
+    im:conditionText "CRIT_LO < WARN_LO < NOMINAL < WARN_HI < CRIT_HI; CRITICAL response applies outside critical bounds." ;
+    im:critHi 6.2e+00 ;
+    im:critLo 4.2e+00 ;
+    im:extractionMethod "deterministic SOP-002 corrected table mapping; not LLM extraction" ;
+    im:identifier "SOP002-THRESHOLD-ST02_SEALING_PRS" ;
+    im:nominal 5.2e+00 ;
+    im:nominalText "5.2 ± 0.08" ;
+    im:nominalTolerance 8e-02 ;
+    im:responseText "Inspect and notify maintenance" ;
+    im:sourceDocument <https://example.org/imaks/id/document/SOP-002> ;
+    im:sourcePage "1"^^xsd:positiveInteger ;
+    im:sourceQuote "[\"PRS\", \"bar\", \"4.2\", \"4.6\", \"5.2 ± 0.08\", \"5.7\", \"6.2\", \"Inspect and notify maintenance\"]" ;
+    im:sourceRow "3"^^xsd:positiveInteger ;
+    im:sourceTable "SOP-002:p1:table2" ;
+    im:unit "bar" ;
+    im:warnHi 5.7e+00 ;
+    im:warnLo 4.6e+00 .
+
+<https://example.org/imaks/id/rule/SOP002-THRESHOLD-ST02_SEALING_TMP> a im:Rule,
+        im:ThresholdRule ;
+    im:appliesToSensor inst:N0014 ;
+    im:conditionText "CRIT_LO < WARN_LO < NOMINAL < WARN_HI < CRIT_HI; CRITICAL response applies outside critical bounds." ;
+    im:critHi 2.1e+02 ;
+    im:critLo 1.65e+02 ;
+    im:extractionMethod "deterministic SOP-002 corrected table mapping; not LLM extraction" ;
+    im:identifier "SOP002-THRESHOLD-ST02_SEALING_TMP" ;
+    im:nominal 1.85e+02 ;
+    im:nominalText "185.0 ± 1.2" ;
+    im:nominalTolerance 1.2e+00 ;
+    im:responseText "E-STOP ST02/ST03/ST04; inspect element" ;
+    im:sourceDocument <https://example.org/imaks/id/document/SOP-002> ;
+    im:sourcePage "1"^^xsd:positiveInteger ;
+    im:sourceQuote "[\"TMP\", \"°C\", \"165.0\", \"175.0\", \"185.0 ± 1.2\", \"195.0\", \"210.0\", \"E-STOP ST02/ST03/ST04; inspect\\nelement\"]" ;
+    im:sourceRow "2"^^xsd:positiveInteger ;
+    im:sourceTable "SOP-002:p1:table2" ;
+    im:unit "°C" ;
+    im:warnHi 1.95e+02 ;
+    im:warnLo 1.75e+02 .
+
+<https://example.org/imaks/id/rule/SOP002-THRESHOLD-ST03_LABELLING_CNT> a im:Rule,
+        im:ThresholdRule ;
+    im:appliesToSensor inst:N0020 ;
+    im:conditionText "CRIT_LO < WARN_LO < NOMINAL < WARN_HI < CRIT_HI; CRITICAL response applies outside critical bounds." ;
+    im:critHi 1.4e+02 ;
+    im:critLo 1e+02 ;
+    im:extractionMethod "deterministic SOP-002 corrected table mapping; not LLM extraction" ;
+    im:identifier "SOP002-THRESHOLD-ST03_LABELLING_CNT" ;
+    im:nominal 1.2e+02 ;
+    im:nominalText "120 ± 2.0" ;
+    im:nominalTolerance 2e+00 ;
+    im:responseText "E-STOP labelling; inspect label path" ;
+    im:sourceDocument <https://example.org/imaks/id/document/SOP-002> ;
+    im:sourcePage "1"^^xsd:positiveInteger ;
+    im:sourceQuote "[\"CNT\", \"pcs/m\\nin\", \"100\", \"110\", \"120 ± 2.0\", \"130\", \"140\", \"E-STOP labelling; inspect label path\"]" ;
+    im:sourceRow "4"^^xsd:positiveInteger ;
+    im:sourceTable "SOP-002:p1:table3" ;
+    im:unit "pcs/min" ;
+    im:warnHi 1.3e+02 ;
+    im:warnLo 1.1e+02 .
+
+<https://example.org/imaks/id/rule/SOP002-THRESHOLD-ST03_LABELLING_SPD> a im:Rule,
+        im:ThresholdRule ;
+    im:appliesToSensor inst:N0018 ;
+    im:conditionText "CRIT_LO < WARN_LO < NOMINAL < WARN_HI < CRIT_HI; CRITICAL response applies outside critical bounds." ;
+    im:critHi 1.05e+00 ;
+    im:critLo 6.5e-01 ;
+    im:extractionMethod "deterministic SOP-002 corrected table mapping; not LLM extraction" ;
+    im:identifier "SOP002-THRESHOLD-ST03_LABELLING_SPD" ;
+    im:nominal 8.5e-01 ;
+    im:nominalText "0.85 ± 0.01" ;
+    im:nominalTolerance 1e-02 ;
+    im:responseText "Inspect and notify maintenance" ;
+    im:sourceDocument <https://example.org/imaks/id/document/SOP-002> ;
+    im:sourcePage "1"^^xsd:positiveInteger ;
+    im:sourceQuote "[\"SPD\", \"m/s\", \"0.65\", \"0.75\", \"0.85 ± 0.01\", \"0.95\", \"1.05\", \"Inspect and notify maintenance\"]" ;
+    im:sourceRow "2"^^xsd:positiveInteger ;
+    im:sourceTable "SOP-002:p1:table3" ;
+    im:unit "m/s" ;
+    im:warnHi 9.5e-01 ;
+    im:warnLo 7.5e-01 .
+
+<https://example.org/imaks/id/rule/SOP002-THRESHOLD-ST03_LABELLING_TEN> a im:Rule,
+        im:ThresholdRule ;
+    im:appliesToSensor inst:N0019 ;
+    im:conditionText "CRIT_LO < WARN_LO < NOMINAL < WARN_HI < CRIT_HI; CRITICAL response applies outside critical bounds." ;
+    im:critHi 3e+00 ;
+    im:critLo 1.5e+00 ;
+    im:extractionMethod "deterministic SOP-002 corrected table mapping; not LLM extraction" ;
+    im:identifier "SOP002-THRESHOLD-ST03_LABELLING_TEN" ;
+    im:nominal 2.2e+00 ;
+    im:nominalText "2.2 ± 0.05" ;
+    im:nominalTolerance 5e-02 ;
+    im:responseText "Inspect and notify maintenance" ;
+    im:sourceDocument <https://example.org/imaks/id/document/SOP-002> ;
+    im:sourcePage "1"^^xsd:positiveInteger ;
+    im:sourceQuote "[\"TEN\", \"N\", \"1.5\", \"1.8\", \"2.2 ± 0.05\", \"2.6\", \"3.0\", \"Inspect and notify maintenance\"]" ;
+    im:sourceRow "3"^^xsd:positiveInteger ;
+    im:sourceTable "SOP-002:p1:table3" ;
+    im:unit "N" ;
+    im:warnHi 2.6e+00 ;
+    im:warnLo 1.8e+00 .
+
+<https://example.org/imaks/id/rule/SOP002-THRESHOLD-ST04_PACKAGING_CUR> a im:Rule,
+        im:ThresholdRule ;
+    im:appliesToSensor inst:N0023 ;
+    im:conditionText "CRIT_LO < WARN_LO < NOMINAL < WARN_HI < CRIT_HI; CRITICAL response applies outside critical bounds." ;
+    im:critHi 1.1e+01 ;
+    im:critLo 6.5e+00 ;
+    im:extractionMethod "deterministic SOP-002 corrected table mapping; not LLM extraction" ;
+    im:identifier "SOP002-THRESHOLD-ST04_PACKAGING_CUR" ;
+    im:nominal 8.7e+00 ;
+    im:nominalText "8.7 ± 0.2" ;
+    im:nominalTolerance 2e-01 ;
+    im:responseText "Inspect and notify maintenance" ;
+    im:sourceDocument <https://example.org/imaks/id/document/SOP-002> ;
+    im:sourcePage "1"^^xsd:positiveInteger ;
+    im:sourceQuote "[\"CUR\", \"A\", \"6.5\", \"7.5\", \"8.7 ± 0.2\", \"9.8\", \"11.0\", \"Inspect and notify maintenance\"]" ;
+    im:sourceRow "3"^^xsd:positiveInteger ;
+    im:sourceTable "SOP-002:p1:table4" ;
+    im:unit "A" ;
+    im:warnHi 9.8e+00 ;
+    im:warnLo 7.5e+00 .
+
+<https://example.org/imaks/id/rule/SOP002-THRESHOLD-ST04_PACKAGING_SPD> a im:Rule,
+        im:ThresholdRule ;
+    im:appliesToSensor inst:N0024 ;
+    im:conditionText "CRIT_LO < WARN_LO < NOMINAL < WARN_HI < CRIT_HI; CRITICAL response applies outside critical bounds." ;
+    im:critHi 1.6e+00 ;
+    im:critLo 8.5e-01 ;
+    im:extractionMethod "deterministic SOP-002 corrected table mapping; not LLM extraction" ;
+    im:identifier "SOP002-THRESHOLD-ST04_PACKAGING_SPD" ;
+    im:nominal 1.2e+00 ;
+    im:nominalText "1.2 ± 0.02" ;
+    im:nominalTolerance 2e-02 ;
+    im:responseText "Inspect and notify maintenance" ;
+    im:sourceDocument <https://example.org/imaks/id/document/SOP-002> ;
+    im:sourcePage "1"^^xsd:positiveInteger ;
+    im:sourceQuote "[\"SPD\", \"m/s\", \"0.85\", \"1.0\", \"1.2 ± 0.02\", \"1.4\", \"1.6\", \"Inspect and notify maintenance\"]" ;
+    im:sourceRow "4"^^xsd:positiveInteger ;
+    im:sourceTable "SOP-002:p1:table4" ;
+    im:unit "m/s" ;
+    im:warnHi 1.4e+00 ;
+    im:warnLo 1e+00 .
+
+<https://example.org/imaks/id/rule/SOP002-THRESHOLD-ST04_PACKAGING_VIB> a im:Rule,
+        im:ThresholdRule ;
+    im:appliesToSensor inst:N0022 ;
+    im:conditionText "CRIT_LO < WARN_LO < NOMINAL < WARN_HI < CRIT_HI; CRITICAL response applies outside critical bounds." ;
+    im:critHi 3.5e-01 ;
+    im:critLo 1e-02 ;
+    im:extractionMethod "deterministic SOP-002 corrected table mapping; not LLM extraction" ;
+    im:identifier "SOP002-THRESHOLD-ST04_PACKAGING_VIB" ;
+    im:nominal 1.2e-01 ;
+    im:nominalText "0.12 ± 0.005" ;
+    im:nominalTolerance 5e-03 ;
+    im:responseText "E-STOP; inspect main bearing" ;
+    im:sourceDocument <https://example.org/imaks/id/document/SOP-002> ;
+    im:sourcePage "1"^^xsd:positiveInteger ;
+    im:sourceQuote "[\"VIB\", \"mm/s\", \"0.01\", \"0.02\", \"0.12 ± 0.005\", \"0.2\", \"0.35\", \"E-STOP; inspect main bearing\"]" ;
+    im:sourceRow "2"^^xsd:positiveInteger ;
+    im:sourceTable "SOP-002:p1:table4" ;
+    im:unit "mm/s" ;
+    im:warnHi 2e-01 ;
+    im:warnLo 2e-02 .
+
+<https://example.org/imaks/id/rule/SOP002-THRESHOLD-WRH01_WAREHOUSE_HUM> a im:Rule,
+        im:ThresholdRule ;
+    im:appliesToSensor inst:N0030 ;
+    im:conditionText "CRIT_LO < WARN_LO < NOMINAL < WARN_HI < CRIT_HI; CRITICAL response applies outside critical bounds." ;
+    im:critHi 9e+01 ;
+    im:critLo 5.5e+01 ;
+    im:extractionMethod "deterministic SOP-002 corrected table mapping; not LLM extraction" ;
+    im:identifier "SOP002-THRESHOLD-WRH01_WAREHOUSE_HUM" ;
+    im:nominal 7.5e+01 ;
+    im:nominalText "75.0 ± 1.5" ;
+    im:nominalTolerance 1.5e+00 ;
+    im:responseText "Inspect and notify maintenance" ;
+    im:sourceDocument <https://example.org/imaks/id/document/SOP-002> ;
+    im:sourcePage "2"^^xsd:positiveInteger ;
+    im:sourceQuote "[\"HUM\", \"%RH\", \"55.0\", \"60.0\", \"75.0 ± 1.5\", \"85.0\", \"90.0\", \"Inspect and notify maintenance\"]" ;
+    im:sourceRow "3"^^xsd:positiveInteger ;
+    im:sourceTable "SOP-002:p2:table2" ;
+    im:unit "%RH" ;
+    im:warnHi 8.5e+01 ;
+    im:warnLo 6e+01 .
+
+<https://example.org/imaks/id/rule/SOP002-THRESHOLD-WRH01_WAREHOUSE_TMP> a im:Rule,
+        im:ThresholdRule ;
+    im:appliesToSensor inst:N0029 ;
+    im:conditionText "CRIT_LO < WARN_LO < NOMINAL < WARN_HI < CRIT_HI; CRITICAL response applies outside critical bounds." ;
+    im:critHi 1.2e+01 ;
+    im:critLo -1e+00 ;
+    im:extractionMethod "deterministic SOP-002 corrected table mapping; not LLM extraction" ;
+    im:identifier "SOP002-THRESHOLD-WRH01_WAREHOUSE_TMP" ;
+    im:nominal 4e+00 ;
+    im:nominalText "4.0 ± 0.5" ;
+    im:nominalTolerance 5e-01 ;
+    im:responseText "Activate backup refrigeration; notify QC" ;
+    im:sourceDocument <https://example.org/imaks/id/document/SOP-002> ;
+    im:sourcePage "2"^^xsd:positiveInteger ;
+    im:sourceQuote "[\"TMP\", \"°C\", \"-1.0\", \"0.5\", \"4.0 ± 0.5\", \"8.0\", \"12.0\", \"Activate backup refrigeration; notify QC\"]" ;
+    im:sourceRow "2"^^xsd:positiveInteger ;
+    im:sourceTable "SOP-002:p2:table2" ;
+    im:unit "°C" ;
+    im:warnHi 8e+00 ;
+    im:warnLo 5e-01 .
+
+im:InputData a im:InputGraph ;
+    im:inputProfile "rule_context" .
+
+<https://example.org/imaks/id/document/SOP-001> a im:Document ;
+    im:documentText """[page 1]
+Standard Operating Procedures — Production Line A
+Document: SOP-001 | Rev: 2.3 | Date: 2025-11-15 | Author: Ing. M. Bianchi — Process Engineering
+1. Station Dependencies
+ST01_FILLING → ST02_SEALING → ST03_LABELLING → ST04_PACKAGING. A fault at any station propagates
+downstream unless the line is halted.
+Station ID
+Zone
+Depends On
+Downstream Effect
+ST01_FILLING
+Production Area
+—
+Feeds ST02_SEALING
+ST02_SEALING
+Production Area
+ST01
+Feeds ST03; thermal fault → ST04 speed
+reduction
+ST03_LABELLING
+Production Area
+ST02
+Feeds ST04_PACKAGING
+ST04_PACKAGING
+Production Area
+ST03
+Final output
+SRV01_SERVERROO
+M
+Server Room
+HVAC
+SCADA control; failure → line halt
+WRH01_WAREHOUSE
+General Warehouse
+COMPRESSOR
+Cold storage — product quality
+CHM01_CHEMICALST
+ORAGE
+Chemical Storage
+HVAC
+Hazardous materials — safety critical
+RND01_RDLAB
+R&D; Lab
+HVAC
+Precision experiments — climate sensitive
+CAF01_CAFETERIA
+Cafeteria
+HVAC
+Occupant comfort — food safety
+2. Station-Level Operating Rules
+2.1 ST01_FILLING
+RULE-ST01-01: FLW MUST be maintained between 112 and 128 L/min.
+RULE-ST01-02: If TMP exceeds 26°C, reduce speed by 10% and notify QC.
+RULE-ST01-03: PRS drop below 3.3 bar — inspect inlet valve within 5 min.
+2.2 ST02_SEALING
+RULE-ST02-01: TMP MUST remain between 175°C and 195°C.
+RULE-ST02-02: TMP > 210°C (CRITICAL) — emergency stop ST02, ST03, ST04.
+RULE-ST02-03: CUR increase >1.5 A above nominal sustained >5 min — schedule maintenance.
+RULE-ST02-04: CUR drift at ST02_SEALING CORRELATES with speed reduction at ST04_PACKAGING due to
+shared electrical coupling. Monitor ST04_PACKAGING-SPD whenever ST02_SEALING-CUR triggers a
+WARNING.
+2.3 ST03_LABELLING
+RULE-ST03-01: TEN MUST be between 1.8 and 2.6 N.
+RULE-ST03-02: CNT below 110 pcs/min — check for label jam. Below 100 (CRITICAL): halt.
+RULE-ST03-03: TEN STUCK >10 consecutive samples — sensor failure.
+2.4 ST04_PACKAGING
+RULE-ST04-01: VIB > 0.20 mm/s (WARNING) — schedule maintenance within 24 h.
+RULE-ST04-02: VIB > 0.35 mm/s (CRITICAL) — emergency stop; inspect bearings.
+
+[page 2]
+RULE-ST04-03: SPD drops below 1.00 m/s without operator command — verify RULE-ST02-04.
+2.5 SRV01_SERVERROOM
+RULE-SRV01-01: TMP MUST NOT exceed 25°C.
+RULE-SRV01-02: TMP > 28°C (CRITICAL) — automatic controlled shutdown of all PLC nodes.
+2.6 WRH01_WAREHOUSE (General Warehouse)
+RULE-WRH01-01: TMP MUST remain between 0.5°C and 8°C. CRITICAL above 12°C — notify QC and
+quarantine batch.
+RULE-WRH01-02: HUM above 85%RH — inspect door seals and activate dehumidifier.
+2.7 CHM01_CHEMICALSTORAGE (Chemical Storage)
+RULE-CHM01-01: TMP MUST remain between 10°C and 20°C. CRITICAL above 25°C — activate emergency
+ventilation and notify safety officer immediately.
+RULE-CHM01-02: HUM MUST NOT exceed 50%RH. Elevated humidity accelerates degradation of hygroscopic
+reagents. Activate desiccant system if HUM >45%RH.
+RULE-CHM01-03: Only personnel with hazmat training (technician/supervisor/manager role) are authorised to
+enter Chemical Storage. UNAUTHORIZED_ACCESS must be escalated within 2 minutes.
+2.8 RND01_RDLAB (R&D; Lab)
+RULE-RND01-01: TMP MUST remain between 18°C and 26°C for experimental validity.
+RULE-RND01-02: HUM drift above 65%RH — activate dehumidifier. Above 75%RH (CRITICAL) — suspend
+sensitive experiments and inspect HVAC system.
+2.9 CAF01_CAFETERIA
+RULE-CAF01-01: TMP above 26°C — check ventilation system. Occupant comfort is the primary criterion.
+RULE-CAF01-02: HUM above 70%RH — inspect drainage and activate ventilation.
+""" ;
+    im:identifier "SOP-001" ;
+    im:pageCount "2"^^xsd:positiveInteger ;
+    im:sourcePath "rules/SOP_001_OperatingProcedures.pdf" ;
+    im:sourceSha256 "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89" ;
+    im:title "Standard Operating Procedures — Production Line A" .
+
+inst:N0062 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0004,
+        inst:N0008 ;
+    im:csiSubject "soggetto 1" ;
+    im:department "Production" ;
+    im:identifier "P001" ;
+    im:personId "P001" ;
+    im:role "operator" ;
+    im:sourceLabel "Person" .
+
+inst:N0063 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0004,
+        inst:N0008 ;
+    im:csiSubject "soggetto 2" ;
+    im:department "Production" ;
+    im:identifier "P002" ;
+    im:personId "P002" ;
+    im:role "operator" ;
+    im:sourceLabel "Person" .
+
+inst:N0064 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0004,
+        inst:N0008 ;
+    im:csiSubject "soggetto 3" ;
+    im:department "Production" ;
+    im:identifier "P003" ;
+    im:personId "P003" ;
+    im:role "operator" ;
+    im:sourceLabel "Person" .
+
+inst:N0065 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0004,
+        inst:N0008 ;
+    im:csiSubject "soggetto 4" ;
+    im:department "Production" ;
+    im:identifier "P004" ;
+    im:personId "P004" ;
+    im:role "operator" ;
+    im:sourceLabel "Person" .
+
+inst:N0066 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0004,
+        inst:N0008 ;
+    im:csiSubject "soggetto 5" ;
+    im:department "Production" ;
+    im:identifier "P005" ;
+    im:personId "P005" ;
+    im:role "operator" ;
+    im:sourceLabel "Person" .
+
+inst:N0067 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0004,
+        inst:N0008 ;
+    im:csiSubject "soggetto 6" ;
+    im:department "Production" ;
+    im:identifier "P006" ;
+    im:personId "P006" ;
+    im:role "operator" ;
+    im:sourceLabel "Person" .
+
+inst:N0068 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0004,
+        inst:N0008 ;
+    im:csiSubject "soggetto 7" ;
+    im:department "Production" ;
+    im:identifier "P007" ;
+    im:personId "P007" ;
+    im:role "operator" ;
+    im:sourceLabel "Person" .
+
+inst:N0069 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0004,
+        inst:N0008 ;
+    im:csiSubject "soggetto 8" ;
+    im:department "Production" ;
+    im:identifier "P008" ;
+    im:personId "P008" ;
+    im:role "operator" ;
+    im:sourceLabel "Person" .
+
+inst:N0070 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0004,
+        inst:N0008 ;
+    im:csiSubject "soggetto 9" ;
+    im:department "Production" ;
+    im:identifier "P009" ;
+    im:personId "P009" ;
+    im:role "operator" ;
+    im:sourceLabel "Person" .
+
+inst:N0071 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0004,
+        inst:N0008 ;
+    im:csiSubject "soggetto 10" ;
+    im:department "Production" ;
+    im:identifier "P010" ;
+    im:personId "P010" ;
+    im:role "operator" ;
+    im:sourceLabel "Person" .
+
+inst:N0072 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0004,
+        inst:N0008 ;
+    im:csiSubject "soggetto 11" ;
+    im:department "Production" ;
+    im:identifier "P011" ;
+    im:personId "P011" ;
+    im:role "operator" ;
+    im:sourceLabel "Person" .
+
+inst:N0073 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0004,
+        inst:N0008 ;
+    im:csiSubject "soggetto 12" ;
+    im:department "Production" ;
+    im:identifier "P012" ;
+    im:personId "P012" ;
+    im:role "operator" ;
+    im:sourceLabel "Person" .
+
+inst:N0074 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0004,
+        inst:N0008 ;
+    im:csiSubject "soggetto 13" ;
+    im:department "Production" ;
+    im:identifier "P013" ;
+    im:personId "P013" ;
+    im:role "operator" ;
+    im:sourceLabel "Person" .
+
+inst:N0075 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0004,
+        inst:N0008 ;
+    im:csiSubject "soggetto 14" ;
+    im:department "Production" ;
+    im:identifier "P014" ;
+    im:personId "P014" ;
+    im:role "operator" ;
+    im:sourceLabel "Person" .
+
+inst:N0076 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0004,
+        inst:N0008 ;
+    im:csiSubject "soggetto 15" ;
+    im:department "Production" ;
+    im:identifier "P015" ;
+    im:personId "P015" ;
+    im:role "operator" ;
+    im:sourceLabel "Person" .
+
+inst:N0077 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0004,
+        inst:N0008 ;
+    im:csiSubject "soggetto 16" ;
+    im:department "Production" ;
+    im:identifier "P016" ;
+    im:personId "P016" ;
+    im:role "operator" ;
+    im:sourceLabel "Person" .
+
+inst:N0078 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0004,
+        inst:N0008 ;
+    im:csiSubject "soggetto 17" ;
+    im:department "Production" ;
+    im:identifier "P017" ;
+    im:personId "P017" ;
+    im:role "operator" ;
+    im:sourceLabel "Person" .
+
+inst:N0079 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0004,
+        inst:N0008 ;
+    im:csiSubject "soggetto 18" ;
+    im:department "Production" ;
+    im:identifier "P018" ;
+    im:personId "P018" ;
+    im:role "operator" ;
+    im:sourceLabel "Person" .
+
+inst:N0080 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0004,
+        inst:N0008 ;
+    im:csiSubject "soggetto 19" ;
+    im:department "Production" ;
+    im:identifier "P019" ;
+    im:personId "P019" ;
+    im:role "operator" ;
+    im:sourceLabel "Person" .
+
+inst:N0081 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0004,
+        inst:N0008 ;
+    im:csiSubject "soggetto 20" ;
+    im:department "Production" ;
+    im:identifier "P020" ;
+    im:personId "P020" ;
+    im:role "operator" ;
+    im:sourceLabel "Person" .
+
+inst:N0010 a im:Sensor ;
+    im:identifier "ST01_FILLING_TMP" ;
+    im:name "ST01_FILLING_TMP" ;
+    im:sensorType "TMP" ;
+    im:sourceLabel "Sensor" ;
+    im:unit "°C" .
+
+inst:N0011 a im:Sensor ;
+    im:identifier "ST01_FILLING_PRS" ;
+    im:name "ST01_FILLING_PRS" ;
+    im:sensorType "PRS" ;
+    im:sourceLabel "Sensor" ;
+    im:unit "bar" .
+
+inst:N0012 a im:Sensor ;
+    im:identifier "ST01_FILLING_FLW" ;
+    im:name "ST01_FILLING_FLW" ;
+    im:sensorType "FLW" ;
+    im:sourceLabel "Sensor" ;
+    im:unit "L/min" .
+
+inst:N0015 a im:Sensor ;
+    im:identifier "ST02_SEALING_PRS" ;
+    im:name "ST02_SEALING_PRS" ;
+    im:sensorType "PRS" ;
+    im:sourceLabel "Sensor" ;
+    im:unit "bar" .
+
+inst:N0018 a im:Sensor ;
+    im:identifier "ST03_LABELLING_SPD" ;
+    im:name "ST03_LABELLING_SPD" ;
+    im:sensorType "SPD" ;
+    im:sourceLabel "Sensor" ;
+    im:unit "m/s" .
+
+inst:N0019 a im:Sensor ;
+    im:identifier "ST03_LABELLING_TEN" ;
+    im:name "ST03_LABELLING_TEN" ;
+    im:sensorType "TEN" ;
+    im:sourceLabel "Sensor" ;
+    im:unit "N" .
+
+inst:N0020 a im:Sensor ;
+    im:identifier "ST03_LABELLING_CNT" ;
+    im:name "ST03_LABELLING_CNT" ;
+    im:sensorType "CNT" ;
+    im:sourceLabel "Sensor" ;
+    im:unit "pcs/min" .
+
+inst:N0022 a im:Sensor ;
+    im:identifier "ST04_PACKAGING_VIB" ;
+    im:name "ST04_PACKAGING_VIB" ;
+    im:sensorType "VIB" ;
+    im:sourceLabel "Sensor" ;
+    im:unit "mm/s" .
+
+inst:N0023 a im:Sensor ;
+    im:identifier "ST04_PACKAGING_CUR" ;
+    im:name "ST04_PACKAGING_CUR" ;
+    im:sensorType "CUR" ;
+    im:sourceLabel "Sensor" ;
+    im:unit "A" .
+
+inst:N0026 a im:Sensor ;
+    im:identifier "SRV01_SERVERROOM_TMP" ;
+    im:name "SRV01_SERVERROOM_TMP" ;
+    im:sensorType "TMP" ;
+    im:sourceLabel "Sensor" ;
+    im:unit "°C" .
+
+inst:N0027 a im:Sensor ;
+    im:identifier "SRV01_SERVERROOM_HUM" ;
+    im:name "SRV01_SERVERROOM_HUM" ;
+    im:sensorType "HUM" ;
+    im:sourceLabel "Sensor" ;
+    im:unit "%RH" .
+
+inst:N0029 a im:Sensor ;
+    im:identifier "WRH01_WAREHOUSE_TMP" ;
+    im:name "WRH01_WAREHOUSE_TMP" ;
+    im:sensorType "TMP" ;
+    im:sourceLabel "Sensor" ;
+    im:unit "°C" .
+
+inst:N0030 a im:Sensor ;
+    im:identifier "WRH01_WAREHOUSE_HUM" ;
+    im:name "WRH01_WAREHOUSE_HUM" ;
+    im:sensorType "HUM" ;
+    im:sourceLabel "Sensor" ;
+    im:unit "%RH" .
+
+inst:N0032 a im:Sensor ;
+    im:identifier "CHM01_CHEMICALSTORAGE_TMP" ;
+    im:name "CHM01_CHEMICALSTORAGE_TMP" ;
+    im:sensorType "TMP" ;
+    im:sourceLabel "Sensor" ;
+    im:unit "°C" .
+
+inst:N0033 a im:Sensor ;
+    im:identifier "CHM01_CHEMICALSTORAGE_HUM" ;
+    im:name "CHM01_CHEMICALSTORAGE_HUM" ;
+    im:sensorType "HUM" ;
+    im:sourceLabel "Sensor" ;
+    im:unit "%RH" .
+
+inst:N0035 a im:Sensor ;
+    im:identifier "RND01_RDLAB_TMP" ;
+    im:name "RND01_RDLAB_TMP" ;
+    im:sensorType "TMP" ;
+    im:sourceLabel "Sensor" ;
+    im:unit "°C" .
+
+inst:N0036 a im:Sensor ;
+    im:identifier "RND01_RDLAB_HUM" ;
+    im:name "RND01_RDLAB_HUM" ;
+    im:sensorType "HUM" ;
+    im:sourceLabel "Sensor" ;
+    im:unit "%RH" .
+
+inst:N0038 a im:Sensor ;
+    im:identifier "CAF01_CAFETERIA_TMP" ;
+    im:name "CAF01_CAFETERIA_TMP" ;
+    im:sensorType "TMP" ;
+    im:sourceLabel "Sensor" ;
+    im:unit "°C" .
+
+inst:N0039 a im:Sensor ;
+    im:identifier "CAF01_CAFETERIA_HUM" ;
+    im:name "CAF01_CAFETERIA_HUM" ;
+    im:sensorType "HUM" ;
+    im:sourceLabel "Sensor" ;
+    im:unit "%RH" .
+
+inst:N0014 a im:Sensor ;
+    im:identifier "ST02_SEALING_TMP" ;
+    im:name "ST02_SEALING_TMP" ;
+    im:sensorType "TMP" ;
+    im:sourceLabel "Sensor" ;
+    im:unit "°C" .
+
+inst:N0025 a im:Station ;
+    im:hasSensor inst:N0026,
+        inst:N0027 ;
+    im:identifier "SRV01_SERVERROOM" ;
+    im:locatedIn inst:N0003 ;
+    im:name "SRV01_SERVERROOM" ;
+    im:partOf inst:N0001 ;
+    im:sourceLabel "Component" ;
+    im:stationType "SERVERROOM" .
+
+inst:N0028 a im:Station ;
+    im:hasSensor inst:N0029,
+        inst:N0030 ;
+    im:identifier "WRH01_WAREHOUSE" ;
+    im:locatedIn inst:N0004 ;
+    im:name "WRH01_WAREHOUSE" ;
+    im:partOf inst:N0001 ;
+    im:sourceLabel "Component" ;
+    im:stationType "WAREHOUSE" .
+
+inst:N0031 a im:Station ;
+    im:hasSensor inst:N0032,
+        inst:N0033 ;
+    im:identifier "CHM01_CHEMICALSTORAGE" ;
+    im:locatedIn inst:N0006 ;
+    im:name "CHM01_CHEMICALSTORAGE" ;
+    im:partOf inst:N0001 ;
+    im:sourceLabel "Component" ;
+    im:stationType "CHEMICALSTORAGE" .
+
+inst:N0034 a im:Station ;
+    im:hasSensor inst:N0035,
+        inst:N0036 ;
+    im:identifier "RND01_RDLAB" ;
+    im:locatedIn inst:N0007 ;
+    im:name "RND01_RDLAB" ;
+    im:partOf inst:N0001 ;
+    im:sourceLabel "Component" ;
+    im:stationType "RDLAB" .
+
+inst:N0037 a im:Station ;
+    im:hasSensor inst:N0038,
+        inst:N0039 ;
+    im:identifier "CAF01_CAFETERIA" ;
+    im:locatedIn inst:N0008 ;
+    im:name "CAF01_CAFETERIA" ;
+    im:partOf inst:N0001 ;
+    im:sourceLabel "Component" ;
+    im:stationType "CAFETERIA" .
+
+inst:N0016 a im:Sensor ;
+    im:correlatesWith inst:N0024 ;
+    im:identifier "ST02_SEALING_CUR" ;
+    im:name "ST02_SEALING_CUR" ;
+    im:sensorType "CUR" ;
+    im:sourceLabel "Sensor" ;
+    im:unit "A" .
+
+inst:N0082 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0003,
+        inst:N0004,
+        inst:N0006,
+        inst:N0007,
+        inst:N0008 ;
+    im:csiSubject "soggetto 21" ;
+    im:department "IT" ;
+    im:identifier "P021" ;
+    im:personId "P021" ;
+    im:role "technician" ;
+    im:sourceLabel "Person" .
+
+inst:N0083 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0003,
+        inst:N0004,
+        inst:N0006,
+        inst:N0007,
+        inst:N0008 ;
+    im:csiSubject "soggetto 22" ;
+    im:department "IT" ;
+    im:identifier "P022" ;
+    im:personId "P022" ;
+    im:role "technician" ;
+    im:sourceLabel "Person" .
+
+inst:N0084 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0003,
+        inst:N0004,
+        inst:N0006,
+        inst:N0007,
+        inst:N0008 ;
+    im:csiSubject "soggetto 23" ;
+    im:department "IT" ;
+    im:identifier "P023" ;
+    im:personId "P023" ;
+    im:role "technician" ;
+    im:sourceLabel "Person" .
+
+inst:N0085 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0003,
+        inst:N0004,
+        inst:N0006,
+        inst:N0007,
+        inst:N0008 ;
+    im:csiSubject "soggetto 24" ;
+    im:department "IT" ;
+    im:identifier "P024" ;
+    im:personId "P024" ;
+    im:role "technician" ;
+    im:sourceLabel "Person" .
+
+inst:N0086 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0003,
+        inst:N0004,
+        inst:N0006,
+        inst:N0007,
+        inst:N0008 ;
+    im:csiSubject "soggetto 25" ;
+    im:department "IT" ;
+    im:identifier "P025" ;
+    im:personId "P025" ;
+    im:role "technician" ;
+    im:sourceLabel "Person" .
+
+inst:N0087 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0003,
+        inst:N0004,
+        inst:N0006,
+        inst:N0007,
+        inst:N0008 ;
+    im:csiSubject "soggetto 26" ;
+    im:department "IT" ;
+    im:identifier "P026" ;
+    im:personId "P026" ;
+    im:role "technician" ;
+    im:sourceLabel "Person" .
+
+inst:N0088 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0003,
+        inst:N0004,
+        inst:N0006,
+        inst:N0007,
+        inst:N0008 ;
+    im:csiSubject "soggetto 27" ;
+    im:department "IT" ;
+    im:identifier "P027" ;
+    im:personId "P027" ;
+    im:role "technician" ;
+    im:sourceLabel "Person" .
+
+inst:N0089 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0003,
+        inst:N0004,
+        inst:N0006,
+        inst:N0007,
+        inst:N0008 ;
+    im:csiSubject "soggetto 28" ;
+    im:department "IT" ;
+    im:identifier "P028" ;
+    im:personId "P028" ;
+    im:role "technician" ;
+    im:sourceLabel "Person" .
+
+inst:N0090 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0003,
+        inst:N0004,
+        inst:N0006,
+        inst:N0007,
+        inst:N0008 ;
+    im:csiSubject "soggetto 29" ;
+    im:department "IT" ;
+    im:identifier "P029" ;
+    im:personId "P029" ;
+    im:role "technician" ;
+    im:sourceLabel "Person" .
+
+inst:N0091 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0003,
+        inst:N0004,
+        inst:N0006,
+        inst:N0007,
+        inst:N0008 ;
+    im:csiSubject "soggetto 30" ;
+    im:department "IT" ;
+    im:identifier "P030" ;
+    im:personId "P030" ;
+    im:role "technician" ;
+    im:sourceLabel "Person" .
+
+inst:N0009 a im:Station ;
+    im:feedsInto inst:N0013 ;
+    im:hasSensor inst:N0010,
+        inst:N0011,
+        inst:N0012 ;
+    im:identifier "ST01_FILLING" ;
+    im:locatedIn inst:N0002 ;
+    im:name "ST01_FILLING" ;
+    im:partOf inst:N0001 ;
+    im:sourceLabel "Component" ;
+    im:stationType "FILLING" .
+
+inst:N0024 a im:Sensor ;
+    im:identifier "ST04_PACKAGING_SPD" ;
+    im:name "ST04_PACKAGING_SPD" ;
+    im:sensorType "SPD" ;
+    im:sourceLabel "Sensor" ;
+    im:unit "m/s" .
+
+inst:N0092 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0003,
+        inst:N0004,
+        inst:N0005,
+        inst:N0006,
+        inst:N0007,
+        inst:N0008 ;
+    im:csiSubject "soggetto 31" ;
+    im:department "Operations" ;
+    im:identifier "P031" ;
+    im:personId "P031" ;
+    im:role "supervisor" ;
+    im:sourceLabel "Person" .
+
+inst:N0093 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0003,
+        inst:N0004,
+        inst:N0005,
+        inst:N0006,
+        inst:N0007,
+        inst:N0008 ;
+    im:csiSubject "soggetto 32" ;
+    im:department "Operations" ;
+    im:identifier "P032" ;
+    im:personId "P032" ;
+    im:role "supervisor" ;
+    im:sourceLabel "Person" .
+
+inst:N0094 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0003,
+        inst:N0004,
+        inst:N0005,
+        inst:N0006,
+        inst:N0007,
+        inst:N0008 ;
+    im:csiSubject "soggetto 33" ;
+    im:department "Operations" ;
+    im:identifier "P033" ;
+    im:personId "P033" ;
+    im:role "supervisor" ;
+    im:sourceLabel "Person" .
+
+inst:N0095 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0003,
+        inst:N0004,
+        inst:N0005,
+        inst:N0006,
+        inst:N0007,
+        inst:N0008 ;
+    im:csiSubject "soggetto 34" ;
+    im:department "Operations" ;
+    im:identifier "P034" ;
+    im:personId "P034" ;
+    im:role "supervisor" ;
+    im:sourceLabel "Person" .
+
+inst:N0096 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0003,
+        inst:N0004,
+        inst:N0005,
+        inst:N0006,
+        inst:N0007,
+        inst:N0008 ;
+    im:csiSubject "soggetto 35" ;
+    im:department "Operations" ;
+    im:identifier "P035" ;
+    im:personId "P035" ;
+    im:role "supervisor" ;
+    im:sourceLabel "Person" .
+
+inst:N0097 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0003,
+        inst:N0004,
+        inst:N0005,
+        inst:N0006,
+        inst:N0007,
+        inst:N0008 ;
+    im:csiSubject "soggetto 36" ;
+    im:department "Operations" ;
+    im:identifier "P036" ;
+    im:personId "P036" ;
+    im:role "supervisor" ;
+    im:sourceLabel "Person" .
+
+inst:N0098 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0003,
+        inst:N0004,
+        inst:N0005,
+        inst:N0006,
+        inst:N0007,
+        inst:N0008 ;
+    im:csiSubject "soggetto 37" ;
+    im:department "Operations" ;
+    im:identifier "P037" ;
+    im:personId "P037" ;
+    im:role "supervisor" ;
+    im:sourceLabel "Person" .
+
+inst:N0099 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0003,
+        inst:N0004,
+        inst:N0005,
+        inst:N0006,
+        inst:N0007,
+        inst:N0008 ;
+    im:csiSubject "soggetto 38" ;
+    im:department "Operations" ;
+    im:identifier "P038" ;
+    im:personId "P038" ;
+    im:role "supervisor" ;
+    im:sourceLabel "Person" .
+
+inst:N0100 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0003,
+        inst:N0004,
+        inst:N0005,
+        inst:N0006,
+        inst:N0007,
+        inst:N0008 ;
+    im:csiSubject "soggetto 39" ;
+    im:department "Management" ;
+    im:identifier "P039" ;
+    im:personId "P039" ;
+    im:role "manager" ;
+    im:sourceLabel "Person" .
+
+inst:N0101 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0003,
+        inst:N0004,
+        inst:N0005,
+        inst:N0006,
+        inst:N0007,
+        inst:N0008 ;
+    im:csiSubject "soggetto 40" ;
+    im:department "Management" ;
+    im:identifier "P040" ;
+    im:personId "P040" ;
+    im:role "manager" ;
+    im:sourceLabel "Person" .
+
+inst:N0102 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0003,
+        inst:N0004,
+        inst:N0005,
+        inst:N0006,
+        inst:N0007,
+        inst:N0008 ;
+    im:csiSubject "soggetto 41" ;
+    im:department "Management" ;
+    im:identifier "P041" ;
+    im:personId "P041" ;
+    im:role "manager" ;
+    im:sourceLabel "Person" .
+
+inst:N0103 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0003,
+        inst:N0004,
+        inst:N0005,
+        inst:N0006,
+        inst:N0007,
+        inst:N0008 ;
+    im:csiSubject "soggetto 42" ;
+    im:department "Management" ;
+    im:identifier "P042" ;
+    im:personId "P042" ;
+    im:role "manager" ;
+    im:sourceLabel "Person" .
+
+inst:N0104 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0003,
+        inst:N0004,
+        inst:N0005,
+        inst:N0006,
+        inst:N0007,
+        inst:N0008 ;
+    im:csiSubject "soggetto 43" ;
+    im:department "Security" ;
+    im:identifier "P043" ;
+    im:personId "P043" ;
+    im:role "security" ;
+    im:sourceLabel "Person" .
+
+inst:N0105 a im:Person ;
+    im:authorizedFor inst:N0002,
+        inst:N0003,
+        inst:N0004,
+        inst:N0005,
+        inst:N0006,
+        inst:N0007,
+        inst:N0008 ;
+    im:csiSubject "soggetto 44" ;
+    im:department "Security" ;
+    im:identifier "P044" ;
+    im:personId "P044" ;
+    im:role "security" ;
+    im:sourceLabel "Person" .
+
+inst:N0021 a im:Station ;
+    im:hasSensor inst:N0022,
+        inst:N0023,
+        inst:N0024 ;
+    im:identifier "ST04_PACKAGING" ;
+    im:locatedIn inst:N0002 ;
+    im:name "ST04_PACKAGING" ;
+    im:partOf inst:N0001 ;
+    im:sourceLabel "Component" ;
+    im:stationType "PACKAGING" .
+
+inst:N0013 a im:Station ;
+    im:feedsInto inst:N0017 ;
+    im:hasSensor inst:N0014,
+        inst:N0015,
+        inst:N0016 ;
+    im:identifier "ST02_SEALING" ;
+    im:locatedIn inst:N0002 ;
+    im:name "ST02_SEALING" ;
+    im:partOf inst:N0001 ;
+    im:sourceLabel "Component" ;
+    im:stationType "SEALING" .
+
+inst:N0017 a im:Station ;
+    im:feedsInto inst:N0021 ;
+    im:hasSensor inst:N0018,
+        inst:N0019,
+        inst:N0020 ;
+    im:identifier "ST03_LABELLING" ;
+    im:locatedIn inst:N0002 ;
+    im:name "ST03_LABELLING" ;
+    im:partOf inst:N0001 ;
+    im:sourceLabel "Component" ;
+    im:stationType "LABELLING" .
+
+<https://example.org/imaks/id/document/SOP-002> a im:Document ;
+    im:documentText """[page 1]
+Alarm Thresholds and Response Matrix — Production Line A
+Document: SOP-002 | Rev: 1.8 | Date: 2025-10-20 | Author: Ing. L. Greco — Automation & Control
+Threshold hierarchy: CRIT_LO < WARN_LO < NOMINAL < WARN_HI < CRIT_HI.
+ST01_FILLING Thresholds
+Sensor
+Unit
+CRIT_
+LO
+WARN
+_LO
+Nominal
+WARN
+_HI
+CRIT_
+HI
+CRITICAL Response
+TMP
+°C
+15.0
+18.0
+22.0 ± 0.4
+26.0
+30.0
+Inspect and notify maintenance
+PRS
+bar
+3.0
+3.3
+3.8 ± 0.05
+4.2
+4.8
+Inspect and notify maintenance
+FLW
+L/min
+105.0
+112.0
+120.0 ± 1.5
+128.0
+135.0
+Inspect and notify maintenance
+ST02_SEALING Thresholds
+Sensor
+Unit
+CRIT_
+LO
+WARN
+_LO
+Nominal
+WARN
+_HI
+CRIT_
+HI
+CRITICAL Response
+TMP
+°C
+165.0
+175.0
+185.0 ± 1.2
+195.0
+210.0
+E-STOP ST02/ST03/ST04; inspect
+element
+PRS
+bar
+4.2
+4.6
+5.2 ± 0.08
+5.7
+6.2
+Inspect and notify maintenance
+CUR
+A
+9.5
+11.0
+12.4 ± 0.3
+13.5
+15.0
+E-STOP; inspect load; verify ST04-SPD
+(RULE-ST02-04)
+ST03_LABELLING Thresholds
+Sensor
+Unit
+CRIT_
+LO
+WARN
+_LO
+Nominal
+WARN
+_HI
+CRIT_
+HI
+CRITICAL Response
+SPD
+m/s
+0.65
+0.75
+0.85 ± 0.01
+0.95
+1.05
+Inspect and notify maintenance
+TEN
+N
+1.5
+1.8
+2.2 ± 0.05
+2.6
+3.0
+Inspect and notify maintenance
+CNT
+pcs/m
+in
+100
+110
+120 ± 2.0
+130
+140
+E-STOP labelling; inspect label path
+ST04_PACKAGING Thresholds
+Sensor
+Unit
+CRIT_
+LO
+WARN
+_LO
+Nominal
+WARN
+_HI
+CRIT_
+HI
+CRITICAL Response
+VIB
+mm/s
+0.01
+0.02
+0.12 ± 0.005
+0.2
+0.35
+E-STOP; inspect main bearing
+CUR
+A
+6.5
+7.5
+8.7 ± 0.2
+9.8
+11.0
+Inspect and notify maintenance
+SPD
+m/s
+0.85
+1.0
+1.2 ± 0.02
+1.4
+1.6
+Inspect and notify maintenance
+SRV01_SERVERROOM Thresholds
+Sensor
+Unit
+CRIT_
+LO
+WARN
+_LO
+Nominal
+WARN
+_HI
+CRIT_
+HI
+CRITICAL Response
+TMP
+°C
+16.0
+18.0
+21.0 ± 0.3
+25.0
+28.0
+Activate backup cooling; prepare
+controlled PLC shutdown
+
+[page 2]
+HUM
+%RH
+25.0
+30.0
+45.0 ± 1.0
+60.0
+70.0
+Inspect and notify maintenance
+WRH01_WAREHOUSE Thresholds
+Sensor
+Unit
+CRIT_
+LO
+WARN
+_LO
+Nominal
+WARN
+_HI
+CRIT_
+HI
+CRITICAL Response
+TMP
+°C
+-1.0
+0.5
+4.0 ± 0.5
+8.0
+12.0
+Activate backup refrigeration; notify QC
+HUM
+%RH
+55.0
+60.0
+75.0 ± 1.5
+85.0
+90.0
+Inspect and notify maintenance
+CHM01_CHEMICALSTORAGE Thresholds
+Sensor
+Unit
+CRIT_
+LO
+WARN
+_LO
+Nominal
+WARN
+_HI
+CRIT_
+HI
+CRITICAL Response
+TMP
+°C
+5.0
+10.0
+15.0 ± 0.3
+20.0
+25.0
+Activate emergency ventilation; notify
+safety officer immediately
+HUM
+%RH
+15.0
+20.0
+35.0 ± 1.0
+50.0
+60.0
+Activate desiccant system; inspect
+storage containers for leaks
+RND01_RDLAB Thresholds
+Sensor
+Unit
+CRIT_
+LO
+WARN
+_LO
+Nominal
+WARN
+_HI
+CRIT_
+HI
+CRITICAL Response
+TMP
+°C
+15.0
+18.0
+22.0 ± 0.2
+26.0
+30.0
+Inspect and notify maintenance
+HUM
+%RH
+25.0
+35.0
+50.0 ± 1.0
+65.0
+75.0
+Suspend experiments; inspect HVAC
+system
+CAF01_CAFETERIA Thresholds
+Sensor
+Unit
+CRIT_
+LO
+WARN
+_LO
+Nominal
+WARN
+_HI
+CRIT_
+HI
+CRITICAL Response
+TMP
+°C
+14.0
+17.0
+21.0 ± 0.4
+26.0
+30.0
+Inspect and notify maintenance
+HUM
+%RH
+25.0
+35.0
+55.0 ± 1.5
+70.0
+80.0
+Inspect and notify maintenance
+Anomaly Type Definitions for KG Mapping
+Type
+Definition
+Detection Criterion
+Ontology Class
+SPIKE
+Transient deviation >3σ, <5 
+min
+Single reading >CRIT
+AnomalyEvent::Spike
+DRIFT
+Monotonic deviation >15
+min
+Slope >0.1σ/min for 5+
+readings
+AnomalyEvent::Drift
+STUCK
+Unchanged >10 consecutive
+ readings
+std(last 10)<0.001×nominal
+AnomalyEvent::StuckSensor
+OUT_OF_RAN
+GE
+Sustained WARN violation
+>10 min
+>WARN for 20+ readings
+AnomalyEvent::OutOfRange
+CORRELATED
+Causally linked to another
+station
+Onset within 90 min of
+cause
+AnomalyEvent::Correlated
+""" ;
+    im:identifier "SOP-002" ;
+    im:pageCount "2"^^xsd:positiveInteger ;
+    im:sourcePath "rules/SOP_002_AlarmThresholds.pdf" ;
+    im:sourceSha256 "f9cd382e743add947ac0b311be9474ca726a8faf6a31f8b1e0e72a62c6fd5f7e" ;
+    im:title "Alarm Thresholds and Response Matrix — Production Line A" .
+
+inst:N0001 a im:System ;
+    im:contains inst:N0002,
+        inst:N0003,
+        inst:N0004,
+        inst:N0005,
+        inst:N0006,
+        inst:N0007,
+        inst:N0008 ;
+    im:identifier "N0001" ;
+    im:line "LineaA" ;
+    im:name "iMAKS" ;
+    im:sourceLabel "System" .
+
+inst:N0005 a im:Zone ;
+    im:identifier "N0005" ;
+    im:name "Main Entrance" ;
+    im:sourceLabel "Zone" .
+
+inst:N0003 a im:Zone ;
+    im:contains inst:N0025 ;
+    im:identifier "N0003" ;
+    im:name "Server Room" ;
+    im:sourceLabel "Zone" .
+
+inst:N0006 a im:Zone ;
+    im:contains inst:N0031 ;
+    im:identifier "N0006" ;
+    im:name "Chemical Storage" ;
+    im:sourceLabel "Zone" .
+
+inst:N0007 a im:Zone ;
+    im:contains inst:N0034 ;
+    im:identifier "N0007" ;
+    im:name "R&D Lab" ;
+    im:sourceLabel "Zone" .
+
+inst:N0004 a im:Zone ;
+    im:contains inst:N0028 ;
+    im:identifier "N0004" ;
+    im:name "General Warehouse" ;
+    im:sourceLabel "Zone" .
+
+inst:N0008 a im:Zone ;
+    im:contains inst:N0037 ;
+    im:identifier "N0008" ;
+    im:name "Cafeteria" ;
+    im:sourceLabel "Zone" .
+
+inst:N0002 a im:Zone ;
+    im:contains inst:N0009,
+        inst:N0013,
+        inst:N0017,
+        inst:N0021 ;
+    im:identifier "N0002" ;
+    im:name "Production Area" ;
+    im:sourceLabel "Zone" .
+

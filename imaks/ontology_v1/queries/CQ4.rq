@@ -1,0 +1,12 @@
+PREFIX im: <https://example.org/imaks/v1#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT ?sensorId ?unit ?nominal ?warnHi ?critHi ?sopId ?page ?datasheetId ?datasheetNote WHERE {
+        ?sensor im:identifier "ST02_SEALING_CUR"; im:identifier ?sensorId.
+        ?rule a im:ThresholdRule; im:appliesToSensor ?sensor; im:unit ?unit;
+              im:nominal ?nominal; im:warnHi ?warnHi; im:critHi ?critHi;
+              im:sourceDocument ?sop; im:sourcePage ?page.
+        ?sop im:identifier ?sopId.
+        ?datasheet a im:Document; im:identifier "DS_ELECTRICAL_SENSORS";
+                   im:identifier ?datasheetId; im:documentText ?fullText.
+        BIND(STRAFTER(?fullText, "Note 2 — Continuous Overload Rating:") AS ?datasheetNote)
+    }

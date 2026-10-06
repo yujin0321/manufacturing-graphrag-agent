@@ -1,0 +1,8 @@
+PREFIX im: <https://example.org/imaks/v1#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT ?stationId ?zoneName ?sensorId ?sensorType ?unit WHERE {
+        ?station a im:Station; im:identifier "ST02_SEALING"; im:identifier ?stationId;
+                 im:locatedIn ?zone; im:hasSensor ?sensor.
+        ?zone im:name ?zoneName.
+        ?sensor im:identifier ?sensorId; im:sensorType ?sensorType; im:unit ?unit.
+    } ORDER BY ?sensorId

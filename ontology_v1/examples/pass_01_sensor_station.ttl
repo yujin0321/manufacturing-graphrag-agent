@@ -1,0 +1,10 @@
+@prefix im: <https://example.org/imaks/v1#> .
+@prefix inst: <https://example.org/imaks/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# P1 통과(S1): Sensor가 hasSensor로 정확히 1개 Station에 연결된다.
+# 값은 모두 시험용 가상 값이다.
+
+inst:ST02_SEALING a im:Station ; im:identifier "ST02_SEALING" ; im:stationType "SEALING" ;
+    im:zone "Production Area" ; im:hasSensor inst:ST02_SEALING_CUR .
+inst:ST02_SEALING_CUR a im:Sensor ; im:identifier "ST02_SEALING_CUR" ; im:sensorType "CUR" ; im:unit "A" .

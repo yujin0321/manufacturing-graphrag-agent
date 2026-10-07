@@ -216,3 +216,12 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+.venv/
+imaks_data/
+/preprocessed/
+/evaluation/
+# reports/: 구현·검증 보고서(*_impl.md, *_verify.md)만 추적하고 초안·비교·백업은 로컬 전용
+/reports/*
+!/reports/.gitkeep
+!/reports/*_impl.md
+!/reports/*_verify.md

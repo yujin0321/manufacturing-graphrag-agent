@@ -1,0 +1,162 @@
+@prefix m: <https://example.org/imaks/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+[] a sh:ValidationReport ;
+    sh:conforms false ;
+    sh:result [ a sh:ValidationResult ;
+            sh:focusNode m:AR-0012 ;
+            sh:resultMessage "Alarm acknowledgment exceeded SOP-004 role-specific SLA." ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraint _:N3edb7a458807417a9757c80f84090e4e ;
+            sh:sourceConstraintComponent sh:SPARQLConstraintComponent ;
+            sh:sourceShape m:AlarmResponseShape ;
+            sh:value m:AR-0012 ],
+        [ a sh:ValidationResult ;
+            sh:focusNode m:AE-00447 ;
+            sh:resultMessage "Value does not have class m:Person" ;
+            sh:resultPath m:person ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:ClassConstraintComponent ;
+            sh:sourceShape _:N1ce94a575a9f44f094df23a2867fc8b3 ;
+            sh:value m:unknown-UNKNOWN ],
+        [ a sh:ValidationResult ;
+            sh:focusNode m:AR-0008 ;
+            sh:resultMessage "Alarm acknowledgment exceeded SOP-004 role-specific SLA." ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraint _:N3edb7a458807417a9757c80f84090e4e ;
+            sh:sourceConstraintComponent sh:SPARQLConstraintComponent ;
+            sh:sourceShape m:AlarmResponseShape ;
+            sh:value m:AR-0008 ],
+        [ a sh:ValidationResult ;
+            sh:focusNode m:AE-00443 ;
+            sh:resultMessage "Value does not have class m:Person" ;
+            sh:resultPath m:person ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:ClassConstraintComponent ;
+            sh:sourceShape _:N1ce94a575a9f44f094df23a2867fc8b3 ;
+            sh:value m:unknown-UNKNOWN ],
+        [ a sh:ValidationResult ;
+            sh:focusNode m:OCC-19 ;
+            sh:resultMessage "Zone capacity exceeded (SOP-004)." ;
+            sh:resultSeverity sh:Warning ;
+            sh:sourceConstraint _:N34a5f56f63854b1e877e7c7dcaf4c0da ;
+            sh:sourceConstraintComponent sh:SPARQLConstraintComponent ;
+            sh:sourceShape m:CapacityShape ;
+            sh:value m:OCC-19 ],
+        [ a sh:ValidationResult ;
+            sh:focusNode m:OCC-5 ;
+            sh:resultMessage "Zone capacity exceeded (SOP-004)." ;
+            sh:resultSeverity sh:Warning ;
+            sh:sourceConstraint _:N34a5f56f63854b1e877e7c7dcaf4c0da ;
+            sh:sourceConstraintComponent sh:SPARQLConstraintComponent ;
+            sh:sourceShape m:CapacityShape ;
+            sh:value m:OCC-5 ],
+        [ a sh:ValidationResult ;
+            sh:focusNode m:OCC-17 ;
+            sh:resultMessage "Zone capacity exceeded (SOP-004)." ;
+            sh:resultSeverity sh:Warning ;
+            sh:sourceConstraint _:N34a5f56f63854b1e877e7c7dcaf4c0da ;
+            sh:sourceConstraintComponent sh:SPARQLConstraintComponent ;
+            sh:sourceShape m:CapacityShape ;
+            sh:value m:OCC-17 ],
+        [ a sh:ValidationResult ;
+            sh:focusNode m:OCC-22 ;
+            sh:resultMessage "Zone capacity exceeded (SOP-004)." ;
+            sh:resultSeverity sh:Warning ;
+            sh:sourceConstraint _:N34a5f56f63854b1e877e7c7dcaf4c0da ;
+            sh:sourceConstraintComponent sh:SPARQLConstraintComponent ;
+            sh:sourceShape m:CapacityShape ;
+            sh:value m:OCC-22 ],
+        [ a sh:ValidationResult ;
+            sh:focusNode m:AR-0006 ;
+            sh:resultMessage "Alarm acknowledgment exceeded SOP-004 role-specific SLA." ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraint _:N3edb7a458807417a9757c80f84090e4e ;
+            sh:sourceConstraintComponent sh:SPARQLConstraintComponent ;
+            sh:sourceShape m:AlarmResponseShape ;
+            sh:value m:AR-0006 ],
+        [ a sh:ValidationResult ;
+            sh:focusNode m:OCC-21 ;
+            sh:resultMessage "Zone capacity exceeded (SOP-004)." ;
+            sh:resultSeverity sh:Warning ;
+            sh:sourceConstraint _:N34a5f56f63854b1e877e7c7dcaf4c0da ;
+            sh:sourceConstraintComponent sh:SPARQLConstraintComponent ;
+            sh:sourceShape m:CapacityShape ;
+            sh:value m:OCC-21 ],
+        [ a sh:ValidationResult ;
+            sh:focusNode m:OCC-20 ;
+            sh:resultMessage "Zone capacity exceeded (SOP-004)." ;
+            sh:resultSeverity sh:Warning ;
+            sh:sourceConstraint _:N34a5f56f63854b1e877e7c7dcaf4c0da ;
+            sh:sourceConstraintComponent sh:SPARQLConstraintComponent ;
+            sh:sourceShape m:CapacityShape ;
+            sh:value m:OCC-20 ],
+        [ a sh:ValidationResult ;
+            sh:focusNode m:OCC-16 ;
+            sh:resultMessage "Zone capacity exceeded (SOP-004)." ;
+            sh:resultSeverity sh:Warning ;
+            sh:sourceConstraint _:N34a5f56f63854b1e877e7c7dcaf4c0da ;
+            sh:sourceConstraintComponent sh:SPARQLConstraintComponent ;
+            sh:sourceShape m:CapacityShape ;
+            sh:value m:OCC-16 ],
+        [ a sh:ValidationResult ;
+            sh:focusNode m:OCC-24 ;
+            sh:resultMessage "Zone capacity exceeded (SOP-004)." ;
+            sh:resultSeverity sh:Warning ;
+            sh:sourceConstraint _:N34a5f56f63854b1e877e7c7dcaf4c0da ;
+            sh:sourceConstraintComponent sh:SPARQLConstraintComponent ;
+            sh:sourceShape m:CapacityShape ;
+            sh:value m:OCC-24 ],
+        [ a sh:ValidationResult ;
+            sh:focusNode m:OCC-23 ;
+            sh:resultMessage "Zone capacity exceeded (SOP-004)." ;
+            sh:resultSeverity sh:Warning ;
+            sh:sourceConstraint _:N34a5f56f63854b1e877e7c7dcaf4c0da ;
+            sh:sourceConstraintComponent sh:SPARQLConstraintComponent ;
+            sh:sourceShape m:CapacityShape ;
+            sh:value m:OCC-23 ],
+        [ a sh:ValidationResult ;
+            sh:focusNode m:OCC-27 ;
+            sh:resultMessage "Zone capacity exceeded (SOP-004)." ;
+            sh:resultSeverity sh:Warning ;
+            sh:sourceConstraint _:N34a5f56f63854b1e877e7c7dcaf4c0da ;
+            sh:sourceConstraintComponent sh:SPARQLConstraintComponent ;
+            sh:sourceShape m:CapacityShape ;
+            sh:value m:OCC-27 ],
+        [ a sh:ValidationResult ;
+            sh:focusNode m:OCC-26 ;
+            sh:resultMessage "Zone capacity exceeded (SOP-004)." ;
+            sh:resultSeverity sh:Warning ;
+            sh:sourceConstraint _:N34a5f56f63854b1e877e7c7dcaf4c0da ;
+            sh:sourceConstraintComponent sh:SPARQLConstraintComponent ;
+            sh:sourceShape m:CapacityShape ;
+            sh:value m:OCC-26 ],
+        [ a sh:ValidationResult ;
+            sh:focusNode m:AR-0005 ;
+            sh:resultMessage "Alarm acknowledgment exceeded SOP-004 role-specific SLA." ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraint _:N3edb7a458807417a9757c80f84090e4e ;
+            sh:sourceConstraintComponent sh:SPARQLConstraintComponent ;
+            sh:sourceShape m:AlarmResponseShape ;
+            sh:value m:AR-0005 ],
+        [ a sh:ValidationResult ;
+            sh:focusNode m:OCC-25 ;
+            sh:resultMessage "Zone capacity exceeded (SOP-004)." ;
+            sh:resultSeverity sh:Warning ;
+            sh:sourceConstraint _:N34a5f56f63854b1e877e7c7dcaf4c0da ;
+            sh:sourceConstraintComponent sh:SPARQLConstraintComponent ;
+            sh:sourceShape m:CapacityShape ;
+            sh:value m:OCC-25 ] .
+
+_:N1ce94a575a9f44f094df23a2867fc8b3 sh:class m:Person ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:path m:person .
+
+_:N3edb7a458807417a9757c80f84090e4e sh:message "Alarm acknowledgment exceeded SOP-004 role-specific SLA." ;
+    sh:select "PREFIX m: <https://example.org/imaks/> SELECT $this WHERE { $this m:ackDelay ?a; m:maxAllowed ?b. FILTER (?a > ?b || ?a < 0) }" .
+
+_:N34a5f56f63854b1e877e7c7dcaf4c0da sh:message "Zone capacity exceeded (SOP-004)." ;
+    sh:select "PREFIX m: <https://example.org/imaks/> SELECT $this WHERE { $this m:count ?a; m:capacity ?b. FILTER (?a > ?b) }" .
+

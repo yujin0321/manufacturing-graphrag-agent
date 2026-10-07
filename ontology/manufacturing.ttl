@@ -1,0 +1,197 @@
+@prefix m: <https://example.org/imaks/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+m:AccessEvent a owl:Class .
+
+m:AccessRule a owl:Class ;
+    rdfs:subClassOf m:Rule .
+
+m:Correlated a owl:Class ;
+    rdfs:subClassOf m:AnomalyEvent .
+
+m:Drift a owl:Class ;
+    rdfs:subClassOf m:AnomalyEvent .
+
+m:MaintenanceRule a owl:Class ;
+    rdfs:subClassOf m:Rule .
+
+m:OccupancySnapshot a owl:Class .
+
+m:OperationalRule a owl:Class ;
+    rdfs:subClassOf m:Rule .
+
+m:OutOfRange a owl:Class ;
+    rdfs:subClassOf m:AnomalyEvent .
+
+m:Spike a owl:Class ;
+    rdfs:subClassOf m:AnomalyEvent .
+
+m:StuckSensor a owl:Class ;
+    rdfs:subClassOf m:AnomalyEvent .
+
+m:System a owl:Class .
+
+m:ThresholdRule a owl:Class ;
+    rdfs:subClassOf m:Rule .
+
+m:UnknownActor a owl:Class .
+
+m:ackDelay a owl:DatatypeProperty ;
+    rdfs:range xsd:double .
+
+m:anomalyType a owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
+m:authorized a owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
+m:authorized_for a owl:ObjectProperty ;
+    rdfs:domain m:Person ;
+    rdfs:range m:Zone .
+
+m:capacity a owl:DatatypeProperty ;
+    rdfs:range xsd:integer .
+
+m:condition a owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
+m:contains a owl:ObjectProperty .
+
+m:correlates_with a owl:ObjectProperty ;
+    rdfs:domain m:Sensor ;
+    rdfs:range m:Sensor .
+
+m:count a owl:DatatypeProperty ;
+    rdfs:range xsd:integer .
+
+m:critHi a owl:DatatypeProperty ;
+    rdfs:range xsd:double .
+
+m:critLo a owl:DatatypeProperty ;
+    rdfs:range xsd:double .
+
+m:derivedFrom a owl:ObjectProperty ;
+    rdfs:domain m:Rule ;
+    rdfs:range m:Document .
+
+m:detected_in a owl:ObjectProperty ;
+    rdfs:domain m:SafetyEvent ;
+    rdfs:range m:Zone .
+
+m:endTs a owl:DatatypeProperty ;
+    rdfs:range xsd:dateTime .
+
+m:event a owl:ObjectProperty ;
+    rdfs:domain m:AlarmResponse ;
+    rdfs:range m:AnomalyEvent .
+
+m:feeds_into a owl:ObjectProperty ;
+    rdfs:domain m:Component ;
+    rdfs:range m:Component .
+
+m:governedBy a owl:ObjectProperty ;
+    rdfs:domain m:Sensor ;
+    rdfs:range m:Rule .
+
+m:hasSensor a owl:ObjectProperty ;
+    rdfs:domain m:Component ;
+    rdfs:range m:Sensor .
+
+m:involves a owl:ObjectProperty ;
+    rdfs:domain m:SafetyEvent ;
+    rdfs:range m:Person .
+
+m:locatedIn a owl:ObjectProperty ;
+    rdfs:domain m:Component ;
+    rdfs:range m:Zone .
+
+m:maxAllowed a owl:DatatypeProperty ;
+    rdfs:range xsd:double .
+
+m:monitors a owl:ObjectProperty ;
+    rdfs:domain m:Sensor ;
+    rdfs:range m:Component .
+
+m:name a owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
+m:nominalValue a owl:DatatypeProperty ;
+    rdfs:range xsd:double .
+
+m:observedBy a owl:ObjectProperty ;
+    rdfs:domain m:Observation ;
+    rdfs:range m:Sensor .
+
+m:part_of a owl:ObjectProperty .
+
+m:person a owl:ObjectProperty ;
+    rdfs:range m:Person .
+
+m:personId a owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
+m:quality a owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
+m:resolves a owl:ObjectProperty ;
+    rdfs:domain m:Maintenance ;
+    rdfs:range m:Sensor .
+
+m:role a owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
+m:ruleId a owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
+m:sensorType a owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
+m:startTs a owl:DatatypeProperty ;
+    rdfs:range xsd:dateTime .
+
+m:timestamp a owl:DatatypeProperty ;
+    rdfs:range xsd:dateTime .
+
+m:triggers a owl:ObjectProperty ;
+    rdfs:domain m:Sensor ;
+    rdfs:range m:AnomalyEvent .
+
+m:unit a owl:DatatypeProperty ;
+    rdfs:range xsd:string .
+
+m:value a owl:DatatypeProperty ;
+    rdfs:range xsd:double .
+
+m:warnHi a owl:DatatypeProperty ;
+    rdfs:range xsd:double .
+
+m:warnLo a owl:DatatypeProperty ;
+    rdfs:range xsd:double .
+
+m:zone a owl:ObjectProperty ;
+    rdfs:range m:Zone .
+
+m:AlarmResponse a owl:Class .
+
+m:Document a owl:Class .
+
+m:Maintenance a owl:Class .
+
+m:Observation a owl:Class .
+
+m:SafetyEvent a owl:Class .
+
+m:Person a owl:Class .
+
+m:Zone a owl:Class .
+
+m:Component a owl:Class .
+
+m:Rule a owl:Class .
+
+m:AnomalyEvent a owl:Class .
+
+m:Sensor a owl:Class .
+

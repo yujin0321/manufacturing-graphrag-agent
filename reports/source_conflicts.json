@@ -1,0 +1,202 @@
+[
+  {
+    "id": "C01",
+    "source_a": "SOP-002",
+    "source_b": "DS-THERM-2200",
+    "subject": "ST02_SEALING_TMP",
+    "issue": "critical high 210 C exceeds continuous sensor rating 200 C",
+    "policy": "Keep process threshold; require engineering review or alternate sensor."
+  },
+  {
+    "id": "C02",
+    "source_a": "SOP-002",
+    "source_b": "DS-ELEC-3300",
+    "subject": "ST02_SEALING_CUR",
+    "issue": "critical high 15 A exceeds continuous sensor rating 14 A",
+    "policy": "Keep process threshold; separate sustained overload constraint."
+  },
+  {
+    "id": "C03",
+    "source_a": "SOP-001 RULE-CHM01-03",
+    "source_b": "SOP-004 authorization matrix",
+    "subject": "Chemical Storage/security",
+    "issue": "security authorized in matrix but not in SOP-001 hazmat role list",
+    "policy": "Use registry as declared access; no inferred hazmat qualification."
+  },
+  {
+    "id": "C04",
+    "source_a": "SOP-002",
+    "source_b": "SOP-002",
+    "subject": "OUT_OF_RANGE",
+    "issue": "duration >10 min versus 20+ readings; dataset cadence is one minute",
+    "policy": "Temporal detection requires an explicit reviewed duration convention."
+  },
+  {
+    "id": "C05",
+    "source_a": "SOP-002",
+    "source_b": "SOP-002",
+    "subject": "DRIFT",
+    "issue": "definition >15 minutes versus slope on 5+ readings",
+    "policy": "Preserve both criteria; do not silently equate them."
+  },
+  {
+    "id": "C06",
+    "source_a": "SOP-002",
+    "source_b": "DS-MECH-4400",
+    "subject": "ST01_FILLING_PRS",
+    "issue": "upper warning offset 0.4 bar is less than recommended 0.5 bar",
+    "policy": "Engineering advisory; keep source alarm setting."
+  },
+  {
+    "id": "AR-0001",
+    "subject": "acknowledgment SLA",
+    "source_a": "alarm_response_log.csv",
+    "source_b": "SOP-004",
+    "issue": "source max 3 vs role-specific 1 minutes",
+    "policy": "KG SLA uses SOP-004 and recomputed timestamp delay; original columns preserved."
+  },
+  {
+    "id": "AR-0002",
+    "subject": "acknowledgment SLA",
+    "source_a": "alarm_response_log.csv",
+    "source_b": "SOP-004",
+    "issue": "source max 15 vs role-specific 10 minutes",
+    "policy": "KG SLA uses SOP-004 and recomputed timestamp delay; original columns preserved."
+  },
+  {
+    "id": "AR-0003",
+    "subject": "acknowledgment SLA",
+    "source_a": "alarm_response_log.csv",
+    "source_b": "SOP-004",
+    "issue": "source max 15 vs role-specific 10 minutes",
+    "policy": "KG SLA uses SOP-004 and recomputed timestamp delay; original columns preserved."
+  },
+  {
+    "id": "AR-0004",
+    "subject": "acknowledgment SLA",
+    "source_a": "alarm_response_log.csv",
+    "source_b": "SOP-004",
+    "issue": "source max 15 vs role-specific 10 minutes",
+    "policy": "KG SLA uses SOP-004 and recomputed timestamp delay; original columns preserved."
+  },
+  {
+    "id": "AR-0005",
+    "subject": "acknowledgment SLA",
+    "source_a": "alarm_response_log.csv",
+    "source_b": "SOP-004",
+    "issue": "source max 3 vs role-specific 1 minutes",
+    "policy": "KG SLA uses SOP-004 and recomputed timestamp delay; original columns preserved."
+  },
+  {
+    "id": "AR-0006",
+    "subject": "acknowledgment SLA",
+    "source_a": "alarm_response_log.csv",
+    "source_b": "SOP-004",
+    "issue": "source max 15 vs role-specific 10 minutes",
+    "policy": "KG SLA uses SOP-004 and recomputed timestamp delay; original columns preserved."
+  },
+  {
+    "id": "AR-0007",
+    "subject": "acknowledgment SLA",
+    "source_a": "alarm_response_log.csv",
+    "source_b": "SOP-004",
+    "issue": "source max 15 vs role-specific 10 minutes",
+    "policy": "KG SLA uses SOP-004 and recomputed timestamp delay; original columns preserved."
+  },
+  {
+    "id": "AR-0008",
+    "subject": "acknowledgment SLA",
+    "source_a": "alarm_response_log.csv",
+    "source_b": "SOP-004",
+    "issue": "source max 15 vs role-specific 10 minutes",
+    "policy": "KG SLA uses SOP-004 and recomputed timestamp delay; original columns preserved."
+  },
+  {
+    "id": "AR-0009",
+    "subject": "acknowledgment SLA",
+    "source_a": "alarm_response_log.csv",
+    "source_b": "SOP-004",
+    "issue": "source max 15 vs role-specific 10 minutes",
+    "policy": "KG SLA uses SOP-004 and recomputed timestamp delay; original columns preserved."
+  },
+  {
+    "id": "AR-0010",
+    "subject": "acknowledgment SLA",
+    "source_a": "alarm_response_log.csv",
+    "source_b": "SOP-004",
+    "issue": "source max 3 vs role-specific 1 minutes",
+    "policy": "KG SLA uses SOP-004 and recomputed timestamp delay; original columns preserved."
+  },
+  {
+    "id": "AR-0011",
+    "subject": "acknowledgment SLA",
+    "source_a": "alarm_response_log.csv",
+    "source_b": "SOP-004",
+    "issue": "source max 3 vs role-specific 1 minutes",
+    "policy": "KG SLA uses SOP-004 and recomputed timestamp delay; original columns preserved."
+  },
+  {
+    "id": "AR-0012",
+    "subject": "acknowledgment SLA",
+    "source_a": "alarm_response_log.csv",
+    "source_b": "SOP-004",
+    "issue": "source max 3 vs role-specific 1 minutes",
+    "policy": "KG SLA uses SOP-004 and recomputed timestamp delay; original columns preserved."
+  },
+  {
+    "id": "AR-0013",
+    "subject": "acknowledgment SLA",
+    "source_a": "alarm_response_log.csv",
+    "source_b": "SOP-004",
+    "issue": "source max 15 vs role-specific 10 minutes",
+    "policy": "KG SLA uses SOP-004 and recomputed timestamp delay; original columns preserved."
+  },
+  {
+    "id": "AR-0014",
+    "subject": "acknowledgment SLA",
+    "source_a": "alarm_response_log.csv",
+    "source_b": "SOP-004",
+    "issue": "source max 3 vs role-specific 1 minutes",
+    "policy": "KG SLA uses SOP-004 and recomputed timestamp delay; original columns preserved."
+  },
+  {
+    "id": "C07",
+    "source_a": "access_events.csv",
+    "source_b": "person_registry.csv",
+    "subject": "UNKNOWN",
+    "issue": "2 events have no registered person",
+    "policy": "Preserve UnknownActor and SHACL reference violations; do not invent person identity."
+  },
+  {
+    "id": "FACTORY-ST03_LABELLING_POS",
+    "source_a": "nodes_factory.csv",
+    "source_b": "nodes.csv/timeseries_raw.csv",
+    "subject": "ST03_LABELLING_POS",
+    "issue": "Factory-only sensor absent from full seed and telemetry",
+    "policy": "Full nodes.csv and telemetry are authoritative for this build; preserve partial factory seed separately."
+  },
+  {
+    "id": "FACTORY-ST03_LABELLING_TMP",
+    "source_a": "nodes_factory.csv",
+    "source_b": "nodes.csv/timeseries_raw.csv",
+    "subject": "ST03_LABELLING_TMP",
+    "issue": "Factory-only sensor absent from full seed and telemetry",
+    "policy": "Full nodes.csv and telemetry are authoritative for this build; preserve partial factory seed separately."
+  },
+  {
+    "id": "FACTORY-ST04_PACKAGING_CNT",
+    "source_a": "nodes_factory.csv",
+    "source_b": "nodes.csv/timeseries_raw.csv",
+    "subject": "ST04_PACKAGING_CNT",
+    "issue": "Factory-only sensor absent from full seed and telemetry",
+    "policy": "Full nodes.csv and telemetry are authoritative for this build; preserve partial factory seed separately."
+  },
+  {
+    "id": "FACTORY-ST04_PACKAGING_TMP",
+    "source_a": "nodes_factory.csv",
+    "source_b": "nodes.csv/timeseries_raw.csv",
+    "subject": "ST04_PACKAGING_TMP",
+    "issue": "Factory-only sensor absent from full seed and telemetry",
+    "policy": "Full nodes.csv and telemetry are authoritative for this build; preserve partial factory seed separately."
+  }
+]

@@ -1,0 +1,129 @@
+Validation Report
+Conforms: False
+Results (18):
+Constraint Violation in ClassConstraintComponent (http://www.w3.org/ns/shacl#ClassConstraintComponent):
+	Severity: sh:Violation
+	Source Shape: [ sh:class m:Person ; sh:maxCount Literal("1", datatype=xsd:integer) ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:path m:person ]
+	Focus Node: m:AE-00443
+	Value Node: m:unknown-UNKNOWN
+	Result Path: m:person
+	Message: Value does not have class m:Person
+Constraint Violation in ClassConstraintComponent (http://www.w3.org/ns/shacl#ClassConstraintComponent):
+	Severity: sh:Violation
+	Source Shape: [ sh:class m:Person ; sh:maxCount Literal("1", datatype=xsd:integer) ; sh:minCount Literal("1", datatype=xsd:integer) ; sh:path m:person ]
+	Focus Node: m:AE-00447
+	Value Node: m:unknown-UNKNOWN
+	Result Path: m:person
+	Message: Value does not have class m:Person
+Constraint Violation in SPARQLConstraintComponent (http://www.w3.org/ns/shacl#SPARQLConstraintComponent):
+	Severity: sh:Violation
+	Source Shape: m:AlarmResponseShape
+	Focus Node: m:AR-0005
+	Value Node: m:AR-0005
+	Source Constraint: [ sh:message Literal("Alarm acknowledgment exceeded SOP-004 role-specific SLA.") ; sh:select Literal("PREFIX m: <https://example.org/imaks/> SELECT $this WHERE { $this m:ackDelay ?a; m:maxAllowed ?b. FILTER (?a > ?b || ?a < 0) }") ]
+	Message: Alarm acknowledgment exceeded SOP-004 role-specific SLA.
+Constraint Violation in SPARQLConstraintComponent (http://www.w3.org/ns/shacl#SPARQLConstraintComponent):
+	Severity: sh:Violation
+	Source Shape: m:AlarmResponseShape
+	Focus Node: m:AR-0006
+	Value Node: m:AR-0006
+	Source Constraint: [ sh:message Literal("Alarm acknowledgment exceeded SOP-004 role-specific SLA.") ; sh:select Literal("PREFIX m: <https://example.org/imaks/> SELECT $this WHERE { $this m:ackDelay ?a; m:maxAllowed ?b. FILTER (?a > ?b || ?a < 0) }") ]
+	Message: Alarm acknowledgment exceeded SOP-004 role-specific SLA.
+Constraint Violation in SPARQLConstraintComponent (http://www.w3.org/ns/shacl#SPARQLConstraintComponent):
+	Severity: sh:Violation
+	Source Shape: m:AlarmResponseShape
+	Focus Node: m:AR-0008
+	Value Node: m:AR-0008
+	Source Constraint: [ sh:message Literal("Alarm acknowledgment exceeded SOP-004 role-specific SLA.") ; sh:select Literal("PREFIX m: <https://example.org/imaks/> SELECT $this WHERE { $this m:ackDelay ?a; m:maxAllowed ?b. FILTER (?a > ?b || ?a < 0) }") ]
+	Message: Alarm acknowledgment exceeded SOP-004 role-specific SLA.
+Constraint Violation in SPARQLConstraintComponent (http://www.w3.org/ns/shacl#SPARQLConstraintComponent):
+	Severity: sh:Violation
+	Source Shape: m:AlarmResponseShape
+	Focus Node: m:AR-0012
+	Value Node: m:AR-0012
+	Source Constraint: [ sh:message Literal("Alarm acknowledgment exceeded SOP-004 role-specific SLA.") ; sh:select Literal("PREFIX m: <https://example.org/imaks/> SELECT $this WHERE { $this m:ackDelay ?a; m:maxAllowed ?b. FILTER (?a > ?b || ?a < 0) }") ]
+	Message: Alarm acknowledgment exceeded SOP-004 role-specific SLA.
+Validation Result in SPARQLConstraintComponent (http://www.w3.org/ns/shacl#SPARQLConstraintComponent):
+	Severity: sh:Warning
+	Source Shape: m:CapacityShape
+	Focus Node: m:OCC-16
+	Value Node: m:OCC-16
+	Source Constraint: [ sh:message Literal("Zone capacity exceeded (SOP-004).") ; sh:select Literal("PREFIX m: <https://example.org/imaks/> SELECT $this WHERE { $this m:count ?a; m:capacity ?b. FILTER (?a > ?b) }") ]
+	Message: Zone capacity exceeded (SOP-004).
+Validation Result in SPARQLConstraintComponent (http://www.w3.org/ns/shacl#SPARQLConstraintComponent):
+	Severity: sh:Warning
+	Source Shape: m:CapacityShape
+	Focus Node: m:OCC-17
+	Value Node: m:OCC-17
+	Source Constraint: [ sh:message Literal("Zone capacity exceeded (SOP-004).") ; sh:select Literal("PREFIX m: <https://example.org/imaks/> SELECT $this WHERE { $this m:count ?a; m:capacity ?b. FILTER (?a > ?b) }") ]
+	Message: Zone capacity exceeded (SOP-004).
+Validation Result in SPARQLConstraintComponent (http://www.w3.org/ns/shacl#SPARQLConstraintComponent):
+	Severity: sh:Warning
+	Source Shape: m:CapacityShape
+	Focus Node: m:OCC-19
+	Value Node: m:OCC-19
+	Source Constraint: [ sh:message Literal("Zone capacity exceeded (SOP-004).") ; sh:select Literal("PREFIX m: <https://example.org/imaks/> SELECT $this WHERE { $this m:count ?a; m:capacity ?b. FILTER (?a > ?b) }") ]
+	Message: Zone capacity exceeded (SOP-004).
+Validation Result in SPARQLConstraintComponent (http://www.w3.org/ns/shacl#SPARQLConstraintComponent):
+	Severity: sh:Warning
+	Source Shape: m:CapacityShape
+	Focus Node: m:OCC-20
+	Value Node: m:OCC-20
+	Source Constraint: [ sh:message Literal("Zone capacity exceeded (SOP-004).") ; sh:select Literal("PREFIX m: <https://example.org/imaks/> SELECT $this WHERE { $this m:count ?a; m:capacity ?b. FILTER (?a > ?b) }") ]
+	Message: Zone capacity exceeded (SOP-004).
+Validation Result in SPARQLConstraintComponent (http://www.w3.org/ns/shacl#SPARQLConstraintComponent):
+	Severity: sh:Warning
+	Source Shape: m:CapacityShape
+	Focus Node: m:OCC-21
+	Value Node: m:OCC-21
+	Source Constraint: [ sh:message Literal("Zone capacity exceeded (SOP-004).") ; sh:select Literal("PREFIX m: <https://example.org/imaks/> SELECT $this WHERE { $this m:count ?a; m:capacity ?b. FILTER (?a > ?b) }") ]
+	Message: Zone capacity exceeded (SOP-004).
+Validation Result in SPARQLConstraintComponent (http://www.w3.org/ns/shacl#SPARQLConstraintComponent):
+	Severity: sh:Warning
+	Source Shape: m:CapacityShape
+	Focus Node: m:OCC-22
+	Value Node: m:OCC-22
+	Source Constraint: [ sh:message Literal("Zone capacity exceeded (SOP-004).") ; sh:select Literal("PREFIX m: <https://example.org/imaks/> SELECT $this WHERE { $this m:count ?a; m:capacity ?b. FILTER (?a > ?b) }") ]
+	Message: Zone capacity exceeded (SOP-004).
+Validation Result in SPARQLConstraintComponent (http://www.w3.org/ns/shacl#SPARQLConstraintComponent):
+	Severity: sh:Warning
+	Source Shape: m:CapacityShape
+	Focus Node: m:OCC-23
+	Value Node: m:OCC-23
+	Source Constraint: [ sh:message Literal("Zone capacity exceeded (SOP-004).") ; sh:select Literal("PREFIX m: <https://example.org/imaks/> SELECT $this WHERE { $this m:count ?a; m:capacity ?b. FILTER (?a > ?b) }") ]
+	Message: Zone capacity exceeded (SOP-004).
+Validation Result in SPARQLConstraintComponent (http://www.w3.org/ns/shacl#SPARQLConstraintComponent):
+	Severity: sh:Warning
+	Source Shape: m:CapacityShape
+	Focus Node: m:OCC-24
+	Value Node: m:OCC-24
+	Source Constraint: [ sh:message Literal("Zone capacity exceeded (SOP-004).") ; sh:select Literal("PREFIX m: <https://example.org/imaks/> SELECT $this WHERE { $this m:count ?a; m:capacity ?b. FILTER (?a > ?b) }") ]
+	Message: Zone capacity exceeded (SOP-004).
+Validation Result in SPARQLConstraintComponent (http://www.w3.org/ns/shacl#SPARQLConstraintComponent):
+	Severity: sh:Warning
+	Source Shape: m:CapacityShape
+	Focus Node: m:OCC-25
+	Value Node: m:OCC-25
+	Source Constraint: [ sh:message Literal("Zone capacity exceeded (SOP-004).") ; sh:select Literal("PREFIX m: <https://example.org/imaks/> SELECT $this WHERE { $this m:count ?a; m:capacity ?b. FILTER (?a > ?b) }") ]
+	Message: Zone capacity exceeded (SOP-004).
+Validation Result in SPARQLConstraintComponent (http://www.w3.org/ns/shacl#SPARQLConstraintComponent):
+	Severity: sh:Warning
+	Source Shape: m:CapacityShape
+	Focus Node: m:OCC-26
+	Value Node: m:OCC-26
+	Source Constraint: [ sh:message Literal("Zone capacity exceeded (SOP-004).") ; sh:select Literal("PREFIX m: <https://example.org/imaks/> SELECT $this WHERE { $this m:count ?a; m:capacity ?b. FILTER (?a > ?b) }") ]
+	Message: Zone capacity exceeded (SOP-004).
+Validation Result in SPARQLConstraintComponent (http://www.w3.org/ns/shacl#SPARQLConstraintComponent):
+	Severity: sh:Warning
+	Source Shape: m:CapacityShape
+	Focus Node: m:OCC-27
+	Value Node: m:OCC-27
+	Source Constraint: [ sh:message Literal("Zone capacity exceeded (SOP-004).") ; sh:select Literal("PREFIX m: <https://example.org/imaks/> SELECT $this WHERE { $this m:count ?a; m:capacity ?b. FILTER (?a > ?b) }") ]
+	Message: Zone capacity exceeded (SOP-004).
+Validation Result in SPARQLConstraintComponent (http://www.w3.org/ns/shacl#SPARQLConstraintComponent):
+	Severity: sh:Warning
+	Source Shape: m:CapacityShape
+	Focus Node: m:OCC-5
+	Value Node: m:OCC-5
+	Source Constraint: [ sh:message Literal("Zone capacity exceeded (SOP-004).") ; sh:select Literal("PREFIX m: <https://example.org/imaks/> SELECT $this WHERE { $this m:count ?a; m:capacity ?b. FILTER (?a > ?b) }") ]
+	Message: Zone capacity exceeded (SOP-004).

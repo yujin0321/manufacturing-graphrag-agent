@@ -1,0 +1,11 @@
+{
+  "excluded_classes": [
+    "AnomalyEvent",
+    "SafetyEvent",
+    "AlarmResponse",
+    "AccessEvent",
+    "OccupancySnapshot"
+  ],
+  "triples": 2177,
+  "purpose": "Static context without ground-truth events or future record outcomes"
+}

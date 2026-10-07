@@ -1,0 +1,13 @@
+{
+  "static_conforms": false,
+  "static_triples": 5326,
+  "observation_rows": 211200,
+  "observation_batches": 106,
+  "all_observations_conform": true,
+  "normalized_monitors_edges": 22,
+  "violations": 6,
+  "results": 18,
+  "warnings": 12,
+  "mutation_tests_passed": 9,
+  "source_conflicts": 25
+}

@@ -1,0 +1,56 @@
+[
+  {
+    "name": "valid sensor hierarchy",
+    "expected_conforms": true,
+    "actual_conforms": true,
+    "passed": true
+  },
+  {
+    "name": "inverted thresholds",
+    "expected_conforms": false,
+    "actual_conforms": false,
+    "passed": true
+  },
+  {
+    "name": "missing sensor station",
+    "expected_conforms": false,
+    "actual_conforms": false,
+    "passed": true
+  },
+  {
+    "name": "valid observation",
+    "expected_conforms": true,
+    "actual_conforms": true,
+    "passed": true
+  },
+  {
+    "name": "unit mismatch",
+    "expected_conforms": false,
+    "actual_conforms": false,
+    "passed": true
+  },
+  {
+    "name": "non numeric observation",
+    "expected_conforms": false,
+    "actual_conforms": false,
+    "passed": true
+  },
+  {
+    "name": "event ends before start",
+    "expected_conforms": false,
+    "actual_conforms": false,
+    "passed": true
+  },
+  {
+    "name": "authorization flag contradicts registry",
+    "expected_conforms": false,
+    "actual_conforms": false,
+    "passed": true
+  },
+  {
+    "name": "late alarm acknowledgment",
+    "expected_conforms": false,
+    "actual_conforms": false,
+    "passed": true
+  }
+]

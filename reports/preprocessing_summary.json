@@ -1,0 +1,50 @@
+{
+  "rows": {
+    "access_events": 448,
+    "alarm_response_log": 14,
+    "occupancy_timeseries": 211200,
+    "person_registry": 44,
+    "edges": 341,
+    "ground_truth": 86,
+    "nodes": 115,
+    "nodes_factory": 24,
+    "timeseries_annotated": 211200,
+    "timeseries_raw": 211200
+  },
+  "sensor_rows": 211200,
+  "sensors": 22,
+  "missing_values": {
+    "value": 0,
+    "timestamp": 0,
+    "sensor_id": 0
+  },
+  "quality": {
+    "GOOD": 211175,
+    "UNCERTAIN": 25
+  },
+  "gaps": 0,
+  "labels": {
+    "NORMAL": 209740,
+    "DRIFT": 1055,
+    "OUT_OF_RANGE": 244,
+    "CORRELATED": 121,
+    "STUCK": 25,
+    "SPIKE": 15
+  },
+  "split_rows": {
+    "train": 110880,
+    "validation": 63360,
+    "test": 36960
+  },
+  "split_days": {
+    "2026-01-06": "train",
+    "2026-01-07": "train",
+    "2026-01-08": "validation",
+    "2026-01-09": "test"
+  },
+  "csi_files": 1100,
+  "mqtt_readings": 52800,
+  "pdf_pages": 10,
+  "timezone": "unspecified in source; naive preserved",
+  "policy": "No imputation, no scaling fit on evaluation data; UNCERTAIN flagged; labels excluded from inputs; overnight/shift gaps retained."
+}

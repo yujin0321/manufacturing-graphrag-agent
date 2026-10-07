@@ -1,0 +1,195 @@
+@prefix m: <https://example.org/imaks/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+m:AccessEventShape a sh:NodeShape ;
+    sh:property [ sh:class m:Person ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path m:person ],
+        [ sh:class m:Zone ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path m:zone ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path m:authorized ],
+        [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path m:timestamp ] ;
+    sh:sparql [ sh:message "Access flag conflicts with registry authorization." ;
+            sh:select "PREFIX m: <https://example.org/imaks/> SELECT $this WHERE { $this m:person ?p; m:zone ?z; m:event_type \"ENTRY\"; m:authorized ?a. FILTER ((?a=\"YES\" && NOT EXISTS {?p m:authorized_for ?z}) || (?a=\"NO\" && EXISTS {?p m:authorized_for ?z})) }" ] ;
+    sh:targetClass m:AccessEvent .
+
+m:AlarmResponseShape a sh:NodeShape ;
+    sh:property [ sh:datatype xsd:double ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path m:maxAllowed ],
+        [ sh:class m:AnomalyEvent ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path m:event ],
+        [ sh:datatype xsd:double ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path m:ackDelay ],
+        [ sh:class m:Person ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path m:person ] ;
+    sh:sparql [ sh:message "Alarm acknowledgment exceeded SOP-004 role-specific SLA." ;
+            sh:select "PREFIX m: <https://example.org/imaks/> SELECT $this WHERE { $this m:ackDelay ?a; m:maxAllowed ?b. FILTER (?a > ?b || ?a < 0) }" ] ;
+    sh:targetClass m:AlarmResponse .
+
+m:AnomalyEventShape a sh:NodeShape ;
+    sh:property [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path m:startTs ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path m:anomalyType ],
+        [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path m:endTs ] ;
+    sh:sparql [ sh:message "Event end must not precede start." ;
+            sh:select "PREFIX m: <https://example.org/imaks/> SELECT $this WHERE { $this m:startTs ?a; m:endTs ?b. FILTER (?b < ?a) }" ] ;
+    sh:targetClass m:AnomalyEvent .
+
+m:CapacityShape a sh:NodeShape ;
+    sh:severity sh:Warning ;
+    sh:sparql [ sh:message "Zone capacity exceeded (SOP-004)." ;
+            sh:select "PREFIX m: <https://example.org/imaks/> SELECT $this WHERE { $this m:count ?a; m:capacity ?b. FILTER (?a > ?b) }" ] ;
+    sh:targetClass m:OccupancySnapshot .
+
+m:ComponentShape a sh:NodeShape ;
+    sh:property [ sh:class m:Zone ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path m:locatedIn ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path m:name ] ;
+    sh:targetClass m:Component .
+
+m:ObservationShape a sh:NodeShape ;
+    sh:property [ sh:class m:Sensor ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path m:observedBy ],
+        [ sh:datatype xsd:double ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path m:value ],
+        [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path m:timestamp ],
+        [ sh:datatype xsd:string ;
+            sh:in ( "GOOD" "UNCERTAIN" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path m:quality ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path m:unit ] ;
+    sh:sparql [ sh:message "Observation unit differs from sensor unit." ;
+            sh:select "PREFIX m: <https://example.org/imaks/> SELECT $this WHERE { $this m:observedBy ?s; m:unit ?u. ?s m:unit ?v. FILTER (?u != ?v) }" ] ;
+    sh:targetClass m:Observation .
+
+m:OccupancySnapshotShape a sh:NodeShape ;
+    sh:property [ sh:datatype xsd:integer ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:minInclusive 0 ;
+            sh:path m:capacity ],
+        [ sh:class m:Zone ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path m:zone ],
+        [ sh:datatype xsd:integer ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:minInclusive 0 ;
+            sh:path m:count ],
+        [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path m:timestamp ] ;
+    sh:targetClass m:OccupancySnapshot .
+
+m:PersonShape a sh:NodeShape ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path m:personId ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path m:role ] ;
+    sh:targetClass m:Person .
+
+m:RuleShape a sh:NodeShape ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path m:condition ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path m:ruleId ],
+        [ sh:class m:Document ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path m:derivedFrom ] ;
+    sh:targetClass m:Rule .
+
+m:SensorShape a sh:NodeShape ;
+    sh:property [ sh:datatype xsd:double ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path m:critLo ],
+        [ sh:class m:Component ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path m:monitors ],
+        [ sh:datatype xsd:double ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path m:critHi ],
+        [ sh:datatype xsd:double ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path m:warnHi ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path m:sensorType ],
+        [ sh:datatype xsd:double ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path m:warnLo ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path m:name ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path m:unit ],
+        [ sh:datatype xsd:double ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path m:nominalValue ] ;
+    sh:sparql [ sh:message "Thresholds must strictly satisfy critLo < warnLo < nominal < warnHi < critHi." ;
+            sh:select "PREFIX m: <https://example.org/imaks/> SELECT $this WHERE { $this m:critLo ?a; m:warnLo ?b; m:nominalValue ?c; m:warnHi ?d; m:critHi ?e. FILTER (!(?a < ?b && ?b < ?c && ?c < ?d && ?d < ?e)) }" ] ;
+    sh:targetClass m:Sensor .
+

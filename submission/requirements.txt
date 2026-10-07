@@ -1,0 +1,8 @@
+pandas==3.0.1
+pypdf==6.10.0
+pdfplumber==0.11.9
+pyshacl==0.40.1
+rdflib==7.6.0
+nbformat==5.11.1
+nbclient==0.11.0
+ipykernel==7.4.0

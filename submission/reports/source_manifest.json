@@ -1,0 +1,21 @@
+{
+  "record": "https://zenodo.org/records/20075430",
+  "download_date": "2026-10-05",
+  "md5": "1670c2d42e9495b9b06a79b867fc5d15",
+  "files": {
+    "datasheets\\DS_Electrical_Sensors.pdf": "8692d87e9aa21f4dadd97d56735b40241fccd795b49b3874ad87d9e49c24b3b8",
+    "datasheets\\DS_Mechanical_Sensors.pdf": "79a4e8e381c9e7b761d3bfee3023bbb0d0d439728ef308641d00a7b3e18b0072",
+    "datasheets\\DS_Thermal_Sensors.pdf": "bcc131019cdc8cf65bf34b684d0cd4b4df0a05b4cf0f759298750c044110e2db",
+    "kg_seed\\edges.csv": "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3",
+    "kg_seed\\ground_truth.csv": "856f5bc09ac9559cf999c89d9d9962615be704b3a85d2b785317d665f1bb3a91",
+    "kg_seed\\nodes.csv": "3b78a37ff96c39cd5ef2b1b9bf6019d9c951c7926ca4e708e8cb365b9581964e",
+    "kg_seed\\nodes_factory.csv": "8cdd91a0e711f6e9d1c0c0e258a7b3dfece59b56e0704a722892e032e903fc4f",
+    "rules\\SOP_001_OperatingProcedures.pdf": "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89",
+    "rules\\SOP_002_AlarmThresholds.pdf": "f9cd382e743add947ac0b311be9474ca726a8faf6a31f8b1e0e72a62c6fd5f7e",
+    "rules\\SOP_003_MaintenanceRules.pdf": "89bb8bebc3e0bc6ac9a157a9bc30b6de09fb526711cbc1c9631258444fe865b7",
+    "rules\\SOP_004_PersonnelZoneAccess.pdf": "925d9454d536f4510afb43cf58ca7646c6fd79676c65990bbaca233b56c763d9",
+    "sensors\\mqtt_payloads.json": "348e73f51ab7ea46ef9e4b927204531fa51d97fea7d5e90361113350b03717b0",
+    "sensors\\timeseries_annotated.csv": "1d4ba63d8d5d120adf5c630d03f7d282a363e6dac26a18e5d378a79a76dbe926",
+    "sensors\\timeseries_raw.csv": "6434ebbe990d09a6796a04d6f4b68fea06f5f72f2acd39e90a8ff65c8e5a9075"
+  }
+}

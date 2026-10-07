@@ -1,0 +1,10 @@
+﻿case,expected_conforms,actual_conforms,violations,test_passed
+valid,True,True,0,True
+missing_sensor_id,False,False,1,True
+missing_station,False,False,1,True
+missing_start,False,False,1,True
+missing_sensor_link,False,False,1,True
+end_before_start,False,False,1,True
+open_event,True,True,0,True
+unknown_sensor,False,False,1,True
+static_graph,True,True,0,True

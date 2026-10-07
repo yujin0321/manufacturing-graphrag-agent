@@ -1,0 +1,20 @@
+@prefix ex: <https://example.org/imaks/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+# DEMO EVENT ONLY: not an iMAKS ground-truth event or detector output.
+ex:ST02_SEALING a ex:Station ; ex:stationId "ST02_SEALING" .
+ex:ST02_SEALING_CUR a ex:Sensor ; ex:sensorId "ST02_SEALING_CUR" ;
+    ex:installedAt ex:ST02_SEALING ; ex:unit "A" .
+ex:DEMO_EVENT a ex:AnomalyEvent ;
+    ex:startTime "2026-01-06T07:00:00"^^xsd:dateTime ;
+    ex:endTime "2026-01-06T07:10:00"^^xsd:dateTime ;
+    ex:affectsSensor ex:ST02_SEALING_CUR ; ex:anomalyType "DRIFT" .
+# Manually transcribed example, not an LLM extraction experiment.
+ex:SOP003 a ex:Document ; ex:sourceFile "rules/SOP_003_MaintenanceRules.pdf" .
+ex:EVIDENCE_MAINT02 a ex:Evidence ; ex:inDocument ex:SOP003 ; ex:page 1 ;
+    ex:section "1. Predictive Maintenance Rules; MAINT-02" ;
+    ex:text "CUR DRIFT >1.0 A for 30+ min; Inspect sealing jaw" .
+ex:DEMO_RULE a ex:Rule ; ex:condition "CUR DRIFT >1.0 A for 30+ min" ;
+    ex:appliesToSensor ex:ST02_SEALING_CUR ; ex:hasInspectionStep ex:DEMO_STEP ;
+    ex:supportedBy ex:EVIDENCE_MAINT02 ; ex:reviewStatus "manual_example" .
+ex:DEMO_STEP a ex:InspectionStep ; ex:text "Inspect sealing jaw" ;
+    ex:supportedBy ex:EVIDENCE_MAINT02 .

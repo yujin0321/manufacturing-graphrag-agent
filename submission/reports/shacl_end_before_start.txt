@@ -1,0 +1,16 @@
+Validation Report
+Conforms: False
+Results (1):
+Constraint Violation in SPARQLConstraintComponent (http://www.w3.org/ns/shacl#SPARQLConstraintComponent):
+	Severity: sh:Violation
+	Source Shape: ex:EventOrderShape
+	Focus Node: ex:DEMO_EVENT
+	Value Node: ex:DEMO_EVENT
+	Source Constraint: [ rdf:type sh:SPARQLConstraint ; sh:message Literal("endTime cannot be earlier than startTime.") ; sh:select Literal("
+          SELECT $this WHERE {
+            $this <https://example.org/imaks/startTime> ?s ;
+                  <https://example.org/imaks/endTime> ?e .
+            FILTER (?e < ?s)
+          }
+        ") ]
+	Message: endTime cannot be earlier than startTime.

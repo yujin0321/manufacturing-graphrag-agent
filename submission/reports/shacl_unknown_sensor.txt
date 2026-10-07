@@ -1,0 +1,10 @@
+Validation Report
+Conforms: False
+Results (1):
+Constraint Violation in ClassConstraintComponent (http://www.w3.org/ns/shacl#ClassConstraintComponent):
+	Severity: sh:Violation
+	Source Shape: ex:AffectedSensorProperty
+	Focus Node: ex:DEMO_EVENT
+	Value Node: ex:UNKNOWN_SENSOR
+	Result Path: ex:affectsSensor
+	Message: Event must link to at least one explicitly typed Sensor.

@@ -1,0 +1,33 @@
+{
+  "CQ1_sensor_station": {
+    "query": "PREFIX ex: <https://example.org/imaks/>\nSELECT ?station WHERE { ex:ST02_SEALING_CUR ex:installedAt ?station }",
+    "rows": [
+      [
+        "https://example.org/imaks/ST02_SEALING"
+      ]
+    ],
+    "scope": "manually constructed example; not retrieval performance"
+  },
+  "CQ2_event_time": {
+    "query": "PREFIX ex: <https://example.org/imaks/>\nSELECT ?start ?end WHERE { ex:DEMO_EVENT ex:startTime ?start . OPTIONAL { ex:DEMO_EVENT ex:endTime ?end } }",
+    "rows": [
+      [
+        "2026-01-06T07:00:00",
+        "2026-01-06T07:10:00"
+      ]
+    ],
+    "scope": "manually constructed example; not retrieval performance"
+  },
+  "CQ3_inspection_evidence": {
+    "query": "PREFIX ex: <https://example.org/imaks/>\nSELECT ?step ?text ?file ?page WHERE {\n            ?rule ex:appliesToSensor ex:ST02_SEALING_CUR ; ex:hasInspectionStep ?step .\n            ?step ex:text ?text ; ex:supportedBy ?e . ?e ex:inDocument ?d ; ex:page ?page . ?d ex:sourceFile ?file . }",
+    "rows": [
+      [
+        "https://example.org/imaks/DEMO_STEP",
+        "Inspect sealing jaw",
+        "rules/SOP_003_MaintenanceRules.pdf",
+        "1"
+      ]
+    ],
+    "scope": "manually constructed example; not retrieval performance"
+  }
+}

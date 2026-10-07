@@ -1,4 +1,7 @@
 # 🏭 manufacturing-graphrag-agent
+
+> **성호 브랜치 개인 작업:** [전처리·Ontology·SHACL 산출물 안내](README_성호.md)
+
 > **제조 공정 지식그래프(KG)와 Graph RAG 기반 설비 이상 분석 AI 에이전트**
 
 ## 📌 프로젝트 개요

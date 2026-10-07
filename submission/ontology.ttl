@@ -1,0 +1,34 @@
+@prefix ex: <https://example.org/imaks/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:Ontology a owl:Ontology ; owl:versionInfo "0.1.0 draft" ;
+    rdfs:comment "Team proposal for iMAKS inspection support. Not a supplied official ontology." .
+ex:Station a owl:Class ; rdfs:label "스테이션"@ko .
+ex:Sensor a owl:Class ; rdfs:label "센서"@ko .
+ex:AnomalyEvent a owl:Class ; rdfs:label "탐지된 이상 이벤트"@ko .
+ex:Document a owl:Class ; rdfs:label "출처 문서"@ko .
+ex:Evidence a owl:Class ; rdfs:label "페이지 및 절 단위 근거"@ko .
+ex:Rule a owl:Class ; rdfs:label "출처가 있는 규칙 후보"@ko .
+ex:InspectionStep a owl:Class ; rdfs:label "점검 단계"@ko .
+ex:installedAt a owl:ObjectProperty ; rdfs:domain ex:Sensor ; rdfs:range ex:Station .
+ex:feedsInto a owl:ObjectProperty ; rdfs:domain ex:Station ; rdfs:range ex:Station .
+ex:affectsSensor a owl:ObjectProperty ; rdfs:domain ex:AnomalyEvent ; rdfs:range ex:Sensor .
+ex:appliesToSensor a owl:ObjectProperty ; rdfs:domain ex:Rule ; rdfs:range ex:Sensor .
+ex:hasInspectionStep a owl:ObjectProperty ; rdfs:domain ex:Rule ; rdfs:range ex:InspectionStep .
+# supportedBy can be used for either a rule or a step; no intersecting domains.
+ex:supportedBy a owl:ObjectProperty ; rdfs:range ex:Evidence .
+ex:inDocument a owl:ObjectProperty ; rdfs:domain ex:Evidence ; rdfs:range ex:Document .
+ex:sensorId a owl:DatatypeProperty ; rdfs:domain ex:Sensor ; rdfs:range xsd:string .
+ex:stationId a owl:DatatypeProperty ; rdfs:domain ex:Station ; rdfs:range xsd:string .
+ex:unit a owl:DatatypeProperty ; rdfs:domain ex:Sensor ; rdfs:range xsd:string .
+ex:startTime a owl:DatatypeProperty ; rdfs:domain ex:AnomalyEvent ; rdfs:range xsd:dateTime .
+ex:endTime a owl:DatatypeProperty ; rdfs:domain ex:AnomalyEvent ; rdfs:range xsd:dateTime .
+ex:anomalyType a owl:DatatypeProperty ; rdfs:domain ex:AnomalyEvent ; rdfs:range xsd:string .
+ex:page a owl:DatatypeProperty ; rdfs:domain ex:Evidence ; rdfs:range xsd:integer .
+ex:section a owl:DatatypeProperty ; rdfs:domain ex:Evidence ; rdfs:range xsd:string .
+ex:text a owl:DatatypeProperty ; rdfs:range xsd:string .
+ex:sourceFile a owl:DatatypeProperty ; rdfs:domain ex:Document ; rdfs:range xsd:string .
+ex:condition a owl:DatatypeProperty ; rdfs:domain ex:Rule ; rdfs:range xsd:string .
+ex:reviewStatus a owl:DatatypeProperty ; rdfs:range xsd:string .

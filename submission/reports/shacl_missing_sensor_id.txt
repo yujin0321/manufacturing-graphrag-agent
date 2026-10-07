@@ -1,0 +1,9 @@
+Validation Report
+Conforms: False
+Results (1):
+Constraint Violation in MinCountConstraintComponent (http://www.w3.org/ns/shacl#MinCountConstraintComponent):
+	Severity: sh:Violation
+	Source Shape: ex:SensorIdProperty
+	Focus Node: ex:ST02_SEALING_CUR
+	Result Path: ex:sensorId
+	Message: Sensor must have exactly one nonempty sensorId.

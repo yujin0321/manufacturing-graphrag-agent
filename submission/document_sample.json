@@ -1,0 +1,112 @@
+[
+  {
+    "document_id": "SOP-003",
+    "source_file": "rules/SOP_003_MaintenanceRules.pdf",
+    "page": 1,
+    "text": "Predictive & Corrective Maintenance Rules — Production\nLine A\nDocument: SOP-003 | Rev: 1.5 | Date: 2025-09-01 | Author: Ing. A. Conti — Maintenance Engineering\n1. Predictive Maintenance Rules\nRule ID Sens Station Trigger Action Priority\nor\nMAINT-01 VIB ST04_PACKAGING VIB DRIFT >0.05 mm/s Inspect and lubricate HIGH\nover 60 min bearing\nMAINT-02 CUR ST02_SEALING CUR DRIFT >1.0 A for Inspect sealing jaw HIGH\n30+ min\nMAINT-03 TEN ST03_LABELLING TEN STUCK >10 samples Replace sensor MEDIUM\nMAINT-04 PRS ST01_FILLING PRS <3.3 bar for >15 min Inspect filter and pump MEDIUM\nMAINT-05 TMP SRV01_SERVERRO TMP >25°C for >5 min Activate secondary CRITICAL\nOM cooling\nMAINT-06 TMP WRH01_WAREHOU TMP DRIFT >2°C over 2 h Inspect compressor; CRITICAL\nSE notify QC\nMAINT-07 TMP CHM01_CHEMICALS TMP >20°C for >10 min Emergency ventilation; CRITICAL\nTORAGE notify safety officer\nMAINT-08 HUM RND01_RDLAB HUM DRIFT >10%RH Activate dehumidifier; HIGH\nover 60 min check HVAC drain\n2. Correlated Fault Resolution\nPattern Primary Fault Secondary Effect Resolution\nST02_SEALING-CUR› Sealing motor Conveyor speed drop 1.Verify ST02-CUR trend. 2.Inspect sealing jaw.\nfi ST04_PACKAGING- overload via electrical coupling 3.Reset ST04 speed setpoint.\nSPDfl\nSRV01-TMP› fi Server Room Increased scan time fi 1.Reduce SRV01-TMP <25°C. 2.Verify PLC\nSCADA latency› overheating apparent STUCK heartbeats. 3.Clear STUCK alarms.\nreadings\nWRH01-TMP› fi QC Cold warehouse Product quality risk 1.Restore WRH01-TMP <8°C. 2.Notify QC.\nHOLD drift 3.Place batch on HOLD in ERP.",
+    "layout_text": "                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n           Predictive & Corrective  Maintenance   Rules  — Production             \n                                                                                  \n                                      Line A                                      \n                                                                                  \n         Document: SOP-003 | Rev: 1.5 | Date: 2025-09-01 | Author: Ing. A. Conti — Maintenance Engineering\n                                                                                  \n         1. Predictive Maintenance Rules                                          \n                                                                                  \n            Rule ID Sens Station     Trigger       Action        Priority         \n                   or                                                             \n                                                                                  \n            MAINT-01 VIB ST04_PACKAGING VIB DRIFT >0.05 mm/s Inspect and lubricate HIGH\n                                     over 60 min   bearing                        \n            MAINT-02 CUR ST02_SEALING CUR DRIFT >1.0 A for Inspect sealing jaw HIGH\n                                     30+ min                                      \n            MAINT-03 TEN ST03_LABELLING TEN STUCK >10 samples Replace sensor MEDIUM\n            MAINT-04 PRS ST01_FILLING PRS <3.3 bar for >15 min Inspect filter and pump MEDIUM\n                                                                                  \n            MAINT-05 TMP SRV01_SERVERRO TMP >25°C for >5 min Activate secondary CRITICAL\n                        OM                         cooling                        \n            MAINT-06 TMP WRH01_WAREHOU TMP DRIFT >2°C over 2 h Inspect compressor; CRITICAL\n                        SE                         notify QC                      \n            MAINT-07 TMP CHM01_CHEMICALS TMP >20°C for >10 min Emergency ventilation; CRITICAL\n                        TORAGE                     notify safety officer          \n            MAINT-08 HUM RND01_RDLAB HUM DRIFT >10%RH Activate dehumidifier; HIGH \n                                     over 60 min   check HVAC drain               \n                                                                                  \n                                                                                  \n         2. Correlated Fault Resolution                                           \n                                                                                  \n          Pattern      Primary Fault Secondary Effect Resolution                  \n          ST02_SEALING-CUR› Sealing motor Conveyor speed drop 1.Verify ST02-CUR trend. 2.Inspect sealing jaw.\n          fi ST04_PACKAGING- overload via electrical coupling 3.Reset ST04 speed setpoint.\n          SPDfl                                                                   \n          SRV01-TMP› fi Server Room Increased scan time fi 1.Reduce SRV01-TMP <25°C. 2.Verify PLC\n          SCADA latency› overheating apparent STUCK heartbeats. 3.Clear STUCK alarms.\n                                   readings                                       \n          WRH01-TMP› fi QC Cold warehouse Product quality risk 1.Restore WRH01-TMP <8°C. 2.Notify QC.\n          HOLD         drift                     3.Place batch on HOLD in ERP.    \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  \n                                                                                  ",
+    "tables": [
+      [
+        [
+          "Rule ID",
+          "Sens\nor",
+          "Station",
+          "Trigger",
+          "Action",
+          "Priority"
+        ],
+        [
+          "MAINT-01",
+          "VIB",
+          "ST04_PACKAGING",
+          "VIB DRIFT >0.05 mm/s\nover 60 min",
+          "Inspect and lubricate\nbearing",
+          "HIGH"
+        ],
+        [
+          "MAINT-02",
+          "CUR",
+          "ST02_SEALING",
+          "CUR DRIFT >1.0 A for\n30+ min",
+          "Inspect sealing jaw",
+          "HIGH"
+        ],
+        [
+          "MAINT-03",
+          "TEN",
+          "ST03_LABELLING",
+          "TEN STUCK >10 samples",
+          "Replace sensor",
+          "MEDIUM"
+        ],
+        [
+          "MAINT-04",
+          "PRS",
+          "ST01_FILLING",
+          "PRS <3.3 bar for >15 min",
+          "Inspect filter and pump",
+          "MEDIUM"
+        ],
+        [
+          "MAINT-05",
+          "TMP",
+          "SRV01_SERVERRO\nOM",
+          "TMP >25°C for >5 min",
+          "Activate secondary\ncooling",
+          "CRITICAL"
+        ],
+        [
+          "MAINT-06",
+          "TMP",
+          "WRH01_WAREHOU\nSE",
+          "TMP DRIFT >2°C over 2 h",
+          "Inspect compressor;\nnotify QC",
+          "CRITICAL"
+        ],
+        [
+          "MAINT-07",
+          "TMP",
+          "CHM01_CHEMICALS\nTORAGE",
+          "TMP >20°C for >10 min",
+          "Emergency ventilation;\nnotify safety officer",
+          "CRITICAL"
+        ],
+        [
+          "MAINT-08",
+          "HUM",
+          "RND01_RDLAB",
+          "HUM DRIFT >10%RH\nover 60 min",
+          "Activate dehumidifier;\ncheck HVAC drain",
+          "HIGH"
+        ]
+      ],
+      [
+        [
+          "Pattern",
+          "Primary Fault",
+          "Secondary Effect",
+          "Resolution"
+        ],
+        [
+          "ST02_SEALING-CUR›\nfi ST04_PACKAGING-\nSPDfl",
+          "Sealing motor\noverload",
+          "Conveyor speed drop\nvia electrical coupling",
+          "1.Verify ST02-CUR trend. 2.Inspect sealing jaw.\n3.Reset ST04 speed setpoint."
+        ],
+        [
+          "SRV01-TMP› fi\nSCADA latency›",
+          "Server Room\noverheating",
+          "Increased scan time fi\napparent STUCK\nreadings",
+          "1.Reduce SRV01-TMP <25°C. 2.Verify PLC\nheartbeats. 3.Clear STUCK alarms."
+        ],
+        [
+          "WRH01-TMP› fi QC\nHOLD",
+          "Cold warehouse\ndrift",
+          "Product quality risk",
+          "1.Restore WRH01-TMP <8°C. 2.Notify QC.\n3.Place batch on HOLD in ERP."
+        ]
+      ]
+    ],
+    "method": "pdfplumber; extracted content is not a validated knowledge claim"
+  }
+]

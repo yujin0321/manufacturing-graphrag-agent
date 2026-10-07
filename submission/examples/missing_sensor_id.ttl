@@ -1,0 +1,35 @@
+@prefix ex: <https://example.org/imaks/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:DEMO_EVENT a ex:AnomalyEvent ;
+    ex:affectsSensor ex:ST02_SEALING_CUR ;
+    ex:anomalyType "DRIFT" ;
+    ex:endTime "2026-01-06T07:10:00"^^xsd:dateTime ;
+    ex:startTime "2026-01-06T07:00:00"^^xsd:dateTime .
+
+ex:DEMO_RULE a ex:Rule ;
+    ex:appliesToSensor ex:ST02_SEALING_CUR ;
+    ex:condition "CUR DRIFT >1.0 A for 30+ min" ;
+    ex:hasInspectionStep ex:DEMO_STEP ;
+    ex:reviewStatus "manual_example" ;
+    ex:supportedBy ex:EVIDENCE_MAINT02 .
+
+ex:DEMO_STEP a ex:InspectionStep ;
+    ex:supportedBy ex:EVIDENCE_MAINT02 ;
+    ex:text "Inspect sealing jaw" .
+
+ex:SOP003 a ex:Document ;
+    ex:sourceFile "rules/SOP_003_MaintenanceRules.pdf" .
+
+ex:ST02_SEALING a ex:Station ;
+    ex:stationId "ST02_SEALING" .
+
+ex:EVIDENCE_MAINT02 a ex:Evidence ;
+    ex:inDocument ex:SOP003 ;
+    ex:page 1 ;
+    ex:section "1. Predictive Maintenance Rules; MAINT-02" ;
+    ex:text "CUR DRIFT >1.0 A for 30+ min; Inspect sealing jaw" .
+
+ex:ST02_SEALING_CUR a ex:Sensor ;
+    ex:installedAt ex:ST02_SEALING ;
+    ex:unit "A" .

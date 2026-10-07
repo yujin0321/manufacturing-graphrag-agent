@@ -1,0 +1,73 @@
+{
+  "rows": 211200,
+  "sensors": 22,
+  "stations": 9,
+  "time_start": "2026-01-06 06:00:00",
+  "time_end": "2026-01-09 13:59:30",
+  "dates": [
+    "2026-01-06",
+    "2026-01-07",
+    "2026-01-08",
+    "2026-01-09"
+  ],
+  "missing_raw_cells": 0,
+  "duplicate_keys": 0,
+  "invalid_timestamp": 0,
+  "invalid_value": 0,
+  "raw_annotation_values_identical": true,
+  "node_count": 115,
+  "edge_count": 341,
+  "duplicate_node_ids": 0,
+  "duplicate_edge_rows": 0,
+  "nodes_factory_conflicts": 6,
+  "dangling_edges": 0,
+  "unknown_sensors": [],
+  "unknown_stations": [],
+  "metadata_mismatches": 0,
+  "label_counts": {
+    "NORMAL": 209740,
+    "DRIFT": 1055,
+    "OUT_OF_RANGE": 244,
+    "CORRELATED": 121,
+    "STUCK": 25,
+    "SPIKE": 15
+  },
+  "node_labels": {
+    "Person": 44,
+    "Sensor": 22,
+    "AnomalyEvent": 14,
+    "SafetyEvent": 10,
+    "Component": 9,
+    "Maintenance": 8,
+    "Zone": 7,
+    "System": 1
+  },
+  "edge_types": {
+    "authorized_for": 218,
+    "monitors": 44,
+    "triggers": 22,
+    "contains": 16,
+    "involves": 10,
+    "detected_in": 10,
+    "part_of": 9,
+    "resolves": 8,
+    "feeds_into": 3,
+    "correlates_with": 1
+  },
+  "rules": 86,
+  "rules_by_class": {
+    "OperationalRule": 28,
+    "ThresholdRule": 27,
+    "AccessRule": 20,
+    "MaintenanceRule": 11
+  },
+  "events": 14,
+  "events_with_sensor_links": 14,
+  "static_nodes": 39,
+  "static_edges": 72,
+  "production_rows": 115200,
+  "production_events": 9,
+  "anomaly_rows_outside_event_intervals": 0,
+  "event_interval_rows": 1460,
+  "event_label_mismatches": []
+}

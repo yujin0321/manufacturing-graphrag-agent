@@ -1,0 +1,7 @@
+﻿nodeId,label_factory,name_factory,type,zone,label_seed,name_seed
+N0018,Sensor,ST03_LABELLING_TMP,TMP,Production Area,Sensor,ST03_LABELLING_SPD
+N0019,Sensor,ST03_LABELLING_SPD,SPD,Production Area,Sensor,ST03_LABELLING_TEN
+N0020,Sensor,ST03_LABELLING_POS,POS,Production Area,Sensor,ST03_LABELLING_CNT
+N0022,Sensor,ST04_PACKAGING_TMP,TMP,Production Area,Sensor,ST04_PACKAGING_VIB
+N0023,Sensor,ST04_PACKAGING_SPD,SPD,Production Area,Sensor,ST04_PACKAGING_CUR
+N0024,Sensor,ST04_PACKAGING_CNT,CNT,Production Area,Sensor,ST04_PACKAGING_SPD

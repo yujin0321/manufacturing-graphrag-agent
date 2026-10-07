@@ -1,0 +1,34 @@
+@prefix ex: <https://example.org/imaks/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Five constraint groups; these validate graph structure, not sensor normality.
+ex:SensorShape a sh:NodeShape ; sh:targetClass ex:Sensor ;
+    sh:property ex:SensorIdProperty, ex:StationProperty .
+ex:SensorIdProperty a sh:PropertyShape ; sh:path ex:sensorId ;
+    sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:string ; sh:minLength 1 ;
+    sh:message "Sensor must have exactly one nonempty sensorId." .
+ex:StationProperty a sh:PropertyShape ; sh:path ex:installedAt ;
+    sh:minCount 1 ; sh:maxCount 1 ; sh:class ex:Station ; sh:nodeKind sh:IRI ;
+    sh:message "Sensor must link to exactly one explicitly typed Station." .
+ex:EventShape a sh:NodeShape ; sh:targetClass ex:AnomalyEvent ;
+    sh:property ex:StartProperty, ex:EndProperty, ex:AffectedSensorProperty .
+ex:StartProperty a sh:PropertyShape ; sh:path ex:startTime ;
+    sh:minCount 1 ; sh:maxCount 1 ; sh:datatype xsd:dateTime ;
+    sh:message "Event must have one dateTime startTime." .
+ex:EndProperty a sh:PropertyShape ; sh:path ex:endTime ;
+    sh:maxCount 1 ; sh:datatype xsd:dateTime ;
+    sh:message "Optional endTime must be one dateTime." .
+ex:AffectedSensorProperty a sh:PropertyShape ; sh:path ex:affectsSensor ;
+    sh:minCount 1 ; sh:class ex:Sensor ; sh:nodeKind sh:IRI ;
+    sh:message "Event must link to at least one explicitly typed Sensor." .
+ex:EventOrderShape a sh:NodeShape ; sh:targetClass ex:AnomalyEvent ;
+    sh:sparql [ a sh:SPARQLConstraint ;
+        sh:message "endTime cannot be earlier than startTime." ;
+        sh:select """
+          SELECT $this WHERE {
+            $this <https://example.org/imaks/startTime> ?s ;
+                  <https://example.org/imaks/endTime> ?e .
+            FILTER (?e < ?s)
+          }
+        """ ] .

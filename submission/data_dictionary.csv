@@ -1,0 +1,94 @@
+﻿file,rows,column,dtype,missing,unique,example,meaning
+kg_seed/edges.csv,341,fromId,str,0,100,N0001,관계 시작 노드 키
+kg_seed/edges.csv,341,toId,str,0,71,N0002,관계 끝 노드 키
+kg_seed/edges.csv,341,type,str,0,10,contains,KG 관계/유형; 파일별 의미 확인
+kg_seed/edges.csv,341,ruleRef,str,340,1,RULE-ST02-04,기존 KG의 규칙 참조; 기본 입력 제외
+kg_seed/ground_truth.csv,86,ruleId,str,0,86,RULE-ST01-01,규칙 식별자; 문서 명시 여부와 별개
+kg_seed/ground_truth.csv,86,class,str,0,4,OperationalRule,규칙 클래스
+kg_seed/ground_truth.csv,86,station,str,17,15,ST01_FILLING,규칙 대상 스테이션
+kg_seed/ground_truth.csv,86,sensor,str,25,22,ST01_FILLING_FLW,규칙 대상 센서
+kg_seed/ground_truth.csv,86,sensorType,str,25,9,FLW,측정 유형 코드
+kg_seed/ground_truth.csv,86,condition,str,0,85,FLW MUST be maintained between 112 and 128 L/min,규칙 발동 조건
+kg_seed/ground_truth.csv,86,action,str,1,62,Inspect and notify maintenance,규칙 대응 행동
+kg_seed/ground_truth.csv,86,severity,str,1,5,MANDATORY,정답/규칙 심각도; 파일 맥락에 따라 해석
+kg_seed/ground_truth.csv,86,critHi,float64,36,20,135.0,위험 상한
+kg_seed/ground_truth.csv,86,warnHi,float64,36,20,128.0,경고 상한
+kg_seed/ground_truth.csv,86,critLo,float64,36,18,105.0,위험 하한
+kg_seed/ground_truth.csv,86,warnLo,float64,36,19,112.0,경고 하한
+kg_seed/ground_truth.csv,86,unit,str,10,11,L/min,측정 단위
+kg_seed/ground_truth.csv,86,source,str,0,4,SOP-001,규칙 출처 문서 ID
+kg_seed/nodes.csv,115,action,str,107,8,Inspect and lubricate main bearing,규칙 대응 행동
+kg_seed/nodes.csv,115,anomalyType,str,101,5,SPIKE,정답 이상 유형; 입력 제외
+kg_seed/nodes.csv,115,causedBy,str,114,1,ST02_SEALING_CUR_DRIFT,정답 원인 연결; 입력 제외
+kg_seed/nodes.csv,115,critHi,float64,93,20,30.0,위험 상한
+kg_seed/nodes.csv,115,critLo,float64,93,18,15.0,위험 하한
+kg_seed/nodes.csv,115,csiSubject,str,71,44,soggetto 1,CSI 대상 식별자; 이번 범위 제외
+kg_seed/nodes.csv,115,dept,str,71,5,Production,부서; 이번 범위 제외
+kg_seed/nodes.csv,115,description,str,96,18,Filling station — liquid product filling,설명
+kg_seed/nodes.csv,115,durationMin,float64,101,12,3.0,이벤트 지속시간(분)
+kg_seed/nodes.csv,115,durationSec,float64,105,2,30.0,이벤트 지속시간(초)
+kg_seed/nodes.csv,115,endTs,str,101,13,2026-01-06T08:33:00,이벤트 종료 시각; 주석은 종료 표본 포함
+kg_seed/nodes.csv,115,eventId,str,105,10,SE-001,이벤트 식별자
+kg_seed/nodes.csv,115,gtId,str,101,14,GT-0001,정답 이상 이벤트 식별자
+kg_seed/nodes.csv,115,label,str,0,8,System,KG 노드 클래스
+kg_seed/nodes.csv,115,line,str,114,1,LineaA,생산라인
+kg_seed/nodes.csv,115,magnitude,float64,101,13,28.0,합성 이상 크기; 입력 제외
+kg_seed/nodes.csv,115,name,str,76,39,iMAKS,노드 이름; label별 의미가 다름
+kg_seed/nodes.csv,115,nodeId,str,0,115,N0001,KG 내부 노드 키
+kg_seed/nodes.csv,115,nominalValue,float64,93,19,22.0,센서 기준 측정값
+kg_seed/nodes.csv,115,personId,str,61,44,P001,인물 식별자; 이번 범위 제외
+kg_seed/nodes.csv,115,priority,str,107,3,HIGH,점검 우선순위
+kg_seed/nodes.csv,115,role,str,71,5,operator,역할; 이번 범위 제외
+kg_seed/nodes.csv,115,ruleId,str,107,8,MAINT-01,규칙 식별자; 문서 명시 여부와 별개
+kg_seed/nodes.csv,115,sensorType,str,93,9,TMP,측정 유형 코드
+kg_seed/nodes.csv,115,severity,str,91,2,CRITICAL,정답/규칙 심각도; 파일 맥락에 따라 해석
+kg_seed/nodes.csv,115,shift,str,71,2,Morning,근무 교대
+kg_seed/nodes.csv,115,sourceRule,str,101,11,RULE_TMP_THRESHOLD_CRITICAL,정답 이벤트에 연결된 규칙; 입력 제외
+kg_seed/nodes.csv,115,startTs,str,101,14,2026-01-06T08:30:00,이벤트 시작 시각
+kg_seed/nodes.csv,115,stationType,str,106,9,FILLING,스테이션 유형
+kg_seed/nodes.csv,115,timestamp,str,105,10,2026-01-06T09:00:00,측정 시각; 시간대 정보 없음
+kg_seed/nodes.csv,115,type,str,105,2,FALL,KG 관계/유형; 파일별 의미 확인
+kg_seed/nodes.csv,115,unit,str,93,9,°C,측정 단위
+kg_seed/nodes.csv,115,warnHi,float64,93,20,26.0,경고 상한
+kg_seed/nodes.csv,115,warnLo,float64,93,19,18.0,경고 하한
+kg_seed/nodes.csv,115,zone,str,96,6,Production Area,구역명
+kg_seed/nodes_factory.csv,24,nodeId,str,0,24,N0001,KG 내부 노드 키
+kg_seed/nodes_factory.csv,24,label,str,0,4,System,KG 노드 클래스
+kg_seed/nodes_factory.csv,24,name,str,0,24,iMAKS,노드 이름; label별 의미가 다름
+kg_seed/nodes_factory.csv,24,type,str,0,13,LineaA,KG 관계/유형; 파일별 의미 확인
+kg_seed/nodes_factory.csv,24,zone,str,0,8,-,구역명
+sensors/timeseries_annotated.csv,211200,timestamp,str,0,9600,2026-01-06T06:00:00,측정 시각; 시간대 정보 없음
+sensors/timeseries_annotated.csv,211200,day,int64,0,5,1,원본 시뮬레이션 일차; 실제 timestamp와 교차 확인
+sensors/timeseries_annotated.csv,211200,shift,str,0,2,Morning,근무 교대
+sensors/timeseries_annotated.csv,211200,batch_id,str,0,10,BATCH-2026-01-M,배치 식별자
+sensors/timeseries_annotated.csv,211200,zone,str,0,6,Production Area,구역명
+sensors/timeseries_annotated.csv,211200,station_id,str,0,9,ST01_FILLING,스테이션 식별자; KG Component.name과 연결
+sensors/timeseries_annotated.csv,211200,sensor_id,str,0,22,ST01_FILLING_TMP,센서 식별자; KG Sensor.name과 연결
+sensors/timeseries_annotated.csv,211200,sensor_type,str,0,9,TMP,측정 유형 코드
+sensors/timeseries_annotated.csv,211200,value,float64,0,120738,22.5711,원래 단위의 측정값
+sensors/timeseries_annotated.csv,211200,unit,str,0,9,°C,측정 단위
+sensors/timeseries_annotated.csv,211200,nominal,float64,0,19,22.0,원본 기준 측정값
+sensors/timeseries_annotated.csv,211200,warn_hi,float64,0,20,26.0,경고 상한
+sensors/timeseries_annotated.csv,211200,crit_hi,float64,0,20,30.0,위험 상한
+sensors/timeseries_annotated.csv,211200,warn_lo,float64,0,19,18.0,경고 하한
+sensors/timeseries_annotated.csv,211200,crit_lo,float64,0,18,15.0,위험 하한
+sensors/timeseries_annotated.csv,211200,anomaly_label,str,0,6,NORMAL,정답 이상 유형; 입력 금지
+sensors/timeseries_annotated.csv,211200,severity,str,209740,2,CRITICAL,정답/규칙 심각도; 파일 맥락에 따라 해석
+sensors/timeseries_annotated.csv,211200,alarm_flag,str,0,3,NONE,사전 계산된 경보; 탐지 입력 제외
+sensors/timeseries_annotated.csv,211200,quality,str,0,2,GOOD,측정 품질 메타데이터; 기본 입력 제외
+sensors/timeseries_raw.csv,211200,timestamp,str,0,9600,2026-01-06T06:00:00,측정 시각; 시간대 정보 없음
+sensors/timeseries_raw.csv,211200,day,int64,0,5,1,원본 시뮬레이션 일차; 실제 timestamp와 교차 확인
+sensors/timeseries_raw.csv,211200,shift,str,0,2,Morning,근무 교대
+sensors/timeseries_raw.csv,211200,batch_id,str,0,10,BATCH-2026-01-M,배치 식별자
+sensors/timeseries_raw.csv,211200,zone,str,0,6,Production Area,구역명
+sensors/timeseries_raw.csv,211200,station_id,str,0,9,ST01_FILLING,스테이션 식별자; KG Component.name과 연결
+sensors/timeseries_raw.csv,211200,sensor_id,str,0,22,ST01_FILLING_TMP,센서 식별자; KG Sensor.name과 연결
+sensors/timeseries_raw.csv,211200,sensor_type,str,0,9,TMP,측정 유형 코드
+sensors/timeseries_raw.csv,211200,value,float64,0,120738,22.5711,원래 단위의 측정값
+sensors/timeseries_raw.csv,211200,unit,str,0,9,°C,측정 단위
+sensors/timeseries_raw.csv,211200,nominal,float64,0,19,22.0,원본 기준 측정값
+sensors/timeseries_raw.csv,211200,warn_hi,float64,0,20,26.0,경고 상한
+sensors/timeseries_raw.csv,211200,crit_hi,float64,0,20,30.0,위험 상한
+sensors/timeseries_raw.csv,211200,warn_lo,float64,0,19,18.0,경고 하한
+sensors/timeseries_raw.csv,211200,crit_lo,float64,0,18,15.0,위험 하한
+sensors/timeseries_raw.csv,211200,quality,str,0,2,GOOD,측정 품질 메타데이터; 기본 입력 제외

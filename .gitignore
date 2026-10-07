@@ -3,6 +3,9 @@ __pycache__/
 *.py[codz]
 *$py.class
 
+# macOS
+.DS_Store
+
 # C extensions
 *.so
 
@@ -202,6 +205,9 @@ cython_debug/
 # .vscode/
 # Temporary file for partial code execution
 tempCodeRunnerFile.py
+
+# Generated preprocessing outputs
+processed/
 
 # Ruff stuff:
 .ruff_cache/

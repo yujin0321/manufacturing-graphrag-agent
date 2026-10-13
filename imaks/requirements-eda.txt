@@ -1,0 +1,9 @@
+pandas
+numpy
+matplotlib
+ipykernel
+nbformat
+nbclient
+pypdf
+pypdfium2
+Pillow

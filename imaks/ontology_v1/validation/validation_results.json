@@ -1,0 +1,1825 @@
+{
+  "record_date": "2026-10-06",
+  "date_source": "caller supplied; host clock not inferred",
+  "engine_versions": {
+    "rdflib": "7.1.4",
+    "pyshacl": "0.30.1",
+    "owlrl": "7.1.4",
+    "html5rdf": "1.2.1",
+    "prettytable": "3.18.0",
+    "pyparsing": "3.3.3",
+    "packaging": "26.3",
+    "wcwidth": "0.8.4"
+  },
+  "meta_shacl_passed": true,
+  "inference": "none",
+  "remote_imports": false,
+  "actual_graphs_passed": 2,
+  "passing_examples": 5,
+  "failing_examples_rejected": 5,
+  "ml_document_rule_guard_rejected": true,
+  "competency_queries_passed": 5,
+  "results": [
+    {
+      "input": "ml_metadata.ttl",
+      "conforms": true,
+      "violations": []
+    },
+    {
+      "input": "rule_context.ttl",
+      "conforms": true,
+      "violations": []
+    },
+    {
+      "input": "examples/C1_pass.ttl",
+      "expected_conforms": true,
+      "conforms": true,
+      "description": "센서 ID·유형·단위와 소속 스테이션이 있다.",
+      "violations": []
+    },
+    {
+      "input": "examples/C1_fail.ttl",
+      "expected_conforms": false,
+      "conforms": false,
+      "description": "ST02 TMP 센서의 unit을 제거한다.",
+      "violations": [
+        {
+          "focus_node": "https://example.org/imaks/id/N0014",
+          "path": "https://example.org/imaks/v1#unit",
+          "component": "http://www.w3.org/ns/shacl#MinCountConstraintComponent",
+          "message": "Less than 1 values on inst:N0014->im:unit",
+          "source_shape": "anonymous property shape"
+        }
+      ]
+    },
+    {
+      "input": "examples/C2_pass.ttl",
+      "expected_conforms": true,
+      "conforms": true,
+      "description": "큰 이상값도 올바른 시각·수치형·센서·단위이면 통과한다.",
+      "violations": []
+    },
+    {
+      "input": "examples/C2_fail.ttl",
+      "expected_conforms": false,
+      "conforms": false,
+      "description": "TMP 관측 단위를 °C에서 A로 바꾼다.",
+      "violations": [
+        {
+          "focus_node": "https://example.org/imaks/id/example/observation",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C2 관측 단위가 연결된 센서 단위와 다릅니다.",
+            "C2 관측 형식·센서·단위. 이상 관측을 임계값으로 거부하지 않습니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#ObservationShape"
+        }
+      ]
+    },
+    {
+      "input": "examples/C3_pass.ttl",
+      "expected_conforms": true,
+      "conforms": true,
+      "description": "실재 문서와 p.1, 원문 인용·조건·대응·추출 방식이 있다.",
+      "violations": []
+    },
+    {
+      "input": "examples/C3_fail.ttl",
+      "expected_conforms": false,
+      "conforms": false,
+      "description": "2쪽 문서의 sourcePage를 99로 바꾼다.",
+      "violations": [
+        {
+          "focus_node": "https://example.org/imaks/id/rule/RULE-ST02-02",
+          "component": "http://www.w3.org/ns/shacl#OrConstraintComponent",
+          "message": "C3 규칙과 문서의 출처 메타데이터",
+          "source_shape": "https://example.org/imaks/v1#RuleShape"
+        }
+      ]
+    },
+    {
+      "input": "examples/C4_pass.ttl",
+      "expected_conforms": true,
+      "conforms": true,
+      "description": "165 < 175 < 185 < 195 < 210 °C 순서의 임계값이 있다.",
+      "violations": []
+    },
+    {
+      "input": "examples/C4_fail.ttl",
+      "expected_conforms": false,
+      "conforms": false,
+      "description": "critLo를 200으로 바꿔 하한 순서를 깨뜨린다.",
+      "violations": [
+        {
+          "focus_node": "https://example.org/imaks/id/rule/SOP002-THRESHOLD-ST02_SEALING_TMP",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C4 SOP 임계값의 순서·단위. 관측값의 정상 범위 검사가 아닙니다.",
+            "C4 critLo < warnLo < nominal < warnHi < critHi 순서를 만족해야 합니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#ThresholdRuleShape"
+        }
+      ]
+    },
+    {
+      "input": "examples/C5_pass.ttl",
+      "expected_conforms": true,
+      "conforms": true,
+      "description": "ML 메타데이터 그래프에 정답·문서·임계값이 없다.",
+      "violations": []
+    },
+    {
+      "input": "examples/C5_fail.ttl",
+      "expected_conforms": false,
+      "conforms": false,
+      "description": "gt_id=GT-0007을 입력 그래프에 추가한다.",
+      "violations": [
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 GT-#### 평가 사건 식별자가 입력 그래프에 있습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#gt_id",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 입력 그래프에 금지 라벨·알람·정답·시간 라벨 predicate가 있습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        }
+      ]
+    },
+    {
+      "input": "rule_context with ml_metadata profile",
+      "expected_conforms": false,
+      "conforms": false,
+      "violations": [
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 Rule·ThresholdRule·Document 인스턴스를 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 Rule·ThresholdRule·Document 인스턴스를 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 Rule·ThresholdRule·Document 인스턴스를 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 Rule·ThresholdRule·Document 인스턴스를 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 Rule·ThresholdRule·Document 인스턴스를 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 Rule·ThresholdRule·Document 인스턴스를 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 Rule·ThresholdRule·Document 인스턴스를 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 Rule·ThresholdRule·Document 인스턴스를 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 Rule·ThresholdRule·Document 인스턴스를 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 Rule·ThresholdRule·Document 인스턴스를 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 Rule·ThresholdRule·Document 인스턴스를 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 Rule·ThresholdRule·Document 인스턴스를 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 Rule·ThresholdRule·Document 인스턴스를 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 Rule·ThresholdRule·Document 인스턴스를 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 Rule·ThresholdRule·Document 인스턴스를 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 Rule·ThresholdRule·Document 인스턴스를 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 Rule·ThresholdRule·Document 인스턴스를 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 Rule·ThresholdRule·Document 인스턴스를 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 Rule·ThresholdRule·Document 인스턴스를 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 Rule·ThresholdRule·Document 인스턴스를 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 Rule·ThresholdRule·Document 인스턴스를 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 Rule·ThresholdRule·Document 인스턴스를 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 Rule·ThresholdRule·Document 인스턴스를 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 Rule·ThresholdRule·Document 인스턴스를 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 Rule·ThresholdRule·Document 인스턴스를 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 Rule·ThresholdRule·Document 인스턴스를 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 Rule·ThresholdRule·Document 인스턴스를 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 Rule·ThresholdRule·Document 인스턴스를 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 Rule·ThresholdRule·Document 인스턴스를 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 Rule·ThresholdRule·Document 인스턴스를 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 Rule·ThresholdRule·Document 인스턴스를 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#critHi",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#critHi",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#critHi",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#critHi",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#critHi",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#critHi",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#critHi",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#critHi",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#critHi",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#critHi",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#critHi",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#critHi",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#critHi",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#critHi",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#critHi",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#critHi",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#critHi",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#critHi",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#critHi",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#critHi",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#critLo",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#critLo",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#critLo",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#critLo",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#critLo",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#critLo",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#critLo",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#critLo",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#critLo",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#critLo",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#critLo",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#critLo",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#critLo",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#critLo",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#critLo",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#critLo",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#critLo",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#critLo",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#documentText",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#documentText",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#documentText",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#documentText",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#documentText",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#documentText",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#documentText",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominal",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominal",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominal",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominal",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominal",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominal",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominal",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominal",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominal",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominal",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominal",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominal",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominal",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominal",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominal",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominal",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominal",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominal",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominal",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominalText",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominalText",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominalText",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominalText",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominalText",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominalText",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominalText",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominalText",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominalText",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominalText",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominalText",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominalText",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominalText",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominalText",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominalText",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominalText",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominalText",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominalText",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominalText",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominalText",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominalText",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominalText",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominalTolerance",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominalTolerance",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominalTolerance",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominalTolerance",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominalTolerance",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominalTolerance",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominalTolerance",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominalTolerance",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominalTolerance",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominalTolerance",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominalTolerance",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominalTolerance",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#nominalTolerance",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#warnHi",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#warnHi",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#warnHi",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#warnHi",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#warnHi",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#warnHi",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#warnHi",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#warnHi",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#warnHi",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#warnHi",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#warnHi",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#warnHi",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#warnHi",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#warnHi",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#warnHi",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#warnHi",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#warnHi",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#warnHi",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#warnHi",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#warnHi",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#warnLo",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#warnLo",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#warnLo",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#warnLo",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#warnLo",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#warnLo",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#warnLo",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#warnLo",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#warnLo",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#warnLo",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#warnLo",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#warnLo",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#warnLo",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#warnLo",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#warnLo",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#warnLo",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#warnLo",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#warnLo",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        },
+        {
+          "focus_node": "https://example.org/imaks/v1#InputData",
+          "path": "https://example.org/imaks/v1#warnLo",
+          "component": "http://www.w3.org/ns/shacl#SPARQLConstraintComponent",
+          "message": [
+            "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다.",
+            "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."
+          ],
+          "source_shape": "https://example.org/imaks/v1#InputGraphShape"
+        }
+      ]
+    }
+  ]
+}

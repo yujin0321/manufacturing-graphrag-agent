@@ -1,0 +1,15 @@
+_:cb0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/shacl#ValidationReport> .
+_:cb0 <http://www.w3.org/ns/shacl#conforms> "false"^^<http://www.w3.org/2001/XMLSchema#boolean> .
+_:cb0 <http://www.w3.org/ns/shacl#result> _:cb64440da566085463d92078e381599f6904e0adad4d0a1899f8a52cc9f264ea8 .
+_:cb64440da566085463d92078e381599f6904e0adad4d0a1899f8a52cc9f264ea8 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/shacl#ValidationResult> .
+_:cb64440da566085463d92078e381599f6904e0adad4d0a1899f8a52cc9f264ea8 <http://www.w3.org/ns/shacl#focusNode> <https://example.org/imaks/id/example/observation> .
+_:cb64440da566085463d92078e381599f6904e0adad4d0a1899f8a52cc9f264ea8 <http://www.w3.org/ns/shacl#resultMessage> "C2 관측 단위가 연결된 센서 단위와 다릅니다." .
+_:cb64440da566085463d92078e381599f6904e0adad4d0a1899f8a52cc9f264ea8 <http://www.w3.org/ns/shacl#resultMessage> "C2 관측 형식·센서·단위. 이상 관측을 임계값으로 거부하지 않습니다." .
+_:cb64440da566085463d92078e381599f6904e0adad4d0a1899f8a52cc9f264ea8 <http://www.w3.org/ns/shacl#resultSeverity> <http://www.w3.org/ns/shacl#Violation> .
+_:cb64440da566085463d92078e381599f6904e0adad4d0a1899f8a52cc9f264ea8 <http://www.w3.org/ns/shacl#sourceConstraint> _:cbdc93ebba612174a22721ae3622138e74a57f5736adddcf3308ea8f82ac933b07 .
+_:cb64440da566085463d92078e381599f6904e0adad4d0a1899f8a52cc9f264ea8 <http://www.w3.org/ns/shacl#sourceConstraintComponent> <http://www.w3.org/ns/shacl#SPARQLConstraintComponent> .
+_:cb64440da566085463d92078e381599f6904e0adad4d0a1899f8a52cc9f264ea8 <http://www.w3.org/ns/shacl#sourceShape> <https://example.org/imaks/v1#ObservationShape> .
+_:cb64440da566085463d92078e381599f6904e0adad4d0a1899f8a52cc9f264ea8 <http://www.w3.org/ns/shacl#value> "A" .
+_:cbdc93ebba612174a22721ae3622138e74a57f5736adddcf3308ea8f82ac933b07 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/shacl#SPARQLConstraint> .
+_:cbdc93ebba612174a22721ae3622138e74a57f5736adddcf3308ea8f82ac933b07 <http://www.w3.org/ns/shacl#message> "C2 관측 단위가 연결된 센서 단위와 다릅니다."@ko .
+_:cbdc93ebba612174a22721ae3622138e74a57f5736adddcf3308ea8f82ac933b07 <http://www.w3.org/ns/shacl#select> "\n            PREFIX im: <https://example.org/imaks/v1#>\n            SELECT $this ?value WHERE {\n                $this im:observedBy ?sensor ; im:unit ?value .\n                ?sensor im:unit ?sensorUnit .\n                FILTER (?value != ?sensorUnit)\n            }\n        " .

@@ -1,0 +1,15 @@
+_:cb0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/shacl#ValidationReport> .
+_:cb0 <http://www.w3.org/ns/shacl#conforms> "false"^^<http://www.w3.org/2001/XMLSchema#boolean> .
+_:cb0 <http://www.w3.org/ns/shacl#result> _:cb5c1b0fbd8438404ee8dc96aca69bc6b5cea8b3bb155fbfe88def20f305b46ccf .
+_:cb185bfc6ffaa6fdd5e5696c32dfeb9a4eb626e6a2b00aeeb19f210c7f77549ce7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/shacl#SPARQLConstraint> .
+_:cb185bfc6ffaa6fdd5e5696c32dfeb9a4eb626e6a2b00aeeb19f210c7f77549ce7 <http://www.w3.org/ns/shacl#message> "C4 critLo < warnLo < nominal < warnHi < critHi 순서를 만족해야 합니다."@ko .
+_:cb185bfc6ffaa6fdd5e5696c32dfeb9a4eb626e6a2b00aeeb19f210c7f77549ce7 <http://www.w3.org/ns/shacl#select> "\n            PREFIX im: <https://example.org/imaks/v1#>\n            SELECT $this WHERE {\n                $this im:critLo ?critLo ; im:warnLo ?warnLo ; im:nominal ?nominal ; im:warnHi ?warnHi ; im:critHi ?critHi .\n                FILTER (!(?critLo < ?warnLo && ?warnLo < ?nominal && ?nominal < ?warnHi && ?warnHi < ?critHi))\n            }\n        " .
+_:cb5c1b0fbd8438404ee8dc96aca69bc6b5cea8b3bb155fbfe88def20f305b46ccf <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/shacl#ValidationResult> .
+_:cb5c1b0fbd8438404ee8dc96aca69bc6b5cea8b3bb155fbfe88def20f305b46ccf <http://www.w3.org/ns/shacl#focusNode> <https://example.org/imaks/id/rule/SOP002-THRESHOLD-ST02_SEALING_TMP> .
+_:cb5c1b0fbd8438404ee8dc96aca69bc6b5cea8b3bb155fbfe88def20f305b46ccf <http://www.w3.org/ns/shacl#resultMessage> "C4 SOP 임계값의 순서·단위. 관측값의 정상 범위 검사가 아닙니다." .
+_:cb5c1b0fbd8438404ee8dc96aca69bc6b5cea8b3bb155fbfe88def20f305b46ccf <http://www.w3.org/ns/shacl#resultMessage> "C4 critLo < warnLo < nominal < warnHi < critHi 순서를 만족해야 합니다." .
+_:cb5c1b0fbd8438404ee8dc96aca69bc6b5cea8b3bb155fbfe88def20f305b46ccf <http://www.w3.org/ns/shacl#resultSeverity> <http://www.w3.org/ns/shacl#Violation> .
+_:cb5c1b0fbd8438404ee8dc96aca69bc6b5cea8b3bb155fbfe88def20f305b46ccf <http://www.w3.org/ns/shacl#sourceConstraint> _:cb185bfc6ffaa6fdd5e5696c32dfeb9a4eb626e6a2b00aeeb19f210c7f77549ce7 .
+_:cb5c1b0fbd8438404ee8dc96aca69bc6b5cea8b3bb155fbfe88def20f305b46ccf <http://www.w3.org/ns/shacl#sourceConstraintComponent> <http://www.w3.org/ns/shacl#SPARQLConstraintComponent> .
+_:cb5c1b0fbd8438404ee8dc96aca69bc6b5cea8b3bb155fbfe88def20f305b46ccf <http://www.w3.org/ns/shacl#sourceShape> <https://example.org/imaks/v1#ThresholdRuleShape> .
+_:cb5c1b0fbd8438404ee8dc96aca69bc6b5cea8b3bb155fbfe88def20f305b46ccf <http://www.w3.org/ns/shacl#value> <https://example.org/imaks/id/rule/SOP002-THRESHOLD-ST02_SEALING_TMP> .

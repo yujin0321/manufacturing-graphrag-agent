@@ -1,0 +1,51 @@
+@prefix im: <https://example.org/imaks/v1#> .
+@prefix inst: <https://example.org/imaks/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+inst:N0013 a im:Station ;
+    im:hasSensor inst:N0014 ;
+    im:identifier "ST02_SEALING" ;
+    im:locatedIn inst:N0002 ;
+    im:name "ST02_SEALING" ;
+    im:partOf inst:N0001 ;
+    im:sourceLabel "Component" ;
+    im:stationType "SEALING" .
+
+<https://example.org/imaks/id/rule/RULE-ST02-02> a im:Rule ;
+    im:appliesToSensor inst:N0014 ;
+    im:conditionText "TMP > 210°C (CRITICAL)" ;
+    im:extractionMethod "manual source-grounded example; not LLM extraction" ;
+    im:identifier "RULE-ST02-02" ;
+    im:responseText "emergency stop ST02, ST03, ST04." ;
+    im:sourceDocument <https://example.org/imaks/id/document/SOP-001> ;
+    im:sourcePage "1"^^xsd:positiveInteger ;
+    im:sourceQuote "RULE-ST02-02: TMP > 210°C (CRITICAL) — emergency stop ST02, ST03, ST04." .
+
+im:InputData a im:InputGraph ;
+    im:inputProfile "rule_context" .
+
+inst:N0001 a im:System ;
+    im:identifier "N0001" ;
+    im:line "LineaA" ;
+    im:name "iMAKS" ;
+    im:sourceLabel "System" .
+
+inst:N0002 a im:Zone ;
+    im:identifier "N0002" ;
+    im:name "Production Area" ;
+    im:sourceLabel "Zone" .
+
+<https://example.org/imaks/id/document/SOP-001> a im:Document ;
+    im:identifier "SOP-001" ;
+    im:pageCount "2"^^xsd:positiveInteger ;
+    im:sourcePath "rules/SOP_001_OperatingProcedures.pdf" ;
+    im:sourceSha256 "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89" ;
+    im:title "Standard Operating Procedures — Production Line A" .
+
+inst:N0014 a im:Sensor ;
+    im:identifier "ST02_SEALING_TMP" ;
+    im:name "ST02_SEALING_TMP" ;
+    im:sensorType "TMP" ;
+    im:sourceLabel "Sensor" ;
+    im:unit "°C" .
+

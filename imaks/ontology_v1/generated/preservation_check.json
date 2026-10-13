@@ -1,0 +1,14 @@
+{
+  "protected_files": 322,
+  "changed_files": [],
+  "protected_directories": [
+    "preprocessed/common_v1",
+    "experiments/common_v1_detection",
+    "experiments/robust_windows_v1",
+    "experiments/window_sweep_v1",
+    "pipeline_outputs",
+    "experiments/common_v1_detection_window3",
+    "experiments/window3_features_v1",
+    "pipeline_outputs_window3"
+  ]
+}

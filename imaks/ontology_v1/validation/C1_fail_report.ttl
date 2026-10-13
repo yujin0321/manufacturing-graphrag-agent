@@ -1,0 +1,15 @@
+_:cb0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/shacl#ValidationReport> .
+_:cb0 <http://www.w3.org/ns/shacl#conforms> "false"^^<http://www.w3.org/2001/XMLSchema#boolean> .
+_:cb0 <http://www.w3.org/ns/shacl#result> _:cb542ea2fdbbcc632726b3b75be6ee1f6de45569055d98570600c954233fc83912 .
+_:cb542ea2fdbbcc632726b3b75be6ee1f6de45569055d98570600c954233fc83912 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/shacl#ValidationResult> .
+_:cb542ea2fdbbcc632726b3b75be6ee1f6de45569055d98570600c954233fc83912 <http://www.w3.org/ns/shacl#focusNode> <https://example.org/imaks/id/N0014> .
+_:cb542ea2fdbbcc632726b3b75be6ee1f6de45569055d98570600c954233fc83912 <http://www.w3.org/ns/shacl#resultMessage> "Less than 1 values on inst:N0014->im:unit" .
+_:cb542ea2fdbbcc632726b3b75be6ee1f6de45569055d98570600c954233fc83912 <http://www.w3.org/ns/shacl#resultPath> <https://example.org/imaks/v1#unit> .
+_:cb542ea2fdbbcc632726b3b75be6ee1f6de45569055d98570600c954233fc83912 <http://www.w3.org/ns/shacl#resultSeverity> <http://www.w3.org/ns/shacl#Violation> .
+_:cb542ea2fdbbcc632726b3b75be6ee1f6de45569055d98570600c954233fc83912 <http://www.w3.org/ns/shacl#sourceConstraintComponent> <http://www.w3.org/ns/shacl#MinCountConstraintComponent> .
+_:cb542ea2fdbbcc632726b3b75be6ee1f6de45569055d98570600c954233fc83912 <http://www.w3.org/ns/shacl#sourceShape> _:cbe0f0cefb6356031d0bcbbf5d7bde3622c2aaceb251c9f14ce134cf7dbed734c2 .
+_:cbe0f0cefb6356031d0bcbbf5d7bde3622c2aaceb251c9f14ce134cf7dbed734c2 <http://www.w3.org/ns/shacl#datatype> <http://www.w3.org/2001/XMLSchema#string> .
+_:cbe0f0cefb6356031d0bcbbf5d7bde3622c2aaceb251c9f14ce134cf7dbed734c2 <http://www.w3.org/ns/shacl#maxCount> "1"^^<http://www.w3.org/2001/XMLSchema#integer> .
+_:cbe0f0cefb6356031d0bcbbf5d7bde3622c2aaceb251c9f14ce134cf7dbed734c2 <http://www.w3.org/ns/shacl#minCount> "1"^^<http://www.w3.org/2001/XMLSchema#integer> .
+_:cbe0f0cefb6356031d0bcbbf5d7bde3622c2aaceb251c9f14ce134cf7dbed734c2 <http://www.w3.org/ns/shacl#minLength> "1"^^<http://www.w3.org/2001/XMLSchema#integer> .
+_:cbe0f0cefb6356031d0bcbbf5d7bde3622c2aaceb251c9f14ce134cf7dbed734c2 <http://www.w3.org/ns/shacl#path> <https://example.org/imaks/v1#unit> .

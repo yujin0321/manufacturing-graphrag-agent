@@ -1,0 +1,157 @@
+{
+  "type": "object",
+  "properties": {
+    "document_id": {
+      "type": "string"
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "identifier": {
+            "type": "string"
+          },
+          "ruleClass": {
+            "type": "string",
+            "enum": [
+              "OperationalRule",
+              "ThresholdRule",
+              "MaintenanceRule",
+              "AccessRule"
+            ]
+          },
+          "conditionText": {
+            "type": "string"
+          },
+          "responseText": {
+            "type": "string"
+          },
+          "unit_id": {
+            "type": "string"
+          },
+          "sourceQuote": {
+            "type": "string"
+          },
+          "sensorIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "actionTargets": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "numeric": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "nominal": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "warnLo": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "warnHi": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "critLo": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "critHi": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "nominal",
+              "warnLo",
+              "warnHi",
+              "critLo",
+              "critHi"
+            ],
+            "additionalProperties": false
+          },
+          "priority": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "identifier",
+          "ruleClass",
+          "conditionText",
+          "responseText",
+          "unit_id",
+          "sourceQuote",
+          "sensorIds",
+          "actionTargets",
+          "numeric",
+          "priority"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "coverage": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "unit_id": {
+            "type": "string"
+          },
+          "decision": {
+            "type": "string",
+            "enum": [
+              "included",
+              "excluded"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          },
+          "rule_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "unit_id",
+          "decision",
+          "reason",
+          "rule_ids"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "document_id",
+    "rules",
+    "coverage"
+  ],
+  "additionalProperties": false
+}

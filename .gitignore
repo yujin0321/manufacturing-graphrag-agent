@@ -220,6 +220,7 @@ __marimo__/
 imaks_data/
 /preprocessed/
 /evaluation/
+/kg_build/
 # reports/: 구현·검증 보고서(*_impl.md, *_verify.md)만 추적하고 초안·비교·백업은 로컬 전용
 /reports/*
 !/reports/.gitkeep

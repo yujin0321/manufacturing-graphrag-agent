@@ -124,3 +124,10 @@
 3. (완료 2026-10-07) 확정 내용을 `CLAUDE.md` 2·3·4장에 반영. 수정 전 백업: `reports/CLAUDE.md.before_2026-10-07.bak`. handoff 문서 반영은 아직.
 4. 가이드라인 단계: 1단계 Competency Questions → 2단계 전처리 → 3단계 온톨로지 → 4단계 SHACL.
 5. 0단계 마무리: `.gitignore`의 UTF-16 깨진 줄 정리, `CLAUDE.md` 커밋(작업 완료 후 한꺼번에).
+
+
+## 2026-10-14 — API 없이 가능한 KG 승격 및 첫 진단 대조
+
+고정 추출 172건을 변경하지 않고 seed 구조를 RDF로 변환했다. Station 9, Sensor 22, Rule 172, Document 7, Provenance 274; SHACL 통과. MAINT 8개 원본 ID와 관계 16행 출처를 보존했다. 규칙 정답 CSV는 평가 모듈에서만 읽고 KG 구축에는 사용하지 않았다.
+
+SBERT/로컬 모델이 없어 주지표 F1_content는 계산하지 않았다. 사전 고정한 별도 F1_lexical_proxy는 0.4651(60/86 정답 연결, 예측 172건); 의미 정확도 점수로 부르지 않는다. 수치 보충 진단은 88값 중84 일치이며 4개는 원문-정답 속도 한계값 차이다. 원본 예측과 원문을 수정하지 않았다. 새 테스트 10개/실산출물 검증 10개 통과. Neo4j 서버 적재·API 실험·사람 검토는 남았다. 상세 재현 및 한계는 docs/kg_followup.md와 reports/kg_followup_2026-10-14.md. 원문/정답/실데이터는 Git에 넣지 않는다.

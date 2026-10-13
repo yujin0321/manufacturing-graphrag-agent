@@ -24,6 +24,8 @@ iMAKS(제조 공정 합성 데이터셋)로 지식그래프(KG)를 직접 구축
 | ⑨ | Agent 답변: 2-에이전트(추론 생성 + 자기검증), Premise→Inference→Conclusion→Evidence 구조 |
 | ⑩ | 평가: Baseline RAG vs GraphRAG ablation, RAGAS, 관계 유형별 Confusion Matrix |
 
+실행 상태(2026-10-14, `2nd-yewon`): ③ 및 Rule·Document 승격은 로컬 RDF 생성/SHACL 검증 완료. ④는 새 대화에서 직접 추출한 고정 172건을 사용하며 API 실험·사람 검토는 미실행. ⑤는 원본 86건의 ID/텍스트 진단 대조를 수행했으나, SBERT F1_content는 로컬 모델 부재로 미실행이다. Neo4j 서버에는 아직 적재하지 않았다. 상세: `reports/kg_followup_2026-10-14.md`.
+
 일정 기준: 10/1~10/7 전처리·온톨로지·SHACL, 10/8~10/14 KG 구축, 10/15~10/31 베이스라인·탐지기, 11/1~11/10 GraphRAG+Agent, 11/12~11/16 평가.
 
 ## 3. 확정된 결정 (임의로 바꾸지 말 것)

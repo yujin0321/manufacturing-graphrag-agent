@@ -31,3 +31,8 @@
 5. 사람 검토는 별도 기록하며, 승인된 정답 평가 절차가 생긴 경우에만 평가한다.
 
 현재 패키지는 학습된 모델이나 API 추출 성능 결과물이 아니다. 추출 건수를 성공 기준으로 삼지 않는다.
+
+
+## 2026-10-14 후속 작업
+
+API 실험 보류는 유지한다. 별도 `imaks_kg.kg.build` 모듈로 기존 대화의 고정 추출을 Rule·Document RDF로 승격하고 SHACL 검증했다. `imaks_kg.evaluation.offline`로 정답 86건에 대한 진단 대조를 수행했다. 이는 API 응답 검증기나 SBERT F1_content 완성을 의미하지 않는다. [후속 보고서](../reports/kg_followup_2026-10-14.md) 참조.

@@ -2,6 +2,7 @@
 __pycache__/
 *.py[codz]
 *$py.class
+.DS_Store
 
 # C extensions
 *.so
@@ -219,6 +220,7 @@ __marimo__/
 .venv/
 imaks_data/
 /preprocessed/
+/processed/
 /evaluation/
 /kg_build/
 # reports/: 구현·검증 보고서(*_impl.md, *_verify.md)만 추적하고 초안·비교·백업은 로컬 전용

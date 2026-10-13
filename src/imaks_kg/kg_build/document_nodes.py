@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 
 from imaks_kg.common.io_utils import read_csv_rows, write_jsonl
+from imaks_kg.common.provenance import sha256_text
 from imaks_kg.kg_build.preprocessed_abox import PreprocessedLayout
 from imaks_kg.settings import REPO_ROOT
 
@@ -11,6 +12,45 @@ from imaks_kg.settings import REPO_ROOT
 def load_jsonl(path):
     with Path(path).open(encoding="utf-8") as f:
         return [json.loads(line) for line in f if line.strip()]
+
+
+def manifest_by_doc(layout: PreprocessedLayout):
+    _, rows = read_csv_rows(layout.doc_manifest)
+    out = {}
+    for r in rows:
+        doc_id = r.get("doc_id") or r.get("document_id")
+        if doc_id:
+            out[doc_id] = r
+    return out
+
+
+def load_chunks(layout: PreprocessedLayout):
+    records = load_jsonl(layout.chunks_jsonl)
+    if not records:
+        return []
+    if "chunk_id" in records[0]:
+        return records
+
+    docs = manifest_by_doc(layout)
+    chunks = []
+    for idx, r in enumerate(records, 1):
+        doc_id = r.get("document_id") or r.get("doc_id", "")
+        text = r.get("text", "")
+        doc = docs.get(doc_id, {})
+        chunks.append({
+            "chunk_id": f"{doc_id}:p{r.get('page', '')}:preview{r.get('extraction_order', idx)}",
+            "document_id": doc_id,
+            "page": r.get("page", ""),
+            "kind": "text",
+            "section": r.get("section_title", ""),
+            "text": text,
+            "char_start": 0,
+            "char_end": len(text),
+            "table_id": None,
+            "text_sha256": sha256_text(text),
+            "source_file_sha256": doc.get("file_sha256", ""),
+        })
+    return chunks
 
 
 def build_documents(layout: PreprocessedLayout):
@@ -54,7 +94,7 @@ def provenance_from_chunk(chunk):
 
 
 def build_provenance(layout: PreprocessedLayout):
-    return [provenance_from_chunk(c) for c in load_jsonl(layout.chunks_jsonl)]
+    return [provenance_from_chunk(c) for c in load_chunks(layout)]
 
 
 def build(preprocessed_root=None, out_dir=None):

@@ -25,13 +25,25 @@ class PreprocessedLayout:
 
     @classmethod
     def detect(cls, root=None):
-        return cls(Path(root) if root else PREPROCESSED)
+        if root:
+            return cls(Path(root))
+        candidates = [
+            PREPROCESSED / "final_v1",
+            PREPROCESSED,
+            REPO_ROOT / "processed",
+        ]
+        for candidate in candidates:
+            if candidate.exists():
+                return cls(candidate)
+        return cls(PREPROCESSED)
 
     @property
     def sensor_input(self):
         candidates = [
             self.root / "inputs" / "sensors" / "timeseries_rule_input.csv",
             self.root / "sensors" / "input" / "ts_input.csv",
+            self.root / "sensors" / "timeseries_rule_reference.csv",
+            self.root / "sensors" / "timeseries_input_clean.csv",
         ]
         return _first_existing(candidates)
 
@@ -48,15 +60,29 @@ class PreprocessedLayout:
 
     @property
     def doc_manifest(self):
-        return self.documents_dir / "doc_manifest.csv"
+        candidates = [
+            self.documents_dir / "doc_manifest.csv",
+            self.documents_dir / "document_index.csv",
+        ]
+        return _first_existing(candidates)
 
     @property
     def chunks_jsonl(self):
-        return self.documents_dir / "chunks.jsonl"
+        candidates = [
+            self.documents_dir / "chunks.jsonl",
+            self.documents_dir / "document_extraction_preview.jsonl",
+        ]
+        return _first_existing(candidates)
+
+    @property
+    def pages_jsonl(self):
+        path = self.documents_dir / "pages.jsonl"
+        return path if path.exists() else None
 
     @property
     def tables_jsonl(self):
-        return self.documents_dir / "tables.jsonl"
+        path = self.documents_dir / "tables.jsonl"
+        return path if path.exists() else None
 
 
 def _first_existing(paths):

@@ -8,12 +8,14 @@ IMAKS_DATA = REPO_ROOT / "imaks_data"
 RAW_SENSORS_DIR = IMAKS_DATA / "sensors"
 RAW_RULES_DIR = IMAKS_DATA / "rules"
 RAW_DATASHEETS_DIR = IMAKS_DATA / "datasheets"
+RAW_KG_SEED_DIR = IMAKS_DATA / "kg_seed"
 
 # 산출물
 PREPROCESSED = REPO_ROOT / "preprocessed"
 SENSORS_OUT = PREPROCESSED / "sensors"
 DOCUMENTS_OUT = PREPROCESSED / "documents"
 EVALUATION_DIR = REPO_ROOT / "evaluation"  # 평가 전용 폴더
+KG_BUILD = REPO_ROOT / "kg_build"  # ③ 이후 KG 구축 산출물(git 제외)
 
 # 점검에 쓰는 금지어 목록(코드에 단어를 적지 않고 파일에서 읽는다)
 FORBIDDEN_COLUMNS_FILE = REPO_ROOT / "harness" / "forbidden_columns.txt"

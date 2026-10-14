@@ -1,0 +1,8 @@
+@prefix im: <https://example.org/imaks/v1#> .
+@prefix inst: <https://example.org/imaks/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# F1 실패(S1): Sensor가 어떤 Station에도 연결되지 않았다(minCount 위반).
+# 값은 모두 시험용 가상 값이다.
+
+inst:ST02_SEALING_CUR a im:Sensor ; im:identifier "ST02_SEALING_CUR" ; im:sensorType "CUR" ; im:unit "A" .

@@ -216,3 +216,15 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Local source data, credentials, models and full extraction/evaluation artifacts
+/imaks_data/
+/preprocessed/
+/evaluation/
+/artifacts/
+/results/
+/kg_build/
+.env
+.env.*
+!.env.example
+/.venv/

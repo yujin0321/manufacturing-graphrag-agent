@@ -1,0 +1,22 @@
+@prefix im: <https://example.org/imaks/v1#> .
+@prefix inst: <https://example.org/imaks/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# P5 통과(S5): 점수 0.4 후보도 SHACL은 통과시킨다. 0.6 미만 제외 필터는 SHACL이 아니라 적재 스크립트 몫이다.
+# 값은 모두 시험용 가상 값이다.
+
+inst:ST02_SEALING a im:Station ; im:identifier "ST02_SEALING" ; im:stationType "SEALING" ;
+    im:zone "Production Area" ; im:hasSensor inst:ST02_SEALING_CUR .
+inst:ST02_SEALING_CUR a im:Sensor ; im:identifier "ST02_SEALING_CUR" ; im:sensorType "CUR" ; im:unit "A" .
+inst:ST04_PACKAGING a im:Station ; im:identifier "ST04_PACKAGING" ; im:stationType "PACKAGING" ;
+    im:zone "Production Area" ; im:hasSensor inst:ST04_PACKAGING_SPD .
+inst:ST04_PACKAGING_SPD a im:Sensor ; im:identifier "ST04_PACKAGING_SPD" ; im:sensorType "SPD" ; im:unit "m/s" .
+inst:win_a a im:Provenance ; im:sourceKind "timeseries" ;
+    im:fileName "imaks_data/sensors/timeseries_raw.csv" ; im:sensorId "ST04_PACKAGING_SPD" ;
+    im:intervalStart "2026-01-08T09:45:00"^^xsd:dateTime ; im:intervalEnd "2026-01-08T10:15:00"^^xsd:dateTime ;
+    im:fileSha256 "7fcd076cf22524f815cc0b050538e819072b4ba29408bf97867b55f7e638c1c1" ; im:windowId "ST04_PACKAGING_SPD@win_a" .
+inst:link_candidate a im:CausalLink ; im:hasCause inst:ST02_SEALING ; im:hasEffect inst:ST04_PACKAGING ;
+    im:hasLag 30 ;
+    im:hasEvidence "TimeseriesCorrelation" ;
+    im:windowId "ST04_PACKAGING_SPD@win_a" ;
+    im:likelihoodScore 0.4 .

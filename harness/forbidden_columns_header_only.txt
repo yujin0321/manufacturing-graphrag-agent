@@ -1,0 +1,13 @@
+# CSV 헤더 컬럼명과 JSON/JSONL 키에서만 전체 일치(대소문자 무시)로 검사하는 목록.
+# 코드·문서의 본문 텍스트에는 적용하지 않는다(day 같은 흔한 단어의 오탐 방지).
+quality
+status
+alarms
+day
+shift
+batch_id
+nominal
+warn_hi
+warn_lo
+crit_hi
+crit_lo

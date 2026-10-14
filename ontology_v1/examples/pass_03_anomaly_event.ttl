@@ -1,0 +1,16 @@
+@prefix im: <https://example.org/imaks/v1#> .
+@prefix inst: <https://example.org/imaks/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# P3 통과(S2): AnomalyEvent가 하위 유형(Drift) 하나이고 triggers로 Sensor와 연결된다(⑦ 이후 형태).
+# 값은 모두 시험용 가상 값이다.
+
+inst:ST02_SEALING a im:Station ; im:identifier "ST02_SEALING" ; im:stationType "SEALING" ;
+    im:zone "Production Area" ; im:hasSensor inst:ST02_SEALING_CUR .
+inst:ST02_SEALING_CUR a im:Sensor ; im:identifier "ST02_SEALING_CUR" ; im:sensorType "CUR" ; im:unit "A" .
+inst:ST02_SEALING_CUR im:triggers inst:event_example .
+inst:event_example a im:Drift ; im:windowId "ST02_SEALING_CUR@win_event" .
+inst:win_event a im:Provenance ; im:sourceKind "timeseries" ; im:fileName "imaks_data/sensors/timeseries_raw.csv" ;
+    im:sensorId "ST02_SEALING_CUR" ; im:intervalStart "2026-01-08T08:00:00"^^xsd:dateTime ;
+    im:intervalEnd "2026-01-08T09:00:00"^^xsd:dateTime ; im:fileSha256 "7fcd076cf22524f815cc0b050538e819072b4ba29408bf97867b55f7e638c1c1" ;
+    im:windowId "ST02_SEALING_CUR@win_event" .

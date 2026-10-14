@@ -1,0 +1,7 @@
+# Resolved direct dependencies; complete environment in artifacts/stage3/environment.json
+rdflib==7.6.0
+pyshacl==0.31.0
+pdfplumber==0.11.9
+numpy==2.3.5
+scipy==1.18.1
+sentence-transformers==5.7.0

@@ -1,0 +1,24 @@
+{
+  "response_sha256": "97df22bfc2ea7f26bd2ffeb90f164c778a853480a8f49e34100a603bc041cf4e",
+  "predictions_sha256": "e5101e3d20f79b7d28b87f47e48d274217ce6e550060fdf3a2636f63c18a61a6",
+  "request_sha256": "d4bb2ae9d79a39cd34e4c52e5beb9298fd2715e2272d49cda1e1e0e734064622",
+  "automatic_predictions": 56,
+  "kg_eligible_predictions": 54,
+  "validation_issues": 2,
+  "exact_duplicates": 0,
+  "human_corrected": false,
+  "evaluation_policy": "all deduplicated automatic predictions, including evidence-invalid ones",
+  "partial": true,
+  "completed_documents": [
+    "DS-ELEC-3300",
+    "SOP-001",
+    "SOP-003",
+    "SOP-004"
+  ],
+  "missing_documents": [
+    "DS-MECH-4400",
+    "DS-THERM-2200",
+    "SOP-002"
+  ],
+  "validated_predictions_sha256": "de89ec992bf5beebc53c54a2984e24f700edf2246f2d3065555b776754b34f55"
+}

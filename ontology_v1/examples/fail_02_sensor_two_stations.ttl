@@ -1,0 +1,12 @@
+@prefix im: <https://example.org/imaks/v1#> .
+@prefix inst: <https://example.org/imaks/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# F2 실패(S1): Sensor가 Station 2개에 연결되었다(maxCount 위반, 원본 양방향 중복 정리 누락을 가정).
+# 값은 모두 시험용 가상 값이다.
+
+inst:ST02_SEALING a im:Station ; im:identifier "ST02_SEALING" ; im:stationType "SEALING" ;
+    im:zone "Production Area" ; im:hasSensor inst:ST02_SEALING_CUR .
+inst:ST02_SEALING_CUR a im:Sensor ; im:identifier "ST02_SEALING_CUR" ; im:sensorType "CUR" ; im:unit "A" .
+inst:ST04_PACKAGING a im:Station ; im:identifier "ST04_PACKAGING" ; im:stationType "PACKAGING" ;
+    im:zone "Production Area" ; im:hasSensor inst:ST02_SEALING_CUR .

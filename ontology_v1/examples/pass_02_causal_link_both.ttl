@@ -1,0 +1,34 @@
+@prefix im: <https://example.org/imaks/v1#> .
+@prefix inst: <https://example.org/imaks/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# P2 통과(S3~S8): SOP 규칙 근거와 시계열 근거를 모두 가진 인과 후보(Both).
+# 값은 모두 시험용 가상 값이다.
+
+inst:ST02_SEALING a im:Station ; im:identifier "ST02_SEALING" ; im:stationType "SEALING" ;
+    im:zone "Production Area" ; im:hasSensor inst:ST02_SEALING_CUR .
+inst:ST02_SEALING_CUR a im:Sensor ; im:identifier "ST02_SEALING_CUR" ; im:sensorType "CUR" ; im:unit "A" .
+inst:ST04_PACKAGING a im:Station ; im:identifier "ST04_PACKAGING" ; im:stationType "PACKAGING" ;
+    im:zone "Production Area" ; im:hasSensor inst:ST04_PACKAGING_SPD .
+inst:ST04_PACKAGING_SPD a im:Sensor ; im:identifier "ST04_PACKAGING_SPD" ; im:sensorType "SPD" ; im:unit "m/s" .
+inst:SOP-001 a im:Document ; im:identifier "SOP-001" ;
+    im:title "Standard Operating Procedures (fixture)" ;
+    im:sourcePath "imaks_data/rules/SOP_001_OperatingProcedures.pdf" ;
+    im:sourceSha256 "7b02388e88f4493643b2d02630ca1be6973bc041f28bc10434bc6a117a704e46" ; im:pageCount "2"^^xsd:positiveInteger .
+inst:RULE-ST02-04 a im:OperationalRule ; im:identifier "RULE-ST02-04" ;
+    im:sourceDocument inst:SOP-001 ; im:hasProvenance inst:prov_rule ;
+    im:appliesToSensor inst:ST02_SEALING_CUR ;
+    im:conditionText "fixture condition" ; im:responseText "fixture response" .
+inst:prov_rule a im:Provenance ; im:sourceKind "document" ; im:page "1"^^xsd:positiveInteger ;
+    im:charStart "0"^^xsd:nonNegativeInteger ; im:charEnd "100"^^xsd:nonNegativeInteger ;
+    im:textSha256 "1a9e6c5e5d92d265ca9acfd000b1f4540f6ea7593fad7d6ef991b7b9ee0ebf2f" ; im:sourceQuote "fixture quote" .
+inst:win_a a im:Provenance ; im:sourceKind "timeseries" ;
+    im:fileName "imaks_data/sensors/timeseries_raw.csv" ; im:sensorId "ST04_PACKAGING_SPD" ;
+    im:intervalStart "2026-01-08T09:45:00"^^xsd:dateTime ; im:intervalEnd "2026-01-08T10:15:00"^^xsd:dateTime ;
+    im:fileSha256 "7fcd076cf22524f815cc0b050538e819072b4ba29408bf97867b55f7e638c1c1" ; im:windowId "ST04_PACKAGING_SPD@win_a" .
+inst:link_a a im:CausalLink ; im:hasCause inst:ST02_SEALING ; im:hasEffect inst:ST04_PACKAGING ;
+    im:hasLag 90 ;
+    im:hasEvidence "Both" ;
+    im:ruleIds "RULE-ST02-04" ;
+    im:windowId "ST04_PACKAGING_SPD@win_a" ;
+    im:likelihoodScore 0.72 .

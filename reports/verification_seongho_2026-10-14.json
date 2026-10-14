@@ -1,0 +1,17 @@
+{
+  "tests": 67,
+  "passed": true,
+  "new_vs_base": {
+    "base": 50,
+    "seongho": 17
+  },
+  "seed_shacl": true,
+  "llm_only_shacl": true,
+  "supplemented_shacl": true,
+  "independent_agent_verification": false,
+  "source_inventory_files": 1118,
+  "omitted_os_files": 3,
+  "original_dataset_hashes_match": true,
+  "api_key_published": false,
+  "individual_extraction_results_published": false
+}

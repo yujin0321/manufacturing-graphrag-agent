@@ -1,0 +1,9 @@
+{
+  "method": "deterministic_source_table",
+  "not_llm_predictions": true,
+  "rules": 27,
+  "threshold_sensor_rows": 22,
+  "anomaly_definition_rows": 5,
+  "source": "SOP-002 only; catalog IDs for verification",
+  "ground_truth_read": false
+}

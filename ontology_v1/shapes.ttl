@@ -1,0 +1,277 @@
+@prefix im: <https://example.org/imaks/v1#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# SHACL 제약 v1. 설계 근거는 work_log.md의 D1~D6, 설계 6건, 열린 쟁점 5건, CLAUDE.md 3·4장이다.
+# 핵심 규칙 5개: S1 센서 소속, S2 이벤트-센서 연결, S3 causallyAffects는 Station 간만, S4 hasEvidence, S5 점수 범위.
+# 추가 규칙: S6 근거 번호표 일치(적재 검증과 같은 규칙), S7 출처(Provenance) 필수 필드, S8 Rule·Document 출처.
+# 0.6 미만 제외와 이벤트당 상위 3개 채택은 SHACL이 아니라 KG 적재 스크립트가 처리한다.
+# 입력 누수 검사는 금지어를 담아야 하므로 guards/leakage_shapes.ttl에 따로 둔다.
+# 검증은 ontology.ttl을 ont_graph로 주되 추론은 끈다(pyshacl의 inference="none").
+# 이유: ont_graph는 하위 클래스 관계를 데이터에 섞어 sh:targetClass·sh:class가 하위 유형을 인식하게 한다.
+#       반면 RDFS 추론(inference="rdfs")은 range 선언으로 값에 타입을 붙여서(예: hasEffect의 값이 Sensor여도 Station으로 간주)
+#       S3 같은 sh:class 검사를 무력화한다.
+
+# ---------------------------------------------------------------- S1: 센서 소속
+
+im:SensorShape a sh:NodeShape ;
+    sh:targetClass im:Sensor ;
+    sh:property [
+        sh:path [ sh:inversePath im:hasSensor ] ;
+        sh:class im:Station ;
+        sh:minCount 1 ; sh:maxCount 1 ;
+        sh:message "S1: Sensor는 hasSensor로 정확히 1개의 Station에 연결되어야 합니다."@ko ] ;
+    sh:property [
+        sh:path im:identifier ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ;
+        sh:message "S1: Sensor는 identifier가 정확히 1개 있어야 합니다."@ko ] ;
+    sh:property [
+        sh:path im:sensorType ; sh:minCount 1 ; sh:maxCount 1 ;
+        sh:in ( "TMP" "PRS" "FLW" "CUR" "SPD" "TEN" "CNT" "VIB" "HUM" ) ;
+        sh:message "S1: sensorType은 TMP, PRS, FLW, CUR, SPD, TEN, CNT, VIB, HUM 중 하나여야 합니다."@ko ] ;
+    sh:property [
+        sh:path im:unit ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ;
+        sh:message "S1: Sensor는 unit이 정확히 1개 있어야 합니다."@ko ] .
+
+im:StationShape a sh:NodeShape ;
+    sh:targetClass im:Station ;
+    sh:property [
+        sh:path im:identifier ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ;
+        sh:message "S1: Station은 identifier가 정확히 1개 있어야 합니다."@ko ] ;
+    sh:property [
+        sh:path im:stationType ; sh:minCount 1 ; sh:maxCount 1 ;
+        sh:in ( "FILLING" "SEALING" "LABELLING" "PACKAGING" "SERVERROOM" "WAREHOUSE" "CHEMICALSTORAGE" "RDLAB" "CAFETERIA" ) ;
+        sh:message "S1: stationType이 허용된 9개 값 중 하나여야 합니다."@ko ] ;
+    sh:property [
+        sh:path im:zone ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ;
+        sh:message "S1: Station은 zone이 정확히 1개 있어야 합니다."@ko ] .
+
+# ---------------------------------------------------------------- S2: 이상 이벤트-센서 연결 (⑦ 이후)
+
+im:AnomalyEventShape a sh:NodeShape ;
+    sh:targetClass im:AnomalyEvent ;
+    sh:property [
+        sh:path [ sh:inversePath im:triggers ] ;
+        sh:class im:Sensor ;
+        sh:minCount 1 ;
+        sh:message "S2: AnomalyEvent는 triggers로 최소 1개의 Sensor와 연결되어야 합니다."@ko ] ;
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "S2: AnomalyEvent는 Spike, Drift, StuckSensor, OutOfRange, Correlated 중 정확히 하나의 하위 유형이어야 합니다."@ko ;
+        sh:select """
+            PREFIX im: <https://example.org/imaks/v1#>
+            SELECT $this WHERE {
+                {
+                    FILTER NOT EXISTS {
+                        $this a ?t .
+                        FILTER (?t IN (im:Spike, im:Drift, im:StuckSensor, im:OutOfRange, im:Correlated))
+                    }
+                }
+                UNION
+                {
+                    $this a ?t1 , ?t2 .
+                    FILTER (?t1 IN (im:Spike, im:Drift, im:StuckSensor, im:OutOfRange, im:Correlated))
+                    FILTER (?t2 IN (im:Spike, im:Drift, im:StuckSensor, im:OutOfRange, im:Correlated))
+                    FILTER (?t1 != ?t2)
+                }
+            }
+        """ ] .
+
+# ---------------------------------------------------------------- S3·S4·S5: causallyAffects의 검증 변환(CausalLink)
+
+im:CausalLinkShape a sh:NodeShape ;
+    sh:targetClass im:CausalLink ;
+    # S3: 원인·결과는 Station이고 서로 달라야 한다(자기 루프 금지)
+    sh:property [
+        sh:path im:hasCause ; sh:class im:Station ; sh:minCount 1 ; sh:maxCount 1 ;
+        sh:disjoint im:hasEffect ;
+        sh:message "S3: causallyAffects의 원인(hasCause)은 Station 1개여야 하며 결과와 같을 수 없습니다."@ko ] ;
+    sh:property [
+        sh:path im:hasEffect ; sh:class im:Station ; sh:minCount 1 ; sh:maxCount 1 ;
+        sh:message "S3: causallyAffects의 결과(hasEffect)는 Station 1개여야 합니다."@ko ] ;
+    # S4: 근거 종류
+    sh:property [
+        sh:path im:hasEvidence ; sh:minCount 1 ; sh:maxCount 1 ;
+        sh:in ( "TimeseriesCorrelation" "SOPRule" "Both" ) ;
+        sh:message "S4: hasEvidence는 TimeseriesCorrelation, SOPRule, Both 중 하나가 정확히 1개 있어야 합니다."@ko ] ;
+    # S5: 점수와 시차
+    sh:property [
+        sh:path im:likelihoodScore ;
+        sh:or ( [ sh:datatype xsd:decimal ] [ sh:datatype xsd:integer ] ) ;
+        sh:minInclusive 0.0 ; sh:maxInclusive 1.0 ; sh:minCount 1 ; sh:maxCount 1 ;
+        sh:message "S5: likelihoodScore는 0.0~1.0 사이의 수 1개여야 합니다."@ko ] ;
+    sh:property [
+        sh:path im:hasLag ;
+        sh:or ( [ sh:datatype xsd:decimal ] [ sh:datatype xsd:integer ] ) ;
+        sh:minInclusive 0 ; sh:maxCount 1 ;
+        sh:message "S5: hasLag는 0 이상(분 단위)의 수여야 합니다."@ko ] ;
+    # S6: 근거 번호표 일치 (적재 검증과 같은 규칙)
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "S6: hasEvidence가 SOPRule 또는 Both이면 ruleIds가 1개 이상 있어야 합니다."@ko ;
+        sh:select """
+            PREFIX im: <https://example.org/imaks/v1#>
+            SELECT $this WHERE {
+                $this im:hasEvidence ?e .
+                FILTER (?e IN ("SOPRule", "Both"))
+                FILTER NOT EXISTS { $this im:ruleIds ?r }
+            }
+        """ ] ;
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "S6: hasEvidence가 TimeseriesCorrelation 또는 Both이면 windowId가 1개 있어야 합니다."@ko ;
+        sh:select """
+            PREFIX im: <https://example.org/imaks/v1#>
+            SELECT $this WHERE {
+                $this im:hasEvidence ?e .
+                FILTER (?e IN ("TimeseriesCorrelation", "Both"))
+                FILTER NOT EXISTS { $this im:windowId ?w }
+            }
+        """ ] ;
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "S6: ruleIds의 번호가 실제 Rule의 identifier로 존재하지 않습니다."@ko ;
+        sh:select """
+            PREFIX im: <https://example.org/imaks/v1#>
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+            SELECT $this ?value WHERE {
+                $this im:ruleIds ?value .
+                FILTER NOT EXISTS { ?rule a ?type ; im:identifier ?value . ?type rdfs:subClassOf* im:Rule }
+            }
+        """ ] ;
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "S6: windowId가 등록된 후보 구간(timeseries Provenance)에 없습니다."@ko ;
+        sh:select """
+            PREFIX im: <https://example.org/imaks/v1#>
+            SELECT $this ?value WHERE {
+                $this im:windowId ?value .
+                FILTER NOT EXISTS { ?p a im:Provenance ; im:sourceKind "timeseries" ; im:windowId ?value }
+            }
+        """ ] .
+
+# causallyAffects를 직접 트리플로 쓴 경우에도 Station 간만 허용한다(변환을 빠뜨린 경우 방어)
+im:CausallyAffectsDirectShape a sh:NodeShape ;
+    sh:targetSubjectsOf im:causallyAffects ;
+    sh:class im:Station ;
+    sh:property [
+        sh:path im:causallyAffects ; sh:class im:Station ;
+        sh:message "S3: causallyAffects는 Station 사이에서만 허용됩니다."@ko ] ;
+    sh:message "S3: causallyAffects의 주어는 Station이어야 합니다."@ko .
+
+# ---------------------------------------------------------------- S7: 출처(Provenance) 필수 필드
+
+im:ProvenanceShape a sh:NodeShape ;
+    sh:targetClass im:Provenance ;
+    sh:property [
+        sh:path im:sourceKind ; sh:minCount 1 ; sh:maxCount 1 ;
+        sh:in ( "document" "seedCsv" "timeseries" ) ;
+        sh:message "S7: sourceKind는 document, seedCsv, timeseries 중 하나가 정확히 1개 있어야 합니다."@ko ] ;
+    sh:property [
+        sh:path im:textSha256 ; sh:datatype xsd:string ; sh:pattern "^[0-9a-f]{64}$" ;
+        sh:message "S7: textSha256은 소문자 16진수 64자리여야 합니다."@ko ] ;
+    sh:property [
+        sh:path im:fileSha256 ; sh:datatype xsd:string ; sh:pattern "^[0-9a-f]{64}$" ;
+        sh:message "S7: fileSha256은 소문자 16진수 64자리여야 합니다."@ko ] ;
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "S7: document 유래 출처는 page, textSha256, (charStart와 charEnd) 또는 (tableId, rowIndex, colIndex)가 필요합니다."@ko ;
+        sh:select """
+            PREFIX im: <https://example.org/imaks/v1#>
+            SELECT $this WHERE {
+                $this im:sourceKind "document" .
+                {
+                    FILTER NOT EXISTS { $this im:page ?v }
+                }
+                UNION
+                {
+                    FILTER NOT EXISTS { $this im:textSha256 ?v }
+                }
+                UNION
+                {
+                    FILTER NOT EXISTS { $this im:charStart ?a . $this im:charEnd ?b }
+                    FILTER NOT EXISTS { $this im:tableId ?t . $this im:rowIndex ?r . $this im:colIndex ?c }
+                }
+            }
+        """ ] ;
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "S7: seedCsv 유래 출처는 fileName과 sourceRowId가 필요합니다."@ko ;
+        sh:select """
+            PREFIX im: <https://example.org/imaks/v1#>
+            SELECT $this WHERE {
+                $this im:sourceKind "seedCsv" .
+                {
+                    FILTER NOT EXISTS { $this im:fileName ?v }
+                }
+                UNION
+                {
+                    FILTER NOT EXISTS { $this im:sourceRowId ?v }
+                }
+            }
+        """ ] ;
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "S7: timeseries 유래 출처는 fileName, sensorId, intervalStart, intervalEnd, fileSha256, windowId가 필요합니다."@ko ;
+        sh:select """
+            PREFIX im: <https://example.org/imaks/v1#>
+            SELECT $this WHERE {
+                $this im:sourceKind "timeseries" .
+                {
+                    FILTER NOT EXISTS { $this im:fileName ?v }
+                }
+                UNION
+                {
+                    FILTER NOT EXISTS { $this im:sensorId ?v }
+                }
+                UNION
+                {
+                    FILTER NOT EXISTS { $this im:intervalStart ?v }
+                }
+                UNION
+                {
+                    FILTER NOT EXISTS { $this im:intervalEnd ?v }
+                }
+                UNION
+                {
+                    FILTER NOT EXISTS { $this im:fileSha256 ?v }
+                }
+                UNION
+                {
+                    FILTER NOT EXISTS { $this im:windowId ?v }
+                }
+            }
+        """ ] .
+
+# ---------------------------------------------------------------- S8: Rule·Document 출처
+
+im:RuleShape a sh:NodeShape ;
+    sh:targetClass im:Rule ;
+    sh:property [
+        sh:path im:identifier ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ;
+        sh:message "S8: Rule은 identifier가 정확히 1개 있어야 합니다."@ko ] ;
+    sh:property [
+        sh:path im:sourceDocument ; sh:class im:Document ; sh:minCount 1 ; sh:maxCount 1 ;
+        sh:message "S8: Rule은 sourceDocument로 정확히 1개의 Document를 가리켜야 합니다."@ko ] ;
+    sh:property [
+        sh:path im:hasProvenance ; sh:class im:Provenance ; sh:minCount 1 ;
+        sh:message "S8: Rule은 hasProvenance로 출처 기록이 1개 이상 있어야 합니다."@ko ] ;
+    sh:property [
+        sh:path im:appliesToSensor ; sh:class im:Sensor ;
+        sh:message "S8: appliesToSensor의 대상은 Sensor여야 합니다."@ko ] ;
+    sh:property [
+        sh:path im:actionTarget ; sh:class im:Station ;
+        sh:message "S8: actionTarget의 대상은 Station이어야 합니다."@ko ] .
+
+im:DocumentShape a sh:NodeShape ;
+    sh:targetClass im:Document ;
+    sh:property [
+        sh:path im:identifier ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ;
+        sh:message "S8: Document는 identifier가 정확히 1개 있어야 합니다."@ko ] ;
+    sh:property [
+        sh:path im:sourceSha256 ; sh:datatype xsd:string ; sh:pattern "^[0-9a-f]{64}$" ; sh:minCount 1 ; sh:maxCount 1 ;
+        sh:message "S8: Document의 sourceSha256은 소문자 16진수 64자리여야 합니다."@ko ] ;
+    sh:property [
+        sh:path im:pageCount ; sh:datatype xsd:positiveInteger ; sh:minCount 1 ; sh:maxCount 1 ;
+        sh:message "S8: Document는 pageCount가 정확히 1개 있어야 합니다."@ko ] .

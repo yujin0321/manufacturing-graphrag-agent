@@ -1,0 +1,79 @@
+@prefix im: <https://example.org/imaks/v1#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+# 입력 누수 검사 shapes. ⑥ 인과 발굴의 "입력 그래프"에 정답이나 정답 파생 정보가 섞이지 않았는지 검사한다(CLAUDE.md §4).
+# 이 파일은 금지어를 담아야 하므로 stage-check의 기본 누수 점검 폴더(ontology_v1 등) 밖인 guards/에 둔다.
+# 적용 대상은 ⑥ 입력용 RDF 그래프뿐이다. ⑦ 이후 AnomalyEvent를 넣는 별도 경로의 그래프에는 쓰지 않는다.
+# 표 형식(CSV) 입력의 컬럼 검사는 코드(허용목록 방식)가 맡고, 이 파일은 그래프 형태의 입력만 본다.
+
+# L1: AnomalyEvent 인스턴스 금지(⑥ 입력에는 정답 이벤트가 없어야 한다)
+im:LeakNoEventShape a sh:NodeShape ;
+    sh:targetClass im:AnomalyEvent ;
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "L1: ⑥ 입력 그래프에 AnomalyEvent 인스턴스가 있습니다(⑦ 이후 경로에서만 허용)."@ko ;
+        sh:select """
+            SELECT $this WHERE { $this ?p ?o } LIMIT 1
+        """ ] .
+
+# L2: 정답·이벤트 관련 관계와 기존 인과 후보 금지
+im:LeakNoEventRelationShape a sh:NodeShape ;
+    sh:targetSubjectsOf im:triggers , im:correlatesWith , im:causallyAffects ;
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "L2: ⑥ 입력 그래프에 triggers, correlatesWith, causallyAffects 관계가 있습니다(정답 또는 정답 파생 정보)."@ko ;
+        sh:select """
+            SELECT $this WHERE { $this ?p ?o } LIMIT 1
+        """ ] .
+
+im:LeakNoCausalLinkShape a sh:NodeShape ;
+    sh:targetClass im:CausalLink ;
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "L2: ⑥ 입력 그래프에 CausalLink가 있습니다(발굴 결과는 입력이 될 수 없음)."@ko ;
+        sh:select """
+            SELECT $this WHERE { $this ?p ?o } LIMIT 1
+        """ ] .
+
+# L3: 금지된 이름의 속성(이름 정규화 후 비교: 대소문자, 밑줄, 하이픈 무시)
+im:LeakForbiddenPredicateShape a sh:NodeShape ;
+    sh:targetSubjectsOf rdf:type ;
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "L3: ⑥ 입력 그래프에 금지된 이름의 속성이 있습니다."@ko ;
+        sh:select """
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+            SELECT $this ?path WHERE {
+                $this ?path ?value .
+                BIND (LCASE(REPLACE(REPLACE(STR(?path), "^.*[/#: ]", ""), "[_-]", "")) AS ?local)
+                FILTER (?local IN (
+                    "label", "anomalylabel", "severity", "alarmflag", "gtid", "gteventid", "isanomaly",
+                    "anomalytype", "rootcause", "causedby", "quality", "status", "alarms",
+                    "day", "shift", "batchid",
+                    "datasetseverity", "starttime", "endtime", "magnitude",
+                    "nominal", "warnhi", "warnlo", "crithi", "critlo"))
+                FILTER (?path != rdfs:label)
+            }
+        """ ] .
+
+# L4: GT-#### 형태의 식별자가 값이나 노드 이름에 있는지
+im:LeakGtIdentifierShape a sh:NodeShape ;
+    sh:targetSubjectsOf rdf:type ;
+    sh:sparql [
+        a sh:SPARQLConstraint ;
+        sh:message "L4: ⑥ 입력 그래프에 GT-#### 형태의 식별자가 있습니다."@ko ;
+        sh:select """
+            SELECT $this ?value WHERE {
+                {
+                    $this ?p ?value .
+                    FILTER (REGEX(STR(?value), "GT-[0-9]{4}", "i"))
+                }
+                UNION
+                {
+                    BIND ($this AS ?value)
+                    FILTER (REGEX(STR($this), "GT-[0-9]{4}", "i"))
+                }
+            }
+        """ ] .

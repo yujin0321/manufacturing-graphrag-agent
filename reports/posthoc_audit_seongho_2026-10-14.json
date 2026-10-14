@@ -1,0 +1,78 @@
+{
+  "status": "posthoc_diagnostic_not_primary_metric",
+  "primary_score_unchanged": true,
+  "predictions_sha256": "e5101e3d20f79b7d28b87f47e48d274217ce6e550060fdf3a2636f63c18a61a6",
+  "reference_sha256": "856f5bc09ac9559cf999c89d9d9962615be704b3a85d2b785317d665f1bb3a91",
+  "documents": [
+    {
+      "document": "SOP-001",
+      "predictions": 29,
+      "references": 29,
+      "content_matches": 28,
+      "processed": true
+    },
+    {
+      "document": "SOP-002",
+      "predictions": 0,
+      "references": 27,
+      "content_matches": 0,
+      "processed": false
+    },
+    {
+      "document": "SOP-003",
+      "predictions": 11,
+      "references": 11,
+      "content_matches": 11,
+      "processed": true
+    },
+    {
+      "document": "SOP-004",
+      "predictions": 10,
+      "references": 19,
+      "content_matches": 6,
+      "processed": true
+    }
+  ],
+  "tokenization": {
+    "max_input_tokens": 86,
+    "model_limit": 256,
+    "truncated_inputs": 0,
+    "inputs_checked": 136
+  },
+  "matching_policy_diagnostic": {
+    "primary": "maximize valid count, then cosine; threshold before acceptance",
+    "alternative": "document-wise maximize total cosine, then accept >= threshold",
+    "primary_matches": 45,
+    "alternative_matches": 44,
+    "reason": "expose policy differences from teammate evaluation; not replace the preregistered primary result"
+  },
+  "source_supplement_numeric": {
+    "method": "source-only deterministic table conversion, not LLM extraction",
+    "sensors_checked": 22,
+    "fields_checked": 88,
+    "fields_matching_reference": 84,
+    "differences": [
+      {
+        "sensor": "ST03_LABELLING_SPD",
+        "different_fields": [
+          "critLo",
+          "warnLo",
+          "warnHi"
+        ]
+      },
+      {
+        "sensor": "ST04_PACKAGING_SPD",
+        "different_fields": [
+          "critLo"
+        ]
+      }
+    ],
+    "interpretation": "Source-vs-reference discrepancy; preserve source values, no reference-driven edits"
+  },
+  "matched_field_diagnostics": {
+    "matches_checked": 45,
+    "sensor_set_exact": 44,
+    "severity_exact": 18,
+    "numeric_text_flags": 9
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "status": "evaluated",
+  "protocol": {
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "resolved_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+    "threshold": 0.6,
+    "matching": "Hungarian; max valid count then similarity",
+    "eligibility": "same source document; class scored separately",
+    "text": "Condition + Action",
+    "human_corrected": false,
+    "interpretation": "development result, not held-out generalization"
+  },
+  "prediction_sha256": "e5101e3d20f79b7d28b87f47e48d274217ce6e550060fdf3a2636f63c18a61a6",
+  "reference_sha256": "856f5bc09ac9559cf999c89d9d9962615be704b3a85d2b785317d665f1bb3a91",
+  "content": {
+    "tp": 45,
+    "fp": 5,
+    "fn": 41,
+    "predicted": 50,
+    "reference": 86,
+    "precision": 0.9,
+    "recall": 0.5232558139534884,
+    "f1": 0.661764705882353
+  },
+  "by_class": {
+    "OperationalRule": {
+      "tp": 16,
+      "fp": 3,
+      "fn": 12,
+      "predicted": 19,
+      "reference": 28,
+      "precision": 0.8421052631578947,
+      "recall": 0.5714285714285714,
+      "f1": 0.6808510638297872
+    },
+    "ThresholdRule": {
+      "tp": 0,
+      "fp": 8,
+      "fn": 27,
+      "predicted": 8,
+      "reference": 27,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "MaintenanceRule": {
+      "tp": 8,
+      "fp": 4,
+      "fn": 3,
+      "predicted": 12,
+      "reference": 11,
+      "precision": 0.6666666666666666,
+      "recall": 0.7272727272727273,
+      "f1": 0.6956521739130435
+    },
+    "AccessRule": {
+      "tp": 6,
+      "fp": 5,
+      "fn": 14,
+      "predicted": 11,
+      "reference": 20,
+      "precision": 0.5454545454545454,
+      "recall": 0.3,
+      "f1": 0.3870967741935483
+    }
+  },
+  "partial_extraction": true,
+  "completed_sop_documents": [
+    "SOP-001",
+    "SOP-003",
+    "SOP-004"
+  ],
+  "unprocessed_sop_documents": [
+    "SOP-002"
+  ],
+  "processed_document_scope": {
+    "tp": 45,
+    "fp": 5,
+    "fn": 14,
+    "predicted": 50,
+    "reference": 59,
+    "precision": 0.9,
+    "recall": 0.7627118644067796,
+    "f1": 0.8256880733944953
+  },
+  "processed_scope_by_class": {
+    "OperationalRule": {
+      "tp": 16,
+      "fp": 3,
+      "fn": 12,
+      "predicted": 19,
+      "reference": 28,
+      "precision": 0.8421052631578947,
+      "recall": 0.5714285714285714,
+      "f1": 0.6808510638297872
+    },
+    "ThresholdRule": {
+      "tp": 0,
+      "fp": 8,
+      "fn": 0,
+      "predicted": 8,
+      "reference": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "MaintenanceRule": {
+      "tp": 8,
+      "fp": 4,
+      "fn": 3,
+      "predicted": 12,
+      "reference": 11,
+      "precision": 0.6666666666666666,
+      "recall": 0.7272727272727273,
+      "f1": 0.6956521739130435
+    },
+    "AccessRule": {
+      "tp": 6,
+      "fp": 5,
+      "fn": 14,
+      "predicted": 11,
+      "reference": 20,
+      "precision": 0.5454545454545454,
+      "recall": 0.3,
+      "f1": 0.3870967741935483
+    }
+  },
+  "class_aware_content": {
+    "tp": 30,
+    "fp": 20,
+    "fn": 56,
+    "predicted": 50,
+    "reference": 86,
+    "precision": 0.6,
+    "recall": 0.3488372093023256,
+    "f1": 0.4411764705882353
+  },
+  "class_aware_processed_scope": {
+    "tp": 30,
+    "fp": 20,
+    "fn": 29,
+    "predicted": 50,
+    "reference": 59,
+    "precision": 0.6,
+    "recall": 0.5084745762711864,
+    "f1": 0.5504587155963302
+  },
+  "unprocessed_reference_count": 27,
+  "interpretation_full_reference": "Missing-document references count as FN in pipeline coverage; do not attribute them to extraction errors on processed documents",
+  "class_confusion": {
+    "ThresholdRule -> OperationalRule": 8,
+    "OperationalRule -> OperationalRule": 16,
+    "MaintenanceRule -> OperationalRule": 4,
+    "MaintenanceRule -> MaintenanceRule": 8,
+    "OperationalRule -> MaintenanceRule": 3,
+    "AccessRule -> AccessRule": 6
+  },
+  "datasheet_predictions_excluded": 6,
+  "extraction_model": "gemini-3.1-flash-lite",
+  "raw_predictions_or_reference_text_included": false
+}

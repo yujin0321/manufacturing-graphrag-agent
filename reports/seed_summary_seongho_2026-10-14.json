@@ -1,0 +1,32 @@
+{
+  "classes": {
+    "Document": 7,
+    "Station": 9,
+    "Provenance": 47,
+    "Sensor": 22,
+    "MaintenanceRule": 8
+  },
+  "triples": 639,
+  "shacl_conforms": true,
+  "relations": {
+    "hasSensor": 22,
+    "feedsInto": 3,
+    "appliesToSensor": 8
+  },
+  "excluded_seed_edges": {
+    "contains": 16,
+    "part_of": 9,
+    "correlates_with": 1,
+    "triggers": 14,
+    "authorized_for": 218,
+    "involves": 10,
+    "detected_in": 10
+  },
+  "seed_hashes": {
+    "nodes.csv": "3b78a37ff96c39cd5ef2b1b9bf6019d9c951c7926ca4e708e8cb365b9581964e",
+    "edges.csv": "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3"
+  },
+  "prediction_sha256": null,
+  "causal_discovery_performed": false,
+  "ground_truth_events_loaded": false
+}

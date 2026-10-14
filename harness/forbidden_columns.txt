@@ -1,0 +1,10 @@
+# ⑥ 인과관계 발굴 입력에 들어가면 안 되는 이름 (대소문자 무시, 단어 단위 일치)
+# 초기값입니다. 읽기 전용 탐색으로 imaks_data의 실제 컬럼명을 확인한 뒤 고치세요.
+anomaly_label
+severity
+alarm_flag
+gt_id
+gt_event_id
+is_anomaly
+anomaly_type
+root_cause

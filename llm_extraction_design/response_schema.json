@@ -1,0 +1,117 @@
+{
+  "type": "object",
+  "properties": {
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "class": {
+            "type": "string",
+            "enum": [
+              "OperationalRule",
+              "ThresholdRule",
+              "MaintenanceRule",
+              "AccessRule"
+            ]
+          },
+          "printed_rule_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "condition": {
+            "type": "string"
+          },
+          "action": {
+            "type": "string"
+          },
+          "severity": {
+            "type": "string"
+          },
+          "sensors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "action_targets": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "supports": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "enum": [
+                      "condition",
+                      "action",
+                      "severity",
+                      "sensors",
+                      "action_targets",
+                      "printed_rule_id",
+                      "class"
+                    ]
+                  }
+                },
+                "chunk_id": {
+                  "type": "string"
+                },
+                "source_quote": {
+                  "type": "string"
+                },
+                "table_id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "table_row": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "table_col": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "supports",
+                "chunk_id",
+                "source_quote",
+                "table_id",
+                "table_row",
+                "table_col"
+              ]
+            }
+          }
+        },
+        "required": [
+          "class",
+          "printed_rule_id",
+          "condition",
+          "action",
+          "severity",
+          "sensors",
+          "action_targets",
+          "evidence"
+        ]
+      }
+    }
+  },
+  "required": [
+    "rules"
+  ]
+}

@@ -1,25 +1,8 @@
-"""C 실행 CLI. 공급자는 --provider gemini(기본) | anthropic(명시할 때만). 공급자·모델 자동 전환은 없다.
+"""C extraction: OpenAI GPT-6.1 Sol by default; Anthropic only when explicitly selected.
 
-  PYTHONPATH=src .venv/Scripts/python.exe -m imaks_kg.extract.run --dry-run [--model M] [--chunk ID ...]
-  PYTHONPATH=src .venv/Scripts/python.exe -m imaks_kg.extract.run --fake <가짜 응답 폴더> [--run-id ID] [--out-root DIR]
-  PYTHONPATH=src .venv/Scripts/python.exe -m imaks_kg.extract.run --execute --model M --approve <estimate_id>  (실제 호출)
-  PYTHONPATH=src .venv/Scripts/python.exe -m imaks_kg.extract.run --list-models   (Gemini 모델 목록 API, 생성 없음)
-
-순서(모든 방식 공통): 해시 사슬 검사 → seed ID 목록 → 입력 선택 → 프롬프트 조립 → (dry-run이면 여기서 끝)
-→ 청크마다 호출 → 원본 요청·응답 저장 → 자동 검사(validate) → B 병합(merge) → 1차 검토 CSV 생성.
-
---execute는 (1) examples.json이 CONFIRMED가 아니면, (2) 공급자 키가 없으면(Gemini: GEMINI_API_KEY 환경변수 또는 .env,
-GOOGLE_API_KEY가 있으면 거부), (3) 모델이 정해지지 않았으면, (4) 승인이 맞지 않으면 거부한다(클라이언트·실행 폴더를 만들지 않음).
---dry-run은 호출하지 않는다. --count-tokens는 Anthropic에서만 키가 있을 때 messages.count_tokens를 부른다.
-Gemini는 구현하지 않았고 글자 수 추정을 쓴다.
---min-interval-s: 호출 사이 대기(무료 등급의 분당 한도를 미리 피함). 기본은 공급자 어댑터의 상수, meta와 추정 기록에 남는다.
-
-실행 폴더 extraction/runs/<run_id>/ (이미 있으면 거부, 덮어쓰지 않음)
-- meta.json: 모델 ID, effort, betas/fallbacks, SDK 버전, 보내지 않은 생성 파라미터와 이유, 프롬프트 버전·해시,
-  입력 청크 ID·해시 목록, 제외 청크와 사유, preprocess_lock 해시, 시작·끝 시각, 결과 개수
-- raw/request/<청크>.json(키 없음), raw/response/<청크>.json(원본 응답 또는 실패 기록), calls.jsonl(호출 요약)
-- candidates_premerge.jsonl(LLM 단독, 병합 전), rejected.csv(거부 사유)
-- merged.jsonl(병합 후), merge_conflicts.csv(병합 건의 값 차이), review_round1.csv(1차 검토 양식)
+--dry-run estimates cost without network calls. --execute requires confirmed examples,
+OPENAI_API_KEY and a matching approval ID. Gemini is no longer an executable provider.
+Responses API: strict JSON Schema, reasoning low, standard tier, store=false.
 """
 import argparse
 import json
@@ -35,7 +18,7 @@ from rdflib import RDF
 
 from imaks_kg.common.io_utils import write_csv, write_json, write_text
 from imaks_kg.common.provenance import sha256_file, sha256_text
-from imaks_kg.extract import approval, ledger, llm, llm_gemini, locks, resume
+from imaks_kg.extract import approval, ledger, llm, llm_openai, locks, resume
 from imaks_kg.extract.common import ExtractError, disp, safe_name, seed_ids, write_jsonl_sorted
 from imaks_kg.extract.guard import file_fingerprint
 from imaks_kg.extract.inputs import select_chunks, verify_chain
@@ -50,14 +33,14 @@ from imaks_kg.settings import EXTRACTION_APPROVALS, EXTRACTION_RUNS, RULES_TTL
 
 CHARS_PER_TOKEN = 4.0  # 영어 위주 텍스트의 대략값(추정). 기호·ID가 많아 실제는 더 많을 수 있어 상한(3자/토큰)도 함께 보인다.
 CHARS_PER_TOKEN_HIGH = 3.0
-DEFAULT_PROVIDER = "gemini"
-PROVIDERS = ("gemini", "anthropic")
+DEFAULT_PROVIDER = "openai"
+PROVIDERS = ("openai", "anthropic")
 
 
 def get_adapter(provider=DEFAULT_PROVIDER, model=None):
     """공급자 어댑터. 공급자를 바꾸는 것은 이 인자뿐이다(실패해도 다른 공급자·모델로 바꾸지 않음)."""
-    if provider == "gemini":
-        return llm_gemini.GeminiAdapter(model)
+    if provider == "openai":
+        return llm_openai.OpenAIAdapter(model)
     if provider == "anthropic":
         return llm.AnthropicAdapter(model)
     raise ExtractError(f"알 수 없는 공급자: {provider} (허용: {PROVIDERS})")
@@ -97,7 +80,7 @@ def prepare(paths: BPaths = None, prompts_dir=None, chunk_ids=None, provider=DEF
         if c["doc_id"] not in titles:
             raise ExtractError(f"B Document에 {c['doc_id']} 제목이 없음")
         requests.append((c, adapter.build_request(prompt["system"], build_user_message(c, titles[c["doc_id"]]), schema)))
-    if adapter.name == "gemini":
+    if adapter.name == "openai":
         bad = [adapter.outbound_problem(c, docs) for c, _ in requests]
         bad += [adapter.outbound_problem(chunks_by_id.get(x, {"chunk_id": x}), docs) + " (프롬프트 예시 출처)"
                 for x in prompt["example_chunk_ids"] if adapter.outbound_problem(chunks_by_id.get(x, {"chunk_id": x}), docs)]
@@ -182,8 +165,8 @@ def run_calls(ctx, client, run_dir: Path, run_id: str, mode: str, max_calls=None
     meta["max_calls"] = max_chunks
     meta["approved_chunks"] = max_chunks
     meta["approved_attempts"] = budget_client.max_attempts if budget_client else None
-    if adapter.name == "gemini":
-        meta["outbound_allowlist"] = llm_gemini.outbound_allowlist()
+    if adapter.name == "openai":
+        meta["outbound_allowlist"] = adapter.outbound_allowlist()
     meta["started_at"] = _now()
     write_json(run_dir / "meta.json", meta)  # 시작 기록(끝에서 다시 씀)
     calls, cands, rejects = [], [], []
@@ -333,9 +316,8 @@ def main(argv=None):
     mode.add_argument("--dry-run", action="store_true", help="호출 없이 호출 수·토큰 추정·제외 목록 출력")
     mode.add_argument("--fake", metavar="DIR", help="가짜 응답 폴더를 재생")
     mode.add_argument("--execute", action="store_true", help="실제 호출(예시 확정 + API 키 + 비용 승인 필요)")
-    mode.add_argument("--list-models", action="store_true", help="Gemini 모델 목록(API 호출, 생성 없음)")
     ap.add_argument("--provider", default=DEFAULT_PROVIDER, choices=PROVIDERS)
-    ap.add_argument("--model", default=None, help="모델 ID(기본: 공급자 상수, Gemini는 사용자가 정한 gemini-3.8-flash. 자동 전환 없음)")
+    ap.add_argument("--model", default=None, help="모델 ID(기본 gpt-6.1-sol, 자동 전환 없음)")
     ap.add_argument("--min-interval-s", type=float, default=None, help="호출 사이 대기 초(기본: 공급자 상수)")
     ap.add_argument("--count-tokens", action="store_true", help="dry-run에서 키가 있으면 count_tokens API로 셈")
     ap.add_argument("--approve", default=None, metavar="ESTIMATE_ID", help="--execute에 필요한 비용 승인 ID(--dry-run이 만듦)")
@@ -347,17 +329,6 @@ def main(argv=None):
     ap.add_argument("--run-id", default=None)
     ap.add_argument("--out-root", default=None, help=f"실행 폴더의 상위(기본 {disp(EXTRACTION_RUNS)})")
     args = ap.parse_args(argv)
-    if args.list_models:
-        if args.provider != "gemini":
-            print("--list-models는 Gemini만")
-            return 2
-        try:
-            for m in llm_gemini.GeminiClient().list_models():
-                print(json.dumps(m, ensure_ascii=False, default=str))
-        except ExtractError as e:
-            print(f"멈춤: {e}")
-            return 1
-        return 0
     try:
         ctx = prepare(chunk_ids=args.chunk, provider=args.provider, model=args.model,
                       min_interval_s=args.min_interval_s)

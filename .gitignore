@@ -236,3 +236,8 @@ imaks_data/
 # Local API credentials
 .env.*
 !.env.example
+
+# Shareable GPT implementation and aggregate reports (no raw predictions)
+!/reports/abc_gpt61_sol_full_handoff.md
+!/reports/gpt61_sol_first_evaluation.md
+!/reports/gpt61_sol_setup.md

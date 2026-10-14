@@ -21,3 +21,12 @@ API 키(.env), 원본 데이터, 전처리·KG·실행·평가 결과, 모델 �
 최종 설명서 reports/final_abc_evaluation_impl.md는 현재 초안이며, 완료 후 실제 결과를 채운다. eval/README.md와 evaluation_protocol.md에 재현 방법과 계산 기준이 있다.
 
 상태 기록 시각(UTC): 2026-10-14T07:42:42.021271+00:00. 이 시점의 확보 청크: 10/60.
+
+
+## Actual execution interruption
+The gemini-3.8-flash run hit FATAL_QUOTA (429, GenerateRequestsPerDayPerProjectPerModel-FreeTier) at 2026-10-14 07:48:57 UTC. Server RetryInfo requested approximately 16 hours. All successful responses and approvals are preserved. Evaluation and final review are not complete. Model switch requires explicit user authorization; no paid fallback.
+
+
+## GPT-6.1 Sol 완료 기록 (2026-10-14)
+
+위 Gemini 중단 기록은 과거 이력이다. 사용자 승인 후 GPT-6.1 Sol로 새 전체 실행을 완료했다. 60청크 성공, 후보 80, 재시도·검증 거부 0. B+C pipeline F1 0.648936. 자동 첫 평가 완료, 사람 검토는 대기. 상세: reports/abc_gpt61_sol_full_handoff.md.

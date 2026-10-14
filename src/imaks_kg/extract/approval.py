@@ -35,12 +35,12 @@ from imaks_kg.extract import ledger, llm, locks
 from imaks_kg.extract.common import ExtractError, disp
 
 # 가격표(USD / 100만 토큰), 공급자별. 기준일 이후 가격이 바뀌면 이 상수와 기준일을 함께 고친다.
-# Gemini는 무료 등급(결제 미연결 프로젝트)만 쓴다. 비용 0, billing_tier "free". 유료 전환은 별도 결정이며 자동으로 하지 않는다.
+# OpenAI standard short-context rates; reasoning tokens are included in the output cap.
 PRICE_TABLE = {
     "anthropic": {"claude-opus-5-5": {"input_per_mtok": 4.0, "output_per_mtok": 20.0, "billing_tier": "paid",
                                       "basis_date": "2026-10-06"}},
-    "gemini": {"*": {"input_per_mtok": 0.0, "output_per_mtok": 0.0, "billing_tier": "free",
-                     "basis_date": "2026-10-13"}},
+    "openai": {"gpt-6.1-sol": {"input_per_mtok": 2.0, "output_per_mtok": 10.0, "billing_tier": "paid",
+                                  "basis_date": "2026-10-14"}},
 }
 PRICE_BASIS_DATE = PRICE_TABLE["anthropic"]["claude-opus-5-5"]["basis_date"]
 

@@ -129,6 +129,24 @@ class CheckLeakageTest(unittest.TestCase):
         (d / "a.jsonl").write_text(json.dumps({"text": f"mentions {general_words()[1]} here"}) + "\n", encoding="utf-8")
         self.assertEqual(run_check_rooted(self.dir)[0], 1)
 
+    def test_extraction_folder_jsonl_values_exempt_keys_checked(self):
+        d = self.dir / "kg_build" / "extraction" / "run1"
+        d.mkdir(parents=True)
+        (d / "a.jsonl").write_text(json.dumps({"text": f"mentions {general_words()[1]} here"}) + "\n", encoding="utf-8")
+        self.assertEqual(run_check_rooted(self.dir)[0], 0)
+        (d / "a.jsonl").write_text(json.dumps({general_words()[1]: 1}) + "\n", encoding="utf-8")
+        self.assertEqual(run_check_rooted(self.dir)[0], 1)
+
+    def test_extraction_folder_ttl_exempt_but_other_ttl_checked(self):
+        d = self.dir / "kg_build" / "extraction" / "run1"
+        d.mkdir(parents=True)
+        (d / "k.ttl").write_text(f'<a> <b> "mentions {general_words()[1]} here" .\n', encoding="utf-8")
+        self.assertEqual(run_check_rooted(self.dir)[0], 0)
+        other = self.dir / "kg_build" / "instances"
+        other.mkdir(parents=True)
+        (other / "k.ttl").write_text(f'<a> <b> "mentions {general_words()[1]} here" .\n', encoding="utf-8")
+        self.assertEqual(run_check_rooted(self.dir)[0], 1)
+
     def test_missing_header_only_file_is_ignored(self):
         spec = importlib.util.spec_from_file_location("check_leakage_mod", SCRIPT)
         mod = importlib.util.module_from_spec(spec)

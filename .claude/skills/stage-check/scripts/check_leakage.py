@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parents[4]
 FORBIDDEN_FILE = ROOT / "harness" / "forbidden_columns.txt"
 HEADER_ONLY_FILE = ROOT / "harness" / "forbidden_columns_header_only.txt"
 # 문서 폴더는 ④ 추출용 원문이라 ⑥ 입력이 아니며 원문에 금지어 단어가 자연스럽게 나온다: json/jsonl은 키만 검사한다.
-TEXT_EXEMPT_PREFIXES = ("preprocessed/documents/",)
+TEXT_EXEMPT_PREFIXES = ("preprocessed/documents/", "kg_build/extraction/")
 DEFAULT_PATHS = ["preprocessed", "ontology_v1", "kg_build", "src"]
 CODE_EXT = {".py", ".ipynb", ".json", ".jsonl", ".ttl", ".rq", ".md", ".txt", ".yaml", ".yml", ".cypher"}
 EVAL_DIRS = {"evaluation", "eval", "tests"}
@@ -97,7 +97,7 @@ def main() -> int:
             except Exception:
                 continue
             is_json = f.suffix.lower() in (".json", ".jsonl")
-            text_exempt = is_json and rel.startswith(TEXT_EXEMPT_PREFIXES)
+            text_exempt = (is_json or f.suffix.lower() == ".ttl") and rel.startswith(TEXT_EXEMPT_PREFIXES)
             if is_json and (ho_pats or text_exempt):
                 docs = []
                 try:

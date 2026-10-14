@@ -1,0 +1,14 @@
+{
+  "completed_date_seoul": "2026-10-14",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "graph_final": "kg_final/graph.ttl",
+  "graph_initial_audit": "kg/graph.ttl",
+  "evaluation": "evaluation/metrics.json",
+  "api_called": false,
+  "new_packages_installed": false,
+  "models_downloaded": false,
+  "human_review_completed": false,
+  "neo4j_loaded": false,
+  "primary_F1_content_available": false,
+  "prediction_sha256": "b21dd20e36c6086169417f8fca127d394bf0bd0226f1764605710702e123e1e3"
+}

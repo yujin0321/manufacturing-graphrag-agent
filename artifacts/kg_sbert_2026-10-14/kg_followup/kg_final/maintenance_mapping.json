@@ -1,0 +1,146 @@
+[
+  {
+    "source_node_id": "N0054",
+    "rule_id": "MAINT-01",
+    "seed_action": "Inspect and lubricate main bearing",
+    "seed_priority": "HIGH",
+    "seed_sensors": [
+      "ST04_PACKAGING_VIB"
+    ],
+    "prediction_ids": [
+      "MAINT-01"
+    ],
+    "prediction_actions": [
+      "Inspect and lubricate bearing"
+    ],
+    "class_matches": true,
+    "sensors_match": true,
+    "priority_matches": true
+  },
+  {
+    "source_node_id": "N0055",
+    "rule_id": "MAINT-02",
+    "seed_action": "Inspect sealing jaw alignment",
+    "seed_priority": "HIGH",
+    "seed_sensors": [
+      "ST02_SEALING_CUR"
+    ],
+    "prediction_ids": [
+      "MAINT-02"
+    ],
+    "prediction_actions": [
+      "Inspect sealing jaw"
+    ],
+    "class_matches": true,
+    "sensors_match": true,
+    "priority_matches": true
+  },
+  {
+    "source_node_id": "N0056",
+    "rule_id": "MAINT-03",
+    "seed_action": "Replace TEN sensor",
+    "seed_priority": "MEDIUM",
+    "seed_sensors": [
+      "ST03_LABELLING_TEN"
+    ],
+    "prediction_ids": [
+      "MAINT-03"
+    ],
+    "prediction_actions": [
+      "Replace sensor"
+    ],
+    "class_matches": true,
+    "sensors_match": true,
+    "priority_matches": true
+  },
+  {
+    "source_node_id": "N0057",
+    "rule_id": "MAINT-04",
+    "seed_action": "Inspect inlet filter and pump",
+    "seed_priority": "MEDIUM",
+    "seed_sensors": [
+      "ST01_FILLING_PRS"
+    ],
+    "prediction_ids": [
+      "MAINT-04"
+    ],
+    "prediction_actions": [
+      "Inspect filter and pump"
+    ],
+    "class_matches": true,
+    "sensors_match": true,
+    "priority_matches": true
+  },
+  {
+    "source_node_id": "N0058",
+    "rule_id": "MAINT-05",
+    "seed_action": "Activate secondary cooling",
+    "seed_priority": "CRITICAL",
+    "seed_sensors": [
+      "SRV01_SERVERROOM_TMP"
+    ],
+    "prediction_ids": [
+      "MAINT-05"
+    ],
+    "prediction_actions": [
+      "Activate secondary cooling"
+    ],
+    "class_matches": true,
+    "sensors_match": true,
+    "priority_matches": true
+  },
+  {
+    "source_node_id": "N0059",
+    "rule_id": "MAINT-06",
+    "seed_action": "Inspect compressor; notify QC",
+    "seed_priority": "CRITICAL",
+    "seed_sensors": [
+      "WRH01_WAREHOUSE_TMP"
+    ],
+    "prediction_ids": [
+      "MAINT-06"
+    ],
+    "prediction_actions": [
+      "Inspect compressor; notify QC"
+    ],
+    "class_matches": true,
+    "sensors_match": true,
+    "priority_matches": true
+  },
+  {
+    "source_node_id": "N0060",
+    "rule_id": "MAINT-07",
+    "seed_action": "Activate emergency ventilation; notify safety officer",
+    "seed_priority": "CRITICAL",
+    "seed_sensors": [
+      "CHM01_CHEMICALSTORAGE_TMP"
+    ],
+    "prediction_ids": [
+      "MAINT-07"
+    ],
+    "prediction_actions": [
+      "Emergency ventilation; notify safety officer"
+    ],
+    "class_matches": true,
+    "sensors_match": true,
+    "priority_matches": true
+  },
+  {
+    "source_node_id": "N0061",
+    "rule_id": "MAINT-08",
+    "seed_action": "Activate dehumidifier; check HVAC drain",
+    "seed_priority": "HIGH",
+    "seed_sensors": [
+      "RND01_RDLAB_HUM"
+    ],
+    "prediction_ids": [
+      "MAINT-08"
+    ],
+    "prediction_actions": [
+      "Activate dehumidifier; check HVAC drain"
+    ],
+    "class_matches": true,
+    "sensors_match": true,
+    "priority_matches": true
+  }
+]

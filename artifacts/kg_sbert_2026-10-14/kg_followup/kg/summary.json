@@ -1,0 +1,52 @@
+{
+  "status": "PASS",
+  "shacl_conforms": true,
+  "inference": "none",
+  "nodes_by_class": {
+    "Provenance": 250,
+    "Station": 9,
+    "Sensor": 22,
+    "Document": 7,
+    "Rule": 172,
+    "OperationalRule": 33,
+    "MaintenanceRule": 13,
+    "ThresholdRule": 53,
+    "AccessRule": 73
+  },
+  "unique_nodes": 460,
+  "triples": 4545,
+  "hasSensor": 22,
+  "feedsInto": 3,
+  "rule_sensor_links": 86,
+  "action_target_links": 105,
+  "triple_lineage_complete": true,
+  "seed_node_counts": {
+    "System": 1,
+    "Zone": 7,
+    "Component": 9,
+    "Sensor": 22,
+    "AnomalyEvent": 14,
+    "Maintenance": 8,
+    "Person": 44,
+    "SafetyEvent": 10
+  },
+  "skipped_edges": {
+    "contains": 16,
+    "part_of": 9,
+    "correlates_with": 1,
+    "triggers": 22,
+    "resolves": 8,
+    "authorized_for": 218,
+    "involves": 10,
+    "detected_in": 10
+  },
+  "ground_truth_used_for_build": false,
+  "neo4j_loaded": false,
+  "input_hashes": {
+    "nodes.csv": "3b78a37ff96c39cd5ef2b1b9bf6019d9c951c7926ca4e708e8cb365b9581964e",
+    "edges.csv": "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3",
+    "predictions.jsonl": "b21dd20e36c6086169417f8fca127d394bf0bd0226f1764605710702e123e1e3",
+    "ontology.ttl": "a7a56c166f94911a8f97ba37760c163ca2f47fb355e9e2c96ba7ae3d066d0968",
+    "shapes.ttl": "d4c649c0f0ca316f36db1a8d1ec07ca7039f962c734f93f74ac8052c2408ac68"
+  }
+}

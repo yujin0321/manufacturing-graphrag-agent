@@ -1,0 +1,227 @@
+{
+  "status": "supplementary_posthoc_diagnostic",
+  "not_primary_metric": true,
+  "policy": "Align source document and first threshold-bearing sensor; compare four limits exactly; no prediction edits",
+  "rows": [
+    {
+      "prediction_id": "SOP-002-EX-002",
+      "gold_id": "RULE-THR-ST01-TMP-CRIT",
+      "sensor": "ST01_FILLING_TMP",
+      "unit_id": "SOP-002:p1:table1:row2",
+      "sourceQuote": "Sensor: TMP; Unit: °C; CRIT_LO: 15.0; WARN_LO: 18.0; Nominal: 22.0 ± 0.4; WARN_HI: 26.0; CRIT_HI: 30.0; CRITICAL Response: Inspect and notify maintenance",
+      "all_four_limits_match": true,
+      "differences": {}
+    },
+    {
+      "prediction_id": "SOP-002-EX-004",
+      "gold_id": "RULE-THR-ST01-PRS-CRIT",
+      "sensor": "ST01_FILLING_PRS",
+      "unit_id": "SOP-002:p1:table1:row3",
+      "sourceQuote": "Sensor: PRS; Unit: bar; CRIT_LO: 3.0; WARN_LO: 3.3; Nominal: 3.8 ± 0.05; WARN_HI: 4.2; CRIT_HI: 4.8; CRITICAL Response: Inspect and notify maintenance",
+      "all_four_limits_match": true,
+      "differences": {}
+    },
+    {
+      "prediction_id": "SOP-002-EX-006",
+      "gold_id": "RULE-THR-ST01-FLW-CRIT",
+      "sensor": "ST01_FILLING_FLW",
+      "unit_id": "SOP-002:p1:table1:row4",
+      "sourceQuote": "Sensor: FLW; Unit: L/min; CRIT_LO: 105.0; WARN_LO: 112.0; Nominal: 120.0 ± 1.5; WARN_HI: 128.0; CRIT_HI: 135.0; CRITICAL Response: Inspect and notify maintenance",
+      "all_four_limits_match": true,
+      "differences": {}
+    },
+    {
+      "prediction_id": "SOP-002-EX-008",
+      "gold_id": "RULE-THR-ST02-TMP-CRIT",
+      "sensor": "ST02_SEALING_TMP",
+      "unit_id": "SOP-002:p1:table2:row2",
+      "sourceQuote": "Sensor: TMP; Unit: °C; CRIT_LO: 165.0; WARN_LO: 175.0; Nominal: 185.0 ± 1.2; WARN_HI: 195.0; CRIT_HI: 210.0; CRITICAL Response: E-STOP ST02/ST03/ST04; inspect element",
+      "all_four_limits_match": true,
+      "differences": {}
+    },
+    {
+      "prediction_id": "SOP-002-EX-010",
+      "gold_id": "RULE-THR-ST02-PRS-CRIT",
+      "sensor": "ST02_SEALING_PRS",
+      "unit_id": "SOP-002:p1:table2:row3",
+      "sourceQuote": "Sensor: PRS; Unit: bar; CRIT_LO: 4.2; WARN_LO: 4.6; Nominal: 5.2 ± 0.08; WARN_HI: 5.7; CRIT_HI: 6.2; CRITICAL Response: Inspect and notify maintenance",
+      "all_four_limits_match": true,
+      "differences": {}
+    },
+    {
+      "prediction_id": "SOP-002-EX-012",
+      "gold_id": "RULE-THR-ST02-CUR-CRIT",
+      "sensor": "ST02_SEALING_CUR",
+      "unit_id": "SOP-002:p1:table2:row4",
+      "sourceQuote": "Sensor: CUR; Unit: A; CRIT_LO: 9.5; WARN_LO: 11.0; Nominal: 12.4 ± 0.3; WARN_HI: 13.5; CRIT_HI: 15.0; CRITICAL Response: E-STOP; inspect load; verify ST04-SPD (RULE-ST02-04)",
+      "all_four_limits_match": true,
+      "differences": {}
+    },
+    {
+      "prediction_id": "SOP-002-EX-014",
+      "gold_id": "RULE-THR-ST03-SPD-CRIT",
+      "sensor": "ST03_LABELLING_SPD",
+      "unit_id": "SOP-002:p1:table3:row2",
+      "sourceQuote": "Sensor: SPD; Unit: m/s; CRIT_LO: 0.65; WARN_LO: 0.75; Nominal: 0.85 ± 0.01; WARN_HI: 0.95; CRIT_HI: 1.05; CRITICAL Response: Inspect and notify maintenance",
+      "all_four_limits_match": false,
+      "differences": {
+        "critLo": {
+          "prediction": 0.65,
+          "gold": 1.05
+        },
+        "warnLo": {
+          "prediction": 0.75,
+          "gold": 1.15
+        },
+        "warnHi": {
+          "prediction": 0.95,
+          "gold": 1.35
+        }
+      }
+    },
+    {
+      "prediction_id": "SOP-002-EX-016",
+      "gold_id": "RULE-THR-ST03-TEN-CRIT",
+      "sensor": "ST03_LABELLING_TEN",
+      "unit_id": "SOP-002:p1:table3:row3",
+      "sourceQuote": "Sensor: TEN; Unit: N; CRIT_LO: 1.5; WARN_LO: 1.8; Nominal: 2.2 ± 0.05; WARN_HI: 2.6; CRIT_HI: 3.0; CRITICAL Response: Inspect and notify maintenance",
+      "all_four_limits_match": true,
+      "differences": {}
+    },
+    {
+      "prediction_id": "SOP-002-EX-018",
+      "gold_id": "RULE-THR-ST03-CNT-CRIT",
+      "sensor": "ST03_LABELLING_CNT",
+      "unit_id": "SOP-002:p1:table3:row4",
+      "sourceQuote": "Sensor: CNT; Unit: pcs/min; CRIT_LO: 100; WARN_LO: 110; Nominal: 120 ± 2.0; WARN_HI: 130; CRIT_HI: 140; CRITICAL Response: E-STOP labelling; inspect label path",
+      "all_four_limits_match": true,
+      "differences": {}
+    },
+    {
+      "prediction_id": "SOP-002-EX-020",
+      "gold_id": "RULE-THR-ST04-VIB-CRIT",
+      "sensor": "ST04_PACKAGING_VIB",
+      "unit_id": "SOP-002:p1:table4:row2",
+      "sourceQuote": "Sensor: VIB; Unit: mm/s; CRIT_LO: 0.01; WARN_LO: 0.02; Nominal: 0.12 ± 0.005; WARN_HI: 0.2; CRIT_HI: 0.35; CRITICAL Response: E-STOP; inspect main bearing",
+      "all_four_limits_match": true,
+      "differences": {}
+    },
+    {
+      "prediction_id": "SOP-002-EX-022",
+      "gold_id": "RULE-THR-ST04-CUR-CRIT",
+      "sensor": "ST04_PACKAGING_CUR",
+      "unit_id": "SOP-002:p1:table4:row3",
+      "sourceQuote": "Sensor: CUR; Unit: A; CRIT_LO: 6.5; WARN_LO: 7.5; Nominal: 8.7 ± 0.2; WARN_HI: 9.8; CRIT_HI: 11.0; CRITICAL Response: Inspect and notify maintenance",
+      "all_four_limits_match": true,
+      "differences": {}
+    },
+    {
+      "prediction_id": "SOP-002-EX-024",
+      "gold_id": "RULE-THR-ST04-SPD-CRIT",
+      "sensor": "ST04_PACKAGING_SPD",
+      "unit_id": "SOP-002:p1:table4:row4",
+      "sourceQuote": "Sensor: SPD; Unit: m/s; CRIT_LO: 0.85; WARN_LO: 1.0; Nominal: 1.2 ± 0.02; WARN_HI: 1.4; CRIT_HI: 1.6; CRITICAL Response: Inspect and notify maintenance",
+      "all_four_limits_match": false,
+      "differences": {
+        "critLo": {
+          "prediction": 0.85,
+          "gold": 1.25
+        }
+      }
+    },
+    {
+      "prediction_id": "SOP-002-EX-026",
+      "gold_id": "RULE-THR-SRV01-TMP-CRIT",
+      "sensor": "SRV01_SERVERROOM_TMP",
+      "unit_id": "SOP-002:p1:table5:row2",
+      "sourceQuote": "Sensor: TMP; Unit: °C; CRIT_LO: 16.0; WARN_LO: 18.0; Nominal: 21.0 ± 0.3; WARN_HI: 25.0; CRIT_HI: 28.0; CRITICAL Response: Activate backup cooling; prepare controlled PLC shutdown",
+      "all_four_limits_match": true,
+      "differences": {}
+    },
+    {
+      "prediction_id": "SOP-002-EX-028",
+      "gold_id": "RULE-THR-SRV01-HUM-CRIT",
+      "sensor": "SRV01_SERVERROOM_HUM",
+      "unit_id": "SOP-002:p2:table1:row1",
+      "sourceQuote": "Sensor: HUM; Unit: %RH; CRIT_LO: 25.0; WARN_LO: 30.0; Nominal: 45.0 ± 1.0; WARN_HI: 60.0; CRIT_HI: 70.0; CRITICAL Response: Inspect and notify maintenance",
+      "all_four_limits_match": true,
+      "differences": {}
+    },
+    {
+      "prediction_id": "SOP-002-EX-030",
+      "gold_id": "RULE-THR-WRH01-TMP-CRIT",
+      "sensor": "WRH01_WAREHOUSE_TMP",
+      "unit_id": "SOP-002:p2:table2:row2",
+      "sourceQuote": "Sensor: TMP; Unit: °C; CRIT_LO: -1.0; WARN_LO: 0.5; Nominal: 4.0 ± 0.5; WARN_HI: 8.0; CRIT_HI: 12.0; CRITICAL Response: Activate backup refrigeration; notify QC",
+      "all_four_limits_match": true,
+      "differences": {}
+    },
+    {
+      "prediction_id": "SOP-002-EX-032",
+      "gold_id": "RULE-THR-WRH01-HUM-CRIT",
+      "sensor": "WRH01_WAREHOUSE_HUM",
+      "unit_id": "SOP-002:p2:table2:row3",
+      "sourceQuote": "Sensor: HUM; Unit: %RH; CRIT_LO: 55.0; WARN_LO: 60.0; Nominal: 75.0 ± 1.5; WARN_HI: 85.0; CRIT_HI: 90.0; CRITICAL Response: Inspect and notify maintenance",
+      "all_four_limits_match": true,
+      "differences": {}
+    },
+    {
+      "prediction_id": "SOP-002-EX-034",
+      "gold_id": "RULE-THR-CHM01-TMP-CRIT",
+      "sensor": "CHM01_CHEMICALSTORAGE_TMP",
+      "unit_id": "SOP-002:p2:table3:row2",
+      "sourceQuote": "Sensor: TMP; Unit: °C; CRIT_LO: 5.0; WARN_LO: 10.0; Nominal: 15.0 ± 0.3; WARN_HI: 20.0; CRIT_HI: 25.0; CRITICAL Response: Activate emergency ventilation; notify safety officer immediately",
+      "all_four_limits_match": true,
+      "differences": {}
+    },
+    {
+      "prediction_id": "SOP-002-EX-036",
+      "gold_id": "RULE-THR-CHM01-HUM-CRIT",
+      "sensor": "CHM01_CHEMICALSTORAGE_HUM",
+      "unit_id": "SOP-002:p2:table3:row3",
+      "sourceQuote": "Sensor: HUM; Unit: %RH; CRIT_LO: 15.0; WARN_LO: 20.0; Nominal: 35.0 ± 1.0; WARN_HI: 50.0; CRIT_HI: 60.0; CRITICAL Response: Activate desiccant system; inspect storage containers for leaks",
+      "all_four_limits_match": true,
+      "differences": {}
+    },
+    {
+      "prediction_id": "SOP-002-EX-038",
+      "gold_id": "RULE-THR-RND01-TMP-CRIT",
+      "sensor": "RND01_RDLAB_TMP",
+      "unit_id": "SOP-002:p2:table4:row2",
+      "sourceQuote": "Sensor: TMP; Unit: °C; CRIT_LO: 15.0; WARN_LO: 18.0; Nominal: 22.0 ± 0.2; WARN_HI: 26.0; CRIT_HI: 30.0; CRITICAL Response: Inspect and notify maintenance",
+      "all_four_limits_match": true,
+      "differences": {}
+    },
+    {
+      "prediction_id": "SOP-002-EX-040",
+      "gold_id": "RULE-THR-RND01-HUM-CRIT",
+      "sensor": "RND01_RDLAB_HUM",
+      "unit_id": "SOP-002:p2:table4:row3",
+      "sourceQuote": "Sensor: HUM; Unit: %RH; CRIT_LO: 25.0; WARN_LO: 35.0; Nominal: 50.0 ± 1.0; WARN_HI: 65.0; CRIT_HI: 75.0; CRITICAL Response: Suspend experiments; inspect HVAC system",
+      "all_four_limits_match": true,
+      "differences": {}
+    },
+    {
+      "prediction_id": "SOP-002-EX-042",
+      "gold_id": "RULE-THR-CAF01-TMP-CRIT",
+      "sensor": "CAF01_CAFETERIA_TMP",
+      "unit_id": "SOP-002:p2:table5:row2",
+      "sourceQuote": "Sensor: TMP; Unit: °C; CRIT_LO: 14.0; WARN_LO: 17.0; Nominal: 21.0 ± 0.4; WARN_HI: 26.0; CRIT_HI: 30.0; CRITICAL Response: Inspect and notify maintenance",
+      "all_four_limits_match": true,
+      "differences": {}
+    },
+    {
+      "prediction_id": "SOP-002-EX-044",
+      "gold_id": "RULE-THR-CAF01-HUM-CRIT",
+      "sensor": "CAF01_CAFETERIA_HUM",
+      "unit_id": "SOP-002:p2:table5:row3",
+      "sourceQuote": "Sensor: HUM; Unit: %RH; CRIT_LO: 25.0; WARN_LO: 35.0; Nominal: 55.0 ± 1.5; WARN_HI: 70.0; CRIT_HI: 80.0; CRITICAL Response: Inspect and notify maintenance",
+      "all_four_limits_match": true,
+      "differences": {}
+    }
+  ],
+  "sensors_compared": 22,
+  "all_four_match": 20,
+  "numeric_fields_compared": 88,
+  "numeric_fields_match": 84
+}

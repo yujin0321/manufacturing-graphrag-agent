@@ -1,0 +1,183 @@
+{
+  "status": "supplementary_posthoc_diagnostic",
+  "not_primary_metric": true,
+  "policy": "SOP-002 ThresholdRule rows aligned by source document and first (threshold-bearing) sensor; compare four explicit numeric limits exactly; no prediction edits",
+  "rows": [
+    {
+      "prediction_id": "SOP-002-EX-002",
+      "gold_id": "RULE-THR-ST01-TMP-CRIT",
+      "sensor": "ST01_FILLING_TMP",
+      "all_four_limits_match": true,
+      "differences": {}
+    },
+    {
+      "prediction_id": "SOP-002-EX-004",
+      "gold_id": "RULE-THR-ST01-PRS-CRIT",
+      "sensor": "ST01_FILLING_PRS",
+      "all_four_limits_match": true,
+      "differences": {}
+    },
+    {
+      "prediction_id": "SOP-002-EX-006",
+      "gold_id": "RULE-THR-ST01-FLW-CRIT",
+      "sensor": "ST01_FILLING_FLW",
+      "all_four_limits_match": true,
+      "differences": {}
+    },
+    {
+      "prediction_id": "SOP-002-EX-008",
+      "gold_id": "RULE-THR-ST02-TMP-CRIT",
+      "sensor": "ST02_SEALING_TMP",
+      "all_four_limits_match": true,
+      "differences": {}
+    },
+    {
+      "prediction_id": "SOP-002-EX-010",
+      "gold_id": "RULE-THR-ST02-PRS-CRIT",
+      "sensor": "ST02_SEALING_PRS",
+      "all_four_limits_match": true,
+      "differences": {}
+    },
+    {
+      "prediction_id": "SOP-002-EX-012",
+      "gold_id": "RULE-THR-ST02-CUR-CRIT",
+      "sensor": "ST02_SEALING_CUR",
+      "all_four_limits_match": true,
+      "differences": {}
+    },
+    {
+      "prediction_id": "SOP-002-EX-014",
+      "gold_id": "RULE-THR-ST03-SPD-CRIT",
+      "sensor": "ST03_LABELLING_SPD",
+      "all_four_limits_match": false,
+      "differences": {
+        "critLo": {
+          "prediction": 0.65,
+          "gold": 1.05
+        },
+        "warnLo": {
+          "prediction": 0.75,
+          "gold": 1.15
+        },
+        "warnHi": {
+          "prediction": 0.95,
+          "gold": 1.35
+        }
+      }
+    },
+    {
+      "prediction_id": "SOP-002-EX-016",
+      "gold_id": "RULE-THR-ST03-TEN-CRIT",
+      "sensor": "ST03_LABELLING_TEN",
+      "all_four_limits_match": true,
+      "differences": {}
+    },
+    {
+      "prediction_id": "SOP-002-EX-018",
+      "gold_id": "RULE-THR-ST03-CNT-CRIT",
+      "sensor": "ST03_LABELLING_CNT",
+      "all_four_limits_match": true,
+      "differences": {}
+    },
+    {
+      "prediction_id": "SOP-002-EX-020",
+      "gold_id": "RULE-THR-ST04-VIB-CRIT",
+      "sensor": "ST04_PACKAGING_VIB",
+      "all_four_limits_match": true,
+      "differences": {}
+    },
+    {
+      "prediction_id": "SOP-002-EX-022",
+      "gold_id": "RULE-THR-ST04-CUR-CRIT",
+      "sensor": "ST04_PACKAGING_CUR",
+      "all_four_limits_match": true,
+      "differences": {}
+    },
+    {
+      "prediction_id": "SOP-002-EX-024",
+      "gold_id": "RULE-THR-ST04-SPD-CRIT",
+      "sensor": "ST04_PACKAGING_SPD",
+      "all_four_limits_match": false,
+      "differences": {
+        "critLo": {
+          "prediction": 0.85,
+          "gold": 1.25
+        }
+      }
+    },
+    {
+      "prediction_id": "SOP-002-EX-026",
+      "gold_id": "RULE-THR-SRV01-TMP-CRIT",
+      "sensor": "SRV01_SERVERROOM_TMP",
+      "all_four_limits_match": true,
+      "differences": {}
+    },
+    {
+      "prediction_id": "SOP-002-EX-028",
+      "gold_id": "RULE-THR-SRV01-HUM-CRIT",
+      "sensor": "SRV01_SERVERROOM_HUM",
+      "all_four_limits_match": true,
+      "differences": {}
+    },
+    {
+      "prediction_id": "SOP-002-EX-030",
+      "gold_id": "RULE-THR-WRH01-TMP-CRIT",
+      "sensor": "WRH01_WAREHOUSE_TMP",
+      "all_four_limits_match": true,
+      "differences": {}
+    },
+    {
+      "prediction_id": "SOP-002-EX-032",
+      "gold_id": "RULE-THR-WRH01-HUM-CRIT",
+      "sensor": "WRH01_WAREHOUSE_HUM",
+      "all_four_limits_match": true,
+      "differences": {}
+    },
+    {
+      "prediction_id": "SOP-002-EX-034",
+      "gold_id": "RULE-THR-CHM01-TMP-CRIT",
+      "sensor": "CHM01_CHEMICALSTORAGE_TMP",
+      "all_four_limits_match": true,
+      "differences": {}
+    },
+    {
+      "prediction_id": "SOP-002-EX-036",
+      "gold_id": "RULE-THR-CHM01-HUM-CRIT",
+      "sensor": "CHM01_CHEMICALSTORAGE_HUM",
+      "all_four_limits_match": true,
+      "differences": {}
+    },
+    {
+      "prediction_id": "SOP-002-EX-038",
+      "gold_id": "RULE-THR-RND01-TMP-CRIT",
+      "sensor": "RND01_RDLAB_TMP",
+      "all_four_limits_match": true,
+      "differences": {}
+    },
+    {
+      "prediction_id": "SOP-002-EX-040",
+      "gold_id": "RULE-THR-RND01-HUM-CRIT",
+      "sensor": "RND01_RDLAB_HUM",
+      "all_four_limits_match": true,
+      "differences": {}
+    },
+    {
+      "prediction_id": "SOP-002-EX-042",
+      "gold_id": "RULE-THR-CAF01-TMP-CRIT",
+      "sensor": "CAF01_CAFETERIA_TMP",
+      "all_four_limits_match": true,
+      "differences": {}
+    },
+    {
+      "prediction_id": "SOP-002-EX-044",
+      "gold_id": "RULE-THR-CAF01-HUM-CRIT",
+      "sensor": "CAF01_CAFETERIA_HUM",
+      "all_four_limits_match": true,
+      "differences": {}
+    }
+  ],
+  "sensors_compared": 22,
+  "all_four_match": 20,
+  "numeric_fields_compared": 88,
+  "numeric_fields_match": 84
+}

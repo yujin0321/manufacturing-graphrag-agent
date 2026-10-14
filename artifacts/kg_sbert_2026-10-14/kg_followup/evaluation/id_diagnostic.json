@@ -1,0 +1,641 @@
+[
+  {
+    "gold_id": "RULE-ST01-01",
+    "document_id": "SOP-001",
+    "exact_prediction_ids": [
+      "RULE-ST01-01"
+    ],
+    "source_lineage_prediction_ids": [
+      "RULE-ST01-01"
+    ]
+  },
+  {
+    "gold_id": "RULE-ST01-02",
+    "document_id": "SOP-001",
+    "exact_prediction_ids": [
+      "RULE-ST01-02"
+    ],
+    "source_lineage_prediction_ids": [
+      "RULE-ST01-02"
+    ]
+  },
+  {
+    "gold_id": "RULE-ST01-03",
+    "document_id": "SOP-001",
+    "exact_prediction_ids": [
+      "RULE-ST01-03"
+    ],
+    "source_lineage_prediction_ids": [
+      "RULE-ST01-03"
+    ]
+  },
+  {
+    "gold_id": "RULE-ST02-01",
+    "document_id": "SOP-001",
+    "exact_prediction_ids": [
+      "RULE-ST02-01"
+    ],
+    "source_lineage_prediction_ids": [
+      "RULE-ST02-01"
+    ]
+  },
+  {
+    "gold_id": "RULE-ST02-02",
+    "document_id": "SOP-001",
+    "exact_prediction_ids": [
+      "RULE-ST02-02"
+    ],
+    "source_lineage_prediction_ids": [
+      "RULE-ST02-02"
+    ]
+  },
+  {
+    "gold_id": "RULE-ST02-03",
+    "document_id": "SOP-001",
+    "exact_prediction_ids": [
+      "RULE-ST02-03"
+    ],
+    "source_lineage_prediction_ids": [
+      "RULE-ST02-03"
+    ]
+  },
+  {
+    "gold_id": "RULE-ST02-04",
+    "document_id": "SOP-001",
+    "exact_prediction_ids": [
+      "RULE-ST02-04"
+    ],
+    "source_lineage_prediction_ids": [
+      "RULE-ST02-04"
+    ]
+  },
+  {
+    "gold_id": "RULE-ST03-01",
+    "document_id": "SOP-001",
+    "exact_prediction_ids": [
+      "RULE-ST03-01"
+    ],
+    "source_lineage_prediction_ids": [
+      "RULE-ST03-01"
+    ]
+  },
+  {
+    "gold_id": "RULE-ST03-02a",
+    "document_id": "SOP-001",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-ST03-02b",
+    "document_id": "SOP-001",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-ST03-03",
+    "document_id": "SOP-001",
+    "exact_prediction_ids": [
+      "RULE-ST03-03"
+    ],
+    "source_lineage_prediction_ids": [
+      "RULE-ST03-03"
+    ]
+  },
+  {
+    "gold_id": "RULE-ST04-01",
+    "document_id": "SOP-001",
+    "exact_prediction_ids": [
+      "RULE-ST04-01"
+    ],
+    "source_lineage_prediction_ids": [
+      "RULE-ST04-01"
+    ]
+  },
+  {
+    "gold_id": "RULE-ST04-02",
+    "document_id": "SOP-001",
+    "exact_prediction_ids": [
+      "RULE-ST04-02"
+    ],
+    "source_lineage_prediction_ids": [
+      "RULE-ST04-02"
+    ]
+  },
+  {
+    "gold_id": "RULE-ST04-03",
+    "document_id": "SOP-001",
+    "exact_prediction_ids": [
+      "RULE-ST04-03"
+    ],
+    "source_lineage_prediction_ids": [
+      "RULE-ST04-03"
+    ]
+  },
+  {
+    "gold_id": "RULE-SRV01-01",
+    "document_id": "SOP-001",
+    "exact_prediction_ids": [
+      "RULE-SRV01-01"
+    ],
+    "source_lineage_prediction_ids": [
+      "RULE-SRV01-01"
+    ]
+  },
+  {
+    "gold_id": "RULE-SRV01-02",
+    "document_id": "SOP-001",
+    "exact_prediction_ids": [
+      "RULE-SRV01-02"
+    ],
+    "source_lineage_prediction_ids": [
+      "RULE-SRV01-02"
+    ]
+  },
+  {
+    "gold_id": "RULE-WRH01-01a",
+    "document_id": "SOP-001",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-WRH01-01b",
+    "document_id": "SOP-001",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-WRH01-02",
+    "document_id": "SOP-001",
+    "exact_prediction_ids": [
+      "RULE-WRH01-02"
+    ],
+    "source_lineage_prediction_ids": [
+      "RULE-WRH01-02"
+    ]
+  },
+  {
+    "gold_id": "RULE-CHM01-01a",
+    "document_id": "SOP-001",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-CHM01-01b",
+    "document_id": "SOP-001",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-CHM01-02a",
+    "document_id": "SOP-001",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-CHM01-02b",
+    "document_id": "SOP-001",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-CHM01-03",
+    "document_id": "SOP-001",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": [
+      "RULE-CHM01-03-A",
+      "RULE-CHM01-03-B"
+    ]
+  },
+  {
+    "gold_id": "RULE-RND01-01",
+    "document_id": "SOP-001",
+    "exact_prediction_ids": [
+      "RULE-RND01-01"
+    ],
+    "source_lineage_prediction_ids": [
+      "RULE-RND01-01"
+    ]
+  },
+  {
+    "gold_id": "RULE-RND01-02a",
+    "document_id": "SOP-001",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-RND01-02b",
+    "document_id": "SOP-001",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-CAF01-01",
+    "document_id": "SOP-001",
+    "exact_prediction_ids": [
+      "RULE-CAF01-01"
+    ],
+    "source_lineage_prediction_ids": [
+      "RULE-CAF01-01"
+    ]
+  },
+  {
+    "gold_id": "RULE-CAF01-02",
+    "document_id": "SOP-001",
+    "exact_prediction_ids": [
+      "RULE-CAF01-02"
+    ],
+    "source_lineage_prediction_ids": [
+      "RULE-CAF01-02"
+    ]
+  },
+  {
+    "gold_id": "RULE-THR-ST01-TMP-CRIT",
+    "document_id": "SOP-002",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-THR-ST01-PRS-CRIT",
+    "document_id": "SOP-002",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-THR-ST01-FLW-CRIT",
+    "document_id": "SOP-002",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-THR-ST02-TMP-CRIT",
+    "document_id": "SOP-002",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-THR-ST02-PRS-CRIT",
+    "document_id": "SOP-002",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-THR-ST02-CUR-CRIT",
+    "document_id": "SOP-002",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-THR-ST03-SPD-CRIT",
+    "document_id": "SOP-002",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-THR-ST03-TEN-CRIT",
+    "document_id": "SOP-002",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-THR-ST03-CNT-CRIT",
+    "document_id": "SOP-002",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-THR-ST04-VIB-CRIT",
+    "document_id": "SOP-002",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-THR-ST04-CUR-CRIT",
+    "document_id": "SOP-002",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-THR-ST04-SPD-CRIT",
+    "document_id": "SOP-002",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-THR-SRV01-TMP-CRIT",
+    "document_id": "SOP-002",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-THR-SRV01-HUM-CRIT",
+    "document_id": "SOP-002",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-THR-WRH01-TMP-CRIT",
+    "document_id": "SOP-002",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-THR-WRH01-HUM-CRIT",
+    "document_id": "SOP-002",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-THR-CHM01-TMP-CRIT",
+    "document_id": "SOP-002",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-THR-CHM01-HUM-CRIT",
+    "document_id": "SOP-002",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-THR-RND01-TMP-CRIT",
+    "document_id": "SOP-002",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-THR-RND01-HUM-CRIT",
+    "document_id": "SOP-002",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-THR-CAF01-TMP-CRIT",
+    "document_id": "SOP-002",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-THR-CAF01-HUM-CRIT",
+    "document_id": "SOP-002",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-ANOM-SPIKE",
+    "document_id": "SOP-002",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-ANOM-DRIFT",
+    "document_id": "SOP-002",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-ANOM-STUCK",
+    "document_id": "SOP-002",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-ANOM-OUT_OF_RANGE",
+    "document_id": "SOP-002",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-ANOM-CORRELATED",
+    "document_id": "SOP-002",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "MAINT-01",
+    "document_id": "SOP-003",
+    "exact_prediction_ids": [
+      "MAINT-01"
+    ],
+    "source_lineage_prediction_ids": [
+      "MAINT-01"
+    ]
+  },
+  {
+    "gold_id": "MAINT-02",
+    "document_id": "SOP-003",
+    "exact_prediction_ids": [
+      "MAINT-02"
+    ],
+    "source_lineage_prediction_ids": [
+      "MAINT-02"
+    ]
+  },
+  {
+    "gold_id": "MAINT-03",
+    "document_id": "SOP-003",
+    "exact_prediction_ids": [
+      "MAINT-03"
+    ],
+    "source_lineage_prediction_ids": [
+      "MAINT-03"
+    ]
+  },
+  {
+    "gold_id": "MAINT-04",
+    "document_id": "SOP-003",
+    "exact_prediction_ids": [
+      "MAINT-04"
+    ],
+    "source_lineage_prediction_ids": [
+      "MAINT-04"
+    ]
+  },
+  {
+    "gold_id": "MAINT-05",
+    "document_id": "SOP-003",
+    "exact_prediction_ids": [
+      "MAINT-05"
+    ],
+    "source_lineage_prediction_ids": [
+      "MAINT-05"
+    ]
+  },
+  {
+    "gold_id": "MAINT-06",
+    "document_id": "SOP-003",
+    "exact_prediction_ids": [
+      "MAINT-06"
+    ],
+    "source_lineage_prediction_ids": [
+      "MAINT-06"
+    ]
+  },
+  {
+    "gold_id": "MAINT-07",
+    "document_id": "SOP-003",
+    "exact_prediction_ids": [
+      "MAINT-07"
+    ],
+    "source_lineage_prediction_ids": [
+      "MAINT-07"
+    ]
+  },
+  {
+    "gold_id": "MAINT-08",
+    "document_id": "SOP-003",
+    "exact_prediction_ids": [
+      "MAINT-08"
+    ],
+    "source_lineage_prediction_ids": [
+      "MAINT-08"
+    ]
+  },
+  {
+    "gold_id": "RULE-CORR-01",
+    "document_id": "SOP-003",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-CORR-02",
+    "document_id": "SOP-003",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-CORR-03",
+    "document_id": "SOP-003",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-OCC-PROD",
+    "document_id": "SOP-004",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-OCC-SRV",
+    "document_id": "SOP-004",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-OCC-WRH",
+    "document_id": "SOP-004",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-OCC-CHM",
+    "document_id": "SOP-004",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-OCC-RND",
+    "document_id": "SOP-004",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-OCC-CAFETERIA",
+    "document_id": "SOP-004",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-ACCESS-01",
+    "document_id": "SOP-004",
+    "exact_prediction_ids": [
+      "RULE-ACCESS-01"
+    ],
+    "source_lineage_prediction_ids": [
+      "RULE-ACCESS-01"
+    ]
+  },
+  {
+    "gold_id": "RULE-ACCESS-02",
+    "document_id": "SOP-004",
+    "exact_prediction_ids": [
+      "RULE-ACCESS-02"
+    ],
+    "source_lineage_prediction_ids": [
+      "RULE-ACCESS-02"
+    ]
+  },
+  {
+    "gold_id": "RULE-ACCESS-03",
+    "document_id": "SOP-004",
+    "exact_prediction_ids": [
+      "RULE-ACCESS-03"
+    ],
+    "source_lineage_prediction_ids": [
+      "RULE-ACCESS-03"
+    ]
+  },
+  {
+    "gold_id": "RULE-ACCESS-04",
+    "document_id": "SOP-004",
+    "exact_prediction_ids": [
+      "RULE-ACCESS-04"
+    ],
+    "source_lineage_prediction_ids": [
+      "RULE-ACCESS-04"
+    ]
+  },
+  {
+    "gold_id": "RULE-ACK-OP-WARN",
+    "document_id": "SOP-004",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-ACK-OP-CRIT",
+    "document_id": "SOP-004",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-ACK-TECH-CRIT",
+    "document_id": "SOP-004",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-ACK-SUP-WARN",
+    "document_id": "SOP-004",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-ACK-SUP-CRIT",
+    "document_id": "SOP-004",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-ACK-MAN-WARN",
+    "document_id": "SOP-004",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-ACK-MAN-CRIT",
+    "document_id": "SOP-004",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-ACK-SEC-WARN",
+    "document_id": "SOP-004",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  },
+  {
+    "gold_id": "RULE-ACK-SEC-CRIT",
+    "document_id": "SOP-004",
+    "exact_prediction_ids": [],
+    "source_lineage_prediction_ids": []
+  }
+]

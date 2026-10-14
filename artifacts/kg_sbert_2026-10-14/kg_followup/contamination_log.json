@@ -1,0 +1,21 @@
+{
+  "phase": "post_extraction_authorized_evaluation",
+  "authorized_by": "사용자의 API 없이 가능한 KG 적재 및 정답 대조 후속 작업 요청",
+  "predictions_modified_after_ground_truth": false,
+  "gold_source": "iMAKS_dataset.zip::kg_seed/ground_truth.csv",
+  "gold_sha256": "856f5bc09ac9559cf999c89d9d9962615be704b3a85d2b785317d665f1bb3a91",
+  "predictions_sha256": "b21dd20e36c6086169417f8fca127d394bf0bd0226f1764605710702e123e1e3",
+  "exposure": [
+    "프로젝트 CLAUDE.md의 평가 프로토콜 및 기대 구조",
+    "원본 규칙 ground_truth.csv 86건 (평가 단계)",
+    "seed nodes.csv/edges.csv의 레이블과 구조. 이벤트/사람 행은 그래프에서 제외",
+    "work_log.md의 과거 설계 근거 일부 (이번 후속 구현 기록을 위해 열람)"
+  ],
+  "not_used": [
+    "이전 평가 점수/벤치마크 결과",
+    "수정된 ground truth CSV",
+    "API 호출",
+    "새 모델 다운로드"
+  ],
+  "future_note": "이후 수행하는 추출은 평가 정답 노출 이후의 새 실험임을 밝혀야 한다."
+}

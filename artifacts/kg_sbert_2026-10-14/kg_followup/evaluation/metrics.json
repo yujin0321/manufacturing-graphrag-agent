@@ -1,0 +1,162 @@
+{
+  "status": "DIAGNOSTIC_COMPLETE_PRIMARY_METRIC_UNAVAILABLE",
+  "F1_content": null,
+  "primary_metric_unavailable_reason": "sentence_transformers and local all-MiniLM-L6-v2 model unavailable; no download permitted",
+  "method": "F1_lexical_proxy: Unicode word/number multiset Dice + per-document Hungarian 1:1, then >=0.6",
+  "F1_lexical_proxy": {
+    "matched": 60,
+    "predictions": 172,
+    "gold": 86,
+    "precision": 0.3488372093023256,
+    "recall": 0.6976744186046512,
+    "f1": 0.46511627906976744
+  },
+  "threshold": 0.6,
+  "by_document": {
+    "DS-ELEC-3300": {
+      "matched": 0,
+      "predictions": 5,
+      "gold": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "DS-MECH-4400": {
+      "matched": 0,
+      "predictions": 2,
+      "gold": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "DS-THERM-2200": {
+      "matched": 0,
+      "predictions": 4,
+      "gold": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "SOP-001": {
+      "matched": 26,
+      "predictions": 30,
+      "gold": 29,
+      "precision": 0.8666666666666667,
+      "recall": 0.896551724137931,
+      "f1": 0.8813559322033899
+    },
+    "SOP-002": {
+      "matched": 8,
+      "predictions": 49,
+      "gold": 27,
+      "precision": 0.16326530612244897,
+      "recall": 0.2962962962962963,
+      "f1": 0.21052631578947367
+    },
+    "SOP-003": {
+      "matched": 11,
+      "predictions": 11,
+      "gold": 11,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "SOP-004": {
+      "matched": 15,
+      "predictions": 71,
+      "gold": 19,
+      "precision": 0.2112676056338028,
+      "recall": 0.7894736842105263,
+      "f1": 0.33333333333333337
+    }
+  },
+  "class_aware_diagnostic": {
+    "AccessRule": {
+      "matched": 16,
+      "predictions": 73,
+      "gold": 20,
+      "precision": 0.2191780821917808,
+      "recall": 0.8,
+      "f1": 0.3440860215053763
+    },
+    "MaintenanceRule": {
+      "matched": 11,
+      "predictions": 13,
+      "gold": 11,
+      "precision": 0.8461538461538461,
+      "recall": 1.0,
+      "f1": 0.9166666666666666
+    },
+    "OperationalRule": {
+      "matched": 22,
+      "predictions": 33,
+      "gold": 28,
+      "precision": 0.6666666666666666,
+      "recall": 0.7857142857142857,
+      "f1": 0.721311475409836
+    },
+    "ThresholdRule": {
+      "matched": 8,
+      "predictions": 53,
+      "gold": 27,
+      "precision": 0.1509433962264151,
+      "recall": 0.2962962962962963,
+      "f1": 0.2
+    }
+  },
+  "matched_class_confusion": [
+    {
+      "gold_class": "AccessRule",
+      "prediction_class": "AccessRule",
+      "count": 16
+    },
+    {
+      "gold_class": "MaintenanceRule",
+      "prediction_class": "MaintenanceRule",
+      "count": 11
+    },
+    {
+      "gold_class": "OperationalRule",
+      "prediction_class": "MaintenanceRule",
+      "count": 2
+    },
+    {
+      "gold_class": "OperationalRule",
+      "prediction_class": "OperationalRule",
+      "count": 22
+    },
+    {
+      "gold_class": "OperationalRule",
+      "prediction_class": "ThresholdRule",
+      "count": 1
+    },
+    {
+      "gold_class": "ThresholdRule",
+      "prediction_class": "ThresholdRule",
+      "count": 8
+    }
+  ],
+  "id_diagnostic": {
+    "exact_gold_ids": 30,
+    "source_lineage_gold_ids": 31,
+    "gold_total": 86,
+    "is_content_score": false
+  },
+  "unmatched_predictions": 112,
+  "unmatched_gold": 26,
+  "hashes": {
+    "predictions": "b21dd20e36c6086169417f8fca127d394bf0bd0226f1764605710702e123e1e3",
+    "ground_truth_original": "856f5bc09ac9559cf999c89d9d9962615be704b3a85d2b785317d665f1bb3a91",
+    "lineage": "c1471ab29bab6ca23edfc02d12ab9af93767dae0376ddd62760e2893fd6e8409",
+    "policy": "8449e4e253250ef9e6935e7da3ac4cd52e42e2d345bd5d56861445aa1658a68d"
+  },
+  "human_review_completed": false,
+  "api_extraction_result": false,
+  "limitations": [
+    "Not SBERT F1_content or semantic correctness",
+    "1:1 assignment penalizes split atomic rules and extra source-supported rules",
+    "Korean/English mixed prediction text differs lexically from English gold",
+    "Token metric does not verify signs, inequalities, negation or numeric meaning",
+    "Gold may add actions not in the cited source; no prediction repair was performed"
+  ]
+}

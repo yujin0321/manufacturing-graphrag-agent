@@ -1,0 +1,776 @@
+[
+  {
+    "document_id": "SOP-001",
+    "gold_id": "RULE-ST01-01",
+    "prediction_id": "RULE-ST01-01",
+    "score": 0.5775519609451294,
+    "accepted": false,
+    "gold_class": "OperationalRule",
+    "prediction_class": "OperationalRule"
+  },
+  {
+    "document_id": "SOP-001",
+    "gold_id": "RULE-ST01-02",
+    "prediction_id": "RULE-ST01-02",
+    "score": 0.7826848030090332,
+    "accepted": true,
+    "gold_class": "OperationalRule",
+    "prediction_class": "OperationalRule"
+  },
+  {
+    "document_id": "SOP-001",
+    "gold_id": "RULE-ST01-03",
+    "prediction_id": "RULE-ST01-03",
+    "score": 0.8480238914489746,
+    "accepted": true,
+    "gold_class": "OperationalRule",
+    "prediction_class": "OperationalRule"
+  },
+  {
+    "document_id": "SOP-001",
+    "gold_id": "RULE-ST02-01",
+    "prediction_id": "RULE-ST02-01",
+    "score": 0.6301544904708862,
+    "accepted": true,
+    "gold_class": "OperationalRule",
+    "prediction_class": "OperationalRule"
+  },
+  {
+    "document_id": "SOP-001",
+    "gold_id": "RULE-ST02-02",
+    "prediction_id": "RULE-ST02-02",
+    "score": 0.8990042209625244,
+    "accepted": true,
+    "gold_class": "OperationalRule",
+    "prediction_class": "OperationalRule"
+  },
+  {
+    "document_id": "SOP-001",
+    "gold_id": "RULE-ST02-03",
+    "prediction_id": "RULE-ST02-03",
+    "score": 0.7560629844665527,
+    "accepted": true,
+    "gold_class": "OperationalRule",
+    "prediction_class": "MaintenanceRule"
+  },
+  {
+    "document_id": "SOP-001",
+    "gold_id": "RULE-ST02-04",
+    "prediction_id": "RULE-ST02-04",
+    "score": 0.9374812841415405,
+    "accepted": true,
+    "gold_class": "OperationalRule",
+    "prediction_class": "OperationalRule"
+  },
+  {
+    "document_id": "SOP-001",
+    "gold_id": "RULE-ST03-01",
+    "prediction_id": "RULE-ST03-01",
+    "score": 0.4464614987373352,
+    "accepted": false,
+    "gold_class": "OperationalRule",
+    "prediction_class": "OperationalRule"
+  },
+  {
+    "document_id": "SOP-001",
+    "gold_id": "RULE-ST03-02a",
+    "prediction_id": "RULE-ST03-02-A",
+    "score": 0.8802323341369629,
+    "accepted": true,
+    "gold_class": "OperationalRule",
+    "prediction_class": "OperationalRule"
+  },
+  {
+    "document_id": "SOP-001",
+    "gold_id": "RULE-ST03-02b",
+    "prediction_id": "RULE-ST03-02-B",
+    "score": 0.8314338326454163,
+    "accepted": true,
+    "gold_class": "OperationalRule",
+    "prediction_class": "OperationalRule"
+  },
+  {
+    "document_id": "SOP-001",
+    "gold_id": "RULE-ST03-03",
+    "prediction_id": "RULE-ST03-03",
+    "score": 0.7344507575035095,
+    "accepted": true,
+    "gold_class": "OperationalRule",
+    "prediction_class": "ThresholdRule"
+  },
+  {
+    "document_id": "SOP-001",
+    "gold_id": "RULE-ST04-01",
+    "prediction_id": "RULE-ST04-01",
+    "score": 0.869347333908081,
+    "accepted": true,
+    "gold_class": "OperationalRule",
+    "prediction_class": "MaintenanceRule"
+  },
+  {
+    "document_id": "SOP-001",
+    "gold_id": "RULE-ST04-02",
+    "prediction_id": "RULE-ST04-02",
+    "score": 0.8938377499580383,
+    "accepted": true,
+    "gold_class": "OperationalRule",
+    "prediction_class": "OperationalRule"
+  },
+  {
+    "document_id": "SOP-001",
+    "gold_id": "RULE-ST04-03",
+    "prediction_id": "RULE-ST04-03",
+    "score": 0.8201260566711426,
+    "accepted": true,
+    "gold_class": "OperationalRule",
+    "prediction_class": "OperationalRule"
+  },
+  {
+    "document_id": "SOP-001",
+    "gold_id": "RULE-SRV01-01",
+    "prediction_id": "RULE-SRV01-01",
+    "score": 0.5543115735054016,
+    "accepted": false,
+    "gold_class": "OperationalRule",
+    "prediction_class": "OperationalRule"
+  },
+  {
+    "document_id": "SOP-001",
+    "gold_id": "RULE-SRV01-02",
+    "prediction_id": "RULE-SRV01-02",
+    "score": 0.8837437629699707,
+    "accepted": true,
+    "gold_class": "OperationalRule",
+    "prediction_class": "OperationalRule"
+  },
+  {
+    "document_id": "SOP-001",
+    "gold_id": "RULE-WRH01-01a",
+    "prediction_id": "RULE-WRH01-01-A",
+    "score": 0.5912649035453796,
+    "accepted": false,
+    "gold_class": "OperationalRule",
+    "prediction_class": "OperationalRule"
+  },
+  {
+    "document_id": "SOP-001",
+    "gold_id": "RULE-WRH01-01b",
+    "prediction_id": "RULE-WRH01-01-B",
+    "score": 0.7947763204574585,
+    "accepted": true,
+    "gold_class": "OperationalRule",
+    "prediction_class": "OperationalRule"
+  },
+  {
+    "document_id": "SOP-001",
+    "gold_id": "RULE-WRH01-02",
+    "prediction_id": "RULE-WRH01-02",
+    "score": 0.884769082069397,
+    "accepted": true,
+    "gold_class": "OperationalRule",
+    "prediction_class": "OperationalRule"
+  },
+  {
+    "document_id": "SOP-001",
+    "gold_id": "RULE-CHM01-01a",
+    "prediction_id": "RULE-CHM01-01-A",
+    "score": 0.5802223682403564,
+    "accepted": false,
+    "gold_class": "OperationalRule",
+    "prediction_class": "OperationalRule"
+  },
+  {
+    "document_id": "SOP-001",
+    "gold_id": "RULE-CHM01-01b",
+    "prediction_id": "RULE-CHM01-01-B",
+    "score": 0.799621045589447,
+    "accepted": true,
+    "gold_class": "OperationalRule",
+    "prediction_class": "OperationalRule"
+  },
+  {
+    "document_id": "SOP-001",
+    "gold_id": "RULE-CHM01-02a",
+    "prediction_id": "RULE-CHM01-02-B",
+    "score": 0.7116809487342834,
+    "accepted": true,
+    "gold_class": "OperationalRule",
+    "prediction_class": "OperationalRule"
+  },
+  {
+    "document_id": "SOP-001",
+    "gold_id": "RULE-CHM01-02b",
+    "prediction_id": "RULE-CHM01-02-A",
+    "score": 0.5029982924461365,
+    "accepted": false,
+    "gold_class": "OperationalRule",
+    "prediction_class": "OperationalRule"
+  },
+  {
+    "document_id": "SOP-001",
+    "gold_id": "RULE-CHM01-03",
+    "prediction_id": "RULE-CHM01-03-A",
+    "score": 0.8485796451568604,
+    "accepted": true,
+    "gold_class": "AccessRule",
+    "prediction_class": "AccessRule"
+  },
+  {
+    "document_id": "SOP-001",
+    "gold_id": "RULE-RND01-01",
+    "prediction_id": "RULE-RND01-01",
+    "score": 0.7486992478370667,
+    "accepted": true,
+    "gold_class": "OperationalRule",
+    "prediction_class": "OperationalRule"
+  },
+  {
+    "document_id": "SOP-001",
+    "gold_id": "RULE-RND01-02a",
+    "prediction_id": "RULE-RND01-02-A",
+    "score": 0.827261209487915,
+    "accepted": true,
+    "gold_class": "OperationalRule",
+    "prediction_class": "OperationalRule"
+  },
+  {
+    "document_id": "SOP-001",
+    "gold_id": "RULE-RND01-02b",
+    "prediction_id": "RULE-RND01-02-B",
+    "score": 0.8377469778060913,
+    "accepted": true,
+    "gold_class": "OperationalRule",
+    "prediction_class": "OperationalRule"
+  },
+  {
+    "document_id": "SOP-001",
+    "gold_id": "RULE-CAF01-01",
+    "prediction_id": "RULE-CAF01-01",
+    "score": 0.8282098770141602,
+    "accepted": true,
+    "gold_class": "OperationalRule",
+    "prediction_class": "OperationalRule"
+  },
+  {
+    "document_id": "SOP-001",
+    "gold_id": "RULE-CAF01-02",
+    "prediction_id": "RULE-CAF01-02",
+    "score": 0.7576215267181396,
+    "accepted": true,
+    "gold_class": "OperationalRule",
+    "prediction_class": "OperationalRule"
+  },
+  {
+    "document_id": "SOP-002",
+    "gold_id": "RULE-THR-ST01-TMP-CRIT",
+    "prediction_id": "SOP-002-EX-037",
+    "score": 0.5906398296356201,
+    "accepted": false,
+    "gold_class": "ThresholdRule",
+    "prediction_class": "ThresholdRule"
+  },
+  {
+    "document_id": "SOP-002",
+    "gold_id": "RULE-THR-ST01-PRS-CRIT",
+    "prediction_id": "SOP-002-EX-004",
+    "score": 0.5864602327346802,
+    "accepted": false,
+    "gold_class": "ThresholdRule",
+    "prediction_class": "ThresholdRule"
+  },
+  {
+    "document_id": "SOP-002",
+    "gold_id": "RULE-THR-ST01-FLW-CRIT",
+    "prediction_id": "SOP-002-EX-006",
+    "score": 0.5905784964561462,
+    "accepted": false,
+    "gold_class": "ThresholdRule",
+    "prediction_class": "ThresholdRule"
+  },
+  {
+    "document_id": "SOP-002",
+    "gold_id": "RULE-THR-ST02-TMP-CRIT",
+    "prediction_id": "SOP-002-EX-008",
+    "score": 0.6895078420639038,
+    "accepted": true,
+    "gold_class": "ThresholdRule",
+    "prediction_class": "ThresholdRule"
+  },
+  {
+    "document_id": "SOP-002",
+    "gold_id": "RULE-THR-ST02-PRS-CRIT",
+    "prediction_id": "SOP-002-EX-010",
+    "score": 0.5978752970695496,
+    "accepted": false,
+    "gold_class": "ThresholdRule",
+    "prediction_class": "ThresholdRule"
+  },
+  {
+    "document_id": "SOP-002",
+    "gold_id": "RULE-THR-ST02-CUR-CRIT",
+    "prediction_id": "SOP-002-EX-012",
+    "score": 0.6110222935676575,
+    "accepted": true,
+    "gold_class": "ThresholdRule",
+    "prediction_class": "ThresholdRule"
+  },
+  {
+    "document_id": "SOP-002",
+    "gold_id": "RULE-THR-ST03-SPD-CRIT",
+    "prediction_id": "SOP-002-EX-014",
+    "score": 0.6065232157707214,
+    "accepted": true,
+    "gold_class": "ThresholdRule",
+    "prediction_class": "ThresholdRule"
+  },
+  {
+    "document_id": "SOP-002",
+    "gold_id": "RULE-THR-ST03-TEN-CRIT",
+    "prediction_id": "SOP-002-EX-002",
+    "score": 0.5019951462745667,
+    "accepted": false,
+    "gold_class": "ThresholdRule",
+    "prediction_class": "ThresholdRule"
+  },
+  {
+    "document_id": "SOP-002",
+    "gold_id": "RULE-THR-ST03-CNT-CRIT",
+    "prediction_id": "SOP-002-EX-018",
+    "score": 0.712436318397522,
+    "accepted": true,
+    "gold_class": "ThresholdRule",
+    "prediction_class": "ThresholdRule"
+  },
+  {
+    "document_id": "SOP-002",
+    "gold_id": "RULE-THR-ST04-VIB-CRIT",
+    "prediction_id": "SOP-002-EX-020",
+    "score": 0.6090509295463562,
+    "accepted": true,
+    "gold_class": "ThresholdRule",
+    "prediction_class": "ThresholdRule"
+  },
+  {
+    "document_id": "SOP-002",
+    "gold_id": "RULE-THR-ST04-CUR-CRIT",
+    "prediction_id": "SOP-002-EX-016",
+    "score": 0.5802065134048462,
+    "accepted": false,
+    "gold_class": "ThresholdRule",
+    "prediction_class": "ThresholdRule"
+  },
+  {
+    "document_id": "SOP-002",
+    "gold_id": "RULE-THR-ST04-SPD-CRIT",
+    "prediction_id": "SOP-002-EX-024",
+    "score": 0.5247491598129272,
+    "accepted": false,
+    "gold_class": "ThresholdRule",
+    "prediction_class": "ThresholdRule"
+  },
+  {
+    "document_id": "SOP-002",
+    "gold_id": "RULE-THR-SRV01-TMP-CRIT",
+    "prediction_id": "SOP-002-EX-026",
+    "score": 0.7434101104736328,
+    "accepted": true,
+    "gold_class": "ThresholdRule",
+    "prediction_class": "ThresholdRule"
+  },
+  {
+    "document_id": "SOP-002",
+    "gold_id": "RULE-THR-SRV01-HUM-CRIT",
+    "prediction_id": "SOP-002-EX-031",
+    "score": 0.5353403091430664,
+    "accepted": false,
+    "gold_class": "ThresholdRule",
+    "prediction_class": "ThresholdRule"
+  },
+  {
+    "document_id": "SOP-002",
+    "gold_id": "RULE-THR-WRH01-TMP-CRIT",
+    "prediction_id": "SOP-002-EX-030",
+    "score": 0.7147920727729797,
+    "accepted": true,
+    "gold_class": "ThresholdRule",
+    "prediction_class": "ThresholdRule"
+  },
+  {
+    "document_id": "SOP-002",
+    "gold_id": "RULE-THR-WRH01-HUM-CRIT",
+    "prediction_id": "SOP-002-EX-032",
+    "score": 0.6007658839225769,
+    "accepted": true,
+    "gold_class": "ThresholdRule",
+    "prediction_class": "ThresholdRule"
+  },
+  {
+    "document_id": "SOP-002",
+    "gold_id": "RULE-THR-CHM01-TMP-CRIT",
+    "prediction_id": "SOP-002-EX-034",
+    "score": 0.6994702816009521,
+    "accepted": true,
+    "gold_class": "ThresholdRule",
+    "prediction_class": "ThresholdRule"
+  },
+  {
+    "document_id": "SOP-002",
+    "gold_id": "RULE-THR-CHM01-HUM-CRIT",
+    "prediction_id": "SOP-002-EX-036",
+    "score": 0.6248552799224854,
+    "accepted": true,
+    "gold_class": "ThresholdRule",
+    "prediction_class": "ThresholdRule"
+  },
+  {
+    "document_id": "SOP-002",
+    "gold_id": "RULE-THR-RND01-TMP-CRIT",
+    "prediction_id": "SOP-002-EX-038",
+    "score": 0.6821591854095459,
+    "accepted": true,
+    "gold_class": "ThresholdRule",
+    "prediction_class": "ThresholdRule"
+  },
+  {
+    "document_id": "SOP-002",
+    "gold_id": "RULE-THR-RND01-HUM-CRIT",
+    "prediction_id": "SOP-002-EX-040",
+    "score": 0.7010719776153564,
+    "accepted": true,
+    "gold_class": "ThresholdRule",
+    "prediction_class": "ThresholdRule"
+  },
+  {
+    "document_id": "SOP-002",
+    "gold_id": "RULE-THR-CAF01-TMP-CRIT",
+    "prediction_id": "SOP-002-EX-042",
+    "score": 0.666083574295044,
+    "accepted": true,
+    "gold_class": "ThresholdRule",
+    "prediction_class": "ThresholdRule"
+  },
+  {
+    "document_id": "SOP-002",
+    "gold_id": "RULE-THR-CAF01-HUM-CRIT",
+    "prediction_id": "SOP-002-EX-044",
+    "score": 0.5413213968276978,
+    "accepted": false,
+    "gold_class": "ThresholdRule",
+    "prediction_class": "ThresholdRule"
+  },
+  {
+    "document_id": "SOP-002",
+    "gold_id": "RULE-ANOM-SPIKE",
+    "prediction_id": "SOP-002-EX-045",
+    "score": 0.8404525518417358,
+    "accepted": true,
+    "gold_class": "ThresholdRule",
+    "prediction_class": "ThresholdRule"
+  },
+  {
+    "document_id": "SOP-002",
+    "gold_id": "RULE-ANOM-DRIFT",
+    "prediction_id": "SOP-002-EX-046",
+    "score": 0.7753956913948059,
+    "accepted": true,
+    "gold_class": "ThresholdRule",
+    "prediction_class": "ThresholdRule"
+  },
+  {
+    "document_id": "SOP-002",
+    "gold_id": "RULE-ANOM-STUCK",
+    "prediction_id": "SOP-002-EX-047",
+    "score": 0.8491113185882568,
+    "accepted": true,
+    "gold_class": "ThresholdRule",
+    "prediction_class": "ThresholdRule"
+  },
+  {
+    "document_id": "SOP-002",
+    "gold_id": "RULE-ANOM-OUT_OF_RANGE",
+    "prediction_id": "SOP-002-EX-048",
+    "score": 0.7772567272186279,
+    "accepted": true,
+    "gold_class": "ThresholdRule",
+    "prediction_class": "ThresholdRule"
+  },
+  {
+    "document_id": "SOP-002",
+    "gold_id": "RULE-ANOM-CORRELATED",
+    "prediction_id": "SOP-002-EX-049",
+    "score": 0.793170154094696,
+    "accepted": true,
+    "gold_class": "ThresholdRule",
+    "prediction_class": "ThresholdRule"
+  },
+  {
+    "document_id": "SOP-003",
+    "gold_id": "MAINT-01",
+    "prediction_id": "MAINT-01",
+    "score": 0.860669732093811,
+    "accepted": true,
+    "gold_class": "MaintenanceRule",
+    "prediction_class": "MaintenanceRule"
+  },
+  {
+    "document_id": "SOP-003",
+    "gold_id": "MAINT-02",
+    "prediction_id": "MAINT-02",
+    "score": 0.8594772815704346,
+    "accepted": true,
+    "gold_class": "MaintenanceRule",
+    "prediction_class": "MaintenanceRule"
+  },
+  {
+    "document_id": "SOP-003",
+    "gold_id": "MAINT-03",
+    "prediction_id": "MAINT-03",
+    "score": 0.7554441094398499,
+    "accepted": true,
+    "gold_class": "MaintenanceRule",
+    "prediction_class": "MaintenanceRule"
+  },
+  {
+    "document_id": "SOP-003",
+    "gold_id": "MAINT-04",
+    "prediction_id": "MAINT-04",
+    "score": 0.7958123683929443,
+    "accepted": true,
+    "gold_class": "MaintenanceRule",
+    "prediction_class": "MaintenanceRule"
+  },
+  {
+    "document_id": "SOP-003",
+    "gold_id": "MAINT-05",
+    "prediction_id": "MAINT-05",
+    "score": 0.7894412279129028,
+    "accepted": true,
+    "gold_class": "MaintenanceRule",
+    "prediction_class": "MaintenanceRule"
+  },
+  {
+    "document_id": "SOP-003",
+    "gold_id": "MAINT-06",
+    "prediction_id": "MAINT-06",
+    "score": 0.8593916893005371,
+    "accepted": true,
+    "gold_class": "MaintenanceRule",
+    "prediction_class": "MaintenanceRule"
+  },
+  {
+    "document_id": "SOP-003",
+    "gold_id": "MAINT-07",
+    "prediction_id": "MAINT-07",
+    "score": 0.7779776453971863,
+    "accepted": true,
+    "gold_class": "MaintenanceRule",
+    "prediction_class": "MaintenanceRule"
+  },
+  {
+    "document_id": "SOP-003",
+    "gold_id": "MAINT-08",
+    "prediction_id": "MAINT-08",
+    "score": 0.8684485554695129,
+    "accepted": true,
+    "gold_class": "MaintenanceRule",
+    "prediction_class": "MaintenanceRule"
+  },
+  {
+    "document_id": "SOP-003",
+    "gold_id": "RULE-CORR-01",
+    "prediction_id": "SOP-003-EX-001",
+    "score": 0.8603212833404541,
+    "accepted": true,
+    "gold_class": "MaintenanceRule",
+    "prediction_class": "MaintenanceRule"
+  },
+  {
+    "document_id": "SOP-003",
+    "gold_id": "RULE-CORR-02",
+    "prediction_id": "SOP-003-EX-002",
+    "score": 0.8914054036140442,
+    "accepted": true,
+    "gold_class": "MaintenanceRule",
+    "prediction_class": "MaintenanceRule"
+  },
+  {
+    "document_id": "SOP-003",
+    "gold_id": "RULE-CORR-03",
+    "prediction_id": "SOP-003-EX-003",
+    "score": 0.8548953533172607,
+    "accepted": true,
+    "gold_class": "MaintenanceRule",
+    "prediction_class": "MaintenanceRule"
+  },
+  {
+    "document_id": "SOP-004",
+    "gold_id": "RULE-OCC-PROD",
+    "prediction_id": "SOP-004-EX-051",
+    "score": 0.6454423666000366,
+    "accepted": true,
+    "gold_class": "AccessRule",
+    "prediction_class": "AccessRule"
+  },
+  {
+    "document_id": "SOP-004",
+    "gold_id": "RULE-OCC-SRV",
+    "prediction_id": "SOP-004-EX-048",
+    "score": 0.5644381046295166,
+    "accepted": false,
+    "gold_class": "AccessRule",
+    "prediction_class": "AccessRule"
+  },
+  {
+    "document_id": "SOP-004",
+    "gold_id": "RULE-OCC-WRH",
+    "prediction_id": "SOP-004-EX-060",
+    "score": 0.55157470703125,
+    "accepted": false,
+    "gold_class": "AccessRule",
+    "prediction_class": "AccessRule"
+  },
+  {
+    "document_id": "SOP-004",
+    "gold_id": "RULE-OCC-CHM",
+    "prediction_id": "SOP-004-EX-054",
+    "score": 0.541176974773407,
+    "accepted": false,
+    "gold_class": "AccessRule",
+    "prediction_class": "AccessRule"
+  },
+  {
+    "document_id": "SOP-004",
+    "gold_id": "RULE-OCC-RND",
+    "prediction_id": "SOP-004-EX-056",
+    "score": 0.6366758346557617,
+    "accepted": true,
+    "gold_class": "AccessRule",
+    "prediction_class": "AccessRule"
+  },
+  {
+    "document_id": "SOP-004",
+    "gold_id": "RULE-OCC-CAFETERIA",
+    "prediction_id": "SOP-004-EX-057",
+    "score": 0.5894480347633362,
+    "accepted": false,
+    "gold_class": "AccessRule",
+    "prediction_class": "AccessRule"
+  },
+  {
+    "document_id": "SOP-004",
+    "gold_id": "RULE-ACCESS-01",
+    "prediction_id": "RULE-ACCESS-01",
+    "score": 0.8978098630905151,
+    "accepted": true,
+    "gold_class": "AccessRule",
+    "prediction_class": "AccessRule"
+  },
+  {
+    "document_id": "SOP-004",
+    "gold_id": "RULE-ACCESS-02",
+    "prediction_id": "RULE-ACCESS-02",
+    "score": 0.8686658143997192,
+    "accepted": true,
+    "gold_class": "AccessRule",
+    "prediction_class": "AccessRule"
+  },
+  {
+    "document_id": "SOP-004",
+    "gold_id": "RULE-ACCESS-03",
+    "prediction_id": "RULE-ACCESS-03",
+    "score": 0.9164944887161255,
+    "accepted": true,
+    "gold_class": "AccessRule",
+    "prediction_class": "AccessRule"
+  },
+  {
+    "document_id": "SOP-004",
+    "gold_id": "RULE-ACCESS-04",
+    "prediction_id": "RULE-ACCESS-04",
+    "score": 0.9538382291793823,
+    "accepted": true,
+    "gold_class": "AccessRule",
+    "prediction_class": "AccessRule"
+  },
+  {
+    "document_id": "SOP-004",
+    "gold_id": "RULE-ACK-OP-WARN",
+    "prediction_id": "SOP-004-EX-058",
+    "score": 0.9320480227470398,
+    "accepted": true,
+    "gold_class": "AccessRule",
+    "prediction_class": "AccessRule"
+  },
+  {
+    "document_id": "SOP-004",
+    "gold_id": "RULE-ACK-OP-CRIT",
+    "prediction_id": "SOP-004-EX-059",
+    "score": 0.9261443018913269,
+    "accepted": true,
+    "gold_class": "AccessRule",
+    "prediction_class": "AccessRule"
+  },
+  {
+    "document_id": "SOP-004",
+    "gold_id": "RULE-ACK-TECH-CRIT",
+    "prediction_id": "SOP-004-EX-061",
+    "score": 0.9366583824157715,
+    "accepted": true,
+    "gold_class": "AccessRule",
+    "prediction_class": "AccessRule"
+  },
+  {
+    "document_id": "SOP-004",
+    "gold_id": "RULE-ACK-SUP-WARN",
+    "prediction_id": "SOP-004-EX-062",
+    "score": 0.9386340975761414,
+    "accepted": true,
+    "gold_class": "AccessRule",
+    "prediction_class": "AccessRule"
+  },
+  {
+    "document_id": "SOP-004",
+    "gold_id": "RULE-ACK-SUP-CRIT",
+    "prediction_id": "SOP-004-EX-063",
+    "score": 0.9315566420555115,
+    "accepted": true,
+    "gold_class": "AccessRule",
+    "prediction_class": "AccessRule"
+  },
+  {
+    "document_id": "SOP-004",
+    "gold_id": "RULE-ACK-MAN-WARN",
+    "prediction_id": "SOP-004-EX-064",
+    "score": 0.930301308631897,
+    "accepted": true,
+    "gold_class": "AccessRule",
+    "prediction_class": "AccessRule"
+  },
+  {
+    "document_id": "SOP-004",
+    "gold_id": "RULE-ACK-MAN-CRIT",
+    "prediction_id": "SOP-004-EX-065",
+    "score": 0.9275082945823669,
+    "accepted": true,
+    "gold_class": "AccessRule",
+    "prediction_class": "AccessRule"
+  },
+  {
+    "document_id": "SOP-004",
+    "gold_id": "RULE-ACK-SEC-WARN",
+    "prediction_id": "SOP-004-EX-066",
+    "score": 0.9193018674850464,
+    "accepted": true,
+    "gold_class": "AccessRule",
+    "prediction_class": "AccessRule"
+  },
+  {
+    "document_id": "SOP-004",
+    "gold_id": "RULE-ACK-SEC-CRIT",
+    "prediction_id": "SOP-004-EX-067",
+    "score": 0.9146683812141418,
+    "accepted": true,
+    "gold_class": "AccessRule",
+    "prediction_class": "AccessRule"
+  }
+]

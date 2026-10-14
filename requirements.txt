@@ -1,0 +1,26 @@
+# Python dependencies for the iMAKS KG pipeline (pinned from the 2026-10-14 install, Python 3.12).
+# Keep this file ASCII-only: pip on Windows reads it with the system code page.
+# Requires Python 3.11 or newer (the config loader uses the standard-library tomllib).
+# Setup: python -m venv .venv ; .venv\Scripts\python.exe -m pip install -r requirements.txt
+# torch is the CPU-only build to keep the install small. No GPU is used.
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+# Ontology / SHACL / RDF
+rdflib==7.6.0
+pyshacl==0.40.1
+
+# PDF preprocessing
+pdfplumber==0.11.10
+
+# Evaluator (F1_content): sentence embeddings + Hungarian matching
+numpy==2.5.3
+scipy==1.18.1
+torch==2.14.1+cpu
+transformers==5.19.0
+sentence-transformers==6.1.0
+huggingface_hub==1.33.0
+
+# Embedding model (downloaded by the code at first run; record the revision in pre_evaluation_lock.json):
+#   sentence-transformers/all-MiniLM-L6-v2  revision 1110a243fdf4706b3f48f1d95db1a4f5529b4d41
+# LLM APIs are called with the standard library (urllib), so no vendor SDK is listed.
+# API keys are read from .env (git-ignored); see .env.example.

@@ -1,0 +1,55 @@
+# 4단계 LLM 추출 설정 견본. 이 파일을 config/extract.toml 로 복사해 모델 id를 채운다.
+# 키 값은 여기에 쓰지 않는다. 키는 환경변수(.env)로만 준다. 아래 key_env는 환경변수 이름이다.
+# temperature, top_p, top_k 항목은 만들지 않는다(있으면 로더가 거부한다).
+
+[run]
+provider_order = ["gemini", "openai"]        # 앞에서부터 시도
+try_next_provider_on_auth_error = true       # 크레딧/인증 오류가 나면 그 공급자만 중단하고 다음 공급자를 시도
+run_mode = "production"                      # scoring: 전체 체인의 모델이 정확히 하나여야 실행(점수 기준선용). production: fallback 체인 허용
+
+[extract]                                    # 2단계(요청 빌더) 설정
+example_file = ""                            # 사용자가 쓴 Example 파일(저장소 기준 상대 경로). 검증 통과 기록이 없으면 실행 거부
+max_input_tokens_est = 200000                # 입력 토큰 추정 상한. 넘으면 section 경계로 분할(못 나누면 중단)
+chars_per_token = 3.0                        # 토큰 추정 = 문자 수 / 이 값(단순 추정)
+
+[paths]                                      # 저장소 루트 기준 상대 경로
+log_dir = "llm_logs"
+cache_dir = "llm_cache"
+
+[retry]
+max_retries = 4          # 같은 모델에 대한 재시도 횟수(첫 시도 제외) = 총 5회 시도
+base_delay_s = 1.0       # 대기 1, 2, 4, 8초 ... (지수)
+max_delay_s = 60.0
+jitter_ratio = 0.25      # 대기에 0~25% 무작위 가산(상한 max_delay_s 적용)
+
+[providers.gemini]
+key_env = "GEMINI_API_KEY"                   # 환경변수 이름만. 키 값은 쓰지 않는다
+base_url = "https://generativelanguage.googleapis.com/v1beta"
+api = "interactions"                         # interactions(기본, 2026-10-14 공식 문서 확인) | generate_content(레거시, 계속 지원)
+# 요청 본문 필드 위치(점 표기). 빈 문자열이면 그 필드를 보내지 않는다(store는 예외: 항상 false로 보냄).
+# 아래는 api = "interactions"의 기본값. 최대 출력 토큰 필드(generation_config.max_output_tokens)는 공식 문서 미확인(추정)이다.
+# api = "generate_content"이면 기본 필드가 달라진다(thinking_path = "generationConfig.thinkingConfig.thinkingLevel" 등).
+[providers.gemini.fields]
+thinking_path = "generation_config.thinking_level"
+max_tokens_path = "generation_config.max_output_tokens"
+store_path = "store"                         # 값은 항상 false(서버 저장 끔)
+system_path = ""                             # 비면 system 문구를 input 앞에 붙인다(전용 필드는 미확인)
+[[providers.gemini.models]]
+id = ""                  # 비어 있으면 실행 거부. 모델 목록 조회로 확인한 이름을 넣는다
+thinking_level = "low"   # low | medium | high
+max_output_tokens = 16384
+timeout_s = 120
+
+[providers.openai]
+key_env = "OPENAI_API_KEY"
+base_url = "https://api.openai.com/v1"
+api = "chat_completions"
+[providers.openai.fields]
+thinking_path = "reasoning_effort"           # low | medium | high | xhigh | max (none, minimal 불가)
+max_tokens_path = "max_completion_tokens"    # 추론 토큰 포함. max_tokens 재시도는 하지 않는다
+schema_mode = "json_schema"   # json_schema(strict, 스키마는 변환본 전송) | json_object | none
+[[providers.openai.models]]
+id = ""
+thinking_level = "low"
+max_output_tokens = 16384
+timeout_s = 120

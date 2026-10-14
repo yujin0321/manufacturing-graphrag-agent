@@ -69,7 +69,7 @@
 | `ruleSeverity` | Rule | string | 문서가 정한 등급 | CRITICAL | 확정 |
 | `extractionMethod` | Rule | string | 규칙 생성 방법 | LLM 추출 / 표 결정적 변환 | 제안 (재도출 6장) |
 | `priority` | MaintenanceRule | string | 정비 우선순위 | HIGH | 확정 (D5) |
-| `nominal` | ThresholdRule | decimal | 평상값 | 185.0 | 확정 |
+| `nominalValue` | ThresholdRule | decimal | 평상값(전처리 CSV·seed와 같은 이름, 2026-10-12 변경) | 185.0 | 확정 |
 | `warnHi` | ThresholdRule | decimal | 경고 상한 | 195.0 | 확정 |
 | `warnLo` | ThresholdRule | decimal | 경고 하한 | 175.0 | 확정 |
 | `critHi` | ThresholdRule | decimal | 위험 상한(룰·⑧⑨ 경로에서만 사용, ⑥ 입력 아님) | 210.0 | 확정 (D1) |

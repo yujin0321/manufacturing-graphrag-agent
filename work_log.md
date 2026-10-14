@@ -124,3 +124,227 @@
 3. (완료 2026-10-07) 확정 내용을 `CLAUDE.md` 2·3·4장에 반영. 수정 전 백업: `reports/CLAUDE.md.before_2026-10-07.bak`. handoff 문서 반영은 아직.
 4. 가이드라인 단계: 1단계 Competency Questions → 2단계 전처리 → 3단계 온톨로지 → 4단계 SHACL.
 5. 0단계 마무리: `.gitignore`의 UTF-16 깨진 줄 정리, `CLAUDE.md` 커밋(작업 완료 후 한꺼번에).
+
+## 2026-10-12
+
+### 2번째 작업 시작 전 환경 정리 (브랜치 `유진-2번째작업`)
+- 원본 폴더 `iMAKS_dataset/` → `imaks_data/`: 사용자가 직접 이름을 바꿈(원본 보호 훅이 이 폴더에 대한 이동 명령을 막으므로). 바꾼 뒤 `check_raw_unchanged.py` PASS(1,121개 파일, 기준선 그대로).
+- `.gitignore`에 `/.deps/`(예전 `pip --target` 설치본, 참조 없음, 삭제하지 않음)와 `/data/`(팀원 산출물로 보이며 정답 파일 포함, 내용은 열지 않음)를 추가.
+- `.venv` 생성(Python 3.12.10): pdfplumber 0.11.10, pdfminer.six 20260107, rdflib 7.6.0, pyshacl 0.40.1.
+- 전처리 재실행: 센서(211,200행, 센서 22, timestamp 9,600, 임계값 22행), 문서(문서 7, 10쪽, 표 24, 청크 86 = rule 28·table 24·text 34, SOP-002 센서 행 22가 임계값 파일과 일치, 경고 0).
+- 확인: `unittest discover -s tests` 50개 통과, `check_raw_unchanged.py` PASS, `check_leakage.py` 기본 폴더 PASS.
+- B 전에 확인할 것: 예전 기록에는 CSV 컬럼 이름을 온톨로지에 맞췄다고 돼 있지만 `ontology.ttl`에는 `nominal`이 남아 있다(결정 필요 #2).
+
+### [A] 기존 KG 변환 ③ (구현 + 독립 검증 PASS, 2026-10-12)
+- 구현: `implementer`(`reports/seed_to_rdf_impl.md`). 코드 `src/imaks_kg/kg/{naming.py, seed_to_rdf.py, seed_events_post7.py}`, 테스트 `tests/test_seed_to_rdf.py`(21개), `settings.py` 경로 상수 추가, `.gitignore`에 `/kg_build/`.
+- 산출물: `kg_build/seed.ttl`(Station 9, Sensor 22, hasSensor 22, feedsInto 3, Provenance 56, 482 트리플, 결정적), `reports/seed_to_rdf_counts.md`(코드 생성).
+- 대조: 노드 115 = 변환 31 + 이월(B) 8(Maintenance) + 이월(⑦) 14(AnomalyEvent) + 제외 62(System 1, Zone 7, Person 44, SafetyEvent 10). 엣지 341 = 변환 47(monitors 44→hasSensor 22, feeds_into 3) + 이월(B) 16(triggers Sensor→Maintenance 8, resolves 8) + 이월(⑦) 15(triggers Sensor→AnomalyEvent 14, correlates_with 1) + 제외 263.
+- 설계 선택(구현자): 인스턴스 IRI는 원본 name(`inst:ST02_SEALING`). 관계 출처는 온톨로지에 관계 트리플용 수단이 없어 노드에 붙임(hasSensor 출처→Sensor, feedsInto 출처→주어 Station). monitors 2줄은 Provenance 하나에 `sourceRowId` 두 개(`row:<n>`). 임계값 컬럼은 허용목록 방식으로 Sensor에 들어갈 수 없게 함. ⑦ 경로 모듈은 gtId·causedBy·sourceRule을 KG 속성으로 올리지 않고, seed_to_rdf에서 부르지 않음. System 노드는 제외로 처리.
+- 검증: `verifier`(`reports/seed_to_rdf_verify.md`) PASS(공통 5 + ③ 3, FAIL·미확인 0). stage-check(원본 불변, 누수 `preprocessed ontology_v1 kg_build src`, SHACL) 모두 PASS. 단위 테스트 71개 통과.
+- 후속 후보(판정 제외): (1) shapes.ttl이 Sensor의 임계값 속성을 잡지 못함(코드·테스트로만 보장). (2) 관계 단위 출처 표현(reification / `hasProvenance` domain 확장 / Provenance에 관계 종류 속성) 미결. (3) `row:<n>`이 edges.csv 행 순서에 의존하는데 Provenance에 파일 해시가 없음(대조표에만). (4) counts.md가 `/reports/*` 규칙으로 git 제외. (5) Component `description` 미반영. (6) correlatesWith의 `ruleRef` 보존 방법은 ⑦ 전에 결정.
+
+### [B] 시작 전 결정 (사용자 확정 2026-10-12)
+| # | 결정 | 이유 |
+|---|---|---|
+| 1 | ThresholdRule은 **센서당 1개(22개)**. 한 규칙에 nominalValue·warnLo·warnHi·critLo·critHi와 CRITICAL Response 조치(`responseText`)를 담는다 | SOP-002 표는 센서마다 한 행이고 조치 열은 "CRITICAL Response" 하나뿐이다. 경고 등급 조치 문구가 원문에 없어 등급별로 나누면 문구를 만들어 넣어야 한다. 정답 파일은 보지 않고 정함 |
+| 2 | 온톨로지 `nominal` → **`nominalValue`**로 변경(`ontology.ttl`, `schema_tables.md`). 누수 가드 L3 목록에 `nominalvalue` 추가(기존 `nominal` 유지) | 전처리 CSV·seed가 `nominalValue`를 쓰고, `nominal`은 컬럼 전용 금지어라 CSV 쪽을 바꾸면 점검기 예외가 필요하다. L3는 이름이 정확히 같을 때만 잡으므로 새 이름도 넣어야 ⑥ 입력 검사가 유지된다 |
+- `harness/checklist.md`에 "Rule·Document 승격 (B)" 8항목 추가(사용자 승인).
+- nominal 옆 허용오차(± 0.4 등)는 온톨로지에 속성이 없다. 원문은 표 Provenance로 남는다.
+
+### [A] 수용과 B에 반영할 요청 (사용자 2026-10-12)
+- A는 완료로 받아들임. 관계 출처를 노드에 붙인 방식도 A에서는 수용.
+- `.gitignore`에 `!/reports/seed_to_rdf_counts.md` 예외를 추가해 상세 대조표를 git에 남길 수 있게 함(커밋은 아직 안 함).
+- B에서 반영: Sensor에 임계값 속성(nominalValue, warnLo, warnHi, critLo, critHi)이 붙으면 SHACL이 실패하는 **명시적 금지 shape**를 추가하고 실패 예제로 확인한다(domain 선언에 기대지 않음).
+- **후속 과제(온톨로지 변경안은 구현 전에 사용자에게 먼저 보여 줌):** (1) 관계 단위 출처 표현(현재는 노드에 붙임). (2) 원본 파일 해시를 Provenance에 보존(현재 `row:<n>`은 행 순서에 의존하고 해시는 대조표에만 있음).
+
+### [B] Rule·Document 승격 (구현 + 독립 검증 PASS, 2026-10-12)
+- 구현: `implementer`(`reports/promote_rules_impl.md`). 코드 `src/imaks_kg/kg/promote_rules.py`, `naming.py`(IRI 함수 추가), `settings.py`(경로 상수), 테스트 `tests/test_promote_rules.py`(17개). LLM 호출 없음.
+- 산출물: `kg_build/rules_deterministic.ttl`(Document 7, MaintenanceRule 8, ThresholdRule 22, Provenance 240 = 문서 표 셀 224 + seed CSV 16, 2,676 트리플, 결정적), `kg_build/seed_plus_rules.ttl`(SHACL용 합본), `reports/maint_mapping.md`, `reports/threshold_mapping.md`(코드 생성).
+- **S9 추가(사용자 요청):** `shapes.ttl`에 `im:SensorNoThresholdShape`(Sensor에 nominalValue·warnLo·warnHi·critLo·critHi가 있으면 `sh:maxCount 0`으로 실패). domain 선언에 기대지 않는 명시적 금지다. 실패 예제 `ontology_v1/examples/fail_06_sensor_threshold.ttl`은 S9만 위반하고, 기존 예제 10개의 판정은 그대로다.
+- 대조 결과: MAINT 8행 중 seed와 SOP-003 문구가 같은 것 3(05·06·08), 다른 것 5(01·02·03·04·07). 다른 것은 모두 조치 문구이고 센서·우선순위 차이는 0이다. 임계값 22행 × 5값 + 단위는 KG·seed·`sensor_thresholds.csv`·SOP-002 본문 네 곳에서 불일치 0.
+- 설계 선택(구현자): ThresholdRule identifier는 `SOP-002:THR:<센서 identifier>`. 문서 Provenance는 셀 하나당 하나(page, tableId, rowIndex, colIndex, bbox, sourceQuote, textSha256). MaintenanceRule의 responseText는 seed action이다(SOP-003 문구는 Provenance 인용과 대조표에 있음). ThresholdRule에는 `unit`을 붙이지 않았다(온톨로지에서 `unit`의 domain이 Sensor라서). 원문에 없는 값(ruleSeverity, conditionText, ± 허용오차)은 만들지 않았다.
+- 검증: `verifier`(`reports/promote_rules_verify.md`) PASS(공통 5 + B 8, FAIL·미확인 0). 사용자 중점 3건(MAINT 문구 차이 8행, 임계값 22행 수치, 문서 Provenance 224개 전수를 셀·해시·PDF 해시까지)을 독립 스크립트로 확인해 불일치 0. stage-check(원본 불변, 누수, 합본 SHACL) PASS, 단위 테스트 90개 통과.
+- 후속·미결(판정 제외): (1) Provenance에 문서 ID 전용 속성이 없다. 지금은 Rule의 `sourceDocument`와 tableId 접두어로만 알 수 있다(§4 "위치는 Provenance 한 곳" 원칙과는 맞음). 관계 단위 출처·파일 해시 후속 과제와 함께 온톨로지 변경안으로 다룬다. (2) MaintenanceRule 대표 문구를 seed로 둘지 SOP-003으로 둘지, SOP-003 Trigger를 conditionText로 넣을지. (3) ThresholdRule 단위 속성. (4) extractionMethod 어휘 고정. (5) sourceQuote·해시는 정규화 텍스트 기준(셀 18개가 text_raw와 줄바꿈이 다름). (6) `maint_mapping.md`·`threshold_mapping.md`는 `/reports/*` 규칙으로 git에서 제외됨.
+- verifier 관찰 O5(`ontology.ttl`·`.gitignore`·`work_log.md` 수정자)는 내가 한 변경이다(결정 #2 이름 변경, gitignore 예외, 기록).
+
+### B 보완 요청과 MAINT 병합 기준 (사용자 확정 2026-10-12)
+- B 보완(사용자 요청):
+  - (1) 해시 사슬 검사: PDF → 고정 전처리 기록(`harness/preprocess_lock.json`) → pages/tables/manifest → rules. 어긋나거나 오래된 전처리 결과이면 산출물을 쓰기 전에 멈춘다.
+  - (2) 임계값을 바꾼 반례 테스트를 추가한다.
+  - (3) `maint_mapping.md`, `threshold_mapping.md`를 `.gitignore` 예외로 보존한다(적용 완료, 커밋 안 함).
+  - 해시 사슬 구현은 첫 시도 때 세션이 끊겨 반영되지 않아 다시 진행 중이다.
+- **MAINT 병합 기준(정답 파일을 보지 않고 문서 구조로 정함):**
+  1. 조건 보완은 B에서 결정적으로 한다. SOP-003 Trigger 셀을 MaintenanceRule `conditionText`로 넣고 셀 Provenance를 붙인다.
+  2. C 결과가 B 규칙과 같은 규칙이면 새 규칙을 만들지 않고 합친다. 같은 규칙의 기준은 (a) `ruleIdInText`를 정규화한 값이 B identifier와 같거나, (b) ID는 없지만 sourceQuote가 B 셀 출처와 같은 표의 같은 행인 경우다. B의 값은 덮어쓰지 않고 LLM 출처는 "재확인" 출처로 덧붙인다. 값이 다르면 `extraction/merge_conflicts.csv`에 기록해 1차 사람 검토로 넘긴다.
+  3. D 예측 집합은 병합 후 고유 identifier이고, 합친 규칙은 한 번만 센다("B 유래(C 재확인)"). LLM 단독 결과는 병합 전으로 따로 보고하고 주 F1에는 넣지 않는다.
+  4. ID가 다른 규칙은 수치가 같아도 합치지 않는다(예: SOP-001 `RULE-ST02-02` vs SOP-002 ST02 TMP 임계값). SOP-003 표 2의 패턴 3개는 C에서만 위치 기반 ID로 만든다.
+- **MaintenanceRule `responseText` = SOP-003 Action 셀 원문**으로 바꾼다(기존 seed action). 이유: `sourceDocument`·출처 인용과 문구를 일치시키기 위해서다. seed 문구 차이는 `maint_mapping.md`와 seed Provenance에 남는다. (1)·이 변경은 해시 사슬 보완 뒤 B에 반영한다.
+
+### [B] 보완 반영과 2차 독립 검증 PASS (2026-10-12)
+- **해시 사슬:** `src/imaks_kg/kg/preprocess_lock.py`, `harness/preprocess_lock.json`(git 추적, SHA-256 `c7998ba8…14d8`).
+  - lock에 담은 것: PDF 7개, 문서 산출물 5개, `sensor_thresholds.csv`, 전처리 코드 2개의 해시와 근거 보고서.
+  - 갱신은 `--init --force`로만 한다.
+  - promote_rules는 산출물을 쓰기 전에 다음을 모두 확인하고, 하나라도 틀리면 멈춘다(새 파일 0, 기존 출력 불변): PDF 해시 == lock == doc_manifest, 산출물 == lock, doc_profile 기록 == 현재 파일, 코드 == lock, SOP-002 22행 수치 == `sensor_thresholds.csv`(의미 검사).
+  - lock을 만들기 전에 전처리를 임시 폴더에서 다시 돌려 현재 `preprocessed/`와 해시가 같음을 확인했다(구현자 보고).
+  - 반례 테스트 10개를 추가했다(임계값 변경, lock까지 맞춘 변경, pages, PDF 해시, doc_profile, 코드, 정상, mtime 불변 등).
+- **MAINT 문구 출처(결정 반영):** `conditionText`는 SOP-003 Trigger 셀, `responseText`는 Action 셀 원문이며 둘 다 셀 Provenance가 있다. seed action은 KG에서 빼고 대조표와 seed Provenance에만 남긴다. priority·센서가 seed와 SOP-003에서 다르면 멈춘다(현재 8행 일치).
+  - 구현자가 지시 없이 MaintenanceRule의 `extractionMethod`를 "seedCsv"에서 "table"로 바꿨다. 사용자 확인 대기.
+- **2차 검증:** `verifier`(`reports/promote_rules_verify.md`, "2차 검증(보완 후)") PASS. 공통 5 + B 8 항목, 독립 점검 104건 PASS, FAIL 0.
+  - 멈춤 5경우를 사본으로 직접 재현했다.
+  - MAINT 8개 조건·조치가 셀과 일치하고 Provenance 224개 전수 불일치 0, 임계값 110개 값 불일치 0.
+  - 단위 테스트 101개 통과. stage-check(원본 불변, 누수 + lock 파일, 합본 SHACL)와 `preprocess_lock` 검사 PASS.
+- **남은 한계(후속):**
+  1. 표·lock·doc_profile을 함께 고치면 SOP-002 수치 밖의 변조(예: MAINT Action 셀)는 막지 못한다. 남는 방어선은 lock 변경의 git diff 리뷰다.
+  2. 코드 해시는 documents.py·sensors.py만 본다(공용 모듈, pdfplumber 버전 제외).
+  3. lock 기준선은 10-12 재생성본이다. 10-07 출력 해시는 기록이 없어 직접 비교할 수 없다.
+  4. `check_leakage.py harness` 폴더 전체 검사는 금지어 목록 파일 자체 때문에 FAIL(알려진 오탐)이다. lock 파일만 지정하면 PASS다.
+
+### [B] 완료 수용 (사용자 2026-10-12)
+- B를 완료로 받아들임(해시 연결 검사, 변조 시 중단, 기존 출력 보존, B 테스트 28개 통과 확인).
+- MaintenanceRule의 `extractionMethod`는 **"table"로 유지**(사용자 확정). 조건·조치 문구의 실제 추출 방식에 맞춘다. priority·센서·원본 ID는 seed 값이며, 표와 일치하는지 검사한 뒤 쓴다.
+- C 준비 점검: `ANTHROPIC_API_KEY` 등 LLM 키 환경변수는 모두 설정되지 않았고, `ant` CLI도 없다. `.venv`에 `anthropic` SDK는 아직 설치하지 않았다.
+
+### [C] 시작 전 결정 (사용자 확정 2026-10-12)
+| # | 결정 | 이유 |
+|---|---|---|
+| 3 | **Task 클래스는 만들지 않는다. `responseText`를 유지**하고, LLM 출력 JSON에 선택 항목 `actionSteps`(조치 단계 목록)를 받아 원본 응답에만 보존한다(KG에는 넣지 않음). Task 노드는 ⑨에서 필요할 때 다시 검토한다 | ⑤는 4분류 규칙 단위로 채점하므로 Task가 점수에 영향을 주지 않는다. 단계 정보가 원본 응답에 남아 있어, 나중에 LLM을 다시 돌리지 않고 Task를 만들 수 있다. `CLAUDE.md` ②의 "④ 전 재검토" 요구를 이것으로 처리한다 |
+| 4 | **LLM은 Claude Opus 5.5(`claude-opus-5-5`)**, Anthropic 공식 Python SDK를 쓴다. 출력은 구조화 출력(JSON 스키마)으로 받고, effort는 고정해서 기록한다 | 현재 기본 모델이다. **작업 요청서의 "temperature 0"에서 벗어난다:** 현재 세대 모델은 temperature를 바꾸면 400 오류가 난다. 재현성은 모델 ID, effort, 프롬프트 버전·해시, 입력 청크 해시, 원본 응답 저장으로 확보한다(temperature 0이어도 완전한 결정성은 보장되지 않는다) |
+| 4 | **API 키는 Windows 사용자 환경변수 `ANTHROPIC_API_KEY`**로 사용자가 직접 설정한다. 코드는 SDK 기본 방식으로만 읽고 키를 로그·실행 기록에 남기지 않는다 | 저장소에 키 파일이 생기지 않는다. Claude는 키를 입력하거나 보지 않는다 |
+- `harness/checklist.md` ④ 절에 10항목 추가(사용자 승인): MAINT 병합 5 + 인용문·ID·해시 사슬·재현 정보·검토 결과 보존 5.
+- "병합 규칙은 D에서 한 번만 센다"는 D 체크리스트에 넣는다.
+- LLM 실제 호출은 비용이 들므로, 실행 전에 예상 토큰·비용을 보여 주고 승인받는다.
+
+### [C] 구현 시작 (2026-10-12)
+- `.venv`에 anthropic 1.13.0(httpx2 기반), pydantic 2.14.1을 설치했다.
+- `.gitignore`에 `/extraction/`(실행 로그·원본 응답·검토 CSV)을 추가했다.
+- 호출 설정: `client.beta.messages.create`, model `claude-opus-5-5`, effort `high`(고정), 구조화 출력(JSON 스키마), `fallbacks: "default"`(beta `server-side-fallback-2026-07-01`, 거부 시 서버가 다른 모델로 다시 실행). 실제로 답한 모델과 폴백 여부를 기록하고, 폴백으로 나온 결과는 검토 CSV에 표시한다. temperature·thinking 파라미터는 보내지 않는다.
+- 이번 구현은 가짜 응답으로만 테스트한다. 실제 호출은 Example 확정, API 키 설정, 비용 승인 뒤에 한다.
+
+### [C] 보완 요청: 검토 완료·입력 동일성 검증 (사용자 2026-10-12)
+- 사용자 확인: 가짜 응답 테스트 55개 통과. 다만 RDF 출력 단계가 사람 검토 완료를 검증하지 않음.
+- 반영 요청:
+  - (1) `to_rdf.run`은 `review_applied.json`이 있어야만 동작한다. 기록된 해시와 현재 `final.jsonl`·`merged.jsonl`·1차·2차 검토 파일이 다르면 출력 전에 멈춘다.
+  - (2) 실행 기록(meta.json)에 seed.ttl·rules_deterministic.ttl 해시를 저장한다. 검토·출력 때 이것을 preprocess_lock·청크 해시와 함께 추출 당시 값과 비교하고, 다르면 멈춘다.
+  - (3) 반례 테스트: 검토 기록 없음, 검토 후 조치 변경, 검토 CSV 변경, B 산출물 변경 외에 seed·청크·lock 변경, 멈춘 경우 기존 출력 불변.
+- 구현은 C 구현 에이전트에게 맡김(진행 중).
+
+### [C] 구현 + 1차 독립 검증 PARTIAL (2026-10-13)
+- 구현: `src/imaks_kg/extract/`(inputs, prompt, schema, llm, run, validate, merge, conflicts, review, to_rdf, guard), `prompts/v1/{system.md, examples.json}`, 테스트 6개 파일. 실제 LLM 호출은 하지 않았고 가짜 응답으로만 실행했다. 전체 단위 테스트 171개 통과. leakage·raw 점검 PASS.
+- dry-run: 호출 60회(SOP-001 35, SOP-004 11, SOP-002 본문 10, SOP-003 4). 제외 26개(SOP-002 표 11, 데이터시트 15). 입력 약 13만 토큰(글자 수 추정).
+- 가짜 응답 전체 경로(fake → validate → merge → review → apply → to_rdf): 합본 SHACL PASS, 병합 후 identifier 중복 0, B 규칙 값 불변. conflicts.csv 후보 5건(ST02 TMP 210 vs 200, ST02 CUR 15.0 vs 14, ST01 PRS 여유)은 통일하지 않고 양쪽 출처를 기록했다.
+- 지시와 다르게 구현한 것(구현자):
+  - (1) 표 청크 인용은 charStart가 아니라 표 좌표(tableId/rowIndex/colIndex/bbox). CLAUDE.md §4 "표는 좌표"와 B 방식에 맞춘 것이다.
+  - (2) merge_conflicts.csv를 실행 폴더 안에 둔다.
+  - (3) 예시 상태 키를 `confirmationStatus`로 했다(`status`가 금지어라서).
+  - (4) 폴백 응답은 마지막 fallback 블록 뒤의 text를 쓴다.
+- 독립 검증(`reports/extract_verify.md`) PARTIAL: 19항목 중 17 PASS, 2 FAIL.
+  - FAIL 2건은 체크리스트 문구와 맞지 않는 것이다. 위의 (1)·(2)로, 내용은 맞고 편차도 합리적이라는 판정이다.
+  - 체크리스트 밖에서 검토 기록 위조가 1건 통과했다: 1차 결정 변경 + final 삭제 + review_applied 재계산. manifest의 1차 확정 해시를 대조하지 않은 탓이다. 구현자에게 수정과 반례 테스트를 요청했고, `--execute` 경로 테스트의 실제 네트워크 위험도 mock으로 바꾸도록 했다.
+- 판정 외 관찰:
+  - 예시 3개의 출처 청크가 추출 입력과 겹친다. ⑤에서 이 청크를 따로 표시하거나 빼고 본 수치를 함께 보고한다.
+  - Provenance에 청크·실행·모델·문서 ID 속성이 없다.
+  - extractionMethod가 domain 밖인 Provenance에 붙어 있다.
+  - 다른 ID로 B 표 행을 인용한 후보는 표시 없이 새 규칙이 된다.
+  - `--execute`에 비용 승인 장치가 없다.
+- **사용자 확정(2026-10-13):**
+  - (1) 체크리스트 ④ 두 항목의 문구를 구현에 맞게 고쳤다. merge_conflicts는 실행 폴더 안에 두고, 인용 위치는 본문이면 charStart·charEnd, 표면 표 좌표로 쓴다.
+  - (2) 제목·머리말 청크도 LLM에 보낸다(60회 그대로). 사람이 입력을 골라 빼는 선택 편향을 피하고, 오탐도 확인하기 위해서다.
+  - (3) `--execute`에 비용 승인 장치를 넣는다. dry-run이 추정 ID와 호출 상한을 남기고, `--approve <ID>`가 있어야만 실행된다. 입력이 바뀌면 승인은 무효가 된다.
+  - Example 초안 3개는 사용자 확정 대기 중이다(예시 2의 conditionText, 예시 3의 분류).
+
+### [C] 방향 변경: Gemini 무료 API (사용자 2026-10-13)
+- **LLM 제공자를 Anthropic에서 Gemini API Free Tier로 바꾼다**(결제가 연결되지 않은 Google 프로젝트). OpenAI 어댑터 준비는 중단했다. **유료 API로 자동 전환하지 않는다.**
+- 키: 사용자가 프로젝트 루트 `.env`에 `GEMINI_API_KEY`를 설정했다(`.gitignore`의 `.env` 규칙으로 무시됨을 확인, 값은 열지 않음). 코드는 이 한 줄만 읽어 `genai.Client(api_key=...)`에 명시적으로 넘긴다. `GOOGLE_API_KEY`도 함께 있으면 멈춘다(SDK가 GOOGLE_API_KEY를 먼저 쓰기 때문).
+- 이미 구현된 것 확인(코드 기준):
+  - 오류 분류(FATAL_AUTH/BILLING/REQUEST, TRANSIENT_RATE, AMBIGUOUS)
+  - Anthropic SDK 내부 재시도 끔(`max_retries=0`)
+  - 승인 상태(unused → reserved → used / released / usage_check_required, resolve 명령)
+  - `--chunk`
+  - 이것들은 다시 만들지 않고 Gemini에도 적용한다. 제공자에 따라 다른 부분만 어댑터로 분리한다.
+- google-genai 2.30.0 확인:
+  - `HttpOptions.retry_options`가 None이면 재시도하지 않는다(1회 시도). 지정하면 기본 5회, 408/429/5xx를 재시도한다. 그래서 retry_options를 지정하지 않는다.
+  - timeout 단위는 ms다.
+  - 오류는 `errors.APIError`(ClientError 4xx / ServerError 5xx)이며 code, status, message, details를 가진다.
+- Gemini 오류 분류:
+  - 키 오류는 401이 아니라 400 INVALID_ARGUMENT + `API_KEY_INVALID`로 올 수 있다.
+  - 429 RESOURCE_EXHAUSTED는 QuotaFailure로 나눈다. 분당 한도면 TRANSIENT, 일일 한도나 무료 배정 0이면 FATAL_QUOTA.
+  - 400 FAILED_PRECONDITION(지역·결제 필요)은 FATAL.
+  - 500/504와 전송 타임아웃은 AMBIGUOUS.
+- temperature: Gemini는 지정할 수 있으므로 **0으로 둔다**(원래 작업 요청서 문구와 일치). 모델 ID는 사용자가 정한다(무료 사용 가능 여부를 추측하지 않음).
+- 무료 등급은 분당 요청 한도가 낮다. 호출 간격 옵션을 두어 429를 미리 피한다. 비용은 0으로 기록하고, 대신 호출 수·토큰·간격을 기록한다.
+- 진행 순서(사용자 지시): Gemini 연결·테스트 → C 2차 독립 검증 → 예시를 사용자에게 보여 주고 확정 → 대표 청크 1개 → 3~5개 시험 → 소규모 결과 보고 후 확인받아 전체 추출.
+
+### [C] Gemini 보완 요청과 모델 확인 (사용자 2026-10-13)
+- 사용자 확인: Gemini 테스트 22개 통과.
+- 보완 요청:
+  - (1) 승인 청크 수와 재시도 상한 충돌을 고친다. 지금은 청크 1개에서 첫 429 뒤 재시도가 막힌다. 처리 청크 수(`max_chunks`)와 API 시도 상한(`max_attempts`)을 나누고 각각 기록한다.
+  - (2) 이어하기(`--resume-from`): 무료 한도로 멈춘 뒤 성공 응답만 재사용한다. 모델·생성 설정·프롬프트·예시·입력 해시가 다르면 재사용을 거부한다. 여러 실행을 합쳐도 같은 청크·규칙이 중복되지 않는지 검사한다.
+  - (3) 전송 대상을 이번 합성 데이터셋의 SOP(SOP-001~004, `imaks_data/rules/`)로 제한한다. 사용자가 무료 등급 데이터 정책을 이해했음을 확인했다.
+- 모델:
+  - 사용자 우선 후보는 `gemini-3.8-flash`다. 프로젝트 모델 목록(`models.list`, 생성 없음)에 있고 generateContent를 지원한다.
+  - 무료 사용 가능 여부는 목록으로 알 수 없어 첫 호출에서 확인한다. 쓸 수 없으면 자동으로 바꾸지 않고, 목록에 있는 다른 후보(gemini-3.7-flash, gemini-3.5-flash, gemini-2.5-flash, flash-lite 계열)를 사용자에게 제안한다.
+- 진행 순서: 보완 → C 2차 독립 검증 + 최신 보고서 → Example 확인(사용자) → 대표 청크 1개 → 3~5개 → 소규모 결과 보고 후 전체 추출.
+
+### [C] Gemini 보완 + 2차 독립 검증 PARTIAL (2026-10-13)
+- 구현 완료(구현자 보고):
+  - 어댑터 분리(기본 gemini, Anthropic은 `--provider anthropic`으로만), `GEMINI_MODEL="gemini-3.8-flash"`.
+  - 요청 설정: temperature 0, seed 20261012, JSON 스키마, max_output_tokens 8192. SDK 재시도 없음(retry_options 미지정, timeout 600000ms).
+  - Gemini 오류 분류: QuotaFailure 근거를 문구보다 먼저 본다.
+  - 청크 수와 시도 상한 분리: `approved_attempts = min(N×3, N+10)`.
+  - `--resume-from`, SOP 전송 허용 목록, 호출 간격 6초, 자동 전환 없음.
+  - 테스트 239개 통과.
+- 대표 청크 dry-run(SOP-001:p1:RULE-ST02-04): gemini-3.8-flash, 청크 1, 시도 상한 3, 입력 약 2,173~2,897 토큰(글자 수 추정), 출력 상한 8,192, 무료(비용 0).
+- 모델 목록: 사용자 지시로 `models.list`를 실행했다(생성 없음). gemini-3.8-flash가 있고 generateContent를 지원한다.
+- **2차 독립 검증(`reports/extract_verify.md`): PARTIAL.** 체크리스트 19항목은 모두 PASS. 추가 확인 10개 중 8개 PASS, 2개에서 FAIL 하나씩.
+  1. applied와 manifest를 함께 맞춰 위조하면 to_rdf가 막지 못한다. 실행 폴더 안의 기록끼리만 대조하는 구조적 한계로, 구현 보고서도 이미 인정한 부분이다. 실행 폴더 밖 신뢰 기준점이 필요하다 → 사용자 결정 대기.
+  2. 이어하기의 served model 비교가 앞부분 일치라서 `gemini-3.8-flash-lite`도 허용했다 → 구현자에게 수정 요청(정확히 같거나 숫자 버전 접미사만 허용).
+- 판정 밖 관찰:
+  - 실제 Gemini 응답·오류 형식은 아직 확인하지 않았다.
+  - 6초 간격은 분당 10회 경계와 정확히 같아 여유가 없다.
+  - 승인 기록의 state 필드가 내용 해시 밖에 있다. 손으로 고치면 승인을 다시 쓸 수 있다(1번과 같은 종류).
+  - Provenance 속성 미비, extractionMethod가 domain 밖에 쓰임.
+  - 예시 청크 3개가 입력과 겹친다.
+- **사용자 확정(2026-10-13):**
+  - (1) 서로 맞춘 위조를 막기 위해 **git이 추적하는 해시 장부** `harness/extraction_ledger.jsonl`을 둔다. 추가만 하고, 앞 항목 해시를 이어 가는 체인이며, run_id·이벤트·파일명·해시·시각만 담는다.
+    - 검토·출력·승인 검사가 모두 이 장부와 대조한다. 승인 state도 장부의 이벤트로 다시 계산해 파일과 비교한다.
+    - 한계: 장부까지 고쳐 커밋하면 git 이력 검토 말고는 잡을 수 없다.
+  - (2) Gemini 호출 간격 기본값을 **7.5초**로 한다(분당 약 8회). 실제 한도는 첫 시험 호출에서 확인해 조정한다.
+  - Example 3개는 사용자 확인 대기 중이다(예시 2의 conditionText, 예시 3의 MaintenanceRule 분류).
+
+### [C] 2차 검증 보완 확인 PASS (2026-10-14)
+- 구현 에이전트는 사용 한도로 최종 보고 직전에 멈췄지만, 코드·테스트·보고서(extract_impl 15·16장)는 모두 반영돼 있었다. 직접 확인한 결과: 전체 단위 테스트 251개 통과, leakage(기본 + 장부 포함 폴더)·원본 불변 PASS, 실제 장부 0줄.
+- 보완 확인(`verifier`, `reports/extract_verify.md` 끝의 "2차 검증 보완 확인" 절): **PASS**. 원래 2차 판정 PARTIAL은 문구 그대로 두었다.
+  - served model: 정확히 같거나 3자리 숫자 접미사만 허용한다.
+  - 서로 맞춘 위조(j): 장부 검사로 출력 전에 멈춘다(대조군: 장부를 끄면 통과).
+  - 장부 사슬: 중간 삭제·수정·순서 바꾸기, 장부 없음을 모두 잡는다. 승인 상태를 손으로 되돌리면 거부한다. 장부에 내용·키 0건.
+  - 호출 간격 7.5초. 대표 청크 dry-run은 네트워크 0회.
+- 내가 직접 고친 것: `run.py`의 `--model` 도움말을 현재 동작(기본 gemini-3.8-flash, 자동 전환 없음)에 맞게 수정.
+- 남은 한계·권고:
+  - 위조 뒤에 장부에 정상 형식의 줄을 덧붙이면 통과한다(git 이력 검토가 방어선). **첫 실제 실행 전에 빈 장부를 커밋해 두기를 권한다.** 커밋은 사용자 요청 시에만 한다.
+  - 실제 Gemini의 `model_version` 형식이 3자리 숫자 접미사가 아니면 정상 응답도 재사용이 거부된다(안전한 쪽으로 실패). 첫 실제 호출에서 확인한다.
+
+### [C] 실행 전 보완 3건 요청 (사용자 코드 검토, 2026-10-14)
+- 기존 PASS 판정은 그대로 두고, 보완과 검증 결과는 따로 덧붙인다. 실제 Gemini 생성 호출 금지, 예시 2·3 확정 상태 변경 금지.
+- [P1] 호출 중 KeyboardInterrupt가 나면 finally가 outcome보다 먼저 돌아 승인이 unused로 복원된다(재현됨).
+  - 수정 방향: 시도 단계(prepared/sending/http_error_response/http_200_received/interpreted)를 저널에 남긴다. 미사용이 확인될 때만 unused로 되돌리고, 그 밖은 usage_check_required로 둔다. 200 이후 해석 예외가 나도 200이 났다는 사실은 보존한다.
+- [P1] 같은 승인을 동시에 예약하는 경우와 장부 동시 기록에 프로세스 간 잠금이 없다.
+  - 수정 방향: Windows에서 동작하는 파일 잠금(msvcrt/fcntl), 잠금 순서는 승인 → 장부로 고정한다. 장부에 먼저 기록한 뒤 파일을 원자적으로 바꿔, 중간에 실패하면 막힌 쪽(closed)으로 끝나게 한다. 실제 프로세스로 테스트한다.
+- [P2] 같은 청크 재시도에는 최소 호출 간격이 적용되지 않는다(대기 [2.0] 재현).
+  - 수정 방향: 실행 하나에 페이서 하나를 두고, 대기는 max(최소 간격 남은 시간, backoff, retry_after)로 한 번만 한다.
+- 구현은 C 구현 에이전트가 진행 중이고, 이어서 verifier가 독립 검증한다.
+- 구현 결과(구현자): 3건 모두 반영. `locks.py`(msvcrt/fcntl)를 새로 만들고, 시도 단계 저널 `attempts.jsonl`, `approval.decide`, 실행 잠금, `llm.Pacer`를 넣었다. 테스트 269개 통과, 실제 API 0회, 실제 장부 0줄. 잠금 폴더 `extraction/.locks/`는 기존 `/extraction/` 규칙으로 이미 무시되므로 `.gitignore`를 바꿀 필요가 없다.
+- 독립 검증(`reports/extract_verify.md` "실행 전 보완 3건 검증"): **PARTIAL**.
+  - 인터럽트(a~h, 실제 프로세스 kill 포함), 동시성(2·4 프로세스 동시 예약 각 5회 → 매번 1개만 성공, 장부 동시 기록 사슬 유효, 잠금 쥔 채 kill 뒤 복구, os.replace 실패 시 막힌 쪽으로 끝남), 호출 간격(재시도 7.5초, retry_after 20 → 20, 이중 대기 없음): 모두 PASS.
+  - FAIL 1: 대기 중에 끊기면 partial_run의 미완료 목록이 비어 있다. 비용과는 무관하다.
+  - FAIL 2: journal 없이 finalize를 부르거나 journal 파일이 없으면 AMBIGUOUS도 unused로 돌아간다. 지금 CLI 경로에서는 닿지 않지만, "미사용이 확인될 때만 unused" 원칙에 어긋난다.
+  - 두 건과 관찰 2건(해석 실패한 200의 원본 본문 저장, 어긋남 오류 메시지가 원인을 오해하게 함)을 구현자에게 수정 요청했다.
+
+
+### Codex C completion and first evaluation work (2026-10-14, ongoing)
+- User confirmed example 2 unchanged and example 3 MaintenanceRule; confirmationStatus CONFIRMED.
+- Direct local verification: 281 tests OK (455.186s), raw unchanged 1121 files PASS, leakage PASS, A+B SHACL PASS. Prompt tests 12 OK after confirmation.
+- Real Gemini smoke and pilot completed: 4 unique chunks, 11 candidates, 8 merged into B, 3 new rules, no rejects. 503 exhausted pilot preserved results; retry reused prior successes.
+- Full extraction real-20261014-full remains running (56 new chunks, 4 reused, maximum 66 attempts, minimum interval 30s). Do not launch a duplicate job.
+- Evaluation-only code in eval/, encoder downloaded and offline tested, core matching tests 4 PASS. Reference schema inspected only; first quantitative results and human review remain pending.
+- User explicitly requested current completed code be pushed now to 2nd-yujin, then work continue. Original restriction on commit/push is superseded for this upload. No keys or large output files to be committed.
+- Final report is still a draft. Current snapshot is reports/progress_abc_evaluation_impl.md.

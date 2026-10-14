@@ -1,0 +1,92 @@
+{
+  "confirmationStatus": "CONFIRMED",
+  "prompt_version": "v1",
+  "note": "2026-10-14: User explicitly confirmed example 2 unchanged (detection) and example 3 as MaintenanceRule. Original quotes and output fields are preserved.",
+  "examples": [
+    {
+      "source_chunk_id": "SOP-001:p1:RULE-ST01-02",
+      "doc_id": "SOP-001",
+      "page": 1,
+      "section": "2.1 ST01_FILLING",
+      "kind": "rule",
+      "input_text": "RULE-ST01-02: If TMP exceeds 26°C, reduce speed by 10% and notify QC.",
+      "output": {
+        "rules": [
+          {
+            "class": "OperationalRule",
+            "conditionText": "TMP exceeds 26°C",
+            "responseText": "reduce speed by 10% and notify QC",
+            "ruleSeverity": null,
+            "sensors": [
+              "ST01_FILLING_TMP"
+            ],
+            "targetStations": [
+              "ST01_FILLING"
+            ],
+            "sourceQuote": "RULE-ST01-02: If TMP exceeds 26°C, reduce speed by 10% and notify QC.",
+            "ruleIdInText": "RULE-ST01-02",
+            "actionSteps": [
+              "reduce speed by 10%",
+              "notify QC"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source_chunk_id": "SOP-004:p1:RULE-ACCESS-02",
+      "doc_id": "SOP-004",
+      "page": 1,
+      "section": "4. Unauthorised Access Rules",
+      "kind": "rule",
+      "input_text": "RULE-ACCESS-02: Security personnel MUST be notified within 2 minutes of detection.",
+      "output": {
+        "rules": [
+          {
+            "class": "AccessRule",
+            "conditionText": "detection",
+            "responseText": "Security personnel MUST be notified within 2 minutes of detection.",
+            "ruleSeverity": null,
+            "sensors": [],
+            "targetStations": [],
+            "sourceQuote": "RULE-ACCESS-02: Security personnel MUST be notified within 2 minutes of detection.",
+            "ruleIdInText": "RULE-ACCESS-02",
+            "actionSteps": []
+          }
+        ]
+      }
+    },
+    {
+      "source_chunk_id": "SOP-003:p1:table2:chunk",
+      "doc_id": "SOP-003",
+      "page": 1,
+      "section": "2. Correlated Fault Resolution",
+      "kind": "table",
+      "input_excerpt": "표 청크의 머리 줄과 WRH01 행만 보인다(나머지 두 행은 생략). 원문 줄은 고치지 않았다.",
+      "input_text": "[SOP-003:p1:table2] 2. Correlated Fault Resolution\nPattern: WRH01-TMP↑ → QC HOLD; Primary Fault: Cold warehouse drift; Secondary Effect: Product quality risk; Resolution: 1.Restore WRH01-TMP <8°C. 2.Notify QC. 3.Place batch on HOLD in ERP.",
+      "output": {
+        "rules": [
+          {
+            "class": "MaintenanceRule",
+            "conditionText": "WRH01-TMP↑ → QC HOLD; Primary Fault: Cold warehouse drift",
+            "responseText": "1.Restore WRH01-TMP <8°C. 2.Notify QC. 3.Place batch on HOLD in ERP.",
+            "ruleSeverity": null,
+            "sensors": [
+              "WRH01_WAREHOUSE_TMP"
+            ],
+            "targetStations": [
+              "WRH01_WAREHOUSE"
+            ],
+            "sourceQuote": "Pattern: WRH01-TMP↑ → QC HOLD; Primary Fault: Cold warehouse drift; Secondary Effect: Product quality risk; Resolution: 1.Restore WRH01-TMP <8°C. 2.Notify QC. 3.Place batch on HOLD in ERP.",
+            "ruleIdInText": null,
+            "actionSteps": [
+              "Restore WRH01-TMP <8°C.",
+              "Notify QC.",
+              "Place batch on HOLD in ERP."
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -223,8 +223,8 @@ im:priority a owl:DatatypeProperty ; rdfs:domain im:MaintenanceRule ; rdfs:range
     rdfs:comment "정비 우선순위(CRITICAL, HIGH, MEDIUM)."@ko ;
     im:decisionRef "D5" .
 
-im:nominal a owl:DatatypeProperty ; rdfs:domain im:ThresholdRule ; rdfs:range xsd:decimal ;
-    rdfs:label "nominal"@en ; rdfs:comment "SOP-002의 평상값(± 표기는 제외)."@ko ; im:decisionRef "설계" .
+im:nominalValue a owl:DatatypeProperty ; rdfs:domain im:ThresholdRule ; rdfs:range xsd:decimal ;
+    rdfs:label "nominalValue"@en ; rdfs:comment "SOP-002의 평상값(± 표기는 제외). 전처리 CSV·seed 컬럼과 같은 이름(2026-10-12 결정 #2)."@ko ; im:decisionRef "설계" .
 im:warnHi a owl:DatatypeProperty ; rdfs:domain im:ThresholdRule ; rdfs:range xsd:decimal ;
     rdfs:label "warnHi"@en ; rdfs:comment "경고 상한."@ko ; im:decisionRef "설계" .
 im:warnLo a owl:DatatypeProperty ; rdfs:domain im:ThresholdRule ; rdfs:range xsd:decimal ;

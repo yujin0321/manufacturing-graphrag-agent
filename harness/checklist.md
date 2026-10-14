@@ -41,11 +41,31 @@ verifier는 이 파일의 항목으로만 판정한다. 단계가 늘면 항목�
 - [ ] 인스턴스가 `run_shacl.py`로 적합 판정을 받는다
 - [ ] 원본 ID가 보존되어 원본 행으로 역추적된다
 
+## Rule·Document 승격 (B, 결정적 변환)
+- [ ] `kg_build/rules_deterministic.ttl`을 `kg_build/seed.ttl`과 합쳐 `run_shacl.py --ont ontology_v1/ontology.ttl`(추론 끔)로 돌리면 적합이다(S7·S8 포함)
+- [ ] Document가 7개이고 identifier·sourceSha256·pageCount가 `doc_manifest.csv`와 같다
+- [ ] MaintenanceRule이 8개(MAINT-01~08)이고, 각각 appliesToSensor가 seed의 resolves 대상과 같고, sourceDocument가 SOP-003이며, 표 Provenance(tableId, rowIndex, colIndex, bbox, textSha256)가 있다
+- [ ] `reports/maint_mapping.md`에 seed 문구와 SOP-003 원문을 비교한 8행이 있다
+- [ ] ThresholdRule이 센서당 1개(22개, 결정 #1)이고, 수치(nominalValue, warnLo, warnHi, critLo, critHi)가 `tables.jsonl`의 SOP-002 표와 같으며, extractionMethod가 "table"이다
+- [ ] seed 센서 임계값과 SOP-002 수치를 대조한 결과가 보고서에 있다(다른 값은 둘 다 기록)
+- [ ] 모든 Rule의 appliesToSensor가 seed.ttl에 실제로 있는 Sensor를 가리킨다
+- [ ] B 코드에 LLM 호출이 없고 정답 규칙 파일을 참조하지 않는다
+
 ## ④ LLM 추출
 - [ ] 프롬프트가 Role/Task/Example 3단이다
 - [ ] 모든 트리플에 문서 ID, 페이지, 문자 위치, 원문 해시가 있다
 - [ ] 데이터시트와 SOP-002 수치 충돌이 출처와 함께 둘 다 기록돼 있다
 - [ ] ground_truth.csv가 프롬프트·청킹·추출 입력에 쓰이지 않았다
+- [ ] (MAINT 병합) 정규화한 `ruleIdInText`가 B identifier와 같거나 B와 같은 표·행을 인용한 LLM 결과는 새 Rule이 되지 않고, 병합 후 identifier가 겹치는 Rule이 0개다
+- [ ] (MAINT 병합) 병합해도 B 규칙의 값(class, appliesToSensor, conditionText, responseText, priority)이 바뀌지 않는다(B 산출물과 병합본의 해당 트리플 비교)
+- [ ] (MAINT 병합) 값이 B와 다른 병합 건은 모두 해당 실행 폴더의 `extraction/runs/<run_id>/merge_conflicts.csv`에 있고 1차 검토 CSV에도 들어간다
+- [ ] (MAINT 병합) LLM 출처는 B 규칙에 "재확인" Provenance(extractionMethod="llm")로 덧붙고, LLM 원본 응답과 병합 전 결과가 보존된다
+- [ ] (MAINT 병합) ID가 다른 규칙은 수치·문구가 비슷해도 합치지 않는다(반례 테스트)
+- [ ] sourceQuote가 청크 원문에 글자 그대로 있고 위치(본문은 charStart·charEnd, 표는 tableId·rowIndex·colIndex·bbox)와 textSha256이 원문과 맞는다. 없으면 거부하고 기록한다
+- [ ] 센서·공정 ID가 실제 목록(센서 22, 공정 9) 안에 있다
+- [ ] C 입력 청크가 `harness/preprocess_lock.json`과 일치한다(해시 사슬)
+- [ ] 재현용 정보(모델 ID, 생성 설정, 프롬프트 버전·해시, 입력 청크 해시, 원본 응답)가 저장돼 있다
+- [ ] LLM 원본, 1차 검토, 2차 검토 결과가 모두 보존돼 있다
 
 ## ⑤ 검증 (평가 코드)
 - [ ] 주 지표가 F1_content(Hungarian + SBERT, θ=0.6)이고 F1_strict를 주 지표로 쓰지 않았다

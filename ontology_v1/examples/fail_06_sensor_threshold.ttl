@@ -1,0 +1,12 @@
+@prefix im: <https://example.org/imaks/v1#> .
+@prefix inst: <https://example.org/imaks/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# F6 실패(S9): Sensor에 임계값 속성(critHi)이 붙었다. 임계값은 ThresholdRule에만 둔다.
+# Station 연결·identifier·sensorType·unit은 S1을 만족하므로 S9만 위반해야 한다.
+# 값은 모두 시험용 가상 값이다.
+
+inst:ST02_SEALING a im:Station ; im:identifier "ST02_SEALING" ; im:stationType "SEALING" ;
+    im:zone "Production Area" ; im:hasSensor inst:ST02_SEALING_CUR .
+inst:ST02_SEALING_CUR a im:Sensor ; im:identifier "ST02_SEALING_CUR" ; im:sensorType "CUR" ; im:unit "A" ;
+    im:critHi "15.0"^^xsd:decimal .

@@ -225,3 +225,14 @@ imaks_data/
 !/reports/.gitkeep
 !/reports/*_impl.md
 !/reports/*_verify.md
+!/reports/seed_to_rdf_counts.md
+!/reports/maint_mapping.md
+!/reports/threshold_mapping.md
+/.deps/
+/data/
+/kg_build/
+/extraction/
+
+# Local API credentials
+.env.*
+!.env.example

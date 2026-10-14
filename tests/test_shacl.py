@@ -1,6 +1,6 @@
 """SHACL 예제 실행 테스트.
 
-통과 예제(pass_*)는 적합이어야 하고, 실패 예제(fail_*)는 의도한 규칙(S1~S5, L1~L4)만 위반해야 한다.
+통과 예제(pass_*)는 적합이어야 하고, 실패 예제(fail_*)는 의도한 규칙(S1~S5, S9, L1~L4)만 위반해야 한다.
 실행: .\\.venv\\Scripts\\python.exe -m unittest tests.test_shacl -v   (저장소 루트에서)
 """
 import re
@@ -24,6 +24,7 @@ EXPECTED = {
     "fail_03_effect_not_station.ttl": {"S3"},
     "fail_04_no_evidence.ttl": {"S4"},
     "fail_05_score_out_of_range.ttl": {"S5"},
+    "fail_06_sensor_threshold.ttl": {"S9"},
 }
 GUARD_EXPECTED = {
     "fail_event_instance.ttl": {"L1"},
@@ -66,7 +67,7 @@ class ShaclExamples(unittest.TestCase):
 
     def test_fail_examples_violate_only_intended_rule(self):
         files = sorted(EXAMPLES.glob("fail_*.ttl"))
-        self.assertEqual(len(files), 5)
+        self.assertEqual(len(files), 6)
         for f in files:
             with self.subTest(f.name):
                 ok, text = run(f)
@@ -139,6 +140,26 @@ inst:w a im:Provenance ; im:sourceKind "timeseries" ; im:fileName "f.csv" ; im:s
 
     def test_rule_without_document(self):
         self.check('inst:r a im:OperationalRule ; im:identifier "R1" .', "S8")
+
+    def test_sensor_with_each_threshold_property(self):
+        """S9: 다섯 임계값 속성 각각이 Sensor에 붙으면 S9 하나만 위반한다."""
+        for prop in ("nominalValue", "warnLo", "warnHi", "critLo", "critHi"):
+            with self.subTest(prop):
+                ok, text = run(data_text=HEADER + self.ST + f'inst:SA im:{prop} "1.0"^^xsd:decimal .')
+                self.assertFalse(ok, prop)
+                self.assertEqual(codes(text), {"S9"}, text)
+
+    def test_threshold_on_rule_is_not_s9(self):
+        """S9는 Sensor만 대상으로 한다. ThresholdRule의 임계값은 위반이 아니다."""
+        doc = (f'inst:d a im:Document ; im:identifier "D" ; im:sourceSha256 "{self.H64}" ; '
+               'im:pageCount "1"^^xsd:positiveInteger .')
+        prov = (f'inst:p a im:Provenance ; im:sourceKind "document" ; im:page "1"^^xsd:positiveInteger ; '
+                f'im:tableId "D:p1:table1" ; im:rowIndex "2"^^xsd:positiveInteger ; '
+                f'im:colIndex "1"^^xsd:positiveInteger ; im:textSha256 "{self.H64}" .')
+        rule = ('inst:r a im:ThresholdRule ; im:identifier "R" ; im:sourceDocument inst:d ; im:hasProvenance inst:p ; '
+                'im:appliesToSensor inst:SA ; im:critHi "1.0"^^xsd:decimal .')
+        ok, text = run(data_text=HEADER + self.ST + doc + prov + rule)
+        self.assertTrue(ok, text)
 
 
 if __name__ == "__main__":

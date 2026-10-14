@@ -6,7 +6,8 @@
 
 # SHACL 제약 v1. 설계 근거는 work_log.md의 D1~D6, 설계 6건, 열린 쟁점 5건, CLAUDE.md 3·4장이다.
 # 핵심 규칙 5개: S1 센서 소속, S2 이벤트-센서 연결, S3 causallyAffects는 Station 간만, S4 hasEvidence, S5 점수 범위.
-# 추가 규칙: S6 근거 번호표 일치(적재 검증과 같은 규칙), S7 출처(Provenance) 필수 필드, S8 Rule·Document 출처.
+# 추가 규칙: S6 근거 번호표 일치(적재 검증과 같은 규칙), S7 출처(Provenance) 필수 필드, S8 Rule·Document 출처,
+#           S9 Sensor에 임계값 속성 금지(임계값은 ThresholdRule에만 둔다).
 # 0.6 미만 제외와 이벤트당 상위 3개 채택은 SHACL이 아니라 KG 적재 스크립트가 처리한다.
 # 입력 누수 검사는 금지어를 담아야 하므로 guards/leakage_shapes.ttl에 따로 둔다.
 # 검증은 ontology.ttl을 ont_graph로 주되 추론은 끈다(pyshacl의 inference="none").
@@ -275,3 +276,26 @@ im:DocumentShape a sh:NodeShape ;
     sh:property [
         sh:path im:pageCount ; sh:datatype xsd:positiveInteger ; sh:minCount 1 ; sh:maxCount 1 ;
         sh:message "S8: Document는 pageCount가 정확히 1개 있어야 합니다."@ko ] .
+
+# ---------------------------------------------------------------- S9: Sensor에 임계값 속성 금지
+
+# 임계값(nominalValue, warnLo, warnHi, critLo, critHi)은 ThresholdRule에만 둔다(2026-10-12 결정 #1, 사용자 요청).
+# ontology.ttl의 domain 선언(ThresholdRule)은 추론을 끈 검증에서 아무것도 막지 않으므로 maxCount 0으로 명시적으로 금지한다.
+
+im:SensorNoThresholdShape a sh:NodeShape ;
+    sh:targetClass im:Sensor ;
+    sh:property [
+        sh:path im:nominalValue ; sh:maxCount 0 ;
+        sh:message "S9: Sensor에는 임계값 속성 nominalValue를 둘 수 없습니다. 임계값은 ThresholdRule에 둡니다."@ko ] ;
+    sh:property [
+        sh:path im:warnLo ; sh:maxCount 0 ;
+        sh:message "S9: Sensor에는 임계값 속성 warnLo를 둘 수 없습니다. 임계값은 ThresholdRule에 둡니다."@ko ] ;
+    sh:property [
+        sh:path im:warnHi ; sh:maxCount 0 ;
+        sh:message "S9: Sensor에는 임계값 속성 warnHi를 둘 수 없습니다. 임계값은 ThresholdRule에 둡니다."@ko ] ;
+    sh:property [
+        sh:path im:critLo ; sh:maxCount 0 ;
+        sh:message "S9: Sensor에는 임계값 속성 critLo를 둘 수 없습니다. 임계값은 ThresholdRule에 둡니다."@ko ] ;
+    sh:property [
+        sh:path im:critHi ; sh:maxCount 0 ;
+        sh:message "S9: Sensor에는 임계값 속성 critHi를 둘 수 없습니다. 임계값은 ThresholdRule에 둡니다."@ko ] .

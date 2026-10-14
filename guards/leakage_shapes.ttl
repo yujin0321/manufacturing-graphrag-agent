@@ -53,7 +53,7 @@ im:LeakForbiddenPredicateShape a sh:NodeShape ;
                     "anomalytype", "rootcause", "causedby", "quality", "status", "alarms",
                     "day", "shift", "batchid",
                     "datasetseverity", "starttime", "endtime", "magnitude",
-                    "nominal", "warnhi", "warnlo", "crithi", "critlo"))
+                    "nominal", "nominalvalue", "warnhi", "warnlo", "crithi", "critlo"))
                 FILTER (?path != rdfs:label)
             }
         """ ] .

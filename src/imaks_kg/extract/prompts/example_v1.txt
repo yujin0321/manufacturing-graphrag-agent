@@ -1,0 +1,75 @@
+The two worked examples below use a fictional plant. Names, numbers and sentences are invented for illustration only; never copy them into your answer.
+
+## Worked example A
+
+# ALLOWED ID LIST
+Stations (for action_targets): ZQ7_MIXER, ZQ7_PUMP
+Sensors (for sensors): ZQ7_MIXER_TORQ, ZQ7_PUMP_FLOW
+
+# DOCUMENT DEMO-001
+<<chunk DEMO-001:p1:text1 | page 1>>
+Section: 2. Mixer drive handling
+Nobody may start the mixer drive while the guard interlock lamp is not green. When the drive torque stays above 63.7 N.m for longer than 115 seconds, the shift lead shall halve the feed rate and write the time into the shift book. Spare gaskets are kept in cabinet C.
+<<chunk DEMO-001:p1:rule1 | page 1>>
+DM-07: Re-torque the coupling bolts of the mixer drive every 400 operating hours.
+<<chunk DEMO-001:p1:table1 | page 1>>
+[table DEMO-001:p1:table1] caption: Table 1. Pump alarm limits
+[행 1] [열1] Sensor [열2] Unit [열3] Alarm Low [열4] Alarm High [열5] Level [열6] Response
+[행 2] [열1] ZQ7_PUMP_FLOW [열2] m3/h [열3] 18.4 [열4] 71.9 [열5] Major [열6] Close valve V-41 and call the maintenance desk
+<<chunk DEMO-001:p1:text2 | page 1>>
+Revision B | Printed for training use | Page 1 of 1
+
+Answer for worked example A:
+{"rules": [
+  {"class": "OperationalRule", "printed_rule_id": null,
+   "condition": "the guard interlock lamp is not green",
+   "action": "nobody may start the mixer drive",
+   "ruleSeverity": "", "sensors": [], "action_targets": ["ZQ7_MIXER"],
+   "evidence": [{"chunk_id": "DEMO-001:p1:text1",
+     "source_quote": "Nobody may start the mixer drive while the guard interlock lamp is not green.",
+     "supports": ["condition", "action", "action_targets", "class"], "table_row": null, "table_col": null}]},
+  {"class": "OperationalRule", "printed_rule_id": null,
+   "condition": "the drive torque stays above 63.7 N.m for longer than 115 seconds",
+   "action": "the shift lead shall halve the feed rate and write the time into the shift book",
+   "ruleSeverity": "", "sensors": ["ZQ7_MIXER_TORQ"], "action_targets": ["ZQ7_MIXER"],
+   "evidence": [{"chunk_id": "DEMO-001:p1:text1",
+     "source_quote": "When the drive torque stays above 63.7 N.m for longer than 115 seconds, the shift lead shall halve the feed rate and write the time into the shift book.",
+     "supports": ["condition", "action", "sensors", "action_targets", "class"], "table_row": null, "table_col": null}]},
+  {"class": "MaintenanceRule", "printed_rule_id": "DM-07",
+   "condition": "every 400 operating hours",
+   "action": "re-torque the coupling bolts of the mixer drive",
+   "ruleSeverity": "", "sensors": [], "action_targets": ["ZQ7_MIXER"],
+   "evidence": [{"chunk_id": "DEMO-001:p1:rule1",
+     "source_quote": "DM-07: Re-torque the coupling bolts of the mixer drive every 400 operating hours.",
+     "supports": ["printed_rule_id", "condition", "action", "action_targets", "class"], "table_row": null, "table_col": null}]},
+  {"class": "ThresholdRule", "printed_rule_id": null,
+   "condition": "ZQ7_PUMP_FLOW alarm low 18.4 m3/h, alarm high 71.9 m3/h",
+   "action": "Close valve V-41 and call the maintenance desk",
+   "ruleSeverity": "Major", "sensors": ["ZQ7_PUMP_FLOW"], "action_targets": ["ZQ7_PUMP"],
+   "evidence": [
+     {"chunk_id": "DEMO-001:p1:table1", "source_quote": "ZQ7_PUMP_FLOW", "supports": ["sensors"], "table_row": 2, "table_col": 1},
+     {"chunk_id": "DEMO-001:p1:table1", "source_quote": "18.4", "supports": ["condition"], "table_row": 2, "table_col": 3},
+     {"chunk_id": "DEMO-001:p1:table1", "source_quote": "71.9", "supports": ["condition"], "table_row": 2, "table_col": 4},
+     {"chunk_id": "DEMO-001:p1:table1", "source_quote": "Major", "supports": ["ruleSeverity"], "table_row": 2, "table_col": 5},
+     {"chunk_id": "DEMO-001:p1:table1", "source_quote": "Close valve V-41 and call the maintenance desk", "supports": ["action", "action_targets", "class"], "table_row": 2, "table_col": 6}]}
+],
+"coverage": [
+  {"chunk_id": "DEMO-001:p1:text1", "coverage_status": "included", "rules": [0, 1], "reason": null},
+  {"chunk_id": "DEMO-001:p1:rule1", "coverage_status": "included", "rules": [2], "reason": null},
+  {"chunk_id": "DEMO-001:p1:table1", "coverage_status": "included", "rules": [3], "reason": null},
+  {"chunk_id": "DEMO-001:p1:text2", "coverage_status": "excluded", "rules": [], "reason": "boilerplate"}
+]}
+
+## Worked example B (a document chunk without any rule)
+
+# ALLOWED ID LIST
+Stations (for action_targets): ZQ7_MIXER, ZQ7_PUMP
+Sensors (for sensors): ZQ7_MIXER_TORQ, ZQ7_PUMP_FLOW
+
+# DOCUMENT DEMO-002
+<<chunk DEMO-002:p1:text1 | page 1>>
+Revision A | Printed for training use | Page 1 of 1
+
+Answer for worked example B:
+{"rules": [],
+ "coverage": [{"chunk_id": "DEMO-002:p1:text1", "coverage_status": "excluded", "rules": [], "reason": "boilerplate"}]}

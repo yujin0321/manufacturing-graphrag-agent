@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "note": "example_check.py가 검증 4종을 모두 통과한 Example 파일의 SHA-256만 등록한다. 손으로 고치지 않는다.",
+  "entries": [
+    {
+      "sha256": "edbf73a72c071cccf019094cfb96069ae8075aec2e6263b519bae8b5d16d34b8",
+      "file": "example_v1.txt",
+      "registered_at": "2026-10-14T19:50:03",
+      "checks": {
+        "a_gt_overlap": {
+          "passed": true,
+          "count": 0
+        },
+        "b_source_overlap": {
+          "passed": true,
+          "count": 0
+        },
+        "c_dataset_vocabulary": {
+          "passed": true,
+          "count": 0
+        }
+      }
+    }
+  ]
+}

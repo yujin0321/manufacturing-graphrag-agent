@@ -260,9 +260,9 @@ im:charEnd a owl:DatatypeProperty ; rdfs:domain im:Provenance ; rdfs:range xsd:n
 im:tableId a owl:DatatypeProperty ; rdfs:domain im:Provenance ; rdfs:range xsd:string ;
     rdfs:label "tableId"@en ; rdfs:comment "document 유래(표): 표 ID(예: SOP-002:p1:table2)."@ko ; im:decisionRef "CLAUDE.md §4" .
 im:rowIndex a owl:DatatypeProperty ; rdfs:domain im:Provenance ; rdfs:range xsd:positiveInteger ;
-    rdfs:label "rowIndex"@en ; rdfs:comment "document 유래(표): 표 안의 행 번호."@ko ; im:decisionRef "CLAUDE.md §4" .
+    rdfs:label "rowIndex"@en ; rdfs:comment "document 유래(표): 표 안의 행 번호. 1부터 센다(헤더 행 = 1)."@ko ; im:decisionRef "CLAUDE.md §4" .
 im:colIndex a owl:DatatypeProperty ; rdfs:domain im:Provenance ; rdfs:range xsd:positiveInteger ;
-    rdfs:label "colIndex"@en ; rdfs:comment "document 유래(표): 표 안의 열 번호."@ko ; im:decisionRef "CLAUDE.md §4" .
+    rdfs:label "colIndex"@en ; rdfs:comment "document 유래(표): 표 안의 열 번호. 1부터 센다(첫 열 = 1)."@ko ; im:decisionRef "CLAUDE.md §4" .
 im:bbox a owl:DatatypeProperty ; rdfs:domain im:Provenance ; rdfs:range xsd:string ;
     rdfs:label "bbox"@en ; rdfs:comment "document 유래(표): 좌표 x0,y0,x1,y1(point 단위)."@ko ; im:decisionRef "CLAUDE.md §4" .
 im:sourceQuote a owl:DatatypeProperty ; rdfs:domain im:Provenance ; rdfs:range xsd:string ;

@@ -225,3 +225,10 @@ imaks_data/
 !/reports/.gitkeep
 !/reports/*_impl.md
 !/reports/*_verify.md
+/kg_build/
+/llm_logs/
+/llm_cache/
+# local extraction settings (model names; keys are never stored here)
+/config/extract.toml
+/config/extract.*.toml
+!/config/extract.example.toml

@@ -92,8 +92,8 @@
 | `charStart` | Provenance | nonNegativeInteger | 쪽 텍스트 안 시작 위치 | document | 확정 (§4) |
 | `charEnd` | Provenance | nonNegativeInteger | 끝 위치 | document | 확정 (§4) |
 | `tableId` | Provenance | string | 표 ID | document(표) | 확정 (§4) |
-| `rowIndex` | Provenance | positiveInteger | 표 행 번호 | document(표) | 확정 (§4) |
-| `colIndex` | Provenance | positiveInteger | 표 열 번호 | document(표) | 확정 (§4) |
+| `rowIndex` | Provenance | positiveInteger | 표 행 번호. **1부터 센다(헤더 행 = 1)** | document(표) | 확정 (§4, 2026-10-14) |
+| `colIndex` | Provenance | positiveInteger | 표 열 번호. **1부터 센다(첫 열 = 1)** | document(표) | 확정 (§4, 2026-10-14) |
 | `bbox` | Provenance | string | 좌표 x0,y0,x1,y1 | document(표) | 확정 (§4) |
 | `sourceQuote` | Provenance | string | 근거 원문 인용 | document | 제안 (재도출 6장) |
 | `textSha256` | Provenance | string | 인용 원문 SHA-256 | document | 확정 (§4) |
@@ -103,6 +103,8 @@
 | `intervalStart` | Provenance | dateTime | 구간 시작 | timeseries | 확정 (D3) |
 | `intervalEnd` | Provenance | dateTime | 구간 끝 | timeseries | 확정 (D3) |
 | `fileSha256` | Provenance | string | 시계열 파일 SHA-256 | timeseries | 확정 (D3) |
+
+`MaintenanceRule`은 Provenance를 둘 가진다: seed CSV 유래(`sourceKind="seedCsv"`, 파일명과 원본 행)와 문서 유래(`sourceKind="document"`, SOP-003 표의 쪽·`tableId`·`rowIndex`·`colIndex`·원문 인용·해시). 표 위치를 세는 규약은 위와 같고, ④ LLM 출력도 같은 규약을 쓴다.
 
 ### 4-6. 구간 ID와 AnomalyEvent
 | 이름 | 대상 | 자료형 | 의미 | 예시 | 근거 |
@@ -155,7 +157,7 @@
 |---|---|---|
 | Component 노드 9개 | `Station` | `sourceNodeId`에 nodeId, `stationType`, `zone`은 원본 `zone` 값 |
 | Sensor 노드 22개 | `Sensor` | `identifier`=name, `sensorType`, `unit` |
-| Maintenance 노드 8개 | `MaintenanceRule` | `identifier`=ruleId(MAINT-01~08), `responseText`=action, `priority`. action 문구가 SOP-003과 조금 다르므로 매핑표를 둔다(CLAUDE.md §4) |
+| Maintenance 노드 8개 | `MaintenanceRule` | `identifier`=ruleId(MAINT-01~08), `responseText`=action, `priority`, `extractionMethod`="seedCsv". action 문구가 SOP-003과 조금 다르므로 매핑표를 둔다(CLAUDE.md §4). 문서 Provenance(SOP-003 표 위치)도 함께 붙는다 |
 | AnomalyEvent 노드 14개 | `AnomalyEvent` 하위 유형 | ⑦ 이후만. `startTs`→`startTime`, `endTs`→`endTime`, 원본 심각도 컬럼→`datasetSeverity`. `gtId`, `causedBy`는 평가용이라 KG에 올리지 않음 |
 | Zone 7개, System 1개 | 적재 안 함 | `zone`은 Station 속성으로 흡수. System은 미결정 |
 | Person 44개, SafetyEvent 10개 | 적재 안 함 | 범위 밖 |
@@ -166,6 +168,8 @@
 | 엣지 resolves(8) | `appliesToSensor`로 합침 | triggers(Sensor→Maintenance)와 같은 8쌍 |
 | 엣지 contains(16), part_of(9) | 적재 안 함 | Zone·System 없음 |
 | 엣지 authorized_for(218), involves(10), detected_in(10) | 적재 안 함 | 범위 밖 |
+
+변환 산출물에는 `triple_sources.jsonl`(트리플 단위 출처 장부)이 있다. `instances.ttl`의 모든 트리플이 원본 파일·줄·해시(문서 유래는 표 위치와 인용 해시)를 가지며, 같은 선에 원본 행이 둘이면 둘 다 보존한다. TTL과 별도 파일이다.
 
 ## 8. 질문 5개 커버리지 확인 (docs/competency_questions.md)
 | 질문 | 필요한 것 | 이 스키마에서 |

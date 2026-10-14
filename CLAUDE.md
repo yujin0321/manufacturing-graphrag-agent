@@ -99,5 +99,6 @@ iMAKS(제조 공정 합성 데이터셋)로 지식그래프(KG)를 직접 구축
 - 참고논문 1: Miao et al., *Graph RAG-based fault diagnosis for train bogies using knowledge graphs and large language model*, Knowledge-Based Systems 331 (2025) 114855 — 추출·리트리벌·자기검증·평가의 근거
 - 참고논문 2: Shim et al., *OmEGa: Ontology-based information extraction framework for constructing task-centric knowledge graph from manufacturing documents with large language model*, Advanced Engineering Informatics 64 (2025) 103001 — Task 중심 온톨로지·SWRL·Disjoint 제약의 근거
 - 산출물 위치: 질문 `docs/competency_questions.md`, 온톨로지 `ontology_v1/`(`ontology.ttl`, `schema_tables.md`, `shapes.ttl`, `examples/`), 누수 검사 `guards/`, 테스트 `tests/test_shacl.py`, 결정 기록 `work_log.md`.
+- 코드와 평가 위치: 파이프라인 코드는 `src/imaks_kg/`, KG 변환 산출물은 `kg_build/`(git 제외). `ground_truth.csv`를 읽는 평가 코드는 `src/imaks_kg/eval/` 아래에만 둔다. `check_leakage.py`가 경로에 `eval`이 있는 폴더만 평가 코드로 인정하고, `/evaluation/`은 git 제외 폴더라 코드를 둘 수 없다.
 - 데이터셋: iMAKS v3 (Zenodo, https://zenodo.org/records/20075430)
   - 로컬 저장 위치: `C:\Users\LG\manufacturing-graphrag-agent\imaks_data` (저장소 기준 상대 경로: `imaks_data/`). 코드에서는 절대 경로를 하드코딩하지 말고 저장소 기준 상대 경로나 설정 파일로 참조한다.

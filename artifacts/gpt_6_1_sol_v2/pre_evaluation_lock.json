@@ -1,0 +1,26 @@
+{
+  "status": "retrospective_lock_before_team_rescoring_NOT_before_initial_gold_exposure",
+  "predictions_sha256": "ed6c1c3c4e1d10262fb9c25cf2a9639c6df3224d33ada3fd4e9a9d2d07e240b4",
+  "definition_sha256": "35be575441258dbf80d8909fd8083124d0aa523476b878c14e22f002920a3e94",
+  "api_requests_sha256": {
+    "DS-ELEC-3300.json": "841fd19b52425ee663a1ce1b9dcc452a04f7e8bf5c80f2e451a51a21f2f723d0",
+    "DS-MECH-4400.json": "dc780024bff5a49056762030a3d11c57f979c44921fd2238e234ea8f466b6622",
+    "DS-THERM-2200.json": "f6466265ab2776b208b529497fb41b68b1b4d9818737d7aa9d5dfd9c11976f2e",
+    "SOP-001.json": "0e09b8e116dc3fe025a97831bf1b85c0af1e3a0794bcc5c7f688327dbe9891ac",
+    "SOP-002.json": "34e5ea5663b4378d90b23cfaa2bad23a723a82f9e470aa9fbe576553c5b597a7",
+    "SOP-003.json": "824b1a8d1590b63ee24afc88d1444f805aef10916dba6b33bb91c0288c6fb050",
+    "SOP-004.json": "a300adb670b73906873111bbcc085c7da846af24246d3bca8820338227279fa8"
+  },
+  "requested_model": "gpt-6.1-sol",
+  "actual_models": [
+    "gpt-6.1-sol"
+  ],
+  "encoder_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+  "embedding_versions": "Notebook pins sentence-transformers 3.4.1, scipy 1.15.2; actual runtime versions not archived",
+  "rescoring_versions": {
+    "python": "3.12.14",
+    "numpy": "2.3.5"
+  },
+  "scores_sha256": "5125f1c7e25e369a911f79a0de3f395f388a1b3e0cce511cbf7e37dc2240e662",
+  "independent_test": false
+}

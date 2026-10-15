@@ -1,0 +1,43 @@
+{
+  "profile": "candidate_not_human_approved",
+  "nodes_by_class": {
+    "Station": 9,
+    "Sensor": 22,
+    "Document": 7,
+    "MaintenanceRule": 19,
+    "OperationalRule": 33,
+    "AccessRule": 29,
+    "ThresholdRule": 27,
+    "Provenance": 210
+  },
+  "relations_by_type": {
+    "hasProvenance": 147,
+    "hasSensor": 22,
+    "appliesToSensor": 72,
+    "sourceDocument": 108,
+    "feedsInto": 3,
+    "actionTarget": 94
+  },
+  "rdf_triples": 2806,
+  "triples_with_evidence": 2806,
+  "raw_nodes": 115,
+  "raw_edges": 341,
+  "excluded_structure_nodes": {
+    "System": 1,
+    "Zone": 7,
+    "AnomalyEvent": 14,
+    "Maintenance": 8,
+    "Person": 44,
+    "SafetyEvent": 10
+  },
+  "prediction_count": 100,
+  "shapes_sha256": "d4c649c0f0ca316f36db1a8d1ec07ca7039f962c734f93f74ac8052c2408ac68",
+  "ontology_sha256": "a7a56c166f94911a8f97ba37760c163ca2f47fb355e9e2c96ba7ae3d066d0968",
+  "predictions_sha256": "ed6c1c3c4e1d10262fb9c25cf2a9639c6df3224d33ada3fd4e9a9d2d07e240b4",
+  "input_sha256": {
+    "imaks_data\\kg_seed\\nodes.csv": "3b78a37ff96c39cd5ef2b1b9bf6019d9c951c7926ca4e708e8cb365b9581964e",
+    "imaks_data\\kg_seed\\edges.csv": "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3"
+  },
+  "human_review_complete": false,
+  "neo4j_loaded": false
+}

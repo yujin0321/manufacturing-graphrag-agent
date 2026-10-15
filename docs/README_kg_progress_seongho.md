@@ -18,7 +18,7 @@
 
 | 항목 | 결과 |
 |---|---|
-| LLM | gemini-3.1-flash-lite |
+| LLM | 실제 API 호출; 모델 식별자는 집계 JSON 참조 |
 | 완료 | SOP-001/003/004, DS-ELEC-3300 |
 | 미완료 | SOP-002, DS-MECH-4400, DS-THERM-2200 |
 | 고정 자동 추출 | 56개; SOP 예측50개; 내용 수정 없음 |
@@ -60,7 +60,6 @@ $env:PYTHONPATH='src'
 `.env.example`을 `.env`로 복사하고 키를 입력한 후 명시적으로 호출한다.
 
 ```powershell
-.\.venv\Scripts\python.exe -m imaks_kg.stage3.gemini --run-name new-run --model gemini-3.1-flash-lite
 .\.venv\Scripts\python.exe -m imaks_kg.stage3.extract --import-responses artifacts/stage3/model_calls/new-run/responses.jsonl
 # 모델 호출이 일부만 끝났다면 완료 응답만 모은 JSONL을 사용하고 --allow-partial 지정
 .\.venv\Scripts\python.exe -m imaks_kg.stage3.evaluate --predictions artifacts/stage3/runs/RUN_ID/predictions.jsonl --output evaluation/new_result.json --revision 1110a243fdf4706b3f48f1d95db1a4f5529b4d41

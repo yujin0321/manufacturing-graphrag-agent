@@ -19,7 +19,7 @@ def make_report(run, evaluation):
         return f"{100*v:.2f}%"
     lines = ["# 10월 14일 회의 — KG 구축 및 첫 LLM 추출 평가", "",
         "## 발표할 핵심", "",
-        f"지훈 안의 온톨로지에 맞춰 기존 KG를 변환하고, Gemini로 완료된 문서 {len(responses)}개에서 규칙 {len(predictions)}개를 자동 추출했다.",
+        f"지훈 안의 온톨로지에 맞춰 기존 KG를 변환하고, LLM으로 완료된 문서 {len(responses)}개에서 규칙 {len(predictions)}개를 자동 추출했다.",
         f"SOP 예측 {score['predicted']}개를 원본 정답 86건과 비교한 첫 내용 F1은 {percent(score['f1'])}이다.",
         "이 수치는 SBERT 의미 유사도 기반 개발 평가이며, 숫자·부등호의 완전한 정확도나 인과 발견 성능을 뜻하지 않는다.", "",
         "**부분 실행 결과**: 미완료 문서가 있으면 전체 추출 완료라고 주장하지 않는다.",

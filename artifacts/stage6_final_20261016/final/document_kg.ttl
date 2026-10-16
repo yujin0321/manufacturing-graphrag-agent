@@ -1,0 +1,3403 @@
+@prefix im: <https://example.org/imaks/v1#> .
+@prefix inst: <https://example.org/imaks/id/> .
+@prefix rc: <https://example.org/imaks/relation-review/v1#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+inst:MAINT-01 a im:MaintenanceRule ;
+    im:appliesToSensor inst:ST04_PACKAGING_VIB ;
+    im:extractionMethod "seedCsv" ;
+    im:hasProvenance inst:prov-N0054,
+        inst:prov-a59347a7942bfca31abf ;
+    im:identifier "MAINT-01" ;
+    im:priority "HIGH" ;
+    im:responseText "Inspect and lubricate main bearing" ;
+    im:sourceDocument inst:SOP-003 ;
+    im:sourceNodeId "N0054" .
+
+inst:MAINT-02 a im:MaintenanceRule ;
+    im:appliesToSensor inst:ST02_SEALING_CUR ;
+    im:extractionMethod "seedCsv" ;
+    im:hasProvenance inst:prov-35cee0eb4753a49f94d2,
+        inst:prov-N0055 ;
+    im:identifier "MAINT-02" ;
+    im:priority "HIGH" ;
+    im:responseText "Inspect sealing jaw alignment" ;
+    im:sourceDocument inst:SOP-003 ;
+    im:sourceNodeId "N0055" .
+
+inst:MAINT-03 a im:MaintenanceRule ;
+    im:appliesToSensor inst:ST03_LABELLING_TEN ;
+    im:extractionMethod "seedCsv" ;
+    im:hasProvenance inst:prov-N0056,
+        inst:prov-d4295bc86ec5ebdee12b ;
+    im:identifier "MAINT-03" ;
+    im:priority "MEDIUM" ;
+    im:responseText "Replace TEN sensor" ;
+    im:sourceDocument inst:SOP-003 ;
+    im:sourceNodeId "N0056" .
+
+inst:MAINT-04 a im:MaintenanceRule ;
+    im:appliesToSensor inst:ST01_FILLING_PRS ;
+    im:extractionMethod "seedCsv" ;
+    im:hasProvenance inst:prov-38e52824dea42adc3ad2,
+        inst:prov-N0057 ;
+    im:identifier "MAINT-04" ;
+    im:priority "MEDIUM" ;
+    im:responseText "Inspect inlet filter and pump" ;
+    im:sourceDocument inst:SOP-003 ;
+    im:sourceNodeId "N0057" .
+
+inst:MAINT-05 a im:MaintenanceRule ;
+    im:appliesToSensor inst:SRV01_SERVERROOM_TMP ;
+    im:extractionMethod "seedCsv" ;
+    im:hasProvenance inst:prov-372a0569edfaa894650e,
+        inst:prov-N0058 ;
+    im:identifier "MAINT-05" ;
+    im:priority "CRITICAL" ;
+    im:responseText "Activate secondary cooling" ;
+    im:sourceDocument inst:SOP-003 ;
+    im:sourceNodeId "N0058" .
+
+inst:MAINT-06 a im:MaintenanceRule ;
+    im:appliesToSensor inst:WRH01_WAREHOUSE_TMP ;
+    im:extractionMethod "seedCsv" ;
+    im:hasProvenance inst:prov-3c54258286212e99fa95,
+        inst:prov-N0059 ;
+    im:identifier "MAINT-06" ;
+    im:priority "CRITICAL" ;
+    im:responseText "Inspect compressor; notify QC" ;
+    im:sourceDocument inst:SOP-003 ;
+    im:sourceNodeId "N0059" .
+
+inst:MAINT-07 a im:MaintenanceRule ;
+    im:appliesToSensor inst:CHM01_CHEMICALSTORAGE_TMP ;
+    im:extractionMethod "seedCsv" ;
+    im:hasProvenance inst:prov-N0060,
+        inst:prov-fb4c0c2ec85f14f1169d ;
+    im:identifier "MAINT-07" ;
+    im:priority "CRITICAL" ;
+    im:responseText "Activate emergency ventilation; notify safety officer" ;
+    im:sourceDocument inst:SOP-003 ;
+    im:sourceNodeId "N0060" .
+
+inst:MAINT-08 a im:MaintenanceRule ;
+    im:appliesToSensor inst:RND01_RDLAB_HUM ;
+    im:extractionMethod "seedCsv" ;
+    im:hasProvenance inst:prov-15bedc0c211fdd5a5bbc,
+        inst:prov-N0061 ;
+    im:identifier "MAINT-08" ;
+    im:priority "HIGH" ;
+    im:responseText "Activate dehumidifier; check HVAC drain" ;
+    im:sourceDocument inst:SOP-003 ;
+    im:sourceNodeId "N0061" .
+
+inst:candidate-DS-ELEC-3300%3A%3ADS-ELEC-3300-EX-01 a im:OperationalRule ;
+    im:conditionText "Series 3300 sensor current is between 14 A and 20 A." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-28668c0cc378dd446360 ;
+    im:identifier "candidate-DS-ELEC-3300::DS-ELEC-3300-EX-01" ;
+    im:responseText "Limit operation in this range to short durations (< 60 seconds). Sustained operation above 14 A causes progressive accuracy drift." ;
+    im:sourceDocument inst:DS-ELEC-3300 .
+
+inst:candidate-DS-ELEC-3300%3A%3ADS-ELEC-3300-EX-02 a im:OperationalRule ;
+    im:conditionText "Setting process current alarm thresholds that trigger corrective action for the Series 3300 sensor." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-974276b1bf939f355472 ;
+    im:identifier "candidate-DS-ELEC-3300::DS-ELEC-3300-EX-02" ;
+    im:responseText "ElectroMeasure recommends setting these thresholds no higher than the continuous overload rating of 14 A." ;
+    im:sourceDocument inst:DS-ELEC-3300 .
+
+inst:candidate-DS-MECH-4400%3A%3ADS-MECH-4400-EX-01 a im:OperationalRule ;
+    im:conditionText "When setting alarm thresholds for the PRS-4410 pressure transmitter with total accuracy of ±0.10 bar." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-859f56159fc21b040144 ;
+    im:identifier "candidate-DS-MECH-4400::DS-MECH-4400-EX-01" ;
+    im:responseText "Set alarm thresholds at least 5× the accuracy (0.50 bar) from the nominal operating point to avoid nuisance alarms. Thresholds closer than 3× accuracy (0.30 bar) are not recommended for process control." ;
+    im:sourceDocument inst:DS-MECH-4400 .
+
+inst:candidate-DS-THERM-2200%3A%3ADS-THERM-2200-EX-01 a im:OperationalRule ;
+    im:conditionText "TMP-2210 intermittent temperature exposure, with a maximum of 220°C." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-6b6bbfbc424202fbf10e ;
+    im:identifier "candidate-DS-THERM-2200::DS-THERM-2200-EX-01" ;
+    im:responseText "Limit exposure to < 10 min; do not use this intermittent rating for control." ;
+    im:sourceDocument inst:DS-THERM-2200 .
+
+inst:candidate-DS-THERM-2200%3A%3ADS-THERM-2200-EX-02 a im:OperationalRule ;
+    im:conditionText "An application requires sustained temperature operation above the TMP-2210 continuous maximum of 200°C." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-3c577fbbc4bb1346a0a8 ;
+    im:identifier "candidate-DS-THERM-2200::DS-THERM-2200-EX-02" ;
+    im:responseText "ThermoSense recommends the Series 2400 (Pt100 RTD, rated to 250°C continuous). Exposure above 200°C accelerates thermocouple ageing and may cause drift of up to ±5°C within 500 hours." ;
+    im:sourceDocument inst:DS-THERM-2200 .
+
+inst:candidate-SOP-001%3A%3ARULE-CAF01-01 a im:OperationalRule ;
+    im:actionTarget inst:CAF01_CAFETERIA ;
+    im:appliesToSensor inst:CAF01_CAFETERIA_TMP ;
+    im:conditionText "CAF01_CAFETERIA temperature (TMP) is above 26°C; occupant comfort is the primary criterion." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-93c544a56210fc612c7a ;
+    im:identifier "candidate-SOP-001::RULE-CAF01-01" ;
+    im:responseText "Check the ventilation system." ;
+    im:sourceDocument inst:SOP-001 .
+
+inst:candidate-SOP-001%3A%3ARULE-CAF01-02 a im:OperationalRule ;
+    im:actionTarget inst:CAF01_CAFETERIA ;
+    im:appliesToSensor inst:CAF01_CAFETERIA_HUM ;
+    im:conditionText "CAF01_CAFETERIA humidity (HUM) is above 70%RH." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-e2b2616cb1a7d93a7123 ;
+    im:identifier "candidate-SOP-001::RULE-CAF01-02" ;
+    im:responseText "Inspect drainage and activate ventilation." ;
+    im:sourceDocument inst:SOP-001 .
+
+inst:candidate-SOP-001%3A%3ARULE-CHM01-01 a im:OperationalRule ;
+    im:appliesToSensor inst:CHM01_CHEMICALSTORAGE_TMP ;
+    im:conditionText "CHM01_CHEMICALSTORAGE temperature (TMP) must remain between 10°C and 20°C." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-5ed4da776bcca5dff010 ;
+    im:identifier "candidate-SOP-001::RULE-CHM01-01" ;
+    im:sourceDocument inst:SOP-001 .
+
+inst:candidate-SOP-001%3A%3ARULE-CHM01-01-CRITICAL a im:OperationalRule ;
+    im:actionTarget inst:CHM01_CHEMICALSTORAGE ;
+    im:appliesToSensor inst:CHM01_CHEMICALSTORAGE_TMP ;
+    im:conditionText "CHM01_CHEMICALSTORAGE temperature (TMP) is above 25°C (CRITICAL)." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-ba825ba4104a867292c5 ;
+    im:identifier "candidate-SOP-001::RULE-CHM01-01-CRITICAL" ;
+    im:responseText "Activate emergency ventilation and notify the safety officer immediately." ;
+    im:sourceDocument inst:SOP-001 .
+
+inst:candidate-SOP-001%3A%3ARULE-CHM01-02 a im:OperationalRule ;
+    im:appliesToSensor inst:CHM01_CHEMICALSTORAGE_HUM ;
+    im:conditionText "CHM01_CHEMICALSTORAGE humidity (HUM) must not exceed 50%RH; elevated humidity accelerates degradation of hygroscopic reagents." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-84852f4f38e51b43dd36 ;
+    im:identifier "candidate-SOP-001::RULE-CHM01-02" ;
+    im:sourceDocument inst:SOP-001 .
+
+inst:candidate-SOP-001%3A%3ARULE-CHM01-02-DESICCANT a im:OperationalRule ;
+    im:actionTarget inst:CHM01_CHEMICALSTORAGE ;
+    im:appliesToSensor inst:CHM01_CHEMICALSTORAGE_HUM ;
+    im:conditionText "CHM01_CHEMICALSTORAGE humidity (HUM) >45%RH." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-0dab49d3aceab51ba9a5 ;
+    im:identifier "candidate-SOP-001::RULE-CHM01-02-DESICCANT" ;
+    im:responseText "Activate the desiccant system." ;
+    im:sourceDocument inst:SOP-001 .
+
+inst:candidate-SOP-001%3A%3ARULE-CHM01-03 a im:AccessRule ;
+    im:actionTarget inst:CHM01_CHEMICALSTORAGE ;
+    im:conditionText "Entry to Chemical Storage." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-b582c3dedc29aeacbbf3 ;
+    im:identifier "candidate-SOP-001::RULE-CHM01-03" ;
+    im:responseText "Authorize entry only for personnel with hazmat training in a technician, supervisor or manager role." ;
+    im:sourceDocument inst:SOP-001 .
+
+inst:candidate-SOP-001%3A%3ARULE-CHM01-03-UNAUTHORIZED a im:AccessRule ;
+    im:actionTarget inst:CHM01_CHEMICALSTORAGE ;
+    im:conditionText "UNAUTHORIZED_ACCESS to Chemical Storage." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-730ace7e1437db3fe95e ;
+    im:identifier "candidate-SOP-001::RULE-CHM01-03-UNAUTHORIZED" ;
+    im:responseText "Escalate within 2 minutes." ;
+    im:sourceDocument inst:SOP-001 .
+
+inst:candidate-SOP-001%3A%3ARULE-RND01-01 a im:OperationalRule ;
+    im:appliesToSensor inst:RND01_RDLAB_TMP ;
+    im:conditionText "RND01_RDLAB temperature (TMP) must remain between 18°C and 26°C for experimental validity." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-cf23cbf0fb35017af823 ;
+    im:identifier "candidate-SOP-001::RULE-RND01-01" ;
+    im:sourceDocument inst:SOP-001 .
+
+inst:candidate-SOP-001%3A%3ARULE-RND01-02 a im:OperationalRule ;
+    im:actionTarget inst:RND01_RDLAB ;
+    im:appliesToSensor inst:RND01_RDLAB_HUM ;
+    im:conditionText "RND01_RDLAB humidity (HUM) drifts above 65%RH." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-e7313e31484b1d01ffd2 ;
+    im:identifier "candidate-SOP-001::RULE-RND01-02" ;
+    im:responseText "Activate the dehumidifier." ;
+    im:sourceDocument inst:SOP-001 .
+
+inst:candidate-SOP-001%3A%3ARULE-RND01-02-CRITICAL a im:OperationalRule ;
+    im:actionTarget inst:RND01_RDLAB ;
+    im:appliesToSensor inst:RND01_RDLAB_HUM ;
+    im:conditionText "RND01_RDLAB humidity (HUM) is above 75%RH (CRITICAL)." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-48510e55a87fc7b5ab71 ;
+    im:identifier "candidate-SOP-001::RULE-RND01-02-CRITICAL" ;
+    im:responseText "Suspend sensitive experiments and inspect the HVAC system." ;
+    im:sourceDocument inst:SOP-001 .
+
+inst:candidate-SOP-001%3A%3ARULE-SRV01-01 a im:OperationalRule ;
+    im:appliesToSensor inst:SRV01_SERVERROOM_TMP ;
+    im:conditionText "SRV01_SERVERROOM temperature (TMP) must not exceed 25°C." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-1f36647aace7fa114333 ;
+    im:identifier "candidate-SOP-001::RULE-SRV01-01" ;
+    im:sourceDocument inst:SOP-001 .
+
+inst:candidate-SOP-001%3A%3ARULE-SRV01-02 a im:OperationalRule ;
+    im:appliesToSensor inst:SRV01_SERVERROOM_TMP ;
+    im:conditionText "SRV01_SERVERROOM temperature (TMP) > 28°C (CRITICAL)." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-c24c9ca9fb3389afa597 ;
+    im:identifier "candidate-SOP-001::RULE-SRV01-02" ;
+    im:responseText "Automatic controlled shutdown of all PLC nodes." ;
+    im:sourceDocument inst:SOP-001 .
+
+inst:candidate-SOP-001%3A%3ARULE-ST01-01 a im:OperationalRule ;
+    im:appliesToSensor inst:ST01_FILLING_FLW ;
+    im:conditionText "ST01_FILLING flow (FLW) must be maintained between 112 and 128 L/min." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-ea3edabd2b4bb07776a4 ;
+    im:identifier "candidate-SOP-001::RULE-ST01-01" ;
+    im:sourceDocument inst:SOP-001 .
+
+inst:candidate-SOP-001%3A%3ARULE-ST01-02 a im:OperationalRule ;
+    im:actionTarget inst:ST01_FILLING ;
+    im:appliesToSensor inst:ST01_FILLING_TMP ;
+    im:conditionText "ST01_FILLING temperature (TMP) exceeds 26°C." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-8123e7145f2771be6b63 ;
+    im:identifier "candidate-SOP-001::RULE-ST01-02" ;
+    im:responseText "Reduce speed by 10% and notify QC." ;
+    im:sourceDocument inst:SOP-001 .
+
+inst:candidate-SOP-001%3A%3ARULE-ST01-03 a im:OperationalRule ;
+    im:actionTarget inst:ST01_FILLING ;
+    im:appliesToSensor inst:ST01_FILLING_PRS ;
+    im:conditionText "ST01_FILLING pressure (PRS) drops below 3.3 bar." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-fc5d0332af3903783d6d ;
+    im:identifier "candidate-SOP-001::RULE-ST01-03" ;
+    im:responseText "Inspect the inlet valve within 5 min." ;
+    im:sourceDocument inst:SOP-001 .
+
+inst:candidate-SOP-001%3A%3ARULE-ST02-01 a im:OperationalRule ;
+    im:appliesToSensor inst:ST02_SEALING_TMP ;
+    im:conditionText "ST02_SEALING temperature (TMP) must remain between 175°C and 195°C." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-7e351109e66dbde87658 ;
+    im:identifier "candidate-SOP-001::RULE-ST02-01" ;
+    im:sourceDocument inst:SOP-001 .
+
+inst:candidate-SOP-001%3A%3ARULE-ST02-03 a im:OperationalRule ;
+    im:actionTarget inst:ST02_SEALING ;
+    im:appliesToSensor inst:ST02_SEALING_CUR ;
+    im:conditionText "ST02_SEALING current (CUR) increases >1.5 A above nominal, sustained >5 min." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-167ae280219f69955018 ;
+    im:identifier "candidate-SOP-001::RULE-ST02-03" ;
+    im:responseText "Schedule maintenance." ;
+    im:sourceDocument inst:SOP-001 .
+
+inst:candidate-SOP-001%3A%3ARULE-ST03-01 a im:OperationalRule ;
+    im:appliesToSensor inst:ST03_LABELLING_TEN ;
+    im:conditionText "ST03_LABELLING tension (TEN) must be between 1.8 and 2.6 N." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-3fd813ae777a6d9595f1 ;
+    im:identifier "candidate-SOP-001::RULE-ST03-01" ;
+    im:sourceDocument inst:SOP-001 .
+
+inst:candidate-SOP-001%3A%3ARULE-ST03-02 a im:OperationalRule ;
+    im:actionTarget inst:ST03_LABELLING ;
+    im:appliesToSensor inst:ST03_LABELLING_CNT ;
+    im:conditionText "ST03_LABELLING count rate (CNT) is below 110 pcs/min." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-89dbcc94df0853df65b1 ;
+    im:identifier "candidate-SOP-001::RULE-ST03-02" ;
+    im:responseText "Check for a label jam." ;
+    im:sourceDocument inst:SOP-001 .
+
+inst:candidate-SOP-001%3A%3ARULE-ST03-02-CRITICAL a im:OperationalRule ;
+    im:actionTarget inst:ST03_LABELLING ;
+    im:appliesToSensor inst:ST03_LABELLING_CNT ;
+    im:conditionText "ST03_LABELLING count rate (CNT) is below 100 pcs/min (CRITICAL)." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-d692bb1a5c65e01db0f8 ;
+    im:identifier "candidate-SOP-001::RULE-ST03-02-CRITICAL" ;
+    im:responseText "Halt." ;
+    im:sourceDocument inst:SOP-001 .
+
+inst:candidate-SOP-001%3A%3ARULE-ST03-03 a im:OperationalRule ;
+    im:appliesToSensor inst:ST03_LABELLING_TEN ;
+    im:conditionText "ST03_LABELLING tension (TEN) is STUCK for >10 consecutive samples, indicating sensor failure." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-be87a6241c5b0e18784d ;
+    im:identifier "candidate-SOP-001::RULE-ST03-03" ;
+    im:sourceDocument inst:SOP-001 .
+
+inst:candidate-SOP-001%3A%3ARULE-ST04-01 a im:OperationalRule ;
+    im:actionTarget inst:ST04_PACKAGING ;
+    im:appliesToSensor inst:ST04_PACKAGING_VIB ;
+    im:conditionText "ST04_PACKAGING vibration (VIB) > 0.20 mm/s (WARNING)." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-563a9b01e5180af676c2 ;
+    im:identifier "candidate-SOP-001::RULE-ST04-01" ;
+    im:responseText "Schedule maintenance within 24 h." ;
+    im:sourceDocument inst:SOP-001 .
+
+inst:candidate-SOP-001%3A%3ARULE-ST04-02 a im:OperationalRule ;
+    im:actionTarget inst:ST04_PACKAGING ;
+    im:appliesToSensor inst:ST04_PACKAGING_VIB ;
+    im:conditionText "ST04_PACKAGING vibration (VIB) > 0.35 mm/s (CRITICAL)." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-f400de4ebfa89852b13f ;
+    im:identifier "candidate-SOP-001::RULE-ST04-02" ;
+    im:responseText "Emergency stop and inspect bearings." ;
+    im:sourceDocument inst:SOP-001 .
+
+inst:candidate-SOP-001%3A%3ARULE-WRH01-01 a im:OperationalRule ;
+    im:appliesToSensor inst:WRH01_WAREHOUSE_TMP ;
+    im:conditionText "WRH01_WAREHOUSE temperature (TMP) must remain between 0.5°C and 8°C." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-b28c17872c63644d104a ;
+    im:identifier "candidate-SOP-001::RULE-WRH01-01" ;
+    im:sourceDocument inst:SOP-001 .
+
+inst:candidate-SOP-001%3A%3ARULE-WRH01-01-CRITICAL a im:OperationalRule ;
+    im:actionTarget inst:WRH01_WAREHOUSE ;
+    im:appliesToSensor inst:WRH01_WAREHOUSE_TMP ;
+    im:conditionText "WRH01_WAREHOUSE temperature (TMP) is above 12°C (CRITICAL)." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-531bb860628329644a9e ;
+    im:identifier "candidate-SOP-001::RULE-WRH01-01-CRITICAL" ;
+    im:responseText "Notify QC and quarantine the batch." ;
+    im:sourceDocument inst:SOP-001 .
+
+inst:candidate-SOP-001%3A%3ARULE-WRH01-02 a im:OperationalRule ;
+    im:actionTarget inst:WRH01_WAREHOUSE ;
+    im:appliesToSensor inst:WRH01_WAREHOUSE_HUM ;
+    im:conditionText "WRH01_WAREHOUSE humidity (HUM) is above 85%RH." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-b891c9af35bd1479a9ab ;
+    im:identifier "candidate-SOP-001::RULE-WRH01-02" ;
+    im:responseText "Inspect door seals and activate the dehumidifier." ;
+    im:sourceDocument inst:SOP-001 .
+
+inst:candidate-SOP-002%3A%3ASOP-002-EX-01 a im:ThresholdRule ;
+    im:actionTarget inst:ST01_FILLING ;
+    im:appliesToSensor inst:ST01_FILLING_TMP ;
+    im:conditionText "ST01_FILLING temperature (°C): CRIT_LO 15.0; WARN_LO 18.0; nominal 22.0 ± 0.4; WARN_HI 26.0; CRIT_HI 30.0." ;
+    im:critHi 30.0 ;
+    im:critLo 15.0 ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-2a6dce2dafe989a974f1 ;
+    im:identifier "candidate-SOP-002::SOP-002-EX-01" ;
+    im:nominal 22.0 ;
+    im:responseText "CRITICAL: Inspect and notify maintenance." ;
+    im:sourceDocument inst:SOP-002 ;
+    im:warnHi 26.0 ;
+    im:warnLo 18.0 .
+
+inst:candidate-SOP-002%3A%3ASOP-002-EX-02 a im:ThresholdRule ;
+    im:actionTarget inst:ST01_FILLING ;
+    im:appliesToSensor inst:ST01_FILLING_PRS ;
+    im:conditionText "ST01_FILLING pressure (bar): CRIT_LO 3.0; WARN_LO 3.3; nominal 3.8 ± 0.05; WARN_HI 4.2; CRIT_HI 4.8." ;
+    im:critHi 4.8 ;
+    im:critLo 3.0 ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-0e1af84abe2145b6984b ;
+    im:identifier "candidate-SOP-002::SOP-002-EX-02" ;
+    im:nominal 3.8 ;
+    im:responseText "CRITICAL: Inspect and notify maintenance." ;
+    im:sourceDocument inst:SOP-002 ;
+    im:warnHi 4.2 ;
+    im:warnLo 3.3 .
+
+inst:candidate-SOP-002%3A%3ASOP-002-EX-03 a im:ThresholdRule ;
+    im:actionTarget inst:ST01_FILLING ;
+    im:appliesToSensor inst:ST01_FILLING_FLW ;
+    im:conditionText "ST01_FILLING flow (L/min): CRIT_LO 105.0; WARN_LO 112.0; nominal 120.0 ± 1.5; WARN_HI 128.0; CRIT_HI 135.0." ;
+    im:critHi 135.0 ;
+    im:critLo 105.0 ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-39dde9b043985f063e0b ;
+    im:identifier "candidate-SOP-002::SOP-002-EX-03" ;
+    im:nominal 120.0 ;
+    im:responseText "CRITICAL: Inspect and notify maintenance." ;
+    im:sourceDocument inst:SOP-002 ;
+    im:warnHi 128.0 ;
+    im:warnLo 112.0 .
+
+inst:candidate-SOP-002%3A%3ASOP-002-EX-04 a im:ThresholdRule ;
+    im:actionTarget inst:ST02_SEALING,
+        inst:ST03_LABELLING,
+        inst:ST04_PACKAGING ;
+    im:appliesToSensor inst:ST02_SEALING_TMP ;
+    im:conditionText "ST02_SEALING temperature (°C): CRIT_LO 165.0; WARN_LO 175.0; nominal 185.0 ± 1.2; WARN_HI 195.0; CRIT_HI 210.0." ;
+    im:critHi 210.0 ;
+    im:critLo 165.0 ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-d2863dad4a67bae58a59 ;
+    im:identifier "candidate-SOP-002::SOP-002-EX-04" ;
+    im:nominal 185.0 ;
+    im:responseText "CRITICAL: E-STOP ST02/ST03/ST04; inspect element." ;
+    im:sourceDocument inst:SOP-002 ;
+    im:warnHi 195.0 ;
+    im:warnLo 175.0 .
+
+inst:candidate-SOP-002%3A%3ASOP-002-EX-05 a im:ThresholdRule ;
+    im:actionTarget inst:ST02_SEALING ;
+    im:appliesToSensor inst:ST02_SEALING_PRS ;
+    im:conditionText "ST02_SEALING pressure (bar): CRIT_LO 4.2; WARN_LO 4.6; nominal 5.2 ± 0.08; WARN_HI 5.7; CRIT_HI 6.2." ;
+    im:critHi 6.2 ;
+    im:critLo 4.2 ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-ffb82c00c215c8ae8491 ;
+    im:identifier "candidate-SOP-002::SOP-002-EX-05" ;
+    im:nominal 5.2 ;
+    im:responseText "CRITICAL: Inspect and notify maintenance." ;
+    im:sourceDocument inst:SOP-002 ;
+    im:warnHi 5.7 ;
+    im:warnLo 4.6 .
+
+inst:candidate-SOP-002%3A%3ASOP-002-EX-06 a im:ThresholdRule ;
+    im:actionTarget inst:ST02_SEALING,
+        inst:ST04_PACKAGING ;
+    im:appliesToSensor inst:ST02_SEALING_CUR,
+        inst:ST04_PACKAGING_SPD ;
+    im:conditionText "ST02_SEALING current (A): CRIT_LO 9.5; WARN_LO 11.0; nominal 12.4 ± 0.3; WARN_HI 13.5; CRIT_HI 15.0." ;
+    im:critHi 15.0 ;
+    im:critLo 9.5 ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-63add68249eb1675a15b ;
+    im:identifier "candidate-SOP-002::SOP-002-EX-06" ;
+    im:nominal 12.4 ;
+    im:responseText "CRITICAL: E-STOP; inspect load; verify ST04-SPD (RULE-ST02-04)." ;
+    im:sourceDocument inst:SOP-002 ;
+    im:warnHi 13.5 ;
+    im:warnLo 11.0 .
+
+inst:candidate-SOP-002%3A%3ASOP-002-EX-07 a im:ThresholdRule ;
+    im:actionTarget inst:ST03_LABELLING ;
+    im:appliesToSensor inst:ST03_LABELLING_SPD ;
+    im:conditionText "ST03_LABELLING speed (m/s): CRIT_LO 0.65; WARN_LO 0.75; nominal 0.85 ± 0.01; WARN_HI 0.95; CRIT_HI 1.05." ;
+    im:critHi 1.05 ;
+    im:critLo 0.65 ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-462fd388b7eb2f9a56d8 ;
+    im:identifier "candidate-SOP-002::SOP-002-EX-07" ;
+    im:nominal 0.85 ;
+    im:responseText "CRITICAL: Inspect and notify maintenance." ;
+    im:sourceDocument inst:SOP-002 ;
+    im:warnHi 0.95 ;
+    im:warnLo 0.75 .
+
+inst:candidate-SOP-002%3A%3ASOP-002-EX-08 a im:ThresholdRule ;
+    im:actionTarget inst:ST03_LABELLING ;
+    im:appliesToSensor inst:ST03_LABELLING_TEN ;
+    im:conditionText "ST03_LABELLING tension (N): CRIT_LO 1.5; WARN_LO 1.8; nominal 2.2 ± 0.05; WARN_HI 2.6; CRIT_HI 3.0." ;
+    im:critHi 3.0 ;
+    im:critLo 1.5 ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-abcbafa49fcfa37f1971 ;
+    im:identifier "candidate-SOP-002::SOP-002-EX-08" ;
+    im:nominal 2.2 ;
+    im:responseText "CRITICAL: Inspect and notify maintenance." ;
+    im:sourceDocument inst:SOP-002 ;
+    im:warnHi 2.6 ;
+    im:warnLo 1.8 .
+
+inst:candidate-SOP-002%3A%3ASOP-002-EX-09 a im:ThresholdRule ;
+    im:actionTarget inst:ST03_LABELLING ;
+    im:appliesToSensor inst:ST03_LABELLING_CNT ;
+    im:conditionText "ST03_LABELLING count rate (pcs/min): CRIT_LO 100; WARN_LO 110; nominal 120 ± 2.0; WARN_HI 130; CRIT_HI 140." ;
+    im:critHi 140.0 ;
+    im:critLo 100.0 ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-9da2847e353556e770e3 ;
+    im:identifier "candidate-SOP-002::SOP-002-EX-09" ;
+    im:nominal 120.0 ;
+    im:responseText "CRITICAL: E-STOP labelling; inspect label path." ;
+    im:sourceDocument inst:SOP-002 ;
+    im:warnHi 130.0 ;
+    im:warnLo 110.0 .
+
+inst:candidate-SOP-002%3A%3ASOP-002-EX-10 a im:ThresholdRule ;
+    im:actionTarget inst:ST04_PACKAGING ;
+    im:appliesToSensor inst:ST04_PACKAGING_VIB ;
+    im:conditionText "ST04_PACKAGING vibration (mm/s): CRIT_LO 0.01; WARN_LO 0.02; nominal 0.12 ± 0.005; WARN_HI 0.2; CRIT_HI 0.35." ;
+    im:critHi 0.35 ;
+    im:critLo 0.01 ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-93ecc3e144a938d45256 ;
+    im:identifier "candidate-SOP-002::SOP-002-EX-10" ;
+    im:nominal 0.12 ;
+    im:responseText "CRITICAL: E-STOP; inspect main bearing." ;
+    im:sourceDocument inst:SOP-002 ;
+    im:warnHi 0.2 ;
+    im:warnLo 0.02 .
+
+inst:candidate-SOP-002%3A%3ASOP-002-EX-11 a im:ThresholdRule ;
+    im:actionTarget inst:ST04_PACKAGING ;
+    im:appliesToSensor inst:ST04_PACKAGING_CUR ;
+    im:conditionText "ST04_PACKAGING current (A): CRIT_LO 6.5; WARN_LO 7.5; nominal 8.7 ± 0.2; WARN_HI 9.8; CRIT_HI 11.0." ;
+    im:critHi 11.0 ;
+    im:critLo 6.5 ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-207ccea41521415d0de0 ;
+    im:identifier "candidate-SOP-002::SOP-002-EX-11" ;
+    im:nominal 8.7 ;
+    im:responseText "CRITICAL: Inspect and notify maintenance." ;
+    im:sourceDocument inst:SOP-002 ;
+    im:warnHi 9.8 ;
+    im:warnLo 7.5 .
+
+inst:candidate-SOP-002%3A%3ASOP-002-EX-12 a im:ThresholdRule ;
+    im:actionTarget inst:ST04_PACKAGING ;
+    im:appliesToSensor inst:ST04_PACKAGING_SPD ;
+    im:conditionText "ST04_PACKAGING speed (m/s): CRIT_LO 0.85; WARN_LO 1.0; nominal 1.2 ± 0.02; WARN_HI 1.4; CRIT_HI 1.6." ;
+    im:critHi 1.6 ;
+    im:critLo 0.85 ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-eea647215a1baa70383f ;
+    im:identifier "candidate-SOP-002::SOP-002-EX-12" ;
+    im:nominal 1.2 ;
+    im:responseText "CRITICAL: Inspect and notify maintenance." ;
+    im:sourceDocument inst:SOP-002 ;
+    im:warnHi 1.4 ;
+    im:warnLo 1.0 .
+
+inst:candidate-SOP-002%3A%3ASOP-002-EX-13 a im:ThresholdRule ;
+    im:actionTarget inst:SRV01_SERVERROOM ;
+    im:appliesToSensor inst:SRV01_SERVERROOM_TMP ;
+    im:conditionText "SRV01_SERVERROOM temperature (°C): CRIT_LO 16.0; WARN_LO 18.0; nominal 21.0 ± 0.3; WARN_HI 25.0; CRIT_HI 28.0." ;
+    im:critHi 28.0 ;
+    im:critLo 16.0 ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-26f34d648e92d988af78 ;
+    im:identifier "candidate-SOP-002::SOP-002-EX-13" ;
+    im:nominal 21.0 ;
+    im:responseText "CRITICAL: Activate backup cooling; prepare controlled PLC shutdown." ;
+    im:sourceDocument inst:SOP-002 ;
+    im:warnHi 25.0 ;
+    im:warnLo 18.0 .
+
+inst:candidate-SOP-002%3A%3ASOP-002-EX-14 a im:ThresholdRule ;
+    im:actionTarget inst:SRV01_SERVERROOM ;
+    im:appliesToSensor inst:SRV01_SERVERROOM_HUM ;
+    im:conditionText "SRV01_SERVERROOM humidity (%RH): CRIT_LO 25.0; WARN_LO 30.0; nominal 45.0 ± 1.0; WARN_HI 60.0; CRIT_HI 70.0." ;
+    im:critHi 70.0 ;
+    im:critLo 25.0 ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-fb64bf7c19a32d7e9a69 ;
+    im:identifier "candidate-SOP-002::SOP-002-EX-14" ;
+    im:nominal 45.0 ;
+    im:responseText "CRITICAL: Inspect and notify maintenance." ;
+    im:sourceDocument inst:SOP-002 ;
+    im:warnHi 60.0 ;
+    im:warnLo 30.0 .
+
+inst:candidate-SOP-002%3A%3ASOP-002-EX-15 a im:ThresholdRule ;
+    im:actionTarget inst:WRH01_WAREHOUSE ;
+    im:appliesToSensor inst:WRH01_WAREHOUSE_TMP ;
+    im:conditionText "WRH01_WAREHOUSE temperature (°C): CRIT_LO -1.0; WARN_LO 0.5; nominal 4.0 ± 0.5; WARN_HI 8.0; CRIT_HI 12.0." ;
+    im:critHi 12.0 ;
+    im:critLo -1.0 ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-dce7db8c715f822b5c88 ;
+    im:identifier "candidate-SOP-002::SOP-002-EX-15" ;
+    im:nominal 4.0 ;
+    im:responseText "CRITICAL: Activate backup refrigeration; notify QC." ;
+    im:sourceDocument inst:SOP-002 ;
+    im:warnHi 8.0 ;
+    im:warnLo 0.5 .
+
+inst:candidate-SOP-002%3A%3ASOP-002-EX-16 a im:ThresholdRule ;
+    im:actionTarget inst:WRH01_WAREHOUSE ;
+    im:appliesToSensor inst:WRH01_WAREHOUSE_HUM ;
+    im:conditionText "WRH01_WAREHOUSE humidity (%RH): CRIT_LO 55.0; WARN_LO 60.0; nominal 75.0 ± 1.5; WARN_HI 85.0; CRIT_HI 90.0." ;
+    im:critHi 90.0 ;
+    im:critLo 55.0 ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-57af8b79acdf36e9a529 ;
+    im:identifier "candidate-SOP-002::SOP-002-EX-16" ;
+    im:nominal 75.0 ;
+    im:responseText "CRITICAL: Inspect and notify maintenance." ;
+    im:sourceDocument inst:SOP-002 ;
+    im:warnHi 85.0 ;
+    im:warnLo 60.0 .
+
+inst:candidate-SOP-002%3A%3ASOP-002-EX-17 a im:ThresholdRule ;
+    im:actionTarget inst:CHM01_CHEMICALSTORAGE ;
+    im:appliesToSensor inst:CHM01_CHEMICALSTORAGE_TMP ;
+    im:conditionText "CHM01_CHEMICALSTORAGE temperature (°C): CRIT_LO 5.0; WARN_LO 10.0; nominal 15.0 ± 0.3; WARN_HI 20.0; CRIT_HI 25.0." ;
+    im:critHi 25.0 ;
+    im:critLo 5.0 ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-eeb3fb4060f69cf0ae52 ;
+    im:identifier "candidate-SOP-002::SOP-002-EX-17" ;
+    im:nominal 15.0 ;
+    im:responseText "CRITICAL: Activate emergency ventilation; notify safety officer immediately." ;
+    im:sourceDocument inst:SOP-002 ;
+    im:warnHi 20.0 ;
+    im:warnLo 10.0 .
+
+inst:candidate-SOP-002%3A%3ASOP-002-EX-18 a im:ThresholdRule ;
+    im:actionTarget inst:CHM01_CHEMICALSTORAGE ;
+    im:appliesToSensor inst:CHM01_CHEMICALSTORAGE_HUM ;
+    im:conditionText "CHM01_CHEMICALSTORAGE humidity (%RH): CRIT_LO 15.0; WARN_LO 20.0; nominal 35.0 ± 1.0; WARN_HI 50.0; CRIT_HI 60.0." ;
+    im:critHi 60.0 ;
+    im:critLo 15.0 ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-3f2a3eb1e0c623682a2e ;
+    im:identifier "candidate-SOP-002::SOP-002-EX-18" ;
+    im:nominal 35.0 ;
+    im:responseText "CRITICAL: Activate desiccant system; inspect storage containers for leaks." ;
+    im:sourceDocument inst:SOP-002 ;
+    im:warnHi 50.0 ;
+    im:warnLo 20.0 .
+
+inst:candidate-SOP-002%3A%3ASOP-002-EX-19 a im:ThresholdRule ;
+    im:actionTarget inst:RND01_RDLAB ;
+    im:appliesToSensor inst:RND01_RDLAB_TMP ;
+    im:conditionText "RND01_RDLAB temperature (°C): CRIT_LO 15.0; WARN_LO 18.0; nominal 22.0 ± 0.2; WARN_HI 26.0; CRIT_HI 30.0." ;
+    im:critHi 30.0 ;
+    im:critLo 15.0 ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-fd6b05b8ac0af71b0f3c ;
+    im:identifier "candidate-SOP-002::SOP-002-EX-19" ;
+    im:nominal 22.0 ;
+    im:responseText "CRITICAL: Inspect and notify maintenance." ;
+    im:sourceDocument inst:SOP-002 ;
+    im:warnHi 26.0 ;
+    im:warnLo 18.0 .
+
+inst:candidate-SOP-002%3A%3ASOP-002-EX-20 a im:ThresholdRule ;
+    im:actionTarget inst:RND01_RDLAB ;
+    im:appliesToSensor inst:RND01_RDLAB_HUM ;
+    im:conditionText "RND01_RDLAB humidity (%RH): CRIT_LO 25.0; WARN_LO 35.0; nominal 50.0 ± 1.0; WARN_HI 65.0; CRIT_HI 75.0." ;
+    im:critHi 75.0 ;
+    im:critLo 25.0 ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-443dfc36fce061344b41 ;
+    im:identifier "candidate-SOP-002::SOP-002-EX-20" ;
+    im:nominal 50.0 ;
+    im:responseText "CRITICAL: Suspend experiments; inspect HVAC system." ;
+    im:sourceDocument inst:SOP-002 ;
+    im:warnHi 65.0 ;
+    im:warnLo 35.0 .
+
+inst:candidate-SOP-002%3A%3ASOP-002-EX-21 a im:ThresholdRule ;
+    im:actionTarget inst:CAF01_CAFETERIA ;
+    im:appliesToSensor inst:CAF01_CAFETERIA_TMP ;
+    im:conditionText "CAF01_CAFETERIA temperature (°C): CRIT_LO 14.0; WARN_LO 17.0; nominal 21.0 ± 0.4; WARN_HI 26.0; CRIT_HI 30.0." ;
+    im:critHi 30.0 ;
+    im:critLo 14.0 ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-22db33e5c687e7e1ee15 ;
+    im:identifier "candidate-SOP-002::SOP-002-EX-21" ;
+    im:nominal 21.0 ;
+    im:responseText "CRITICAL: Inspect and notify maintenance." ;
+    im:sourceDocument inst:SOP-002 ;
+    im:warnHi 26.0 ;
+    im:warnLo 17.0 .
+
+inst:candidate-SOP-002%3A%3ASOP-002-EX-22 a im:ThresholdRule ;
+    im:actionTarget inst:CAF01_CAFETERIA ;
+    im:appliesToSensor inst:CAF01_CAFETERIA_HUM ;
+    im:conditionText "CAF01_CAFETERIA humidity (%RH): CRIT_LO 25.0; WARN_LO 35.0; nominal 55.0 ± 1.5; WARN_HI 70.0; CRIT_HI 80.0." ;
+    im:critHi 80.0 ;
+    im:critLo 25.0 ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-8ceb9981e1903ed9ce25 ;
+    im:identifier "candidate-SOP-002::SOP-002-EX-22" ;
+    im:nominal 55.0 ;
+    im:responseText "CRITICAL: Inspect and notify maintenance." ;
+    im:sourceDocument inst:SOP-002 ;
+    im:warnHi 70.0 ;
+    im:warnLo 35.0 .
+
+inst:candidate-SOP-002%3A%3ASOP-002-EX-23 a im:ThresholdRule ;
+    im:conditionText "Transient deviation >3σ, <5 min; detection criterion: single reading >CRIT." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-22bbc99c91c4944e0726 ;
+    im:identifier "candidate-SOP-002::SOP-002-EX-23" ;
+    im:responseText "SPIKE" ;
+    im:sourceDocument inst:SOP-002 .
+
+inst:candidate-SOP-002%3A%3ASOP-002-EX-24 a im:ThresholdRule ;
+    im:conditionText "Monotonic deviation >15 min; detection criterion: slope >0.1σ/min for 5+ readings." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-ffb617d2c53baf54b7ca ;
+    im:identifier "candidate-SOP-002::SOP-002-EX-24" ;
+    im:responseText "DRIFT" ;
+    im:sourceDocument inst:SOP-002 .
+
+inst:candidate-SOP-002%3A%3ASOP-002-EX-25 a im:ThresholdRule ;
+    im:conditionText "Unchanged >10 consecutive readings; detection criterion: std(last 10)<0.001×nominal." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-3a504d560d6ae93b58c4 ;
+    im:identifier "candidate-SOP-002::SOP-002-EX-25" ;
+    im:responseText "STUCK" ;
+    im:sourceDocument inst:SOP-002 .
+
+inst:candidate-SOP-002%3A%3ASOP-002-EX-26 a im:ThresholdRule ;
+    im:conditionText "Sustained WARN violation >10 min; detection criterion: >WARN for 20+ readings." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-f32cd03315bfa1ea0b89 ;
+    im:identifier "candidate-SOP-002::SOP-002-EX-26" ;
+    im:responseText "OUT_OF_RANGE" ;
+    im:sourceDocument inst:SOP-002 .
+
+inst:candidate-SOP-002%3A%3ASOP-002-EX-27 a im:ThresholdRule ;
+    im:conditionText "Causally linked to another station; detection criterion: onset within 90 min of cause." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-1bae55d72984bb228179 ;
+    im:identifier "candidate-SOP-002::SOP-002-EX-27" ;
+    im:responseText "CORRELATED" ;
+    im:sourceDocument inst:SOP-002 .
+
+inst:candidate-SOP-003%3A%3AMAINT-01 a im:MaintenanceRule ;
+    im:actionTarget inst:ST04_PACKAGING ;
+    im:appliesToSensor inst:ST04_PACKAGING_VIB ;
+    im:conditionText "ST04_PACKAGING vibration drift >0.05 mm/s over 60 min." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-73ff709714f96359f596 ;
+    im:identifier "candidate-SOP-003::MAINT-01" ;
+    im:responseText "Inspect and lubricate bearing. Priority: HIGH." ;
+    im:sourceDocument inst:SOP-003 .
+
+inst:candidate-SOP-003%3A%3AMAINT-02 a im:MaintenanceRule ;
+    im:actionTarget inst:ST02_SEALING ;
+    im:appliesToSensor inst:ST02_SEALING_CUR ;
+    im:conditionText "ST02_SEALING current drift >1.0 A for 30+ min." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-49a783156f690638d693 ;
+    im:identifier "candidate-SOP-003::MAINT-02" ;
+    im:responseText "Inspect sealing jaw. Priority: HIGH." ;
+    im:sourceDocument inst:SOP-003 .
+
+inst:candidate-SOP-003%3A%3AMAINT-03 a im:MaintenanceRule ;
+    im:actionTarget inst:ST03_LABELLING ;
+    im:appliesToSensor inst:ST03_LABELLING_TEN ;
+    im:conditionText "ST03_LABELLING tension reading is STUCK for >10 samples." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-2b27086cd72181277a07 ;
+    im:identifier "candidate-SOP-003::MAINT-03" ;
+    im:responseText "Replace sensor. Priority: MEDIUM." ;
+    im:sourceDocument inst:SOP-003 .
+
+inst:candidate-SOP-003%3A%3AMAINT-04 a im:MaintenanceRule ;
+    im:actionTarget inst:ST01_FILLING ;
+    im:appliesToSensor inst:ST01_FILLING_PRS ;
+    im:conditionText "ST01_FILLING pressure <3.3 bar for >15 min." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-34e02cd32123b9a14093 ;
+    im:identifier "candidate-SOP-003::MAINT-04" ;
+    im:responseText "Inspect filter and pump. Priority: MEDIUM." ;
+    im:sourceDocument inst:SOP-003 .
+
+inst:candidate-SOP-003%3A%3AMAINT-05 a im:MaintenanceRule ;
+    im:actionTarget inst:SRV01_SERVERROOM ;
+    im:appliesToSensor inst:SRV01_SERVERROOM_TMP ;
+    im:conditionText "SRV01_SERVERROOM temperature >25°C for >5 min." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-38636d9c2eaa40a31216 ;
+    im:identifier "candidate-SOP-003::MAINT-05" ;
+    im:responseText "Activate secondary cooling. Priority: CRITICAL." ;
+    im:sourceDocument inst:SOP-003 .
+
+inst:candidate-SOP-003%3A%3AMAINT-06 a im:MaintenanceRule ;
+    im:actionTarget inst:WRH01_WAREHOUSE ;
+    im:appliesToSensor inst:WRH01_WAREHOUSE_TMP ;
+    im:conditionText "WRH01_WAREHOUSE temperature drift >2°C over 2 h." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-9e23b2b8022a4d586b51 ;
+    im:identifier "candidate-SOP-003::MAINT-06" ;
+    im:responseText "Inspect compressor; notify QC. Priority: CRITICAL." ;
+    im:sourceDocument inst:SOP-003 .
+
+inst:candidate-SOP-003%3A%3AMAINT-07 a im:MaintenanceRule ;
+    im:actionTarget inst:CHM01_CHEMICALSTORAGE ;
+    im:appliesToSensor inst:CHM01_CHEMICALSTORAGE_TMP ;
+    im:conditionText "CHM01_CHEMICALSTORAGE temperature >20°C for >10 min." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-24930323f64327ac69a2 ;
+    im:identifier "candidate-SOP-003::MAINT-07" ;
+    im:responseText "Activate emergency ventilation; notify safety officer. Priority: CRITICAL." ;
+    im:sourceDocument inst:SOP-003 .
+
+inst:candidate-SOP-003%3A%3AMAINT-08 a im:MaintenanceRule ;
+    im:actionTarget inst:RND01_RDLAB ;
+    im:appliesToSensor inst:RND01_RDLAB_HUM ;
+    im:conditionText "RND01_RDLAB humidity drift >10%RH over 60 min." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-5b351a4b3abce5e875b9 ;
+    im:identifier "candidate-SOP-003::MAINT-08" ;
+    im:responseText "Activate dehumidifier; check HVAC drain. Priority: HIGH." ;
+    im:sourceDocument inst:SOP-003 .
+
+inst:candidate-SOP-003%3A%3ASOP-003-EX-02 a im:MaintenanceRule ;
+    im:actionTarget inst:SRV01_SERVERROOM ;
+    im:appliesToSensor inst:SRV01_SERVERROOM_TMP ;
+    im:conditionText "SRV01_SERVERROOM temperature increases with SCADA latency increasing: server room overheating increases scan time, producing apparent STUCK readings." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-745a961536db8aed10e2 ;
+    im:identifier "candidate-SOP-003::SOP-003-EX-02" ;
+    im:responseText "1. Reduce SRV01_SERVERROOM temperature to <25°C. 2. Verify PLC heartbeats. 3. Clear STUCK alarms." ;
+    im:sourceDocument inst:SOP-003 .
+
+inst:candidate-SOP-003%3A%3ASOP-003-EX-03 a im:MaintenanceRule ;
+    im:actionTarget inst:WRH01_WAREHOUSE ;
+    im:appliesToSensor inst:WRH01_WAREHOUSE_TMP ;
+    im:conditionText "WRH01_WAREHOUSE temperature increases in the WRH01-TMP↑ → QC HOLD pattern: cold warehouse drift presents a product quality risk." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-3c13f7fa08f3641ad302 ;
+    im:identifier "candidate-SOP-003::SOP-003-EX-03" ;
+    im:responseText "1. Restore WRH01_WAREHOUSE temperature to <8°C. 2. Notify QC. 3. Place batch on HOLD in ERP." ;
+    im:sourceDocument inst:SOP-003 .
+
+inst:candidate-SOP-004%3A%3ARULE-ACCESS-01 a im:AccessRule ;
+    im:conditionText "Any entry by an unauthorised role." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-cadb9d8bb5f0e00d111b ;
+    im:identifier "candidate-SOP-004::RULE-ACCESS-01" ;
+    im:responseText "Log as OccupancyEvent::UnauthorisedAccess with person_id, zone and timestamp." ;
+    im:sourceDocument inst:SOP-004 .
+
+inst:candidate-SOP-004%3A%3ARULE-ACCESS-02 a im:AccessRule ;
+    im:conditionText "Unauthorised access is detected." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-7c37d1d8bc8f7b539386 ;
+    im:identifier "candidate-SOP-004::RULE-ACCESS-02" ;
+    im:responseText "Notify security personnel within 2 minutes of detection." ;
+    im:sourceDocument inst:SOP-004 .
+
+inst:candidate-SOP-004%3A%3ARULE-ACCESS-03 a im:AccessRule ;
+    im:conditionText "A KG node records unauthorised access." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-e7c9cdb24fbdff241114 ;
+    im:identifier "candidate-SOP-004::RULE-ACCESS-03" ;
+    im:responseText "Include authorized=NO and a reference to RULE-ACCESS-03 in the KG node." ;
+    im:sourceDocument inst:SOP-004 .
+
+inst:candidate-SOP-004%3A%3ARULE-ACCESS-04 a im:AccessRule ;
+    im:actionTarget inst:CHM01_CHEMICALSTORAGE ;
+    im:conditionText "Any UNAUTHORIZED_ACCESS to Chemical Storage, regardless of role." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-0d22a5f3877010c89903 ;
+    im:identifier "candidate-SOP-004::RULE-ACCESS-04" ;
+    im:responseText "Apply the zero-tolerance policy and escalate immediately to the Safety Officer." ;
+    im:sourceDocument inst:SOP-004 .
+
+inst:candidate-SOP-004%3A%3ASOP-004-EX-01 a im:AccessRule ;
+    im:actionTarget inst:CAF01_CAFETERIA,
+        inst:CHM01_CHEMICALSTORAGE,
+        inst:RND01_RDLAB,
+        inst:SRV01_SERVERROOM,
+        inst:WRH01_WAREHOUSE ;
+    im:conditionText "Access requested by an operator." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-90304fa2413601689983 ;
+    im:identifier "candidate-SOP-004::SOP-004-EX-01" ;
+    im:responseText "Permit access to Production Area, General Warehouse, Main Entrance and Cafeteria. Deny access to Server Room, Chemical Storage and R&D Lab." ;
+    im:sourceDocument inst:SOP-004 .
+
+inst:candidate-SOP-004%3A%3ASOP-004-EX-02 a im:AccessRule ;
+    im:actionTarget inst:CAF01_CAFETERIA,
+        inst:CHM01_CHEMICALSTORAGE,
+        inst:RND01_RDLAB,
+        inst:SRV01_SERVERROOM,
+        inst:WRH01_WAREHOUSE ;
+    im:conditionText "Access requested by a technician." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-05125d1afd513e903d71 ;
+    im:identifier "candidate-SOP-004::SOP-004-EX-02" ;
+    im:responseText "Permit access to Production Area, Server Room, General Warehouse, Main Entrance, Chemical Storage, R&D Lab and Cafeteria." ;
+    im:sourceDocument inst:SOP-004 .
+
+inst:candidate-SOP-004%3A%3ASOP-004-EX-03 a im:AccessRule ;
+    im:actionTarget inst:CAF01_CAFETERIA,
+        inst:CHM01_CHEMICALSTORAGE,
+        inst:RND01_RDLAB,
+        inst:SRV01_SERVERROOM,
+        inst:WRH01_WAREHOUSE ;
+    im:conditionText "Access requested by a supervisor." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-8a550a716c5e70071fd6 ;
+    im:identifier "candidate-SOP-004::SOP-004-EX-03" ;
+    im:responseText "Permit access to Production Area, Server Room, General Warehouse, Main Entrance, Chemical Storage, R&D Lab and Cafeteria." ;
+    im:sourceDocument inst:SOP-004 .
+
+inst:candidate-SOP-004%3A%3ASOP-004-EX-04 a im:AccessRule ;
+    im:actionTarget inst:CAF01_CAFETERIA,
+        inst:CHM01_CHEMICALSTORAGE,
+        inst:RND01_RDLAB,
+        inst:SRV01_SERVERROOM,
+        inst:WRH01_WAREHOUSE ;
+    im:conditionText "Access requested by a manager." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-e1a06e68702438e4cf54 ;
+    im:identifier "candidate-SOP-004::SOP-004-EX-04" ;
+    im:responseText "Permit access to Production Area, Server Room, General Warehouse, Main Entrance, Chemical Storage, R&D Lab and Cafeteria." ;
+    im:sourceDocument inst:SOP-004 .
+
+inst:candidate-SOP-004%3A%3ASOP-004-EX-05 a im:AccessRule ;
+    im:actionTarget inst:CAF01_CAFETERIA,
+        inst:CHM01_CHEMICALSTORAGE,
+        inst:RND01_RDLAB,
+        inst:SRV01_SERVERROOM,
+        inst:WRH01_WAREHOUSE ;
+    im:conditionText "Access requested by security personnel." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-98b426af9b225b364d08 ;
+    im:identifier "candidate-SOP-004::SOP-004-EX-05" ;
+    im:responseText "Permit access to Production Area, Server Room, General Warehouse, Main Entrance, Chemical Storage, R&D Lab and Cafeteria." ;
+    im:sourceDocument inst:SOP-004 .
+
+inst:candidate-SOP-004%3A%3ASOP-004-EX-06 a im:AccessRule ;
+    im:actionTarget inst:CAF01_CAFETERIA,
+        inst:CHM01_CHEMICALSTORAGE,
+        inst:RND01_RDLAB,
+        inst:SRV01_SERVERROOM,
+        inst:WRH01_WAREHOUSE ;
+    im:conditionText "Access requested by a visitor." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-3a2449be89e863902868 ;
+    im:identifier "candidate-SOP-004::SOP-004-EX-06" ;
+    im:responseText "Permit access to Production Area, Main Entrance and Cafeteria. Deny access to Server Room, General Warehouse, Chemical Storage and R&D Lab." ;
+    im:sourceDocument inst:SOP-004 .
+
+inst:candidate-SOP-004%3A%3ASOP-004-EX-07 a im:AccessRule ;
+    im:conditionText "Production Area occupancy, with WARNING above 10 persons and CRITICAL above 12 persons." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-dbd64a3491ecbdda5a61 ;
+    im:identifier "candidate-SOP-004::SOP-004-EX-07" ;
+    im:responseText "Maximum occupancy is 12 persons; enforce WARNING above 10 and CRITICAL above 12." ;
+    im:sourceDocument inst:SOP-004 .
+
+inst:candidate-SOP-004%3A%3ASOP-004-EX-08 a im:AccessRule ;
+    im:actionTarget inst:SRV01_SERVERROOM ;
+    im:conditionText "Server Room access and occupancy, with CRITICAL above 2 persons." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-351e75acf26f5253d86c ;
+    im:identifier "candidate-SOP-004::SOP-004-EX-08" ;
+    im:responseText "Maximum occupancy is 2 persons; enforce CRITICAL above 2. An access badge is required." ;
+    im:sourceDocument inst:SOP-004 .
+
+inst:candidate-SOP-004%3A%3ASOP-004-EX-09 a im:AccessRule ;
+    im:actionTarget inst:WRH01_WAREHOUSE ;
+    im:conditionText "General Warehouse occupancy, with WARNING above 3 persons." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-3d4a54467a8ff0caf91e ;
+    im:identifier "candidate-SOP-004::SOP-004-EX-09" ;
+    im:responseText "Maximum occupancy is 4 persons; enforce WARNING above 3." ;
+    im:sourceDocument inst:SOP-004 .
+
+inst:candidate-SOP-004%3A%3ASOP-004-EX-10 a im:AccessRule ;
+    im:conditionText "Main Entrance occupancy." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-63365c237054c3da0e41 ;
+    im:identifier "candidate-SOP-004::SOP-004-EX-10" ;
+    im:responseText "Maximum occupancy is 8 persons; monitoring only." ;
+    im:sourceDocument inst:SOP-004 .
+
+inst:candidate-SOP-004%3A%3ASOP-004-EX-11 a im:AccessRule ;
+    im:actionTarget inst:CHM01_CHEMICALSTORAGE ;
+    im:conditionText "Chemical Storage access and occupancy, with CRITICAL above 4 persons." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-182e46fe9b926cb546d4 ;
+    im:identifier "candidate-SOP-004::SOP-004-EX-11" ;
+    im:responseText "Maximum occupancy is 4 persons; enforce CRITICAL above 4. Hazmat training is required; see RULE-CHM01-03." ;
+    im:sourceDocument inst:SOP-004 .
+
+inst:candidate-SOP-004%3A%3ASOP-004-EX-12 a im:AccessRule ;
+    im:actionTarget inst:RND01_RDLAB ;
+    im:conditionText "R&D Lab occupancy, with WARNING above 5 persons." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-f7a8b4344db2bb0a8cda ;
+    im:identifier "candidate-SOP-004::SOP-004-EX-12" ;
+    im:responseText "Maximum occupancy is 6 persons; enforce WARNING above 5, as precision experiments may be disturbed." ;
+    im:sourceDocument inst:SOP-004 .
+
+inst:candidate-SOP-004%3A%3ASOP-004-EX-13 a im:AccessRule ;
+    im:actionTarget inst:CAF01_CAFETERIA ;
+    im:conditionText "Cafeteria occupancy." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-63bd172b9c15acfba358 ;
+    im:identifier "candidate-SOP-004::SOP-004-EX-13" ;
+    im:responseText "Maximum occupancy is 20 persons; monitoring only for occupant comfort." ;
+    im:sourceDocument inst:SOP-004 .
+
+inst:candidate-SOP-004%3A%3ASOP-004-EX-14 a im:AccessRule ;
+    im:conditionText "A WARNING alarm requires operator acknowledgment." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-359623a213efe07c4633 ;
+    im:identifier "candidate-SOP-004::SOP-004-EX-14" ;
+    im:responseText "Acknowledge within 15 minutes." ;
+    im:sourceDocument inst:SOP-004 .
+
+inst:candidate-SOP-004%3A%3ASOP-004-EX-15 a im:AccessRule ;
+    im:conditionText "A CRITICAL alarm requires operator acknowledgment." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-0aa0c90fe7a463ec214d ;
+    im:identifier "candidate-SOP-004::SOP-004-EX-15" ;
+    im:responseText "Acknowledge within 3 minutes." ;
+    im:sourceDocument inst:SOP-004 .
+
+inst:candidate-SOP-004%3A%3ASOP-004-EX-16 a im:AccessRule ;
+    im:conditionText "A WARNING alarm requires technician acknowledgment." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-b7b81c3c9f2cc8ac4a90 ;
+    im:identifier "candidate-SOP-004::SOP-004-EX-16" ;
+    im:responseText "Acknowledge within 10 minutes." ;
+    im:sourceDocument inst:SOP-004 .
+
+inst:candidate-SOP-004%3A%3ASOP-004-EX-17 a im:AccessRule ;
+    im:conditionText "A CRITICAL alarm requires technician acknowledgment." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-a937a54f933ffee350b0 ;
+    im:identifier "candidate-SOP-004::SOP-004-EX-17" ;
+    im:responseText "Acknowledge within 2 minutes." ;
+    im:sourceDocument inst:SOP-004 .
+
+inst:candidate-SOP-004%3A%3ASOP-004-EX-18 a im:AccessRule ;
+    im:conditionText "A WARNING alarm requires supervisor acknowledgment." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-86f45253ef019a655609 ;
+    im:identifier "candidate-SOP-004::SOP-004-EX-18" ;
+    im:responseText "Acknowledge within 5 minutes." ;
+    im:sourceDocument inst:SOP-004 .
+
+inst:candidate-SOP-004%3A%3ASOP-004-EX-19 a im:AccessRule ;
+    im:conditionText "A CRITICAL alarm requires supervisor acknowledgment." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-1e32a708f6798f85637c ;
+    im:identifier "candidate-SOP-004::SOP-004-EX-19" ;
+    im:responseText "Acknowledge within 1 minute." ;
+    im:sourceDocument inst:SOP-004 .
+
+inst:candidate-SOP-004%3A%3ASOP-004-EX-20 a im:AccessRule ;
+    im:conditionText "A WARNING alarm requires manager acknowledgment." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-d3c5aa14d6840064961c ;
+    im:identifier "candidate-SOP-004::SOP-004-EX-20" ;
+    im:responseText "Acknowledge within 15 minutes." ;
+    im:sourceDocument inst:SOP-004 .
+
+inst:candidate-SOP-004%3A%3ASOP-004-EX-21 a im:AccessRule ;
+    im:conditionText "A CRITICAL alarm requires manager acknowledgment." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-33345a9858876713a1ea ;
+    im:identifier "candidate-SOP-004::SOP-004-EX-21" ;
+    im:responseText "Acknowledge within 5 minutes." ;
+    im:sourceDocument inst:SOP-004 .
+
+inst:candidate-SOP-004%3A%3ASOP-004-EX-22 a im:AccessRule ;
+    im:conditionText "A WARNING alarm requires security acknowledgment." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-bbf3ff00c55493676ed8 ;
+    im:identifier "candidate-SOP-004::SOP-004-EX-22" ;
+    im:responseText "Acknowledge within 20 minutes." ;
+    im:sourceDocument inst:SOP-004 .
+
+inst:candidate-SOP-004%3A%3ASOP-004-EX-23 a im:AccessRule ;
+    im:conditionText "A CRITICAL alarm requires security acknowledgment." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-adf51589ba9907cf9cbf ;
+    im:identifier "candidate-SOP-004::SOP-004-EX-23" ;
+    im:responseText "Acknowledge within 5 minutes." ;
+    im:sourceDocument inst:SOP-004 .
+
+inst:prov-edge-100 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:100" .
+
+inst:prov-edge-101 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:101" .
+
+inst:prov-edge-102 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:102" .
+
+inst:prov-edge-103 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:103" .
+
+inst:prov-edge-104 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:104" .
+
+inst:prov-edge-11 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:11" .
+
+inst:prov-edge-12 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:12" .
+
+inst:prov-edge-13 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:13" .
+
+inst:prov-edge-14 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:14" .
+
+inst:prov-edge-15 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:15" .
+
+inst:prov-edge-16 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:16" .
+
+inst:prov-edge-19 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:19" .
+
+inst:prov-edge-20 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:20" .
+
+inst:prov-edge-21 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:21" .
+
+inst:prov-edge-22 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:22" .
+
+inst:prov-edge-23 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:23" .
+
+inst:prov-edge-24 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:24" .
+
+inst:prov-edge-27 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:27" .
+
+inst:prov-edge-28 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:28" .
+
+inst:prov-edge-29 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:29" .
+
+inst:prov-edge-30 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:30" .
+
+inst:prov-edge-31 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:31" .
+
+inst:prov-edge-32 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:32" .
+
+inst:prov-edge-35 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:35" .
+
+inst:prov-edge-36 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:36" .
+
+inst:prov-edge-37 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:37" .
+
+inst:prov-edge-38 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:38" .
+
+inst:prov-edge-39 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:39" .
+
+inst:prov-edge-40 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:40" .
+
+inst:prov-edge-43 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:43" .
+
+inst:prov-edge-44 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:44" .
+
+inst:prov-edge-45 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:45" .
+
+inst:prov-edge-46 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:46" .
+
+inst:prov-edge-49 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:49" .
+
+inst:prov-edge-50 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:50" .
+
+inst:prov-edge-51 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:51" .
+
+inst:prov-edge-52 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:52" .
+
+inst:prov-edge-55 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:55" .
+
+inst:prov-edge-56 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:56" .
+
+inst:prov-edge-57 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:57" .
+
+inst:prov-edge-58 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:58" .
+
+inst:prov-edge-61 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:61" .
+
+inst:prov-edge-62 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:62" .
+
+inst:prov-edge-63 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:63" .
+
+inst:prov-edge-64 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:64" .
+
+inst:prov-edge-67 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:67" .
+
+inst:prov-edge-68 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:68" .
+
+inst:prov-edge-69 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:69" .
+
+inst:prov-edge-70 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:70" .
+
+inst:prov-edge-71 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:71" .
+
+inst:prov-edge-72 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:72" .
+
+inst:prov-edge-73 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:73" .
+
+inst:prov-edge-89 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:89" .
+
+inst:prov-edge-90 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:90" .
+
+inst:prov-edge-91 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:91" .
+
+inst:prov-edge-92 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:92" .
+
+inst:prov-edge-93 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:93" .
+
+inst:prov-edge-94 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:94" .
+
+inst:prov-edge-95 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:95" .
+
+inst:prov-edge-96 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:96" .
+
+inst:prov-edge-97 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:97" .
+
+inst:prov-edge-98 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:98" .
+
+inst:prov-edge-99 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/edges.csv" ;
+    im:fileSha256 "18f6556db405f22091a7c5f2bd5d15e2cebe51597ecd33c8da54c84113b46bd3" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "line:99" .
+
+rc:REL-01 a rc:RelationCandidate ;
+    rc:conditionText "Current drift / speed reduction; shared electrical coupling. Direction in the claim does not prove causality." ;
+    rc:evidence rc:evidence-88918870d66e5004,
+        rc:evidence-9d76ddff8299fd72 ;
+    rc:evidenceMode "document_explicit" ;
+    rc:novelty "existing_seed_relation_evidence_enrichment" ;
+    rc:object inst:ST04_PACKAGING_SPD ;
+    rc:relationType rc:documentedAssociation ;
+    rc:reviewStatus "pending" ;
+    rc:subject inst:ST02_SEALING_CUR ;
+    rc:supportedByRule inst:candidate-SOP-001%3A%3ARULE-ST02-04,
+        inst:candidate-SOP-003%3A%3ASOP-003-EX-01 .
+
+rc:REL-02 a rc:RelationCandidate ;
+    rc:action "monitor" ;
+    rc:aiReviewStatus "completed" ;
+    rc:assertionScope "document_instruction" ;
+    rc:conditionText "ST02 current WARNING: monitor ST04 speed." ;
+    rc:empiricalCausalityValidated false ;
+    rc:evidence rc:evidence-88918870d66e5004 ;
+    rc:evidenceMode "document_explicit" ;
+    rc:hasAIReview rc:review-REL-02-20261016 ;
+    rc:humanReviewStatus "pending" ;
+    rc:novelty "new_structured_relation_not_new_document_fact" ;
+    rc:object inst:ST04_PACKAGING_SPD ;
+    rc:relationType rc:requiresMonitoring ;
+    rc:reviewStatus "pending" ;
+    rc:subject inst:ST02_SEALING_CUR ;
+    rc:supportedByRule inst:candidate-SOP-001%3A%3ARULE-ST02-04 ;
+    rc:triggerSensor inst:ST02_SEALING_CUR ;
+    rc:triggerState "WARNING" .
+
+rc:REL-03 a rc:RelationCandidate ;
+    rc:action "verify_rule" ;
+    rc:aiReviewStatus "completed" ;
+    rc:assertionScope "document_instruction" ;
+    rc:comparisonOperator "<" ;
+    rc:conditionText "ST04 speed <1.00 m/s without operator command: verify referenced rule." ;
+    rc:empiricalCausalityValidated false ;
+    rc:evidence rc:evidence-c56336afb82e24b6 ;
+    rc:evidenceMode "document_explicit" ;
+    rc:hasAIReview rc:review-REL-03-20261016 ;
+    rc:humanReviewStatus "pending" ;
+    rc:novelty "new_structured_relation_not_new_document_fact" ;
+    rc:object inst:candidate-SOP-001%3A%3ARULE-ST02-04 ;
+    rc:relationType rc:requiresRuleCheck ;
+    rc:reviewStatus "pending" ;
+    rc:subject inst:candidate-SOP-001%3A%3ARULE-ST04-03 ;
+    rc:supportedByRule inst:candidate-SOP-001%3A%3ARULE-ST04-03 ;
+    rc:thresholdValue 1.0 ;
+    rc:triggerSensor inst:ST04_PACKAGING_SPD ;
+    rc:unit "m/s" ;
+    rc:withoutOperatorCommand true .
+
+rc:REL-04 a rc:RelationCandidate ;
+    rc:action "emergency_stop" ;
+    rc:aiReviewStatus "completed" ;
+    rc:assertionScope "document_instruction" ;
+    rc:comparisonOperator ">" ;
+    rc:conditionText "ST02_SEALING_TMP >210°C (CRITICAL): emergency stop ST02_SEALING." ;
+    rc:empiricalCausalityValidated false ;
+    rc:evidence rc:evidence-7d3b219fd040f748 ;
+    rc:evidenceMode "document_explicit" ;
+    rc:hasAIReview rc:review-REL-04-20261016 ;
+    rc:humanReviewStatus "pending" ;
+    rc:novelty "new_structured_relation_not_new_document_fact" ;
+    rc:object inst:ST02_SEALING ;
+    rc:obligationGroup inst:candidate-SOP-001%3A%3ARULE-ST02-02 ;
+    rc:relationType rc:requiresEmergencyStop ;
+    rc:reviewStatus "pending" ;
+    rc:severity "CRITICAL" ;
+    rc:subject inst:ST02_SEALING_TMP ;
+    rc:supportedByRule inst:candidate-SOP-001%3A%3ARULE-ST02-02 ;
+    rc:thresholdValue 210.0 ;
+    rc:triggerSensor inst:ST02_SEALING_TMP ;
+    rc:unit "degC" .
+
+rc:REL-05 a rc:RelationCandidate ;
+    rc:action "emergency_stop" ;
+    rc:aiReviewStatus "completed" ;
+    rc:assertionScope "document_instruction" ;
+    rc:comparisonOperator ">" ;
+    rc:conditionText "ST02_SEALING_TMP >210°C (CRITICAL): emergency stop ST03_LABELLING." ;
+    rc:empiricalCausalityValidated false ;
+    rc:evidence rc:evidence-7d3b219fd040f748 ;
+    rc:evidenceMode "document_explicit" ;
+    rc:hasAIReview rc:review-REL-05-20261016 ;
+    rc:humanReviewStatus "pending" ;
+    rc:novelty "new_structured_relation_not_new_document_fact" ;
+    rc:object inst:ST03_LABELLING ;
+    rc:obligationGroup inst:candidate-SOP-001%3A%3ARULE-ST02-02 ;
+    rc:relationType rc:requiresEmergencyStop ;
+    rc:reviewStatus "pending" ;
+    rc:severity "CRITICAL" ;
+    rc:subject inst:ST02_SEALING_TMP ;
+    rc:supportedByRule inst:candidate-SOP-001%3A%3ARULE-ST02-02 ;
+    rc:thresholdValue 210.0 ;
+    rc:triggerSensor inst:ST02_SEALING_TMP ;
+    rc:unit "degC" .
+
+rc:REL-06 a rc:RelationCandidate ;
+    rc:action "emergency_stop" ;
+    rc:aiReviewStatus "completed" ;
+    rc:assertionScope "document_instruction" ;
+    rc:comparisonOperator ">" ;
+    rc:conditionText "ST02_SEALING_TMP >210°C (CRITICAL): emergency stop ST04_PACKAGING." ;
+    rc:empiricalCausalityValidated false ;
+    rc:evidence rc:evidence-7d3b219fd040f748 ;
+    rc:evidenceMode "document_explicit" ;
+    rc:hasAIReview rc:review-REL-06-20261016 ;
+    rc:humanReviewStatus "pending" ;
+    rc:novelty "new_structured_relation_not_new_document_fact" ;
+    rc:object inst:ST04_PACKAGING ;
+    rc:obligationGroup inst:candidate-SOP-001%3A%3ARULE-ST02-02 ;
+    rc:relationType rc:requiresEmergencyStop ;
+    rc:reviewStatus "pending" ;
+    rc:severity "CRITICAL" ;
+    rc:subject inst:ST02_SEALING_TMP ;
+    rc:supportedByRule inst:candidate-SOP-001%3A%3ARULE-ST02-02 ;
+    rc:thresholdValue 210.0 ;
+    rc:triggerSensor inst:ST02_SEALING_TMP ;
+    rc:unit "degC" .
+
+rc:REL-07 a rc:RelationCandidate ;
+    rc:aiReviewStatus "completed" ;
+    rc:assertionScope "document_claim" ;
+    rc:conditionText "Thermal fault at sealing: documented downstream speed reduction; not an empirically validated causal link." ;
+    rc:effectDescription "speed reduction" ;
+    rc:empiricalCausalityValidated false ;
+    rc:evidence rc:evidence-784d97c31a650495 ;
+    rc:evidenceMode "document_explicit" ;
+    rc:hasAIReview rc:review-REL-07-20261016 ;
+    rc:humanReviewStatus "pending" ;
+    rc:novelty "new_structured_relation_not_new_document_fact" ;
+    rc:object inst:ST04_PACKAGING ;
+    rc:relationType rc:documentedThermalEffect ;
+    rc:reviewStatus "pending" ;
+    rc:subject inst:ST02_SEALING ;
+    rc:triggerDescription "thermal fault" .
+
+inst:DS-MECH-4400 a im:Document ;
+    im:identifier "DS-MECH-4400" ;
+    im:pageCount "1"^^xsd:positiveInteger ;
+    im:sourcePath "imaks_data/datasheets/DS_Mechanical_Sensors.pdf" ;
+    im:sourceSha256 "79a4e8e381c9e7b761d3bfee3023bbb0d0d439728ef308641d00a7b3e18b0072" ;
+    im:title "Industrial Mechanical Sensor Series 4400 — Datasheet" .
+
+inst:candidate-SOP-003%3A%3ASOP-003-EX-01 a im:MaintenanceRule ;
+    im:actionTarget inst:ST02_SEALING,
+        inst:ST04_PACKAGING ;
+    im:appliesToSensor inst:ST02_SEALING_CUR,
+        inst:ST04_PACKAGING_SPD ;
+    im:conditionText "ST02_SEALING current increases with ST04_PACKAGING speed decreasing: sealing motor overload with conveyor speed drop via electrical coupling." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-bd50aca05ac6d830f7d7 ;
+    im:identifier "candidate-SOP-003::SOP-003-EX-01" ;
+    im:responseText "1. Verify ST02 current trend. 2. Inspect sealing jaw. 3. Reset ST04 speed setpoint." ;
+    im:sourceDocument inst:SOP-003 .
+
+inst:prov-05125d1afd513e903d71 a im:Provenance ;
+    im:bbox "[48.19, 158.87, 547.09, 294.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "925d9454d536f4510afb43cf58ca7646c6fd79676c65990bbaca233b56c763d9" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "3"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Role: technician; Prod. Area: YES; Server Room: YES; Gen. Warehouse: YES; Main Entrance: YES; Chem. Storage: YES; R&D Lab: YES; Cafeteria: YES" ;
+    im:tableId "SOP-004:p1:table1" ;
+    im:textSha256 "8ecf925ea691fa7f42c961bfcfde766c2ad00a11db2f714761b2d0d808adc731" .
+
+inst:prov-0aa0c90fe7a463ec214d a im:Provenance ;
+    im:bbox "[99.21, 536.87, 496.06, 644.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "925d9454d536f4510afb43cf58ca7646c6fd79676c65990bbaca233b56c763d9" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "2"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Role: operator; Max Ack — WARNING (min): 15; Max Ack — CRITICAL (min): 3" ;
+    im:tableId "SOP-004:p1:table3" ;
+    im:textSha256 "ad0cc4ccfdc58c4adcd0a55f55f5a793beb962d853386d6d34f0c3180c9ff2a0" .
+
+inst:prov-0d22a5f3877010c89903 a im:Provenance ;
+    im:charEnd "155"^^xsd:nonNegativeInteger ;
+    im:charStart "0"^^xsd:nonNegativeInteger ;
+    im:fileSha256 "925d9454d536f4510afb43cf58ca7646c6fd79676c65990bbaca233b56c763d9" ;
+    im:page "2"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "RULE-ACCESS-04: Chemical Storage has zero-tolerance policy. Any UNAUTHORIZED_ACCESS triggers immediate escalation to the Safety Officer regardless of role." ;
+    im:textSha256 "78789308be3f46e17cb0c1d711cccb802eed1c728c9f7ce76d55165d53ef4a5a" .
+
+inst:prov-0dab49d3aceab51ba9a5 a im:Provenance ;
+    im:charEnd "803"^^xsd:nonNegativeInteger ;
+    im:charStart "654"^^xsd:nonNegativeInteger ;
+    im:fileSha256 "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89" ;
+    im:page "2"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Activate desiccant system if HUM >45%RH." ;
+    im:textSha256 "2ce0f8209260aab33177986862835d19d7e62e1d73dabb57449da278213f0fed" .
+
+inst:prov-0e1af84abe2145b6984b a im:Provenance ;
+    im:bbox "[65.2, 179.87, 530.08, 261.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "f9cd382e743add947ac0b311be9474ca726a8faf6a31f8b1e0e72a62c6fd5f7e" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "3"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Sensor: PRS; Unit: bar; CRIT_LO: 3.0; WARN_LO: 3.3; Nominal: 3.8 ± 0.05; WARN_HI: 4.2; CRIT_HI: 4.8; CRITICAL Response: Inspect and notify maintenance" ;
+    im:tableId "SOP-002:p1:table1" ;
+    im:textSha256 "88da5193a1de64ae6791bf5d9e7782ba76159793691171221a401ff67fd1eaa9" .
+
+inst:prov-15bedc0c211fdd5a5bbc a im:Provenance ;
+    im:bbox "[77.95, 180.87, 517.32, 412.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "89bb8bebc3e0bc6ac9a157a9bc30b6de09fb526711cbc1c9631258444fe865b7" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "9"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Rule ID: MAINT-08; Sensor: HUM; Station: RND01_RDLAB; Trigger: HUM DRIFT >10%RH over 60 min; Action: Activate dehumidifier; check HVAC drain; Priority: HIGH" ;
+    im:tableId "SOP-003:p1:table1" ;
+    im:textSha256 "a411035714cdf188b70678319eefa36e5cff1943b7fdc7ce99abca1e2eabcc79" .
+
+inst:prov-167ae280219f69955018 a im:Provenance ;
+    im:charEnd "1436"^^xsd:nonNegativeInteger ;
+    im:charStart "1348"^^xsd:nonNegativeInteger ;
+    im:fileSha256 "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "RULE-ST02-03: CUR increase >1.5 A above nominal sustained >5 min — schedule maintenance." ;
+    im:textSha256 "f3ab1bc29e8930a8b3d257bca6d35f392e414958ac5a9bf193baa259edcb3acd" .
+
+inst:prov-182e46fe9b926cb546d4 a im:Provenance ;
+    im:bbox "[63.78, 343.87, 531.5, 487.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "925d9454d536f4510afb43cf58ca7646c6fd79676c65990bbaca233b56c763d9" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "6"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Zone: Chemical Storage; Max Persons: 4; Enforcement: CRITICAL above 4; hazmat training required — see RULE-CHM01-03" ;
+    im:tableId "SOP-004:p1:table2" ;
+    im:textSha256 "3b750c543047463e8a10b6330a86784c6beada4b2aad6f14934c2ad6eb89c8e5" .
+
+inst:prov-1bae55d72984bb228179 a im:Provenance ;
+    im:bbox "[77.95, 605.87, 517.32, 763.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "f9cd382e743add947ac0b311be9474ca726a8faf6a31f8b1e0e72a62c6fd5f7e" ;
+    im:page "2"^^xsd:positiveInteger ;
+    im:rowIndex "6"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Type: CORRELATED; Definition: Causally linked to another station; Detection Criterion: Onset within 90 min of cause; Ontology Class: AnomalyEvent::Correlated" ;
+    im:tableId "SOP-002:p2:table6" ;
+    im:textSha256 "17123b999b4ceb8f44377f2ba6c3958597ffddacd0d21f022447b30ba3100c34" .
+
+inst:prov-1e32a708f6798f85637c a im:Provenance ;
+    im:bbox "[99.21, 536.87, 496.06, 644.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "925d9454d536f4510afb43cf58ca7646c6fd79676c65990bbaca233b56c763d9" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "4"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Role: supervisor; Max Ack — WARNING (min): 5; Max Ack — CRITICAL (min): 1" ;
+    im:tableId "SOP-004:p1:table3" ;
+    im:textSha256 "f06daf717bc97f629591480902ed81dab5feaf18ae0799130a380d3ef8149a37" .
+
+inst:prov-1f36647aace7fa114333 a im:Provenance ;
+    im:charEnd "148"^^xsd:nonNegativeInteger ;
+    im:charStart "108"^^xsd:nonNegativeInteger ;
+    im:fileSha256 "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89" ;
+    im:page "2"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "RULE-SRV01-01: TMP MUST NOT exceed 25°C." ;
+    im:textSha256 "c612095d691618b98a6e5fce1d52bdc384f66c3dedee7fca9e935f8093158dc9" .
+
+inst:prov-207ccea41521415d0de0 a im:Provenance ;
+    im:bbox "[65.2, 590.87, 530.08, 672.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "f9cd382e743add947ac0b311be9474ca726a8faf6a31f8b1e0e72a62c6fd5f7e" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "3"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Sensor: CUR; Unit: A; CRIT_LO: 6.5; WARN_LO: 7.5; Nominal: 8.7 ± 0.2; WARN_HI: 9.8; CRIT_HI: 11.0; CRITICAL Response: Inspect and notify maintenance" ;
+    im:tableId "SOP-002:p1:table4" ;
+    im:textSha256 "37135571a9065c8d01a57a1cd1c13e35d0b30c09e03b4a278c332a83e1957532" .
+
+inst:prov-22bbc99c91c4944e0726 a im:Provenance ;
+    im:bbox "[77.95, 605.87, 517.32, 763.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "f9cd382e743add947ac0b311be9474ca726a8faf6a31f8b1e0e72a62c6fd5f7e" ;
+    im:page "2"^^xsd:positiveInteger ;
+    im:rowIndex "2"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Type: SPIKE; Definition: Transient deviation >3σ, <5 min; Detection Criterion: Single reading >CRIT; Ontology Class: AnomalyEvent::Spike" ;
+    im:tableId "SOP-002:p2:table6" ;
+    im:textSha256 "c9cb5bf2632de2740ac807f5831e65f5b6e11bc32befbbfddbb545e0dbe62599" .
+
+inst:prov-22db33e5c687e7e1ee15 a im:Provenance ;
+    im:bbox "[65.2, 496.87, 530.08, 560.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "f9cd382e743add947ac0b311be9474ca726a8faf6a31f8b1e0e72a62c6fd5f7e" ;
+    im:page "2"^^xsd:positiveInteger ;
+    im:rowIndex "2"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Sensor: TMP; Unit: °C; CRIT_LO: 14.0; WARN_LO: 17.0; Nominal: 21.0 ± 0.4; WARN_HI: 26.0; CRIT_HI: 30.0; CRITICAL Response: Inspect and notify maintenance" ;
+    im:tableId "SOP-002:p2:table5" ;
+    im:textSha256 "138118bb9b9983b30826ba67d624e1bafb6dd210400199fcbe2fc6fce930dca3" .
+
+inst:prov-24930323f64327ac69a2 a im:Provenance ;
+    im:bbox "[77.95, 180.87, 517.32, 412.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "89bb8bebc3e0bc6ac9a157a9bc30b6de09fb526711cbc1c9631258444fe865b7" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "8"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Rule ID: MAINT-07; Sensor: TMP; Station: CHM01_CHEMICALSTORAGE; Trigger: TMP >20°C for >10 min; Action: Emergency ventilation; notify safety officer; Priority: CRITICAL" ;
+    im:tableId "SOP-003:p1:table1" ;
+    im:textSha256 "90c307dd276c0a76667055b00e83af0f12a5d2abfcfd9a7628c52a4cf44f7435" .
+
+inst:prov-26f34d648e92d988af78 a im:Provenance ;
+    im:bbox "[65.2, 717.87, 530.08, 773.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "f9cd382e743add947ac0b311be9474ca726a8faf6a31f8b1e0e72a62c6fd5f7e" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "2"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Sensor: TMP; Unit: °C; CRIT_LO: 16.0; WARN_LO: 18.0; Nominal: 21.0 ± 0.3; WARN_HI: 25.0; CRIT_HI: 28.0; CRITICAL Response: Activate backup cooling; prepare controlled PLC shutdown" ;
+    im:tableId "SOP-002:p1:table5" ;
+    im:textSha256 "6af3fffda6cd0ac26c768d4ef53dbc6028f4e360f8cc55c80cb8f5daffeae5fa" .
+
+inst:prov-28668c0cc378dd446360 a im:Provenance ;
+    im:charEnd "818"^^xsd:nonNegativeInteger ;
+    im:charStart "433"^^xsd:nonNegativeInteger ;
+    im:fileSha256 "8692d87e9aa21f4dadd97d56735b40241fccd795b49b3874ad87d9e49c24b3b8" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote """Operation between
+14 A and 20 A is permissible for short durations (< 60 seconds). Sustained operation above 14 A will cause
+progressive accuracy drift.""" ;
+    im:textSha256 "981900faa746c2b9622bd20672ca5c1606242e337a136aba910f8438267e1221" .
+
+inst:prov-2a6dce2dafe989a974f1 a im:Provenance ;
+    im:bbox "[65.2, 179.87, 530.08, 261.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "f9cd382e743add947ac0b311be9474ca726a8faf6a31f8b1e0e72a62c6fd5f7e" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "2"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Sensor: TMP; Unit: °C; CRIT_LO: 15.0; WARN_LO: 18.0; Nominal: 22.0 ± 0.4; WARN_HI: 26.0; CRIT_HI: 30.0; CRITICAL Response: Inspect and notify maintenance" ;
+    im:tableId "SOP-002:p1:table1" ;
+    im:textSha256 "67c7fa19d4a9949339552b63dc89a6bbeb7acc916f73e1f11beacb75f751bf7d" .
+
+inst:prov-2b27086cd72181277a07 a im:Provenance ;
+    im:bbox "[77.95, 180.87, 517.32, 412.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "89bb8bebc3e0bc6ac9a157a9bc30b6de09fb526711cbc1c9631258444fe865b7" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "4"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Rule ID: MAINT-03; Sensor: TEN; Station: ST03_LABELLING; Trigger: TEN STUCK >10 samples; Action: Replace sensor; Priority: MEDIUM" ;
+    im:tableId "SOP-003:p1:table1" ;
+    im:textSha256 "621bef90f7d114f38b8aafe50a2565fef0bb483ba870bccc273a43259e8c0527" .
+
+inst:prov-33345a9858876713a1ea a im:Provenance ;
+    im:bbox "[99.21, 536.87, 496.06, 644.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "925d9454d536f4510afb43cf58ca7646c6fd79676c65990bbaca233b56c763d9" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "5"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Role: manager; Max Ack — WARNING (min): 15; Max Ack — CRITICAL (min): 5" ;
+    im:tableId "SOP-004:p1:table3" ;
+    im:textSha256 "3d8274f7dd2feb8f9bc45085909e0acd2964c4e55b0b295ce2150ca5aac4d083" .
+
+inst:prov-34e02cd32123b9a14093 a im:Provenance ;
+    im:bbox "[77.95, 180.87, 517.32, 412.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "89bb8bebc3e0bc6ac9a157a9bc30b6de09fb526711cbc1c9631258444fe865b7" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "5"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Rule ID: MAINT-04; Sensor: PRS; Station: ST01_FILLING; Trigger: PRS <3.3 bar for >15 min; Action: Inspect filter and pump; Priority: MEDIUM" ;
+    im:tableId "SOP-003:p1:table1" ;
+    im:textSha256 "095211f7e30a17d712ae3eefa1b234e45436d4104d1fab6e6ad722895bb4aa80" .
+
+inst:prov-351e75acf26f5253d86c a im:Provenance ;
+    im:bbox "[63.78, 343.87, 531.5, 487.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "925d9454d536f4510afb43cf58ca7646c6fd79676c65990bbaca233b56c763d9" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "3"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Zone: Server Room; Max Persons: 2; Enforcement: CRITICAL above 2; access badge required" ;
+    im:tableId "SOP-004:p1:table2" ;
+    im:textSha256 "1c71504deddb007197d45fdb36df36020fa3f56329f55aa93995af398c7a32df" .
+
+inst:prov-3540a76541d9ce6b4d5a a im:Provenance ;
+    im:charEnd "1634"^^xsd:nonNegativeInteger ;
+    im:charStart "1437"^^xsd:nonNegativeInteger ;
+    im:fileSha256 "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "RULE-ST02-04: CUR drift at ST02_SEALING CORRELATES with speed reduction at ST04_PACKAGING due to shared electrical coupling. Monitor ST04_PACKAGING-SPD whenever ST02_SEALING-CUR triggers a WARNING." ;
+    im:textSha256 "73f1353341c57c7d796301cd3a64e1f215f044da6a7fd48eae9e2793ac863857" .
+
+inst:prov-359623a213efe07c4633 a im:Provenance ;
+    im:bbox "[99.21, 536.87, 496.06, 644.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "925d9454d536f4510afb43cf58ca7646c6fd79676c65990bbaca233b56c763d9" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "2"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Role: operator; Max Ack — WARNING (min): 15; Max Ack — CRITICAL (min): 3" ;
+    im:tableId "SOP-004:p1:table3" ;
+    im:textSha256 "ad0cc4ccfdc58c4adcd0a55f55f5a793beb962d853386d6d34f0c3180c9ff2a0" .
+
+inst:prov-35cee0eb4753a49f94d2 a im:Provenance ;
+    im:bbox "[77.95, 180.87, 517.32, 412.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "89bb8bebc3e0bc6ac9a157a9bc30b6de09fb526711cbc1c9631258444fe865b7" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "3"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Rule ID: MAINT-02; Sensor: CUR; Station: ST02_SEALING; Trigger: CUR DRIFT >1.0 A for 30+ min; Action: Inspect sealing jaw; Priority: HIGH" ;
+    im:tableId "SOP-003:p1:table1" ;
+    im:textSha256 "a5a70c4599feaefe2dfb77cb39ecaa248be426c56d5d7752af9a6d13fe4ded60" .
+
+inst:prov-372a0569edfaa894650e a im:Provenance ;
+    im:bbox "[77.95, 180.87, 517.32, 412.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "89bb8bebc3e0bc6ac9a157a9bc30b6de09fb526711cbc1c9631258444fe865b7" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "6"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Rule ID: MAINT-05; Sensor: TMP; Station: SRV01_SERVERROOM; Trigger: TMP >25°C for >5 min; Action: Activate secondary cooling; Priority: CRITICAL" ;
+    im:tableId "SOP-003:p1:table1" ;
+    im:textSha256 "5af7517abdd21876084b25761685555587b22a6c759c057965afba5dddac57e9" .
+
+inst:prov-38636d9c2eaa40a31216 a im:Provenance ;
+    im:bbox "[77.95, 180.87, 517.32, 412.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "89bb8bebc3e0bc6ac9a157a9bc30b6de09fb526711cbc1c9631258444fe865b7" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "6"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Rule ID: MAINT-05; Sensor: TMP; Station: SRV01_SERVERROOM; Trigger: TMP >25°C for >5 min; Action: Activate secondary cooling; Priority: CRITICAL" ;
+    im:tableId "SOP-003:p1:table1" ;
+    im:textSha256 "5af7517abdd21876084b25761685555587b22a6c759c057965afba5dddac57e9" .
+
+inst:prov-38e52824dea42adc3ad2 a im:Provenance ;
+    im:bbox "[77.95, 180.87, 517.32, 412.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "89bb8bebc3e0bc6ac9a157a9bc30b6de09fb526711cbc1c9631258444fe865b7" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "5"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Rule ID: MAINT-04; Sensor: PRS; Station: ST01_FILLING; Trigger: PRS <3.3 bar for >15 min; Action: Inspect filter and pump; Priority: MEDIUM" ;
+    im:tableId "SOP-003:p1:table1" ;
+    im:textSha256 "095211f7e30a17d712ae3eefa1b234e45436d4104d1fab6e6ad722895bb4aa80" .
+
+inst:prov-39dde9b043985f063e0b a im:Provenance ;
+    im:bbox "[65.2, 179.87, 530.08, 261.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "f9cd382e743add947ac0b311be9474ca726a8faf6a31f8b1e0e72a62c6fd5f7e" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "4"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Sensor: FLW; Unit: L/min; CRIT_LO: 105.0; WARN_LO: 112.0; Nominal: 120.0 ± 1.5; WARN_HI: 128.0; CRIT_HI: 135.0; CRITICAL Response: Inspect and notify maintenance" ;
+    im:tableId "SOP-002:p1:table1" ;
+    im:textSha256 "640578e8c4481ac661af83f790f99d205886459a5f768205d2b0d1b795659a06" .
+
+inst:prov-3a2449be89e863902868 a im:Provenance ;
+    im:bbox "[48.19, 158.87, 547.09, 294.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "925d9454d536f4510afb43cf58ca7646c6fd79676c65990bbaca233b56c763d9" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "7"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Role: visitor; Prod. Area: YES; Server Room: NO; Gen. Warehouse: NO; Main Entrance: YES; Chem. Storage: NO; R&D Lab: NO; Cafeteria: YES" ;
+    im:tableId "SOP-004:p1:table1" ;
+    im:textSha256 "11a0855bd0906203c51474e0bf9cc2e1d1f011cc22664b78a5a14bc6970edd20" .
+
+inst:prov-3a504d560d6ae93b58c4 a im:Provenance ;
+    im:bbox "[77.95, 605.87, 517.32, 763.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "f9cd382e743add947ac0b311be9474ca726a8faf6a31f8b1e0e72a62c6fd5f7e" ;
+    im:page "2"^^xsd:positiveInteger ;
+    im:rowIndex "4"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Type: STUCK; Definition: Unchanged >10 consecutive readings; Detection Criterion: std(last 10)<0.001×nominal; Ontology Class: AnomalyEvent::StuckSensor" ;
+    im:tableId "SOP-002:p2:table6" ;
+    im:textSha256 "2d6ac78091dd9f49c4079cee5b5f59357eeef45b2fbd9d73dc70b02c8ac6e0c2" .
+
+inst:prov-3c13f7fa08f3641ad302 a im:Provenance ;
+    im:bbox "[63.78, 461.87, 531.5, 583.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "89bb8bebc3e0bc6ac9a157a9bc30b6de09fb526711cbc1c9631258444fe865b7" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "4"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Pattern: WRH01-TMP↑ → QC HOLD; Primary Fault: Cold warehouse drift; Secondary Effect: Product quality risk; Resolution: 1.Restore WRH01-TMP <8°C. 2.Notify QC. 3.Place batch on HOLD in ERP." ;
+    im:tableId "SOP-003:p1:table2" ;
+    im:textSha256 "b6a902c68aa7090a9dddf1416c0e8188ab88d79e1f659bac263457651633e350" .
+
+inst:prov-3c54258286212e99fa95 a im:Provenance ;
+    im:bbox "[77.95, 180.87, 517.32, 412.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "89bb8bebc3e0bc6ac9a157a9bc30b6de09fb526711cbc1c9631258444fe865b7" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "7"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Rule ID: MAINT-06; Sensor: TMP; Station: WRH01_WAREHOUSE; Trigger: TMP DRIFT >2°C over 2 h; Action: Inspect compressor; notify QC; Priority: CRITICAL" ;
+    im:tableId "SOP-003:p1:table1" ;
+    im:textSha256 "d5f5763e829cc5cbcc1eb37c9b437cf5836254d92acce21c9219b9489e0c0704" .
+
+inst:prov-3c577fbbc4bb1346a0a8 a im:Provenance ;
+    im:charEnd "857"^^xsd:nonNegativeInteger ;
+    im:charStart "471"^^xsd:nonNegativeInteger ;
+    im:fileSha256 "bcc131019cdc8cf65bf34b684d0cd4b4df0a05b4cf0f759298750c044110e2db" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote """Note 1 — Maximum Operating Temperature: The rated maximum for continuous operation is 200°C. Exposure
+above this value accelerates thermocouple ageing and may cause drift of up to ±5°C within 500 hours. For
+applications requiring sustained operation above 200°C, ThermoSense recommends the Series 2400 (Pt100 RTD,
+rated to 250°C continuous).""" ;
+    im:textSha256 "3ff6023743bef4a64c6cc00ec82ac4ce76f48b2e1ffa4772e46313644edd166a" .
+
+inst:prov-3d4a54467a8ff0caf91e a im:Provenance ;
+    im:bbox "[63.78, 343.87, 531.5, 487.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "925d9454d536f4510afb43cf58ca7646c6fd79676c65990bbaca233b56c763d9" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "4"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Zone: General Warehouse; Max Persons: 4; Enforcement: WARNING above 3" ;
+    im:tableId "SOP-004:p1:table2" ;
+    im:textSha256 "256ab608e6e5229f14a0e734f6571401280430c681f18bfbcba309210b5e3367" .
+
+inst:prov-3f2a3eb1e0c623682a2e a im:Provenance ;
+    im:bbox "[65.2, 248.87, 530.08, 332.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "f9cd382e743add947ac0b311be9474ca726a8faf6a31f8b1e0e72a62c6fd5f7e" ;
+    im:page "2"^^xsd:positiveInteger ;
+    im:rowIndex "3"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Sensor: HUM; Unit: %RH; CRIT_LO: 15.0; WARN_LO: 20.0; Nominal: 35.0 ± 1.0; WARN_HI: 50.0; CRIT_HI: 60.0; CRITICAL Response: Activate desiccant system; inspect storage containers for leaks" ;
+    im:tableId "SOP-002:p2:table3" ;
+    im:textSha256 "b7e28b535c1399c5ba1ae0586400100100f3da2af3c7df0da79792a5a71f7965" .
+
+inst:prov-3fd813ae777a6d9595f1 a im:Provenance ;
+    im:charEnd "1702"^^xsd:nonNegativeInteger ;
+    im:charStart "1654"^^xsd:nonNegativeInteger ;
+    im:fileSha256 "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "RULE-ST03-01: TEN MUST be between 1.8 and 2.6 N." ;
+    im:textSha256 "50f6c1b9bf7749bf8cfd7b588fc4f114c3c43adfa4f320516295cd3e1bbdb3da" .
+
+inst:prov-443dfc36fce061344b41 a im:Provenance ;
+    im:bbox "[65.2, 377.87, 530.08, 451.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "f9cd382e743add947ac0b311be9474ca726a8faf6a31f8b1e0e72a62c6fd5f7e" ;
+    im:page "2"^^xsd:positiveInteger ;
+    im:rowIndex "3"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Sensor: HUM; Unit: %RH; CRIT_LO: 25.0; WARN_LO: 35.0; Nominal: 50.0 ± 1.0; WARN_HI: 65.0; CRIT_HI: 75.0; CRITICAL Response: Suspend experiments; inspect HVAC system" ;
+    im:tableId "SOP-002:p2:table4" ;
+    im:textSha256 "308ca5499f7856da00d8f11cff5a699b6f4e2903fc8ab00fbf76421d57ddf7a7" .
+
+inst:prov-462fd388b7eb2f9a56d8 a im:Provenance ;
+    im:bbox "[65.2, 453.87, 530.08, 545.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "f9cd382e743add947ac0b311be9474ca726a8faf6a31f8b1e0e72a62c6fd5f7e" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "2"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Sensor: SPD; Unit: m/s; CRIT_LO: 0.65; WARN_LO: 0.75; Nominal: 0.85 ± 0.01; WARN_HI: 0.95; CRIT_HI: 1.05; CRITICAL Response: Inspect and notify maintenance" ;
+    im:tableId "SOP-002:p1:table3" ;
+    im:textSha256 "63049ece64369524db3250ddf237e035fcbf9cdb597df65fd51a04cd7fc6bec0" .
+
+inst:prov-48510e55a87fc7b5ab71 a im:Provenance ;
+    im:charEnd "1237"^^xsd:nonNegativeInteger ;
+    im:charStart "1096"^^xsd:nonNegativeInteger ;
+    im:fileSha256 "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89" ;
+    im:page "2"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Above 75%RH (CRITICAL) — suspend sensitive experiments and inspect HVAC system." ;
+    im:textSha256 "1c4d077640903f41b717c6e1f57e90210c07c52666c117726680c3ba0eb59cc6" .
+
+inst:prov-49a783156f690638d693 a im:Provenance ;
+    im:bbox "[77.95, 180.87, 517.32, 412.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "89bb8bebc3e0bc6ac9a157a9bc30b6de09fb526711cbc1c9631258444fe865b7" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "3"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Rule ID: MAINT-02; Sensor: CUR; Station: ST02_SEALING; Trigger: CUR DRIFT >1.0 A for 30+ min; Action: Inspect sealing jaw; Priority: HIGH" ;
+    im:tableId "SOP-003:p1:table1" ;
+    im:textSha256 "a5a70c4599feaefe2dfb77cb39ecaa248be426c56d5d7752af9a6d13fe4ded60" .
+
+inst:prov-531bb860628329644a9e a im:Provenance ;
+    im:charEnd "383"^^xsd:nonNegativeInteger ;
+    im:charStart "276"^^xsd:nonNegativeInteger ;
+    im:fileSha256 "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89" ;
+    im:page "2"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "CRITICAL above 12°C — notify QC and quarantine batch." ;
+    im:textSha256 "5a630c001e095b1dc2455499fbbfda20dc88623dd7536bca59a371f8c5c9d3ea" .
+
+inst:prov-563a9b01e5180af676c2 a im:Provenance ;
+    im:charEnd "1950"^^xsd:nonNegativeInteger ;
+    im:charStart "1875"^^xsd:nonNegativeInteger ;
+    im:fileSha256 "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "RULE-ST04-01: VIB > 0.20 mm/s (WARNING) — schedule maintenance within 24 h." ;
+    im:textSha256 "99d7497ab5f32a3e8f5325803496b1b4e935224205d34a37d63340cc12b4f9c9" .
+
+inst:prov-57af8b79acdf36e9a529 a im:Provenance ;
+    im:bbox "[65.2, 139.87, 530.08, 203.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "f9cd382e743add947ac0b311be9474ca726a8faf6a31f8b1e0e72a62c6fd5f7e" ;
+    im:page "2"^^xsd:positiveInteger ;
+    im:rowIndex "3"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Sensor: HUM; Unit: %RH; CRIT_LO: 55.0; WARN_LO: 60.0; Nominal: 75.0 ± 1.5; WARN_HI: 85.0; CRIT_HI: 90.0; CRITICAL Response: Inspect and notify maintenance" ;
+    im:tableId "SOP-002:p2:table2" ;
+    im:textSha256 "1877d27c24dd82592e9ffe18b82c048d607182778434327e20484f3db0d60a9d" .
+
+inst:prov-5b351a4b3abce5e875b9 a im:Provenance ;
+    im:bbox "[77.95, 180.87, 517.32, 412.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "89bb8bebc3e0bc6ac9a157a9bc30b6de09fb526711cbc1c9631258444fe865b7" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "9"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Rule ID: MAINT-08; Sensor: HUM; Station: RND01_RDLAB; Trigger: HUM DRIFT >10%RH over 60 min; Action: Activate dehumidifier; check HVAC drain; Priority: HIGH" ;
+    im:tableId "SOP-003:p1:table1" ;
+    im:textSha256 "a411035714cdf188b70678319eefa36e5cff1943b7fdc7ce99abca1e2eabcc79" .
+
+inst:prov-5ed4da776bcca5dff010 a im:Provenance ;
+    im:charEnd "653"^^xsd:nonNegativeInteger ;
+    im:charStart "508"^^xsd:nonNegativeInteger ;
+    im:fileSha256 "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89" ;
+    im:page "2"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "RULE-CHM01-01: TMP MUST remain between 10°C and 20°C." ;
+    im:textSha256 "d3da7d2674fed09a8e0b83f3a7bbd7ac0ff95139a6d5ea7477b463affedef93b" .
+
+inst:prov-63365c237054c3da0e41 a im:Provenance ;
+    im:bbox "[63.78, 343.87, 531.5, 487.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "925d9454d536f4510afb43cf58ca7646c6fd79676c65990bbaca233b56c763d9" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "5"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Zone: Main Entrance; Max Persons: 8; Enforcement: Monitoring only" ;
+    im:tableId "SOP-004:p1:table2" ;
+    im:textSha256 "f749f33a4cde99d940ba6e347e1b5a3240d74510551ec319e1c21d2e788b5271" .
+
+inst:prov-63add68249eb1675a15b a im:Provenance ;
+    im:bbox "[65.2, 306.87, 530.08, 408.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "f9cd382e743add947ac0b311be9474ca726a8faf6a31f8b1e0e72a62c6fd5f7e" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "4"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Sensor: CUR; Unit: A; CRIT_LO: 9.5; WARN_LO: 11.0; Nominal: 12.4 ± 0.3; WARN_HI: 13.5; CRIT_HI: 15.0; CRITICAL Response: E-STOP; inspect load; verify ST04-SPD (RULE-ST02-04)" ;
+    im:tableId "SOP-002:p1:table2" ;
+    im:textSha256 "5f83bd0cc0d32cb264b23f9597704ca52d4025e5fd20fdfef63755c1bb0cc0f6" .
+
+inst:prov-63bd172b9c15acfba358 a im:Provenance ;
+    im:bbox "[63.78, 343.87, 531.5, 487.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "925d9454d536f4510afb43cf58ca7646c6fd79676c65990bbaca233b56c763d9" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "8"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Zone: Cafeteria; Max Persons: 20; Enforcement: Monitoring only — occupant comfort" ;
+    im:tableId "SOP-004:p1:table2" ;
+    im:textSha256 "332bc739b3560b5560a8fb56e4ff4763922f885fe1dbec7064553190dafa411c" .
+
+inst:prov-6b6bbfbc424202fbf10e a im:Provenance ;
+    im:bbox "[77.95, 158.87, 517.32, 278.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "bcc131019cdc8cf65bf34b684d0cd4b4df0a05b4cf0f759298750c044110e2db" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "6"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Parameter: Max intermittent; Value: 220; Unit: °C; Notes: < 10 min; not for control" ;
+    im:tableId "DS-THERM-2200:p1:table1" ;
+    im:textSha256 "00690b807161b648b9a2e55e9c2c00a03d815d13e279cc5ff4e06b47556524b1" .
+
+inst:prov-730ace7e1437db3fe95e a im:Provenance ;
+    im:charEnd "989"^^xsd:nonNegativeInteger ;
+    im:charStart "804"^^xsd:nonNegativeInteger ;
+    im:fileSha256 "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89" ;
+    im:page "2"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "UNAUTHORIZED_ACCESS must be escalated within 2 minutes." ;
+    im:textSha256 "bec32b44eee4c52b268618bc8665062f62bbdb957531be626eaba4e291a06cce" .
+
+inst:prov-73ff709714f96359f596 a im:Provenance ;
+    im:bbox "[77.95, 180.87, 517.32, 412.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "89bb8bebc3e0bc6ac9a157a9bc30b6de09fb526711cbc1c9631258444fe865b7" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "2"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Rule ID: MAINT-01; Sensor: VIB; Station: ST04_PACKAGING; Trigger: VIB DRIFT >0.05 mm/s over 60 min; Action: Inspect and lubricate bearing; Priority: HIGH" ;
+    im:tableId "SOP-003:p1:table1" ;
+    im:textSha256 "2cb6bdf209ed53de884f884f095c3419a3990537ef8204a4f6d176ea5a573575" .
+
+inst:prov-745a961536db8aed10e2 a im:Provenance ;
+    im:bbox "[63.78, 461.87, 531.5, 583.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "89bb8bebc3e0bc6ac9a157a9bc30b6de09fb526711cbc1c9631258444fe865b7" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "3"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Pattern: SRV01-TMP↑ → SCADA latency↑; Primary Fault: Server Room overheating; Secondary Effect: Increased scan time → apparent STUCK readings; Resolution: 1.Reduce SRV01-TMP <25°C. 2.Verify PLC heartbeats. 3.Clear STUCK alarms." ;
+    im:tableId "SOP-003:p1:table2" ;
+    im:textSha256 "723e686753b11127666ec2351aaed6d24207a9941a16aae171f25e899ffe59a5" .
+
+inst:prov-7c37d1d8bc8f7b539386 a im:Provenance ;
+    im:charEnd "1353"^^xsd:nonNegativeInteger ;
+    im:charStart "1271"^^xsd:nonNegativeInteger ;
+    im:fileSha256 "925d9454d536f4510afb43cf58ca7646c6fd79676c65990bbaca233b56c763d9" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "RULE-ACCESS-02: Security personnel MUST be notified within 2 minutes of detection." ;
+    im:textSha256 "db3401720ea688664d8387097e036cfb20f80fb49f2ff8aa3ab6c5f97abf353e" .
+
+inst:prov-7e351109e66dbde87658 a im:Provenance ;
+    im:charEnd "1275"^^xsd:nonNegativeInteger ;
+    im:charStart "1221"^^xsd:nonNegativeInteger ;
+    im:fileSha256 "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "RULE-ST02-01: TMP MUST remain between 175°C and 195°C." ;
+    im:textSha256 "13ca5b0d19263e1b5d194cc39150830d2c62febde76b2f4c97558cf824ccb7dd" .
+
+inst:prov-8123e7145f2771be6b63 a im:Provenance ;
+    im:charEnd "1130"^^xsd:nonNegativeInteger ;
+    im:charStart "1061"^^xsd:nonNegativeInteger ;
+    im:fileSha256 "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "RULE-ST01-02: If TMP exceeds 26°C, reduce speed by 10% and notify QC." ;
+    im:textSha256 "73ee97e31cfc87199c90371432c2676f2060989803b4b2c3bb07305003e2be3b" .
+
+inst:prov-84852f4f38e51b43dd36 a im:Provenance ;
+    im:charEnd "803"^^xsd:nonNegativeInteger ;
+    im:charStart "654"^^xsd:nonNegativeInteger ;
+    im:fileSha256 "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89" ;
+    im:page "2"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "RULE-CHM01-02: HUM MUST NOT exceed 50%RH. Elevated humidity accelerates degradation of hygroscopic reagents." ;
+    im:textSha256 "6f8d68ace97ac489759c8bb23d3fd6a633edcaaa3b5caf557c8da953eaf67b11" .
+
+inst:prov-859f56159fc21b040144 a im:Provenance ;
+    im:charEnd "712"^^xsd:nonNegativeInteger ;
+    im:charStart "382"^^xsd:nonNegativeInteger ;
+    im:fileSha256 "79a4e8e381c9e7b761d3bfee3023bbb0d0d439728ef308641d00a7b3e18b0072" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote """Application Note — Alarm Threshold Setting: With a total accuracy of ±0.10 bar, alarm thresholds should be set at
+least 5× the accuracy (0.50 bar) from the nominal operating point to avoid nuisance alarms. Thresholds closer than
+3× accuracy (0.30 bar) are not recommended for process control.""" ;
+    im:textSha256 "b5f118b315c03f03387c6f0313187f8faef5f7aaec153d25834da437bb6ca9a3" .
+
+inst:prov-86f45253ef019a655609 a im:Provenance ;
+    im:bbox "[99.21, 536.87, 496.06, 644.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "925d9454d536f4510afb43cf58ca7646c6fd79676c65990bbaca233b56c763d9" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "4"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Role: supervisor; Max Ack — WARNING (min): 5; Max Ack — CRITICAL (min): 1" ;
+    im:tableId "SOP-004:p1:table3" ;
+    im:textSha256 "f06daf717bc97f629591480902ed81dab5feaf18ae0799130a380d3ef8149a37" .
+
+inst:prov-89dbcc94df0853df65b1 a im:Provenance ;
+    im:charEnd "1789"^^xsd:nonNegativeInteger ;
+    im:charStart "1703"^^xsd:nonNegativeInteger ;
+    im:fileSha256 "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "RULE-ST03-02: CNT below 110 pcs/min — check for label jam." ;
+    im:textSha256 "4b78959e63318424fba0ea7d183c55caf48e0dd90338999639eca6c9beec5ecd" .
+
+inst:prov-8a550a716c5e70071fd6 a im:Provenance ;
+    im:bbox "[48.19, 158.87, 547.09, 294.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "925d9454d536f4510afb43cf58ca7646c6fd79676c65990bbaca233b56c763d9" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "4"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Role: supervisor; Prod. Area: YES; Server Room: YES; Gen. Warehouse: YES; Main Entrance: YES; Chem. Storage: YES; R&D Lab: YES; Cafeteria: YES" ;
+    im:tableId "SOP-004:p1:table1" ;
+    im:textSha256 "82ba7bad7ca482e81713d972a5048b35ebc2309b4c1dde42cbdfedba05af0a3b" .
+
+inst:prov-8ceb9981e1903ed9ce25 a im:Provenance ;
+    im:bbox "[65.2, 496.87, 530.08, 560.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "f9cd382e743add947ac0b311be9474ca726a8faf6a31f8b1e0e72a62c6fd5f7e" ;
+    im:page "2"^^xsd:positiveInteger ;
+    im:rowIndex "3"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Sensor: HUM; Unit: %RH; CRIT_LO: 25.0; WARN_LO: 35.0; Nominal: 55.0 ± 1.5; WARN_HI: 70.0; CRIT_HI: 80.0; CRITICAL Response: Inspect and notify maintenance" ;
+    im:tableId "SOP-002:p2:table5" ;
+    im:textSha256 "6e72a432ff517d3ac1be9df3fc401cc1b76cc87d5656548be7232a35c61c6304" .
+
+inst:prov-90304fa2413601689983 a im:Provenance ;
+    im:bbox "[48.19, 158.87, 547.09, 294.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "925d9454d536f4510afb43cf58ca7646c6fd79676c65990bbaca233b56c763d9" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "2"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Role: operator; Prod. Area: YES; Server Room: NO; Gen. Warehouse: YES; Main Entrance: YES; Chem. Storage: NO; R&D Lab: NO; Cafeteria: YES" ;
+    im:tableId "SOP-004:p1:table1" ;
+    im:textSha256 "b0553481eb78646f29e74255d84279613b7d98389b5313e6909c8b5957a93e37" .
+
+inst:prov-93c544a56210fc612c7a a im:Provenance ;
+    im:charEnd "1358"^^xsd:nonNegativeInteger ;
+    im:charStart "1258"^^xsd:nonNegativeInteger ;
+    im:fileSha256 "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89" ;
+    im:page "2"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "RULE-CAF01-01: TMP above 26°C — check ventilation system. Occupant comfort is the primary criterion." ;
+    im:textSha256 "f2e1bf23f599c7b467635895cccd6582da08cab28f4e30f315ec5ba502642080" .
+
+inst:prov-93ecc3e144a938d45256 a im:Provenance ;
+    im:bbox "[65.2, 590.87, 530.08, 672.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "f9cd382e743add947ac0b311be9474ca726a8faf6a31f8b1e0e72a62c6fd5f7e" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "2"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Sensor: VIB; Unit: mm/s; CRIT_LO: 0.01; WARN_LO: 0.02; Nominal: 0.12 ± 0.005; WARN_HI: 0.2; CRIT_HI: 0.35; CRITICAL Response: E-STOP; inspect main bearing" ;
+    im:tableId "SOP-002:p1:table4" ;
+    im:textSha256 "7db3e3fd17a8aa64bea65c489f08b80c1f90374dac7750e4db94f0767ca2269f" .
+
+inst:prov-974276b1bf939f355472 a im:Provenance ;
+    im:charEnd "818"^^xsd:nonNegativeInteger ;
+    im:charStart "433"^^xsd:nonNegativeInteger ;
+    im:fileSha256 "8692d87e9aa21f4dadd97d56735b40241fccd795b49b3874ad87d9e49c24b3b8" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote """ElectroMeasure recommends that process alarm thresholds triggering corrective action be
+set no higher than the continuous overload rating.""" ;
+    im:textSha256 "0475010f4fd62a9fcf8c7ee87288f537706efc89def9012225efbc78ed950a3a" .
+
+inst:prov-98b426af9b225b364d08 a im:Provenance ;
+    im:bbox "[48.19, 158.87, 547.09, 294.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "925d9454d536f4510afb43cf58ca7646c6fd79676c65990bbaca233b56c763d9" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "6"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Role: security; Prod. Area: YES; Server Room: YES; Gen. Warehouse: YES; Main Entrance: YES; Chem. Storage: YES; R&D Lab: YES; Cafeteria: YES" ;
+    im:tableId "SOP-004:p1:table1" ;
+    im:textSha256 "6781c67565c77be33e317aec3eadf26f7800d09bb9ba73fa02bdf175b6e09da4" .
+
+inst:prov-9da2847e353556e770e3 a im:Provenance ;
+    im:bbox "[65.2, 453.87, 530.08, 545.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "f9cd382e743add947ac0b311be9474ca726a8faf6a31f8b1e0e72a62c6fd5f7e" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "4"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Sensor: CNT; Unit: pcs/min; CRIT_LO: 100; WARN_LO: 110; Nominal: 120 ± 2.0; WARN_HI: 130; CRIT_HI: 140; CRITICAL Response: E-STOP labelling; inspect label path" ;
+    im:tableId "SOP-002:p1:table3" ;
+    im:textSha256 "307083a1e786806d4cfab0ae239363dc2d0d1cfd35f721cb2dc19e26de2268db" .
+
+inst:prov-9e23b2b8022a4d586b51 a im:Provenance ;
+    im:bbox "[77.95, 180.87, 517.32, 412.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "89bb8bebc3e0bc6ac9a157a9bc30b6de09fb526711cbc1c9631258444fe865b7" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "7"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Rule ID: MAINT-06; Sensor: TMP; Station: WRH01_WAREHOUSE; Trigger: TMP DRIFT >2°C over 2 h; Action: Inspect compressor; notify QC; Priority: CRITICAL" ;
+    im:tableId "SOP-003:p1:table1" ;
+    im:textSha256 "d5f5763e829cc5cbcc1eb37c9b437cf5836254d92acce21c9219b9489e0c0704" .
+
+inst:prov-N0009 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/nodes.csv" ;
+    im:fileSha256 "3b78a37ff96c39cd5ef2b1b9bf6019d9c951c7926ca4e708e8cb365b9581964e" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "N0009" .
+
+inst:prov-N0010 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/nodes.csv" ;
+    im:fileSha256 "3b78a37ff96c39cd5ef2b1b9bf6019d9c951c7926ca4e708e8cb365b9581964e" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "N0010" .
+
+inst:prov-N0011 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/nodes.csv" ;
+    im:fileSha256 "3b78a37ff96c39cd5ef2b1b9bf6019d9c951c7926ca4e708e8cb365b9581964e" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "N0011" .
+
+inst:prov-N0012 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/nodes.csv" ;
+    im:fileSha256 "3b78a37ff96c39cd5ef2b1b9bf6019d9c951c7926ca4e708e8cb365b9581964e" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "N0012" .
+
+inst:prov-N0013 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/nodes.csv" ;
+    im:fileSha256 "3b78a37ff96c39cd5ef2b1b9bf6019d9c951c7926ca4e708e8cb365b9581964e" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "N0013" .
+
+inst:prov-N0014 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/nodes.csv" ;
+    im:fileSha256 "3b78a37ff96c39cd5ef2b1b9bf6019d9c951c7926ca4e708e8cb365b9581964e" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "N0014" .
+
+inst:prov-N0015 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/nodes.csv" ;
+    im:fileSha256 "3b78a37ff96c39cd5ef2b1b9bf6019d9c951c7926ca4e708e8cb365b9581964e" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "N0015" .
+
+inst:prov-N0016 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/nodes.csv" ;
+    im:fileSha256 "3b78a37ff96c39cd5ef2b1b9bf6019d9c951c7926ca4e708e8cb365b9581964e" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "N0016" .
+
+inst:prov-N0017 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/nodes.csv" ;
+    im:fileSha256 "3b78a37ff96c39cd5ef2b1b9bf6019d9c951c7926ca4e708e8cb365b9581964e" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "N0017" .
+
+inst:prov-N0018 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/nodes.csv" ;
+    im:fileSha256 "3b78a37ff96c39cd5ef2b1b9bf6019d9c951c7926ca4e708e8cb365b9581964e" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "N0018" .
+
+inst:prov-N0019 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/nodes.csv" ;
+    im:fileSha256 "3b78a37ff96c39cd5ef2b1b9bf6019d9c951c7926ca4e708e8cb365b9581964e" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "N0019" .
+
+inst:prov-N0020 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/nodes.csv" ;
+    im:fileSha256 "3b78a37ff96c39cd5ef2b1b9bf6019d9c951c7926ca4e708e8cb365b9581964e" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "N0020" .
+
+inst:prov-N0021 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/nodes.csv" ;
+    im:fileSha256 "3b78a37ff96c39cd5ef2b1b9bf6019d9c951c7926ca4e708e8cb365b9581964e" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "N0021" .
+
+inst:prov-N0022 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/nodes.csv" ;
+    im:fileSha256 "3b78a37ff96c39cd5ef2b1b9bf6019d9c951c7926ca4e708e8cb365b9581964e" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "N0022" .
+
+inst:prov-N0023 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/nodes.csv" ;
+    im:fileSha256 "3b78a37ff96c39cd5ef2b1b9bf6019d9c951c7926ca4e708e8cb365b9581964e" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "N0023" .
+
+inst:prov-N0024 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/nodes.csv" ;
+    im:fileSha256 "3b78a37ff96c39cd5ef2b1b9bf6019d9c951c7926ca4e708e8cb365b9581964e" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "N0024" .
+
+inst:prov-N0025 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/nodes.csv" ;
+    im:fileSha256 "3b78a37ff96c39cd5ef2b1b9bf6019d9c951c7926ca4e708e8cb365b9581964e" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "N0025" .
+
+inst:prov-N0026 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/nodes.csv" ;
+    im:fileSha256 "3b78a37ff96c39cd5ef2b1b9bf6019d9c951c7926ca4e708e8cb365b9581964e" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "N0026" .
+
+inst:prov-N0027 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/nodes.csv" ;
+    im:fileSha256 "3b78a37ff96c39cd5ef2b1b9bf6019d9c951c7926ca4e708e8cb365b9581964e" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "N0027" .
+
+inst:prov-N0028 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/nodes.csv" ;
+    im:fileSha256 "3b78a37ff96c39cd5ef2b1b9bf6019d9c951c7926ca4e708e8cb365b9581964e" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "N0028" .
+
+inst:prov-N0029 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/nodes.csv" ;
+    im:fileSha256 "3b78a37ff96c39cd5ef2b1b9bf6019d9c951c7926ca4e708e8cb365b9581964e" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "N0029" .
+
+inst:prov-N0030 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/nodes.csv" ;
+    im:fileSha256 "3b78a37ff96c39cd5ef2b1b9bf6019d9c951c7926ca4e708e8cb365b9581964e" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "N0030" .
+
+inst:prov-N0031 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/nodes.csv" ;
+    im:fileSha256 "3b78a37ff96c39cd5ef2b1b9bf6019d9c951c7926ca4e708e8cb365b9581964e" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "N0031" .
+
+inst:prov-N0032 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/nodes.csv" ;
+    im:fileSha256 "3b78a37ff96c39cd5ef2b1b9bf6019d9c951c7926ca4e708e8cb365b9581964e" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "N0032" .
+
+inst:prov-N0033 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/nodes.csv" ;
+    im:fileSha256 "3b78a37ff96c39cd5ef2b1b9bf6019d9c951c7926ca4e708e8cb365b9581964e" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "N0033" .
+
+inst:prov-N0034 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/nodes.csv" ;
+    im:fileSha256 "3b78a37ff96c39cd5ef2b1b9bf6019d9c951c7926ca4e708e8cb365b9581964e" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "N0034" .
+
+inst:prov-N0035 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/nodes.csv" ;
+    im:fileSha256 "3b78a37ff96c39cd5ef2b1b9bf6019d9c951c7926ca4e708e8cb365b9581964e" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "N0035" .
+
+inst:prov-N0036 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/nodes.csv" ;
+    im:fileSha256 "3b78a37ff96c39cd5ef2b1b9bf6019d9c951c7926ca4e708e8cb365b9581964e" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "N0036" .
+
+inst:prov-N0037 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/nodes.csv" ;
+    im:fileSha256 "3b78a37ff96c39cd5ef2b1b9bf6019d9c951c7926ca4e708e8cb365b9581964e" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "N0037" .
+
+inst:prov-N0038 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/nodes.csv" ;
+    im:fileSha256 "3b78a37ff96c39cd5ef2b1b9bf6019d9c951c7926ca4e708e8cb365b9581964e" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "N0038" .
+
+inst:prov-N0039 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/nodes.csv" ;
+    im:fileSha256 "3b78a37ff96c39cd5ef2b1b9bf6019d9c951c7926ca4e708e8cb365b9581964e" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "N0039" .
+
+inst:prov-N0054 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/nodes.csv" ;
+    im:fileSha256 "3b78a37ff96c39cd5ef2b1b9bf6019d9c951c7926ca4e708e8cb365b9581964e" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "N0054" .
+
+inst:prov-N0055 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/nodes.csv" ;
+    im:fileSha256 "3b78a37ff96c39cd5ef2b1b9bf6019d9c951c7926ca4e708e8cb365b9581964e" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "N0055" .
+
+inst:prov-N0056 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/nodes.csv" ;
+    im:fileSha256 "3b78a37ff96c39cd5ef2b1b9bf6019d9c951c7926ca4e708e8cb365b9581964e" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "N0056" .
+
+inst:prov-N0057 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/nodes.csv" ;
+    im:fileSha256 "3b78a37ff96c39cd5ef2b1b9bf6019d9c951c7926ca4e708e8cb365b9581964e" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "N0057" .
+
+inst:prov-N0058 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/nodes.csv" ;
+    im:fileSha256 "3b78a37ff96c39cd5ef2b1b9bf6019d9c951c7926ca4e708e8cb365b9581964e" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "N0058" .
+
+inst:prov-N0059 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/nodes.csv" ;
+    im:fileSha256 "3b78a37ff96c39cd5ef2b1b9bf6019d9c951c7926ca4e708e8cb365b9581964e" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "N0059" .
+
+inst:prov-N0060 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/nodes.csv" ;
+    im:fileSha256 "3b78a37ff96c39cd5ef2b1b9bf6019d9c951c7926ca4e708e8cb365b9581964e" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "N0060" .
+
+inst:prov-N0061 a im:Provenance ;
+    im:fileName "imaks_data/kg_seed/nodes.csv" ;
+    im:fileSha256 "3b78a37ff96c39cd5ef2b1b9bf6019d9c951c7926ca4e708e8cb365b9581964e" ;
+    im:sourceKind "seedCsv" ;
+    im:sourceRowId "N0061" .
+
+inst:prov-a15c367247e15ba8385f a im:Provenance ;
+    im:charEnd "86"^^xsd:nonNegativeInteger ;
+    im:charStart "0"^^xsd:nonNegativeInteger ;
+    im:fileSha256 "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89" ;
+    im:page "2"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "RULE-ST04-03: SPD drops below 1.00 m/s without operator command — verify RULE-ST02-04." ;
+    im:textSha256 "250c09598246046f2ca766eef449b1340a89115bcbdae9cad0bbac1d1c6c03bc" .
+
+inst:prov-a59347a7942bfca31abf a im:Provenance ;
+    im:bbox "[77.95, 180.87, 517.32, 412.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "89bb8bebc3e0bc6ac9a157a9bc30b6de09fb526711cbc1c9631258444fe865b7" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "2"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Rule ID: MAINT-01; Sensor: VIB; Station: ST04_PACKAGING; Trigger: VIB DRIFT >0.05 mm/s over 60 min; Action: Inspect and lubricate bearing; Priority: HIGH" ;
+    im:tableId "SOP-003:p1:table1" ;
+    im:textSha256 "2cb6bdf209ed53de884f884f095c3419a3990537ef8204a4f6d176ea5a573575" .
+
+inst:prov-a937a54f933ffee350b0 a im:Provenance ;
+    im:bbox "[99.21, 536.87, 496.06, 644.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "925d9454d536f4510afb43cf58ca7646c6fd79676c65990bbaca233b56c763d9" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "3"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Role: technician; Max Ack — WARNING (min): 10; Max Ack — CRITICAL (min): 2" ;
+    im:tableId "SOP-004:p1:table3" ;
+    im:textSha256 "774645a483eae1be1a33a4d7cd65b1133506ef2032e149ba1f73257eb5ccb36f" .
+
+inst:prov-abcbafa49fcfa37f1971 a im:Provenance ;
+    im:bbox "[65.2, 453.87, 530.08, 545.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "f9cd382e743add947ac0b311be9474ca726a8faf6a31f8b1e0e72a62c6fd5f7e" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "3"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Sensor: TEN; Unit: N; CRIT_LO: 1.5; WARN_LO: 1.8; Nominal: 2.2 ± 0.05; WARN_HI: 2.6; CRIT_HI: 3.0; CRITICAL Response: Inspect and notify maintenance" ;
+    im:tableId "SOP-002:p1:table3" ;
+    im:textSha256 "be1cfe826e431367daab0dddbce463e251ae4dbbd03b7f5ce5becbb5264af4e6" .
+
+inst:prov-adf51589ba9907cf9cbf a im:Provenance ;
+    im:bbox "[99.21, 536.87, 496.06, 644.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "925d9454d536f4510afb43cf58ca7646c6fd79676c65990bbaca233b56c763d9" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "6"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Role: security; Max Ack — WARNING (min): 20; Max Ack — CRITICAL (min): 5" ;
+    im:tableId "SOP-004:p1:table3" ;
+    im:textSha256 "24a229cbdfa890472ac5e0fc85061ab330b868f88e5a7583e1ba60137eb1931d" .
+
+inst:prov-b28c17872c63644d104a a im:Provenance ;
+    im:charEnd "383"^^xsd:nonNegativeInteger ;
+    im:charStart "276"^^xsd:nonNegativeInteger ;
+    im:fileSha256 "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89" ;
+    im:page "2"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "RULE-WRH01-01: TMP MUST remain between 0.5°C and 8°C." ;
+    im:textSha256 "7973f72d4e89a7b036bca9924dc5088bc18c13019f5af3bfa6ba5d16899cea73" .
+
+inst:prov-b582c3dedc29aeacbbf3 a im:Provenance ;
+    im:charEnd "989"^^xsd:nonNegativeInteger ;
+    im:charStart "804"^^xsd:nonNegativeInteger ;
+    im:fileSha256 "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89" ;
+    im:page "2"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "RULE-CHM01-03: Only personnel with hazmat training (technician/supervisor/manager role) are authorised to enter Chemical Storage." ;
+    im:textSha256 "24c22df8535d7a0cc596bf7f40f216eb7974f895ffa5e8e3bd22386c0688040a" .
+
+inst:prov-b7b81c3c9f2cc8ac4a90 a im:Provenance ;
+    im:bbox "[99.21, 536.87, 496.06, 644.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "925d9454d536f4510afb43cf58ca7646c6fd79676c65990bbaca233b56c763d9" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "3"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Role: technician; Max Ack — WARNING (min): 10; Max Ack — CRITICAL (min): 2" ;
+    im:tableId "SOP-004:p1:table3" ;
+    im:textSha256 "774645a483eae1be1a33a4d7cd65b1133506ef2032e149ba1f73257eb5ccb36f" .
+
+inst:prov-b891c9af35bd1479a9ab a im:Provenance ;
+    im:charEnd "462"^^xsd:nonNegativeInteger ;
+    im:charStart "384"^^xsd:nonNegativeInteger ;
+    im:fileSha256 "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89" ;
+    im:page "2"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "RULE-WRH01-02: HUM above 85%RH — inspect door seals and activate dehumidifier." ;
+    im:textSha256 "80e86efa6cb0f94b3419445fce02ae11753203e847371c486e48ba84029b314c" .
+
+inst:prov-ba825ba4104a867292c5 a im:Provenance ;
+    im:charEnd "653"^^xsd:nonNegativeInteger ;
+    im:charStart "508"^^xsd:nonNegativeInteger ;
+    im:fileSha256 "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89" ;
+    im:page "2"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "CRITICAL above 25°C — activate emergency ventilation and notify safety officer immediately." ;
+    im:textSha256 "32f228a8e7814ca79482d6aa6a2e20a28bee7d95cb549833cf636c01e3efd223" .
+
+inst:prov-bbf3ff00c55493676ed8 a im:Provenance ;
+    im:bbox "[99.21, 536.87, 496.06, 644.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "925d9454d536f4510afb43cf58ca7646c6fd79676c65990bbaca233b56c763d9" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "6"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Role: security; Max Ack — WARNING (min): 20; Max Ack — CRITICAL (min): 5" ;
+    im:tableId "SOP-004:p1:table3" ;
+    im:textSha256 "24a229cbdfa890472ac5e0fc85061ab330b868f88e5a7583e1ba60137eb1931d" .
+
+inst:prov-bd50aca05ac6d830f7d7 a im:Provenance ;
+    im:bbox "[63.78, 461.87, 531.5, 583.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "89bb8bebc3e0bc6ac9a157a9bc30b6de09fb526711cbc1c9631258444fe865b7" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "2"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Pattern: ST02_SEALING-CUR↑ → ST04_PACKAGING-SPD↓; Primary Fault: Sealing motor overload; Secondary Effect: Conveyor speed drop via electrical coupling; Resolution: 1.Verify ST02-CUR trend. 2.Inspect sealing jaw. 3.Reset ST04 speed setpoint." ;
+    im:tableId "SOP-003:p1:table2" ;
+    im:textSha256 "8b067eaa40ad4695074d5214d47b2e6e55c6fdb6a998524ab341c6da7d64b151" .
+
+inst:prov-be87a6241c5b0e18784d a im:Provenance ;
+    im:charEnd "1855"^^xsd:nonNegativeInteger ;
+    im:charStart "1790"^^xsd:nonNegativeInteger ;
+    im:fileSha256 "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "RULE-ST03-03: TEN STUCK >10 consecutive samples — sensor failure." ;
+    im:textSha256 "c0e8d93331c8c89ffa3526cbf4500958de207047c09bb60349a669c935a0d767" .
+
+inst:prov-c24c9ca9fb3389afa597 a im:Provenance ;
+    im:charEnd "235"^^xsd:nonNegativeInteger ;
+    im:charStart "149"^^xsd:nonNegativeInteger ;
+    im:fileSha256 "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89" ;
+    im:page "2"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "RULE-SRV01-02: TMP > 28°C (CRITICAL) — automatic controlled shutdown of all PLC nodes." ;
+    im:textSha256 "fd53e57f0030686e7a5b67a898f1f958e7395b08b319b8c427b169837d8b59bc" .
+
+inst:prov-cadb9d8bb5f0e00d111b a im:Provenance ;
+    im:charEnd "1270"^^xsd:nonNegativeInteger ;
+    im:charStart "1131"^^xsd:nonNegativeInteger ;
+    im:fileSha256 "925d9454d536f4510afb43cf58ca7646c6fd79676c65990bbaca233b56c763d9" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "RULE-ACCESS-01: Any entry by an unauthorised role MUST be logged as OccupancyEvent::UnauthorisedAccess with person_id, zone, and timestamp." ;
+    im:textSha256 "8674908f3d771a9c7b1c8e28df48a9914ed1a1ed341760242fdb0a190c69f212" .
+
+inst:prov-cf23cbf0fb35017af823 a im:Provenance ;
+    im:charEnd "1095"^^xsd:nonNegativeInteger ;
+    im:charStart "1016"^^xsd:nonNegativeInteger ;
+    im:fileSha256 "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89" ;
+    im:page "2"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "RULE-RND01-01: TMP MUST remain between 18°C and 26°C for experimental validity." ;
+    im:textSha256 "1ccc808cfbb4522fdef5d468b165eb3116523c264f677f347fcb33d76e0c1967" .
+
+inst:prov-d2863dad4a67bae58a59 a im:Provenance ;
+    im:bbox "[65.2, 306.87, 530.08, 408.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "f9cd382e743add947ac0b311be9474ca726a8faf6a31f8b1e0e72a62c6fd5f7e" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "2"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Sensor: TMP; Unit: °C; CRIT_LO: 165.0; WARN_LO: 175.0; Nominal: 185.0 ± 1.2; WARN_HI: 195.0; CRIT_HI: 210.0; CRITICAL Response: E-STOP ST02/ST03/ST04; inspect element" ;
+    im:tableId "SOP-002:p1:table2" ;
+    im:textSha256 "dd6ec2427c8bacbf0490040887c67cd9c0e1ba4a9abcd230577dfa6e54f63cad" .
+
+inst:prov-d3c5aa14d6840064961c a im:Provenance ;
+    im:bbox "[99.21, 536.87, 496.06, 644.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "925d9454d536f4510afb43cf58ca7646c6fd79676c65990bbaca233b56c763d9" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "5"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Role: manager; Max Ack — WARNING (min): 15; Max Ack — CRITICAL (min): 5" ;
+    im:tableId "SOP-004:p1:table3" ;
+    im:textSha256 "3d8274f7dd2feb8f9bc45085909e0acd2964c4e55b0b295ce2150ca5aac4d083" .
+
+inst:prov-d4295bc86ec5ebdee12b a im:Provenance ;
+    im:bbox "[77.95, 180.87, 517.32, 412.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "89bb8bebc3e0bc6ac9a157a9bc30b6de09fb526711cbc1c9631258444fe865b7" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "4"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Rule ID: MAINT-03; Sensor: TEN; Station: ST03_LABELLING; Trigger: TEN STUCK >10 samples; Action: Replace sensor; Priority: MEDIUM" ;
+    im:tableId "SOP-003:p1:table1" ;
+    im:textSha256 "621bef90f7d114f38b8aafe50a2565fef0bb483ba870bccc273a43259e8c0527" .
+
+inst:prov-d692bb1a5c65e01db0f8 a im:Provenance ;
+    im:charEnd "1789"^^xsd:nonNegativeInteger ;
+    im:charStart "1703"^^xsd:nonNegativeInteger ;
+    im:fileSha256 "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Below 100 (CRITICAL): halt." ;
+    im:textSha256 "6cb05ba556167ef134bae5b3da65b677f0388cf56f8ca37e2b304bde7fc5c294" .
+
+inst:prov-dbd64a3491ecbdda5a61 a im:Provenance ;
+    im:bbox "[63.78, 343.87, 531.5, 487.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "925d9454d536f4510afb43cf58ca7646c6fd79676c65990bbaca233b56c763d9" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "2"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Zone: Production Area; Max Persons: 12; Enforcement: WARNING above 10; CRITICAL above 12" ;
+    im:tableId "SOP-004:p1:table2" ;
+    im:textSha256 "579273ff3b970fbb7fc27ad7cf3a73fdcdffb923ce7797da0edd847f877f208c" .
+
+inst:prov-dce7db8c715f822b5c88 a im:Provenance ;
+    im:bbox "[65.2, 139.87, 530.08, 203.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "f9cd382e743add947ac0b311be9474ca726a8faf6a31f8b1e0e72a62c6fd5f7e" ;
+    im:page "2"^^xsd:positiveInteger ;
+    im:rowIndex "2"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Sensor: TMP; Unit: °C; CRIT_LO: -1.0; WARN_LO: 0.5; Nominal: 4.0 ± 0.5; WARN_HI: 8.0; CRIT_HI: 12.0; CRITICAL Response: Activate backup refrigeration; notify QC" ;
+    im:tableId "SOP-002:p2:table2" ;
+    im:textSha256 "37dbc696f0caeed58489ac4773a49f53f1103a4887d85e51c9e4ad4df9511371" .
+
+inst:prov-e1a06e68702438e4cf54 a im:Provenance ;
+    im:bbox "[48.19, 158.87, 547.09, 294.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "925d9454d536f4510afb43cf58ca7646c6fd79676c65990bbaca233b56c763d9" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "5"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Role: manager; Prod. Area: YES; Server Room: YES; Gen. Warehouse: YES; Main Entrance: YES; Chem. Storage: YES; R&D Lab: YES; Cafeteria: YES" ;
+    im:tableId "SOP-004:p1:table1" ;
+    im:textSha256 "865d79d48334bea7e7c627dacb13750d567b0472f9be13a0e7858cc4843888a2" .
+
+inst:prov-e2b2616cb1a7d93a7123 a im:Provenance ;
+    im:charEnd "1434"^^xsd:nonNegativeInteger ;
+    im:charStart "1359"^^xsd:nonNegativeInteger ;
+    im:fileSha256 "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89" ;
+    im:page "2"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "RULE-CAF01-02: HUM above 70%RH — inspect drainage and activate ventilation." ;
+    im:textSha256 "79f33a60a505d4124e2db5272ef361b4411198feec1e853cae6305001f3a1198" .
+
+inst:prov-e7313e31484b1d01ffd2 a im:Provenance ;
+    im:charEnd "1237"^^xsd:nonNegativeInteger ;
+    im:charStart "1096"^^xsd:nonNegativeInteger ;
+    im:fileSha256 "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89" ;
+    im:page "2"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "RULE-RND01-02: HUM drift above 65%RH — activate dehumidifier." ;
+    im:textSha256 "7510055c06c8ed32e84b02d7addb19114105d0dc5600068ecea715ec4f7571d8" .
+
+inst:prov-e7c9cdb24fbdff241114 a im:Provenance ;
+    im:charEnd "1438"^^xsd:nonNegativeInteger ;
+    im:charStart "1354"^^xsd:nonNegativeInteger ;
+    im:fileSha256 "925d9454d536f4510afb43cf58ca7646c6fd79676c65990bbaca233b56c763d9" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "RULE-ACCESS-03: The KG node MUST include authorized=NO and a reference to this rule." ;
+    im:textSha256 "e1fa14bb61deb77464cf76a817acfd49106438996c92d365dfc5246cbaf9f861" .
+
+inst:prov-ea3edabd2b4bb07776a4 a im:Provenance ;
+    im:charEnd "1060"^^xsd:nonNegativeInteger ;
+    im:charStart "997"^^xsd:nonNegativeInteger ;
+    im:fileSha256 "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "RULE-ST01-01: FLW MUST be maintained between 112 and 128 L/min." ;
+    im:textSha256 "d8ad78e87651a95826841915371587cad4f8e6b4160f8d06e055f4e66d1f5231" .
+
+inst:prov-eea647215a1baa70383f a im:Provenance ;
+    im:bbox "[65.2, 590.87, 530.08, 672.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "f9cd382e743add947ac0b311be9474ca726a8faf6a31f8b1e0e72a62c6fd5f7e" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "4"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Sensor: SPD; Unit: m/s; CRIT_LO: 0.85; WARN_LO: 1.0; Nominal: 1.2 ± 0.02; WARN_HI: 1.4; CRIT_HI: 1.6; CRITICAL Response: Inspect and notify maintenance" ;
+    im:tableId "SOP-002:p1:table4" ;
+    im:textSha256 "b37b4aa75bb4dd037588584e1e7afd40cdf636b46abddd9a87f1c9c6e2d2d50b" .
+
+inst:prov-eeb3fb4060f69cf0ae52 a im:Provenance ;
+    im:bbox "[65.2, 248.87, 530.08, 332.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "f9cd382e743add947ac0b311be9474ca726a8faf6a31f8b1e0e72a62c6fd5f7e" ;
+    im:page "2"^^xsd:positiveInteger ;
+    im:rowIndex "2"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Sensor: TMP; Unit: °C; CRIT_LO: 5.0; WARN_LO: 10.0; Nominal: 15.0 ± 0.3; WARN_HI: 20.0; CRIT_HI: 25.0; CRITICAL Response: Activate emergency ventilation; notify safety officer immediately" ;
+    im:tableId "SOP-002:p2:table3" ;
+    im:textSha256 "471c041d992fa454f7942eabdfe395505bf694759d1cab06f535b40df94a33e4" .
+
+inst:prov-f32cd03315bfa1ea0b89 a im:Provenance ;
+    im:bbox "[77.95, 605.87, 517.32, 763.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "f9cd382e743add947ac0b311be9474ca726a8faf6a31f8b1e0e72a62c6fd5f7e" ;
+    im:page "2"^^xsd:positiveInteger ;
+    im:rowIndex "5"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Type: OUT_OF_RANGE; Definition: Sustained WARN violation >10 min; Detection Criterion: >WARN for 20+ readings; Ontology Class: AnomalyEvent::OutOfRange" ;
+    im:tableId "SOP-002:p2:table6" ;
+    im:textSha256 "e47b4f56a534582164fa8bd91b5d1c627da4229d0b66f7874eac29bca31b03d7" .
+
+inst:prov-f400de4ebfa89852b13f a im:Provenance ;
+    im:charEnd "2027"^^xsd:nonNegativeInteger ;
+    im:charStart "1951"^^xsd:nonNegativeInteger ;
+    im:fileSha256 "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "RULE-ST04-02: VIB > 0.35 mm/s (CRITICAL) — emergency stop; inspect bearings." ;
+    im:textSha256 "642a28ef1a6c1b2f948b33a5f558fece7d827dded713dff5cf03f6eda53622c5" .
+
+inst:prov-f7a8b4344db2bb0a8cda a im:Provenance ;
+    im:bbox "[63.78, 343.87, 531.5, 487.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "925d9454d536f4510afb43cf58ca7646c6fd79676c65990bbaca233b56c763d9" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "7"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Zone: R&D Lab; Max Persons: 6; Enforcement: WARNING above 5; precision experiments may be disturbed" ;
+    im:tableId "SOP-004:p1:table2" ;
+    im:textSha256 "c3052e6e0d31fc530bbda997333da4eb274c929dd4e137298f1475f39fa0123f" .
+
+inst:prov-fb4c0c2ec85f14f1169d a im:Provenance ;
+    im:bbox "[77.95, 180.87, 517.32, 412.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "89bb8bebc3e0bc6ac9a157a9bc30b6de09fb526711cbc1c9631258444fe865b7" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "8"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Rule ID: MAINT-07; Sensor: TMP; Station: CHM01_CHEMICALSTORAGE; Trigger: TMP >20°C for >10 min; Action: Emergency ventilation; notify safety officer; Priority: CRITICAL" ;
+    im:tableId "SOP-003:p1:table1" ;
+    im:textSha256 "90c307dd276c0a76667055b00e83af0f12a5d2abfcfd9a7628c52a4cf44f7435" .
+
+inst:prov-fb64bf7c19a32d7e9a69 a im:Provenance ;
+    im:bbox "[65.2, 76.87, 530.08, 94.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "f9cd382e743add947ac0b311be9474ca726a8faf6a31f8b1e0e72a62c6fd5f7e" ;
+    im:page "2"^^xsd:positiveInteger ;
+    im:rowIndex "1"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Sensor: HUM; Unit: %RH; CRIT_LO: 25.0; WARN_LO: 30.0; Nominal: 45.0 ± 1.0; WARN_HI: 60.0; CRIT_HI: 70.0; CRITICAL Response: Inspect and notify maintenance" ;
+    im:tableId "SOP-002:p2:table1" ;
+    im:textSha256 "a2024328ff499618681044d5f3e5aa0aeb93af065f4f8d1ad7d551ae76a3d66b" .
+
+inst:prov-fbf3d529fbac6aca7f9e a im:Provenance ;
+    im:charEnd "1347"^^xsd:nonNegativeInteger ;
+    im:charStart "1276"^^xsd:nonNegativeInteger ;
+    im:fileSha256 "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "RULE-ST02-02: TMP > 210°C (CRITICAL) — emergency stop ST02, ST03, ST04." ;
+    im:textSha256 "0e2de067573be179dcdc1b180dfe071c0fae3ea3a91f47df1418cadab40ce6e7" .
+
+inst:prov-fc5d0332af3903783d6d a im:Provenance ;
+    im:charEnd "1203"^^xsd:nonNegativeInteger ;
+    im:charStart "1131"^^xsd:nonNegativeInteger ;
+    im:fileSha256 "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "RULE-ST01-03: PRS drop below 3.3 bar — inspect inlet valve within 5 min." ;
+    im:textSha256 "7715a13471accd30da4bf0acac0bbc99f239b32976e50a1c0bf701d3150f24d0" .
+
+inst:prov-fd6b05b8ac0af71b0f3c a im:Provenance ;
+    im:bbox "[65.2, 377.87, 530.08, 451.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "f9cd382e743add947ac0b311be9474ca726a8faf6a31f8b1e0e72a62c6fd5f7e" ;
+    im:page "2"^^xsd:positiveInteger ;
+    im:rowIndex "2"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Sensor: TMP; Unit: °C; CRIT_LO: 15.0; WARN_LO: 18.0; Nominal: 22.0 ± 0.2; WARN_HI: 26.0; CRIT_HI: 30.0; CRITICAL Response: Inspect and notify maintenance" ;
+    im:tableId "SOP-002:p2:table4" ;
+    im:textSha256 "8f59e7846937bcc97155a8f70ae7b3e717de6a59f9a105db604c125c638e57da" .
+
+inst:prov-ffb617d2c53baf54b7ca a im:Provenance ;
+    im:bbox "[77.95, 605.87, 517.32, 763.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "f9cd382e743add947ac0b311be9474ca726a8faf6a31f8b1e0e72a62c6fd5f7e" ;
+    im:page "2"^^xsd:positiveInteger ;
+    im:rowIndex "3"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Type: DRIFT; Definition: Monotonic deviation >15 min; Detection Criterion: Slope >0.1σ/min for 5+ readings; Ontology Class: AnomalyEvent::Drift" ;
+    im:tableId "SOP-002:p2:table6" ;
+    im:textSha256 "cd12f390dc298021faeb38cb47e0a86b00e635ae81d10c39692e313336432598" .
+
+inst:prov-ffb82c00c215c8ae8491 a im:Provenance ;
+    im:bbox "[65.2, 306.87, 530.08, 408.87]" ;
+    im:colIndex "1"^^xsd:positiveInteger ;
+    im:fileSha256 "f9cd382e743add947ac0b311be9474ca726a8faf6a31f8b1e0e72a62c6fd5f7e" ;
+    im:page "1"^^xsd:positiveInteger ;
+    im:rowIndex "3"^^xsd:positiveInteger ;
+    im:sourceKind "document" ;
+    im:sourceQuote "Sensor: PRS; Unit: bar; CRIT_LO: 4.2; WARN_LO: 4.6; Nominal: 5.2 ± 0.08; WARN_HI: 5.7; CRIT_HI: 6.2; CRITICAL Response: Inspect and notify maintenance" ;
+    im:tableId "SOP-002:p1:table2" ;
+    im:textSha256 "afbd21d79030927a68423d3afc3656cedf1e23539b2f6df20e92dacff8ee8f90" .
+
+rc:evidence-784d97c31a650495 rc:page 1 ;
+    rc:sourceDocument inst:SOP-001 ;
+    rc:sourceFileSha256 "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89" ;
+    rc:sourceQuote "Station ID: ST02_SEALING; Zone: Production Area; Depends On: ST01; Downstream Effect: Feeds ST03; thermal fault → ST04 speed reduction" ;
+    rc:sourceUnit "SOP-001:p1:table1:row3" .
+
+rc:evidence-9d76ddff8299fd72 rc:page 1 ;
+    rc:sourceDocument inst:SOP-003 ;
+    rc:sourceFileSha256 "89bb8bebc3e0bc6ac9a157a9bc30b6de09fb526711cbc1c9631258444fe865b7" ;
+    rc:sourceQuote "Pattern: ST02_SEALING-CUR↑ → ST04_PACKAGING-SPD↓; Primary Fault: Sealing motor overload; Secondary Effect: Conveyor speed drop via electrical coupling; Resolution: 1.Verify ST02-CUR trend. 2.Inspect sealing jaw. 3.Reset ST04 speed setpoint." ;
+    rc:sourceUnit "SOP-003:p1:table2:row2" .
+
+rc:evidence-c56336afb82e24b6 rc:page 2 ;
+    rc:sourceDocument inst:SOP-001 ;
+    rc:sourceFileSha256 "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89" ;
+    rc:sourceQuote "RULE-ST04-03: SPD drops below 1.00 m/s without operator command — verify RULE-ST02-04." ;
+    rc:sourceUnit "SOP-001:p2:RULE-ST04-03" .
+
+rc:review-REL-02-20261016 a rc:AIReview ;
+    rc:decision "supported_document_instruction" ;
+    rc:limitation "WARNING 수치와 지속시간을 이 문장만으로 추가하지 않는다.",
+        "상관관계 문장을 인과관계로 승격하지 않는다." ;
+    rc:reason "WARNING 발생 시 ST04 속도를 감시하라는 문장이 직접 존재한다. 센서가 다른 센서를 감시한다는 뜻이 아니라 조건에 따른 감시 의무이다." ;
+    rc:reviewDate "2026-10-16" ;
+    rc:reviewInputSha256 "3179a16510b044e914629e5eebbf52983d58def8342985fb22837e67eaf9f0b1" ;
+    rc:reviewerType "AI" .
+
+rc:review-REL-03-20261016 a rc:AIReview ;
+    rc:decision "supported_document_instruction" ;
+    rc:limitation "속도 조건과 운전자 명령 없음 조건을 함께 보존한다.",
+        "참조 규칙을 확인하라는 지시가 원인 확정을 뜻하지 않는다." ;
+    rc:reason "ST04 속도 저하 시 RULE-ST02-04를 확인하도록 명시되어 있어 참조 방향이 타당하다." ;
+    rc:reviewDate "2026-10-16" ;
+    rc:reviewInputSha256 "3179a16510b044e914629e5eebbf52983d58def8342985fb22837e67eaf9f0b1" ;
+    rc:reviewerType "AI" .
+
+rc:review-REL-04-20261016 a rc:AIReview ;
+    rc:decision "supported_with_action_label_clarification" ;
+    rc:limitation "210°C 초과를 이상(>=)으로 바꾸지 않는다. 임계값의 실제 안전성은 검증되지 않았다.",
+        "세 관계는 동일한 한 지시의 세 대상이며 독립적인 세 발견이 아니다.",
+        "자동 실행, 정지 순서·정확한 동시성, 복구 절차, 안전 인증을 추론하지 않는다." ;
+    rc:reason "원문이 ST02·ST03·ST04를 비상정지 대상으로 직접 열거한다. requiresShutdown은 포괄적이므로 emergency_stop 동작을 명시해야 한다." ;
+    rc:reviewDate "2026-10-16" ;
+    rc:reviewInputSha256 "3179a16510b044e914629e5eebbf52983d58def8342985fb22837e67eaf9f0b1" ;
+    rc:reviewerType "AI" .
+
+rc:review-REL-05-20261016 a rc:AIReview ;
+    rc:decision "supported_with_action_label_clarification" ;
+    rc:limitation "210°C 초과를 이상(>=)으로 바꾸지 않는다. 임계값의 실제 안전성은 검증되지 않았다.",
+        "세 관계는 동일한 한 지시의 세 대상이며 독립적인 세 발견이 아니다.",
+        "자동 실행, 정지 순서·정확한 동시성, 복구 절차, 안전 인증을 추론하지 않는다." ;
+    rc:reason "원문이 ST02·ST03·ST04를 비상정지 대상으로 직접 열거한다. requiresShutdown은 포괄적이므로 emergency_stop 동작을 명시해야 한다." ;
+    rc:reviewDate "2026-10-16" ;
+    rc:reviewInputSha256 "3179a16510b044e914629e5eebbf52983d58def8342985fb22837e67eaf9f0b1" ;
+    rc:reviewerType "AI" .
+
+rc:review-REL-06-20261016 a rc:AIReview ;
+    rc:decision "supported_with_action_label_clarification" ;
+    rc:limitation "210°C 초과를 이상(>=)으로 바꾸지 않는다. 임계값의 실제 안전성은 검증되지 않았다.",
+        "세 관계는 동일한 한 지시의 세 대상이며 독립적인 세 발견이 아니다.",
+        "자동 실행, 정지 순서·정확한 동시성, 복구 절차, 안전 인증을 추론하지 않는다." ;
+    rc:reason "원문이 ST02·ST03·ST04를 비상정지 대상으로 직접 열거한다. requiresShutdown은 포괄적이므로 emergency_stop 동작을 명시해야 한다." ;
+    rc:reviewDate "2026-10-16" ;
+    rc:reviewInputSha256 "3179a16510b044e914629e5eebbf52983d58def8342985fb22837e67eaf9f0b1" ;
+    rc:reviewerType "AI" .
+
+rc:review-REL-07-20261016 a rc:AIReview ;
+    rc:decision "retain_as_document_claim_only" ;
+    rc:limitation "다른 규칙의 210°C를 이 관계의 임계값으로 가져오지 않는다.",
+        "전류 변화·전기적 결합 관계의 메커니즘을 열 이상 관계로 가져오지 않는다.",
+        "직접 Rule 노드가 없어도 표 행과 Document 근거로 보관 가능하다." ;
+    rc:reason "의존성 표에 thermal fault → ST04 speed reduction이 직접 기록되어 있다. 문서 주장으로는 근거가 있으나 관측자료로 인과성을 검증한 결과가 아니다." ;
+    rc:reviewDate "2026-10-16" ;
+    rc:reviewInputSha256 "3179a16510b044e914629e5eebbf52983d58def8342985fb22837e67eaf9f0b1" ;
+    rc:reviewerType "AI" .
+
+inst:DS-ELEC-3300 a im:Document ;
+    im:identifier "DS-ELEC-3300" ;
+    im:pageCount "1"^^xsd:positiveInteger ;
+    im:sourcePath "imaks_data/datasheets/DS_Electrical_Sensors.pdf" ;
+    im:sourceSha256 "8692d87e9aa21f4dadd97d56735b40241fccd795b49b3874ad87d9e49c24b3b8" ;
+    im:title "Industrial Current Transformer Series 3300 — Datasheet" .
+
+inst:DS-THERM-2200 a im:Document ;
+    im:identifier "DS-THERM-2200" ;
+    im:pageCount "1"^^xsd:positiveInteger ;
+    im:sourcePath "imaks_data/datasheets/DS_Thermal_Sensors.pdf" ;
+    im:sourceSha256 "bcc131019cdc8cf65bf34b684d0cd4b4df0a05b4cf0f759298750c044110e2db" ;
+    im:title "Industrial Thermal Sensor Series 2200 — Datasheet" .
+
+inst:SRV01_SERVERROOM_HUM a im:Sensor ;
+    im:hasProvenance inst:prov-N0027 ;
+    im:identifier "SRV01_SERVERROOM_HUM" ;
+    im:sensorType "HUM" ;
+    im:sourceNodeId "N0027" ;
+    im:unit "%RH" .
+
+inst:ST02_SEALING_PRS a im:Sensor ;
+    im:hasProvenance inst:prov-N0015 ;
+    im:identifier "ST02_SEALING_PRS" ;
+    im:sensorType "PRS" ;
+    im:sourceNodeId "N0015" ;
+    im:unit "bar" .
+
+inst:ST03_LABELLING_SPD a im:Sensor ;
+    im:hasProvenance inst:prov-N0018 ;
+    im:identifier "ST03_LABELLING_SPD" ;
+    im:sensorType "SPD" ;
+    im:sourceNodeId "N0018" ;
+    im:unit "m/s" .
+
+inst:ST04_PACKAGING_CUR a im:Sensor ;
+    im:hasProvenance inst:prov-N0023 ;
+    im:identifier "ST04_PACKAGING_CUR" ;
+    im:sensorType "CUR" ;
+    im:sourceNodeId "N0023" ;
+    im:unit "A" .
+
+inst:candidate-SOP-001%3A%3ARULE-ST04-03 a im:OperationalRule ;
+    im:appliesToSensor inst:ST04_PACKAGING_SPD ;
+    im:conditionText "ST04_PACKAGING speed (SPD) drops below 1.00 m/s without an operator command." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-a15c367247e15ba8385f ;
+    im:identifier "candidate-SOP-001::RULE-ST04-03" ;
+    im:responseText "Verify RULE-ST02-04." ;
+    im:sourceDocument inst:SOP-001 .
+
+rc:evidence-88918870d66e5004 rc:page 1 ;
+    rc:sourceDocument inst:SOP-001 ;
+    rc:sourceFileSha256 "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89" ;
+    rc:sourceQuote "RULE-ST02-04: CUR drift at ST02_SEALING CORRELATES with speed reduction at ST04_PACKAGING due to shared electrical coupling. Monitor ST04_PACKAGING-SPD whenever ST02_SEALING-CUR triggers a WARNING." ;
+    rc:sourceUnit "SOP-001:p1:RULE-ST02-04" .
+
+inst:CAF01_CAFETERIA_HUM a im:Sensor ;
+    im:hasProvenance inst:prov-N0039 ;
+    im:identifier "CAF01_CAFETERIA_HUM" ;
+    im:sensorType "HUM" ;
+    im:sourceNodeId "N0039" ;
+    im:unit "%RH" .
+
+inst:CAF01_CAFETERIA_TMP a im:Sensor ;
+    im:hasProvenance inst:prov-N0038 ;
+    im:identifier "CAF01_CAFETERIA_TMP" ;
+    im:sensorType "TMP" ;
+    im:sourceNodeId "N0038" ;
+    im:unit "°C" .
+
+inst:RND01_RDLAB_TMP a im:Sensor ;
+    im:hasProvenance inst:prov-N0035 ;
+    im:identifier "RND01_RDLAB_TMP" ;
+    im:sensorType "TMP" ;
+    im:sourceNodeId "N0035" ;
+    im:unit "°C" .
+
+inst:ST01_FILLING_FLW a im:Sensor ;
+    im:hasProvenance inst:prov-N0012 ;
+    im:identifier "ST01_FILLING_FLW" ;
+    im:sensorType "FLW" ;
+    im:sourceNodeId "N0012" ;
+    im:unit "L/min" .
+
+inst:ST01_FILLING_TMP a im:Sensor ;
+    im:hasProvenance inst:prov-N0010 ;
+    im:identifier "ST01_FILLING_TMP" ;
+    im:sensorType "TMP" ;
+    im:sourceNodeId "N0010" ;
+    im:unit "°C" .
+
+inst:WRH01_WAREHOUSE_HUM a im:Sensor ;
+    im:hasProvenance inst:prov-N0030 ;
+    im:identifier "WRH01_WAREHOUSE_HUM" ;
+    im:sensorType "HUM" ;
+    im:sourceNodeId "N0030" ;
+    im:unit "%RH" .
+
+inst:candidate-SOP-001%3A%3ARULE-ST02-04 a im:OperationalRule ;
+    im:actionTarget inst:ST04_PACKAGING ;
+    im:appliesToSensor inst:ST02_SEALING_CUR,
+        inst:ST04_PACKAGING_SPD ;
+    im:conditionText "ST02_SEALING current (CUR) triggers a WARNING; its drift correlates with ST04_PACKAGING speed reduction due to shared electrical coupling." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-3540a76541d9ce6b4d5a ;
+    im:identifier "candidate-SOP-001::RULE-ST02-04" ;
+    im:responseText "Monitor ST04_PACKAGING speed (SPD)." ;
+    im:sourceDocument inst:SOP-001 .
+
+rc:evidence-7d3b219fd040f748 rc:page 1 ;
+    rc:sourceDocument inst:SOP-001 ;
+    rc:sourceFileSha256 "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89" ;
+    rc:sourceQuote "RULE-ST02-02: TMP > 210°C (CRITICAL) — emergency stop ST02, ST03, ST04." ;
+    rc:sourceUnit "SOP-001:p1:RULE-ST02-02" .
+
+inst:CHM01_CHEMICALSTORAGE_HUM a im:Sensor ;
+    im:hasProvenance inst:prov-N0033 ;
+    im:identifier "CHM01_CHEMICALSTORAGE_HUM" ;
+    im:sensorType "HUM" ;
+    im:sourceNodeId "N0033" ;
+    im:unit "%RH" .
+
+inst:ST03_LABELLING_CNT a im:Sensor ;
+    im:hasProvenance inst:prov-N0020 ;
+    im:identifier "ST03_LABELLING_CNT" ;
+    im:sensorType "CNT" ;
+    im:sourceNodeId "N0020" ;
+    im:unit "pcs/min" .
+
+inst:ST01_FILLING_PRS a im:Sensor ;
+    im:hasProvenance inst:prov-N0011 ;
+    im:identifier "ST01_FILLING_PRS" ;
+    im:sensorType "PRS" ;
+    im:sourceNodeId "N0011" ;
+    im:unit "bar" .
+
+inst:CHM01_CHEMICALSTORAGE_TMP a im:Sensor ;
+    im:hasProvenance inst:prov-N0032 ;
+    im:identifier "CHM01_CHEMICALSTORAGE_TMP" ;
+    im:sensorType "TMP" ;
+    im:sourceNodeId "N0032" ;
+    im:unit "°C" .
+
+inst:RND01_RDLAB_HUM a im:Sensor ;
+    im:hasProvenance inst:prov-N0036 ;
+    im:identifier "RND01_RDLAB_HUM" ;
+    im:sensorType "HUM" ;
+    im:sourceNodeId "N0036" ;
+    im:unit "%RH" .
+
+inst:ST01_FILLING a im:Station ;
+    im:feedsInto inst:ST02_SEALING ;
+    im:hasProvenance inst:prov-N0009 ;
+    im:hasSensor inst:ST01_FILLING_FLW,
+        inst:ST01_FILLING_PRS,
+        inst:ST01_FILLING_TMP ;
+    im:identifier "ST01_FILLING" ;
+    im:sourceNodeId "N0009" ;
+    im:stationType "FILLING" ;
+    im:zone "Production Area" .
+
+inst:ST03_LABELLING_TEN a im:Sensor ;
+    im:hasProvenance inst:prov-N0019 ;
+    im:identifier "ST03_LABELLING_TEN" ;
+    im:sensorType "TEN" ;
+    im:sourceNodeId "N0019" ;
+    im:unit "N" .
+
+inst:ST04_PACKAGING_VIB a im:Sensor ;
+    im:hasProvenance inst:prov-N0022 ;
+    im:identifier "ST04_PACKAGING_VIB" ;
+    im:sensorType "VIB" ;
+    im:sourceNodeId "N0022" ;
+    im:unit "mm/s" .
+
+inst:candidate-SOP-001%3A%3ARULE-ST02-02 a im:OperationalRule ;
+    im:actionTarget inst:ST02_SEALING,
+        inst:ST03_LABELLING,
+        inst:ST04_PACKAGING ;
+    im:appliesToSensor inst:ST02_SEALING_TMP ;
+    im:conditionText "ST02_SEALING temperature (TMP) > 210°C (CRITICAL)." ;
+    im:extractionMethod "llm:gpt-6.1-sol" ;
+    im:hasProvenance inst:prov-fbf3d529fbac6aca7f9e ;
+    im:identifier "candidate-SOP-001::RULE-ST02-02" ;
+    im:responseText "Emergency stop ST02_SEALING, ST03_LABELLING and ST04_PACKAGING." ;
+    im:sourceDocument inst:SOP-001 .
+
+inst:SRV01_SERVERROOM_TMP a im:Sensor ;
+    im:hasProvenance inst:prov-N0026 ;
+    im:identifier "SRV01_SERVERROOM_TMP" ;
+    im:sensorType "TMP" ;
+    im:sourceNodeId "N0026" ;
+    im:unit "°C" .
+
+inst:WRH01_WAREHOUSE_TMP a im:Sensor ;
+    im:hasProvenance inst:prov-N0029 ;
+    im:identifier "WRH01_WAREHOUSE_TMP" ;
+    im:sensorType "TMP" ;
+    im:sourceNodeId "N0029" ;
+    im:unit "°C" .
+
+inst:ST04_PACKAGING_SPD a im:Sensor ;
+    im:hasProvenance inst:prov-N0024 ;
+    im:identifier "ST04_PACKAGING_SPD" ;
+    im:sensorType "SPD" ;
+    im:sourceNodeId "N0024" ;
+    im:unit "m/s" .
+
+inst:ST02_SEALING a im:Station ;
+    im:feedsInto inst:ST03_LABELLING ;
+    im:hasProvenance inst:prov-N0013 ;
+    im:hasSensor inst:ST02_SEALING_CUR,
+        inst:ST02_SEALING_PRS,
+        inst:ST02_SEALING_TMP ;
+    im:identifier "ST02_SEALING" ;
+    im:sourceNodeId "N0013" ;
+    im:stationType "SEALING" ;
+    im:zone "Production Area" .
+
+inst:ST02_SEALING_CUR a im:Sensor ;
+    im:hasProvenance inst:prov-N0016 ;
+    im:identifier "ST02_SEALING_CUR" ;
+    im:sensorType "CUR" ;
+    im:sourceNodeId "N0016" ;
+    im:unit "A" .
+
+inst:ST02_SEALING_TMP a im:Sensor ;
+    im:hasProvenance inst:prov-N0014 ;
+    im:identifier "ST02_SEALING_TMP" ;
+    im:sensorType "TMP" ;
+    im:sourceNodeId "N0014" ;
+    im:unit "°C" .
+
+inst:ST03_LABELLING a im:Station ;
+    im:feedsInto inst:ST04_PACKAGING ;
+    im:hasProvenance inst:prov-N0017 ;
+    im:hasSensor inst:ST03_LABELLING_CNT,
+        inst:ST03_LABELLING_SPD,
+        inst:ST03_LABELLING_TEN ;
+    im:identifier "ST03_LABELLING" ;
+    im:sourceNodeId "N0017" ;
+    im:stationType "LABELLING" ;
+    im:zone "Production Area" .
+
+inst:CAF01_CAFETERIA a im:Station ;
+    im:hasProvenance inst:prov-N0037 ;
+    im:hasSensor inst:CAF01_CAFETERIA_HUM,
+        inst:CAF01_CAFETERIA_TMP ;
+    im:identifier "CAF01_CAFETERIA" ;
+    im:sourceNodeId "N0037" ;
+    im:stationType "CAFETERIA" ;
+    im:zone "Cafeteria" .
+
+inst:SRV01_SERVERROOM a im:Station ;
+    im:hasProvenance inst:prov-N0025 ;
+    im:hasSensor inst:SRV01_SERVERROOM_HUM,
+        inst:SRV01_SERVERROOM_TMP ;
+    im:identifier "SRV01_SERVERROOM" ;
+    im:sourceNodeId "N0025" ;
+    im:stationType "SERVERROOM" ;
+    im:zone "Server Room" .
+
+inst:RND01_RDLAB a im:Station ;
+    im:hasProvenance inst:prov-N0034 ;
+    im:hasSensor inst:RND01_RDLAB_HUM,
+        inst:RND01_RDLAB_TMP ;
+    im:identifier "RND01_RDLAB" ;
+    im:sourceNodeId "N0034" ;
+    im:stationType "RDLAB" ;
+    im:zone "R&D Lab" .
+
+inst:WRH01_WAREHOUSE a im:Station ;
+    im:hasProvenance inst:prov-N0028 ;
+    im:hasSensor inst:WRH01_WAREHOUSE_HUM,
+        inst:WRH01_WAREHOUSE_TMP ;
+    im:identifier "WRH01_WAREHOUSE" ;
+    im:sourceNodeId "N0028" ;
+    im:stationType "WAREHOUSE" ;
+    im:zone "General Warehouse" .
+
+inst:ST04_PACKAGING a im:Station ;
+    im:hasProvenance inst:prov-N0021 ;
+    im:hasSensor inst:ST04_PACKAGING_CUR,
+        inst:ST04_PACKAGING_SPD,
+        inst:ST04_PACKAGING_VIB ;
+    im:identifier "ST04_PACKAGING" ;
+    im:sourceNodeId "N0021" ;
+    im:stationType "PACKAGING" ;
+    im:zone "Production Area" .
+
+inst:CHM01_CHEMICALSTORAGE a im:Station ;
+    im:hasProvenance inst:prov-N0031 ;
+    im:hasSensor inst:CHM01_CHEMICALSTORAGE_HUM,
+        inst:CHM01_CHEMICALSTORAGE_TMP ;
+    im:identifier "CHM01_CHEMICALSTORAGE" ;
+    im:sourceNodeId "N0031" ;
+    im:stationType "CHEMICALSTORAGE" ;
+    im:zone "Chemical Storage" .
+
+inst:SOP-003 a im:Document ;
+    im:identifier "SOP-003" ;
+    im:pageCount "1"^^xsd:positiveInteger ;
+    im:sourcePath "imaks_data/rules/SOP_003_MaintenanceRules.pdf" ;
+    im:sourceSha256 "89bb8bebc3e0bc6ac9a157a9bc30b6de09fb526711cbc1c9631258444fe865b7" ;
+    im:title "Predictive & Corrective Maintenance Rules — Production" .
+
+inst:SOP-002 a im:Document ;
+    im:identifier "SOP-002" ;
+    im:pageCount "2"^^xsd:positiveInteger ;
+    im:sourcePath "imaks_data/rules/SOP_002_AlarmThresholds.pdf" ;
+    im:sourceSha256 "f9cd382e743add947ac0b311be9474ca726a8faf6a31f8b1e0e72a62c6fd5f7e" ;
+    im:title "Alarm Thresholds and Response Matrix — Production Line A" .
+
+inst:SOP-004 a im:Document ;
+    im:identifier "SOP-004" ;
+    im:pageCount "2"^^xsd:positiveInteger ;
+    im:sourcePath "imaks_data/rules/SOP_004_PersonnelZoneAccess.pdf" ;
+    im:sourceSha256 "925d9454d536f4510afb43cf58ca7646c6fd79676c65990bbaca233b56c763d9" ;
+    im:title "Personnel Zone Access and Alarm Response Procedures" .
+
+inst:SOP-001 a im:Document ;
+    im:identifier "SOP-001" ;
+    im:pageCount "2"^^xsd:positiveInteger ;
+    im:sourcePath "imaks_data/rules/SOP_001_OperatingProcedures.pdf" ;
+    im:sourceSha256 "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89" ;
+    im:title "Standard Operating Procedures — Production Line A" .
+

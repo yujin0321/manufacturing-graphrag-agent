@@ -1,0 +1,2 @@
+# Preserve byte hashes in the frozen stage-6 data bundle across Windows/Linux.
+artifacts/stage6_final_20261016/** -text whitespace=cr-at-eol,-blank-at-eof

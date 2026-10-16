@@ -1,0 +1,22 @@
+{
+  "stage": "6th_document_KG_final",
+  "ai_reviewed_candidates": 6,
+  "existing_seed_relation_enrichments": 1,
+  "new_structured_connections": 6,
+  "source_units_for_six_candidates": 4,
+  "emergency_stop_obligations": 1,
+  "emergency_stop_targets": 3,
+  "human_approved": 0,
+  "validated_new_causal_relations": 0,
+  "relation_triples": 210,
+  "combined_triples": 3016,
+  "relation_shacl_conforms": true,
+  "base_shacl_conforms": true,
+  "evidence_coverage": 1.0,
+  "rule_F1_unchanged": 0.861878453038674,
+  "benchmark_stage_started": false,
+  "api_calls": 0,
+  "predictions_sha256": "ed6c1c3c4e1d10262fb9c25cf2a9639c6df3224d33ada3fd4e9a9d2d07e240b4",
+  "assessment_scope": "AI source review, not independent expert validation",
+  "normalization_applied": true
+}

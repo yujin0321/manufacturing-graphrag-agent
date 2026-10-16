@@ -1,0 +1,2327 @@
+[
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-01>",
+      "<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>",
+      "<https://example.org/imaks/relation-review/v1#RelationCandidate>"
+    ],
+    "candidate_ids": [
+      "REL-01"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-01>",
+      "<https://example.org/imaks/relation-review/v1#conditionText>",
+      "\"Current drift / speed reduction; shared electrical coupling. Direction in the claim does not prove causality.\""
+    ],
+    "candidate_ids": [
+      "REL-01"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-01>",
+      "<https://example.org/imaks/relation-review/v1#evidence>",
+      "<https://example.org/imaks/relation-review/v1#evidence-88918870d66e5004>"
+    ],
+    "candidate_ids": [
+      "REL-01"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-01>",
+      "<https://example.org/imaks/relation-review/v1#evidence>",
+      "<https://example.org/imaks/relation-review/v1#evidence-9d76ddff8299fd72>"
+    ],
+    "candidate_ids": [
+      "REL-01"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-01>",
+      "<https://example.org/imaks/relation-review/v1#evidenceMode>",
+      "\"document_explicit\""
+    ],
+    "candidate_ids": [
+      "REL-01"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-01>",
+      "<https://example.org/imaks/relation-review/v1#novelty>",
+      "\"existing_seed_relation_evidence_enrichment\""
+    ],
+    "candidate_ids": [
+      "REL-01"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-01>",
+      "<https://example.org/imaks/relation-review/v1#object>",
+      "<https://example.org/imaks/id/ST04_PACKAGING_SPD>"
+    ],
+    "candidate_ids": [
+      "REL-01"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-01>",
+      "<https://example.org/imaks/relation-review/v1#relationType>",
+      "<https://example.org/imaks/relation-review/v1#documentedAssociation>"
+    ],
+    "candidate_ids": [
+      "REL-01"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-01>",
+      "<https://example.org/imaks/relation-review/v1#reviewStatus>",
+      "\"pending\""
+    ],
+    "candidate_ids": [
+      "REL-01"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-01>",
+      "<https://example.org/imaks/relation-review/v1#subject>",
+      "<https://example.org/imaks/id/ST02_SEALING_CUR>"
+    ],
+    "candidate_ids": [
+      "REL-01"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-01>",
+      "<https://example.org/imaks/relation-review/v1#supportedByRule>",
+      "<https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-ST02-04>"
+    ],
+    "candidate_ids": [
+      "REL-01"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-01>",
+      "<https://example.org/imaks/relation-review/v1#supportedByRule>",
+      "<https://example.org/imaks/id/candidate-SOP-003%3A%3ASOP-003-EX-01>"
+    ],
+    "candidate_ids": [
+      "REL-01"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-02>",
+      "<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>",
+      "<https://example.org/imaks/relation-review/v1#RelationCandidate>"
+    ],
+    "candidate_ids": [
+      "REL-02"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-02>",
+      "<https://example.org/imaks/relation-review/v1#action>",
+      "\"monitor\""
+    ],
+    "candidate_ids": [
+      "REL-02"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-02>",
+      "<https://example.org/imaks/relation-review/v1#aiReviewStatus>",
+      "\"completed\""
+    ],
+    "candidate_ids": [
+      "REL-02"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-02>",
+      "<https://example.org/imaks/relation-review/v1#assertionScope>",
+      "\"document_instruction\""
+    ],
+    "candidate_ids": [
+      "REL-02"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-02>",
+      "<https://example.org/imaks/relation-review/v1#conditionText>",
+      "\"ST02 current WARNING: monitor ST04 speed.\""
+    ],
+    "candidate_ids": [
+      "REL-02"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-02>",
+      "<https://example.org/imaks/relation-review/v1#empiricalCausalityValidated>",
+      "\"false\"^^<http://www.w3.org/2001/XMLSchema#boolean>"
+    ],
+    "candidate_ids": [
+      "REL-02"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-02>",
+      "<https://example.org/imaks/relation-review/v1#evidence>",
+      "<https://example.org/imaks/relation-review/v1#evidence-88918870d66e5004>"
+    ],
+    "candidate_ids": [
+      "REL-02"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-02>",
+      "<https://example.org/imaks/relation-review/v1#evidenceMode>",
+      "\"document_explicit\""
+    ],
+    "candidate_ids": [
+      "REL-02"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-02>",
+      "<https://example.org/imaks/relation-review/v1#hasAIReview>",
+      "<https://example.org/imaks/relation-review/v1#review-REL-02-20261016>"
+    ],
+    "candidate_ids": [
+      "REL-02"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-02>",
+      "<https://example.org/imaks/relation-review/v1#humanReviewStatus>",
+      "\"pending\""
+    ],
+    "candidate_ids": [
+      "REL-02"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-02>",
+      "<https://example.org/imaks/relation-review/v1#novelty>",
+      "\"new_structured_relation_not_new_document_fact\""
+    ],
+    "candidate_ids": [
+      "REL-02"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-02>",
+      "<https://example.org/imaks/relation-review/v1#object>",
+      "<https://example.org/imaks/id/ST04_PACKAGING_SPD>"
+    ],
+    "candidate_ids": [
+      "REL-02"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-02>",
+      "<https://example.org/imaks/relation-review/v1#relationType>",
+      "<https://example.org/imaks/relation-review/v1#requiresMonitoring>"
+    ],
+    "candidate_ids": [
+      "REL-02"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-02>",
+      "<https://example.org/imaks/relation-review/v1#reviewStatus>",
+      "\"pending\""
+    ],
+    "candidate_ids": [
+      "REL-02"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-02>",
+      "<https://example.org/imaks/relation-review/v1#subject>",
+      "<https://example.org/imaks/id/ST02_SEALING_CUR>"
+    ],
+    "candidate_ids": [
+      "REL-02"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-02>",
+      "<https://example.org/imaks/relation-review/v1#supportedByRule>",
+      "<https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-ST02-04>"
+    ],
+    "candidate_ids": [
+      "REL-02"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-02>",
+      "<https://example.org/imaks/relation-review/v1#triggerSensor>",
+      "<https://example.org/imaks/id/ST02_SEALING_CUR>"
+    ],
+    "candidate_ids": [
+      "REL-02"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-02>",
+      "<https://example.org/imaks/relation-review/v1#triggerState>",
+      "\"WARNING\""
+    ],
+    "candidate_ids": [
+      "REL-02"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-03>",
+      "<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>",
+      "<https://example.org/imaks/relation-review/v1#RelationCandidate>"
+    ],
+    "candidate_ids": [
+      "REL-03"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-03>",
+      "<https://example.org/imaks/relation-review/v1#action>",
+      "\"verify_rule\""
+    ],
+    "candidate_ids": [
+      "REL-03"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-03>",
+      "<https://example.org/imaks/relation-review/v1#aiReviewStatus>",
+      "\"completed\""
+    ],
+    "candidate_ids": [
+      "REL-03"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-03>",
+      "<https://example.org/imaks/relation-review/v1#assertionScope>",
+      "\"document_instruction\""
+    ],
+    "candidate_ids": [
+      "REL-03"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-03>",
+      "<https://example.org/imaks/relation-review/v1#comparisonOperator>",
+      "\"<\""
+    ],
+    "candidate_ids": [
+      "REL-03"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-03>",
+      "<https://example.org/imaks/relation-review/v1#conditionText>",
+      "\"ST04 speed <1.00 m/s without operator command: verify referenced rule.\""
+    ],
+    "candidate_ids": [
+      "REL-03"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-03>",
+      "<https://example.org/imaks/relation-review/v1#empiricalCausalityValidated>",
+      "\"false\"^^<http://www.w3.org/2001/XMLSchema#boolean>"
+    ],
+    "candidate_ids": [
+      "REL-03"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-03>",
+      "<https://example.org/imaks/relation-review/v1#evidence>",
+      "<https://example.org/imaks/relation-review/v1#evidence-c56336afb82e24b6>"
+    ],
+    "candidate_ids": [
+      "REL-03"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-03>",
+      "<https://example.org/imaks/relation-review/v1#evidenceMode>",
+      "\"document_explicit\""
+    ],
+    "candidate_ids": [
+      "REL-03"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-03>",
+      "<https://example.org/imaks/relation-review/v1#hasAIReview>",
+      "<https://example.org/imaks/relation-review/v1#review-REL-03-20261016>"
+    ],
+    "candidate_ids": [
+      "REL-03"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-03>",
+      "<https://example.org/imaks/relation-review/v1#humanReviewStatus>",
+      "\"pending\""
+    ],
+    "candidate_ids": [
+      "REL-03"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-03>",
+      "<https://example.org/imaks/relation-review/v1#novelty>",
+      "\"new_structured_relation_not_new_document_fact\""
+    ],
+    "candidate_ids": [
+      "REL-03"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-03>",
+      "<https://example.org/imaks/relation-review/v1#object>",
+      "<https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-ST02-04>"
+    ],
+    "candidate_ids": [
+      "REL-03"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-03>",
+      "<https://example.org/imaks/relation-review/v1#relationType>",
+      "<https://example.org/imaks/relation-review/v1#requiresRuleCheck>"
+    ],
+    "candidate_ids": [
+      "REL-03"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-03>",
+      "<https://example.org/imaks/relation-review/v1#reviewStatus>",
+      "\"pending\""
+    ],
+    "candidate_ids": [
+      "REL-03"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-03>",
+      "<https://example.org/imaks/relation-review/v1#subject>",
+      "<https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-ST04-03>"
+    ],
+    "candidate_ids": [
+      "REL-03"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-03>",
+      "<https://example.org/imaks/relation-review/v1#supportedByRule>",
+      "<https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-ST04-03>"
+    ],
+    "candidate_ids": [
+      "REL-03"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-03>",
+      "<https://example.org/imaks/relation-review/v1#thresholdValue>",
+      "\"1.0\"^^<http://www.w3.org/2001/XMLSchema#decimal>"
+    ],
+    "candidate_ids": [
+      "REL-03"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-03>",
+      "<https://example.org/imaks/relation-review/v1#triggerSensor>",
+      "<https://example.org/imaks/id/ST04_PACKAGING_SPD>"
+    ],
+    "candidate_ids": [
+      "REL-03"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-03>",
+      "<https://example.org/imaks/relation-review/v1#unit>",
+      "\"m/s\""
+    ],
+    "candidate_ids": [
+      "REL-03"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-03>",
+      "<https://example.org/imaks/relation-review/v1#withoutOperatorCommand>",
+      "\"true\"^^<http://www.w3.org/2001/XMLSchema#boolean>"
+    ],
+    "candidate_ids": [
+      "REL-03"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-04>",
+      "<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>",
+      "<https://example.org/imaks/relation-review/v1#RelationCandidate>"
+    ],
+    "candidate_ids": [
+      "REL-04"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-04>",
+      "<https://example.org/imaks/relation-review/v1#action>",
+      "\"emergency_stop\""
+    ],
+    "candidate_ids": [
+      "REL-04"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-04>",
+      "<https://example.org/imaks/relation-review/v1#aiReviewStatus>",
+      "\"completed\""
+    ],
+    "candidate_ids": [
+      "REL-04"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-04>",
+      "<https://example.org/imaks/relation-review/v1#assertionScope>",
+      "\"document_instruction\""
+    ],
+    "candidate_ids": [
+      "REL-04"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-04>",
+      "<https://example.org/imaks/relation-review/v1#comparisonOperator>",
+      "\">\""
+    ],
+    "candidate_ids": [
+      "REL-04"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-04>",
+      "<https://example.org/imaks/relation-review/v1#conditionText>",
+      "\"ST02_SEALING_TMP >210°C (CRITICAL): emergency stop ST02_SEALING.\""
+    ],
+    "candidate_ids": [
+      "REL-04"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-04>",
+      "<https://example.org/imaks/relation-review/v1#empiricalCausalityValidated>",
+      "\"false\"^^<http://www.w3.org/2001/XMLSchema#boolean>"
+    ],
+    "candidate_ids": [
+      "REL-04"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-04>",
+      "<https://example.org/imaks/relation-review/v1#evidence>",
+      "<https://example.org/imaks/relation-review/v1#evidence-7d3b219fd040f748>"
+    ],
+    "candidate_ids": [
+      "REL-04"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-04>",
+      "<https://example.org/imaks/relation-review/v1#evidenceMode>",
+      "\"document_explicit\""
+    ],
+    "candidate_ids": [
+      "REL-04"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-04>",
+      "<https://example.org/imaks/relation-review/v1#hasAIReview>",
+      "<https://example.org/imaks/relation-review/v1#review-REL-04-20261016>"
+    ],
+    "candidate_ids": [
+      "REL-04"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-04>",
+      "<https://example.org/imaks/relation-review/v1#humanReviewStatus>",
+      "\"pending\""
+    ],
+    "candidate_ids": [
+      "REL-04"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-04>",
+      "<https://example.org/imaks/relation-review/v1#novelty>",
+      "\"new_structured_relation_not_new_document_fact\""
+    ],
+    "candidate_ids": [
+      "REL-04"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-04>",
+      "<https://example.org/imaks/relation-review/v1#object>",
+      "<https://example.org/imaks/id/ST02_SEALING>"
+    ],
+    "candidate_ids": [
+      "REL-04"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-04>",
+      "<https://example.org/imaks/relation-review/v1#obligationGroup>",
+      "<https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-ST02-02>"
+    ],
+    "candidate_ids": [
+      "REL-04"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-04>",
+      "<https://example.org/imaks/relation-review/v1#relationType>",
+      "<https://example.org/imaks/relation-review/v1#requiresEmergencyStop>"
+    ],
+    "candidate_ids": [
+      "REL-04"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-04>",
+      "<https://example.org/imaks/relation-review/v1#reviewStatus>",
+      "\"pending\""
+    ],
+    "candidate_ids": [
+      "REL-04"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-04>",
+      "<https://example.org/imaks/relation-review/v1#severity>",
+      "\"CRITICAL\""
+    ],
+    "candidate_ids": [
+      "REL-04"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-04>",
+      "<https://example.org/imaks/relation-review/v1#subject>",
+      "<https://example.org/imaks/id/ST02_SEALING_TMP>"
+    ],
+    "candidate_ids": [
+      "REL-04"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-04>",
+      "<https://example.org/imaks/relation-review/v1#supportedByRule>",
+      "<https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-ST02-02>"
+    ],
+    "candidate_ids": [
+      "REL-04"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-04>",
+      "<https://example.org/imaks/relation-review/v1#thresholdValue>",
+      "\"210\"^^<http://www.w3.org/2001/XMLSchema#decimal>"
+    ],
+    "candidate_ids": [
+      "REL-04"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-04>",
+      "<https://example.org/imaks/relation-review/v1#triggerSensor>",
+      "<https://example.org/imaks/id/ST02_SEALING_TMP>"
+    ],
+    "candidate_ids": [
+      "REL-04"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-04>",
+      "<https://example.org/imaks/relation-review/v1#unit>",
+      "\"degC\""
+    ],
+    "candidate_ids": [
+      "REL-04"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-05>",
+      "<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>",
+      "<https://example.org/imaks/relation-review/v1#RelationCandidate>"
+    ],
+    "candidate_ids": [
+      "REL-05"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-05>",
+      "<https://example.org/imaks/relation-review/v1#action>",
+      "\"emergency_stop\""
+    ],
+    "candidate_ids": [
+      "REL-05"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-05>",
+      "<https://example.org/imaks/relation-review/v1#aiReviewStatus>",
+      "\"completed\""
+    ],
+    "candidate_ids": [
+      "REL-05"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-05>",
+      "<https://example.org/imaks/relation-review/v1#assertionScope>",
+      "\"document_instruction\""
+    ],
+    "candidate_ids": [
+      "REL-05"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-05>",
+      "<https://example.org/imaks/relation-review/v1#comparisonOperator>",
+      "\">\""
+    ],
+    "candidate_ids": [
+      "REL-05"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-05>",
+      "<https://example.org/imaks/relation-review/v1#conditionText>",
+      "\"ST02_SEALING_TMP >210°C (CRITICAL): emergency stop ST03_LABELLING.\""
+    ],
+    "candidate_ids": [
+      "REL-05"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-05>",
+      "<https://example.org/imaks/relation-review/v1#empiricalCausalityValidated>",
+      "\"false\"^^<http://www.w3.org/2001/XMLSchema#boolean>"
+    ],
+    "candidate_ids": [
+      "REL-05"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-05>",
+      "<https://example.org/imaks/relation-review/v1#evidence>",
+      "<https://example.org/imaks/relation-review/v1#evidence-7d3b219fd040f748>"
+    ],
+    "candidate_ids": [
+      "REL-05"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-05>",
+      "<https://example.org/imaks/relation-review/v1#evidenceMode>",
+      "\"document_explicit\""
+    ],
+    "candidate_ids": [
+      "REL-05"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-05>",
+      "<https://example.org/imaks/relation-review/v1#hasAIReview>",
+      "<https://example.org/imaks/relation-review/v1#review-REL-05-20261016>"
+    ],
+    "candidate_ids": [
+      "REL-05"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-05>",
+      "<https://example.org/imaks/relation-review/v1#humanReviewStatus>",
+      "\"pending\""
+    ],
+    "candidate_ids": [
+      "REL-05"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-05>",
+      "<https://example.org/imaks/relation-review/v1#novelty>",
+      "\"new_structured_relation_not_new_document_fact\""
+    ],
+    "candidate_ids": [
+      "REL-05"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-05>",
+      "<https://example.org/imaks/relation-review/v1#object>",
+      "<https://example.org/imaks/id/ST03_LABELLING>"
+    ],
+    "candidate_ids": [
+      "REL-05"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-05>",
+      "<https://example.org/imaks/relation-review/v1#obligationGroup>",
+      "<https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-ST02-02>"
+    ],
+    "candidate_ids": [
+      "REL-05"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-05>",
+      "<https://example.org/imaks/relation-review/v1#relationType>",
+      "<https://example.org/imaks/relation-review/v1#requiresEmergencyStop>"
+    ],
+    "candidate_ids": [
+      "REL-05"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-05>",
+      "<https://example.org/imaks/relation-review/v1#reviewStatus>",
+      "\"pending\""
+    ],
+    "candidate_ids": [
+      "REL-05"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-05>",
+      "<https://example.org/imaks/relation-review/v1#severity>",
+      "\"CRITICAL\""
+    ],
+    "candidate_ids": [
+      "REL-05"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-05>",
+      "<https://example.org/imaks/relation-review/v1#subject>",
+      "<https://example.org/imaks/id/ST02_SEALING_TMP>"
+    ],
+    "candidate_ids": [
+      "REL-05"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-05>",
+      "<https://example.org/imaks/relation-review/v1#supportedByRule>",
+      "<https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-ST02-02>"
+    ],
+    "candidate_ids": [
+      "REL-05"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-05>",
+      "<https://example.org/imaks/relation-review/v1#thresholdValue>",
+      "\"210\"^^<http://www.w3.org/2001/XMLSchema#decimal>"
+    ],
+    "candidate_ids": [
+      "REL-05"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-05>",
+      "<https://example.org/imaks/relation-review/v1#triggerSensor>",
+      "<https://example.org/imaks/id/ST02_SEALING_TMP>"
+    ],
+    "candidate_ids": [
+      "REL-05"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-05>",
+      "<https://example.org/imaks/relation-review/v1#unit>",
+      "\"degC\""
+    ],
+    "candidate_ids": [
+      "REL-05"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-06>",
+      "<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>",
+      "<https://example.org/imaks/relation-review/v1#RelationCandidate>"
+    ],
+    "candidate_ids": [
+      "REL-06"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-06>",
+      "<https://example.org/imaks/relation-review/v1#action>",
+      "\"emergency_stop\""
+    ],
+    "candidate_ids": [
+      "REL-06"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-06>",
+      "<https://example.org/imaks/relation-review/v1#aiReviewStatus>",
+      "\"completed\""
+    ],
+    "candidate_ids": [
+      "REL-06"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-06>",
+      "<https://example.org/imaks/relation-review/v1#assertionScope>",
+      "\"document_instruction\""
+    ],
+    "candidate_ids": [
+      "REL-06"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-06>",
+      "<https://example.org/imaks/relation-review/v1#comparisonOperator>",
+      "\">\""
+    ],
+    "candidate_ids": [
+      "REL-06"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-06>",
+      "<https://example.org/imaks/relation-review/v1#conditionText>",
+      "\"ST02_SEALING_TMP >210°C (CRITICAL): emergency stop ST04_PACKAGING.\""
+    ],
+    "candidate_ids": [
+      "REL-06"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-06>",
+      "<https://example.org/imaks/relation-review/v1#empiricalCausalityValidated>",
+      "\"false\"^^<http://www.w3.org/2001/XMLSchema#boolean>"
+    ],
+    "candidate_ids": [
+      "REL-06"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-06>",
+      "<https://example.org/imaks/relation-review/v1#evidence>",
+      "<https://example.org/imaks/relation-review/v1#evidence-7d3b219fd040f748>"
+    ],
+    "candidate_ids": [
+      "REL-06"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-06>",
+      "<https://example.org/imaks/relation-review/v1#evidenceMode>",
+      "\"document_explicit\""
+    ],
+    "candidate_ids": [
+      "REL-06"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-06>",
+      "<https://example.org/imaks/relation-review/v1#hasAIReview>",
+      "<https://example.org/imaks/relation-review/v1#review-REL-06-20261016>"
+    ],
+    "candidate_ids": [
+      "REL-06"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-06>",
+      "<https://example.org/imaks/relation-review/v1#humanReviewStatus>",
+      "\"pending\""
+    ],
+    "candidate_ids": [
+      "REL-06"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-06>",
+      "<https://example.org/imaks/relation-review/v1#novelty>",
+      "\"new_structured_relation_not_new_document_fact\""
+    ],
+    "candidate_ids": [
+      "REL-06"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-06>",
+      "<https://example.org/imaks/relation-review/v1#object>",
+      "<https://example.org/imaks/id/ST04_PACKAGING>"
+    ],
+    "candidate_ids": [
+      "REL-06"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-06>",
+      "<https://example.org/imaks/relation-review/v1#obligationGroup>",
+      "<https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-ST02-02>"
+    ],
+    "candidate_ids": [
+      "REL-06"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-06>",
+      "<https://example.org/imaks/relation-review/v1#relationType>",
+      "<https://example.org/imaks/relation-review/v1#requiresEmergencyStop>"
+    ],
+    "candidate_ids": [
+      "REL-06"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-06>",
+      "<https://example.org/imaks/relation-review/v1#reviewStatus>",
+      "\"pending\""
+    ],
+    "candidate_ids": [
+      "REL-06"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-06>",
+      "<https://example.org/imaks/relation-review/v1#severity>",
+      "\"CRITICAL\""
+    ],
+    "candidate_ids": [
+      "REL-06"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-06>",
+      "<https://example.org/imaks/relation-review/v1#subject>",
+      "<https://example.org/imaks/id/ST02_SEALING_TMP>"
+    ],
+    "candidate_ids": [
+      "REL-06"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-06>",
+      "<https://example.org/imaks/relation-review/v1#supportedByRule>",
+      "<https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-ST02-02>"
+    ],
+    "candidate_ids": [
+      "REL-06"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-06>",
+      "<https://example.org/imaks/relation-review/v1#thresholdValue>",
+      "\"210\"^^<http://www.w3.org/2001/XMLSchema#decimal>"
+    ],
+    "candidate_ids": [
+      "REL-06"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-06>",
+      "<https://example.org/imaks/relation-review/v1#triggerSensor>",
+      "<https://example.org/imaks/id/ST02_SEALING_TMP>"
+    ],
+    "candidate_ids": [
+      "REL-06"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-06>",
+      "<https://example.org/imaks/relation-review/v1#unit>",
+      "\"degC\""
+    ],
+    "candidate_ids": [
+      "REL-06"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-07>",
+      "<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>",
+      "<https://example.org/imaks/relation-review/v1#RelationCandidate>"
+    ],
+    "candidate_ids": [
+      "REL-07"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-07>",
+      "<https://example.org/imaks/relation-review/v1#aiReviewStatus>",
+      "\"completed\""
+    ],
+    "candidate_ids": [
+      "REL-07"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-07>",
+      "<https://example.org/imaks/relation-review/v1#assertionScope>",
+      "\"document_claim\""
+    ],
+    "candidate_ids": [
+      "REL-07"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-07>",
+      "<https://example.org/imaks/relation-review/v1#conditionText>",
+      "\"Thermal fault at sealing: documented downstream speed reduction; not an empirically validated causal link.\""
+    ],
+    "candidate_ids": [
+      "REL-07"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-07>",
+      "<https://example.org/imaks/relation-review/v1#effectDescription>",
+      "\"speed reduction\""
+    ],
+    "candidate_ids": [
+      "REL-07"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-07>",
+      "<https://example.org/imaks/relation-review/v1#empiricalCausalityValidated>",
+      "\"false\"^^<http://www.w3.org/2001/XMLSchema#boolean>"
+    ],
+    "candidate_ids": [
+      "REL-07"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-07>",
+      "<https://example.org/imaks/relation-review/v1#evidence>",
+      "<https://example.org/imaks/relation-review/v1#evidence-784d97c31a650495>"
+    ],
+    "candidate_ids": [
+      "REL-07"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-07>",
+      "<https://example.org/imaks/relation-review/v1#evidenceMode>",
+      "\"document_explicit\""
+    ],
+    "candidate_ids": [
+      "REL-07"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-07>",
+      "<https://example.org/imaks/relation-review/v1#hasAIReview>",
+      "<https://example.org/imaks/relation-review/v1#review-REL-07-20261016>"
+    ],
+    "candidate_ids": [
+      "REL-07"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-07>",
+      "<https://example.org/imaks/relation-review/v1#humanReviewStatus>",
+      "\"pending\""
+    ],
+    "candidate_ids": [
+      "REL-07"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-07>",
+      "<https://example.org/imaks/relation-review/v1#novelty>",
+      "\"new_structured_relation_not_new_document_fact\""
+    ],
+    "candidate_ids": [
+      "REL-07"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-07>",
+      "<https://example.org/imaks/relation-review/v1#object>",
+      "<https://example.org/imaks/id/ST04_PACKAGING>"
+    ],
+    "candidate_ids": [
+      "REL-07"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-07>",
+      "<https://example.org/imaks/relation-review/v1#relationType>",
+      "<https://example.org/imaks/relation-review/v1#documentedThermalEffect>"
+    ],
+    "candidate_ids": [
+      "REL-07"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-07>",
+      "<https://example.org/imaks/relation-review/v1#reviewStatus>",
+      "\"pending\""
+    ],
+    "candidate_ids": [
+      "REL-07"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-07>",
+      "<https://example.org/imaks/relation-review/v1#subject>",
+      "<https://example.org/imaks/id/ST02_SEALING>"
+    ],
+    "candidate_ids": [
+      "REL-07"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#REL-07>",
+      "<https://example.org/imaks/relation-review/v1#triggerDescription>",
+      "\"thermal fault\""
+    ],
+    "candidate_ids": [
+      "REL-07"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#evidence-784d97c31a650495>",
+      "<https://example.org/imaks/relation-review/v1#page>",
+      "\"1\"^^<http://www.w3.org/2001/XMLSchema#integer>"
+    ],
+    "candidate_ids": [
+      "REL-07"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#evidence-784d97c31a650495>",
+      "<https://example.org/imaks/relation-review/v1#sourceDocument>",
+      "<https://example.org/imaks/id/SOP-001>"
+    ],
+    "candidate_ids": [
+      "REL-07"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#evidence-784d97c31a650495>",
+      "<https://example.org/imaks/relation-review/v1#sourceFileSha256>",
+      "\"0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89\""
+    ],
+    "candidate_ids": [
+      "REL-07"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#evidence-784d97c31a650495>",
+      "<https://example.org/imaks/relation-review/v1#sourceQuote>",
+      "\"Station ID: ST02_SEALING; Zone: Production Area; Depends On: ST01; Downstream Effect: Feeds ST03; thermal fault → ST04 speed reduction\""
+    ],
+    "candidate_ids": [
+      "REL-07"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#evidence-784d97c31a650495>",
+      "<https://example.org/imaks/relation-review/v1#sourceUnit>",
+      "\"SOP-001:p1:table1:row3\""
+    ],
+    "candidate_ids": [
+      "REL-07"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#evidence-7d3b219fd040f748>",
+      "<https://example.org/imaks/relation-review/v1#page>",
+      "\"1\"^^<http://www.w3.org/2001/XMLSchema#integer>"
+    ],
+    "candidate_ids": [
+      "REL-04",
+      "REL-05",
+      "REL-06"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#evidence-7d3b219fd040f748>",
+      "<https://example.org/imaks/relation-review/v1#sourceDocument>",
+      "<https://example.org/imaks/id/SOP-001>"
+    ],
+    "candidate_ids": [
+      "REL-04",
+      "REL-05",
+      "REL-06"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#evidence-7d3b219fd040f748>",
+      "<https://example.org/imaks/relation-review/v1#sourceFileSha256>",
+      "\"0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89\""
+    ],
+    "candidate_ids": [
+      "REL-04",
+      "REL-05",
+      "REL-06"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#evidence-7d3b219fd040f748>",
+      "<https://example.org/imaks/relation-review/v1#sourceQuote>",
+      "\"RULE-ST02-02: TMP > 210°C (CRITICAL) — emergency stop ST02, ST03, ST04.\""
+    ],
+    "candidate_ids": [
+      "REL-04",
+      "REL-05",
+      "REL-06"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#evidence-7d3b219fd040f748>",
+      "<https://example.org/imaks/relation-review/v1#sourceUnit>",
+      "\"SOP-001:p1:RULE-ST02-02\""
+    ],
+    "candidate_ids": [
+      "REL-04",
+      "REL-05",
+      "REL-06"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#evidence-88918870d66e5004>",
+      "<https://example.org/imaks/relation-review/v1#page>",
+      "\"1\"^^<http://www.w3.org/2001/XMLSchema#integer>"
+    ],
+    "candidate_ids": [
+      "REL-01",
+      "REL-02"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#evidence-88918870d66e5004>",
+      "<https://example.org/imaks/relation-review/v1#sourceDocument>",
+      "<https://example.org/imaks/id/SOP-001>"
+    ],
+    "candidate_ids": [
+      "REL-01",
+      "REL-02"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#evidence-88918870d66e5004>",
+      "<https://example.org/imaks/relation-review/v1#sourceFileSha256>",
+      "\"0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89\""
+    ],
+    "candidate_ids": [
+      "REL-01",
+      "REL-02"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#evidence-88918870d66e5004>",
+      "<https://example.org/imaks/relation-review/v1#sourceQuote>",
+      "\"RULE-ST02-04: CUR drift at ST02_SEALING CORRELATES with speed reduction at ST04_PACKAGING due to shared electrical coupling. Monitor ST04_PACKAGING-SPD whenever ST02_SEALING-CUR triggers a WARNING.\""
+    ],
+    "candidate_ids": [
+      "REL-01",
+      "REL-02"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#evidence-88918870d66e5004>",
+      "<https://example.org/imaks/relation-review/v1#sourceUnit>",
+      "\"SOP-001:p1:RULE-ST02-04\""
+    ],
+    "candidate_ids": [
+      "REL-01",
+      "REL-02"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#evidence-9d76ddff8299fd72>",
+      "<https://example.org/imaks/relation-review/v1#page>",
+      "\"1\"^^<http://www.w3.org/2001/XMLSchema#integer>"
+    ],
+    "candidate_ids": [
+      "REL-01"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#evidence-9d76ddff8299fd72>",
+      "<https://example.org/imaks/relation-review/v1#sourceDocument>",
+      "<https://example.org/imaks/id/SOP-003>"
+    ],
+    "candidate_ids": [
+      "REL-01"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#evidence-9d76ddff8299fd72>",
+      "<https://example.org/imaks/relation-review/v1#sourceFileSha256>",
+      "\"89bb8bebc3e0bc6ac9a157a9bc30b6de09fb526711cbc1c9631258444fe865b7\""
+    ],
+    "candidate_ids": [
+      "REL-01"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#evidence-9d76ddff8299fd72>",
+      "<https://example.org/imaks/relation-review/v1#sourceQuote>",
+      "\"Pattern: ST02_SEALING-CUR↑ → ST04_PACKAGING-SPD↓; Primary Fault: Sealing motor overload; Secondary Effect: Conveyor speed drop via electrical coupling; Resolution: 1.Verify ST02-CUR trend. 2.Inspect sealing jaw. 3.Reset ST04 speed setpoint.\""
+    ],
+    "candidate_ids": [
+      "REL-01"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#evidence-9d76ddff8299fd72>",
+      "<https://example.org/imaks/relation-review/v1#sourceUnit>",
+      "\"SOP-003:p1:table2:row2\""
+    ],
+    "candidate_ids": [
+      "REL-01"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#evidence-c56336afb82e24b6>",
+      "<https://example.org/imaks/relation-review/v1#page>",
+      "\"2\"^^<http://www.w3.org/2001/XMLSchema#integer>"
+    ],
+    "candidate_ids": [
+      "REL-03"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#evidence-c56336afb82e24b6>",
+      "<https://example.org/imaks/relation-review/v1#sourceDocument>",
+      "<https://example.org/imaks/id/SOP-001>"
+    ],
+    "candidate_ids": [
+      "REL-03"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#evidence-c56336afb82e24b6>",
+      "<https://example.org/imaks/relation-review/v1#sourceFileSha256>",
+      "\"0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89\""
+    ],
+    "candidate_ids": [
+      "REL-03"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#evidence-c56336afb82e24b6>",
+      "<https://example.org/imaks/relation-review/v1#sourceQuote>",
+      "\"RULE-ST04-03: SPD drops below 1.00 m/s without operator command — verify RULE-ST02-04.\""
+    ],
+    "candidate_ids": [
+      "REL-03"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#evidence-c56336afb82e24b6>",
+      "<https://example.org/imaks/relation-review/v1#sourceUnit>",
+      "\"SOP-001:p2:RULE-ST04-03\""
+    ],
+    "candidate_ids": [
+      "REL-03"
+    ],
+    "origin": "source_claim_representation"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-02-20261016>",
+      "<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>",
+      "<https://example.org/imaks/relation-review/v1#AIReview>"
+    ],
+    "candidate_ids": [
+      "REL-02"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-02-20261016>",
+      "<https://example.org/imaks/relation-review/v1#decision>",
+      "\"supported_document_instruction\""
+    ],
+    "candidate_ids": [
+      "REL-02"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-02-20261016>",
+      "<https://example.org/imaks/relation-review/v1#limitation>",
+      "\"WARNING 수치와 지속시간을 이 문장만으로 추가하지 않는다.\""
+    ],
+    "candidate_ids": [
+      "REL-02"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-02-20261016>",
+      "<https://example.org/imaks/relation-review/v1#limitation>",
+      "\"상관관계 문장을 인과관계로 승격하지 않는다.\""
+    ],
+    "candidate_ids": [
+      "REL-02"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-02-20261016>",
+      "<https://example.org/imaks/relation-review/v1#reason>",
+      "\"WARNING 발생 시 ST04 속도를 감시하라는 문장이 직접 존재한다. 센서가 다른 센서를 감시한다는 뜻이 아니라 조건에 따른 감시 의무이다.\""
+    ],
+    "candidate_ids": [
+      "REL-02"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-02-20261016>",
+      "<https://example.org/imaks/relation-review/v1#reviewDate>",
+      "\"2026-10-16\""
+    ],
+    "candidate_ids": [
+      "REL-02"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-02-20261016>",
+      "<https://example.org/imaks/relation-review/v1#reviewInputSha256>",
+      "\"3179a16510b044e914629e5eebbf52983d58def8342985fb22837e67eaf9f0b1\""
+    ],
+    "candidate_ids": [
+      "REL-02"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-02-20261016>",
+      "<https://example.org/imaks/relation-review/v1#reviewerType>",
+      "\"AI\""
+    ],
+    "candidate_ids": [
+      "REL-02"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-03-20261016>",
+      "<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>",
+      "<https://example.org/imaks/relation-review/v1#AIReview>"
+    ],
+    "candidate_ids": [
+      "REL-03"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-03-20261016>",
+      "<https://example.org/imaks/relation-review/v1#decision>",
+      "\"supported_document_instruction\""
+    ],
+    "candidate_ids": [
+      "REL-03"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-03-20261016>",
+      "<https://example.org/imaks/relation-review/v1#limitation>",
+      "\"속도 조건과 운전자 명령 없음 조건을 함께 보존한다.\""
+    ],
+    "candidate_ids": [
+      "REL-03"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-03-20261016>",
+      "<https://example.org/imaks/relation-review/v1#limitation>",
+      "\"참조 규칙을 확인하라는 지시가 원인 확정을 뜻하지 않는다.\""
+    ],
+    "candidate_ids": [
+      "REL-03"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-03-20261016>",
+      "<https://example.org/imaks/relation-review/v1#reason>",
+      "\"ST04 속도 저하 시 RULE-ST02-04를 확인하도록 명시되어 있어 참조 방향이 타당하다.\""
+    ],
+    "candidate_ids": [
+      "REL-03"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-03-20261016>",
+      "<https://example.org/imaks/relation-review/v1#reviewDate>",
+      "\"2026-10-16\""
+    ],
+    "candidate_ids": [
+      "REL-03"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-03-20261016>",
+      "<https://example.org/imaks/relation-review/v1#reviewInputSha256>",
+      "\"3179a16510b044e914629e5eebbf52983d58def8342985fb22837e67eaf9f0b1\""
+    ],
+    "candidate_ids": [
+      "REL-03"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-03-20261016>",
+      "<https://example.org/imaks/relation-review/v1#reviewerType>",
+      "\"AI\""
+    ],
+    "candidate_ids": [
+      "REL-03"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-04-20261016>",
+      "<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>",
+      "<https://example.org/imaks/relation-review/v1#AIReview>"
+    ],
+    "candidate_ids": [
+      "REL-04"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-04-20261016>",
+      "<https://example.org/imaks/relation-review/v1#decision>",
+      "\"supported_with_action_label_clarification\""
+    ],
+    "candidate_ids": [
+      "REL-04"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-04-20261016>",
+      "<https://example.org/imaks/relation-review/v1#limitation>",
+      "\"210°C 초과를 이상(>=)으로 바꾸지 않는다. 임계값의 실제 안전성은 검증되지 않았다.\""
+    ],
+    "candidate_ids": [
+      "REL-04"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-04-20261016>",
+      "<https://example.org/imaks/relation-review/v1#limitation>",
+      "\"세 관계는 동일한 한 지시의 세 대상이며 독립적인 세 발견이 아니다.\""
+    ],
+    "candidate_ids": [
+      "REL-04"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-04-20261016>",
+      "<https://example.org/imaks/relation-review/v1#limitation>",
+      "\"자동 실행, 정지 순서·정확한 동시성, 복구 절차, 안전 인증을 추론하지 않는다.\""
+    ],
+    "candidate_ids": [
+      "REL-04"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-04-20261016>",
+      "<https://example.org/imaks/relation-review/v1#reason>",
+      "\"원문이 ST02·ST03·ST04를 비상정지 대상으로 직접 열거한다. requiresShutdown은 포괄적이므로 emergency_stop 동작을 명시해야 한다.\""
+    ],
+    "candidate_ids": [
+      "REL-04"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-04-20261016>",
+      "<https://example.org/imaks/relation-review/v1#reviewDate>",
+      "\"2026-10-16\""
+    ],
+    "candidate_ids": [
+      "REL-04"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-04-20261016>",
+      "<https://example.org/imaks/relation-review/v1#reviewInputSha256>",
+      "\"3179a16510b044e914629e5eebbf52983d58def8342985fb22837e67eaf9f0b1\""
+    ],
+    "candidate_ids": [
+      "REL-04"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-04-20261016>",
+      "<https://example.org/imaks/relation-review/v1#reviewerType>",
+      "\"AI\""
+    ],
+    "candidate_ids": [
+      "REL-04"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-05-20261016>",
+      "<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>",
+      "<https://example.org/imaks/relation-review/v1#AIReview>"
+    ],
+    "candidate_ids": [
+      "REL-05"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-05-20261016>",
+      "<https://example.org/imaks/relation-review/v1#decision>",
+      "\"supported_with_action_label_clarification\""
+    ],
+    "candidate_ids": [
+      "REL-05"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-05-20261016>",
+      "<https://example.org/imaks/relation-review/v1#limitation>",
+      "\"210°C 초과를 이상(>=)으로 바꾸지 않는다. 임계값의 실제 안전성은 검증되지 않았다.\""
+    ],
+    "candidate_ids": [
+      "REL-05"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-05-20261016>",
+      "<https://example.org/imaks/relation-review/v1#limitation>",
+      "\"세 관계는 동일한 한 지시의 세 대상이며 독립적인 세 발견이 아니다.\""
+    ],
+    "candidate_ids": [
+      "REL-05"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-05-20261016>",
+      "<https://example.org/imaks/relation-review/v1#limitation>",
+      "\"자동 실행, 정지 순서·정확한 동시성, 복구 절차, 안전 인증을 추론하지 않는다.\""
+    ],
+    "candidate_ids": [
+      "REL-05"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-05-20261016>",
+      "<https://example.org/imaks/relation-review/v1#reason>",
+      "\"원문이 ST02·ST03·ST04를 비상정지 대상으로 직접 열거한다. requiresShutdown은 포괄적이므로 emergency_stop 동작을 명시해야 한다.\""
+    ],
+    "candidate_ids": [
+      "REL-05"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-05-20261016>",
+      "<https://example.org/imaks/relation-review/v1#reviewDate>",
+      "\"2026-10-16\""
+    ],
+    "candidate_ids": [
+      "REL-05"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-05-20261016>",
+      "<https://example.org/imaks/relation-review/v1#reviewInputSha256>",
+      "\"3179a16510b044e914629e5eebbf52983d58def8342985fb22837e67eaf9f0b1\""
+    ],
+    "candidate_ids": [
+      "REL-05"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-05-20261016>",
+      "<https://example.org/imaks/relation-review/v1#reviewerType>",
+      "\"AI\""
+    ],
+    "candidate_ids": [
+      "REL-05"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-06-20261016>",
+      "<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>",
+      "<https://example.org/imaks/relation-review/v1#AIReview>"
+    ],
+    "candidate_ids": [
+      "REL-06"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-06-20261016>",
+      "<https://example.org/imaks/relation-review/v1#decision>",
+      "\"supported_with_action_label_clarification\""
+    ],
+    "candidate_ids": [
+      "REL-06"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-06-20261016>",
+      "<https://example.org/imaks/relation-review/v1#limitation>",
+      "\"210°C 초과를 이상(>=)으로 바꾸지 않는다. 임계값의 실제 안전성은 검증되지 않았다.\""
+    ],
+    "candidate_ids": [
+      "REL-06"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-06-20261016>",
+      "<https://example.org/imaks/relation-review/v1#limitation>",
+      "\"세 관계는 동일한 한 지시의 세 대상이며 독립적인 세 발견이 아니다.\""
+    ],
+    "candidate_ids": [
+      "REL-06"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-06-20261016>",
+      "<https://example.org/imaks/relation-review/v1#limitation>",
+      "\"자동 실행, 정지 순서·정확한 동시성, 복구 절차, 안전 인증을 추론하지 않는다.\""
+    ],
+    "candidate_ids": [
+      "REL-06"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-06-20261016>",
+      "<https://example.org/imaks/relation-review/v1#reason>",
+      "\"원문이 ST02·ST03·ST04를 비상정지 대상으로 직접 열거한다. requiresShutdown은 포괄적이므로 emergency_stop 동작을 명시해야 한다.\""
+    ],
+    "candidate_ids": [
+      "REL-06"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-06-20261016>",
+      "<https://example.org/imaks/relation-review/v1#reviewDate>",
+      "\"2026-10-16\""
+    ],
+    "candidate_ids": [
+      "REL-06"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-06-20261016>",
+      "<https://example.org/imaks/relation-review/v1#reviewInputSha256>",
+      "\"3179a16510b044e914629e5eebbf52983d58def8342985fb22837e67eaf9f0b1\""
+    ],
+    "candidate_ids": [
+      "REL-06"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-06-20261016>",
+      "<https://example.org/imaks/relation-review/v1#reviewerType>",
+      "\"AI\""
+    ],
+    "candidate_ids": [
+      "REL-06"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-07-20261016>",
+      "<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>",
+      "<https://example.org/imaks/relation-review/v1#AIReview>"
+    ],
+    "candidate_ids": [
+      "REL-07"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-07-20261016>",
+      "<https://example.org/imaks/relation-review/v1#decision>",
+      "\"retain_as_document_claim_only\""
+    ],
+    "candidate_ids": [
+      "REL-07"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-07-20261016>",
+      "<https://example.org/imaks/relation-review/v1#limitation>",
+      "\"다른 규칙의 210°C를 이 관계의 임계값으로 가져오지 않는다.\""
+    ],
+    "candidate_ids": [
+      "REL-07"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-07-20261016>",
+      "<https://example.org/imaks/relation-review/v1#limitation>",
+      "\"전류 변화·전기적 결합 관계의 메커니즘을 열 이상 관계로 가져오지 않는다.\""
+    ],
+    "candidate_ids": [
+      "REL-07"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-07-20261016>",
+      "<https://example.org/imaks/relation-review/v1#limitation>",
+      "\"직접 Rule 노드가 없어도 표 행과 Document 근거로 보관 가능하다.\""
+    ],
+    "candidate_ids": [
+      "REL-07"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-07-20261016>",
+      "<https://example.org/imaks/relation-review/v1#reason>",
+      "\"의존성 표에 thermal fault → ST04 speed reduction이 직접 기록되어 있다. 문서 주장으로는 근거가 있으나 관측자료로 인과성을 검증한 결과가 아니다.\""
+    ],
+    "candidate_ids": [
+      "REL-07"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-07-20261016>",
+      "<https://example.org/imaks/relation-review/v1#reviewDate>",
+      "\"2026-10-16\""
+    ],
+    "candidate_ids": [
+      "REL-07"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-07-20261016>",
+      "<https://example.org/imaks/relation-review/v1#reviewInputSha256>",
+      "\"3179a16510b044e914629e5eebbf52983d58def8342985fb22837e67eaf9f0b1\""
+    ],
+    "candidate_ids": [
+      "REL-07"
+    ],
+    "origin": "AI_review_metadata"
+  },
+  {
+    "triple": [
+      "<https://example.org/imaks/relation-review/v1#review-REL-07-20261016>",
+      "<https://example.org/imaks/relation-review/v1#reviewerType>",
+      "\"AI\""
+    ],
+    "candidate_ids": [
+      "REL-07"
+    ],
+    "origin": "AI_review_metadata"
+  }
+]

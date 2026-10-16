@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-16",
+  "inputs": {
+    "kg_build\\pre_benchmark_relations_20261016\\candidates.json": "17b30de13d41e1851e9ed76fbbc090f9b45532d26350ffc1c3d407105c4d7e98",
+    "kg_build\\pre_benchmark_relations_20261016\\candidate_kg.ttl": "95af8b2aff7cb8bbcbcd998c46dfff94b10544f51191bf0a5773150c800edaf0",
+    "kg_build\\pre_benchmark_relations_20261016\\human_review.json": "c1bc247ba0d4686df533242c09484c0b4e6ad86f0dc7063c01f4a7bbcf9af6ea",
+    "kg_build\\pre_benchmark_relations_20261016\\approved_relations.ttl": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "kg_build\\openai_sol_v2_20261016\\llm_predictions.jsonl": "ed6c1c3c4e1d10262fb9c25cf2a9639c6df3224d33ada3fd4e9a9d2d07e240b4"
+  },
+  "ai_review_sha256": "3179a16510b044e914629e5eebbf52983d58def8342985fb22837e67eaf9f0b1",
+  "input_mode": "local_source_pdf_verified",
+  "builder_sha256": "a5859929e0d96aa682c589688067267065634c22873072ae1a1e723c1a5acbdc",
+  "source_inputs_unchanged": true,
+  "outputs": {
+    "base_shacl.txt": "4d83fbfef17dc0841bf4a82e0e82bbbedb0bed7283467fb1be959416c19de8c2",
+    "document_kg.ttl": "614afb25ded1eb7fa5e72e18ae5523a55e7edf9619ee473e0b380ed3bad58bde",
+    "human_approved_relations.ttl": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "ontology.ttl": "79bca52ce32954c1b4c456dcaffedb49d6e2bf30e0c4563390d776c46403d82e",
+    "relation_shacl.txt": "4d83fbfef17dc0841bf4a82e0e82bbbedb0bed7283467fb1be959416c19de8c2",
+    "relations.json": "056c3f56d2f1c2a3e9deac4415da9a59101d69be97a1c404cccb7d3b4f759a73",
+    "reviewed_relations.ttl": "fbd5dd85afb6e485e23671593f62e01054cff826fbda942c516638e57f6c5e71",
+    "shapes.ttl": "947ef51d56b7edaad75070f265a73bb6135d5dc033fae4331824b3ffdad1e7ab",
+    "summary.json": "37cd05b021665bf5a45e898c2b947a0115c527917f34979b1b482c47d0434ed9",
+    "triple_evidence.json": "efb56499fdff2410bdc3694cdc28fff5e0d4070db637433bf90ccabf136ac3b8"
+  },
+  "reproduce": "python -m imaks_kg.kg.finalize_stage6",
+  "note": "RDF blank-node serialization may vary; semantic graph content is reproducible."
+}

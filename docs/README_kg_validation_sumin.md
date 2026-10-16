@@ -1,5 +1,15 @@
 # KG Validation Pipeline (kg-val-sumin)
 
+## 2026-10-16 업데이트
+
+실제 실행 완료: [구현·결과 보고서](../reports/sumin_sol_implementation_results_impl.md). SOP 105건 / 정답 86건, F1_content 0.785340, 분류까지 F1 0.544503. 후보 KG SHACL 통과.
+
+GPT-6.1 Sol 실험은 [연결·실행 안내](sol_api_setup_sumin.md)를 따른다.
+[방향 검토](direction_review_sumin.md)와 사용자 제공 두 평가 정의서를 기준으로 한다.
+`sol_extract`가 자동 예측을 고정하고 `eval.sol_evaluate`가 SBERT/Hungarian으로 평가한다.
+아래 기존 `eval.metrics` 명령은 어휘 대리 기준선이며 팀 정의의 F1_content가 아니다.
+기존 `llm_rule_extract`는 이전 구현으로 남겼으며 새 유료 실험의 실행 경로로 사용하지 않는다.
+
 이 작업은 현재 `main`의 `ontology_v1/` 설계를 기준으로, 검증된 전처리 산출물에서 KG ABox와 Rule 후보를 구축하고 `ground_truth.csv`와 대조하는 첫 정량 평가 파이프라인이다.
 
 ## 원칙
@@ -10,7 +20,7 @@
 - 기준 스키마는 `ontology_v1/ontology.ttl`, 검증 제약은 `ontology_v1/shapes.ttl`이다.
 - SOP-002 threshold table의 Station 매핑은 `pages.jsonl`의 `StationID Thresholds` heading과 `tables.jsonl`의 page/table 순서로 결정한다. 새 heading 없이 다음 페이지로 이어지는 표는 직전 Station heading의 continuation으로 처리한다.
 
-## 실행
+## 기존 결정적 기준선 실행
 
 의존성 설치:
 
@@ -32,17 +42,7 @@ PYTHONPATH=src python3 -m imaks_kg.eval.metrics \
   --out-dir evaluation
 ```
 
-LLM 추출을 실행하려면 API 키와 모델을 지정한 뒤 별도 출력 파일을 평가한다.
-
-```bash
-export OPENAI_API_KEY=...
-export OPENAI_MODEL=...
-PYTHONPATH=src python3 -m imaks_kg.kg_build.llm_rule_extract --out kg_build/latest
-PYTHONPATH=src python3 -m imaks_kg.eval.metrics \
-  --pred kg_build/latest/rules_llm_extracted.jsonl \
-  --ground-truth preprocessed/final_v1/evaluation/rules_ground_truth_original.csv \
-  --out-dir evaluation
-```
+새 LLM 실행·평가는 [Sol 실행 안내](sol_api_setup_sumin.md)를 따른다. 기존 `latest` 산출물은 기준선으로 보존하고 실제 Sol 결과는 `kg_build/sumin-sol-v1-live/`에 저장한다.
 
 ## 산출물
 
@@ -59,9 +59,9 @@ PYTHONPATH=src python3 -m imaks_kg.eval.metrics \
 
 `kg_build/`와 `evaluation/`은 Git 추적 대상이 아니다.
 
-## 현재 한계
+## 기존 기준선의 범위
 
-- `rule_extract`는 deterministic baseline이고, `llm_rule_extract`는 실제 LLM 호출용 추출기다. 두 결과는 같은 평가 스키마를 사용한다.
-- 평가 매칭은 외부 임베딩 모델 없이 동작하도록 lexical content similarity를 기본값으로 사용한다.
+- `rule_extract`는 deterministic baseline이고, `llm_rule_extract`는 이전 추출기다. 새 실제 실행은 `sol_extract`를 사용한다.
+- 위 기존 평가 명령은 lexical content similarity 대리 지표다. 새 `sol_evaluate`는 첨부 MD에 정의된 MiniLM 임베딩을 사용한다.
 - seed KG와의 구조 비교는 `src/imaks_kg/eval/seed_reference.py`로 분리했으며 KG 구축 경로에서는 사용하지 않는다.
 - SOP-002 threshold table에서 문서 heading으로 Station을 결정할 수 없거나, 문서에서 추출한 Station ID가 전처리 센서 입력으로 구축한 Station과 일치하지 않으면 임의 추정하지 않고 실패 처리한다.

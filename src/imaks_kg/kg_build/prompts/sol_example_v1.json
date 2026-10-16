@@ -1,0 +1,38 @@
+{
+  "input": "Unit DEMO-P1: Once the violet beacon flashes, latch the QZ_MIXER hatch and log the occurrence.",
+  "output": {
+    "rules": [
+      {
+        "class": "OperationalRule",
+        "printed_rule_id": "",
+        "condition": "The violet beacon flashes",
+        "action": "Latch the QZ_MIXER hatch and log the occurrence",
+        "ruleSeverity": "",
+        "sensors": [],
+        "action_targets": [
+          "QZ_MIXER"
+        ],
+        "evidence": [
+          {
+            "unit_id": "DEMO-P1",
+            "quote": "Once the violet beacon flashes, latch the QZ_MIXER hatch and log the occurrence."
+          }
+        ],
+        "priority": "",
+        "numeric": {
+          "nominal": "",
+          "critLo": "",
+          "warnLo": "",
+          "warnHi": "",
+          "critHi": ""
+        }
+      }
+    ],
+    "coverage": [
+      {
+        "unit_id": "DEMO-P1",
+        "disposition": "included"
+      }
+    ]
+  }
+}

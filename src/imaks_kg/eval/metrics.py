@@ -31,7 +31,7 @@ def summarize(predictions, truths, pairs):
         by_class[klass] = {
             "predicted": p_count, "ground_truth": t_count, "matched": c_tp,
             "precision": c_p, "recall": c_r,
-            "f1_content": (2 * c_p * c_r / (c_p + c_r)) if c_p + c_r else 0.0,
+            "f1_lexical_proxy": (2 * c_p * c_r / (c_p + c_r)) if c_p + c_r else 0.0,
         }
     return {
         "predicted_count": len(predictions),
@@ -39,7 +39,7 @@ def summarize(predictions, truths, pairs):
         "matched_count": tp,
         "precision": precision,
         "recall": recall,
-        "f1_content": f1,
+        "f1_lexical_proxy": f1,
         "by_class": by_class,
     }
 

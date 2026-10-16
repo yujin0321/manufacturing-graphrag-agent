@@ -1,6 +1,7 @@
 """Export built KG JSONL artifacts to Turtle for SHACL validation."""
 import argparse
 import re
+from decimal import Decimal
 from pathlib import Path
 
 from imaks_kg.common.io_utils import write_text
@@ -9,6 +10,7 @@ from imaks_kg.settings import REPO_ROOT
 
 
 NUMERIC_PROPS = {"page", "pageCount", "charStart", "charEnd", "rowIndex", "colIndex"}
+DECIMAL_PROPS = {"nominal", "warnHi", "warnLo", "critHi", "critLo"}
 RULE_CLASS_PROPS = {
     "condition": "conditionText",
     "action": "responseText",
@@ -18,6 +20,8 @@ RULE_CLASS_PROPS = {
     "critLo": "critLo",
     "warnHi": "warnHi",
     "warnLo": "warnLo",
+    "nominal": "nominal",
+    "priority": "priority",
 }
 
 
@@ -36,6 +40,11 @@ def prop_line(pred, value):
     dtype = None
     if pred in NUMERIC_PROPS:
         dtype = "positiveInteger" if pred in {"page", "pageCount", "rowIndex", "colIndex"} else "nonNegativeInteger"
+    elif pred in DECIMAL_PROPS:
+        number = Decimal(str(value))
+        if not number.is_finite():
+            raise ValueError(f"Nonfinite numeric property: {pred}")
+        value, dtype = format(number, "f"), "decimal"
     return f"    im:{pred} {lit(value, dtype)}"
 
 
@@ -74,9 +83,12 @@ def export_ttl(build_dir=None, out_path=None):
         labels = n.get("labels") or []
         if not labels:
             continue
-        lines.append(typed_node(n["id"], labels[0], n.get("properties", {})))
+        props = {k: v for k, v in n.get("properties", {}).items() if k != "source" and k not in DECIMAL_PROPS}
+        lines.append(typed_node(n["id"], labels[0], props))
     for r in rels:
         lines.append(f"inst:{iri_name(r['source'])} im:{r['type']} inst:{iri_name(r['target'])} .\n")
+        for pid in r.get("provenanceIds", []):
+            lines.append(f"inst:{iri_name(r['source'])} im:hasProvenance inst:{iri_name(pid)} .")
     for d in docs:
         lines.append(typed_node(d["id"], "Document", d.get("properties", {})))
     for p in provs:
@@ -86,8 +98,10 @@ def export_ttl(build_dir=None, out_path=None):
         klass = r.get("class", "Rule")
         props = {"identifier": rid}
         for src, dst in RULE_CLASS_PROPS.items():
-            if r.get(src):
+            if r.get(src) not in (None, ""):
                 props[dst] = r[src]
+        if r.get("class") == "ThresholdRule":
+            props.update({k: v for k, v in r.get("numeric", {}).items() if k in DECIMAL_PROPS and v not in (None, "")})
         lines.append(typed_node(rid, klass, props).rstrip())
         tail = []
         doc = r.get("sourceDocument")
@@ -96,12 +110,16 @@ def export_ttl(build_dir=None, out_path=None):
         station = r.get("station")
         if doc:
             tail.append(f"inst:{iri_name(rid)} im:sourceDocument inst:{iri_name(doc)} .")
-        if prov:
-            tail.append(f"inst:{iri_name(rid)} im:hasProvenance inst:{iri_name(prov)} .")
-        if sensor in sensors:
-            tail.append(f"inst:{iri_name(rid)} im:appliesToSensor inst:{iri_name(sensor)} .")
-        if station in stations:
-            tail.append(f"inst:{iri_name(rid)} im:actionTarget inst:{iri_name(station)} .")
+        for pid in r.get("provenanceIds", [prov] if prov else []):
+            tail.append(f"inst:{iri_name(rid)} im:hasProvenance inst:{iri_name(pid)} .")
+        for sid in r.get("sensors", [sensor] if sensor else []):
+            if sid not in sensors:
+                raise ValueError(f"Unknown sensor in {rid}: {sid}")
+            tail.append(f"inst:{iri_name(rid)} im:appliesToSensor inst:{iri_name(sid)} .")
+        for sid in r.get("action_targets", [station] if station else []):
+            if sid not in stations:
+                raise ValueError(f"Unknown action target in {rid}: {sid}")
+            tail.append(f"inst:{iri_name(rid)} im:actionTarget inst:{iri_name(sid)} .")
         lines.extend(tail)
         lines.append("")
 

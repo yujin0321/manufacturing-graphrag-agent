@@ -99,6 +99,7 @@ def station_type(station_id):
 
 def build_station_sensor(layout: PreprocessedLayout):
     header, rows = read_csv_rows(layout.sensor_input)
+    input_source = rel(layout.sensor_input) if layout.sensor_input.is_relative_to(REPO_ROOT) else str(layout.sensor_input)
     required = {"station_id", "sensor_id", "sensor_type", "unit", "zone"}
     missing = required - set(header)
     if missing:
@@ -121,14 +122,14 @@ def build_station_sensor(layout: PreprocessedLayout):
                 "identifier": sid,
                 "stationType": station_type(sid),
                 "zone": r["zone"],
-                "source": rel(layout.sensor_input) if layout.sensor_input.is_relative_to(REPO_ROOT) else str(layout.sensor_input),
+                "source": input_source,
             },
         })
         props = {
             "identifier": sensor_id,
             "sensorType": r["sensor_type"],
             "unit": r["unit"],
-            "source": rel(layout.sensor_input) if layout.sensor_input.is_relative_to(REPO_ROOT) else str(layout.sensor_input),
+            "source": input_source,
         }
         for src, dst in (
             ("nominal", "nominal"), ("nominalValue", "nominal"),
@@ -154,7 +155,7 @@ def build_station_sensor(layout: PreprocessedLayout):
                 "source": r["station_id"],
                 "target": r["sensor_id"],
                 "type": "hasSensor",
-                "properties": {"source": rel(layout.sensor_input) if layout.sensor_input.is_relative_to(REPO_ROOT) else str(layout.sensor_input)},
+                "properties": {"source": input_source},
             })
 
     multi = {k: sorted(v) for k, v in sensor_to_station.items() if len(v) != 1}

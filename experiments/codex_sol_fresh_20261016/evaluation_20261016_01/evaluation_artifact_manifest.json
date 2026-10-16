@@ -1,0 +1,16 @@
+{
+  "document_scores.csv": "7bf92a9faa860809585e4df1ec3824b8013a75f5daa7a8899e02fba20e04e868",
+  "evaluation_policy.json": "e98140b9e4cfc87ad844d41a52483b9c77abec3e90aff0e3a07834d266cc1d5b",
+  "evaluation_results.json": "87d6b5fd68f06a0433329513166658918d68ad6de7b2478b67c9a2dbb305deb6",
+  "matches.local.jsonl": "83d127309918b39a41b8c01ba267fdc753bffcb59da78a6885a5dfe9e620fda9",
+  "numeric_diagnostics.local.json": "382be3ab16e7211ae52799705d251d16b610c92d29d3ef16b12234d385d7649b",
+  "pre_evaluation_lock.json": "c10912e34af424d6b498c8967c8ca041dbf57cd58cb3dd6552c8e8eddee0b1cd",
+  "pre_evaluation_lock.sha256": "59ccba4c8337cc204c0cdcf5ec1315428d717ee7e66aafc2b60f2c1f32c95482",
+  "prepare_evaluation.py": "f986a9dbb390c800ce6d5d23fcde94363affe9d496726f75ca0888df581d1c5d",
+  "requirements.lock.txt": "f2c654f0ebf375a29de6f1da97c2158d55b990c980741e0d50b692ad4c18a706",
+  "similarity_matrices.local.npz": "84b0efc3bebd785f657cde2d91e3e5fb28e7f9d21dfc42ae985fffc3b27d2b39",
+  "src/imaks_kg/eval/__main__.py": "7e358fce3e113fd6937579cab08f734d8735717d5a175640e86a755eae8fb6a4",
+  "write_evaluated_report.py": "99f968a90bc69fce52fc547ba153a1c6403680544c10be16e44a8801289ae756",
+  "최종평가.md": "4b02203e0cf3ca76f9e3dc0c4a5d7e0e666314ae4a93526da18b6c970aabb423",
+  "평가_재현방법.md": "9a6b55c8897706c443afde84b19835d2d2bbcfe9e538a0e5047cd3e383aefc89"
+}

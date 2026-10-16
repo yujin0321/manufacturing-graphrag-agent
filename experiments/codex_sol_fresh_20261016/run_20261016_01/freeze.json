@@ -1,0 +1,34 @@
+{
+  "format": "v1",
+  "stage": "original predictions frozen before validation/filter/review",
+  "inputs": {
+    "chunks.jsonl": "7616d25cc638c47474324edc3fa22c011671fdff87a1735806ffa28854591665",
+    "pages.jsonl": "b2a687fb52f2b4e686fd2a84293fe1ffac5899226595946e48157c1e387cca94",
+    "tables.jsonl": "5659c0fa0467e85a9540f41151a9443b66044c966782cfa6e3225e3b6094f039",
+    "doc_manifest.csv": "a10f85e849911593b5104a4a152b2afbfc0325af18e64afc2769f0ca73e15f71",
+    "ontology.ttl": "a7a56c166f94911a8f97ba37760c163ca2f47fb355e9e2c96ba7ae3d066d0968",
+    "shapes.ttl": "d4c649c0f0ca316f36db1a8d1ec07ca7039f962c734f93f74ac8052c2408ac68"
+  },
+  "artifacts": {
+    "extraction_policy.txt": "734ef865d4e34fca881d3f2a14959d3906af5860a1397bfc05069eca7e121620",
+    "output_schema.json": "da15f55c86320a08c126b0994175f68b8848b4004bd2f084090a7016291d27b0",
+    "configuration.json": "9bacae850c7e68fded7acb3a2954324c4b7f49886c547707b61fb51f37881491",
+    "prompt.txt": "aabfafc2a88861a7c62eea044acc644e021a80e616f7fe57f786590db6907b40",
+    "extract.py": "b722e4f027ad2f8bac1e4f3bef78ab7e5b0715ad32cef6fac1042666eaef0d33",
+    "predictions.raw.jsonl": "179f66e9c4dad9fd99c71528fece42bea58edb76409d6ff4f6c2172567af39ef",
+    "entities.raw.jsonl": "5089b646fcb3da15706a54ecf12bf3219eb865b987d07a533542e83685a6e20e",
+    "relations.raw.jsonl": "b59da093164fefedb43c8cb6d43a01986ba0ae53bb27ed8efc2160efc33020b2",
+    "relations.deferred.jsonl": "11aa9c02ced027d7213102c831e0bb79a3ea9d58603ffcf661ce7b9c28f6492e",
+    "reading_coverage.json": "8c623a8e5342749ef150be39bfbe6dfff91be6d0cb72de4a3791d3d9838b43ba",
+    "input_inventory.json": "a8c5b0d8bad2e9bf5b2bba0dac3a6d47628699424998343ff843cdb159c13d23"
+  },
+  "model": {
+    "requested": "GPT-6.1 Sol",
+    "actual": "미확인",
+    "actual_model_evidence": null
+  },
+  "api_used": false,
+  "evaluation": "고정 후 별도 평가 대기",
+  "prompt_scope": "prompt.txt is task execution prompt record; not a full transcript of system/developer instructions",
+  "exposure": "Input-isolated chat; project has historical gold exposure; allowed ontology/shapes disclose design references and counts. Not an independent blind test."
+}

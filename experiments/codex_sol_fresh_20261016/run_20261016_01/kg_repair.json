@@ -1,0 +1,14 @@
+{
+  "reason": "First pySHACL run matched enum values by RDF term identity: explicitly xsd:string literals differed from simple literals in supplied sh:in lists. Re-render those three enum predicates as simple literals. Ontology/shapes and original predictions unchanged.",
+  "changes": {
+    "stationType": 9,
+    "sensorType": 22,
+    "sourceKind": 1090
+  },
+  "conforms": true,
+  "validation_results": 0,
+  "triples": 11800,
+  "candidate_sha256": "3c3036e7cf025aaea5d62b9e55bef329f9397bbdb50eb9a694bd004cfc8511e0",
+  "previous_candidate_preserved": true,
+  "source_semantics_changed": false
+}

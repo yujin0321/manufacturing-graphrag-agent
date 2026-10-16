@@ -1,0 +1,192 @@
+{
+  "SOP-001": {
+    "pages": [
+      1,
+      2
+    ],
+    "chunks": [
+      "SOP-001:p1:text1",
+      "SOP-001:p1:table1:chunk",
+      "SOP-001:p1:text2",
+      "SOP-001:p1:RULE-ST01-01",
+      "SOP-001:p1:RULE-ST01-02",
+      "SOP-001:p1:RULE-ST01-03",
+      "SOP-001:p1:text3",
+      "SOP-001:p1:RULE-ST02-01",
+      "SOP-001:p1:RULE-ST02-02",
+      "SOP-001:p1:RULE-ST02-03",
+      "SOP-001:p1:RULE-ST02-04",
+      "SOP-001:p1:text4",
+      "SOP-001:p1:RULE-ST03-01",
+      "SOP-001:p1:RULE-ST03-02",
+      "SOP-001:p1:RULE-ST03-03",
+      "SOP-001:p1:text5",
+      "SOP-001:p1:RULE-ST04-01",
+      "SOP-001:p1:RULE-ST04-02",
+      "SOP-001:p2:RULE-ST04-03",
+      "SOP-001:p2:text1",
+      "SOP-001:p2:RULE-SRV01-01",
+      "SOP-001:p2:RULE-SRV01-02",
+      "SOP-001:p2:text2",
+      "SOP-001:p2:RULE-WRH01-01",
+      "SOP-001:p2:RULE-WRH01-02",
+      "SOP-001:p2:text3",
+      "SOP-001:p2:RULE-CHM01-01",
+      "SOP-001:p2:RULE-CHM01-02",
+      "SOP-001:p2:RULE-CHM01-03",
+      "SOP-001:p2:text4",
+      "SOP-001:p2:RULE-RND01-01",
+      "SOP-001:p2:RULE-RND01-02",
+      "SOP-001:p2:text5",
+      "SOP-001:p2:RULE-CAF01-01",
+      "SOP-001:p2:RULE-CAF01-02"
+    ],
+    "tables": [
+      "SOP-001:p1:table1"
+    ],
+    "read_status": "all supplied page/chunk/table records processed document by document",
+    "rules": 24
+  },
+  "SOP-002": {
+    "pages": [
+      1,
+      2
+    ],
+    "chunks": [
+      "SOP-002:p1:text1",
+      "SOP-002:p1:table1:chunk",
+      "SOP-002:p1:text2",
+      "SOP-002:p1:table2:chunk",
+      "SOP-002:p1:text3",
+      "SOP-002:p1:table3:chunk",
+      "SOP-002:p1:text4",
+      "SOP-002:p1:table4:chunk",
+      "SOP-002:p1:text5",
+      "SOP-002:p1:table5:chunk",
+      "SOP-002:p2:table1:chunk",
+      "SOP-002:p2:text1",
+      "SOP-002:p2:table2:chunk",
+      "SOP-002:p2:text2",
+      "SOP-002:p2:table3:chunk",
+      "SOP-002:p2:text3",
+      "SOP-002:p2:table4:chunk",
+      "SOP-002:p2:text4",
+      "SOP-002:p2:table5:chunk",
+      "SOP-002:p2:text5",
+      "SOP-002:p2:table6:chunk"
+    ],
+    "tables": [
+      "SOP-002:p1:table1",
+      "SOP-002:p1:table2",
+      "SOP-002:p1:table3",
+      "SOP-002:p1:table4",
+      "SOP-002:p1:table5",
+      "SOP-002:p2:table1",
+      "SOP-002:p2:table2",
+      "SOP-002:p2:table3",
+      "SOP-002:p2:table4",
+      "SOP-002:p2:table5",
+      "SOP-002:p2:table6"
+    ],
+    "read_status": "all supplied page/chunk/table records processed document by document",
+    "rules": 27
+  },
+  "SOP-003": {
+    "pages": [
+      1
+    ],
+    "chunks": [
+      "SOP-003:p1:text1",
+      "SOP-003:p1:table1:chunk",
+      "SOP-003:p1:text2",
+      "SOP-003:p1:table2:chunk"
+    ],
+    "tables": [
+      "SOP-003:p1:table1",
+      "SOP-003:p1:table2"
+    ],
+    "read_status": "all supplied page/chunk/table records processed document by document",
+    "rules": 11
+  },
+  "SOP-004": {
+    "pages": [
+      1,
+      2
+    ],
+    "chunks": [
+      "SOP-004:p1:text1",
+      "SOP-004:p1:table1:chunk",
+      "SOP-004:p1:text2",
+      "SOP-004:p1:table2:chunk",
+      "SOP-004:p1:text3",
+      "SOP-004:p1:table3:chunk",
+      "SOP-004:p1:text4",
+      "SOP-004:p1:RULE-ACCESS-01",
+      "SOP-004:p1:RULE-ACCESS-02",
+      "SOP-004:p1:RULE-ACCESS-03",
+      "SOP-004:p2:RULE-ACCESS-04"
+    ],
+    "tables": [
+      "SOP-004:p1:table1",
+      "SOP-004:p1:table2",
+      "SOP-004:p1:table3"
+    ],
+    "read_status": "all supplied page/chunk/table records processed document by document",
+    "rules": 22
+  },
+  "DS-ELEC-3300": {
+    "pages": [
+      1
+    ],
+    "chunks": [
+      "DS-ELEC-3300:p1:text1",
+      "DS-ELEC-3300:p1:table1:chunk",
+      "DS-ELEC-3300:p1:text2"
+    ],
+    "tables": [
+      "DS-ELEC-3300:p1:table1"
+    ],
+    "read_status": "all supplied page/chunk/table records processed document by document",
+    "rules": 2
+  },
+  "DS-MECH-4400": {
+    "pages": [
+      1
+    ],
+    "chunks": [
+      "DS-MECH-4400:p1:text1",
+      "DS-MECH-4400:p1:table1:chunk",
+      "DS-MECH-4400:p1:text2",
+      "DS-MECH-4400:p1:table2:chunk",
+      "DS-MECH-4400:p1:text3",
+      "DS-MECH-4400:p1:table3:chunk",
+      "DS-MECH-4400:p1:text4",
+      "DS-MECH-4400:p1:table4:chunk"
+    ],
+    "tables": [
+      "DS-MECH-4400:p1:table1",
+      "DS-MECH-4400:p1:table2",
+      "DS-MECH-4400:p1:table3",
+      "DS-MECH-4400:p1:table4"
+    ],
+    "read_status": "all supplied page/chunk/table records processed document by document",
+    "rules": 1
+  },
+  "DS-THERM-2200": {
+    "pages": [
+      1
+    ],
+    "chunks": [
+      "DS-THERM-2200:p1:text1",
+      "DS-THERM-2200:p1:table1:chunk",
+      "DS-THERM-2200:p1:text2",
+      "DS-THERM-2200:p1:table2:chunk"
+    ],
+    "tables": [
+      "DS-THERM-2200:p1:table1",
+      "DS-THERM-2200:p1:table2"
+    ],
+    "read_status": "all supplied page/chunk/table records processed document by document",
+    "rules": 1
+  }
+}

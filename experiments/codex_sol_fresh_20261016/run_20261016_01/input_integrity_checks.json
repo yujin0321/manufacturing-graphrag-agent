@@ -1,0 +1,1008 @@
+[
+  {
+    "kind": "page_counts",
+    "document": "SOP-001",
+    "page": 1,
+    "passed": true
+  },
+  {
+    "kind": "page_counts",
+    "document": "SOP-001",
+    "page": 2,
+    "passed": true
+  },
+  {
+    "kind": "page_counts",
+    "document": "SOP-002",
+    "page": 1,
+    "passed": true
+  },
+  {
+    "kind": "page_counts",
+    "document": "SOP-002",
+    "page": 2,
+    "passed": true
+  },
+  {
+    "kind": "page_counts",
+    "document": "SOP-003",
+    "page": 1,
+    "passed": true
+  },
+  {
+    "kind": "page_counts",
+    "document": "SOP-004",
+    "page": 1,
+    "passed": true
+  },
+  {
+    "kind": "page_counts",
+    "document": "SOP-004",
+    "page": 2,
+    "passed": true
+  },
+  {
+    "kind": "page_counts",
+    "document": "DS-ELEC-3300",
+    "page": 1,
+    "passed": true
+  },
+  {
+    "kind": "page_counts",
+    "document": "DS-MECH-4400",
+    "page": 1,
+    "passed": true
+  },
+  {
+    "kind": "page_counts",
+    "document": "DS-THERM-2200",
+    "page": 1,
+    "passed": true
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-001:p1:text1",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-001:p1:text1",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-001:p1:table1:chunk",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-001:p1:table1:chunk",
+    "passed": false,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-001:p1:text2",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-001:p1:text2",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-001:p1:RULE-ST01-01",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-001:p1:RULE-ST01-01",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-001:p1:RULE-ST01-02",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-001:p1:RULE-ST01-02",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-001:p1:RULE-ST01-03",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-001:p1:RULE-ST01-03",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-001:p1:text3",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-001:p1:text3",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-001:p1:RULE-ST02-01",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-001:p1:RULE-ST02-01",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-001:p1:RULE-ST02-02",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-001:p1:RULE-ST02-02",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-001:p1:RULE-ST02-03",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-001:p1:RULE-ST02-03",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-001:p1:RULE-ST02-04",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-001:p1:RULE-ST02-04",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-001:p1:text4",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-001:p1:text4",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-001:p1:RULE-ST03-01",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-001:p1:RULE-ST03-01",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-001:p1:RULE-ST03-02",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-001:p1:RULE-ST03-02",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-001:p1:RULE-ST03-03",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-001:p1:RULE-ST03-03",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-001:p1:text5",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-001:p1:text5",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-001:p1:RULE-ST04-01",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-001:p1:RULE-ST04-01",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-001:p1:RULE-ST04-02",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-001:p1:RULE-ST04-02",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-001:p2:RULE-ST04-03",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-001:p2:RULE-ST04-03",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-001:p2:text1",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-001:p2:text1",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-001:p2:RULE-SRV01-01",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-001:p2:RULE-SRV01-01",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-001:p2:RULE-SRV01-02",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-001:p2:RULE-SRV01-02",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-001:p2:text2",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-001:p2:text2",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-001:p2:RULE-WRH01-01",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-001:p2:RULE-WRH01-01",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-001:p2:RULE-WRH01-02",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-001:p2:RULE-WRH01-02",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-001:p2:text3",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-001:p2:text3",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-001:p2:RULE-CHM01-01",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-001:p2:RULE-CHM01-01",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-001:p2:RULE-CHM01-02",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-001:p2:RULE-CHM01-02",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-001:p2:RULE-CHM01-03",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-001:p2:RULE-CHM01-03",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-001:p2:text4",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-001:p2:text4",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-001:p2:RULE-RND01-01",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-001:p2:RULE-RND01-01",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-001:p2:RULE-RND01-02",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-001:p2:RULE-RND01-02",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-001:p2:text5",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-001:p2:text5",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-001:p2:RULE-CAF01-01",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-001:p2:RULE-CAF01-01",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-001:p2:RULE-CAF01-02",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-001:p2:RULE-CAF01-02",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-002:p1:text1",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-002:p1:text1",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-002:p1:table1:chunk",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-002:p1:table1:chunk",
+    "passed": false,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-002:p1:text2",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-002:p1:text2",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-002:p1:table2:chunk",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-002:p1:table2:chunk",
+    "passed": false,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-002:p1:text3",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-002:p1:text3",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-002:p1:table3:chunk",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-002:p1:table3:chunk",
+    "passed": false,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-002:p1:text4",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-002:p1:text4",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-002:p1:table4:chunk",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-002:p1:table4:chunk",
+    "passed": false,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-002:p1:text5",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-002:p1:text5",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-002:p1:table5:chunk",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-002:p1:table5:chunk",
+    "passed": false,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-002:p2:table1:chunk",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-002:p2:table1:chunk",
+    "passed": false,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-002:p2:text1",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-002:p2:text1",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-002:p2:table2:chunk",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-002:p2:table2:chunk",
+    "passed": false,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-002:p2:text2",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-002:p2:text2",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-002:p2:table3:chunk",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-002:p2:table3:chunk",
+    "passed": false,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-002:p2:text3",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-002:p2:text3",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-002:p2:table4:chunk",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-002:p2:table4:chunk",
+    "passed": false,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-002:p2:text4",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-002:p2:text4",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-002:p2:table5:chunk",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-002:p2:table5:chunk",
+    "passed": false,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-002:p2:text5",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-002:p2:text5",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-002:p2:table6:chunk",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-002:p2:table6:chunk",
+    "passed": false,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-003:p1:text1",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-003:p1:text1",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-003:p1:table1:chunk",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-003:p1:table1:chunk",
+    "passed": false,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-003:p1:text2",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-003:p1:text2",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-003:p1:table2:chunk",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-003:p1:table2:chunk",
+    "passed": false,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-004:p1:text1",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-004:p1:text1",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-004:p1:table1:chunk",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-004:p1:table1:chunk",
+    "passed": false,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-004:p1:text2",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-004:p1:text2",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-004:p1:table2:chunk",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-004:p1:table2:chunk",
+    "passed": false,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-004:p1:text3",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-004:p1:text3",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-004:p1:table3:chunk",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-004:p1:table3:chunk",
+    "passed": false,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-004:p1:text4",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-004:p1:text4",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-004:p1:RULE-ACCESS-01",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-004:p1:RULE-ACCESS-01",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-004:p1:RULE-ACCESS-02",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-004:p1:RULE-ACCESS-02",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-004:p1:RULE-ACCESS-03",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-004:p1:RULE-ACCESS-03",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "SOP-004:p2:RULE-ACCESS-04",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "SOP-004:p2:RULE-ACCESS-04",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "DS-ELEC-3300:p1:text1",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "DS-ELEC-3300:p1:text1",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "DS-ELEC-3300:p1:table1:chunk",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "DS-ELEC-3300:p1:table1:chunk",
+    "passed": false,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "DS-ELEC-3300:p1:text2",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "DS-ELEC-3300:p1:text2",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "DS-MECH-4400:p1:text1",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "DS-MECH-4400:p1:text1",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "DS-MECH-4400:p1:table1:chunk",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "DS-MECH-4400:p1:table1:chunk",
+    "passed": false,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "DS-MECH-4400:p1:text2",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "DS-MECH-4400:p1:text2",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "DS-MECH-4400:p1:table2:chunk",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "DS-MECH-4400:p1:table2:chunk",
+    "passed": false,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "DS-MECH-4400:p1:text3",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "DS-MECH-4400:p1:text3",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "DS-MECH-4400:p1:table3:chunk",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "DS-MECH-4400:p1:table3:chunk",
+    "passed": false,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "DS-MECH-4400:p1:text4",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "DS-MECH-4400:p1:text4",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "DS-MECH-4400:p1:table4:chunk",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "DS-MECH-4400:p1:table4:chunk",
+    "passed": false,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "DS-THERM-2200:p1:text1",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "DS-THERM-2200:p1:text1",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "DS-THERM-2200:p1:table1:chunk",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "DS-THERM-2200:p1:table1:chunk",
+    "passed": false,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "DS-THERM-2200:p1:text2",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "DS-THERM-2200:p1:text2",
+    "passed": true,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  },
+  {
+    "kind": "chunk_hash_manifest",
+    "chunk": "DS-THERM-2200:p1:table2:chunk",
+    "passed": true
+  },
+  {
+    "kind": "chunk_page_span_whitespace_normalized",
+    "chunk": "DS-THERM-2200:p1:table2:chunk",
+    "passed": false,
+    "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+  }
+]

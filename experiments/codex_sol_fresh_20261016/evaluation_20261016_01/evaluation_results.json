@@ -1,0 +1,787 @@
+{
+  "definition": "two user-supplied Markdown definitions; full definition plus pinned revision from team summary",
+  "primary_style": "plain",
+  "primary_threshold": 0.6,
+  "gold_sha256": "856f5bc09ac9559cf999c89d9d9962615be704b3a85d2b785317d665f1bb3a91",
+  "gold_path": "C:\\Users\\ysh\\Desktop\\대학교\\동아리\\비타민\\프로젝트\\26-2\\지훈코드\\imaks_data\\kg_seed\\ground_truth.csv",
+  "gold_rows": 86,
+  "gold_documents": {
+    "SOP-001": 29,
+    "SOP-002": 27,
+    "SOP-003": 11,
+    "SOP-004": 19
+  },
+  "gold_columns": [
+    "ruleId",
+    "class",
+    "station",
+    "sensor",
+    "sensorType",
+    "condition",
+    "action",
+    "severity",
+    "critHi",
+    "warnHi",
+    "critLo",
+    "warnLo",
+    "unit",
+    "source"
+  ],
+  "gold_field_mapping": {
+    "source": "source",
+    "condition": "condition",
+    "action": "action",
+    "rule_class": "class",
+    "identifier": "ruleId",
+    "sensors": "sensor"
+  },
+  "prediction_sha256": "179f66e9c4dad9fd99c71528fece42bea58edb76409d6ff4f6c2172567af39ef",
+  "predictions_total": 88,
+  "sop_predictions": 84,
+  "out_of_scope_datasheet_predictions": 4,
+  "out_of_scope_by_document": {
+    "DS-ELEC-3300": 2,
+    "DS-MECH-4400": 1,
+    "DS-THERM-2200": 1
+  },
+  "scores": {
+    "plain": {
+      "0.5": {
+        "predictions": 84,
+        "gold": 86,
+        "TP": 76,
+        "FP": 8,
+        "FN": 10,
+        "precision": 0.9047619047619048,
+        "recall": 0.8837209302325582,
+        "F1_content": 0.8941176470588236,
+        "coverage": 0.8837209302325582,
+        "granularity_ratio": 0.9767441860465116,
+        "theoretical_F1_upper_bound": 0.9882352941176471,
+        "threshold": 0.5,
+        "per_document": {
+          "SOP-001": {
+            "predictions": 24,
+            "gold": 29,
+            "TP": 24,
+            "FP": 0,
+            "FN": 5,
+            "precision": 1.0,
+            "recall": 0.8275862068965517,
+            "F1_content": 0.9056603773584906,
+            "coverage": 0.8275862068965517,
+            "granularity_ratio": 0.8275862068965517,
+            "theoretical_F1_upper_bound": 0.9056603773584906
+          },
+          "SOP-002": {
+            "predictions": 27,
+            "gold": 27,
+            "TP": 27,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1_content": 1.0,
+            "coverage": 1.0,
+            "granularity_ratio": 1.0,
+            "theoretical_F1_upper_bound": 1.0
+          },
+          "SOP-003": {
+            "predictions": 11,
+            "gold": 11,
+            "TP": 11,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1_content": 1.0,
+            "coverage": 1.0,
+            "granularity_ratio": 1.0,
+            "theoretical_F1_upper_bound": 1.0
+          },
+          "SOP-004": {
+            "predictions": 22,
+            "gold": 19,
+            "TP": 14,
+            "FP": 8,
+            "FN": 5,
+            "precision": 0.6363636363636364,
+            "recall": 0.7368421052631579,
+            "F1_content": 0.6829268292682927,
+            "coverage": 0.7368421052631579,
+            "granularity_ratio": 1.1578947368421053,
+            "theoretical_F1_upper_bound": 0.926829268292683
+          }
+        },
+        "processed_scope": {
+          "predictions": 84,
+          "gold": 86,
+          "TP": 76,
+          "FP": 8,
+          "FN": 10,
+          "precision": 0.9047619047619048,
+          "recall": 0.8837209302325582,
+          "F1_content": 0.8941176470588236,
+          "coverage": 0.8837209302325582,
+          "granularity_ratio": 0.9767441860465116,
+          "theoretical_F1_upper_bound": 0.9882352941176471
+        },
+        "class_matched": {
+          "TP": 76,
+          "FP": 8,
+          "FN": 10,
+          "precision": 0.9047619047619048,
+          "recall": 0.8837209302325582,
+          "F1": 0.8941176470588236
+        },
+        "class_confusion": [
+          {
+            "gold_class": "AccessRule",
+            "prediction_class": "AccessRule",
+            "count": 15
+          },
+          {
+            "gold_class": "MaintenanceRule",
+            "prediction_class": "MaintenanceRule",
+            "count": 11
+          },
+          {
+            "gold_class": "OperationalRule",
+            "prediction_class": "OperationalRule",
+            "count": 23
+          },
+          {
+            "gold_class": "ThresholdRule",
+            "prediction_class": "ThresholdRule",
+            "count": 27
+          }
+        ],
+        "sensor_set_exact_match": {
+          "equal": 74,
+          "matched_pairs": 76,
+          "ratio": 0.9736842105263158,
+          "gold_field": "sensor",
+          "normalization": "split comma/semicolon/pipe or JSON array; terminal -TYPE -> _TYPE"
+        }
+      },
+      "0.6": {
+        "predictions": 84,
+        "gold": 86,
+        "TP": 70,
+        "FP": 14,
+        "FN": 16,
+        "precision": 0.8333333333333334,
+        "recall": 0.813953488372093,
+        "F1_content": 0.8235294117647058,
+        "coverage": 0.813953488372093,
+        "granularity_ratio": 0.9767441860465116,
+        "theoretical_F1_upper_bound": 0.9882352941176471,
+        "threshold": 0.6,
+        "per_document": {
+          "SOP-001": {
+            "predictions": 24,
+            "gold": 29,
+            "TP": 24,
+            "FP": 0,
+            "FN": 5,
+            "precision": 1.0,
+            "recall": 0.8275862068965517,
+            "F1_content": 0.9056603773584906,
+            "coverage": 0.8275862068965517,
+            "granularity_ratio": 0.8275862068965517,
+            "theoretical_F1_upper_bound": 0.9056603773584906
+          },
+          "SOP-002": {
+            "predictions": 27,
+            "gold": 27,
+            "TP": 26,
+            "FP": 1,
+            "FN": 1,
+            "precision": 0.9629629629629629,
+            "recall": 0.9629629629629629,
+            "F1_content": 0.9629629629629629,
+            "coverage": 0.9629629629629629,
+            "granularity_ratio": 1.0,
+            "theoretical_F1_upper_bound": 1.0
+          },
+          "SOP-003": {
+            "predictions": 11,
+            "gold": 11,
+            "TP": 11,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1_content": 1.0,
+            "coverage": 1.0,
+            "granularity_ratio": 1.0,
+            "theoretical_F1_upper_bound": 1.0
+          },
+          "SOP-004": {
+            "predictions": 22,
+            "gold": 19,
+            "TP": 9,
+            "FP": 13,
+            "FN": 10,
+            "precision": 0.4090909090909091,
+            "recall": 0.47368421052631576,
+            "F1_content": 0.43902439024390244,
+            "coverage": 0.47368421052631576,
+            "granularity_ratio": 1.1578947368421053,
+            "theoretical_F1_upper_bound": 0.926829268292683
+          }
+        },
+        "processed_scope": {
+          "predictions": 84,
+          "gold": 86,
+          "TP": 70,
+          "FP": 14,
+          "FN": 16,
+          "precision": 0.8333333333333334,
+          "recall": 0.813953488372093,
+          "F1_content": 0.8235294117647058,
+          "coverage": 0.813953488372093,
+          "granularity_ratio": 0.9767441860465116,
+          "theoretical_F1_upper_bound": 0.9882352941176471
+        },
+        "class_matched": {
+          "TP": 70,
+          "FP": 14,
+          "FN": 16,
+          "precision": 0.8333333333333334,
+          "recall": 0.813953488372093,
+          "F1": 0.8235294117647058
+        },
+        "class_confusion": [
+          {
+            "gold_class": "AccessRule",
+            "prediction_class": "AccessRule",
+            "count": 10
+          },
+          {
+            "gold_class": "MaintenanceRule",
+            "prediction_class": "MaintenanceRule",
+            "count": 11
+          },
+          {
+            "gold_class": "OperationalRule",
+            "prediction_class": "OperationalRule",
+            "count": 23
+          },
+          {
+            "gold_class": "ThresholdRule",
+            "prediction_class": "ThresholdRule",
+            "count": 26
+          }
+        ],
+        "sensor_set_exact_match": {
+          "equal": 67,
+          "matched_pairs": 70,
+          "ratio": 0.9571428571428572,
+          "gold_field": "sensor",
+          "normalization": "split comma/semicolon/pipe or JSON array; terminal -TYPE -> _TYPE"
+        }
+      },
+      "0.7": {
+        "predictions": 84,
+        "gold": 86,
+        "TP": 52,
+        "FP": 32,
+        "FN": 34,
+        "precision": 0.6190476190476191,
+        "recall": 0.6046511627906976,
+        "F1_content": 0.611764705882353,
+        "coverage": 0.6046511627906976,
+        "granularity_ratio": 0.9767441860465116,
+        "theoretical_F1_upper_bound": 0.9882352941176471,
+        "threshold": 0.7,
+        "per_document": {
+          "SOP-001": {
+            "predictions": 24,
+            "gold": 29,
+            "TP": 23,
+            "FP": 1,
+            "FN": 6,
+            "precision": 0.9583333333333334,
+            "recall": 0.7931034482758621,
+            "F1_content": 0.8679245283018868,
+            "coverage": 0.7931034482758621,
+            "granularity_ratio": 0.8275862068965517,
+            "theoretical_F1_upper_bound": 0.9056603773584906
+          },
+          "SOP-002": {
+            "predictions": 27,
+            "gold": 27,
+            "TP": 14,
+            "FP": 13,
+            "FN": 13,
+            "precision": 0.5185185185185185,
+            "recall": 0.5185185185185185,
+            "F1_content": 0.5185185185185185,
+            "coverage": 0.5185185185185185,
+            "granularity_ratio": 1.0,
+            "theoretical_F1_upper_bound": 1.0
+          },
+          "SOP-003": {
+            "predictions": 11,
+            "gold": 11,
+            "TP": 11,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1_content": 1.0,
+            "coverage": 1.0,
+            "granularity_ratio": 1.0,
+            "theoretical_F1_upper_bound": 1.0
+          },
+          "SOP-004": {
+            "predictions": 22,
+            "gold": 19,
+            "TP": 4,
+            "FP": 18,
+            "FN": 15,
+            "precision": 0.18181818181818182,
+            "recall": 0.21052631578947367,
+            "F1_content": 0.1951219512195122,
+            "coverage": 0.21052631578947367,
+            "granularity_ratio": 1.1578947368421053,
+            "theoretical_F1_upper_bound": 0.926829268292683
+          }
+        },
+        "processed_scope": {
+          "predictions": 84,
+          "gold": 86,
+          "TP": 52,
+          "FP": 32,
+          "FN": 34,
+          "precision": 0.6190476190476191,
+          "recall": 0.6046511627906976,
+          "F1_content": 0.611764705882353,
+          "coverage": 0.6046511627906976,
+          "granularity_ratio": 0.9767441860465116,
+          "theoretical_F1_upper_bound": 0.9882352941176471
+        },
+        "class_matched": {
+          "TP": 52,
+          "FP": 32,
+          "FN": 34,
+          "precision": 0.6190476190476191,
+          "recall": 0.6046511627906976,
+          "F1": 0.611764705882353
+        },
+        "class_confusion": [
+          {
+            "gold_class": "AccessRule",
+            "prediction_class": "AccessRule",
+            "count": 5
+          },
+          {
+            "gold_class": "MaintenanceRule",
+            "prediction_class": "MaintenanceRule",
+            "count": 11
+          },
+          {
+            "gold_class": "OperationalRule",
+            "prediction_class": "OperationalRule",
+            "count": 22
+          },
+          {
+            "gold_class": "ThresholdRule",
+            "prediction_class": "ThresholdRule",
+            "count": 14
+          }
+        ],
+        "sensor_set_exact_match": {
+          "equal": 49,
+          "matched_pairs": 52,
+          "ratio": 0.9423076923076923,
+          "gold_field": "sensor",
+          "normalization": "split comma/semicolon/pipe or JSON array; terminal -TYPE -> _TYPE"
+        }
+      }
+    },
+    "labeled": {
+      "0.5": {
+        "predictions": 84,
+        "gold": 86,
+        "TP": 77,
+        "FP": 7,
+        "FN": 9,
+        "precision": 0.9166666666666666,
+        "recall": 0.8953488372093024,
+        "F1_content": 0.9058823529411765,
+        "coverage": 0.8953488372093024,
+        "granularity_ratio": 0.9767441860465116,
+        "theoretical_F1_upper_bound": 0.9882352941176471,
+        "threshold": 0.5,
+        "per_document": {
+          "SOP-001": {
+            "predictions": 24,
+            "gold": 29,
+            "TP": 24,
+            "FP": 0,
+            "FN": 5,
+            "precision": 1.0,
+            "recall": 0.8275862068965517,
+            "F1_content": 0.9056603773584906,
+            "coverage": 0.8275862068965517,
+            "granularity_ratio": 0.8275862068965517,
+            "theoretical_F1_upper_bound": 0.9056603773584906
+          },
+          "SOP-002": {
+            "predictions": 27,
+            "gold": 27,
+            "TP": 27,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1_content": 1.0,
+            "coverage": 1.0,
+            "granularity_ratio": 1.0,
+            "theoretical_F1_upper_bound": 1.0
+          },
+          "SOP-003": {
+            "predictions": 11,
+            "gold": 11,
+            "TP": 11,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1_content": 1.0,
+            "coverage": 1.0,
+            "granularity_ratio": 1.0,
+            "theoretical_F1_upper_bound": 1.0
+          },
+          "SOP-004": {
+            "predictions": 22,
+            "gold": 19,
+            "TP": 15,
+            "FP": 7,
+            "FN": 4,
+            "precision": 0.6818181818181818,
+            "recall": 0.7894736842105263,
+            "F1_content": 0.7317073170731707,
+            "coverage": 0.7894736842105263,
+            "granularity_ratio": 1.1578947368421053,
+            "theoretical_F1_upper_bound": 0.926829268292683
+          }
+        },
+        "processed_scope": {
+          "predictions": 84,
+          "gold": 86,
+          "TP": 77,
+          "FP": 7,
+          "FN": 9,
+          "precision": 0.9166666666666666,
+          "recall": 0.8953488372093024,
+          "F1_content": 0.9058823529411765,
+          "coverage": 0.8953488372093024,
+          "granularity_ratio": 0.9767441860465116,
+          "theoretical_F1_upper_bound": 0.9882352941176471
+        },
+        "class_matched": {
+          "TP": 77,
+          "FP": 7,
+          "FN": 9,
+          "precision": 0.9166666666666666,
+          "recall": 0.8953488372093024,
+          "F1": 0.9058823529411765
+        },
+        "class_confusion": [
+          {
+            "gold_class": "AccessRule",
+            "prediction_class": "AccessRule",
+            "count": 16
+          },
+          {
+            "gold_class": "MaintenanceRule",
+            "prediction_class": "MaintenanceRule",
+            "count": 11
+          },
+          {
+            "gold_class": "OperationalRule",
+            "prediction_class": "OperationalRule",
+            "count": 23
+          },
+          {
+            "gold_class": "ThresholdRule",
+            "prediction_class": "ThresholdRule",
+            "count": 27
+          }
+        ],
+        "sensor_set_exact_match": {
+          "equal": 75,
+          "matched_pairs": 77,
+          "ratio": 0.974025974025974,
+          "gold_field": "sensor",
+          "normalization": "split comma/semicolon/pipe or JSON array; terminal -TYPE -> _TYPE"
+        }
+      },
+      "0.6": {
+        "predictions": 84,
+        "gold": 86,
+        "TP": 74,
+        "FP": 10,
+        "FN": 12,
+        "precision": 0.8809523809523809,
+        "recall": 0.8604651162790697,
+        "F1_content": 0.8705882352941177,
+        "coverage": 0.8604651162790697,
+        "granularity_ratio": 0.9767441860465116,
+        "theoretical_F1_upper_bound": 0.9882352941176471,
+        "threshold": 0.6,
+        "per_document": {
+          "SOP-001": {
+            "predictions": 24,
+            "gold": 29,
+            "TP": 24,
+            "FP": 0,
+            "FN": 5,
+            "precision": 1.0,
+            "recall": 0.8275862068965517,
+            "F1_content": 0.9056603773584906,
+            "coverage": 0.8275862068965517,
+            "granularity_ratio": 0.8275862068965517,
+            "theoretical_F1_upper_bound": 0.9056603773584906
+          },
+          "SOP-002": {
+            "predictions": 27,
+            "gold": 27,
+            "TP": 27,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1_content": 1.0,
+            "coverage": 1.0,
+            "granularity_ratio": 1.0,
+            "theoretical_F1_upper_bound": 1.0
+          },
+          "SOP-003": {
+            "predictions": 11,
+            "gold": 11,
+            "TP": 11,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1_content": 1.0,
+            "coverage": 1.0,
+            "granularity_ratio": 1.0,
+            "theoretical_F1_upper_bound": 1.0
+          },
+          "SOP-004": {
+            "predictions": 22,
+            "gold": 19,
+            "TP": 12,
+            "FP": 10,
+            "FN": 7,
+            "precision": 0.5454545454545454,
+            "recall": 0.631578947368421,
+            "F1_content": 0.5853658536585366,
+            "coverage": 0.631578947368421,
+            "granularity_ratio": 1.1578947368421053,
+            "theoretical_F1_upper_bound": 0.926829268292683
+          }
+        },
+        "processed_scope": {
+          "predictions": 84,
+          "gold": 86,
+          "TP": 74,
+          "FP": 10,
+          "FN": 12,
+          "precision": 0.8809523809523809,
+          "recall": 0.8604651162790697,
+          "F1_content": 0.8705882352941177,
+          "coverage": 0.8604651162790697,
+          "granularity_ratio": 0.9767441860465116,
+          "theoretical_F1_upper_bound": 0.9882352941176471
+        },
+        "class_matched": {
+          "TP": 74,
+          "FP": 10,
+          "FN": 12,
+          "precision": 0.8809523809523809,
+          "recall": 0.8604651162790697,
+          "F1": 0.8705882352941177
+        },
+        "class_confusion": [
+          {
+            "gold_class": "AccessRule",
+            "prediction_class": "AccessRule",
+            "count": 13
+          },
+          {
+            "gold_class": "MaintenanceRule",
+            "prediction_class": "MaintenanceRule",
+            "count": 11
+          },
+          {
+            "gold_class": "OperationalRule",
+            "prediction_class": "OperationalRule",
+            "count": 23
+          },
+          {
+            "gold_class": "ThresholdRule",
+            "prediction_class": "ThresholdRule",
+            "count": 27
+          }
+        ],
+        "sensor_set_exact_match": {
+          "equal": 72,
+          "matched_pairs": 74,
+          "ratio": 0.972972972972973,
+          "gold_field": "sensor",
+          "normalization": "split comma/semicolon/pipe or JSON array; terminal -TYPE -> _TYPE"
+        }
+      },
+      "0.7": {
+        "predictions": 84,
+        "gold": 86,
+        "TP": 65,
+        "FP": 19,
+        "FN": 21,
+        "precision": 0.7738095238095238,
+        "recall": 0.7558139534883721,
+        "F1_content": 0.7647058823529411,
+        "coverage": 0.7558139534883721,
+        "granularity_ratio": 0.9767441860465116,
+        "theoretical_F1_upper_bound": 0.9882352941176471,
+        "threshold": 0.7,
+        "per_document": {
+          "SOP-001": {
+            "predictions": 24,
+            "gold": 29,
+            "TP": 24,
+            "FP": 0,
+            "FN": 5,
+            "precision": 1.0,
+            "recall": 0.8275862068965517,
+            "F1_content": 0.9056603773584906,
+            "coverage": 0.8275862068965517,
+            "granularity_ratio": 0.8275862068965517,
+            "theoretical_F1_upper_bound": 0.9056603773584906
+          },
+          "SOP-002": {
+            "predictions": 27,
+            "gold": 27,
+            "TP": 24,
+            "FP": 3,
+            "FN": 3,
+            "precision": 0.8888888888888888,
+            "recall": 0.8888888888888888,
+            "F1_content": 0.8888888888888888,
+            "coverage": 0.8888888888888888,
+            "granularity_ratio": 1.0,
+            "theoretical_F1_upper_bound": 1.0
+          },
+          "SOP-003": {
+            "predictions": 11,
+            "gold": 11,
+            "TP": 11,
+            "FP": 0,
+            "FN": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "F1_content": 1.0,
+            "coverage": 1.0,
+            "granularity_ratio": 1.0,
+            "theoretical_F1_upper_bound": 1.0
+          },
+          "SOP-004": {
+            "predictions": 22,
+            "gold": 19,
+            "TP": 6,
+            "FP": 16,
+            "FN": 13,
+            "precision": 0.2727272727272727,
+            "recall": 0.3157894736842105,
+            "F1_content": 0.2926829268292683,
+            "coverage": 0.3157894736842105,
+            "granularity_ratio": 1.1578947368421053,
+            "theoretical_F1_upper_bound": 0.926829268292683
+          }
+        },
+        "processed_scope": {
+          "predictions": 84,
+          "gold": 86,
+          "TP": 65,
+          "FP": 19,
+          "FN": 21,
+          "precision": 0.7738095238095238,
+          "recall": 0.7558139534883721,
+          "F1_content": 0.7647058823529411,
+          "coverage": 0.7558139534883721,
+          "granularity_ratio": 0.9767441860465116,
+          "theoretical_F1_upper_bound": 0.9882352941176471
+        },
+        "class_matched": {
+          "TP": 65,
+          "FP": 19,
+          "FN": 21,
+          "precision": 0.7738095238095238,
+          "recall": 0.7558139534883721,
+          "F1": 0.7647058823529411
+        },
+        "class_confusion": [
+          {
+            "gold_class": "AccessRule",
+            "prediction_class": "AccessRule",
+            "count": 7
+          },
+          {
+            "gold_class": "MaintenanceRule",
+            "prediction_class": "MaintenanceRule",
+            "count": 11
+          },
+          {
+            "gold_class": "OperationalRule",
+            "prediction_class": "OperationalRule",
+            "count": 23
+          },
+          {
+            "gold_class": "ThresholdRule",
+            "prediction_class": "ThresholdRule",
+            "count": 24
+          }
+        ],
+        "sensor_set_exact_match": {
+          "equal": 63,
+          "matched_pairs": 65,
+          "ratio": 0.9692307692307692,
+          "gold_field": "sensor",
+          "normalization": "split comma/semicolon/pipe or JSON array; terminal -TYPE -> _TYPE"
+        }
+      }
+    }
+  },
+  "algorithm_tests": {
+    "cardinality_first": true,
+    "invalid_pair_sum_excluded": true,
+    "inclusive_threshold": true,
+    "empty_document": true
+  },
+  "pre_evaluation_lock_sha256": "c10912e34af424d6b498c8967c8ca041dbf57cd58cb3dd6552c8e8eddee0b1cd",
+  "embedding_model": {
+    "name": "sentence-transformers/all-MiniLM-L6-v2",
+    "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41"
+  },
+  "versions": {
+    "torch": "2.14.1+cpu",
+    "sentence-transformers": "6.1.0",
+    "transformers": "5.20.0",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "huggingface-hub": "1.33.0"
+  },
+  "model_label": "모델(요청 설정): GPT-6.1 Sol",
+  "GT0009_binary": "N/A: subsequent event stage",
+  "leakage": "historical project gold exposure; allowed schema and attached definitions disclose metadata. Individual gold rules consumed only by this local evaluator after lock. Not an independent blind test.",
+  "prediction_changes_after_gold": false,
+  "local_match_results_published": false,
+  "numeric_disagreement_pairs": 34,
+  "gold_sensor_missing_note": null
+}

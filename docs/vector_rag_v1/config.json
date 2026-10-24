@@ -1,0 +1,14 @@
+{
+  "version": "vector-rag-v1-20261023",
+  "embedding_model": "text-embedding-3-small",
+  "dimensions": 1536,
+  "generation_model": "gpt-6.1-sol",
+  "top_k": 8,
+  "context_token_budget": 4000,
+  "context_encoding": "o200k_base",
+  "max_completion_tokens": 4096,
+  "temperature": "omitted; provider default",
+  "seed": "omitted",
+  "hybrid_search": false,
+  "reranker": false
+}

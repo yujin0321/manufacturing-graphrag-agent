@@ -1,2 +1,33 @@
 # Preserve byte hashes in the frozen stage-6 data bundle across Windows/Linux.
 artifacts/stage6_final_20261016/** -text whitespace=cr-at-eol,-blank-at-eof
+
+# Preserve frozen RAG experiment bytes across platforms.
+requirements-rag.txt -text whitespace=cr-at-eol
+docs/benchmark_yewon_v2_20261023/manifest.json -text whitespace=cr-at-eol
+docs/benchmark_yewon_v2_20261023/questions_dev.jsonl -text whitespace=cr-at-eol
+docs/benchmark_yewon_v2_20261023/questions_eval.jsonl -text whitespace=cr-at-eol
+docs/benchmark_yewon_v2_20261023/README.md -text whitespace=cr-at-eol
+docs/benchmark_yewon_v2_20261023/scoring_lock_v1.json -text whitespace=cr-at-eol
+docs/benchmark_yewon_v2_20261023/문항목록.md -text whitespace=cr-at-eol
+docs/benchmark_yewon_v2_20261023/채점기준_확정_v1.md -text whitespace=cr-at-eol
+docs/vector_rag_v1/answer_instructions.txt -text whitespace=cr-at-eol
+docs/vector_rag_v1/config.json -text whitespace=cr-at-eol
+docs/vector_rag_v1/README.md -text whitespace=cr-at-eol
+docs/comparison_v1/README.md -text whitespace=cr-at-eol
+docs/graphrag_v2/README.md -text whitespace=cr-at-eol
+docs/graphrag_v2/retrieval_policy.json -text whitespace=cr-at-eol
+src/imaks_kg/rag/ablation.py -text whitespace=cr-at-eol
+src/imaks_kg/rag/comparison.py -text whitespace=cr-at-eol
+src/imaks_kg/rag/graph_v2.py -text whitespace=cr-at-eol
+src/imaks_kg/rag/vector.py -text whitespace=cr-at-eol
+src/imaks_kg/rag/__init__.py -text whitespace=cr-at-eol
+tests/test_vector_rag.py -text whitespace=cr-at-eol
+tests/test_rag_comparison.py -text whitespace=cr-at-eol
+tests/test_graph_v2.py -text whitespace=cr-at-eol
+tests/test_graph_ablation.py -text whitespace=cr-at-eol
+scripts/run_comparison_benchmark.py -text whitespace=cr-at-eol
+scripts/preserve_comparison_baseline.py -text whitespace=cr-at-eol
+scripts/verify_graph_v2_retrieval.py -text whitespace=cr-at-eol
+scripts/run_graph_ablation.py -text whitespace=cr-at-eol
+scripts/run_graph_v2_answers.py -text whitespace=cr-at-eol
+scripts/grade_graph_v2_answers.py -text whitespace=cr-at-eol

@@ -1,0 +1,34 @@
+{
+  "version": "yewon-v2-qa-scoring-v1-20261023",
+  "status": "source_review_and_scoring_fixed_by_user_delegation",
+  "counts": {
+    "dev": 6,
+    "eval": 24,
+    "total": 30
+  },
+  "baseline_KG": "artifacts/stage6_final_20261016/inputs/kg_build/openai_sol_v2_20261016/graph/candidate.ttl",
+  "baseline_KG_sha256": "8ab82a866135afd1335caab06fe6e6e223d7b1ea37195e3fe6509cbbd407ef51",
+  "predictions_sha256": "ed6c1c3c4e1d10262fb9c25cf2a9639c6df3224d33ada3fd4e9a9d2d07e240b4",
+  "source_chunks_sha256": "7616d25cc638c47474324edc3fa22c011671fdff87a1735806ffa28854591665",
+  "source_authority": "preprocessed source documents; v2 predictions are not the answer authority",
+  "excluded": [
+    "priority_overlay",
+    "other team validators",
+    "stage6 relation extensions",
+    "ground_truth.csv",
+    "anomaly event answers"
+  ],
+  "input_files": {
+    "questions_dev.jsonl": "af4a6ab6f6990bd798d92a0d2f5960b85b8a2be96916f8d5bd7095b74421ea1c",
+    "questions_eval.jsonl": "5d77c4012790012db8ef3e1e22bc6ec3ef321578a97230487f305ae697bc7f04"
+  },
+  "answer_key_sha256": "2192a9613a89725343b24e65048856cb48993ea537575341f69835364298e6ab",
+  "no_model_calls": true,
+  "independent_holdout": false,
+  "source_review_sha256": "0121b16e2b357df450fc342bed24c1f6e8b034eb35c1442817fcbb34c733b4ea",
+  "original_pdf_integrity_sha256": "69996f918220ceae7fca3950ef445601ddc410af6f19a3be4e742e2a14f5f586",
+  "source_review_method": "same-author AI review; original 7 PDFs / 10 pages visually checked; no domain-expert approval",
+  "scoring_lock_sha256": "32bf8242bf6ffed883ac8a5e37745deaa989d78218d015ef0a477ae6b16213bc",
+  "scoring_policy": "채점기준_확정_v1.md",
+  "scoring_policy_sha256": "ff6be6313fe91533e71b96ef67bc87be143e52a6e37ade2ee234aaba0d261950"
+}

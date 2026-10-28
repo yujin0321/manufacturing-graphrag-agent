@@ -20,13 +20,15 @@ iMAKS(제조 공정 합성 데이터셋)로 지식그래프(KG)를 직접 구축
 | ⑤ | 검증: ground_truth.csv 86규칙 대비 F1_content, MAINT-01~08 매핑표, 데이터시트 vs SOP-002 수치 충돌 |
 | ⑥ | 센서 시계열 기반 공정 간 인과관계 추론: `causallyAffects` 후보 발굴 (likelihoodScore). 입력은 라벨 없는 raw 시계열이며 임계값 컬럼은 제외(4장) |
 | ⑦ | 탐지 결과를 AnomalyEvent로 KG에 추가. 대표 테스트케이스는 GT-0009 |
-| ⑧ | GraphRAG 검색: Sparse-Dense-Graph 하이브리드 + 자연어→Cypher + Graph-to-Text |
+| ⑧ | GraphRAG 검색: Sparse-Dense-Graph 하이브리드 + 자연어→Cypher + Graph-to-Text. v3 문서 검색 Agent 경로는 `rag/agent_v3.py` (기본 BM25, dense 명시 선택) |
 | ⑨ | Agent 답변: 2-에이전트(추론 생성 + 자기검증), Premise→Inference→Conclusion→Evidence 구조 |
 | ⑩ | 평가: Baseline RAG vs GraphRAG ablation, RAGAS, 관계 유형별 Confusion Matrix |
 
 일정 기준: 10/1~10/7 전처리·온톨로지·SHACL, 10/8~10/14 KG 구축, 10/15~10/31 베이스라인·탐지기, 11/1~11/10 GraphRAG+Agent, 11/12~11/16 평가.
 
 ## 3. 확정된 결정 (임의로 바꾸지 말 것)
+
+- **v3 Agent 문서 검색 경로(2026-10-28):** `python -m imaks_kg.rag.agent_v3`는 graph_v3를 사용한다. 기존 Agent/v1/v2 경로는 보존한다. 문서 검색은 v2 인덱스·과거 탐지 저장소 없이 실행된다. 기본 BM25, `--dense`에서만 행 임베딩 인덱스를 사용한다. 후보 도구는 기존 봉인 저장소를 그대로 사용하며 KG 탐지기 v2의 연결은 아직 아니다. 검색 전용 `--retrieve-only`는 API 호출이 없다. 라우팅·답변 생성은 유료 API 경로다. 자세한 실행은 `docs/graphrag_v3/AGENT_V3.md`.
 
 - **Station(공정) 수준까지만 다룬다.** 내부 부품(Component) 계층은 만들지 않는다. 원본 Component 9개는 이름이 스테이션과 같으므로 Station으로 1:1 매핑한다.
 - **센서–스테이션 연결은 `hasSensor`(Station→Sensor) 단방향이다.** 원본 monitors 양방향 44줄(22쌍)은 하나로 정리한다.

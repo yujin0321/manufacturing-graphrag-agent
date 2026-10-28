@@ -10,7 +10,7 @@ from imaks_kg.rag import demo
 class DemoTests(unittest.TestCase):
     def setUp(self):
         self.calls=[]
-        self.server=demo.make_server(0,answer=lambda q,p:self.calls.append((q,p)),explain=lambda q,p:self.calls.append((q,p)))
+        self.server=demo.make_server(0,answer=lambda q,p:self.calls.append((q,p)),explain=lambda q,p:self.calls.append((q,p)),agent_answer=lambda q,p:self.calls.append((q,p)))
         self.thread=threading.Thread(target=self.server.serve_forever,daemon=True);self.thread.start()
         self.port=self.server.server_port
     def tearDown(self):
@@ -47,6 +47,16 @@ class DemoTests(unittest.TestCase):
             status,b=self.request('POST','/api/ask','{"question":"synthetic"}',h)
         self.assertEqual(status,200);self.assertEqual(json.loads(b)['answer'],'mock result')
         self.assertEqual(len(self.calls),1);self.assertEqual(self.calls[0][0],'synthetic')
+
+    def test_agent_endpoint_and_origin(self):
+        token=self.token()
+        status,_=self.request('POST','/api/agent','{"question":"test"}',{'X-Demo-Token':token,'Origin':'https://evil.example'})
+        self.assertEqual(status,403)
+        with patch.object(demo,'presentation',return_value={'answer':'choose a candidate','agent_status':'needs_clarification'}):
+            status,b=self.request('POST','/api/agent','{"question":"candidate"}',{'X-Demo-Token':token})
+        self.assertEqual(status,200)
+        self.assertEqual(json.loads(b)['agent_status'],'needs_clarification')
+        self.assertEqual(len(self.calls),1)
     def test_event_endpoint_rejects_forged_id_and_uses_server_record(self):
         h={'X-Demo-Token':self.token()}
         status,_=self.request('POST','/api/explain-event',json.dumps({'event_id':'fake'}),h)

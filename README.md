@@ -42,4 +42,4 @@
 
 문서 질문을 v3 검색에 연결한 실행 경로는 `python -m imaks_kg.rag.agent_v3`입니다. 무료 검색 확인과 생성 실행을 구분한 사용법은 [Agent v3 안내](docs/graphrag_v3/AGENT_V3.md)를 참고하세요. 기존 Agent 실행 경로도 유지됩니다.
 
-Agent 실제 평가 결과는 [품질 보고서](docs/graphrag_v3/AGENT_V3_QUALITY_20261028.md), 예원 최신 코드와의 차이는 [비교 보고서](docs/graphrag_v3/YEWON_VS_YUJIN_AGENT_20261028.md)를 참고하세요.
+Agent 실제 평가 결과는 [품질 보고서](docs/graphrag_v3/AGENT_V3_QUALITY_20261028.md)를 참고하세요.

@@ -43,3 +43,7 @@
 문서 질문을 v3 검색에 연결한 실행 경로는 `python -m imaks_kg.rag.agent_v3`입니다. 무료 검색 확인과 생성 실행을 구분한 사용법은 [Agent v3 안내](docs/graphrag_v3/AGENT_V3.md)를 참고하세요. 기존 Agent 실행 경로도 유지됩니다.
 
 Agent 실제 평가 결과는 [품질 보고서](docs/graphrag_v3/AGENT_V3_QUALITY_20261028.md)를 참고하세요.
+
+## 최신 개선 경로: Agent v4.1
+
+상황 질문 분류·문서 전용 답변·dense 결합·유형별 구조 검색·근거 검증을 추가했습니다. [실행 안내](docs/graphrag_v4/README.md)와 [개발 회귀 평가](docs/graphrag_v4/QUALITY_20261028.md)를 참고하세요. 기존 15문항을 각3회 실행한 AI 평가이며 새 미노출 성능은 아닙니다.

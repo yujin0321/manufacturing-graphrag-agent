@@ -27,7 +27,7 @@ from imaks_kg.rag.chunking import parent_of  # noqa: E402
 BENCH = v.REPO_ROOT / "docs/benchmark_graph_v3_20261028"
 KEY = v.REPO_ROOT / "evaluation/benchmark_graph_v3_20261028/answer_key_PRIVATE.json"
 SYSTEMS = ["vector_v3", "vector_v3_lex", "graph_v3"]
-CODE = ["src/imaks_kg/rag/retrieval_v3.py", "src/imaks_kg/rag/linking.py", "src/imaks_kg/rag/lexical.py",
+CODE = ["scripts/run_benchmark_v3.py", "scripts/validate_benchmark_v3_free.py", "src/imaks_kg/rag/retrieval_v3.py", "src/imaks_kg/rag/linking.py", "src/imaks_kg/rag/lexical.py",
         "src/imaks_kg/rag/chunking.py", "docs/graphrag_v3/policy.json", "docs/graphrag_v3/lexicon.json"]
 
 
@@ -43,10 +43,10 @@ def code_hashes() -> dict:
     return {p: v.digest((v.REPO_ROOT / p).read_bytes()) for p in CODE}
 
 
-def retrieve(out: Path) -> None:
+def retrieve(out: Path, bm25_only: bool = False) -> None:
     out.mkdir(parents=True, exist_ok=False)
     rows, graph = r3.row_corpus(), c.load_graph()
-    dense_available = (r3.ROW_INDEX / "manifest.json").exists()
+    dense_available = not bm25_only and (r3.ROW_INDEX / "manifest.json").exists()
     for q in questions():
         dense = r3.dense_ranking(q["question"], rows) if dense_available else None
         for system in SYSTEMS:
@@ -63,6 +63,10 @@ def grade(run: Path) -> None:
     for name, digest in seal["files"].items():
         if v.digest((run / name).read_bytes()) != digest:
             raise ValueError(f"Retrieval output changed after sealing: {name}")
+    lock = v.read(BENCH / "lock.json")
+    expected_key = lock["hashes"]["evaluation/benchmark_graph_v3_20261028/answer_key_PRIVATE.json"]
+    if v.digest(KEY.read_bytes()) != expected_key:
+        raise ValueError("Frozen private answer key changed")
     key = {q["id"]: q for q in v.read(KEY)["questions"]}
     hypotheses = {q["id"]: q["graph_hypothesis"] for q in questions()}
     report = {"dense_used": seal["dense_used"], "systems": {}, "per_question": {}}
@@ -105,12 +109,13 @@ def answer(out: Path, repeat: int) -> None:
 def main() -> None:
     p = argparse.ArgumentParser()
     p.add_argument("action", choices=["retrieve", "grade", "build-index", "answer"])
+    p.add_argument("--bm25-only", action="store_true", help="Disable dense retrieval and paid query embeddings")
     p.add_argument("--out", type=Path)
     p.add_argument("--run", type=Path)
     p.add_argument("--repeat", type=int, default=3)
     a = p.parse_args()
     if a.action == "retrieve":
-        retrieve(a.out)
+        retrieve(a.out, bm25_only=a.bm25_only)
     elif a.action == "grade":
         grade(a.run)
     elif a.action == "build-index":

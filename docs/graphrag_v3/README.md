@@ -60,3 +60,18 @@ $env:PYTHONPATH='src'; $env:PYTHONUTF8='1'
 - `vector_v3_lex` 대조군은 첫 오프라인 실행(vector 27% vs graph 90%)을 본 뒤 추가했다. 그 차이가 사전 때문인지 그래프 때문인지 분리하려는 목적이며, 문항·정답·다른 시스템 설정은 바꾸지 않았다.
 - 별칭 사전과 새 문항을 같은 작성자(AI)가 만들었다. 사전은 문항 작성 전에 만들고 해시로 고정했지만, 작성자가 사전을 알고 있었다는 사실은 남는다. 팀원이 사전을 보지 않고 쓴 문항 몇 개를 추가하면 가장 확실하게 보완된다.
 - 집계형 질문(G01: CRITICAL 정비 규칙 전부)은 엔티티에서 출발하는 현재 탐색 방식으로는 풀 수 없다. `priority` 속성 필터 같은 구조 질의가 필요하며, CLAUDE.md ⑧의 자연어→Cypher가 그 역할이다.
+
+## PC 무료 검증 (2026-10-28 보완)
+
+프로젝트의 실제 가상환경 Python으로 다음을 실행한다.
+
+```powershell
+.\.venv\Scripts\python.exe scripts\validate_benchmark_v3_free.py
+```
+
+누락된 numpy/tiktoken/rdflib은 requirements-rag.txt로 설치하고 버전을 보고한다.
+공식 o200k_base 파일의 최초 자동 다운로드는 허용한다. 다운로드가 막히면
+대체 토크나이저 없이 중단한다. 테스트 30개 통과 후 BM25 검색을 봉인하고,
+별도 프로세스로 PRIVATE 정답을 읽어 근거 회수율을 평가한다.
+`--bm25-only`는 기존 dense 인덱스가 있어도 유료 질의 임베딩을 호출하지 않는다.
+출력은 매번 새 폴더에 저장한다. build-index와 answer는 별도 승인 후 실행한다.

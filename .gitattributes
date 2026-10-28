@@ -31,3 +31,9 @@ scripts/verify_graph_v2_retrieval.py -text whitespace=cr-at-eol
 scripts/run_graph_ablation.py -text whitespace=cr-at-eol
 scripts/run_graph_v2_answers.py -text whitespace=cr-at-eol
 scripts/grade_graph_v2_answers.py -text whitespace=cr-at-eol
+
+# Preserve v3 frozen question, lexicon and policy hashes on Windows.
+docs/benchmark_graph_v3_20261028/questions.jsonl -text whitespace=cr-at-eol
+docs/benchmark_graph_v3_20261028/lock.json -text whitespace=cr-at-eol
+docs/graphrag_v3/lexicon.json -text whitespace=cr-at-eol
+docs/graphrag_v3/policy.json -text whitespace=cr-at-eol

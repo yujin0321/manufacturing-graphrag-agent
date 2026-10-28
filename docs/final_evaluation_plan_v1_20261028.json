@@ -1,0 +1,25 @@
+{
+  "version": "final-evaluation-plan-v1-20261028",
+  "status": "protocol_recorded_no_new_evaluation",
+  "existing_eval_questions": 24,
+  "existing_dev_questions": 6,
+  "new_questions_frozen": false,
+  "team_acceptance_confirmed": false,
+  "api_calls_this_task": 0,
+  "hashes": {
+    "docs/FINAL_EVALUATION_PLAN_20261028.md": "fd3ba496a5e5cb1497bc9237834519bfb6ee038390521904832476ba68337c0f",
+    "docs/TEAM_ACCEPTANCE_CHECKLIST_20261028.md": "abf1f79ddb1a7368f665df974f0e9c1f640e10fe51f9e0a60b6e6a4073c1c970",
+    "docs/benchmark_yewon_v2_20261023/scoring_lock_v1.json": "32bf8242bf6ffed883ac8a5e37745deaa989d78218d015ef0a477ae6b16213bc",
+    "docs/benchmark_yewon_v2_20261023/채점기준_확정_v1.md": "ff6be6313fe91533e71b96ef67bc87be143e52a6e37ade2ee234aaba0d261950",
+    "docs/benchmark_yewon_v2_20261023/questions_dev.jsonl": "af4a6ab6f6990bd798d92a0d2f5960b85b8a2be96916f8d5bd7095b74421ea1c",
+    "docs/benchmark_yewon_v2_20261023/questions_eval.jsonl": "5d77c4012790012db8ef3e1e22bc6ec3ef321578a97230487f305ae697bc7f04",
+    "docs/vector_rag_v1/config.json": "bbcc4897ac53a0fa9c055dfa30d735470bbe2264ce177fa9ac93e748808c6a81",
+    "docs/vector_rag_v1/answer_instructions.txt": "bd3e82d5196f035f35493cdde1d42391519dd41f3a254c780ed822e9412feb94",
+    "docs/graphrag_v2/retrieval_policy.json": "4b294fb8c96f943f25324a3efa18a249e63511ce10870d01e11ba0649f76827f",
+    "preprocessed/documents/chunks.jsonl": "7616d25cc638c47474324edc3fa22c011671fdff87a1735806ffa28854591665",
+    "artifacts/stage6_final_20261016/inputs/kg_build/openai_sol_v2_20261016/graph/candidate.ttl": "8ab82a866135afd1335caab06fe6e6e223d7b1ea37195e3fe6509cbbd407ef51",
+    "src/imaks_kg/rag/comparison.py": "46b4f5aeae555fe505eb16abc7600c3826829caae010ddd33d5090050cebe945",
+    "src/imaks_kg/rag/graph_v2.py": "a42de057a96e52bafe9324a60eb8acbc1c5f5615530425df3c270f041426eb8a",
+    "src/imaks_kg/rag/vector.py": "e5a2e4e62cd34ffab018ac68a7a30143428d5607c44e263ac985da32fad1c3ce"
+  }
+}

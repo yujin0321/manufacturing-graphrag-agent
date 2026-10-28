@@ -1,0 +1,27 @@
+{
+  "version": "retrieval-v3-20261028",
+  "table_rows": true,
+  "lexical": "okapi_bm25_k1_1.2_b_0.75",
+  "dense_embedding_model": "text-embedding-3-small",
+  "dense_dimensions": 1536,
+  "rrf_constant": 60,
+  "per_explicit_document": 2,
+  "max_source_candidates": 24,
+  "context_token_budget": 4000,
+  "context_encoding": "o200k_base",
+  "graph": {
+    "max_seed_entities": 8,
+    "max_graph_entities": 24,
+    "graph_hops": 2,
+    "max_graph_tokens": 800,
+    "traverse_predicates": ["appliesToSensor", "actionTarget", "hasSensor", "feedsInto"],
+    "follow_text_rule_references": true,
+    "merge_duplicate_entities": true
+  },
+  "systems": {
+    "vector_v3": "shared hybrid retrieval only (no KG access)",
+    "vector_v3_lex": "vector_v3 + name-only query expansion from lexicon.json (KG used as a name dictionary; no edges, rules or provenance)",
+    "graph_v3": "identical shared retrieval + KG-linked rows inserted before fused results + merged entity cards",
+    "full_context": "all 86 original chunks, no retrieval (upper bound for this tiny corpus)"
+  }
+}

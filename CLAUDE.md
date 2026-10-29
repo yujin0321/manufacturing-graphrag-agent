@@ -105,3 +105,11 @@ iMAKS(제조 공정 합성 데이터셋)로 지식그래프(KG)를 직접 구축
 - 산출물 위치: 질문 `docs/competency_questions.md`, 온톨로지 `ontology_v1/`(`ontology.ttl`, `schema_tables.md`, `shapes.ttl`, `examples/`), 누수 검사 `guards/`, 테스트 `tests/test_shacl.py`, 결정 기록 `work_log.md`.
 - 데이터셋: iMAKS v3 (Zenodo, https://zenodo.org/records/20075430)
   - 로컬 저장 위치: `C:\Users\LG\manufacturing-graphrag-agent\imaks_data` (저장소 기준 상대 경로: `imaks_data/`). 코드에서는 절대 경로를 하드코딩하지 말고 저장소 기준 상대 경로나 설정 파일로 참조한다.
+
+## 2026-10-29: v5 검색 실험과 비용 정책
+
+- `5th-yujin`은 `4th-yujin` 기반이다. 기존 Agent v4.1 경로를 유지하고 `retrieval_v5.py`, `kg_query_v5.py`와 `experiments/graphrag_v5_20261029/`를 추가한다.
+- 사용자는 저장 임베딩 기반 전수 검색 비교 후 대표 문항만 검토하는 비용 제한 순서를 선택했다. 기본 실행은 네트워크 차단·API 0회이며 유료 대량 재실행을 자동으로 시작하지 않는다.
+- 130문항 중 검색 102개, 별도 오류 주입 2개, 입력 미지정 대기 26개. 대표 답변은 기존 6문항×3방식 18개 재사용·정성 대조다.
+- API 임베딩 캐시 35문항과 로컬 모델 102문항을 별도 보고한다. 문서 QA에서는 구조화 조회를 끈 대조군과 동률이며 KG 구조 조회에서 추가 이득을 확인했다. 신규 인과·전체 답변 정확도·독립 미노출 성능을 주장하지 않는다.
+- 원문·가중치·API 캐시·PRIVATE 정답은 공개 커밋에 넣지 않는다. 로컬 재현 입력은 실험 README에 명시한다.

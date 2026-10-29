@@ -1,0 +1,1555 @@
+id,encoder_track,track,category,split,system,budget,required,found,recall,complete,tokens,missing
+G01,cached_api,document_qa,이득 없음 예상,draft_exposed,GraphNoTopology,1000,3,3,1.0,True,998,
+G02,cached_api,document_qa,이득 예상,draft_exposed,GraphNoTopology,1000,4,4,1.0,True,986,
+G03,cached_api,document_qa,이득 예상,draft_exposed,GraphNoTopology,1000,4,4,1.0,True,1000,
+G04,cached_api,document_qa,이득 예상,draft_exposed,GraphNoTopology,1000,5,5,1.0,True,984,
+G05,cached_api,document_qa,부분 이득 예상,draft_exposed,GraphNoTopology,1000,3,3,1.0,True,979,
+G06,cached_api,document_qa,이득 예상,draft_exposed,GraphNoTopology,1000,3,3,1.0,True,988,
+G07,cached_api,document_qa,이득 예상,draft_exposed,GraphNoTopology,1000,3,3,1.0,True,997,
+G08,cached_api,document_qa,부분 이득 예상,draft_exposed,GraphNoTopology,1000,3,3,1.0,True,982,
+G09,cached_api,document_qa,이득 예상,draft_exposed,GraphNoTopology,1000,3,3,1.0,True,982,
+G10,cached_api,document_qa,이득 예상,draft_exposed,GraphNoTopology,1000,4,4,1.0,True,995,
+G11,cached_api,document_qa,이득 예상,draft_exposed,GraphNoTopology,1000,3,3,1.0,True,978,
+G12,cached_api,document_qa,부분 이득 예상,draft_exposed,GraphNoTopology,1000,3,3,1.0,True,1000,
+G13,cached_api,document_qa,이득 없음 예상,draft_exposed,GraphNoTopology,1000,3,3,1.0,True,998,
+G14,cached_api,document_qa,이득 없음 예상,draft_exposed,GraphNoTopology,1000,1,1,1.0,True,978,
+G15,cached_api,document_qa,이득 없음 예상,draft_exposed,GraphNoTopology,1000,3,3,1.0,True,1000,
+NEW-01,cached_api,document_qa,단위 정규화,extension_draft_exposed,GraphNoTopology,1000,1,1,1.0,True,995,
+NEW-02,cached_api,document_qa,단위 불일치,extension_draft_exposed,GraphNoTopology,1000,1,1,1.0,True,982,
+NEW-03,cached_api,document_qa,측정 불확실성,extension_draft_exposed,GraphNoTopology,1000,1,1,1.0,True,987,
+NEW-04,cached_api,document_qa,반올림 기록,extension_draft_exposed,GraphNoTopology,1000,1,1,1.0,True,987,
+NEW-05,cached_api,document_qa,시간 관측 공백,extension_draft_exposed,GraphNoTopology,1000,1,1,1.0,True,986,
+NEW-06,cached_api,document_qa,연속과 누적,extension_draft_exposed,GraphNoTopology,1000,1,1,1.0,True,979,
+NEW-07,cached_api,document_qa,증거 수준,extension_draft_exposed,GraphNoTopology,1000,1,1,1.0,True,985,
+NEW-08,cached_api,document_qa,변화량 입력,extension_draft_exposed,GraphNoTopology,1000,1,1,1.0,True,991,
+NEW-09,cached_api,document_qa,샘플과 시간,extension_draft_exposed,GraphNoTopology,1000,1,1,1.0,True,999,
+NEW-10,cached_api,document_qa,결측 처리,extension_draft_exposed,GraphNoTopology,1000,2,1,0.5,False,988,SOP-002:p2:table6:chunk#r3
+NEW-11,cached_api,document_qa,복합 논리,extension_draft_exposed,GraphNoTopology,1000,1,1,1.0,True,996,
+NEW-12,cached_api,document_qa,동시 규칙,extension_draft_exposed,GraphNoTopology,1000,2,2,1.0,True,989,
+NEW-13,cached_api,document_qa,역추론 오류,extension_draft_exposed,GraphNoTopology,1000,1,1,1.0,True,985,
+NEW-14,cached_api,document_qa,규칙 비발동 해석,extension_draft_exposed,GraphNoTopology,1000,1,1,1.0,True,995,
+NEW-15,cached_api,document_qa,부분 교정,extension_draft_exposed,GraphNoTopology,1000,1,1,1.0,True,1000,
+NEW-16,cached_api,document_qa,주장과 근거,extension_draft_exposed,GraphNoTopology,1000,1,1,1.0,True,993,
+NEW-17,cached_api,document_qa,잘못된 행 인용,extension_draft_exposed,GraphNoTopology,1000,2,2,1.0,True,991,
+NEW-18,cached_api,document_qa,추출과 계산,extension_draft_exposed,GraphNoTopology,1000,1,1,1.0,True,1000,
+NEW-19,cached_api,document_qa,명확화,extension_draft_exposed,GraphNoTopology,1000,3,3,1.0,True,1000,
+NEW-20,cached_api,document_qa,선택적 응답,extension_draft_exposed,GraphNoTopology,1000,1,1,1.0,True,978,
+G01,cached_api,document_qa,이득 없음 예상,draft_exposed,GraphRAG,1000,3,3,1.0,True,998,
+G02,cached_api,document_qa,이득 예상,draft_exposed,GraphRAG,1000,4,4,1.0,True,986,
+G03,cached_api,document_qa,이득 예상,draft_exposed,GraphRAG,1000,4,4,1.0,True,1000,
+G04,cached_api,document_qa,이득 예상,draft_exposed,GraphRAG,1000,5,5,1.0,True,984,
+G05,cached_api,document_qa,부분 이득 예상,draft_exposed,GraphRAG,1000,3,3,1.0,True,979,
+G06,cached_api,document_qa,이득 예상,draft_exposed,GraphRAG,1000,3,3,1.0,True,988,
+G07,cached_api,document_qa,이득 예상,draft_exposed,GraphRAG,1000,3,3,1.0,True,997,
+G08,cached_api,document_qa,부분 이득 예상,draft_exposed,GraphRAG,1000,3,3,1.0,True,982,
+G09,cached_api,document_qa,이득 예상,draft_exposed,GraphRAG,1000,3,3,1.0,True,982,
+G10,cached_api,document_qa,이득 예상,draft_exposed,GraphRAG,1000,4,4,1.0,True,995,
+G11,cached_api,document_qa,이득 예상,draft_exposed,GraphRAG,1000,3,3,1.0,True,978,
+G12,cached_api,document_qa,부분 이득 예상,draft_exposed,GraphRAG,1000,3,3,1.0,True,1000,
+G13,cached_api,document_qa,이득 없음 예상,draft_exposed,GraphRAG,1000,3,3,1.0,True,998,
+G14,cached_api,document_qa,이득 없음 예상,draft_exposed,GraphRAG,1000,1,1,1.0,True,978,
+G15,cached_api,document_qa,이득 없음 예상,draft_exposed,GraphRAG,1000,3,3,1.0,True,1000,
+NEW-01,cached_api,document_qa,단위 정규화,extension_draft_exposed,GraphRAG,1000,1,1,1.0,True,995,
+NEW-02,cached_api,document_qa,단위 불일치,extension_draft_exposed,GraphRAG,1000,1,1,1.0,True,1000,
+NEW-03,cached_api,document_qa,측정 불확실성,extension_draft_exposed,GraphRAG,1000,1,1,1.0,True,987,
+NEW-04,cached_api,document_qa,반올림 기록,extension_draft_exposed,GraphRAG,1000,1,1,1.0,True,987,
+NEW-05,cached_api,document_qa,시간 관측 공백,extension_draft_exposed,GraphRAG,1000,1,1,1.0,True,986,
+NEW-06,cached_api,document_qa,연속과 누적,extension_draft_exposed,GraphRAG,1000,1,1,1.0,True,979,
+NEW-07,cached_api,document_qa,증거 수준,extension_draft_exposed,GraphRAG,1000,1,1,1.0,True,985,
+NEW-08,cached_api,document_qa,변화량 입력,extension_draft_exposed,GraphRAG,1000,1,1,1.0,True,991,
+NEW-09,cached_api,document_qa,샘플과 시간,extension_draft_exposed,GraphRAG,1000,1,1,1.0,True,999,
+NEW-10,cached_api,document_qa,결측 처리,extension_draft_exposed,GraphRAG,1000,2,1,0.5,False,988,SOP-002:p2:table6:chunk#r3
+NEW-11,cached_api,document_qa,복합 논리,extension_draft_exposed,GraphRAG,1000,1,1,1.0,True,996,
+NEW-12,cached_api,document_qa,동시 규칙,extension_draft_exposed,GraphRAG,1000,2,2,1.0,True,989,
+NEW-13,cached_api,document_qa,역추론 오류,extension_draft_exposed,GraphRAG,1000,1,1,1.0,True,985,
+NEW-14,cached_api,document_qa,규칙 비발동 해석,extension_draft_exposed,GraphRAG,1000,1,1,1.0,True,995,
+NEW-15,cached_api,document_qa,부분 교정,extension_draft_exposed,GraphRAG,1000,1,1,1.0,True,1000,
+NEW-16,cached_api,document_qa,주장과 근거,extension_draft_exposed,GraphRAG,1000,1,1,1.0,True,993,
+NEW-17,cached_api,document_qa,잘못된 행 인용,extension_draft_exposed,GraphRAG,1000,2,2,1.0,True,979,
+NEW-18,cached_api,document_qa,추출과 계산,extension_draft_exposed,GraphRAG,1000,1,1,1.0,True,1000,
+NEW-19,cached_api,document_qa,명확화,extension_draft_exposed,GraphRAG,1000,3,3,1.0,True,1000,
+NEW-20,cached_api,document_qa,선택적 응답,extension_draft_exposed,GraphRAG,1000,1,1,1.0,True,978,
+G01,cached_api,document_qa,이득 없음 예상,draft_exposed,HybridRAG,1000,3,0,0.0,False,987,SOP-003:p1:table1:chunk#r5 | SOP-003:p1:table1:chunk#r6 | SOP-003:p1:table1:chunk#r7
+G02,cached_api,document_qa,이득 예상,draft_exposed,HybridRAG,1000,4,4,1.0,True,986,
+G03,cached_api,document_qa,이득 예상,draft_exposed,HybridRAG,1000,4,4,1.0,True,985,
+G04,cached_api,document_qa,이득 예상,draft_exposed,HybridRAG,1000,5,5,1.0,True,984,
+G05,cached_api,document_qa,부분 이득 예상,draft_exposed,HybridRAG,1000,3,3,1.0,True,979,
+G06,cached_api,document_qa,이득 예상,draft_exposed,HybridRAG,1000,3,3,1.0,True,988,
+G07,cached_api,document_qa,이득 예상,draft_exposed,HybridRAG,1000,3,3,1.0,True,997,
+G08,cached_api,document_qa,부분 이득 예상,draft_exposed,HybridRAG,1000,3,3,1.0,True,982,
+G09,cached_api,document_qa,이득 예상,draft_exposed,HybridRAG,1000,3,3,1.0,True,982,
+G10,cached_api,document_qa,이득 예상,draft_exposed,HybridRAG,1000,4,4,1.0,True,995,
+G11,cached_api,document_qa,이득 예상,draft_exposed,HybridRAG,1000,3,2,0.6666666666666666,False,983,SOP-003:p1:table1:chunk#r8
+G12,cached_api,document_qa,부분 이득 예상,draft_exposed,HybridRAG,1000,3,3,1.0,True,1000,
+G13,cached_api,document_qa,이득 없음 예상,draft_exposed,HybridRAG,1000,3,3,1.0,True,998,
+G14,cached_api,document_qa,이득 없음 예상,draft_exposed,HybridRAG,1000,1,1,1.0,True,978,
+G15,cached_api,document_qa,이득 없음 예상,draft_exposed,HybridRAG,1000,3,3,1.0,True,996,
+NEW-01,cached_api,document_qa,단위 정규화,extension_draft_exposed,HybridRAG,1000,1,1,1.0,True,995,
+NEW-02,cached_api,document_qa,단위 불일치,extension_draft_exposed,HybridRAG,1000,1,1,1.0,True,982,
+NEW-03,cached_api,document_qa,측정 불확실성,extension_draft_exposed,HybridRAG,1000,1,1,1.0,True,987,
+NEW-04,cached_api,document_qa,반올림 기록,extension_draft_exposed,HybridRAG,1000,1,1,1.0,True,987,
+NEW-05,cached_api,document_qa,시간 관측 공백,extension_draft_exposed,HybridRAG,1000,1,1,1.0,True,986,
+NEW-06,cached_api,document_qa,연속과 누적,extension_draft_exposed,HybridRAG,1000,1,1,1.0,True,979,
+NEW-07,cached_api,document_qa,증거 수준,extension_draft_exposed,HybridRAG,1000,1,1,1.0,True,982,
+NEW-08,cached_api,document_qa,변화량 입력,extension_draft_exposed,HybridRAG,1000,1,1,1.0,True,991,
+NEW-09,cached_api,document_qa,샘플과 시간,extension_draft_exposed,HybridRAG,1000,1,1,1.0,True,999,
+NEW-10,cached_api,document_qa,결측 처리,extension_draft_exposed,HybridRAG,1000,2,1,0.5,False,988,SOP-002:p2:table6:chunk#r3
+NEW-11,cached_api,document_qa,복합 논리,extension_draft_exposed,HybridRAG,1000,1,1,1.0,True,996,
+NEW-12,cached_api,document_qa,동시 규칙,extension_draft_exposed,HybridRAG,1000,2,2,1.0,True,989,
+NEW-13,cached_api,document_qa,역추론 오류,extension_draft_exposed,HybridRAG,1000,1,1,1.0,True,985,
+NEW-14,cached_api,document_qa,규칙 비발동 해석,extension_draft_exposed,HybridRAG,1000,1,1,1.0,True,995,
+NEW-15,cached_api,document_qa,부분 교정,extension_draft_exposed,HybridRAG,1000,1,1,1.0,True,997,
+NEW-16,cached_api,document_qa,주장과 근거,extension_draft_exposed,HybridRAG,1000,1,1,1.0,True,996,
+NEW-17,cached_api,document_qa,잘못된 행 인용,extension_draft_exposed,HybridRAG,1000,2,2,1.0,True,991,
+NEW-18,cached_api,document_qa,추출과 계산,extension_draft_exposed,HybridRAG,1000,1,1,1.0,True,1000,
+NEW-19,cached_api,document_qa,명확화,extension_draft_exposed,HybridRAG,1000,3,3,1.0,True,1000,
+NEW-20,cached_api,document_qa,선택적 응답,extension_draft_exposed,HybridRAG,1000,1,1,1.0,True,978,
+G01,cached_api,document_qa,이득 없음 예상,draft_exposed,VectorRAG,1000,3,0,0.0,False,999,SOP-003:p1:table1:chunk#r5 | SOP-003:p1:table1:chunk#r6 | SOP-003:p1:table1:chunk#r7
+G02,cached_api,document_qa,이득 예상,draft_exposed,VectorRAG,1000,4,3,0.75,False,991,SOP-001:p1:RULE-ST02-04
+G03,cached_api,document_qa,이득 예상,draft_exposed,VectorRAG,1000,4,1,0.25,False,1000,SOP-001:p2:RULE-SRV01-01 | SOP-001:p2:RULE-SRV01-02 | SOP-003:p1:table1:chunk#r5
+G04,cached_api,document_qa,이득 예상,draft_exposed,VectorRAG,1000,5,4,0.8,False,985,SOP-003:p1:table1:chunk#r7
+G05,cached_api,document_qa,부분 이득 예상,draft_exposed,VectorRAG,1000,3,2,0.6666666666666666,False,994,SOP-001:p1:table1:chunk#r2
+G06,cached_api,document_qa,이득 예상,draft_exposed,VectorRAG,1000,3,3,1.0,True,987,
+G07,cached_api,document_qa,이득 예상,draft_exposed,VectorRAG,1000,3,2,0.6666666666666666,False,995,SOP-003:p1:table1:chunk#r4
+G08,cached_api,document_qa,부분 이득 예상,draft_exposed,VectorRAG,1000,3,0,0.0,False,985,SOP-001:p1:RULE-ST03-03 | SOP-002:p2:table6:chunk#r3 | SOP-003:p1:table1:chunk#r3
+G09,cached_api,document_qa,이득 예상,draft_exposed,VectorRAG,1000,3,2,0.6666666666666666,False,986,SOP-003:p1:table1:chunk#r1
+G10,cached_api,document_qa,이득 예상,draft_exposed,VectorRAG,1000,4,2,0.5,False,989,SOP-003:p1:table1:chunk#r6 | SOP-003:p1:table2:chunk#r3
+G11,cached_api,document_qa,이득 예상,draft_exposed,VectorRAG,1000,3,2,0.6666666666666666,False,980,SOP-003:p1:table1:chunk#r8
+G12,cached_api,document_qa,부분 이득 예상,draft_exposed,VectorRAG,1000,3,2,0.6666666666666666,False,989,SOP-002:p1:table2:chunk#r3
+G13,cached_api,document_qa,이득 없음 예상,draft_exposed,VectorRAG,1000,3,3,1.0,True,986,
+G14,cached_api,document_qa,이득 없음 예상,draft_exposed,VectorRAG,1000,1,1,1.0,True,980,
+G15,cached_api,document_qa,이득 없음 예상,draft_exposed,VectorRAG,1000,3,2,0.6666666666666666,False,991,SOP-004:p1:table1:chunk#r1
+NEW-01,cached_api,document_qa,단위 정규화,extension_draft_exposed,VectorRAG,1000,1,1,1.0,True,993,
+NEW-02,cached_api,document_qa,단위 불일치,extension_draft_exposed,VectorRAG,1000,1,1,1.0,True,999,
+NEW-03,cached_api,document_qa,측정 불확실성,extension_draft_exposed,VectorRAG,1000,1,1,1.0,True,994,
+NEW-04,cached_api,document_qa,반올림 기록,extension_draft_exposed,VectorRAG,1000,1,1,1.0,True,986,
+NEW-05,cached_api,document_qa,시간 관측 공백,extension_draft_exposed,VectorRAG,1000,1,0,0.0,False,983,SOP-003:p1:table1:chunk#r4
+NEW-06,cached_api,document_qa,연속과 누적,extension_draft_exposed,VectorRAG,1000,1,1,1.0,True,1000,
+NEW-07,cached_api,document_qa,증거 수준,extension_draft_exposed,VectorRAG,1000,1,0,0.0,False,994,SOP-003:p1:table1:chunk#r5
+NEW-08,cached_api,document_qa,변화량 입력,extension_draft_exposed,VectorRAG,1000,1,0,0.0,False,995,SOP-003:p1:table1:chunk#r1
+NEW-09,cached_api,document_qa,샘플과 시간,extension_draft_exposed,VectorRAG,1000,1,1,1.0,True,999,
+NEW-10,cached_api,document_qa,결측 처리,extension_draft_exposed,VectorRAG,1000,2,2,1.0,True,977,
+NEW-11,cached_api,document_qa,복합 논리,extension_draft_exposed,VectorRAG,1000,1,1,1.0,True,990,
+NEW-12,cached_api,document_qa,동시 규칙,extension_draft_exposed,VectorRAG,1000,2,1,0.5,False,999,SOP-003:p1:table1:chunk#r5
+NEW-13,cached_api,document_qa,역추론 오류,extension_draft_exposed,VectorRAG,1000,1,1,1.0,True,995,
+NEW-14,cached_api,document_qa,규칙 비발동 해석,extension_draft_exposed,VectorRAG,1000,1,1,1.0,True,995,
+NEW-15,cached_api,document_qa,부분 교정,extension_draft_exposed,VectorRAG,1000,1,1,1.0,True,999,
+NEW-16,cached_api,document_qa,주장과 근거,extension_draft_exposed,VectorRAG,1000,1,1,1.0,True,1000,
+NEW-17,cached_api,document_qa,잘못된 행 인용,extension_draft_exposed,VectorRAG,1000,2,2,1.0,True,996,
+NEW-18,cached_api,document_qa,추출과 계산,extension_draft_exposed,VectorRAG,1000,1,1,1.0,True,988,
+NEW-19,cached_api,document_qa,명확화,extension_draft_exposed,VectorRAG,1000,3,3,1.0,True,995,
+NEW-20,cached_api,document_qa,선택적 응답,extension_draft_exposed,VectorRAG,1000,1,1,1.0,True,993,
+G01,cached_api,document_qa,이득 없음 예상,draft_exposed,GraphNoTopology,2000,3,3,1.0,True,1990,
+G02,cached_api,document_qa,이득 예상,draft_exposed,GraphNoTopology,2000,4,4,1.0,True,1973,
+G03,cached_api,document_qa,이득 예상,draft_exposed,GraphNoTopology,2000,4,4,1.0,True,1997,
+G04,cached_api,document_qa,이득 예상,draft_exposed,GraphNoTopology,2000,5,5,1.0,True,2000,
+G05,cached_api,document_qa,부분 이득 예상,draft_exposed,GraphNoTopology,2000,3,3,1.0,True,1993,
+G06,cached_api,document_qa,이득 예상,draft_exposed,GraphNoTopology,2000,3,3,1.0,True,1907,
+G07,cached_api,document_qa,이득 예상,draft_exposed,GraphNoTopology,2000,3,3,1.0,True,1987,
+G08,cached_api,document_qa,부분 이득 예상,draft_exposed,GraphNoTopology,2000,3,3,1.0,True,1798,
+G09,cached_api,document_qa,이득 예상,draft_exposed,GraphNoTopology,2000,3,3,1.0,True,1980,
+G10,cached_api,document_qa,이득 예상,draft_exposed,GraphNoTopology,2000,4,4,1.0,True,1987,
+G11,cached_api,document_qa,이득 예상,draft_exposed,GraphNoTopology,2000,3,3,1.0,True,2000,
+G12,cached_api,document_qa,부분 이득 예상,draft_exposed,GraphNoTopology,2000,3,3,1.0,True,1972,
+G13,cached_api,document_qa,이득 없음 예상,draft_exposed,GraphNoTopology,2000,3,3,1.0,True,2000,
+G14,cached_api,document_qa,이득 없음 예상,draft_exposed,GraphNoTopology,2000,1,1,1.0,True,1997,
+G15,cached_api,document_qa,이득 없음 예상,draft_exposed,GraphNoTopology,2000,3,3,1.0,True,1827,
+NEW-01,cached_api,document_qa,단위 정규화,extension_draft_exposed,GraphNoTopology,2000,1,1,1.0,True,1992,
+NEW-02,cached_api,document_qa,단위 불일치,extension_draft_exposed,GraphNoTopology,2000,1,1,1.0,True,1937,
+NEW-03,cached_api,document_qa,측정 불확실성,extension_draft_exposed,GraphNoTopology,2000,1,1,1.0,True,1854,
+NEW-04,cached_api,document_qa,반올림 기록,extension_draft_exposed,GraphNoTopology,2000,1,1,1.0,True,1863,
+NEW-05,cached_api,document_qa,시간 관측 공백,extension_draft_exposed,GraphNoTopology,2000,1,1,1.0,True,1981,
+NEW-06,cached_api,document_qa,연속과 누적,extension_draft_exposed,GraphNoTopology,2000,1,1,1.0,True,1927,
+NEW-07,cached_api,document_qa,증거 수준,extension_draft_exposed,GraphNoTopology,2000,1,1,1.0,True,1989,
+NEW-08,cached_api,document_qa,변화량 입력,extension_draft_exposed,GraphNoTopology,2000,1,1,1.0,True,1977,
+NEW-09,cached_api,document_qa,샘플과 시간,extension_draft_exposed,GraphNoTopology,2000,1,1,1.0,True,1894,
+NEW-10,cached_api,document_qa,결측 처리,extension_draft_exposed,GraphNoTopology,2000,2,1,0.5,False,1913,SOP-002:p2:table6:chunk#r3
+NEW-11,cached_api,document_qa,복합 논리,extension_draft_exposed,GraphNoTopology,2000,1,1,1.0,True,1796,
+NEW-12,cached_api,document_qa,동시 규칙,extension_draft_exposed,GraphNoTopology,2000,2,2,1.0,True,1997,
+NEW-13,cached_api,document_qa,역추론 오류,extension_draft_exposed,GraphNoTopology,2000,1,1,1.0,True,1823,
+NEW-14,cached_api,document_qa,규칙 비발동 해석,extension_draft_exposed,GraphNoTopology,2000,1,1,1.0,True,1635,
+NEW-15,cached_api,document_qa,부분 교정,extension_draft_exposed,GraphNoTopology,2000,1,1,1.0,True,1978,
+NEW-16,cached_api,document_qa,주장과 근거,extension_draft_exposed,GraphNoTopology,2000,1,1,1.0,True,1913,
+NEW-17,cached_api,document_qa,잘못된 행 인용,extension_draft_exposed,GraphNoTopology,2000,2,2,1.0,True,1988,
+NEW-18,cached_api,document_qa,추출과 계산,extension_draft_exposed,GraphNoTopology,2000,1,1,1.0,True,1992,
+NEW-19,cached_api,document_qa,명확화,extension_draft_exposed,GraphNoTopology,2000,3,3,1.0,True,1857,
+NEW-20,cached_api,document_qa,선택적 응답,extension_draft_exposed,GraphNoTopology,2000,1,1,1.0,True,2000,
+G01,cached_api,document_qa,이득 없음 예상,draft_exposed,GraphRAG,2000,3,3,1.0,True,1990,
+G02,cached_api,document_qa,이득 예상,draft_exposed,GraphRAG,2000,4,4,1.0,True,1973,
+G03,cached_api,document_qa,이득 예상,draft_exposed,GraphRAG,2000,4,4,1.0,True,1997,
+G04,cached_api,document_qa,이득 예상,draft_exposed,GraphRAG,2000,5,5,1.0,True,2000,
+G05,cached_api,document_qa,부분 이득 예상,draft_exposed,GraphRAG,2000,3,3,1.0,True,1993,
+G06,cached_api,document_qa,이득 예상,draft_exposed,GraphRAG,2000,3,3,1.0,True,1907,
+G07,cached_api,document_qa,이득 예상,draft_exposed,GraphRAG,2000,3,3,1.0,True,1987,
+G08,cached_api,document_qa,부분 이득 예상,draft_exposed,GraphRAG,2000,3,3,1.0,True,1798,
+G09,cached_api,document_qa,이득 예상,draft_exposed,GraphRAG,2000,3,3,1.0,True,1980,
+G10,cached_api,document_qa,이득 예상,draft_exposed,GraphRAG,2000,4,4,1.0,True,1987,
+G11,cached_api,document_qa,이득 예상,draft_exposed,GraphRAG,2000,3,3,1.0,True,2000,
+G12,cached_api,document_qa,부분 이득 예상,draft_exposed,GraphRAG,2000,3,3,1.0,True,1972,
+G13,cached_api,document_qa,이득 없음 예상,draft_exposed,GraphRAG,2000,3,3,1.0,True,2000,
+G14,cached_api,document_qa,이득 없음 예상,draft_exposed,GraphRAG,2000,1,1,1.0,True,1997,
+G15,cached_api,document_qa,이득 없음 예상,draft_exposed,GraphRAG,2000,3,3,1.0,True,1827,
+NEW-01,cached_api,document_qa,단위 정규화,extension_draft_exposed,GraphRAG,2000,1,1,1.0,True,1992,
+NEW-02,cached_api,document_qa,단위 불일치,extension_draft_exposed,GraphRAG,2000,1,1,1.0,True,1937,
+NEW-03,cached_api,document_qa,측정 불확실성,extension_draft_exposed,GraphRAG,2000,1,1,1.0,True,1854,
+NEW-04,cached_api,document_qa,반올림 기록,extension_draft_exposed,GraphRAG,2000,1,1,1.0,True,1863,
+NEW-05,cached_api,document_qa,시간 관측 공백,extension_draft_exposed,GraphRAG,2000,1,1,1.0,True,1981,
+NEW-06,cached_api,document_qa,연속과 누적,extension_draft_exposed,GraphRAG,2000,1,1,1.0,True,1927,
+NEW-07,cached_api,document_qa,증거 수준,extension_draft_exposed,GraphRAG,2000,1,1,1.0,True,1989,
+NEW-08,cached_api,document_qa,변화량 입력,extension_draft_exposed,GraphRAG,2000,1,1,1.0,True,1977,
+NEW-09,cached_api,document_qa,샘플과 시간,extension_draft_exposed,GraphRAG,2000,1,1,1.0,True,1894,
+NEW-10,cached_api,document_qa,결측 처리,extension_draft_exposed,GraphRAG,2000,2,1,0.5,False,1913,SOP-002:p2:table6:chunk#r3
+NEW-11,cached_api,document_qa,복합 논리,extension_draft_exposed,GraphRAG,2000,1,1,1.0,True,1796,
+NEW-12,cached_api,document_qa,동시 규칙,extension_draft_exposed,GraphRAG,2000,2,2,1.0,True,1997,
+NEW-13,cached_api,document_qa,역추론 오류,extension_draft_exposed,GraphRAG,2000,1,1,1.0,True,1823,
+NEW-14,cached_api,document_qa,규칙 비발동 해석,extension_draft_exposed,GraphRAG,2000,1,1,1.0,True,1635,
+NEW-15,cached_api,document_qa,부분 교정,extension_draft_exposed,GraphRAG,2000,1,1,1.0,True,1978,
+NEW-16,cached_api,document_qa,주장과 근거,extension_draft_exposed,GraphRAG,2000,1,1,1.0,True,1913,
+NEW-17,cached_api,document_qa,잘못된 행 인용,extension_draft_exposed,GraphRAG,2000,2,2,1.0,True,1988,
+NEW-18,cached_api,document_qa,추출과 계산,extension_draft_exposed,GraphRAG,2000,1,1,1.0,True,1992,
+NEW-19,cached_api,document_qa,명확화,extension_draft_exposed,GraphRAG,2000,3,3,1.0,True,1857,
+NEW-20,cached_api,document_qa,선택적 응답,extension_draft_exposed,GraphRAG,2000,1,1,1.0,True,2000,
+G01,cached_api,document_qa,이득 없음 예상,draft_exposed,HybridRAG,2000,3,1,0.3333333333333333,False,1989,SOP-003:p1:table1:chunk#r6 | SOP-003:p1:table1:chunk#r7
+G02,cached_api,document_qa,이득 예상,draft_exposed,HybridRAG,2000,4,4,1.0,True,1973,
+G03,cached_api,document_qa,이득 예상,draft_exposed,HybridRAG,2000,4,4,1.0,True,1997,
+G04,cached_api,document_qa,이득 예상,draft_exposed,HybridRAG,2000,5,5,1.0,True,2000,
+G05,cached_api,document_qa,부분 이득 예상,draft_exposed,HybridRAG,2000,3,3,1.0,True,1993,
+G06,cached_api,document_qa,이득 예상,draft_exposed,HybridRAG,2000,3,3,1.0,True,1907,
+G07,cached_api,document_qa,이득 예상,draft_exposed,HybridRAG,2000,3,3,1.0,True,1987,
+G08,cached_api,document_qa,부분 이득 예상,draft_exposed,HybridRAG,2000,3,3,1.0,True,1798,
+G09,cached_api,document_qa,이득 예상,draft_exposed,HybridRAG,2000,3,3,1.0,True,1980,
+G10,cached_api,document_qa,이득 예상,draft_exposed,HybridRAG,2000,4,4,1.0,True,1987,
+G11,cached_api,document_qa,이득 예상,draft_exposed,HybridRAG,2000,3,3,1.0,True,2000,
+G12,cached_api,document_qa,부분 이득 예상,draft_exposed,HybridRAG,2000,3,3,1.0,True,1964,
+G13,cached_api,document_qa,이득 없음 예상,draft_exposed,HybridRAG,2000,3,3,1.0,True,2000,
+G14,cached_api,document_qa,이득 없음 예상,draft_exposed,HybridRAG,2000,1,1,1.0,True,1997,
+G15,cached_api,document_qa,이득 없음 예상,draft_exposed,HybridRAG,2000,3,3,1.0,True,1827,
+NEW-01,cached_api,document_qa,단위 정규화,extension_draft_exposed,HybridRAG,2000,1,1,1.0,True,1992,
+NEW-02,cached_api,document_qa,단위 불일치,extension_draft_exposed,HybridRAG,2000,1,1,1.0,True,1937,
+NEW-03,cached_api,document_qa,측정 불확실성,extension_draft_exposed,HybridRAG,2000,1,1,1.0,True,1854,
+NEW-04,cached_api,document_qa,반올림 기록,extension_draft_exposed,HybridRAG,2000,1,1,1.0,True,1863,
+NEW-05,cached_api,document_qa,시간 관측 공백,extension_draft_exposed,HybridRAG,2000,1,1,1.0,True,1981,
+NEW-06,cached_api,document_qa,연속과 누적,extension_draft_exposed,HybridRAG,2000,1,1,1.0,True,1927,
+NEW-07,cached_api,document_qa,증거 수준,extension_draft_exposed,HybridRAG,2000,1,1,1.0,True,1973,
+NEW-08,cached_api,document_qa,변화량 입력,extension_draft_exposed,HybridRAG,2000,1,1,1.0,True,1977,
+NEW-09,cached_api,document_qa,샘플과 시간,extension_draft_exposed,HybridRAG,2000,1,1,1.0,True,1894,
+NEW-10,cached_api,document_qa,결측 처리,extension_draft_exposed,HybridRAG,2000,2,1,0.5,False,1913,SOP-002:p2:table6:chunk#r3
+NEW-11,cached_api,document_qa,복합 논리,extension_draft_exposed,HybridRAG,2000,1,1,1.0,True,1796,
+NEW-12,cached_api,document_qa,동시 규칙,extension_draft_exposed,HybridRAG,2000,2,2,1.0,True,1997,
+NEW-13,cached_api,document_qa,역추론 오류,extension_draft_exposed,HybridRAG,2000,1,1,1.0,True,1823,
+NEW-14,cached_api,document_qa,규칙 비발동 해석,extension_draft_exposed,HybridRAG,2000,1,1,1.0,True,1635,
+NEW-15,cached_api,document_qa,부분 교정,extension_draft_exposed,HybridRAG,2000,1,1,1.0,True,1974,
+NEW-16,cached_api,document_qa,주장과 근거,extension_draft_exposed,HybridRAG,2000,1,1,1.0,True,1913,
+NEW-17,cached_api,document_qa,잘못된 행 인용,extension_draft_exposed,HybridRAG,2000,2,2,1.0,True,1988,
+NEW-18,cached_api,document_qa,추출과 계산,extension_draft_exposed,HybridRAG,2000,1,1,1.0,True,1992,
+NEW-19,cached_api,document_qa,명확화,extension_draft_exposed,HybridRAG,2000,3,3,1.0,True,1857,
+NEW-20,cached_api,document_qa,선택적 응답,extension_draft_exposed,HybridRAG,2000,1,1,1.0,True,2000,
+G01,cached_api,document_qa,이득 없음 예상,draft_exposed,VectorRAG,2000,3,0,0.0,False,2000,SOP-003:p1:table1:chunk#r5 | SOP-003:p1:table1:chunk#r6 | SOP-003:p1:table1:chunk#r7
+G02,cached_api,document_qa,이득 예상,draft_exposed,VectorRAG,2000,4,4,1.0,True,1987,
+G03,cached_api,document_qa,이득 예상,draft_exposed,VectorRAG,2000,4,1,0.25,False,1997,SOP-001:p2:RULE-SRV01-01 | SOP-001:p2:RULE-SRV01-02 | SOP-003:p1:table1:chunk#r5
+G04,cached_api,document_qa,이득 예상,draft_exposed,VectorRAG,2000,5,5,1.0,True,1992,
+G05,cached_api,document_qa,부분 이득 예상,draft_exposed,VectorRAG,2000,3,3,1.0,True,1993,
+G06,cached_api,document_qa,이득 예상,draft_exposed,VectorRAG,2000,3,3,1.0,True,1970,
+G07,cached_api,document_qa,이득 예상,draft_exposed,VectorRAG,2000,3,2,0.6666666666666666,False,1981,SOP-003:p1:table1:chunk#r4
+G08,cached_api,document_qa,부분 이득 예상,draft_exposed,VectorRAG,2000,3,1,0.3333333333333333,False,1993,SOP-001:p1:RULE-ST03-03 | SOP-003:p1:table1:chunk#r3
+G09,cached_api,document_qa,이득 예상,draft_exposed,VectorRAG,2000,3,3,1.0,True,1979,
+G10,cached_api,document_qa,이득 예상,draft_exposed,VectorRAG,2000,4,2,0.5,False,1993,SOP-003:p1:table1:chunk#r6 | SOP-003:p1:table2:chunk#r3
+G11,cached_api,document_qa,이득 예상,draft_exposed,VectorRAG,2000,3,2,0.6666666666666666,False,1979,SOP-003:p1:table1:chunk#r8
+G12,cached_api,document_qa,부분 이득 예상,draft_exposed,VectorRAG,2000,3,3,1.0,True,1997,
+G13,cached_api,document_qa,이득 없음 예상,draft_exposed,VectorRAG,2000,3,3,1.0,True,1982,
+G14,cached_api,document_qa,이득 없음 예상,draft_exposed,VectorRAG,2000,1,1,1.0,True,1994,
+G15,cached_api,document_qa,이득 없음 예상,draft_exposed,VectorRAG,2000,3,2,0.6666666666666666,False,1472,SOP-004:p1:table1:chunk#r1
+NEW-01,cached_api,document_qa,단위 정규화,extension_draft_exposed,VectorRAG,2000,1,1,1.0,True,1996,
+NEW-02,cached_api,document_qa,단위 불일치,extension_draft_exposed,VectorRAG,2000,1,1,1.0,True,1867,
+NEW-03,cached_api,document_qa,측정 불확실성,extension_draft_exposed,VectorRAG,2000,1,1,1.0,True,1980,
+NEW-04,cached_api,document_qa,반올림 기록,extension_draft_exposed,VectorRAG,2000,1,1,1.0,True,1994,
+NEW-05,cached_api,document_qa,시간 관측 공백,extension_draft_exposed,VectorRAG,2000,1,0,0.0,False,1979,SOP-003:p1:table1:chunk#r4
+NEW-06,cached_api,document_qa,연속과 누적,extension_draft_exposed,VectorRAG,2000,1,1,1.0,True,1980,
+NEW-07,cached_api,document_qa,증거 수준,extension_draft_exposed,VectorRAG,2000,1,0,0.0,False,1999,SOP-003:p1:table1:chunk#r5
+NEW-08,cached_api,document_qa,변화량 입력,extension_draft_exposed,VectorRAG,2000,1,1,1.0,True,1998,
+NEW-09,cached_api,document_qa,샘플과 시간,extension_draft_exposed,VectorRAG,2000,1,1,1.0,True,2000,
+NEW-10,cached_api,document_qa,결측 처리,extension_draft_exposed,VectorRAG,2000,2,2,1.0,True,1927,
+NEW-11,cached_api,document_qa,복합 논리,extension_draft_exposed,VectorRAG,2000,1,1,1.0,True,1988,
+NEW-12,cached_api,document_qa,동시 규칙,extension_draft_exposed,VectorRAG,2000,2,2,1.0,True,1990,
+NEW-13,cached_api,document_qa,역추론 오류,extension_draft_exposed,VectorRAG,2000,1,1,1.0,True,1616,
+NEW-14,cached_api,document_qa,규칙 비발동 해석,extension_draft_exposed,VectorRAG,2000,1,1,1.0,True,1634,
+NEW-15,cached_api,document_qa,부분 교정,extension_draft_exposed,VectorRAG,2000,1,1,1.0,True,1988,
+NEW-16,cached_api,document_qa,주장과 근거,extension_draft_exposed,VectorRAG,2000,1,1,1.0,True,1984,
+NEW-17,cached_api,document_qa,잘못된 행 인용,extension_draft_exposed,VectorRAG,2000,2,2,1.0,True,1999,
+NEW-18,cached_api,document_qa,추출과 계산,extension_draft_exposed,VectorRAG,2000,1,1,1.0,True,1986,
+NEW-19,cached_api,document_qa,명확화,extension_draft_exposed,VectorRAG,2000,3,3,1.0,True,1879,
+NEW-20,cached_api,document_qa,선택적 응답,extension_draft_exposed,VectorRAG,2000,1,1,1.0,True,1987,
+G01,cached_api,document_qa,이득 없음 예상,draft_exposed,GraphNoTopology,4000,3,3,1.0,True,2314,
+G02,cached_api,document_qa,이득 예상,draft_exposed,GraphNoTopology,4000,4,4,1.0,True,2030,
+G03,cached_api,document_qa,이득 예상,draft_exposed,GraphNoTopology,4000,4,4,1.0,True,2030,
+G04,cached_api,document_qa,이득 예상,draft_exposed,GraphNoTopology,4000,5,5,1.0,True,2071,
+G05,cached_api,document_qa,부분 이득 예상,draft_exposed,GraphNoTopology,4000,3,3,1.0,True,1993,
+G06,cached_api,document_qa,이득 예상,draft_exposed,GraphNoTopology,4000,3,3,1.0,True,1907,
+G07,cached_api,document_qa,이득 예상,draft_exposed,GraphNoTopology,4000,3,3,1.0,True,2037,
+G08,cached_api,document_qa,부분 이득 예상,draft_exposed,GraphNoTopology,4000,3,3,1.0,True,1798,
+G09,cached_api,document_qa,이득 예상,draft_exposed,GraphNoTopology,4000,3,3,1.0,True,1980,
+G10,cached_api,document_qa,이득 예상,draft_exposed,GraphNoTopology,4000,4,4,1.0,True,1987,
+G11,cached_api,document_qa,이득 예상,draft_exposed,GraphNoTopology,4000,3,3,1.0,True,2062,
+G12,cached_api,document_qa,부분 이득 예상,draft_exposed,GraphNoTopology,4000,3,3,1.0,True,1972,
+G13,cached_api,document_qa,이득 없음 예상,draft_exposed,GraphNoTopology,4000,3,3,1.0,True,2106,
+G14,cached_api,document_qa,이득 없음 예상,draft_exposed,GraphNoTopology,4000,1,1,1.0,True,2047,
+G15,cached_api,document_qa,이득 없음 예상,draft_exposed,GraphNoTopology,4000,3,3,1.0,True,1827,
+NEW-01,cached_api,document_qa,단위 정규화,extension_draft_exposed,GraphNoTopology,4000,1,1,1.0,True,2019,
+NEW-02,cached_api,document_qa,단위 불일치,extension_draft_exposed,GraphNoTopology,4000,1,1,1.0,True,1937,
+NEW-03,cached_api,document_qa,측정 불확실성,extension_draft_exposed,GraphNoTopology,4000,1,1,1.0,True,1854,
+NEW-04,cached_api,document_qa,반올림 기록,extension_draft_exposed,GraphNoTopology,4000,1,1,1.0,True,1863,
+NEW-05,cached_api,document_qa,시간 관측 공백,extension_draft_exposed,GraphNoTopology,4000,1,1,1.0,True,2071,
+NEW-06,cached_api,document_qa,연속과 누적,extension_draft_exposed,GraphNoTopology,4000,1,1,1.0,True,1927,
+NEW-07,cached_api,document_qa,증거 수준,extension_draft_exposed,GraphNoTopology,4000,1,1,1.0,True,1989,
+NEW-08,cached_api,document_qa,변화량 입력,extension_draft_exposed,GraphNoTopology,4000,1,1,1.0,True,2011,
+NEW-09,cached_api,document_qa,샘플과 시간,extension_draft_exposed,GraphNoTopology,4000,1,1,1.0,True,1894,
+NEW-10,cached_api,document_qa,결측 처리,extension_draft_exposed,GraphNoTopology,4000,2,1,0.5,False,1913,SOP-002:p2:table6:chunk#r3
+NEW-11,cached_api,document_qa,복합 논리,extension_draft_exposed,GraphNoTopology,4000,1,1,1.0,True,1796,
+NEW-12,cached_api,document_qa,동시 규칙,extension_draft_exposed,GraphNoTopology,4000,2,2,1.0,True,2021,
+NEW-13,cached_api,document_qa,역추론 오류,extension_draft_exposed,GraphNoTopology,4000,1,1,1.0,True,1823,
+NEW-14,cached_api,document_qa,규칙 비발동 해석,extension_draft_exposed,GraphNoTopology,4000,1,1,1.0,True,1635,
+NEW-15,cached_api,document_qa,부분 교정,extension_draft_exposed,GraphNoTopology,4000,1,1,1.0,True,2051,
+NEW-16,cached_api,document_qa,주장과 근거,extension_draft_exposed,GraphNoTopology,4000,1,1,1.0,True,1913,
+NEW-17,cached_api,document_qa,잘못된 행 인용,extension_draft_exposed,GraphNoTopology,4000,2,2,1.0,True,2067,
+NEW-18,cached_api,document_qa,추출과 계산,extension_draft_exposed,GraphNoTopology,4000,1,1,1.0,True,2184,
+NEW-19,cached_api,document_qa,명확화,extension_draft_exposed,GraphNoTopology,4000,3,3,1.0,True,1857,
+NEW-20,cached_api,document_qa,선택적 응답,extension_draft_exposed,GraphNoTopology,4000,1,1,1.0,True,2003,
+G01,cached_api,document_qa,이득 없음 예상,draft_exposed,GraphRAG,4000,3,3,1.0,True,2314,
+G02,cached_api,document_qa,이득 예상,draft_exposed,GraphRAG,4000,4,4,1.0,True,2030,
+G03,cached_api,document_qa,이득 예상,draft_exposed,GraphRAG,4000,4,4,1.0,True,2030,
+G04,cached_api,document_qa,이득 예상,draft_exposed,GraphRAG,4000,5,5,1.0,True,2071,
+G05,cached_api,document_qa,부분 이득 예상,draft_exposed,GraphRAG,4000,3,3,1.0,True,1993,
+G06,cached_api,document_qa,이득 예상,draft_exposed,GraphRAG,4000,3,3,1.0,True,1907,
+G07,cached_api,document_qa,이득 예상,draft_exposed,GraphRAG,4000,3,3,1.0,True,2037,
+G08,cached_api,document_qa,부분 이득 예상,draft_exposed,GraphRAG,4000,3,3,1.0,True,1798,
+G09,cached_api,document_qa,이득 예상,draft_exposed,GraphRAG,4000,3,3,1.0,True,1980,
+G10,cached_api,document_qa,이득 예상,draft_exposed,GraphRAG,4000,4,4,1.0,True,1987,
+G11,cached_api,document_qa,이득 예상,draft_exposed,GraphRAG,4000,3,3,1.0,True,2062,
+G12,cached_api,document_qa,부분 이득 예상,draft_exposed,GraphRAG,4000,3,3,1.0,True,1972,
+G13,cached_api,document_qa,이득 없음 예상,draft_exposed,GraphRAG,4000,3,3,1.0,True,2106,
+G14,cached_api,document_qa,이득 없음 예상,draft_exposed,GraphRAG,4000,1,1,1.0,True,2047,
+G15,cached_api,document_qa,이득 없음 예상,draft_exposed,GraphRAG,4000,3,3,1.0,True,1827,
+NEW-01,cached_api,document_qa,단위 정규화,extension_draft_exposed,GraphRAG,4000,1,1,1.0,True,2019,
+NEW-02,cached_api,document_qa,단위 불일치,extension_draft_exposed,GraphRAG,4000,1,1,1.0,True,1937,
+NEW-03,cached_api,document_qa,측정 불확실성,extension_draft_exposed,GraphRAG,4000,1,1,1.0,True,1854,
+NEW-04,cached_api,document_qa,반올림 기록,extension_draft_exposed,GraphRAG,4000,1,1,1.0,True,1863,
+NEW-05,cached_api,document_qa,시간 관측 공백,extension_draft_exposed,GraphRAG,4000,1,1,1.0,True,2071,
+NEW-06,cached_api,document_qa,연속과 누적,extension_draft_exposed,GraphRAG,4000,1,1,1.0,True,1927,
+NEW-07,cached_api,document_qa,증거 수준,extension_draft_exposed,GraphRAG,4000,1,1,1.0,True,1989,
+NEW-08,cached_api,document_qa,변화량 입력,extension_draft_exposed,GraphRAG,4000,1,1,1.0,True,2011,
+NEW-09,cached_api,document_qa,샘플과 시간,extension_draft_exposed,GraphRAG,4000,1,1,1.0,True,1894,
+NEW-10,cached_api,document_qa,결측 처리,extension_draft_exposed,GraphRAG,4000,2,1,0.5,False,1913,SOP-002:p2:table6:chunk#r3
+NEW-11,cached_api,document_qa,복합 논리,extension_draft_exposed,GraphRAG,4000,1,1,1.0,True,1796,
+NEW-12,cached_api,document_qa,동시 규칙,extension_draft_exposed,GraphRAG,4000,2,2,1.0,True,2021,
+NEW-13,cached_api,document_qa,역추론 오류,extension_draft_exposed,GraphRAG,4000,1,1,1.0,True,1823,
+NEW-14,cached_api,document_qa,규칙 비발동 해석,extension_draft_exposed,GraphRAG,4000,1,1,1.0,True,1635,
+NEW-15,cached_api,document_qa,부분 교정,extension_draft_exposed,GraphRAG,4000,1,1,1.0,True,2051,
+NEW-16,cached_api,document_qa,주장과 근거,extension_draft_exposed,GraphRAG,4000,1,1,1.0,True,1913,
+NEW-17,cached_api,document_qa,잘못된 행 인용,extension_draft_exposed,GraphRAG,4000,2,2,1.0,True,2067,
+NEW-18,cached_api,document_qa,추출과 계산,extension_draft_exposed,GraphRAG,4000,1,1,1.0,True,2184,
+NEW-19,cached_api,document_qa,명확화,extension_draft_exposed,GraphRAG,4000,3,3,1.0,True,1857,
+NEW-20,cached_api,document_qa,선택적 응답,extension_draft_exposed,GraphRAG,4000,1,1,1.0,True,2003,
+G01,cached_api,document_qa,이득 없음 예상,draft_exposed,HybridRAG,4000,3,1,0.3333333333333333,False,2294,SOP-003:p1:table1:chunk#r6 | SOP-003:p1:table1:chunk#r7
+G02,cached_api,document_qa,이득 예상,draft_exposed,HybridRAG,4000,4,4,1.0,True,2030,
+G03,cached_api,document_qa,이득 예상,draft_exposed,HybridRAG,4000,4,4,1.0,True,2030,
+G04,cached_api,document_qa,이득 예상,draft_exposed,HybridRAG,4000,5,5,1.0,True,2071,
+G05,cached_api,document_qa,부분 이득 예상,draft_exposed,HybridRAG,4000,3,3,1.0,True,1993,
+G06,cached_api,document_qa,이득 예상,draft_exposed,HybridRAG,4000,3,3,1.0,True,1907,
+G07,cached_api,document_qa,이득 예상,draft_exposed,HybridRAG,4000,3,3,1.0,True,2037,
+G08,cached_api,document_qa,부분 이득 예상,draft_exposed,HybridRAG,4000,3,3,1.0,True,1798,
+G09,cached_api,document_qa,이득 예상,draft_exposed,HybridRAG,4000,3,3,1.0,True,1980,
+G10,cached_api,document_qa,이득 예상,draft_exposed,HybridRAG,4000,4,4,1.0,True,1987,
+G11,cached_api,document_qa,이득 예상,draft_exposed,HybridRAG,4000,3,3,1.0,True,2062,
+G12,cached_api,document_qa,부분 이득 예상,draft_exposed,HybridRAG,4000,3,3,1.0,True,1964,
+G13,cached_api,document_qa,이득 없음 예상,draft_exposed,HybridRAG,4000,3,3,1.0,True,2106,
+G14,cached_api,document_qa,이득 없음 예상,draft_exposed,HybridRAG,4000,1,1,1.0,True,2047,
+G15,cached_api,document_qa,이득 없음 예상,draft_exposed,HybridRAG,4000,3,3,1.0,True,1827,
+NEW-01,cached_api,document_qa,단위 정규화,extension_draft_exposed,HybridRAG,4000,1,1,1.0,True,2019,
+NEW-02,cached_api,document_qa,단위 불일치,extension_draft_exposed,HybridRAG,4000,1,1,1.0,True,1937,
+NEW-03,cached_api,document_qa,측정 불확실성,extension_draft_exposed,HybridRAG,4000,1,1,1.0,True,1854,
+NEW-04,cached_api,document_qa,반올림 기록,extension_draft_exposed,HybridRAG,4000,1,1,1.0,True,1863,
+NEW-05,cached_api,document_qa,시간 관측 공백,extension_draft_exposed,HybridRAG,4000,1,1,1.0,True,2071,
+NEW-06,cached_api,document_qa,연속과 누적,extension_draft_exposed,HybridRAG,4000,1,1,1.0,True,1927,
+NEW-07,cached_api,document_qa,증거 수준,extension_draft_exposed,HybridRAG,4000,1,1,1.0,True,1973,
+NEW-08,cached_api,document_qa,변화량 입력,extension_draft_exposed,HybridRAG,4000,1,1,1.0,True,2011,
+NEW-09,cached_api,document_qa,샘플과 시간,extension_draft_exposed,HybridRAG,4000,1,1,1.0,True,1894,
+NEW-10,cached_api,document_qa,결측 처리,extension_draft_exposed,HybridRAG,4000,2,1,0.5,False,1913,SOP-002:p2:table6:chunk#r3
+NEW-11,cached_api,document_qa,복합 논리,extension_draft_exposed,HybridRAG,4000,1,1,1.0,True,1796,
+NEW-12,cached_api,document_qa,동시 규칙,extension_draft_exposed,HybridRAG,4000,2,2,1.0,True,2021,
+NEW-13,cached_api,document_qa,역추론 오류,extension_draft_exposed,HybridRAG,4000,1,1,1.0,True,1823,
+NEW-14,cached_api,document_qa,규칙 비발동 해석,extension_draft_exposed,HybridRAG,4000,1,1,1.0,True,1635,
+NEW-15,cached_api,document_qa,부분 교정,extension_draft_exposed,HybridRAG,4000,1,1,1.0,True,2060,
+NEW-16,cached_api,document_qa,주장과 근거,extension_draft_exposed,HybridRAG,4000,1,1,1.0,True,1913,
+NEW-17,cached_api,document_qa,잘못된 행 인용,extension_draft_exposed,HybridRAG,4000,2,2,1.0,True,2067,
+NEW-18,cached_api,document_qa,추출과 계산,extension_draft_exposed,HybridRAG,4000,1,1,1.0,True,2184,
+NEW-19,cached_api,document_qa,명확화,extension_draft_exposed,HybridRAG,4000,3,3,1.0,True,1857,
+NEW-20,cached_api,document_qa,선택적 응답,extension_draft_exposed,HybridRAG,4000,1,1,1.0,True,2003,
+G01,cached_api,document_qa,이득 없음 예상,draft_exposed,VectorRAG,4000,3,0,0.0,False,2437,SOP-003:p1:table1:chunk#r5 | SOP-003:p1:table1:chunk#r6 | SOP-003:p1:table1:chunk#r7
+G02,cached_api,document_qa,이득 예상,draft_exposed,VectorRAG,4000,4,4,1.0,True,2360,
+G03,cached_api,document_qa,이득 예상,draft_exposed,VectorRAG,4000,4,2,0.5,False,2613,SOP-001:p2:RULE-SRV01-01 | SOP-001:p2:RULE-SRV01-02
+G04,cached_api,document_qa,이득 예상,draft_exposed,VectorRAG,4000,5,5,1.0,True,2208,
+G05,cached_api,document_qa,부분 이득 예상,draft_exposed,VectorRAG,4000,3,3,1.0,True,2029,
+G06,cached_api,document_qa,이득 예상,draft_exposed,VectorRAG,4000,3,3,1.0,True,1970,
+G07,cached_api,document_qa,이득 예상,draft_exposed,VectorRAG,4000,3,2,0.6666666666666666,False,2364,SOP-003:p1:table1:chunk#r4
+G08,cached_api,document_qa,부분 이득 예상,draft_exposed,VectorRAG,4000,3,1,0.3333333333333333,False,2278,SOP-001:p1:RULE-ST03-03 | SOP-003:p1:table1:chunk#r3
+G09,cached_api,document_qa,이득 예상,draft_exposed,VectorRAG,4000,3,3,1.0,True,1979,
+G10,cached_api,document_qa,이득 예상,draft_exposed,VectorRAG,4000,4,2,0.5,False,2183,SOP-003:p1:table1:chunk#r6 | SOP-003:p1:table2:chunk#r3
+G11,cached_api,document_qa,이득 예상,draft_exposed,VectorRAG,4000,3,2,0.6666666666666666,False,2162,SOP-003:p1:table1:chunk#r8
+G12,cached_api,document_qa,부분 이득 예상,draft_exposed,VectorRAG,4000,3,3,1.0,True,2086,
+G13,cached_api,document_qa,이득 없음 예상,draft_exposed,VectorRAG,4000,3,3,1.0,True,1982,
+G14,cached_api,document_qa,이득 없음 예상,draft_exposed,VectorRAG,4000,1,1,1.0,True,2047,
+G15,cached_api,document_qa,이득 없음 예상,draft_exposed,VectorRAG,4000,3,2,0.6666666666666666,False,1472,SOP-004:p1:table1:chunk#r1
+NEW-01,cached_api,document_qa,단위 정규화,extension_draft_exposed,VectorRAG,4000,1,1,1.0,True,2225,
+NEW-02,cached_api,document_qa,단위 불일치,extension_draft_exposed,VectorRAG,4000,1,1,1.0,True,1867,
+NEW-03,cached_api,document_qa,측정 불확실성,extension_draft_exposed,VectorRAG,4000,1,1,1.0,True,2172,
+NEW-04,cached_api,document_qa,반올림 기록,extension_draft_exposed,VectorRAG,4000,1,1,1.0,True,1994,
+NEW-05,cached_api,document_qa,시간 관측 공백,extension_draft_exposed,VectorRAG,4000,1,0,0.0,False,2140,SOP-003:p1:table1:chunk#r4
+NEW-06,cached_api,document_qa,연속과 누적,extension_draft_exposed,VectorRAG,4000,1,1,1.0,True,2200,
+NEW-07,cached_api,document_qa,증거 수준,extension_draft_exposed,VectorRAG,4000,1,0,0.0,False,2242,SOP-003:p1:table1:chunk#r5
+NEW-08,cached_api,document_qa,변화량 입력,extension_draft_exposed,VectorRAG,4000,1,1,1.0,True,2517,
+NEW-09,cached_api,document_qa,샘플과 시간,extension_draft_exposed,VectorRAG,4000,1,1,1.0,True,2030,
+NEW-10,cached_api,document_qa,결측 처리,extension_draft_exposed,VectorRAG,4000,2,2,1.0,True,1927,
+NEW-11,cached_api,document_qa,복합 논리,extension_draft_exposed,VectorRAG,4000,1,1,1.0,True,2139,
+NEW-12,cached_api,document_qa,동시 규칙,extension_draft_exposed,VectorRAG,4000,2,2,1.0,True,2116,
+NEW-13,cached_api,document_qa,역추론 오류,extension_draft_exposed,VectorRAG,4000,1,1,1.0,True,1616,
+NEW-14,cached_api,document_qa,규칙 비발동 해석,extension_draft_exposed,VectorRAG,4000,1,1,1.0,True,1634,
+NEW-15,cached_api,document_qa,부분 교정,extension_draft_exposed,VectorRAG,4000,1,1,1.0,True,2268,
+NEW-16,cached_api,document_qa,주장과 근거,extension_draft_exposed,VectorRAG,4000,1,1,1.0,True,2090,
+NEW-17,cached_api,document_qa,잘못된 행 인용,extension_draft_exposed,VectorRAG,4000,2,2,1.0,True,2164,
+NEW-18,cached_api,document_qa,추출과 계산,extension_draft_exposed,VectorRAG,4000,1,1,1.0,True,2094,
+NEW-19,cached_api,document_qa,명확화,extension_draft_exposed,VectorRAG,4000,3,3,1.0,True,1879,
+NEW-20,cached_api,document_qa,선택적 응답,extension_draft_exposed,VectorRAG,4000,1,1,1.0,True,2300,
+CQ04,local_offline,document_qa,규칙·조치 대상·출처,draft_exposed,GraphNoTopology,1000,2,2,1.0,True,993,
+G01,local_offline,document_qa,이득 없음 예상,draft_exposed,GraphNoTopology,1000,3,3,1.0,True,991,
+G02,local_offline,document_qa,이득 예상,draft_exposed,GraphNoTopology,1000,4,4,1.0,True,1000,
+G03,local_offline,document_qa,이득 예상,draft_exposed,GraphNoTopology,1000,4,4,1.0,True,985,
+G04,local_offline,document_qa,이득 예상,draft_exposed,GraphNoTopology,1000,5,5,1.0,True,991,
+G05,local_offline,document_qa,부분 이득 예상,draft_exposed,GraphNoTopology,1000,3,3,1.0,True,995,
+G06,local_offline,document_qa,이득 예상,draft_exposed,GraphNoTopology,1000,3,3,1.0,True,992,
+G07,local_offline,document_qa,이득 예상,draft_exposed,GraphNoTopology,1000,3,3,1.0,True,985,
+G08,local_offline,document_qa,부분 이득 예상,draft_exposed,GraphNoTopology,1000,3,3,1.0,True,1000,
+G09,local_offline,document_qa,이득 예상,draft_exposed,GraphNoTopology,1000,3,3,1.0,True,995,
+G10,local_offline,document_qa,이득 예상,draft_exposed,GraphNoTopology,1000,4,4,1.0,True,999,
+G11,local_offline,document_qa,이득 예상,draft_exposed,GraphNoTopology,1000,3,3,1.0,True,996,
+G12,local_offline,document_qa,부분 이득 예상,draft_exposed,GraphNoTopology,1000,3,3,1.0,True,979,
+G13,local_offline,document_qa,이득 없음 예상,draft_exposed,GraphNoTopology,1000,3,3,1.0,True,989,
+G14,local_offline,document_qa,이득 없음 예상,draft_exposed,GraphNoTopology,1000,1,1,1.0,True,981,
+G15,local_offline,document_qa,이득 없음 예상,draft_exposed,GraphNoTopology,1000,3,3,1.0,True,998,
+NEW-01,local_offline,document_qa,단위 정규화,extension_draft_exposed,GraphNoTopology,1000,1,1,1.0,True,994,
+NEW-02,local_offline,document_qa,단위 불일치,extension_draft_exposed,GraphNoTopology,1000,1,1,1.0,True,981,
+NEW-03,local_offline,document_qa,측정 불확실성,extension_draft_exposed,GraphNoTopology,1000,1,1,1.0,True,994,
+NEW-04,local_offline,document_qa,반올림 기록,extension_draft_exposed,GraphNoTopology,1000,1,1,1.0,True,995,
+NEW-05,local_offline,document_qa,시간 관측 공백,extension_draft_exposed,GraphNoTopology,1000,1,1,1.0,True,980,
+NEW-06,local_offline,document_qa,연속과 누적,extension_draft_exposed,GraphNoTopology,1000,1,1,1.0,True,997,
+NEW-07,local_offline,document_qa,증거 수준,extension_draft_exposed,GraphNoTopology,1000,1,1,1.0,True,978,
+NEW-08,local_offline,document_qa,변화량 입력,extension_draft_exposed,GraphNoTopology,1000,1,1,1.0,True,984,
+NEW-09,local_offline,document_qa,샘플과 시간,extension_draft_exposed,GraphNoTopology,1000,1,1,1.0,True,986,
+NEW-10,local_offline,document_qa,결측 처리,extension_draft_exposed,GraphNoTopology,1000,2,1,0.5,False,997,SOP-002:p2:table6:chunk#r3
+NEW-11,local_offline,document_qa,복합 논리,extension_draft_exposed,GraphNoTopology,1000,1,1,1.0,True,990,
+NEW-12,local_offline,document_qa,동시 규칙,extension_draft_exposed,GraphNoTopology,1000,2,2,1.0,True,994,
+NEW-13,local_offline,document_qa,역추론 오류,extension_draft_exposed,GraphNoTopology,1000,1,1,1.0,True,998,
+NEW-14,local_offline,document_qa,규칙 비발동 해석,extension_draft_exposed,GraphNoTopology,1000,1,1,1.0,True,984,
+NEW-15,local_offline,document_qa,부분 교정,extension_draft_exposed,GraphNoTopology,1000,1,1,1.0,True,998,
+NEW-16,local_offline,document_qa,주장과 근거,extension_draft_exposed,GraphNoTopology,1000,1,1,1.0,True,993,
+NEW-17,local_offline,document_qa,잘못된 행 인용,extension_draft_exposed,GraphNoTopology,1000,2,2,1.0,True,1000,
+NEW-18,local_offline,document_qa,추출과 계산,extension_draft_exposed,GraphNoTopology,1000,1,1,1.0,True,993,
+NEW-19,local_offline,document_qa,명확화,extension_draft_exposed,GraphNoTopology,1000,3,3,1.0,True,998,
+NEW-20,local_offline,document_qa,선택적 응답,extension_draft_exposed,GraphNoTopology,1000,1,1,1.0,True,988,
+REL-D01,local_offline,document_qa,전체 대상 회수,draft_exposed,GraphNoTopology,1000,5,3,0.6,False,1000,SOP-001:p1:RULE-ST02-02 | SOP-001:p1:RULE-ST04-02
+REL-D02,local_offline,document_qa,조건부 교차 대상,draft_exposed,GraphNoTopology,1000,5,4,0.8,False,1000,SOP-001:p1:RULE-ST02-03
+REL-D03,local_offline,document_qa,공유 속성 전체 조회,draft_exposed,GraphNoTopology,1000,3,3,1.0,True,999,
+REL-D04,local_offline,document_qa,참조 방향과 역조회,draft_exposed,GraphNoTopology,1000,2,1,0.5,False,991,SOP-001:p1:RULE-ST02-04
+REL-D05,local_offline,document_qa,관계 경로와 인과 구별,draft_exposed,GraphNoTopology,1000,3,2,0.6666666666666666,False,990,SOP-001:p1:table1:chunk#r2
+REL-D06,local_offline,document_qa,문서 개정 영향 범위,draft_exposed,GraphNoTopology,1000,11,7,0.6363636363636364,False,996,SOP-003:p1:table1:chunk#r5 | SOP-003:p1:table1:chunk#r6 | SOP-003:p1:table1:chunk#r7 | SOP-003:p1:table1:chunk#r8
+YV2-Q01,local_offline,document_qa,단일 규칙,dev,GraphNoTopology,1000,1,1,1.0,True,989,
+YV2-Q02,local_offline,document_qa,단일 규칙,eval,GraphNoTopology,1000,1,1,1.0,True,978,
+YV2-Q03,local_offline,document_qa,단일 규칙,eval,GraphNoTopology,1000,1,1,1.0,True,992,
+YV2-Q04,local_offline,document_qa,단일 규칙,eval,GraphNoTopology,1000,1,1,1.0,True,995,
+YV2-Q05,local_offline,document_qa,단일 규칙,eval,GraphNoTopology,1000,1,1,1.0,True,994,
+YV2-Q06,local_offline,document_qa,수치·조건,dev,GraphNoTopology,1000,1,1,1.0,True,996,
+YV2-Q07,local_offline,document_qa,수치·조건,eval,GraphNoTopology,1000,1,1,1.0,True,995,
+YV2-Q08,local_offline,document_qa,수치·조건,eval,GraphNoTopology,1000,1,1,1.0,True,994,
+YV2-Q09,local_offline,document_qa,수치·조건,eval,GraphNoTopology,1000,2,2,1.0,True,982,
+YV2-Q10,local_offline,document_qa,수치·조건,eval,GraphNoTopology,1000,1,1,1.0,True,994,
+YV2-Q11,local_offline,document_qa,연결·절차,dev,GraphNoTopology,1000,5,3,0.6,False,982,SOP-001:p1:table1:chunk#r2 | SOP-001:p1:table1:chunk#r4
+YV2-Q12,local_offline,document_qa,연결·절차,eval,GraphNoTopology,1000,1,1,1.0,True,996,
+YV2-Q13,local_offline,document_qa,연결·절차,eval,GraphNoTopology,1000,2,2,1.0,True,995,
+YV2-Q14,local_offline,document_qa,연결·절차,eval,GraphNoTopology,1000,1,1,1.0,True,991,
+YV2-Q15,local_offline,document_qa,연결·절차,eval,GraphNoTopology,1000,2,2,1.0,True,984,
+YV2-Q16,local_offline,document_qa,문서 비교,dev,GraphNoTopology,1000,3,2,0.6666666666666666,False,988,DS-ELEC-3300:p1:text2
+YV2-Q17,local_offline,document_qa,문서 비교,eval,GraphNoTopology,1000,4,3,0.75,False,998,DS-THERM-2200:p1:text2
+YV2-Q18,local_offline,document_qa,문서 비교,eval,GraphNoTopology,1000,2,1,0.5,False,999,DS-MECH-4400:p1:text2
+YV2-Q19,local_offline,document_qa,문서 비교,eval,GraphNoTopology,1000,2,2,1.0,True,991,
+YV2-Q20,local_offline,document_qa,문서 비교,eval,GraphNoTopology,1000,2,2,1.0,True,998,
+YV2-Q21,local_offline,document_qa,근거·권한,dev,GraphNoTopology,1000,1,1,1.0,True,992,
+YV2-Q22,local_offline,document_qa,근거·권한,eval,GraphNoTopology,1000,1,1,1.0,True,993,
+YV2-Q23,local_offline,document_qa,근거·권한,eval,GraphNoTopology,1000,2,2,1.0,True,1000,
+YV2-Q24,local_offline,document_qa,근거·권한,eval,GraphNoTopology,1000,1,1,1.0,True,989,
+YV2-Q25,local_offline,document_qa,근거·권한,eval,GraphNoTopology,1000,2,1,0.5,False,979,SOP-004:p1:table1:chunk#r5
+YV2-Q26,local_offline,document_qa,답변 한계,dev,GraphNoTopology,1000,2,2,1.0,True,990,
+YV2-Q27,local_offline,document_qa,답변 한계,eval,GraphNoTopology,1000,2,2,1.0,True,979,
+YV2-Q28,local_offline,document_qa,답변 한계,eval,GraphNoTopology,1000,3,2,0.6666666666666666,False,985,SOP-002:p2:table6:chunk#r5
+YV2-Q29,local_offline,document_qa,답변 한계,eval,GraphNoTopology,1000,4,4,1.0,True,998,
+YV2-Q30,local_offline,document_qa,답변 한계,eval,GraphNoTopology,1000,3,3,1.0,True,980,
+CQ04,local_offline,document_qa,규칙·조치 대상·출처,draft_exposed,GraphRAG,1000,2,2,1.0,True,993,
+G01,local_offline,document_qa,이득 없음 예상,draft_exposed,GraphRAG,1000,3,3,1.0,True,991,
+G02,local_offline,document_qa,이득 예상,draft_exposed,GraphRAG,1000,4,4,1.0,True,1000,
+G03,local_offline,document_qa,이득 예상,draft_exposed,GraphRAG,1000,4,4,1.0,True,985,
+G04,local_offline,document_qa,이득 예상,draft_exposed,GraphRAG,1000,5,5,1.0,True,991,
+G05,local_offline,document_qa,부분 이득 예상,draft_exposed,GraphRAG,1000,3,3,1.0,True,995,
+G06,local_offline,document_qa,이득 예상,draft_exposed,GraphRAG,1000,3,3,1.0,True,992,
+G07,local_offline,document_qa,이득 예상,draft_exposed,GraphRAG,1000,3,3,1.0,True,985,
+G08,local_offline,document_qa,부분 이득 예상,draft_exposed,GraphRAG,1000,3,3,1.0,True,1000,
+G09,local_offline,document_qa,이득 예상,draft_exposed,GraphRAG,1000,3,3,1.0,True,995,
+G10,local_offline,document_qa,이득 예상,draft_exposed,GraphRAG,1000,4,4,1.0,True,999,
+G11,local_offline,document_qa,이득 예상,draft_exposed,GraphRAG,1000,3,3,1.0,True,996,
+G12,local_offline,document_qa,부분 이득 예상,draft_exposed,GraphRAG,1000,3,3,1.0,True,979,
+G13,local_offline,document_qa,이득 없음 예상,draft_exposed,GraphRAG,1000,3,3,1.0,True,989,
+G14,local_offline,document_qa,이득 없음 예상,draft_exposed,GraphRAG,1000,1,1,1.0,True,981,
+G15,local_offline,document_qa,이득 없음 예상,draft_exposed,GraphRAG,1000,3,3,1.0,True,998,
+NEW-01,local_offline,document_qa,단위 정규화,extension_draft_exposed,GraphRAG,1000,1,1,1.0,True,993,
+NEW-02,local_offline,document_qa,단위 불일치,extension_draft_exposed,GraphRAG,1000,1,1,1.0,True,998,
+NEW-03,local_offline,document_qa,측정 불확실성,extension_draft_exposed,GraphRAG,1000,1,1,1.0,True,983,
+NEW-04,local_offline,document_qa,반올림 기록,extension_draft_exposed,GraphRAG,1000,1,1,1.0,True,995,
+NEW-05,local_offline,document_qa,시간 관측 공백,extension_draft_exposed,GraphRAG,1000,1,1,1.0,True,980,
+NEW-06,local_offline,document_qa,연속과 누적,extension_draft_exposed,GraphRAG,1000,1,1,1.0,True,997,
+NEW-07,local_offline,document_qa,증거 수준,extension_draft_exposed,GraphRAG,1000,1,1,1.0,True,978,
+NEW-08,local_offline,document_qa,변화량 입력,extension_draft_exposed,GraphRAG,1000,1,1,1.0,True,984,
+NEW-09,local_offline,document_qa,샘플과 시간,extension_draft_exposed,GraphRAG,1000,1,1,1.0,True,986,
+NEW-10,local_offline,document_qa,결측 처리,extension_draft_exposed,GraphRAG,1000,2,1,0.5,False,997,SOP-002:p2:table6:chunk#r3
+NEW-11,local_offline,document_qa,복합 논리,extension_draft_exposed,GraphRAG,1000,1,1,1.0,True,990,
+NEW-12,local_offline,document_qa,동시 규칙,extension_draft_exposed,GraphRAG,1000,2,2,1.0,True,997,
+NEW-13,local_offline,document_qa,역추론 오류,extension_draft_exposed,GraphRAG,1000,1,1,1.0,True,998,
+NEW-14,local_offline,document_qa,규칙 비발동 해석,extension_draft_exposed,GraphRAG,1000,1,1,1.0,True,984,
+NEW-15,local_offline,document_qa,부분 교정,extension_draft_exposed,GraphRAG,1000,1,1,1.0,True,998,
+NEW-16,local_offline,document_qa,주장과 근거,extension_draft_exposed,GraphRAG,1000,1,1,1.0,True,993,
+NEW-17,local_offline,document_qa,잘못된 행 인용,extension_draft_exposed,GraphRAG,1000,2,2,1.0,True,981,
+NEW-18,local_offline,document_qa,추출과 계산,extension_draft_exposed,GraphRAG,1000,1,1,1.0,True,986,
+NEW-19,local_offline,document_qa,명확화,extension_draft_exposed,GraphRAG,1000,3,3,1.0,True,998,
+NEW-20,local_offline,document_qa,선택적 응답,extension_draft_exposed,GraphRAG,1000,1,1,1.0,True,998,
+REL-D01,local_offline,document_qa,전체 대상 회수,draft_exposed,GraphRAG,1000,5,3,0.6,False,1000,SOP-001:p1:RULE-ST02-02 | SOP-001:p1:RULE-ST04-02
+REL-D02,local_offline,document_qa,조건부 교차 대상,draft_exposed,GraphRAG,1000,5,4,0.8,False,1000,SOP-001:p1:RULE-ST02-03
+REL-D03,local_offline,document_qa,공유 속성 전체 조회,draft_exposed,GraphRAG,1000,3,3,1.0,True,999,
+REL-D04,local_offline,document_qa,참조 방향과 역조회,draft_exposed,GraphRAG,1000,2,1,0.5,False,991,SOP-001:p1:RULE-ST02-04
+REL-D05,local_offline,document_qa,관계 경로와 인과 구별,draft_exposed,GraphRAG,1000,3,2,0.6666666666666666,False,990,SOP-001:p1:table1:chunk#r2
+REL-D06,local_offline,document_qa,문서 개정 영향 범위,draft_exposed,GraphRAG,1000,11,7,0.6363636363636364,False,996,SOP-003:p1:table1:chunk#r5 | SOP-003:p1:table1:chunk#r6 | SOP-003:p1:table1:chunk#r7 | SOP-003:p1:table1:chunk#r8
+YV2-Q01,local_offline,document_qa,단일 규칙,dev,GraphRAG,1000,1,1,1.0,True,989,
+YV2-Q02,local_offline,document_qa,단일 규칙,eval,GraphRAG,1000,1,1,1.0,True,978,
+YV2-Q03,local_offline,document_qa,단일 규칙,eval,GraphRAG,1000,1,1,1.0,True,992,
+YV2-Q04,local_offline,document_qa,단일 규칙,eval,GraphRAG,1000,1,1,1.0,True,995,
+YV2-Q05,local_offline,document_qa,단일 규칙,eval,GraphRAG,1000,1,1,1.0,True,994,
+YV2-Q06,local_offline,document_qa,수치·조건,dev,GraphRAG,1000,1,1,1.0,True,996,
+YV2-Q07,local_offline,document_qa,수치·조건,eval,GraphRAG,1000,1,1,1.0,True,995,
+YV2-Q08,local_offline,document_qa,수치·조건,eval,GraphRAG,1000,1,1,1.0,True,994,
+YV2-Q09,local_offline,document_qa,수치·조건,eval,GraphRAG,1000,2,2,1.0,True,982,
+YV2-Q10,local_offline,document_qa,수치·조건,eval,GraphRAG,1000,1,1,1.0,True,994,
+YV2-Q11,local_offline,document_qa,연결·절차,dev,GraphRAG,1000,5,3,0.6,False,982,SOP-001:p1:table1:chunk#r2 | SOP-001:p1:table1:chunk#r4
+YV2-Q12,local_offline,document_qa,연결·절차,eval,GraphRAG,1000,1,1,1.0,True,996,
+YV2-Q13,local_offline,document_qa,연결·절차,eval,GraphRAG,1000,2,2,1.0,True,995,
+YV2-Q14,local_offline,document_qa,연결·절차,eval,GraphRAG,1000,1,1,1.0,True,991,
+YV2-Q15,local_offline,document_qa,연결·절차,eval,GraphRAG,1000,2,2,1.0,True,984,
+YV2-Q16,local_offline,document_qa,문서 비교,dev,GraphRAG,1000,3,2,0.6666666666666666,False,988,DS-ELEC-3300:p1:text2
+YV2-Q17,local_offline,document_qa,문서 비교,eval,GraphRAG,1000,4,3,0.75,False,998,DS-THERM-2200:p1:text2
+YV2-Q18,local_offline,document_qa,문서 비교,eval,GraphRAG,1000,2,1,0.5,False,999,DS-MECH-4400:p1:text2
+YV2-Q19,local_offline,document_qa,문서 비교,eval,GraphRAG,1000,2,2,1.0,True,991,
+YV2-Q20,local_offline,document_qa,문서 비교,eval,GraphRAG,1000,2,2,1.0,True,998,
+YV2-Q21,local_offline,document_qa,근거·권한,dev,GraphRAG,1000,1,1,1.0,True,992,
+YV2-Q22,local_offline,document_qa,근거·권한,eval,GraphRAG,1000,1,1,1.0,True,993,
+YV2-Q23,local_offline,document_qa,근거·권한,eval,GraphRAG,1000,2,2,1.0,True,1000,
+YV2-Q24,local_offline,document_qa,근거·권한,eval,GraphRAG,1000,1,1,1.0,True,989,
+YV2-Q25,local_offline,document_qa,근거·권한,eval,GraphRAG,1000,2,1,0.5,False,979,SOP-004:p1:table1:chunk#r5
+YV2-Q26,local_offline,document_qa,답변 한계,dev,GraphRAG,1000,2,2,1.0,True,990,
+YV2-Q27,local_offline,document_qa,답변 한계,eval,GraphRAG,1000,2,2,1.0,True,979,
+YV2-Q28,local_offline,document_qa,답변 한계,eval,GraphRAG,1000,3,2,0.6666666666666666,False,985,SOP-002:p2:table6:chunk#r5
+YV2-Q29,local_offline,document_qa,답변 한계,eval,GraphRAG,1000,4,4,1.0,True,998,
+YV2-Q30,local_offline,document_qa,답변 한계,eval,GraphRAG,1000,3,3,1.0,True,980,
+CQ04,local_offline,document_qa,규칙·조치 대상·출처,draft_exposed,HybridRAG,1000,2,2,1.0,True,993,
+G01,local_offline,document_qa,이득 없음 예상,draft_exposed,HybridRAG,1000,3,3,1.0,True,991,
+G02,local_offline,document_qa,이득 예상,draft_exposed,HybridRAG,1000,4,4,1.0,True,1000,
+G03,local_offline,document_qa,이득 예상,draft_exposed,HybridRAG,1000,4,4,1.0,True,991,
+G04,local_offline,document_qa,이득 예상,draft_exposed,HybridRAG,1000,5,5,1.0,True,991,
+G05,local_offline,document_qa,부분 이득 예상,draft_exposed,HybridRAG,1000,3,2,0.6666666666666666,False,999,SOP-002:p1:table2:chunk#r1
+G06,local_offline,document_qa,이득 예상,draft_exposed,HybridRAG,1000,3,3,1.0,True,992,
+G07,local_offline,document_qa,이득 예상,draft_exposed,HybridRAG,1000,3,3,1.0,True,985,
+G08,local_offline,document_qa,부분 이득 예상,draft_exposed,HybridRAG,1000,3,3,1.0,True,1000,
+G09,local_offline,document_qa,이득 예상,draft_exposed,HybridRAG,1000,3,3,1.0,True,995,
+G10,local_offline,document_qa,이득 예상,draft_exposed,HybridRAG,1000,4,4,1.0,True,999,
+G11,local_offline,document_qa,이득 예상,draft_exposed,HybridRAG,1000,3,3,1.0,True,996,
+G12,local_offline,document_qa,부분 이득 예상,draft_exposed,HybridRAG,1000,3,3,1.0,True,997,
+G13,local_offline,document_qa,이득 없음 예상,draft_exposed,HybridRAG,1000,3,3,1.0,True,989,
+G14,local_offline,document_qa,이득 없음 예상,draft_exposed,HybridRAG,1000,1,1,1.0,True,981,
+G15,local_offline,document_qa,이득 없음 예상,draft_exposed,HybridRAG,1000,3,3,1.0,True,992,
+NEW-01,local_offline,document_qa,단위 정규화,extension_draft_exposed,HybridRAG,1000,1,1,1.0,True,994,
+NEW-02,local_offline,document_qa,단위 불일치,extension_draft_exposed,HybridRAG,1000,1,1,1.0,True,981,
+NEW-03,local_offline,document_qa,측정 불확실성,extension_draft_exposed,HybridRAG,1000,1,1,1.0,True,994,
+NEW-04,local_offline,document_qa,반올림 기록,extension_draft_exposed,HybridRAG,1000,1,1,1.0,True,995,
+NEW-05,local_offline,document_qa,시간 관측 공백,extension_draft_exposed,HybridRAG,1000,1,1,1.0,True,980,
+NEW-06,local_offline,document_qa,연속과 누적,extension_draft_exposed,HybridRAG,1000,1,1,1.0,True,997,
+NEW-07,local_offline,document_qa,증거 수준,extension_draft_exposed,HybridRAG,1000,1,1,1.0,True,978,
+NEW-08,local_offline,document_qa,변화량 입력,extension_draft_exposed,HybridRAG,1000,1,1,1.0,True,984,
+NEW-09,local_offline,document_qa,샘플과 시간,extension_draft_exposed,HybridRAG,1000,1,1,1.0,True,986,
+NEW-10,local_offline,document_qa,결측 처리,extension_draft_exposed,HybridRAG,1000,2,1,0.5,False,997,SOP-002:p2:table6:chunk#r3
+NEW-11,local_offline,document_qa,복합 논리,extension_draft_exposed,HybridRAG,1000,1,1,1.0,True,990,
+NEW-12,local_offline,document_qa,동시 규칙,extension_draft_exposed,HybridRAG,1000,2,2,1.0,True,994,
+NEW-13,local_offline,document_qa,역추론 오류,extension_draft_exposed,HybridRAG,1000,1,1,1.0,True,998,
+NEW-14,local_offline,document_qa,규칙 비발동 해석,extension_draft_exposed,HybridRAG,1000,1,1,1.0,True,984,
+NEW-15,local_offline,document_qa,부분 교정,extension_draft_exposed,HybridRAG,1000,1,1,1.0,True,986,
+NEW-16,local_offline,document_qa,주장과 근거,extension_draft_exposed,HybridRAG,1000,1,1,1.0,True,995,
+NEW-17,local_offline,document_qa,잘못된 행 인용,extension_draft_exposed,HybridRAG,1000,2,2,1.0,True,1000,
+NEW-18,local_offline,document_qa,추출과 계산,extension_draft_exposed,HybridRAG,1000,1,1,1.0,True,993,
+NEW-19,local_offline,document_qa,명확화,extension_draft_exposed,HybridRAG,1000,3,3,1.0,True,998,
+NEW-20,local_offline,document_qa,선택적 응답,extension_draft_exposed,HybridRAG,1000,1,1,1.0,True,988,
+REL-D01,local_offline,document_qa,전체 대상 회수,draft_exposed,HybridRAG,1000,5,3,0.6,False,1000,SOP-001:p1:RULE-ST02-02 | SOP-001:p1:RULE-ST04-02
+REL-D02,local_offline,document_qa,조건부 교차 대상,draft_exposed,HybridRAG,1000,5,4,0.8,False,1000,SOP-001:p1:RULE-ST02-03
+REL-D03,local_offline,document_qa,공유 속성 전체 조회,draft_exposed,HybridRAG,1000,3,3,1.0,True,999,
+REL-D04,local_offline,document_qa,참조 방향과 역조회,draft_exposed,HybridRAG,1000,2,1,0.5,False,991,SOP-001:p1:RULE-ST02-04
+REL-D05,local_offline,document_qa,관계 경로와 인과 구별,draft_exposed,HybridRAG,1000,3,2,0.6666666666666666,False,990,SOP-001:p1:table1:chunk#r2
+REL-D06,local_offline,document_qa,문서 개정 영향 범위,draft_exposed,HybridRAG,1000,11,7,0.6363636363636364,False,996,SOP-003:p1:table1:chunk#r5 | SOP-003:p1:table1:chunk#r6 | SOP-003:p1:table1:chunk#r7 | SOP-003:p1:table1:chunk#r8
+YV2-Q01,local_offline,document_qa,단일 규칙,dev,HybridRAG,1000,1,1,1.0,True,989,
+YV2-Q02,local_offline,document_qa,단일 규칙,eval,HybridRAG,1000,1,1,1.0,True,978,
+YV2-Q03,local_offline,document_qa,단일 규칙,eval,HybridRAG,1000,1,1,1.0,True,992,
+YV2-Q04,local_offline,document_qa,단일 규칙,eval,HybridRAG,1000,1,1,1.0,True,995,
+YV2-Q05,local_offline,document_qa,단일 규칙,eval,HybridRAG,1000,1,1,1.0,True,999,
+YV2-Q06,local_offline,document_qa,수치·조건,dev,HybridRAG,1000,1,1,1.0,True,996,
+YV2-Q07,local_offline,document_qa,수치·조건,eval,HybridRAG,1000,1,1,1.0,True,995,
+YV2-Q08,local_offline,document_qa,수치·조건,eval,HybridRAG,1000,1,1,1.0,True,994,
+YV2-Q09,local_offline,document_qa,수치·조건,eval,HybridRAG,1000,2,2,1.0,True,996,
+YV2-Q10,local_offline,document_qa,수치·조건,eval,HybridRAG,1000,1,1,1.0,True,994,
+YV2-Q11,local_offline,document_qa,연결·절차,dev,HybridRAG,1000,5,5,1.0,True,991,
+YV2-Q12,local_offline,document_qa,연결·절차,eval,HybridRAG,1000,1,1,1.0,True,996,
+YV2-Q13,local_offline,document_qa,연결·절차,eval,HybridRAG,1000,2,2,1.0,True,995,
+YV2-Q14,local_offline,document_qa,연결·절차,eval,HybridRAG,1000,1,1,1.0,True,994,
+YV2-Q15,local_offline,document_qa,연결·절차,eval,HybridRAG,1000,2,2,1.0,True,984,
+YV2-Q16,local_offline,document_qa,문서 비교,dev,HybridRAG,1000,3,3,1.0,True,998,
+YV2-Q17,local_offline,document_qa,문서 비교,eval,HybridRAG,1000,4,2,0.5,False,995,DS-THERM-2200:p1:text2 | SOP-002:p1:table2:chunk#r1
+YV2-Q18,local_offline,document_qa,문서 비교,eval,HybridRAG,1000,2,1,0.5,False,999,DS-MECH-4400:p1:text2
+YV2-Q19,local_offline,document_qa,문서 비교,eval,HybridRAG,1000,2,2,1.0,True,991,
+YV2-Q20,local_offline,document_qa,문서 비교,eval,HybridRAG,1000,2,2,1.0,True,977,
+YV2-Q21,local_offline,document_qa,근거·권한,dev,HybridRAG,1000,1,1,1.0,True,992,
+YV2-Q22,local_offline,document_qa,근거·권한,eval,HybridRAG,1000,1,1,1.0,True,993,
+YV2-Q23,local_offline,document_qa,근거·권한,eval,HybridRAG,1000,2,2,1.0,True,985,
+YV2-Q24,local_offline,document_qa,근거·권한,eval,HybridRAG,1000,1,1,1.0,True,989,
+YV2-Q25,local_offline,document_qa,근거·권한,eval,HybridRAG,1000,2,1,0.5,False,1000,SOP-004:p1:table1:chunk#r5
+YV2-Q26,local_offline,document_qa,답변 한계,dev,HybridRAG,1000,2,2,1.0,True,990,
+YV2-Q27,local_offline,document_qa,답변 한계,eval,HybridRAG,1000,2,2,1.0,True,994,
+YV2-Q28,local_offline,document_qa,답변 한계,eval,HybridRAG,1000,3,2,0.6666666666666666,False,978,SOP-002:p2:table6:chunk#r5
+YV2-Q29,local_offline,document_qa,답변 한계,eval,HybridRAG,1000,4,3,0.75,False,997,SOP-001:p1:RULE-ST02-01
+YV2-Q30,local_offline,document_qa,답변 한계,eval,HybridRAG,1000,3,3,1.0,True,986,
+CQ04,local_offline,document_qa,규칙·조치 대상·출처,draft_exposed,VectorRAG,1000,2,2,1.0,True,999,
+G01,local_offline,document_qa,이득 없음 예상,draft_exposed,VectorRAG,1000,3,3,1.0,True,992,
+G02,local_offline,document_qa,이득 예상,draft_exposed,VectorRAG,1000,4,2,0.5,False,992,SOP-001:p1:RULE-ST02-03 | SOP-001:p1:RULE-ST02-04
+G03,local_offline,document_qa,이득 예상,draft_exposed,VectorRAG,1000,4,4,1.0,True,995,
+G04,local_offline,document_qa,이득 예상,draft_exposed,VectorRAG,1000,5,5,1.0,True,995,
+G05,local_offline,document_qa,부분 이득 예상,draft_exposed,VectorRAG,1000,3,2,0.6666666666666666,False,994,SOP-002:p1:table2:chunk#r1
+G06,local_offline,document_qa,이득 예상,draft_exposed,VectorRAG,1000,3,2,0.6666666666666666,False,989,SOP-001:p1:RULE-ST02-04
+G07,local_offline,document_qa,이득 예상,draft_exposed,VectorRAG,1000,3,2,0.6666666666666666,False,983,SOP-002:p1:table1:chunk#r2
+G08,local_offline,document_qa,부분 이득 예상,draft_exposed,VectorRAG,1000,3,2,0.6666666666666666,False,988,SOP-002:p2:table6:chunk#r3
+G09,local_offline,document_qa,이득 예상,draft_exposed,VectorRAG,1000,3,3,1.0,True,983,
+G10,local_offline,document_qa,이득 예상,draft_exposed,VectorRAG,1000,4,2,0.5,False,995,SOP-002:p2:table2:chunk#r1 | SOP-003:p1:table2:chunk#r3
+G11,local_offline,document_qa,이득 예상,draft_exposed,VectorRAG,1000,3,3,1.0,True,1000,
+G12,local_offline,document_qa,부분 이득 예상,draft_exposed,VectorRAG,1000,3,1,0.3333333333333333,False,1000,SOP-001:p1:RULE-ST02-03 | SOP-002:p1:table2:chunk#r3
+G13,local_offline,document_qa,이득 없음 예상,draft_exposed,VectorRAG,1000,3,1,0.3333333333333333,False,998,SOP-004:p1:table3:chunk#r3 | SOP-004:p1:table3:chunk#r4
+G14,local_offline,document_qa,이득 없음 예상,draft_exposed,VectorRAG,1000,1,0,0.0,False,991,SOP-002:p2:table6:chunk#r4
+G15,local_offline,document_qa,이득 없음 예상,draft_exposed,VectorRAG,1000,3,3,1.0,True,978,
+NEW-01,local_offline,document_qa,단위 정규화,extension_draft_exposed,VectorRAG,1000,1,1,1.0,True,999,
+NEW-02,local_offline,document_qa,단위 불일치,extension_draft_exposed,VectorRAG,1000,1,0,0.0,False,999,SOP-002:p1:table4:chunk#r3
+NEW-03,local_offline,document_qa,측정 불확실성,extension_draft_exposed,VectorRAG,1000,1,0,0.0,False,998,SOP-001:p1:RULE-ST02-02
+NEW-04,local_offline,document_qa,반올림 기록,extension_draft_exposed,VectorRAG,1000,1,0,0.0,False,987,SOP-001:p1:RULE-ST02-02
+NEW-05,local_offline,document_qa,시간 관측 공백,extension_draft_exposed,VectorRAG,1000,1,1,1.0,True,988,
+NEW-06,local_offline,document_qa,연속과 누적,extension_draft_exposed,VectorRAG,1000,1,1,1.0,True,998,
+NEW-07,local_offline,document_qa,증거 수준,extension_draft_exposed,VectorRAG,1000,1,1,1.0,True,982,
+NEW-08,local_offline,document_qa,변화량 입력,extension_draft_exposed,VectorRAG,1000,1,0,0.0,False,986,SOP-003:p1:table1:chunk#r1
+NEW-09,local_offline,document_qa,샘플과 시간,extension_draft_exposed,VectorRAG,1000,1,1,1.0,True,993,
+NEW-10,local_offline,document_qa,결측 처리,extension_draft_exposed,VectorRAG,1000,2,2,1.0,True,987,
+NEW-11,local_offline,document_qa,복합 논리,extension_draft_exposed,VectorRAG,1000,1,0,0.0,False,987,SOP-001:p1:RULE-ST02-03
+NEW-12,local_offline,document_qa,동시 규칙,extension_draft_exposed,VectorRAG,1000,2,1,0.5,False,998,SOP-002:p1:table5:chunk#r1
+NEW-13,local_offline,document_qa,역추론 오류,extension_draft_exposed,VectorRAG,1000,1,1,1.0,True,998,
+NEW-14,local_offline,document_qa,규칙 비발동 해석,extension_draft_exposed,VectorRAG,1000,1,0,0.0,False,987,SOP-001:p1:RULE-ST02-02
+NEW-15,local_offline,document_qa,부분 교정,extension_draft_exposed,VectorRAG,1000,1,1,1.0,True,995,
+NEW-16,local_offline,document_qa,주장과 근거,extension_draft_exposed,VectorRAG,1000,1,1,1.0,True,994,
+NEW-17,local_offline,document_qa,잘못된 행 인용,extension_draft_exposed,VectorRAG,1000,2,1,0.5,False,994,SOP-002:p1:table2:chunk#r1
+NEW-18,local_offline,document_qa,추출과 계산,extension_draft_exposed,VectorRAG,1000,1,0,0.0,False,985,SOP-002:p1:table2:chunk#r1
+NEW-19,local_offline,document_qa,명확화,extension_draft_exposed,VectorRAG,1000,3,0,0.0,False,984,SOP-002:p1:table2:chunk#r1 | SOP-002:p1:table2:chunk#r2 | SOP-002:p1:table2:chunk#r3
+NEW-20,local_offline,document_qa,선택적 응답,extension_draft_exposed,VectorRAG,1000,1,0,0.0,False,1000,SOP-002:p1:table2:chunk#r1
+REL-D01,local_offline,document_qa,전체 대상 회수,draft_exposed,VectorRAG,1000,5,0,0.0,False,999,SOP-001:p1:RULE-ST02-02 | SOP-001:p1:RULE-ST02-04 | SOP-001:p1:RULE-ST04-02 | SOP-001:p1:text5 | SOP-001:p2:RULE-ST04-03
+REL-D02,local_offline,document_qa,조건부 교차 대상,draft_exposed,VectorRAG,1000,5,1,0.2,False,997,SOP-001:p1:RULE-ST02-02 | SOP-001:p1:RULE-ST02-03 | SOP-001:p1:RULE-ST02-04 | SOP-002:p1:table2:chunk#r1
+REL-D03,local_offline,document_qa,공유 속성 전체 조회,draft_exposed,VectorRAG,1000,3,3,1.0,True,983,
+REL-D04,local_offline,document_qa,참조 방향과 역조회,draft_exposed,VectorRAG,1000,2,0,0.0,False,986,SOP-001:p1:RULE-ST02-04 | SOP-001:p2:RULE-ST04-03
+REL-D05,local_offline,document_qa,관계 경로와 인과 구별,draft_exposed,VectorRAG,1000,3,3,1.0,True,990,
+REL-D06,local_offline,document_qa,문서 개정 영향 범위,draft_exposed,VectorRAG,1000,11,5,0.45454545454545453,False,998,SOP-003:p1:table1:chunk#r1 | SOP-003:p1:table1:chunk#r4 | SOP-003:p1:table1:chunk#r5 | SOP-003:p1:table1:chunk#r6 | SOP-003:p1:table1:chunk#r7 | SOP-003:p1:table1:chunk#r8
+YV2-Q01,local_offline,document_qa,단일 규칙,dev,VectorRAG,1000,1,1,1.0,True,999,
+YV2-Q02,local_offline,document_qa,단일 규칙,eval,VectorRAG,1000,1,0,0.0,False,998,SOP-001:p1:RULE-ST01-02
+YV2-Q03,local_offline,document_qa,단일 규칙,eval,VectorRAG,1000,1,1,1.0,True,988,
+YV2-Q04,local_offline,document_qa,단일 규칙,eval,VectorRAG,1000,1,1,1.0,True,988,
+YV2-Q05,local_offline,document_qa,단일 규칙,eval,VectorRAG,1000,1,1,1.0,True,982,
+YV2-Q06,local_offline,document_qa,수치·조건,dev,VectorRAG,1000,1,1,1.0,True,999,
+YV2-Q07,local_offline,document_qa,수치·조건,eval,VectorRAG,1000,1,1,1.0,True,1000,
+YV2-Q08,local_offline,document_qa,수치·조건,eval,VectorRAG,1000,1,1,1.0,True,992,
+YV2-Q09,local_offline,document_qa,수치·조건,eval,VectorRAG,1000,2,2,1.0,True,983,
+YV2-Q10,local_offline,document_qa,수치·조건,eval,VectorRAG,1000,1,0,0.0,False,985,SOP-001:p1:RULE-ST02-02
+YV2-Q11,local_offline,document_qa,연결·절차,dev,VectorRAG,1000,5,5,1.0,True,987,
+YV2-Q12,local_offline,document_qa,연결·절차,eval,VectorRAG,1000,1,1,1.0,True,986,
+YV2-Q13,local_offline,document_qa,연결·절차,eval,VectorRAG,1000,2,1,0.5,False,990,SOP-001:p1:RULE-ST02-04
+YV2-Q14,local_offline,document_qa,연결·절차,eval,VectorRAG,1000,1,1,1.0,True,994,
+YV2-Q15,local_offline,document_qa,연결·절차,eval,VectorRAG,1000,2,2,1.0,True,995,
+YV2-Q16,local_offline,document_qa,문서 비교,dev,VectorRAG,1000,3,3,1.0,True,995,
+YV2-Q17,local_offline,document_qa,문서 비교,eval,VectorRAG,1000,4,2,0.5,False,994,SOP-001:p1:RULE-ST02-02 | SOP-002:p1:table2:chunk#r1
+YV2-Q18,local_offline,document_qa,문서 비교,eval,VectorRAG,1000,2,1,0.5,False,999,SOP-002:p1:table1:chunk#r2
+YV2-Q19,local_offline,document_qa,문서 비교,eval,VectorRAG,1000,2,2,1.0,True,998,
+YV2-Q20,local_offline,document_qa,문서 비교,eval,VectorRAG,1000,2,2,1.0,True,981,
+YV2-Q21,local_offline,document_qa,근거·권한,dev,VectorRAG,1000,1,1,1.0,True,1000,
+YV2-Q22,local_offline,document_qa,근거·권한,eval,VectorRAG,1000,1,1,1.0,True,987,
+YV2-Q23,local_offline,document_qa,근거·권한,eval,VectorRAG,1000,2,0,0.0,False,997,SOP-004:p1:table3:chunk#r2 | SOP-004:p1:table3:chunk#r3
+YV2-Q24,local_offline,document_qa,근거·권한,eval,VectorRAG,1000,1,1,1.0,True,987,
+YV2-Q25,local_offline,document_qa,근거·권한,eval,VectorRAG,1000,2,0,0.0,False,1000,SOP-001:p2:RULE-CHM01-03 | SOP-004:p1:table1:chunk#r5
+YV2-Q26,local_offline,document_qa,답변 한계,dev,VectorRAG,1000,2,2,1.0,True,995,
+YV2-Q27,local_offline,document_qa,답변 한계,eval,VectorRAG,1000,2,1,0.5,False,980,SOP-001:p1:RULE-ST02-04
+YV2-Q28,local_offline,document_qa,답변 한계,eval,VectorRAG,1000,3,2,0.6666666666666666,False,998,SOP-002:p2:table6:chunk#r5
+YV2-Q29,local_offline,document_qa,답변 한계,eval,VectorRAG,1000,4,2,0.5,False,991,SOP-001:p1:RULE-ST02-01 | SOP-002:p1:table2:chunk#r1
+YV2-Q30,local_offline,document_qa,답변 한계,eval,VectorRAG,1000,3,3,1.0,True,1000,
+ADD-01,local_offline,kg_structure,관계 조건의 교집합,draft_exposed,GraphNoTopology,2000,2,2,1.0,True,1991,
+ADD-02,local_offline,kg_structure,정확한 대상 집합,draft_exposed,GraphNoTopology,2000,55,9,0.16363636363636364,False,1999,KG:N0010 | KG:N0011 | KG:N0012 | KG:N0013 | KG:N0014 | KG:N0015 | KG:N0016 | KG:N0017 | KG:N0047 | KG:N0048 | KG:N0049 | KG:N0050 | KG:N0051 | KG:N0054 | KG:N0056 | KG:N0060 | KG:N0063 | KG:N0064 | KG:N0065 | KG:N0068 | KG:N0072 | KG:N0075 | KG:N0079 | KG:N0085 | KG:N0091 | KG:N0092 | KG:N0104 | KG:N0105 | KG:N0106 | KG:N0107 | KG:N0108 | KG:N0120 | KG:N0121 | KG:N0122 | KG:N0130 | KG:N0133 | KG:N0137 | KG:N0138 | KG:N0139 | KG:N0140 | KG:N0141 | KG:N0142 | KG:N0143 | KG:N0144 | KG:N0145 | KG:N0146
+ADD-03,local_offline,kg_structure,문서 간 공통 적용 대상,draft_exposed,GraphNoTopology,2000,44,5,0.11363636363636363,False,1988,KG:N0006 | KG:N0010 | KG:N0011 | KG:N0012 | KG:N0013 | KG:N0014 | KG:N0015 | KG:N0016 | KG:N0017 | KG:N0019 | KG:N0027 | KG:N0030 | KG:N0033 | KG:N0039 | KG:N0042 | KG:N0043 | KG:N0046 | KG:N0054 | KG:N0055 | KG:N0061 | KG:N0062 | KG:N0064 | KG:N0067 | KG:N0070 | KG:N0071 | KG:N0076 | KG:N0078 | KG:N0079 | KG:N0080 | KG:N0109 | KG:N0110 | KG:N0112 | KG:N0113 | KG:N0114 | KG:N0115 | KG:N0116 | KG:N0117 | KG:N0118 | KG:N0119
+ADD-04,local_offline,kg_structure,최소 경로와 관계 제한,draft_exposed,GraphNoTopology,2000,5,3,0.6,False,1992,KG:N0040 | KG:N0087
+ADD-05,local_offline,kg_structure,출처별 지식 범위,draft_exposed,GraphNoTopology,2000,6,3,0.5,False,1986,KG:N0071 | KG:N0087 | KG:N0117
+ADD-06,local_offline,kg_structure,연결 누락과 실세계 부재,draft_exposed,GraphNoTopology,2000,39,8,0.20512820512820512,False,1998,KG:N0047 | KG:N0048 | KG:N0049 | KG:N0050 | KG:N0051 | KG:N0058 | KG:N0059 | KG:N0104 | KG:N0106 | KG:N0107 | KG:N0108 | KG:N0123 | KG:N0124 | KG:N0125 | KG:N0126 | KG:N0127 | KG:N0128 | KG:N0129 | KG:N0130 | KG:N0131 | KG:N0132 | KG:N0133 | KG:N0134 | KG:N0135 | KG:N0136 | KG:N0138 | KG:N0139 | KG:N0141 | KG:N0142 | KG:N0143 | KG:N0144
+CQ04,local_offline,document_qa,규칙·조치 대상·출처,draft_exposed,GraphNoTopology,2000,2,2,1.0,True,1987,
+G01,local_offline,document_qa,이득 없음 예상,draft_exposed,GraphNoTopology,2000,3,3,1.0,True,2000,
+G02,local_offline,document_qa,이득 예상,draft_exposed,GraphNoTopology,2000,4,4,1.0,True,1932,
+G03,local_offline,document_qa,이득 예상,draft_exposed,GraphNoTopology,2000,4,4,1.0,True,1992,
+G04,local_offline,document_qa,이득 예상,draft_exposed,GraphNoTopology,2000,5,5,1.0,True,2000,
+G05,local_offline,document_qa,부분 이득 예상,draft_exposed,GraphNoTopology,2000,3,3,1.0,True,1932,
+G06,local_offline,document_qa,이득 예상,draft_exposed,GraphNoTopology,2000,3,3,1.0,True,1942,
+G07,local_offline,document_qa,이득 예상,draft_exposed,GraphNoTopology,2000,3,3,1.0,True,1991,
+G08,local_offline,document_qa,부분 이득 예상,draft_exposed,GraphNoTopology,2000,3,3,1.0,True,1857,
+G09,local_offline,document_qa,이득 예상,draft_exposed,GraphNoTopology,2000,3,3,1.0,True,1948,
+G10,local_offline,document_qa,이득 예상,draft_exposed,GraphNoTopology,2000,4,4,1.0,True,1978,
+G11,local_offline,document_qa,이득 예상,draft_exposed,GraphNoTopology,2000,3,3,1.0,True,1992,
+G12,local_offline,document_qa,부분 이득 예상,draft_exposed,GraphNoTopology,2000,3,3,1.0,True,1986,
+G13,local_offline,document_qa,이득 없음 예상,draft_exposed,GraphNoTopology,2000,3,3,1.0,True,1997,
+G14,local_offline,document_qa,이득 없음 예상,draft_exposed,GraphNoTopology,2000,1,1,1.0,True,1989,
+G15,local_offline,document_qa,이득 없음 예상,draft_exposed,GraphNoTopology,2000,3,3,1.0,True,1939,
+NEW-01,local_offline,document_qa,단위 정규화,extension_draft_exposed,GraphNoTopology,2000,1,1,1.0,True,1988,
+NEW-02,local_offline,document_qa,단위 불일치,extension_draft_exposed,GraphNoTopology,2000,1,1,1.0,True,1948,
+NEW-03,local_offline,document_qa,측정 불확실성,extension_draft_exposed,GraphNoTopology,2000,1,1,1.0,True,1960,
+NEW-04,local_offline,document_qa,반올림 기록,extension_draft_exposed,GraphNoTopology,2000,1,1,1.0,True,2000,
+NEW-05,local_offline,document_qa,시간 관측 공백,extension_draft_exposed,GraphNoTopology,2000,1,1,1.0,True,1985,
+NEW-06,local_offline,document_qa,연속과 누적,extension_draft_exposed,GraphNoTopology,2000,1,1,1.0,True,1956,
+NEW-07,local_offline,document_qa,증거 수준,extension_draft_exposed,GraphNoTopology,2000,1,1,1.0,True,1994,
+NEW-08,local_offline,document_qa,변화량 입력,extension_draft_exposed,GraphNoTopology,2000,1,1,1.0,True,1996,
+NEW-09,local_offline,document_qa,샘플과 시간,extension_draft_exposed,GraphNoTopology,2000,1,1,1.0,True,1866,
+NEW-10,local_offline,document_qa,결측 처리,extension_draft_exposed,GraphNoTopology,2000,2,1,0.5,False,1891,SOP-002:p2:table6:chunk#r3
+NEW-11,local_offline,document_qa,복합 논리,extension_draft_exposed,GraphNoTopology,2000,1,1,1.0,True,1674,
+NEW-12,local_offline,document_qa,동시 규칙,extension_draft_exposed,GraphNoTopology,2000,2,2,1.0,True,1983,
+NEW-13,local_offline,document_qa,역추론 오류,extension_draft_exposed,GraphNoTopology,2000,1,1,1.0,True,1906,
+NEW-14,local_offline,document_qa,규칙 비발동 해석,extension_draft_exposed,GraphNoTopology,2000,1,1,1.0,True,1779,
+NEW-15,local_offline,document_qa,부분 교정,extension_draft_exposed,GraphNoTopology,2000,1,1,1.0,True,1990,
+NEW-16,local_offline,document_qa,주장과 근거,extension_draft_exposed,GraphNoTopology,2000,1,1,1.0,True,1993,
+NEW-17,local_offline,document_qa,잘못된 행 인용,extension_draft_exposed,GraphNoTopology,2000,2,2,1.0,True,1984,
+NEW-18,local_offline,document_qa,추출과 계산,extension_draft_exposed,GraphNoTopology,2000,1,1,1.0,True,1996,
+NEW-19,local_offline,document_qa,명확화,extension_draft_exposed,GraphNoTopology,2000,3,3,1.0,True,1917,
+NEW-20,local_offline,document_qa,선택적 응답,extension_draft_exposed,GraphNoTopology,2000,1,1,1.0,True,1977,
+REL-D01,local_offline,document_qa,전체 대상 회수,draft_exposed,GraphNoTopology,2000,5,4,0.8,False,1922,SOP-001:p1:RULE-ST02-02
+REL-D02,local_offline,document_qa,조건부 교차 대상,draft_exposed,GraphNoTopology,2000,5,5,1.0,True,1960,
+REL-D03,local_offline,document_qa,공유 속성 전체 조회,draft_exposed,GraphNoTopology,2000,3,3,1.0,True,1992,
+REL-D04,local_offline,document_qa,참조 방향과 역조회,draft_exposed,GraphNoTopology,2000,2,1,0.5,False,1684,SOP-001:p1:RULE-ST02-04
+REL-D05,local_offline,document_qa,관계 경로와 인과 구별,draft_exposed,GraphNoTopology,2000,3,3,1.0,True,1943,
+REL-D06,local_offline,document_qa,문서 개정 영향 범위,draft_exposed,GraphNoTopology,2000,11,11,1.0,True,2000,
+REL-K01,local_offline,kg_structure,두 역할의 집합 비교,draft_exposed,GraphNoTopology,2000,13,8,0.6153846153846154,False,1990,KG:N0010 | KG:N0078 | KG:N0085 | KG:N0092 | KG:N0117
+REL-K02,local_offline,kg_structure,다중 관계 교차 조회,draft_exposed,GraphNoTopology,2000,5,4,0.8,False,1993,KG:N0071
+REL-K03,local_offline,kg_structure,문서에서 역방향 영향 추적,draft_exposed,GraphNoTopology,2000,19,7,0.3684210526315789,False,1993,KG:N0012 | KG:N0013 | KG:N0015 | KG:N0016 | KG:N0017 | KG:N0113 | KG:N0114 | KG:N0115 | KG:N0116 | KG:N0117 | KG:N0118 | KG:N0119
+REL-K04,local_offline,kg_structure,유향 경로와 부재 판정,draft_exposed,GraphNoTopology,2000,4,1,0.25,False,2000,KG:N0032 | KG:N0036 | KG:N0040
+REL-K05,local_offline,kg_structure,원문까지의 출처 추적,draft_exposed,GraphNoTopology,2000,4,1,0.25,False,1997,KG:N0113 | KG:N0173 | KG:N0352
+REL-K06,local_offline,kg_structure,필터와 저장 누락 구별,draft_exposed,GraphNoTopology,2000,6,5,0.8333333333333334,False,1997,KG:N0094
+YB-01,local_offline,kg_and_documents,구조·센서,dev,GraphNoTopology,2000,4,4,1.0,True,1999,
+YB-02,local_offline,kg_and_documents,구조·센서,eval,GraphNoTopology,2000,2,2,1.0,True,1980,
+YB-03,local_offline,kg_and_documents,연결·순서,dev,GraphNoTopology,2000,4,1,0.25,False,1993,KG:N0032 | KG:N0036 | KG:N0040
+YB-04,local_offline,kg_and_documents,구조·구역,eval,GraphNoTopology,2000,1,1,1.0,True,2000,
+YB-05,local_offline,kg_and_documents,수치·조건,eval,GraphNoTopology,2000,1,1,1.0,True,1998,
+YB-06,local_offline,kg_and_documents,조건·조치,eval,GraphNoTopology,2000,4,2,0.5,False,1998,SOP-001:p1:table1:chunk#r3 | SOP-001:p1:table1:chunk#r4
+YB-07,local_offline,kg_and_documents,정비 규칙,dev,GraphNoTopology,2000,1,1,1.0,True,2000,
+YB-08,local_offline,kg_and_documents,변화량·시간,eval,GraphNoTopology,2000,1,1,1.0,True,1991,
+YB-09,local_offline,kg_and_documents,샘플·조건,eval,GraphNoTopology,2000,1,1,1.0,True,1991,
+YB-10,local_offline,kg_and_documents,수치·조건,eval,GraphNoTopology,2000,1,1,1.0,True,1997,
+YB-11,local_offline,kg_and_documents,근거·메타데이터,dev,GraphNoTopology,2000,3,2,0.6666666666666666,False,1986,KG:N0248
+YB-12,local_offline,kg_and_documents,문서·메타데이터,dev,GraphNoTopology,2000,1,1,1.0,True,1996,
+YB-13,local_offline,kg_and_documents,연결·정비,eval,GraphNoTopology,2000,3,3,1.0,True,1996,
+YB-14,local_offline,kg_and_documents,출입·시간,eval,GraphNoTopology,2000,1,1,1.0,True,1992,
+YB-15,local_offline,kg_and_documents,문서 비교,eval,GraphNoTopology,2000,2,1,0.5,False,1997,DS-ELEC-3300:p1:text2
+YB-16,local_offline,kg_and_documents,답변 한계,dev,GraphNoTopology,2000,1,0,0.0,False,1989,KG:MANIFEST
+YB-17,local_offline,kg_and_documents,미등록 식별자,eval,GraphNoTopology,2000,1,0,0.0,False,1994,KG:MANIFEST
+YB-18,local_offline,kg_and_documents,답변 한계,eval,GraphNoTopology,2000,2,0,0.0,False,2000,DS-THERM-2200:p1:text1 | SOP-002:p1:table2:chunk#r1
+YV2-Q01,local_offline,document_qa,단일 규칙,dev,GraphNoTopology,2000,1,1,1.0,True,1927,
+YV2-Q02,local_offline,document_qa,단일 규칙,eval,GraphNoTopology,2000,1,1,1.0,True,1957,
+YV2-Q03,local_offline,document_qa,단일 규칙,eval,GraphNoTopology,2000,1,1,1.0,True,1880,
+YV2-Q04,local_offline,document_qa,단일 규칙,eval,GraphNoTopology,2000,1,1,1.0,True,1977,
+YV2-Q05,local_offline,document_qa,단일 규칙,eval,GraphNoTopology,2000,1,1,1.0,True,1608,
+YV2-Q06,local_offline,document_qa,수치·조건,dev,GraphNoTopology,2000,1,1,1.0,True,1982,
+YV2-Q07,local_offline,document_qa,수치·조건,eval,GraphNoTopology,2000,1,1,1.0,True,1830,
+YV2-Q08,local_offline,document_qa,수치·조건,eval,GraphNoTopology,2000,1,1,1.0,True,1983,
+YV2-Q09,local_offline,document_qa,수치·조건,eval,GraphNoTopology,2000,2,2,1.0,True,1858,
+YV2-Q10,local_offline,document_qa,수치·조건,eval,GraphNoTopology,2000,1,1,1.0,True,1679,
+YV2-Q11,local_offline,document_qa,연결·절차,dev,GraphNoTopology,2000,5,5,1.0,True,1976,
+YV2-Q12,local_offline,document_qa,연결·절차,eval,GraphNoTopology,2000,1,1,1.0,True,1857,
+YV2-Q13,local_offline,document_qa,연결·절차,eval,GraphNoTopology,2000,2,2,1.0,True,1924,
+YV2-Q14,local_offline,document_qa,연결·절차,eval,GraphNoTopology,2000,1,1,1.0,True,1994,
+YV2-Q15,local_offline,document_qa,연결·절차,eval,GraphNoTopology,2000,2,2,1.0,True,1984,
+YV2-Q16,local_offline,document_qa,문서 비교,dev,GraphNoTopology,2000,3,3,1.0,True,1997,
+YV2-Q17,local_offline,document_qa,문서 비교,eval,GraphNoTopology,2000,4,4,1.0,True,1994,
+YV2-Q18,local_offline,document_qa,문서 비교,eval,GraphNoTopology,2000,2,1,0.5,False,1998,DS-MECH-4400:p1:text2
+YV2-Q19,local_offline,document_qa,문서 비교,eval,GraphNoTopology,2000,2,2,1.0,True,1993,
+YV2-Q20,local_offline,document_qa,문서 비교,eval,GraphNoTopology,2000,2,2,1.0,True,1995,
+YV2-Q21,local_offline,document_qa,근거·권한,dev,GraphNoTopology,2000,1,1,1.0,True,1993,
+YV2-Q22,local_offline,document_qa,근거·권한,eval,GraphNoTopology,2000,1,1,1.0,True,1896,
+YV2-Q23,local_offline,document_qa,근거·권한,eval,GraphNoTopology,2000,2,2,1.0,True,1983,
+YV2-Q24,local_offline,document_qa,근거·권한,eval,GraphNoTopology,2000,1,1,1.0,True,1951,
+YV2-Q25,local_offline,document_qa,근거·권한,eval,GraphNoTopology,2000,2,2,1.0,True,1881,
+YV2-Q26,local_offline,document_qa,답변 한계,dev,GraphNoTopology,2000,2,2,1.0,True,1850,
+YV2-Q27,local_offline,document_qa,답변 한계,eval,GraphNoTopology,2000,2,2,1.0,True,1822,
+YV2-Q28,local_offline,document_qa,답변 한계,eval,GraphNoTopology,2000,3,2,0.6666666666666666,False,1984,SOP-002:p2:table6:chunk#r5
+YV2-Q29,local_offline,document_qa,답변 한계,eval,GraphNoTopology,2000,4,4,1.0,True,1992,
+YV2-Q30,local_offline,document_qa,답변 한계,eval,GraphNoTopology,2000,3,3,1.0,True,1996,
+ADD-01,local_offline,kg_structure,관계 조건의 교집합,draft_exposed,GraphRAG,2000,2,2,1.0,True,1981,
+ADD-02,local_offline,kg_structure,정확한 대상 집합,draft_exposed,GraphRAG,2000,55,8,0.14545454545454545,False,1997,KG:N0047 | KG:N0048 | KG:N0049 | KG:N0050 | KG:N0051 | KG:N0054 | KG:N0056 | KG:N0060 | KG:N0063 | KG:N0064 | KG:N0065 | KG:N0068 | KG:N0069 | KG:N0071 | KG:N0072 | KG:N0075 | KG:N0076 | KG:N0077 | KG:N0078 | KG:N0079 | KG:N0085 | KG:N0087 | KG:N0091 | KG:N0092 | KG:N0093 | KG:N0104 | KG:N0105 | KG:N0106 | KG:N0107 | KG:N0108 | KG:N0109 | KG:N0117 | KG:N0120 | KG:N0121 | KG:N0122 | KG:N0130 | KG:N0133 | KG:N0137 | KG:N0138 | KG:N0139 | KG:N0140 | KG:N0141 | KG:N0142 | KG:N0143 | KG:N0144 | KG:N0145 | KG:N0146
+ADD-03,local_offline,kg_structure,문서 간 공통 적용 대상,draft_exposed,GraphRAG,2000,44,11,0.25,False,1998,KG:N0030 | KG:N0033 | KG:N0039 | KG:N0042 | KG:N0043 | KG:N0046 | KG:N0054 | KG:N0055 | KG:N0061 | KG:N0062 | KG:N0063 | KG:N0064 | KG:N0067 | KG:N0070 | KG:N0071 | KG:N0072 | KG:N0075 | KG:N0076 | KG:N0077 | KG:N0078 | KG:N0079 | KG:N0080 | KG:N0109 | KG:N0110 | KG:N0111 | KG:N0112 | KG:N0113 | KG:N0114 | KG:N0115 | KG:N0116 | KG:N0117 | KG:N0118 | KG:N0119
+ADD-04,local_offline,kg_structure,최소 경로와 관계 제한,draft_exposed,GraphRAG,2000,5,5,1.0,True,1994,
+ADD-05,local_offline,kg_structure,출처별 지식 범위,draft_exposed,GraphRAG,2000,6,6,1.0,True,2000,
+ADD-06,local_offline,kg_structure,연결 누락과 실세계 부재,draft_exposed,GraphRAG,2000,39,4,0.10256410256410256,False,1996,KG:N0051 | KG:N0058 | KG:N0059 | KG:N0104 | KG:N0105 | KG:N0106 | KG:N0107 | KG:N0108 | KG:N0120 | KG:N0121 | KG:N0122 | KG:N0123 | KG:N0124 | KG:N0125 | KG:N0126 | KG:N0127 | KG:N0128 | KG:N0129 | KG:N0130 | KG:N0131 | KG:N0132 | KG:N0133 | KG:N0134 | KG:N0135 | KG:N0136 | KG:N0137 | KG:N0138 | KG:N0139 | KG:N0140 | KG:N0141 | KG:N0142 | KG:N0143 | KG:N0144 | KG:N0145 | KG:N0146
+CQ04,local_offline,document_qa,규칙·조치 대상·출처,draft_exposed,GraphRAG,2000,2,2,1.0,True,1987,
+G01,local_offline,document_qa,이득 없음 예상,draft_exposed,GraphRAG,2000,3,3,1.0,True,2000,
+G02,local_offline,document_qa,이득 예상,draft_exposed,GraphRAG,2000,4,4,1.0,True,1932,
+G03,local_offline,document_qa,이득 예상,draft_exposed,GraphRAG,2000,4,4,1.0,True,1992,
+G04,local_offline,document_qa,이득 예상,draft_exposed,GraphRAG,2000,5,5,1.0,True,2000,
+G05,local_offline,document_qa,부분 이득 예상,draft_exposed,GraphRAG,2000,3,3,1.0,True,1932,
+G06,local_offline,document_qa,이득 예상,draft_exposed,GraphRAG,2000,3,3,1.0,True,1942,
+G07,local_offline,document_qa,이득 예상,draft_exposed,GraphRAG,2000,3,3,1.0,True,1991,
+G08,local_offline,document_qa,부분 이득 예상,draft_exposed,GraphRAG,2000,3,3,1.0,True,1857,
+G09,local_offline,document_qa,이득 예상,draft_exposed,GraphRAG,2000,3,3,1.0,True,1948,
+G10,local_offline,document_qa,이득 예상,draft_exposed,GraphRAG,2000,4,4,1.0,True,1978,
+G11,local_offline,document_qa,이득 예상,draft_exposed,GraphRAG,2000,3,3,1.0,True,1992,
+G12,local_offline,document_qa,부분 이득 예상,draft_exposed,GraphRAG,2000,3,3,1.0,True,1986,
+G13,local_offline,document_qa,이득 없음 예상,draft_exposed,GraphRAG,2000,3,3,1.0,True,1997,
+G14,local_offline,document_qa,이득 없음 예상,draft_exposed,GraphRAG,2000,1,1,1.0,True,1989,
+G15,local_offline,document_qa,이득 없음 예상,draft_exposed,GraphRAG,2000,3,3,1.0,True,1939,
+NEW-01,local_offline,document_qa,단위 정규화,extension_draft_exposed,GraphRAG,2000,1,1,1.0,True,1998,
+NEW-02,local_offline,document_qa,단위 불일치,extension_draft_exposed,GraphRAG,2000,1,1,1.0,True,1948,
+NEW-03,local_offline,document_qa,측정 불확실성,extension_draft_exposed,GraphRAG,2000,1,1,1.0,True,1960,
+NEW-04,local_offline,document_qa,반올림 기록,extension_draft_exposed,GraphRAG,2000,1,1,1.0,True,2000,
+NEW-05,local_offline,document_qa,시간 관측 공백,extension_draft_exposed,GraphRAG,2000,1,1,1.0,True,1985,
+NEW-06,local_offline,document_qa,연속과 누적,extension_draft_exposed,GraphRAG,2000,1,1,1.0,True,1956,
+NEW-07,local_offline,document_qa,증거 수준,extension_draft_exposed,GraphRAG,2000,1,1,1.0,True,1994,
+NEW-08,local_offline,document_qa,변화량 입력,extension_draft_exposed,GraphRAG,2000,1,1,1.0,True,1996,
+NEW-09,local_offline,document_qa,샘플과 시간,extension_draft_exposed,GraphRAG,2000,1,1,1.0,True,1866,
+NEW-10,local_offline,document_qa,결측 처리,extension_draft_exposed,GraphRAG,2000,2,1,0.5,False,1891,SOP-002:p2:table6:chunk#r3
+NEW-11,local_offline,document_qa,복합 논리,extension_draft_exposed,GraphRAG,2000,1,1,1.0,True,1674,
+NEW-12,local_offline,document_qa,동시 규칙,extension_draft_exposed,GraphRAG,2000,2,2,1.0,True,1977,
+NEW-13,local_offline,document_qa,역추론 오류,extension_draft_exposed,GraphRAG,2000,1,1,1.0,True,1906,
+NEW-14,local_offline,document_qa,규칙 비발동 해석,extension_draft_exposed,GraphRAG,2000,1,1,1.0,True,1779,
+NEW-15,local_offline,document_qa,부분 교정,extension_draft_exposed,GraphRAG,2000,1,1,1.0,True,1990,
+NEW-16,local_offline,document_qa,주장과 근거,extension_draft_exposed,GraphRAG,2000,1,1,1.0,True,1993,
+NEW-17,local_offline,document_qa,잘못된 행 인용,extension_draft_exposed,GraphRAG,2000,2,2,1.0,True,2000,
+NEW-18,local_offline,document_qa,추출과 계산,extension_draft_exposed,GraphRAG,2000,1,1,1.0,True,1996,
+NEW-19,local_offline,document_qa,명확화,extension_draft_exposed,GraphRAG,2000,3,3,1.0,True,1917,
+NEW-20,local_offline,document_qa,선택적 응답,extension_draft_exposed,GraphRAG,2000,1,1,1.0,True,1977,
+REL-D01,local_offline,document_qa,전체 대상 회수,draft_exposed,GraphRAG,2000,5,4,0.8,False,1922,SOP-001:p1:RULE-ST02-02
+REL-D02,local_offline,document_qa,조건부 교차 대상,draft_exposed,GraphRAG,2000,5,5,1.0,True,1960,
+REL-D03,local_offline,document_qa,공유 속성 전체 조회,draft_exposed,GraphRAG,2000,3,3,1.0,True,1992,
+REL-D04,local_offline,document_qa,참조 방향과 역조회,draft_exposed,GraphRAG,2000,2,1,0.5,False,1684,SOP-001:p1:RULE-ST02-04
+REL-D05,local_offline,document_qa,관계 경로와 인과 구별,draft_exposed,GraphRAG,2000,3,3,1.0,True,1943,
+REL-D06,local_offline,document_qa,문서 개정 영향 범위,draft_exposed,GraphRAG,2000,11,11,1.0,True,2000,
+REL-K01,local_offline,kg_structure,두 역할의 집합 비교,draft_exposed,GraphRAG,2000,13,5,0.38461538461538464,False,1999,KG:N0078 | KG:N0085 | KG:N0087 | KG:N0091 | KG:N0092 | KG:N0093 | KG:N0109 | KG:N0117
+REL-K02,local_offline,kg_structure,다중 관계 교차 조회,draft_exposed,GraphRAG,2000,5,4,0.8,False,1987,KG:N0117
+REL-K03,local_offline,kg_structure,문서에서 역방향 영향 추적,draft_exposed,GraphRAG,2000,19,8,0.42105263157894735,False,2000,KG:N0109 | KG:N0110 | KG:N0111 | KG:N0112 | KG:N0113 | KG:N0114 | KG:N0115 | KG:N0116 | KG:N0117 | KG:N0118 | KG:N0119
+REL-K04,local_offline,kg_structure,유향 경로와 부재 판정,draft_exposed,GraphRAG,2000,4,4,1.0,True,1983,
+REL-K05,local_offline,kg_structure,원문까지의 출처 추적,draft_exposed,GraphRAG,2000,4,4,1.0,True,2000,
+REL-K06,local_offline,kg_structure,필터와 저장 누락 구별,draft_exposed,GraphRAG,2000,6,5,0.8333333333333334,False,1997,KG:N0094
+YB-01,local_offline,kg_and_documents,구조·센서,dev,GraphRAG,2000,4,4,1.0,True,1999,
+YB-02,local_offline,kg_and_documents,구조·센서,eval,GraphRAG,2000,2,2,1.0,True,1980,
+YB-03,local_offline,kg_and_documents,연결·순서,dev,GraphRAG,2000,4,4,1.0,True,1987,
+YB-04,local_offline,kg_and_documents,구조·구역,eval,GraphRAG,2000,1,1,1.0,True,1998,
+YB-05,local_offline,kg_and_documents,수치·조건,eval,GraphRAG,2000,1,1,1.0,True,1992,
+YB-06,local_offline,kg_and_documents,조건·조치,eval,GraphRAG,2000,4,2,0.5,False,1995,SOP-001:p1:table1:chunk#r3 | SOP-001:p1:table1:chunk#r4
+YB-07,local_offline,kg_and_documents,정비 규칙,dev,GraphRAG,2000,1,1,1.0,True,1999,
+YB-08,local_offline,kg_and_documents,변화량·시간,eval,GraphRAG,2000,1,1,1.0,True,1986,
+YB-09,local_offline,kg_and_documents,샘플·조건,eval,GraphRAG,2000,1,1,1.0,True,1980,
+YB-10,local_offline,kg_and_documents,수치·조건,eval,GraphRAG,2000,1,1,1.0,True,1996,
+YB-11,local_offline,kg_and_documents,근거·메타데이터,dev,GraphRAG,2000,3,3,1.0,True,1997,
+YB-12,local_offline,kg_and_documents,문서·메타데이터,dev,GraphRAG,2000,1,1,1.0,True,1996,
+YB-13,local_offline,kg_and_documents,연결·정비,eval,GraphRAG,2000,3,3,1.0,True,1998,
+YB-14,local_offline,kg_and_documents,출입·시간,eval,GraphRAG,2000,1,1,1.0,True,1992,
+YB-15,local_offline,kg_and_documents,문서 비교,eval,GraphRAG,2000,2,0,0.0,False,2000,DS-ELEC-3300:p1:text2 | SOP-002:p1:table2:chunk#r3
+YB-16,local_offline,kg_and_documents,답변 한계,dev,GraphRAG,2000,1,0,0.0,False,1979,KG:MANIFEST
+YB-17,local_offline,kg_and_documents,미등록 식별자,eval,GraphRAG,2000,1,0,0.0,False,1994,KG:MANIFEST
+YB-18,local_offline,kg_and_documents,답변 한계,eval,GraphRAG,2000,2,1,0.5,False,1998,DS-THERM-2200:p1:text1
+YV2-Q01,local_offline,document_qa,단일 규칙,dev,GraphRAG,2000,1,1,1.0,True,1927,
+YV2-Q02,local_offline,document_qa,단일 규칙,eval,GraphRAG,2000,1,1,1.0,True,1957,
+YV2-Q03,local_offline,document_qa,단일 규칙,eval,GraphRAG,2000,1,1,1.0,True,1880,
+YV2-Q04,local_offline,document_qa,단일 규칙,eval,GraphRAG,2000,1,1,1.0,True,1977,
+YV2-Q05,local_offline,document_qa,단일 규칙,eval,GraphRAG,2000,1,1,1.0,True,1608,
+YV2-Q06,local_offline,document_qa,수치·조건,dev,GraphRAG,2000,1,1,1.0,True,1982,
+YV2-Q07,local_offline,document_qa,수치·조건,eval,GraphRAG,2000,1,1,1.0,True,1830,
+YV2-Q08,local_offline,document_qa,수치·조건,eval,GraphRAG,2000,1,1,1.0,True,1983,
+YV2-Q09,local_offline,document_qa,수치·조건,eval,GraphRAG,2000,2,2,1.0,True,1858,
+YV2-Q10,local_offline,document_qa,수치·조건,eval,GraphRAG,2000,1,1,1.0,True,1679,
+YV2-Q11,local_offline,document_qa,연결·절차,dev,GraphRAG,2000,5,5,1.0,True,1976,
+YV2-Q12,local_offline,document_qa,연결·절차,eval,GraphRAG,2000,1,1,1.0,True,1857,
+YV2-Q13,local_offline,document_qa,연결·절차,eval,GraphRAG,2000,2,2,1.0,True,1924,
+YV2-Q14,local_offline,document_qa,연결·절차,eval,GraphRAG,2000,1,1,1.0,True,1994,
+YV2-Q15,local_offline,document_qa,연결·절차,eval,GraphRAG,2000,2,2,1.0,True,1984,
+YV2-Q16,local_offline,document_qa,문서 비교,dev,GraphRAG,2000,3,3,1.0,True,1997,
+YV2-Q17,local_offline,document_qa,문서 비교,eval,GraphRAG,2000,4,4,1.0,True,1994,
+YV2-Q18,local_offline,document_qa,문서 비교,eval,GraphRAG,2000,2,1,0.5,False,1998,DS-MECH-4400:p1:text2
+YV2-Q19,local_offline,document_qa,문서 비교,eval,GraphRAG,2000,2,2,1.0,True,1993,
+YV2-Q20,local_offline,document_qa,문서 비교,eval,GraphRAG,2000,2,2,1.0,True,1995,
+YV2-Q21,local_offline,document_qa,근거·권한,dev,GraphRAG,2000,1,1,1.0,True,1993,
+YV2-Q22,local_offline,document_qa,근거·권한,eval,GraphRAG,2000,1,1,1.0,True,1896,
+YV2-Q23,local_offline,document_qa,근거·권한,eval,GraphRAG,2000,2,2,1.0,True,1983,
+YV2-Q24,local_offline,document_qa,근거·권한,eval,GraphRAG,2000,1,1,1.0,True,1951,
+YV2-Q25,local_offline,document_qa,근거·권한,eval,GraphRAG,2000,2,2,1.0,True,1881,
+YV2-Q26,local_offline,document_qa,답변 한계,dev,GraphRAG,2000,2,2,1.0,True,1850,
+YV2-Q27,local_offline,document_qa,답변 한계,eval,GraphRAG,2000,2,2,1.0,True,1822,
+YV2-Q28,local_offline,document_qa,답변 한계,eval,GraphRAG,2000,3,2,0.6666666666666666,False,1984,SOP-002:p2:table6:chunk#r5
+YV2-Q29,local_offline,document_qa,답변 한계,eval,GraphRAG,2000,4,4,1.0,True,1992,
+YV2-Q30,local_offline,document_qa,답변 한계,eval,GraphRAG,2000,3,3,1.0,True,1996,
+CQ04,local_offline,document_qa,규칙·조치 대상·출처,draft_exposed,HybridRAG,2000,2,2,1.0,True,1987,
+G01,local_offline,document_qa,이득 없음 예상,draft_exposed,HybridRAG,2000,3,3,1.0,True,2000,
+G02,local_offline,document_qa,이득 예상,draft_exposed,HybridRAG,2000,4,4,1.0,True,1932,
+G03,local_offline,document_qa,이득 예상,draft_exposed,HybridRAG,2000,4,4,1.0,True,1992,
+G04,local_offline,document_qa,이득 예상,draft_exposed,HybridRAG,2000,5,5,1.0,True,2000,
+G05,local_offline,document_qa,부분 이득 예상,draft_exposed,HybridRAG,2000,3,3,1.0,True,1932,
+G06,local_offline,document_qa,이득 예상,draft_exposed,HybridRAG,2000,3,3,1.0,True,1942,
+G07,local_offline,document_qa,이득 예상,draft_exposed,HybridRAG,2000,3,3,1.0,True,1991,
+G08,local_offline,document_qa,부분 이득 예상,draft_exposed,HybridRAG,2000,3,3,1.0,True,1857,
+G09,local_offline,document_qa,이득 예상,draft_exposed,HybridRAG,2000,3,3,1.0,True,1948,
+G10,local_offline,document_qa,이득 예상,draft_exposed,HybridRAG,2000,4,4,1.0,True,1978,
+G11,local_offline,document_qa,이득 예상,draft_exposed,HybridRAG,2000,3,3,1.0,True,1992,
+G12,local_offline,document_qa,부분 이득 예상,draft_exposed,HybridRAG,2000,3,3,1.0,True,1984,
+G13,local_offline,document_qa,이득 없음 예상,draft_exposed,HybridRAG,2000,3,3,1.0,True,1997,
+G14,local_offline,document_qa,이득 없음 예상,draft_exposed,HybridRAG,2000,1,1,1.0,True,1989,
+G15,local_offline,document_qa,이득 없음 예상,draft_exposed,HybridRAG,2000,3,3,1.0,True,1939,
+NEW-01,local_offline,document_qa,단위 정규화,extension_draft_exposed,HybridRAG,2000,1,1,1.0,True,1988,
+NEW-02,local_offline,document_qa,단위 불일치,extension_draft_exposed,HybridRAG,2000,1,1,1.0,True,1948,
+NEW-03,local_offline,document_qa,측정 불확실성,extension_draft_exposed,HybridRAG,2000,1,1,1.0,True,1960,
+NEW-04,local_offline,document_qa,반올림 기록,extension_draft_exposed,HybridRAG,2000,1,1,1.0,True,2000,
+NEW-05,local_offline,document_qa,시간 관측 공백,extension_draft_exposed,HybridRAG,2000,1,1,1.0,True,1985,
+NEW-06,local_offline,document_qa,연속과 누적,extension_draft_exposed,HybridRAG,2000,1,1,1.0,True,1956,
+NEW-07,local_offline,document_qa,증거 수준,extension_draft_exposed,HybridRAG,2000,1,1,1.0,True,1994,
+NEW-08,local_offline,document_qa,변화량 입력,extension_draft_exposed,HybridRAG,2000,1,1,1.0,True,1996,
+NEW-09,local_offline,document_qa,샘플과 시간,extension_draft_exposed,HybridRAG,2000,1,1,1.0,True,1866,
+NEW-10,local_offline,document_qa,결측 처리,extension_draft_exposed,HybridRAG,2000,2,1,0.5,False,1891,SOP-002:p2:table6:chunk#r3
+NEW-11,local_offline,document_qa,복합 논리,extension_draft_exposed,HybridRAG,2000,1,1,1.0,True,1674,
+NEW-12,local_offline,document_qa,동시 규칙,extension_draft_exposed,HybridRAG,2000,2,2,1.0,True,1983,
+NEW-13,local_offline,document_qa,역추론 오류,extension_draft_exposed,HybridRAG,2000,1,1,1.0,True,1907,
+NEW-14,local_offline,document_qa,규칙 비발동 해석,extension_draft_exposed,HybridRAG,2000,1,1,1.0,True,1779,
+NEW-15,local_offline,document_qa,부분 교정,extension_draft_exposed,HybridRAG,2000,1,1,1.0,True,1993,
+NEW-16,local_offline,document_qa,주장과 근거,extension_draft_exposed,HybridRAG,2000,1,1,1.0,True,1993,
+NEW-17,local_offline,document_qa,잘못된 행 인용,extension_draft_exposed,HybridRAG,2000,2,2,1.0,True,1984,
+NEW-18,local_offline,document_qa,추출과 계산,extension_draft_exposed,HybridRAG,2000,1,1,1.0,True,1996,
+NEW-19,local_offline,document_qa,명확화,extension_draft_exposed,HybridRAG,2000,3,3,1.0,True,1917,
+NEW-20,local_offline,document_qa,선택적 응답,extension_draft_exposed,HybridRAG,2000,1,1,1.0,True,1977,
+REL-D01,local_offline,document_qa,전체 대상 회수,draft_exposed,HybridRAG,2000,5,4,0.8,False,1922,SOP-001:p1:RULE-ST02-02
+REL-D02,local_offline,document_qa,조건부 교차 대상,draft_exposed,HybridRAG,2000,5,5,1.0,True,1977,
+REL-D03,local_offline,document_qa,공유 속성 전체 조회,draft_exposed,HybridRAG,2000,3,3,1.0,True,1992,
+REL-D04,local_offline,document_qa,참조 방향과 역조회,draft_exposed,HybridRAG,2000,2,1,0.5,False,1684,SOP-001:p1:RULE-ST02-04
+REL-D05,local_offline,document_qa,관계 경로와 인과 구별,draft_exposed,HybridRAG,2000,3,3,1.0,True,1871,
+REL-D06,local_offline,document_qa,문서 개정 영향 범위,draft_exposed,HybridRAG,2000,11,11,1.0,True,2000,
+YV2-Q01,local_offline,document_qa,단일 규칙,dev,HybridRAG,2000,1,1,1.0,True,1927,
+YV2-Q02,local_offline,document_qa,단일 규칙,eval,HybridRAG,2000,1,1,1.0,True,1957,
+YV2-Q03,local_offline,document_qa,단일 규칙,eval,HybridRAG,2000,1,1,1.0,True,1880,
+YV2-Q04,local_offline,document_qa,단일 규칙,eval,HybridRAG,2000,1,1,1.0,True,1977,
+YV2-Q05,local_offline,document_qa,단일 규칙,eval,HybridRAG,2000,1,1,1.0,True,1608,
+YV2-Q06,local_offline,document_qa,수치·조건,dev,HybridRAG,2000,1,1,1.0,True,1982,
+YV2-Q07,local_offline,document_qa,수치·조건,eval,HybridRAG,2000,1,1,1.0,True,1830,
+YV2-Q08,local_offline,document_qa,수치·조건,eval,HybridRAG,2000,1,1,1.0,True,1983,
+YV2-Q09,local_offline,document_qa,수치·조건,eval,HybridRAG,2000,2,2,1.0,True,1858,
+YV2-Q10,local_offline,document_qa,수치·조건,eval,HybridRAG,2000,1,1,1.0,True,1679,
+YV2-Q11,local_offline,document_qa,연결·절차,dev,HybridRAG,2000,5,5,1.0,True,1684,
+YV2-Q12,local_offline,document_qa,연결·절차,eval,HybridRAG,2000,1,1,1.0,True,1857,
+YV2-Q13,local_offline,document_qa,연결·절차,eval,HybridRAG,2000,2,2,1.0,True,1924,
+YV2-Q14,local_offline,document_qa,연결·절차,eval,HybridRAG,2000,1,1,1.0,True,1994,
+YV2-Q15,local_offline,document_qa,연결·절차,eval,HybridRAG,2000,2,2,1.0,True,1984,
+YV2-Q16,local_offline,document_qa,문서 비교,dev,HybridRAG,2000,3,3,1.0,True,1997,
+YV2-Q17,local_offline,document_qa,문서 비교,eval,HybridRAG,2000,4,4,1.0,True,1994,
+YV2-Q18,local_offline,document_qa,문서 비교,eval,HybridRAG,2000,2,1,0.5,False,1993,DS-MECH-4400:p1:text2
+YV2-Q19,local_offline,document_qa,문서 비교,eval,HybridRAG,2000,2,2,1.0,True,1993,
+YV2-Q20,local_offline,document_qa,문서 비교,eval,HybridRAG,2000,2,2,1.0,True,1995,
+YV2-Q21,local_offline,document_qa,근거·권한,dev,HybridRAG,2000,1,1,1.0,True,1993,
+YV2-Q22,local_offline,document_qa,근거·권한,eval,HybridRAG,2000,1,1,1.0,True,1852,
+YV2-Q23,local_offline,document_qa,근거·권한,eval,HybridRAG,2000,2,2,1.0,True,1983,
+YV2-Q24,local_offline,document_qa,근거·권한,eval,HybridRAG,2000,1,1,1.0,True,1951,
+YV2-Q25,local_offline,document_qa,근거·권한,eval,HybridRAG,2000,2,2,1.0,True,1881,
+YV2-Q26,local_offline,document_qa,답변 한계,dev,HybridRAG,2000,2,2,1.0,True,1850,
+YV2-Q27,local_offline,document_qa,답변 한계,eval,HybridRAG,2000,2,2,1.0,True,1838,
+YV2-Q28,local_offline,document_qa,답변 한계,eval,HybridRAG,2000,3,2,0.6666666666666666,False,1977,SOP-002:p2:table6:chunk#r5
+YV2-Q29,local_offline,document_qa,답변 한계,eval,HybridRAG,2000,4,4,1.0,True,1966,
+YV2-Q30,local_offline,document_qa,답변 한계,eval,HybridRAG,2000,3,3,1.0,True,1942,
+ADD-01,local_offline,kg_structure,관계 조건의 교집합,draft_exposed,VectorRAG,2000,2,0,0.0,False,1995,KG:N0069 | KG:N0071
+ADD-02,local_offline,kg_structure,정확한 대상 집합,draft_exposed,VectorRAG,2000,55,6,0.10909090909090909,False,1998,KG:N0010 | KG:N0011 | KG:N0012 | KG:N0013 | KG:N0014 | KG:N0015 | KG:N0016 | KG:N0017 | KG:N0047 | KG:N0049 | KG:N0050 | KG:N0051 | KG:N0054 | KG:N0056 | KG:N0060 | KG:N0063 | KG:N0064 | KG:N0065 | KG:N0068 | KG:N0069 | KG:N0072 | KG:N0075 | KG:N0079 | KG:N0085 | KG:N0087 | KG:N0091 | KG:N0092 | KG:N0104 | KG:N0105 | KG:N0106 | KG:N0107 | KG:N0108 | KG:N0109 | KG:N0117 | KG:N0120 | KG:N0121 | KG:N0122 | KG:N0130 | KG:N0133 | KG:N0137 | KG:N0138 | KG:N0139 | KG:N0140 | KG:N0141 | KG:N0142 | KG:N0143 | KG:N0144 | KG:N0145 | KG:N0146
+ADD-03,local_offline,kg_structure,문서 간 공통 적용 대상,draft_exposed,VectorRAG,2000,44,4,0.09090909090909091,False,1999,KG:N0006 | KG:N0010 | KG:N0011 | KG:N0012 | KG:N0013 | KG:N0014 | KG:N0015 | KG:N0016 | KG:N0017 | KG:N0019 | KG:N0027 | KG:N0030 | KG:N0039 | KG:N0046 | KG:N0054 | KG:N0055 | KG:N0061 | KG:N0062 | KG:N0063 | KG:N0064 | KG:N0067 | KG:N0070 | KG:N0071 | KG:N0072 | KG:N0076 | KG:N0077 | KG:N0078 | KG:N0079 | KG:N0080 | KG:N0109 | KG:N0110 | KG:N0111 | KG:N0112 | KG:N0113 | KG:N0114 | KG:N0115 | KG:N0116 | KG:N0117 | KG:N0118 | KG:N0119
+ADD-04,local_offline,kg_structure,최소 경로와 관계 제한,draft_exposed,VectorRAG,2000,5,2,0.4,False,1982,KG:N0040 | KG:N0071 | KG:N0087
+ADD-05,local_offline,kg_structure,출처별 지식 범위,draft_exposed,VectorRAG,2000,6,2,0.3333333333333333,False,1985,KG:N0071 | KG:N0087 | KG:N0110 | KG:N0117
+ADD-06,local_offline,kg_structure,연결 누락과 실세계 부재,draft_exposed,VectorRAG,2000,39,10,0.2564102564102564,False,1999,KG:N0047 | KG:N0048 | KG:N0050 | KG:N0051 | KG:N0058 | KG:N0059 | KG:N0104 | KG:N0106 | KG:N0107 | KG:N0108 | KG:N0123 | KG:N0124 | KG:N0125 | KG:N0126 | KG:N0127 | KG:N0128 | KG:N0129 | KG:N0130 | KG:N0131 | KG:N0132 | KG:N0133 | KG:N0134 | KG:N0135 | KG:N0136 | KG:N0138 | KG:N0139 | KG:N0141 | KG:N0142 | KG:N0144
+CQ04,local_offline,document_qa,규칙·조치 대상·출처,draft_exposed,VectorRAG,2000,2,2,1.0,True,1990,
+G01,local_offline,document_qa,이득 없음 예상,draft_exposed,VectorRAG,2000,3,3,1.0,True,1993,
+G02,local_offline,document_qa,이득 예상,draft_exposed,VectorRAG,2000,4,2,0.5,False,1980,SOP-001:p1:RULE-ST02-03 | SOP-001:p1:RULE-ST02-04
+G03,local_offline,document_qa,이득 예상,draft_exposed,VectorRAG,2000,4,4,1.0,True,1996,
+G04,local_offline,document_qa,이득 예상,draft_exposed,VectorRAG,2000,5,5,1.0,True,1984,
+G05,local_offline,document_qa,부분 이득 예상,draft_exposed,VectorRAG,2000,3,2,0.6666666666666666,False,1982,SOP-002:p1:table2:chunk#r1
+G06,local_offline,document_qa,이득 예상,draft_exposed,VectorRAG,2000,3,3,1.0,True,1936,
+G07,local_offline,document_qa,이득 예상,draft_exposed,VectorRAG,2000,3,2,0.6666666666666666,False,1991,SOP-002:p1:table1:chunk#r2
+G08,local_offline,document_qa,부분 이득 예상,draft_exposed,VectorRAG,2000,3,2,0.6666666666666666,False,1993,SOP-002:p2:table6:chunk#r3
+G09,local_offline,document_qa,이득 예상,draft_exposed,VectorRAG,2000,3,3,1.0,True,1909,
+G10,local_offline,document_qa,이득 예상,draft_exposed,VectorRAG,2000,4,3,0.75,False,1980,SOP-003:p1:table2:chunk#r3
+G11,local_offline,document_qa,이득 예상,draft_exposed,VectorRAG,2000,3,3,1.0,True,1996,
+G12,local_offline,document_qa,부분 이득 예상,draft_exposed,VectorRAG,2000,3,3,1.0,True,1999,
+G13,local_offline,document_qa,이득 없음 예상,draft_exposed,VectorRAG,2000,3,1,0.3333333333333333,False,1987,SOP-004:p1:table3:chunk#r3 | SOP-004:p1:table3:chunk#r4
+G14,local_offline,document_qa,이득 없음 예상,draft_exposed,VectorRAG,2000,1,1,1.0,True,2000,
+G15,local_offline,document_qa,이득 없음 예상,draft_exposed,VectorRAG,2000,3,3,1.0,True,1955,
+NEW-01,local_offline,document_qa,단위 정규화,extension_draft_exposed,VectorRAG,2000,1,1,1.0,True,1996,
+NEW-02,local_offline,document_qa,단위 불일치,extension_draft_exposed,VectorRAG,2000,1,0,0.0,False,1995,SOP-002:p1:table4:chunk#r3
+NEW-03,local_offline,document_qa,측정 불확실성,extension_draft_exposed,VectorRAG,2000,1,0,0.0,False,1995,SOP-001:p1:RULE-ST02-02
+NEW-04,local_offline,document_qa,반올림 기록,extension_draft_exposed,VectorRAG,2000,1,0,0.0,False,1985,SOP-001:p1:RULE-ST02-02
+NEW-05,local_offline,document_qa,시간 관측 공백,extension_draft_exposed,VectorRAG,2000,1,1,1.0,True,1995,
+NEW-06,local_offline,document_qa,연속과 누적,extension_draft_exposed,VectorRAG,2000,1,1,1.0,True,1998,
+NEW-07,local_offline,document_qa,증거 수준,extension_draft_exposed,VectorRAG,2000,1,1,1.0,True,1981,
+NEW-08,local_offline,document_qa,변화량 입력,extension_draft_exposed,VectorRAG,2000,1,0,0.0,False,1993,SOP-003:p1:table1:chunk#r1
+NEW-09,local_offline,document_qa,샘플과 시간,extension_draft_exposed,VectorRAG,2000,1,1,1.0,True,1986,
+NEW-10,local_offline,document_qa,결측 처리,extension_draft_exposed,VectorRAG,2000,2,2,1.0,True,1992,
+NEW-11,local_offline,document_qa,복합 논리,extension_draft_exposed,VectorRAG,2000,1,0,0.0,False,1991,SOP-001:p1:RULE-ST02-03
+NEW-12,local_offline,document_qa,동시 규칙,extension_draft_exposed,VectorRAG,2000,2,1,0.5,False,1999,SOP-002:p1:table5:chunk#r1
+NEW-13,local_offline,document_qa,역추론 오류,extension_draft_exposed,VectorRAG,2000,1,1,1.0,True,1997,
+NEW-14,local_offline,document_qa,규칙 비발동 해석,extension_draft_exposed,VectorRAG,2000,1,0,0.0,False,1999,SOP-001:p1:RULE-ST02-02
+NEW-15,local_offline,document_qa,부분 교정,extension_draft_exposed,VectorRAG,2000,1,1,1.0,True,1995,
+NEW-16,local_offline,document_qa,주장과 근거,extension_draft_exposed,VectorRAG,2000,1,1,1.0,True,1995,
+NEW-17,local_offline,document_qa,잘못된 행 인용,extension_draft_exposed,VectorRAG,2000,2,2,1.0,True,1992,
+NEW-18,local_offline,document_qa,추출과 계산,extension_draft_exposed,VectorRAG,2000,1,1,1.0,True,1984,
+NEW-19,local_offline,document_qa,명확화,extension_draft_exposed,VectorRAG,2000,3,0,0.0,False,1991,SOP-002:p1:table2:chunk#r1 | SOP-002:p1:table2:chunk#r2 | SOP-002:p1:table2:chunk#r3
+NEW-20,local_offline,document_qa,선택적 응답,extension_draft_exposed,VectorRAG,2000,1,1,1.0,True,1982,
+REL-D01,local_offline,document_qa,전체 대상 회수,draft_exposed,VectorRAG,2000,5,1,0.2,False,1948,SOP-001:p1:RULE-ST02-02 | SOP-001:p1:RULE-ST02-04 | SOP-001:p1:RULE-ST04-02 | SOP-001:p1:text5
+REL-D02,local_offline,document_qa,조건부 교차 대상,draft_exposed,VectorRAG,2000,5,2,0.4,False,1999,SOP-001:p1:RULE-ST02-02 | SOP-001:p1:RULE-ST02-03 | SOP-001:p1:RULE-ST02-04
+REL-D03,local_offline,document_qa,공유 속성 전체 조회,draft_exposed,VectorRAG,2000,3,3,1.0,True,1995,
+REL-D04,local_offline,document_qa,참조 방향과 역조회,draft_exposed,VectorRAG,2000,2,0,0.0,False,1983,SOP-001:p1:RULE-ST02-04 | SOP-001:p2:RULE-ST04-03
+REL-D05,local_offline,document_qa,관계 경로와 인과 구별,draft_exposed,VectorRAG,2000,3,3,1.0,True,1969,
+REL-D06,local_offline,document_qa,문서 개정 영향 범위,draft_exposed,VectorRAG,2000,11,7,0.6363636363636364,False,1986,SOP-003:p1:table1:chunk#r5 | SOP-003:p1:table1:chunk#r6 | SOP-003:p1:table1:chunk#r7 | SOP-003:p1:table1:chunk#r8
+REL-K01,local_offline,kg_structure,두 역할의 집합 비교,draft_exposed,VectorRAG,2000,13,4,0.3076923076923077,False,1990,KG:N0010 | KG:N0069 | KG:N0071 | KG:N0078 | KG:N0085 | KG:N0092 | KG:N0093 | KG:N0109 | KG:N0117
+REL-K02,local_offline,kg_structure,다중 관계 교차 조회,draft_exposed,VectorRAG,2000,5,2,0.4,False,1998,KG:N0071 | KG:N0085 | KG:N0117
+REL-K03,local_offline,kg_structure,문서에서 역방향 영향 추적,draft_exposed,VectorRAG,2000,19,1,0.05263157894736842,False,1980,KG:N0010 | KG:N0012 | KG:N0013 | KG:N0014 | KG:N0015 | KG:N0016 | KG:N0017 | KG:N0109 | KG:N0110 | KG:N0111 | KG:N0112 | KG:N0113 | KG:N0114 | KG:N0115 | KG:N0116 | KG:N0117 | KG:N0118 | KG:N0119
+REL-K04,local_offline,kg_structure,유향 경로와 부재 판정,draft_exposed,VectorRAG,2000,4,0,0.0,False,1996,KG:N0028 | KG:N0032 | KG:N0036 | KG:N0040
+REL-K05,local_offline,kg_structure,원문까지의 출처 추적,draft_exposed,VectorRAG,2000,4,0,0.0,False,1988,KG:N0069 | KG:N0113 | KG:N0173 | KG:N0352
+REL-K06,local_offline,kg_structure,필터와 저장 누락 구별,draft_exposed,VectorRAG,2000,6,5,0.8333333333333334,False,1995,KG:N0094
+YB-01,local_offline,kg_and_documents,구조·센서,dev,VectorRAG,2000,4,2,0.5,False,1993,KG:N0034 | KG:N0035
+YB-02,local_offline,kg_and_documents,구조·센서,eval,VectorRAG,2000,2,1,0.5,False,1996,KG:N0040
+YB-03,local_offline,kg_and_documents,연결·순서,dev,VectorRAG,2000,4,1,0.25,False,1988,KG:N0032 | KG:N0036 | KG:N0040
+YB-04,local_offline,kg_and_documents,구조·구역,eval,VectorRAG,2000,1,1,1.0,True,1992,
+YB-05,local_offline,kg_and_documents,수치·조건,eval,VectorRAG,2000,1,1,1.0,True,1994,
+YB-06,local_offline,kg_and_documents,조건·조치,eval,VectorRAG,2000,4,2,0.5,False,2000,SOP-001:p1:table1:chunk#r3 | SOP-001:p1:table1:chunk#r4
+YB-07,local_offline,kg_and_documents,정비 규칙,dev,VectorRAG,2000,1,0,0.0,False,1999,SOP-003:p1:table1:chunk#r2
+YB-08,local_offline,kg_and_documents,변화량·시간,eval,VectorRAG,2000,1,1,1.0,True,2000,
+YB-09,local_offline,kg_and_documents,샘플·조건,eval,VectorRAG,2000,1,1,1.0,True,1990,
+YB-10,local_offline,kg_and_documents,수치·조건,eval,VectorRAG,2000,1,1,1.0,True,1993,
+YB-11,local_offline,kg_and_documents,근거·메타데이터,dev,VectorRAG,2000,3,0,0.0,False,1991,KG:N0011 | KG:N0171 | KG:N0248
+YB-12,local_offline,kg_and_documents,문서·메타데이터,dev,VectorRAG,2000,1,0,0.0,False,2000,KG:N0023
+YB-13,local_offline,kg_and_documents,연결·정비,eval,VectorRAG,2000,3,1,0.3333333333333333,False,1999,KG:N0011 | KG:N0117
+YB-14,local_offline,kg_and_documents,출입·시간,eval,VectorRAG,2000,1,1,1.0,True,1997,
+YB-15,local_offline,kg_and_documents,문서 비교,eval,VectorRAG,2000,2,2,1.0,True,1992,
+YB-16,local_offline,kg_and_documents,답변 한계,dev,VectorRAG,2000,1,0,0.0,False,1999,KG:MANIFEST
+YB-17,local_offline,kg_and_documents,미등록 식별자,eval,VectorRAG,2000,1,0,0.0,False,1993,KG:MANIFEST
+YB-18,local_offline,kg_and_documents,답변 한계,eval,VectorRAG,2000,2,0,0.0,False,2000,DS-THERM-2200:p1:text1 | SOP-002:p1:table2:chunk#r1
+YV2-Q01,local_offline,document_qa,단일 규칙,dev,VectorRAG,2000,1,1,1.0,True,1986,
+YV2-Q02,local_offline,document_qa,단일 규칙,eval,VectorRAG,2000,1,1,1.0,True,1981,
+YV2-Q03,local_offline,document_qa,단일 규칙,eval,VectorRAG,2000,1,1,1.0,True,1996,
+YV2-Q04,local_offline,document_qa,단일 규칙,eval,VectorRAG,2000,1,1,1.0,True,1998,
+YV2-Q05,local_offline,document_qa,단일 규칙,eval,VectorRAG,2000,1,1,1.0,True,1844,
+YV2-Q06,local_offline,document_qa,수치·조건,dev,VectorRAG,2000,1,1,1.0,True,1992,
+YV2-Q07,local_offline,document_qa,수치·조건,eval,VectorRAG,2000,1,1,1.0,True,1991,
+YV2-Q08,local_offline,document_qa,수치·조건,eval,VectorRAG,2000,1,1,1.0,True,2000,
+YV2-Q09,local_offline,document_qa,수치·조건,eval,VectorRAG,2000,2,2,1.0,True,1928,
+YV2-Q10,local_offline,document_qa,수치·조건,eval,VectorRAG,2000,1,0,0.0,False,1992,SOP-001:p1:RULE-ST02-02
+YV2-Q11,local_offline,document_qa,연결·절차,dev,VectorRAG,2000,5,5,1.0,True,1814,
+YV2-Q12,local_offline,document_qa,연결·절차,eval,VectorRAG,2000,1,1,1.0,True,1993,
+YV2-Q13,local_offline,document_qa,연결·절차,eval,VectorRAG,2000,2,1,0.5,False,1978,SOP-001:p1:RULE-ST02-04
+YV2-Q14,local_offline,document_qa,연결·절차,eval,VectorRAG,2000,1,1,1.0,True,1989,
+YV2-Q15,local_offline,document_qa,연결·절차,eval,VectorRAG,2000,2,2,1.0,True,1980,
+YV2-Q16,local_offline,document_qa,문서 비교,dev,VectorRAG,2000,3,3,1.0,True,1997,
+YV2-Q17,local_offline,document_qa,문서 비교,eval,VectorRAG,2000,4,4,1.0,True,1997,
+YV2-Q18,local_offline,document_qa,문서 비교,eval,VectorRAG,2000,2,1,0.5,False,1992,SOP-002:p1:table1:chunk#r2
+YV2-Q19,local_offline,document_qa,문서 비교,eval,VectorRAG,2000,2,2,1.0,True,1999,
+YV2-Q20,local_offline,document_qa,문서 비교,eval,VectorRAG,2000,2,2,1.0,True,1999,
+YV2-Q21,local_offline,document_qa,근거·권한,dev,VectorRAG,2000,1,1,1.0,True,1992,
+YV2-Q22,local_offline,document_qa,근거·권한,eval,VectorRAG,2000,1,1,1.0,True,1980,
+YV2-Q23,local_offline,document_qa,근거·권한,eval,VectorRAG,2000,2,0,0.0,False,1985,SOP-004:p1:table3:chunk#r2 | SOP-004:p1:table3:chunk#r3
+YV2-Q24,local_offline,document_qa,근거·권한,eval,VectorRAG,2000,1,1,1.0,True,2000,
+YV2-Q25,local_offline,document_qa,근거·권한,eval,VectorRAG,2000,2,0,0.0,False,1983,SOP-001:p2:RULE-CHM01-03 | SOP-004:p1:table1:chunk#r5
+YV2-Q26,local_offline,document_qa,답변 한계,dev,VectorRAG,2000,2,2,1.0,True,1978,
+YV2-Q27,local_offline,document_qa,답변 한계,eval,VectorRAG,2000,2,1,0.5,False,1980,SOP-001:p1:RULE-ST02-04
+YV2-Q28,local_offline,document_qa,답변 한계,eval,VectorRAG,2000,3,2,0.6666666666666666,False,1998,SOP-002:p2:table6:chunk#r5
+YV2-Q29,local_offline,document_qa,답변 한계,eval,VectorRAG,2000,4,4,1.0,True,2000,
+YV2-Q30,local_offline,document_qa,답변 한계,eval,VectorRAG,2000,3,3,1.0,True,1991,
+ADD-01,local_offline,kg_structure,관계 조건의 교집합,draft_exposed,GraphNoTopology,4000,2,2,1.0,True,3998,
+ADD-02,local_offline,kg_structure,정확한 대상 집합,draft_exposed,GraphNoTopology,4000,55,11,0.2,False,3978,KG:N0010 | KG:N0011 | KG:N0012 | KG:N0013 | KG:N0014 | KG:N0015 | KG:N0016 | KG:N0017 | KG:N0047 | KG:N0048 | KG:N0049 | KG:N0050 | KG:N0051 | KG:N0054 | KG:N0056 | KG:N0060 | KG:N0063 | KG:N0064 | KG:N0065 | KG:N0068 | KG:N0072 | KG:N0075 | KG:N0079 | KG:N0085 | KG:N0104 | KG:N0105 | KG:N0106 | KG:N0107 | KG:N0108 | KG:N0120 | KG:N0121 | KG:N0122 | KG:N0130 | KG:N0133 | KG:N0137 | KG:N0138 | KG:N0139 | KG:N0140 | KG:N0141 | KG:N0142 | KG:N0143 | KG:N0144 | KG:N0145 | KG:N0146
+ADD-03,local_offline,kg_structure,문서 간 공통 적용 대상,draft_exposed,GraphNoTopology,4000,44,9,0.20454545454545456,False,3983,KG:N0006 | KG:N0010 | KG:N0011 | KG:N0012 | KG:N0013 | KG:N0014 | KG:N0015 | KG:N0016 | KG:N0017 | KG:N0019 | KG:N0027 | KG:N0030 | KG:N0033 | KG:N0039 | KG:N0042 | KG:N0043 | KG:N0046 | KG:N0054 | KG:N0055 | KG:N0061 | KG:N0062 | KG:N0064 | KG:N0067 | KG:N0070 | KG:N0071 | KG:N0078 | KG:N0079 | KG:N0080 | KG:N0109 | KG:N0113 | KG:N0114 | KG:N0115 | KG:N0116 | KG:N0118 | KG:N0119
+ADD-04,local_offline,kg_structure,최소 경로와 관계 제한,draft_exposed,GraphNoTopology,4000,5,4,0.8,False,4000,KG:N0040
+ADD-05,local_offline,kg_structure,출처별 지식 범위,draft_exposed,GraphNoTopology,4000,6,5,0.8333333333333334,False,3981,KG:N0117
+ADD-06,local_offline,kg_structure,연결 누락과 실세계 부재,draft_exposed,GraphNoTopology,4000,39,14,0.358974358974359,False,3987,KG:N0047 | KG:N0050 | KG:N0051 | KG:N0058 | KG:N0059 | KG:N0106 | KG:N0107 | KG:N0108 | KG:N0123 | KG:N0124 | KG:N0125 | KG:N0126 | KG:N0127 | KG:N0128 | KG:N0129 | KG:N0130 | KG:N0131 | KG:N0132 | KG:N0133 | KG:N0134 | KG:N0135 | KG:N0136 | KG:N0139 | KG:N0141 | KG:N0144
+CQ04,local_offline,document_qa,규칙·조치 대상·출처,draft_exposed,GraphNoTopology,4000,2,2,1.0,True,2039,
+G01,local_offline,document_qa,이득 없음 예상,draft_exposed,GraphNoTopology,4000,3,3,1.0,True,2345,
+G02,local_offline,document_qa,이득 예상,draft_exposed,GraphNoTopology,4000,4,4,1.0,True,1932,
+G03,local_offline,document_qa,이득 예상,draft_exposed,GraphNoTopology,4000,4,4,1.0,True,2117,
+G04,local_offline,document_qa,이득 예상,draft_exposed,GraphNoTopology,4000,5,5,1.0,True,2025,
+G05,local_offline,document_qa,부분 이득 예상,draft_exposed,GraphNoTopology,4000,3,3,1.0,True,1932,
+G06,local_offline,document_qa,이득 예상,draft_exposed,GraphNoTopology,4000,3,3,1.0,True,1942,
+G07,local_offline,document_qa,이득 예상,draft_exposed,GraphNoTopology,4000,3,3,1.0,True,2099,
+G08,local_offline,document_qa,부분 이득 예상,draft_exposed,GraphNoTopology,4000,3,3,1.0,True,1857,
+G09,local_offline,document_qa,이득 예상,draft_exposed,GraphNoTopology,4000,3,3,1.0,True,1948,
+G10,local_offline,document_qa,이득 예상,draft_exposed,GraphNoTopology,4000,4,4,1.0,True,1978,
+G11,local_offline,document_qa,이득 예상,draft_exposed,GraphNoTopology,4000,3,3,1.0,True,2064,
+G12,local_offline,document_qa,부분 이득 예상,draft_exposed,GraphNoTopology,4000,3,3,1.0,True,2069,
+G13,local_offline,document_qa,이득 없음 예상,draft_exposed,GraphNoTopology,4000,3,3,1.0,True,2349,
+G14,local_offline,document_qa,이득 없음 예상,draft_exposed,GraphNoTopology,4000,1,1,1.0,True,2200,
+G15,local_offline,document_qa,이득 없음 예상,draft_exposed,GraphNoTopology,4000,3,3,1.0,True,1939,
+NEW-01,local_offline,document_qa,단위 정규화,extension_draft_exposed,GraphNoTopology,4000,1,1,1.0,True,2448,
+NEW-02,local_offline,document_qa,단위 불일치,extension_draft_exposed,GraphNoTopology,4000,1,1,1.0,True,1948,
+NEW-03,local_offline,document_qa,측정 불확실성,extension_draft_exposed,GraphNoTopology,4000,1,1,1.0,True,2043,
+NEW-04,local_offline,document_qa,반올림 기록,extension_draft_exposed,GraphNoTopology,4000,1,1,1.0,True,2094,
+NEW-05,local_offline,document_qa,시간 관측 공백,extension_draft_exposed,GraphNoTopology,4000,1,1,1.0,True,2173,
+NEW-06,local_offline,document_qa,연속과 누적,extension_draft_exposed,GraphNoTopology,4000,1,1,1.0,True,1956,
+NEW-07,local_offline,document_qa,증거 수준,extension_draft_exposed,GraphNoTopology,4000,1,1,1.0,True,2126,
+NEW-08,local_offline,document_qa,변화량 입력,extension_draft_exposed,GraphNoTopology,4000,1,1,1.0,True,2032,
+NEW-09,local_offline,document_qa,샘플과 시간,extension_draft_exposed,GraphNoTopology,4000,1,1,1.0,True,1866,
+NEW-10,local_offline,document_qa,결측 처리,extension_draft_exposed,GraphNoTopology,4000,2,1,0.5,False,1891,SOP-002:p2:table6:chunk#r3
+NEW-11,local_offline,document_qa,복합 논리,extension_draft_exposed,GraphNoTopology,4000,1,1,1.0,True,1674,
+NEW-12,local_offline,document_qa,동시 규칙,extension_draft_exposed,GraphNoTopology,4000,2,2,1.0,True,2372,
+NEW-13,local_offline,document_qa,역추론 오류,extension_draft_exposed,GraphNoTopology,4000,1,1,1.0,True,1906,
+NEW-14,local_offline,document_qa,규칙 비발동 해석,extension_draft_exposed,GraphNoTopology,4000,1,1,1.0,True,1779,
+NEW-15,local_offline,document_qa,부분 교정,extension_draft_exposed,GraphNoTopology,4000,1,1,1.0,True,2159,
+NEW-16,local_offline,document_qa,주장과 근거,extension_draft_exposed,GraphNoTopology,4000,1,1,1.0,True,2027,
+NEW-17,local_offline,document_qa,잘못된 행 인용,extension_draft_exposed,GraphNoTopology,4000,2,2,1.0,True,2391,
+NEW-18,local_offline,document_qa,추출과 계산,extension_draft_exposed,GraphNoTopology,4000,1,1,1.0,True,2204,
+NEW-19,local_offline,document_qa,명확화,extension_draft_exposed,GraphNoTopology,4000,3,3,1.0,True,1917,
+NEW-20,local_offline,document_qa,선택적 응답,extension_draft_exposed,GraphNoTopology,4000,1,1,1.0,True,2074,
+REL-D01,local_offline,document_qa,전체 대상 회수,draft_exposed,GraphNoTopology,4000,5,4,0.8,False,1922,SOP-001:p1:RULE-ST02-02
+REL-D02,local_offline,document_qa,조건부 교차 대상,draft_exposed,GraphNoTopology,4000,5,5,1.0,True,1960,
+REL-D03,local_offline,document_qa,공유 속성 전체 조회,draft_exposed,GraphNoTopology,4000,3,3,1.0,True,2025,
+REL-D04,local_offline,document_qa,참조 방향과 역조회,draft_exposed,GraphNoTopology,4000,2,1,0.5,False,1684,SOP-001:p1:RULE-ST02-04
+REL-D05,local_offline,document_qa,관계 경로와 인과 구별,draft_exposed,GraphNoTopology,4000,3,3,1.0,True,1943,
+REL-D06,local_offline,document_qa,문서 개정 영향 범위,draft_exposed,GraphNoTopology,4000,11,11,1.0,True,2001,
+REL-K01,local_offline,kg_structure,두 역할의 집합 비교,draft_exposed,GraphNoTopology,4000,13,10,0.7692307692307693,False,3996,KG:N0010 | KG:N0085 | KG:N0092
+REL-K02,local_offline,kg_structure,다중 관계 교차 조회,draft_exposed,GraphNoTopology,4000,5,5,1.0,True,3990,
+REL-K03,local_offline,kg_structure,문서에서 역방향 영향 추적,draft_exposed,GraphNoTopology,4000,19,12,0.631578947368421,False,3992,KG:N0012 | KG:N0016 | KG:N0114 | KG:N0116 | KG:N0117 | KG:N0118 | KG:N0119
+REL-K04,local_offline,kg_structure,유향 경로와 부재 판정,draft_exposed,GraphNoTopology,4000,4,2,0.5,False,4000,KG:N0032 | KG:N0036
+REL-K05,local_offline,kg_structure,원문까지의 출처 추적,draft_exposed,GraphNoTopology,4000,4,2,0.5,False,3989,KG:N0173 | KG:N0352
+REL-K06,local_offline,kg_structure,필터와 저장 누락 구별,draft_exposed,GraphNoTopology,4000,6,6,1.0,True,3999,
+YB-01,local_offline,kg_and_documents,구조·센서,dev,GraphNoTopology,4000,4,4,1.0,True,3997,
+YB-02,local_offline,kg_and_documents,구조·센서,eval,GraphNoTopology,4000,2,2,1.0,True,4000,
+YB-03,local_offline,kg_and_documents,연결·순서,dev,GraphNoTopology,4000,4,3,0.75,False,3995,KG:N0040
+YB-04,local_offline,kg_and_documents,구조·구역,eval,GraphNoTopology,4000,1,1,1.0,True,3997,
+YB-05,local_offline,kg_and_documents,수치·조건,eval,GraphNoTopology,4000,1,1,1.0,True,3996,
+YB-06,local_offline,kg_and_documents,조건·조치,eval,GraphNoTopology,4000,4,2,0.5,False,3995,SOP-001:p1:table1:chunk#r3 | SOP-001:p1:table1:chunk#r4
+YB-07,local_offline,kg_and_documents,정비 규칙,dev,GraphNoTopology,4000,1,1,1.0,True,3998,
+YB-08,local_offline,kg_and_documents,변화량·시간,eval,GraphNoTopology,4000,1,1,1.0,True,3998,
+YB-09,local_offline,kg_and_documents,샘플·조건,eval,GraphNoTopology,4000,1,1,1.0,True,3994,
+YB-10,local_offline,kg_and_documents,수치·조건,eval,GraphNoTopology,4000,1,1,1.0,True,3993,
+YB-11,local_offline,kg_and_documents,근거·메타데이터,dev,GraphNoTopology,4000,3,2,0.6666666666666666,False,3997,KG:N0248
+YB-12,local_offline,kg_and_documents,문서·메타데이터,dev,GraphNoTopology,4000,1,1,1.0,True,3986,
+YB-13,local_offline,kg_and_documents,연결·정비,eval,GraphNoTopology,4000,3,3,1.0,True,3997,
+YB-14,local_offline,kg_and_documents,출입·시간,eval,GraphNoTopology,4000,1,1,1.0,True,3998,
+YB-15,local_offline,kg_and_documents,문서 비교,eval,GraphNoTopology,4000,2,1,0.5,False,3999,DS-ELEC-3300:p1:text2
+YB-16,local_offline,kg_and_documents,답변 한계,dev,GraphNoTopology,4000,1,0,0.0,False,3986,KG:MANIFEST
+YB-17,local_offline,kg_and_documents,미등록 식별자,eval,GraphNoTopology,4000,1,1,1.0,True,4000,
+YB-18,local_offline,kg_and_documents,답변 한계,eval,GraphNoTopology,4000,2,0,0.0,False,3979,DS-THERM-2200:p1:text1 | SOP-002:p1:table2:chunk#r1
+YV2-Q01,local_offline,document_qa,단일 규칙,dev,GraphNoTopology,4000,1,1,1.0,True,1927,
+YV2-Q02,local_offline,document_qa,단일 규칙,eval,GraphNoTopology,4000,1,1,1.0,True,1957,
+YV2-Q03,local_offline,document_qa,단일 규칙,eval,GraphNoTopology,4000,1,1,1.0,True,1880,
+YV2-Q04,local_offline,document_qa,단일 규칙,eval,GraphNoTopology,4000,1,1,1.0,True,2035,
+YV2-Q05,local_offline,document_qa,단일 규칙,eval,GraphNoTopology,4000,1,1,1.0,True,1608,
+YV2-Q06,local_offline,document_qa,수치·조건,dev,GraphNoTopology,4000,1,1,1.0,True,2240,
+YV2-Q07,local_offline,document_qa,수치·조건,eval,GraphNoTopology,4000,1,1,1.0,True,1830,
+YV2-Q08,local_offline,document_qa,수치·조건,eval,GraphNoTopology,4000,1,1,1.0,True,2125,
+YV2-Q09,local_offline,document_qa,수치·조건,eval,GraphNoTopology,4000,2,2,1.0,True,1858,
+YV2-Q10,local_offline,document_qa,수치·조건,eval,GraphNoTopology,4000,1,1,1.0,True,1679,
+YV2-Q11,local_offline,document_qa,연결·절차,dev,GraphNoTopology,4000,5,5,1.0,True,1976,
+YV2-Q12,local_offline,document_qa,연결·절차,eval,GraphNoTopology,4000,1,1,1.0,True,1857,
+YV2-Q13,local_offline,document_qa,연결·절차,eval,GraphNoTopology,4000,2,2,1.0,True,1924,
+YV2-Q14,local_offline,document_qa,연결·절차,eval,GraphNoTopology,4000,1,1,1.0,True,2235,
+YV2-Q15,local_offline,document_qa,연결·절차,eval,GraphNoTopology,4000,2,2,1.0,True,2015,
+YV2-Q16,local_offline,document_qa,문서 비교,dev,GraphNoTopology,4000,3,3,1.0,True,2138,
+YV2-Q17,local_offline,document_qa,문서 비교,eval,GraphNoTopology,4000,4,4,1.0,True,2117,
+YV2-Q18,local_offline,document_qa,문서 비교,eval,GraphNoTopology,4000,2,1,0.5,False,2487,DS-MECH-4400:p1:text2
+YV2-Q19,local_offline,document_qa,문서 비교,eval,GraphNoTopology,4000,2,2,1.0,True,2242,
+YV2-Q20,local_offline,document_qa,문서 비교,eval,GraphNoTopology,4000,2,2,1.0,True,1995,
+YV2-Q21,local_offline,document_qa,근거·권한,dev,GraphNoTopology,4000,1,1,1.0,True,2060,
+YV2-Q22,local_offline,document_qa,근거·권한,eval,GraphNoTopology,4000,1,1,1.0,True,1896,
+YV2-Q23,local_offline,document_qa,근거·권한,eval,GraphNoTopology,4000,2,2,1.0,True,2299,
+YV2-Q24,local_offline,document_qa,근거·권한,eval,GraphNoTopology,4000,1,1,1.0,True,1951,
+YV2-Q25,local_offline,document_qa,근거·권한,eval,GraphNoTopology,4000,2,2,1.0,True,1881,
+YV2-Q26,local_offline,document_qa,답변 한계,dev,GraphNoTopology,4000,2,2,1.0,True,1850,
+YV2-Q27,local_offline,document_qa,답변 한계,eval,GraphNoTopology,4000,2,2,1.0,True,1822,
+YV2-Q28,local_offline,document_qa,답변 한계,eval,GraphNoTopology,4000,3,2,0.6666666666666666,False,2189,SOP-002:p2:table6:chunk#r5
+YV2-Q29,local_offline,document_qa,답변 한계,eval,GraphNoTopology,4000,4,4,1.0,True,2151,
+YV2-Q30,local_offline,document_qa,답변 한계,eval,GraphNoTopology,4000,3,3,1.0,True,2002,
+ADD-01,local_offline,kg_structure,관계 조건의 교집합,draft_exposed,GraphRAG,4000,2,2,1.0,True,3987,
+ADD-02,local_offline,kg_structure,정확한 대상 집합,draft_exposed,GraphRAG,4000,55,11,0.2,False,3990,KG:N0050 | KG:N0051 | KG:N0054 | KG:N0056 | KG:N0060 | KG:N0063 | KG:N0064 | KG:N0065 | KG:N0068 | KG:N0069 | KG:N0071 | KG:N0072 | KG:N0075 | KG:N0076 | KG:N0077 | KG:N0078 | KG:N0079 | KG:N0085 | KG:N0087 | KG:N0091 | KG:N0092 | KG:N0093 | KG:N0104 | KG:N0105 | KG:N0106 | KG:N0107 | KG:N0108 | KG:N0109 | KG:N0117 | KG:N0120 | KG:N0121 | KG:N0122 | KG:N0130 | KG:N0133 | KG:N0137 | KG:N0138 | KG:N0139 | KG:N0140 | KG:N0141 | KG:N0142 | KG:N0143 | KG:N0144 | KG:N0145 | KG:N0146
+ADD-03,local_offline,kg_structure,문서 간 공통 적용 대상,draft_exposed,GraphRAG,4000,44,23,0.5227272727272727,False,3987,KG:N0067 | KG:N0070 | KG:N0071 | KG:N0072 | KG:N0075 | KG:N0076 | KG:N0077 | KG:N0078 | KG:N0079 | KG:N0080 | KG:N0109 | KG:N0110 | KG:N0111 | KG:N0112 | KG:N0113 | KG:N0114 | KG:N0115 | KG:N0116 | KG:N0117 | KG:N0118 | KG:N0119
+ADD-04,local_offline,kg_structure,최소 경로와 관계 제한,draft_exposed,GraphRAG,4000,5,5,1.0,True,3997,
+ADD-05,local_offline,kg_structure,출처별 지식 범위,draft_exposed,GraphRAG,4000,6,6,1.0,True,3993,
+ADD-06,local_offline,kg_structure,연결 누락과 실세계 부재,draft_exposed,GraphRAG,4000,39,17,0.4358974358974359,False,3999,KG:N0125 | KG:N0126 | KG:N0127 | KG:N0128 | KG:N0129 | KG:N0130 | KG:N0131 | KG:N0132 | KG:N0133 | KG:N0134 | KG:N0135 | KG:N0136 | KG:N0137 | KG:N0138 | KG:N0139 | KG:N0140 | KG:N0141 | KG:N0142 | KG:N0143 | KG:N0144 | KG:N0145 | KG:N0146
+CQ04,local_offline,document_qa,규칙·조치 대상·출처,draft_exposed,GraphRAG,4000,2,2,1.0,True,2039,
+G01,local_offline,document_qa,이득 없음 예상,draft_exposed,GraphRAG,4000,3,3,1.0,True,2345,
+G02,local_offline,document_qa,이득 예상,draft_exposed,GraphRAG,4000,4,4,1.0,True,1932,
+G03,local_offline,document_qa,이득 예상,draft_exposed,GraphRAG,4000,4,4,1.0,True,2117,
+G04,local_offline,document_qa,이득 예상,draft_exposed,GraphRAG,4000,5,5,1.0,True,2025,
+G05,local_offline,document_qa,부분 이득 예상,draft_exposed,GraphRAG,4000,3,3,1.0,True,1932,
+G06,local_offline,document_qa,이득 예상,draft_exposed,GraphRAG,4000,3,3,1.0,True,1942,
+G07,local_offline,document_qa,이득 예상,draft_exposed,GraphRAG,4000,3,3,1.0,True,2099,
+G08,local_offline,document_qa,부분 이득 예상,draft_exposed,GraphRAG,4000,3,3,1.0,True,1857,
+G09,local_offline,document_qa,이득 예상,draft_exposed,GraphRAG,4000,3,3,1.0,True,1948,
+G10,local_offline,document_qa,이득 예상,draft_exposed,GraphRAG,4000,4,4,1.0,True,1978,
+G11,local_offline,document_qa,이득 예상,draft_exposed,GraphRAG,4000,3,3,1.0,True,2064,
+G12,local_offline,document_qa,부분 이득 예상,draft_exposed,GraphRAG,4000,3,3,1.0,True,2069,
+G13,local_offline,document_qa,이득 없음 예상,draft_exposed,GraphRAG,4000,3,3,1.0,True,2349,
+G14,local_offline,document_qa,이득 없음 예상,draft_exposed,GraphRAG,4000,1,1,1.0,True,2200,
+G15,local_offline,document_qa,이득 없음 예상,draft_exposed,GraphRAG,4000,3,3,1.0,True,1939,
+NEW-01,local_offline,document_qa,단위 정규화,extension_draft_exposed,GraphRAG,4000,1,1,1.0,True,2448,
+NEW-02,local_offline,document_qa,단위 불일치,extension_draft_exposed,GraphRAG,4000,1,1,1.0,True,1948,
+NEW-03,local_offline,document_qa,측정 불확실성,extension_draft_exposed,GraphRAG,4000,1,1,1.0,True,2043,
+NEW-04,local_offline,document_qa,반올림 기록,extension_draft_exposed,GraphRAG,4000,1,1,1.0,True,2094,
+NEW-05,local_offline,document_qa,시간 관측 공백,extension_draft_exposed,GraphRAG,4000,1,1,1.0,True,2173,
+NEW-06,local_offline,document_qa,연속과 누적,extension_draft_exposed,GraphRAG,4000,1,1,1.0,True,1956,
+NEW-07,local_offline,document_qa,증거 수준,extension_draft_exposed,GraphRAG,4000,1,1,1.0,True,2126,
+NEW-08,local_offline,document_qa,변화량 입력,extension_draft_exposed,GraphRAG,4000,1,1,1.0,True,2032,
+NEW-09,local_offline,document_qa,샘플과 시간,extension_draft_exposed,GraphRAG,4000,1,1,1.0,True,1866,
+NEW-10,local_offline,document_qa,결측 처리,extension_draft_exposed,GraphRAG,4000,2,1,0.5,False,1891,SOP-002:p2:table6:chunk#r3
+NEW-11,local_offline,document_qa,복합 논리,extension_draft_exposed,GraphRAG,4000,1,1,1.0,True,1674,
+NEW-12,local_offline,document_qa,동시 규칙,extension_draft_exposed,GraphRAG,4000,2,2,1.0,True,2301,
+NEW-13,local_offline,document_qa,역추론 오류,extension_draft_exposed,GraphRAG,4000,1,1,1.0,True,1906,
+NEW-14,local_offline,document_qa,규칙 비발동 해석,extension_draft_exposed,GraphRAG,4000,1,1,1.0,True,1779,
+NEW-15,local_offline,document_qa,부분 교정,extension_draft_exposed,GraphRAG,4000,1,1,1.0,True,2159,
+NEW-16,local_offline,document_qa,주장과 근거,extension_draft_exposed,GraphRAG,4000,1,1,1.0,True,2027,
+NEW-17,local_offline,document_qa,잘못된 행 인용,extension_draft_exposed,GraphRAG,4000,2,2,1.0,True,2290,
+NEW-18,local_offline,document_qa,추출과 계산,extension_draft_exposed,GraphRAG,4000,1,1,1.0,True,2204,
+NEW-19,local_offline,document_qa,명확화,extension_draft_exposed,GraphRAG,4000,3,3,1.0,True,1917,
+NEW-20,local_offline,document_qa,선택적 응답,extension_draft_exposed,GraphRAG,4000,1,1,1.0,True,2074,
+REL-D01,local_offline,document_qa,전체 대상 회수,draft_exposed,GraphRAG,4000,5,4,0.8,False,1922,SOP-001:p1:RULE-ST02-02
+REL-D02,local_offline,document_qa,조건부 교차 대상,draft_exposed,GraphRAG,4000,5,5,1.0,True,1960,
+REL-D03,local_offline,document_qa,공유 속성 전체 조회,draft_exposed,GraphRAG,4000,3,3,1.0,True,2025,
+REL-D04,local_offline,document_qa,참조 방향과 역조회,draft_exposed,GraphRAG,4000,2,1,0.5,False,1684,SOP-001:p1:RULE-ST02-04
+REL-D05,local_offline,document_qa,관계 경로와 인과 구별,draft_exposed,GraphRAG,4000,3,3,1.0,True,1943,
+REL-D06,local_offline,document_qa,문서 개정 영향 범위,draft_exposed,GraphRAG,4000,11,11,1.0,True,2001,
+REL-K01,local_offline,kg_structure,두 역할의 집합 비교,draft_exposed,GraphRAG,4000,13,13,1.0,True,3988,
+REL-K02,local_offline,kg_structure,다중 관계 교차 조회,draft_exposed,GraphRAG,4000,5,5,1.0,True,4000,
+REL-K03,local_offline,kg_structure,문서에서 역방향 영향 추적,draft_exposed,GraphRAG,4000,19,15,0.7894736842105263,False,3990,KG:N0116 | KG:N0117 | KG:N0118 | KG:N0119
+REL-K04,local_offline,kg_structure,유향 경로와 부재 판정,draft_exposed,GraphRAG,4000,4,4,1.0,True,4000,
+REL-K05,local_offline,kg_structure,원문까지의 출처 추적,draft_exposed,GraphRAG,4000,4,4,1.0,True,3986,
+REL-K06,local_offline,kg_structure,필터와 저장 누락 구별,draft_exposed,GraphRAG,4000,6,6,1.0,True,3999,
+YB-01,local_offline,kg_and_documents,구조·센서,dev,GraphRAG,4000,4,4,1.0,True,3997,
+YB-02,local_offline,kg_and_documents,구조·센서,eval,GraphRAG,4000,2,2,1.0,True,4000,
+YB-03,local_offline,kg_and_documents,연결·순서,dev,GraphRAG,4000,4,4,1.0,True,3995,
+YB-04,local_offline,kg_and_documents,구조·구역,eval,GraphRAG,4000,1,1,1.0,True,3997,
+YB-05,local_offline,kg_and_documents,수치·조건,eval,GraphRAG,4000,1,1,1.0,True,4000,
+YB-06,local_offline,kg_and_documents,조건·조치,eval,GraphRAG,4000,4,2,0.5,False,3996,SOP-001:p1:table1:chunk#r3 | SOP-001:p1:table1:chunk#r4
+YB-07,local_offline,kg_and_documents,정비 규칙,dev,GraphRAG,4000,1,1,1.0,True,3999,
+YB-08,local_offline,kg_and_documents,변화량·시간,eval,GraphRAG,4000,1,1,1.0,True,3981,
+YB-09,local_offline,kg_and_documents,샘플·조건,eval,GraphRAG,4000,1,1,1.0,True,3992,
+YB-10,local_offline,kg_and_documents,수치·조건,eval,GraphRAG,4000,1,1,1.0,True,3988,
+YB-11,local_offline,kg_and_documents,근거·메타데이터,dev,GraphRAG,4000,3,3,1.0,True,4000,
+YB-12,local_offline,kg_and_documents,문서·메타데이터,dev,GraphRAG,4000,1,1,1.0,True,3986,
+YB-13,local_offline,kg_and_documents,연결·정비,eval,GraphRAG,4000,3,3,1.0,True,3992,
+YB-14,local_offline,kg_and_documents,출입·시간,eval,GraphRAG,4000,1,1,1.0,True,3998,
+YB-15,local_offline,kg_and_documents,문서 비교,eval,GraphRAG,4000,2,1,0.5,False,3988,DS-ELEC-3300:p1:text2
+YB-16,local_offline,kg_and_documents,답변 한계,dev,GraphRAG,4000,1,0,0.0,False,3996,KG:MANIFEST
+YB-17,local_offline,kg_and_documents,미등록 식별자,eval,GraphRAG,4000,1,1,1.0,True,4000,
+YB-18,local_offline,kg_and_documents,답변 한계,eval,GraphRAG,4000,2,1,0.5,False,3980,DS-THERM-2200:p1:text1
+YV2-Q01,local_offline,document_qa,단일 규칙,dev,GraphRAG,4000,1,1,1.0,True,1927,
+YV2-Q02,local_offline,document_qa,단일 규칙,eval,GraphRAG,4000,1,1,1.0,True,1957,
+YV2-Q03,local_offline,document_qa,단일 규칙,eval,GraphRAG,4000,1,1,1.0,True,1880,
+YV2-Q04,local_offline,document_qa,단일 규칙,eval,GraphRAG,4000,1,1,1.0,True,2035,
+YV2-Q05,local_offline,document_qa,단일 규칙,eval,GraphRAG,4000,1,1,1.0,True,1608,
+YV2-Q06,local_offline,document_qa,수치·조건,dev,GraphRAG,4000,1,1,1.0,True,2240,
+YV2-Q07,local_offline,document_qa,수치·조건,eval,GraphRAG,4000,1,1,1.0,True,1830,
+YV2-Q08,local_offline,document_qa,수치·조건,eval,GraphRAG,4000,1,1,1.0,True,2125,
+YV2-Q09,local_offline,document_qa,수치·조건,eval,GraphRAG,4000,2,2,1.0,True,1858,
+YV2-Q10,local_offline,document_qa,수치·조건,eval,GraphRAG,4000,1,1,1.0,True,1679,
+YV2-Q11,local_offline,document_qa,연결·절차,dev,GraphRAG,4000,5,5,1.0,True,1976,
+YV2-Q12,local_offline,document_qa,연결·절차,eval,GraphRAG,4000,1,1,1.0,True,1857,
+YV2-Q13,local_offline,document_qa,연결·절차,eval,GraphRAG,4000,2,2,1.0,True,1924,
+YV2-Q14,local_offline,document_qa,연결·절차,eval,GraphRAG,4000,1,1,1.0,True,2235,
+YV2-Q15,local_offline,document_qa,연결·절차,eval,GraphRAG,4000,2,2,1.0,True,2015,
+YV2-Q16,local_offline,document_qa,문서 비교,dev,GraphRAG,4000,3,3,1.0,True,2138,
+YV2-Q17,local_offline,document_qa,문서 비교,eval,GraphRAG,4000,4,4,1.0,True,2117,
+YV2-Q18,local_offline,document_qa,문서 비교,eval,GraphRAG,4000,2,1,0.5,False,2487,DS-MECH-4400:p1:text2
+YV2-Q19,local_offline,document_qa,문서 비교,eval,GraphRAG,4000,2,2,1.0,True,2242,
+YV2-Q20,local_offline,document_qa,문서 비교,eval,GraphRAG,4000,2,2,1.0,True,1995,
+YV2-Q21,local_offline,document_qa,근거·권한,dev,GraphRAG,4000,1,1,1.0,True,2060,
+YV2-Q22,local_offline,document_qa,근거·권한,eval,GraphRAG,4000,1,1,1.0,True,1896,
+YV2-Q23,local_offline,document_qa,근거·권한,eval,GraphRAG,4000,2,2,1.0,True,2299,
+YV2-Q24,local_offline,document_qa,근거·권한,eval,GraphRAG,4000,1,1,1.0,True,1951,
+YV2-Q25,local_offline,document_qa,근거·권한,eval,GraphRAG,4000,2,2,1.0,True,1881,
+YV2-Q26,local_offline,document_qa,답변 한계,dev,GraphRAG,4000,2,2,1.0,True,1850,
+YV2-Q27,local_offline,document_qa,답변 한계,eval,GraphRAG,4000,2,2,1.0,True,1822,
+YV2-Q28,local_offline,document_qa,답변 한계,eval,GraphRAG,4000,3,2,0.6666666666666666,False,2189,SOP-002:p2:table6:chunk#r5
+YV2-Q29,local_offline,document_qa,답변 한계,eval,GraphRAG,4000,4,4,1.0,True,2151,
+YV2-Q30,local_offline,document_qa,답변 한계,eval,GraphRAG,4000,3,3,1.0,True,2002,
+CQ04,local_offline,document_qa,규칙·조치 대상·출처,draft_exposed,HybridRAG,4000,2,2,1.0,True,2039,
+G01,local_offline,document_qa,이득 없음 예상,draft_exposed,HybridRAG,4000,3,3,1.0,True,2345,
+G02,local_offline,document_qa,이득 예상,draft_exposed,HybridRAG,4000,4,4,1.0,True,1932,
+G03,local_offline,document_qa,이득 예상,draft_exposed,HybridRAG,4000,4,4,1.0,True,2117,
+G04,local_offline,document_qa,이득 예상,draft_exposed,HybridRAG,4000,5,5,1.0,True,2025,
+G05,local_offline,document_qa,부분 이득 예상,draft_exposed,HybridRAG,4000,3,3,1.0,True,1932,
+G06,local_offline,document_qa,이득 예상,draft_exposed,HybridRAG,4000,3,3,1.0,True,1942,
+G07,local_offline,document_qa,이득 예상,draft_exposed,HybridRAG,4000,3,3,1.0,True,2099,
+G08,local_offline,document_qa,부분 이득 예상,draft_exposed,HybridRAG,4000,3,3,1.0,True,1857,
+G09,local_offline,document_qa,이득 예상,draft_exposed,HybridRAG,4000,3,3,1.0,True,1948,
+G10,local_offline,document_qa,이득 예상,draft_exposed,HybridRAG,4000,4,4,1.0,True,1978,
+G11,local_offline,document_qa,이득 예상,draft_exposed,HybridRAG,4000,3,3,1.0,True,2064,
+G12,local_offline,document_qa,부분 이득 예상,draft_exposed,HybridRAG,4000,3,3,1.0,True,1984,
+G13,local_offline,document_qa,이득 없음 예상,draft_exposed,HybridRAG,4000,3,3,1.0,True,2349,
+G14,local_offline,document_qa,이득 없음 예상,draft_exposed,HybridRAG,4000,1,1,1.0,True,2200,
+G15,local_offline,document_qa,이득 없음 예상,draft_exposed,HybridRAG,4000,3,3,1.0,True,1939,
+NEW-01,local_offline,document_qa,단위 정규화,extension_draft_exposed,HybridRAG,4000,1,1,1.0,True,2448,
+NEW-02,local_offline,document_qa,단위 불일치,extension_draft_exposed,HybridRAG,4000,1,1,1.0,True,1948,
+NEW-03,local_offline,document_qa,측정 불확실성,extension_draft_exposed,HybridRAG,4000,1,1,1.0,True,2043,
+NEW-04,local_offline,document_qa,반올림 기록,extension_draft_exposed,HybridRAG,4000,1,1,1.0,True,2094,
+NEW-05,local_offline,document_qa,시간 관측 공백,extension_draft_exposed,HybridRAG,4000,1,1,1.0,True,2173,
+NEW-06,local_offline,document_qa,연속과 누적,extension_draft_exposed,HybridRAG,4000,1,1,1.0,True,1956,
+NEW-07,local_offline,document_qa,증거 수준,extension_draft_exposed,HybridRAG,4000,1,1,1.0,True,2126,
+NEW-08,local_offline,document_qa,변화량 입력,extension_draft_exposed,HybridRAG,4000,1,1,1.0,True,2032,
+NEW-09,local_offline,document_qa,샘플과 시간,extension_draft_exposed,HybridRAG,4000,1,1,1.0,True,1866,
+NEW-10,local_offline,document_qa,결측 처리,extension_draft_exposed,HybridRAG,4000,2,1,0.5,False,1891,SOP-002:p2:table6:chunk#r3
+NEW-11,local_offline,document_qa,복합 논리,extension_draft_exposed,HybridRAG,4000,1,1,1.0,True,1674,
+NEW-12,local_offline,document_qa,동시 규칙,extension_draft_exposed,HybridRAG,4000,2,2,1.0,True,2372,
+NEW-13,local_offline,document_qa,역추론 오류,extension_draft_exposed,HybridRAG,4000,1,1,1.0,True,1907,
+NEW-14,local_offline,document_qa,규칙 비발동 해석,extension_draft_exposed,HybridRAG,4000,1,1,1.0,True,1779,
+NEW-15,local_offline,document_qa,부분 교정,extension_draft_exposed,HybridRAG,4000,1,1,1.0,True,2077,
+NEW-16,local_offline,document_qa,주장과 근거,extension_draft_exposed,HybridRAG,4000,1,1,1.0,True,2027,
+NEW-17,local_offline,document_qa,잘못된 행 인용,extension_draft_exposed,HybridRAG,4000,2,2,1.0,True,2391,
+NEW-18,local_offline,document_qa,추출과 계산,extension_draft_exposed,HybridRAG,4000,1,1,1.0,True,2204,
+NEW-19,local_offline,document_qa,명확화,extension_draft_exposed,HybridRAG,4000,3,3,1.0,True,1917,
+NEW-20,local_offline,document_qa,선택적 응답,extension_draft_exposed,HybridRAG,4000,1,1,1.0,True,2074,
+REL-D01,local_offline,document_qa,전체 대상 회수,draft_exposed,HybridRAG,4000,5,4,0.8,False,1922,SOP-001:p1:RULE-ST02-02
+REL-D02,local_offline,document_qa,조건부 교차 대상,draft_exposed,HybridRAG,4000,5,5,1.0,True,1977,
+REL-D03,local_offline,document_qa,공유 속성 전체 조회,draft_exposed,HybridRAG,4000,3,3,1.0,True,2025,
+REL-D04,local_offline,document_qa,참조 방향과 역조회,draft_exposed,HybridRAG,4000,2,1,0.5,False,1684,SOP-001:p1:RULE-ST02-04
+REL-D05,local_offline,document_qa,관계 경로와 인과 구별,draft_exposed,HybridRAG,4000,3,3,1.0,True,1871,
+REL-D06,local_offline,document_qa,문서 개정 영향 범위,draft_exposed,HybridRAG,4000,11,11,1.0,True,2001,
+YV2-Q01,local_offline,document_qa,단일 규칙,dev,HybridRAG,4000,1,1,1.0,True,1927,
+YV2-Q02,local_offline,document_qa,단일 규칙,eval,HybridRAG,4000,1,1,1.0,True,1957,
+YV2-Q03,local_offline,document_qa,단일 규칙,eval,HybridRAG,4000,1,1,1.0,True,1880,
+YV2-Q04,local_offline,document_qa,단일 규칙,eval,HybridRAG,4000,1,1,1.0,True,2035,
+YV2-Q05,local_offline,document_qa,단일 규칙,eval,HybridRAG,4000,1,1,1.0,True,1608,
+YV2-Q06,local_offline,document_qa,수치·조건,dev,HybridRAG,4000,1,1,1.0,True,2240,
+YV2-Q07,local_offline,document_qa,수치·조건,eval,HybridRAG,4000,1,1,1.0,True,1830,
+YV2-Q08,local_offline,document_qa,수치·조건,eval,HybridRAG,4000,1,1,1.0,True,2125,
+YV2-Q09,local_offline,document_qa,수치·조건,eval,HybridRAG,4000,2,2,1.0,True,1858,
+YV2-Q10,local_offline,document_qa,수치·조건,eval,HybridRAG,4000,1,1,1.0,True,1679,
+YV2-Q11,local_offline,document_qa,연결·절차,dev,HybridRAG,4000,5,5,1.0,True,1684,
+YV2-Q12,local_offline,document_qa,연결·절차,eval,HybridRAG,4000,1,1,1.0,True,1857,
+YV2-Q13,local_offline,document_qa,연결·절차,eval,HybridRAG,4000,2,2,1.0,True,1924,
+YV2-Q14,local_offline,document_qa,연결·절차,eval,HybridRAG,4000,1,1,1.0,True,2235,
+YV2-Q15,local_offline,document_qa,연결·절차,eval,HybridRAG,4000,2,2,1.0,True,2015,
+YV2-Q16,local_offline,document_qa,문서 비교,dev,HybridRAG,4000,3,3,1.0,True,2138,
+YV2-Q17,local_offline,document_qa,문서 비교,eval,HybridRAG,4000,4,4,1.0,True,2117,
+YV2-Q18,local_offline,document_qa,문서 비교,eval,HybridRAG,4000,2,1,0.5,False,2487,DS-MECH-4400:p1:text2
+YV2-Q19,local_offline,document_qa,문서 비교,eval,HybridRAG,4000,2,2,1.0,True,2242,
+YV2-Q20,local_offline,document_qa,문서 비교,eval,HybridRAG,4000,2,2,1.0,True,1995,
+YV2-Q21,local_offline,document_qa,근거·권한,dev,HybridRAG,4000,1,1,1.0,True,2060,
+YV2-Q22,local_offline,document_qa,근거·권한,eval,HybridRAG,4000,1,1,1.0,True,1852,
+YV2-Q23,local_offline,document_qa,근거·권한,eval,HybridRAG,4000,2,2,1.0,True,2299,
+YV2-Q24,local_offline,document_qa,근거·권한,eval,HybridRAG,4000,1,1,1.0,True,1951,
+YV2-Q25,local_offline,document_qa,근거·권한,eval,HybridRAG,4000,2,2,1.0,True,1881,
+YV2-Q26,local_offline,document_qa,답변 한계,dev,HybridRAG,4000,2,2,1.0,True,1850,
+YV2-Q27,local_offline,document_qa,답변 한계,eval,HybridRAG,4000,2,2,1.0,True,1838,
+YV2-Q28,local_offline,document_qa,답변 한계,eval,HybridRAG,4000,3,2,0.6666666666666666,False,2085,SOP-002:p2:table6:chunk#r5
+YV2-Q29,local_offline,document_qa,답변 한계,eval,HybridRAG,4000,4,4,1.0,True,2027,
+YV2-Q30,local_offline,document_qa,답변 한계,eval,HybridRAG,4000,3,3,1.0,True,1942,
+ADD-01,local_offline,kg_structure,관계 조건의 교집합,draft_exposed,VectorRAG,4000,2,2,1.0,True,3992,
+ADD-02,local_offline,kg_structure,정확한 대상 집합,draft_exposed,VectorRAG,4000,55,11,0.2,False,3984,KG:N0010 | KG:N0011 | KG:N0012 | KG:N0013 | KG:N0014 | KG:N0015 | KG:N0016 | KG:N0017 | KG:N0049 | KG:N0050 | KG:N0051 | KG:N0054 | KG:N0056 | KG:N0060 | KG:N0063 | KG:N0064 | KG:N0065 | KG:N0068 | KG:N0072 | KG:N0079 | KG:N0085 | KG:N0091 | KG:N0092 | KG:N0104 | KG:N0105 | KG:N0106 | KG:N0107 | KG:N0108 | KG:N0109 | KG:N0117 | KG:N0120 | KG:N0122 | KG:N0130 | KG:N0133 | KG:N0137 | KG:N0138 | KG:N0139 | KG:N0140 | KG:N0141 | KG:N0142 | KG:N0143 | KG:N0144 | KG:N0145 | KG:N0146
+ADD-03,local_offline,kg_structure,문서 간 공통 적용 대상,draft_exposed,VectorRAG,4000,44,7,0.1590909090909091,False,3998,KG:N0006 | KG:N0010 | KG:N0011 | KG:N0012 | KG:N0013 | KG:N0014 | KG:N0015 | KG:N0016 | KG:N0017 | KG:N0019 | KG:N0027 | KG:N0030 | KG:N0039 | KG:N0046 | KG:N0054 | KG:N0055 | KG:N0061 | KG:N0062 | KG:N0063 | KG:N0064 | KG:N0067 | KG:N0070 | KG:N0071 | KG:N0078 | KG:N0079 | KG:N0080 | KG:N0109 | KG:N0110 | KG:N0111 | KG:N0112 | KG:N0113 | KG:N0114 | KG:N0115 | KG:N0116 | KG:N0117 | KG:N0118 | KG:N0119
+ADD-04,local_offline,kg_structure,최소 경로와 관계 제한,draft_exposed,VectorRAG,4000,5,3,0.6,False,3983,KG:N0040 | KG:N0087
+ADD-05,local_offline,kg_structure,출처별 지식 범위,draft_exposed,VectorRAG,4000,6,2,0.3333333333333333,False,3993,KG:N0071 | KG:N0087 | KG:N0110 | KG:N0117
+ADD-06,local_offline,kg_structure,연결 누락과 실세계 부재,draft_exposed,VectorRAG,4000,39,17,0.4358974358974359,False,3988,KG:N0047 | KG:N0050 | KG:N0051 | KG:N0058 | KG:N0059 | KG:N0106 | KG:N0108 | KG:N0123 | KG:N0124 | KG:N0125 | KG:N0126 | KG:N0127 | KG:N0128 | KG:N0129 | KG:N0130 | KG:N0131 | KG:N0132 | KG:N0133 | KG:N0134 | KG:N0135 | KG:N0136 | KG:N0144
+CQ04,local_offline,document_qa,규칙·조치 대상·출처,draft_exposed,VectorRAG,4000,2,2,1.0,True,2341,
+G01,local_offline,document_qa,이득 없음 예상,draft_exposed,VectorRAG,4000,3,3,1.0,True,2175,
+G02,local_offline,document_qa,이득 예상,draft_exposed,VectorRAG,4000,4,2,0.5,False,2237,SOP-001:p1:RULE-ST02-03 | SOP-001:p1:RULE-ST02-04
+G03,local_offline,document_qa,이득 예상,draft_exposed,VectorRAG,4000,4,4,1.0,True,2190,
+G04,local_offline,document_qa,이득 예상,draft_exposed,VectorRAG,4000,5,5,1.0,True,2088,
+G05,local_offline,document_qa,부분 이득 예상,draft_exposed,VectorRAG,4000,3,2,0.6666666666666666,False,2013,SOP-002:p1:table2:chunk#r1
+G06,local_offline,document_qa,이득 예상,draft_exposed,VectorRAG,4000,3,3,1.0,True,1936,
+G07,local_offline,document_qa,이득 예상,draft_exposed,VectorRAG,4000,3,2,0.6666666666666666,False,2173,SOP-002:p1:table1:chunk#r2
+G08,local_offline,document_qa,부분 이득 예상,draft_exposed,VectorRAG,4000,3,2,0.6666666666666666,False,2074,SOP-002:p2:table6:chunk#r3
+G09,local_offline,document_qa,이득 예상,draft_exposed,VectorRAG,4000,3,3,1.0,True,1909,
+G10,local_offline,document_qa,이득 예상,draft_exposed,VectorRAG,4000,4,3,0.75,False,2043,SOP-003:p1:table2:chunk#r3
+G11,local_offline,document_qa,이득 예상,draft_exposed,VectorRAG,4000,3,3,1.0,True,2065,
+G12,local_offline,document_qa,부분 이득 예상,draft_exposed,VectorRAG,4000,3,2,0.6666666666666666,False,2148,SOP-001:p1:RULE-ST02-03
+G13,local_offline,document_qa,이득 없음 예상,draft_exposed,VectorRAG,4000,3,1,0.3333333333333333,False,2566,SOP-004:p1:table3:chunk#r3 | SOP-004:p1:table3:chunk#r4
+G14,local_offline,document_qa,이득 없음 예상,draft_exposed,VectorRAG,4000,1,1,1.0,True,2200,
+G15,local_offline,document_qa,이득 없음 예상,draft_exposed,VectorRAG,4000,3,3,1.0,True,1955,
+NEW-01,local_offline,document_qa,단위 정규화,extension_draft_exposed,VectorRAG,4000,1,1,1.0,True,2311,
+NEW-02,local_offline,document_qa,단위 불일치,extension_draft_exposed,VectorRAG,4000,1,0,0.0,False,2040,SOP-002:p1:table4:chunk#r3
+NEW-03,local_offline,document_qa,측정 불확실성,extension_draft_exposed,VectorRAG,4000,1,0,0.0,False,2518,SOP-001:p1:RULE-ST02-02
+NEW-04,local_offline,document_qa,반올림 기록,extension_draft_exposed,VectorRAG,4000,1,0,0.0,False,2407,SOP-001:p1:RULE-ST02-02
+NEW-05,local_offline,document_qa,시간 관측 공백,extension_draft_exposed,VectorRAG,4000,1,1,1.0,True,2133,
+NEW-06,local_offline,document_qa,연속과 누적,extension_draft_exposed,VectorRAG,4000,1,1,1.0,True,2137,
+NEW-07,local_offline,document_qa,증거 수준,extension_draft_exposed,VectorRAG,4000,1,1,1.0,True,2244,
+NEW-08,local_offline,document_qa,변화량 입력,extension_draft_exposed,VectorRAG,4000,1,0,0.0,False,2361,SOP-003:p1:table1:chunk#r1
+NEW-09,local_offline,document_qa,샘플과 시간,extension_draft_exposed,VectorRAG,4000,1,1,1.0,True,2220,
+NEW-10,local_offline,document_qa,결측 처리,extension_draft_exposed,VectorRAG,4000,2,2,1.0,True,2268,
+NEW-11,local_offline,document_qa,복합 논리,extension_draft_exposed,VectorRAG,4000,1,0,0.0,False,2058,SOP-001:p1:RULE-ST02-03
+NEW-12,local_offline,document_qa,동시 규칙,extension_draft_exposed,VectorRAG,4000,2,2,1.0,True,2348,
+NEW-13,local_offline,document_qa,역추론 오류,extension_draft_exposed,VectorRAG,4000,1,1,1.0,True,2233,
+NEW-14,local_offline,document_qa,규칙 비발동 해석,extension_draft_exposed,VectorRAG,4000,1,0,0.0,False,2024,SOP-001:p1:RULE-ST02-02
+NEW-15,local_offline,document_qa,부분 교정,extension_draft_exposed,VectorRAG,4000,1,1,1.0,True,2275,
+NEW-16,local_offline,document_qa,주장과 근거,extension_draft_exposed,VectorRAG,4000,1,1,1.0,True,2147,
+NEW-17,local_offline,document_qa,잘못된 행 인용,extension_draft_exposed,VectorRAG,4000,2,2,1.0,True,2404,
+NEW-18,local_offline,document_qa,추출과 계산,extension_draft_exposed,VectorRAG,4000,1,1,1.0,True,2431,
+NEW-19,local_offline,document_qa,명확화,extension_draft_exposed,VectorRAG,4000,3,1,0.3333333333333333,False,2112,SOP-002:p1:table2:chunk#r1 | SOP-002:p1:table2:chunk#r2
+NEW-20,local_offline,document_qa,선택적 응답,extension_draft_exposed,VectorRAG,4000,1,1,1.0,True,2219,
+REL-D01,local_offline,document_qa,전체 대상 회수,draft_exposed,VectorRAG,4000,5,1,0.2,False,1948,SOP-001:p1:RULE-ST02-02 | SOP-001:p1:RULE-ST02-04 | SOP-001:p1:RULE-ST04-02 | SOP-001:p1:text5
+REL-D02,local_offline,document_qa,조건부 교차 대상,draft_exposed,VectorRAG,4000,5,2,0.4,False,2210,SOP-001:p1:RULE-ST02-02 | SOP-001:p1:RULE-ST02-03 | SOP-001:p1:RULE-ST02-04
+REL-D03,local_offline,document_qa,공유 속성 전체 조회,draft_exposed,VectorRAG,4000,3,3,1.0,True,2270,
+REL-D04,local_offline,document_qa,참조 방향과 역조회,draft_exposed,VectorRAG,4000,2,0,0.0,False,2014,SOP-001:p1:RULE-ST02-04 | SOP-001:p2:RULE-ST04-03
+REL-D05,local_offline,document_qa,관계 경로와 인과 구별,draft_exposed,VectorRAG,4000,3,3,1.0,True,1969,
+REL-D06,local_offline,document_qa,문서 개정 영향 범위,draft_exposed,VectorRAG,4000,11,8,0.7272727272727273,False,2083,SOP-003:p1:table1:chunk#r5 | SOP-003:p1:table1:chunk#r6 | SOP-003:p1:table1:chunk#r8
+REL-K01,local_offline,kg_structure,두 역할의 집합 비교,draft_exposed,VectorRAG,4000,13,6,0.46153846153846156,False,3986,KG:N0010 | KG:N0071 | KG:N0078 | KG:N0085 | KG:N0092 | KG:N0109 | KG:N0117
+REL-K02,local_offline,kg_structure,다중 관계 교차 조회,draft_exposed,VectorRAG,4000,5,2,0.4,False,3994,KG:N0071 | KG:N0085 | KG:N0117
+REL-K03,local_offline,kg_structure,문서에서 역방향 영향 추적,draft_exposed,VectorRAG,4000,19,3,0.15789473684210525,False,3998,KG:N0012 | KG:N0013 | KG:N0015 | KG:N0016 | KG:N0017 | KG:N0109 | KG:N0110 | KG:N0111 | KG:N0112 | KG:N0113 | KG:N0114 | KG:N0115 | KG:N0116 | KG:N0117 | KG:N0118 | KG:N0119
+REL-K04,local_offline,kg_structure,유향 경로와 부재 판정,draft_exposed,VectorRAG,4000,4,1,0.25,False,3991,KG:N0032 | KG:N0036 | KG:N0040
+REL-K05,local_offline,kg_structure,원문까지의 출처 추적,draft_exposed,VectorRAG,4000,4,0,0.0,False,3993,KG:N0069 | KG:N0113 | KG:N0173 | KG:N0352
+REL-K06,local_offline,kg_structure,필터와 저장 누락 구별,draft_exposed,VectorRAG,4000,6,5,0.8333333333333334,False,3992,KG:N0094
+YB-01,local_offline,kg_and_documents,구조·센서,dev,VectorRAG,4000,4,3,0.75,False,3986,KG:N0034
+YB-02,local_offline,kg_and_documents,구조·센서,eval,VectorRAG,4000,2,1,0.5,False,3994,KG:N0040
+YB-03,local_offline,kg_and_documents,연결·순서,dev,VectorRAG,4000,4,1,0.25,False,3986,KG:N0032 | KG:N0036 | KG:N0040
+YB-04,local_offline,kg_and_documents,구조·구역,eval,VectorRAG,4000,1,1,1.0,True,3987,
+YB-05,local_offline,kg_and_documents,수치·조건,eval,VectorRAG,4000,1,1,1.0,True,3998,
+YB-06,local_offline,kg_and_documents,조건·조치,eval,VectorRAG,4000,4,2,0.5,False,3978,SOP-001:p1:table1:chunk#r3 | SOP-001:p1:table1:chunk#r4
+YB-07,local_offline,kg_and_documents,정비 규칙,dev,VectorRAG,4000,1,1,1.0,True,3985,
+YB-08,local_offline,kg_and_documents,변화량·시간,eval,VectorRAG,4000,1,1,1.0,True,3999,
+YB-09,local_offline,kg_and_documents,샘플·조건,eval,VectorRAG,4000,1,1,1.0,True,3990,
+YB-10,local_offline,kg_and_documents,수치·조건,eval,VectorRAG,4000,1,1,1.0,True,3988,
+YB-11,local_offline,kg_and_documents,근거·메타데이터,dev,VectorRAG,4000,3,0,0.0,False,3998,KG:N0011 | KG:N0171 | KG:N0248
+YB-12,local_offline,kg_and_documents,문서·메타데이터,dev,VectorRAG,4000,1,0,0.0,False,3988,KG:N0023
+YB-13,local_offline,kg_and_documents,연결·정비,eval,VectorRAG,4000,3,2,0.6666666666666666,False,3990,KG:N0117
+YB-14,local_offline,kg_and_documents,출입·시간,eval,VectorRAG,4000,1,1,1.0,True,3998,
+YB-15,local_offline,kg_and_documents,문서 비교,eval,VectorRAG,4000,2,2,1.0,True,3999,
+YB-16,local_offline,kg_and_documents,답변 한계,dev,VectorRAG,4000,1,0,0.0,False,3998,KG:MANIFEST
+YB-17,local_offline,kg_and_documents,미등록 식별자,eval,VectorRAG,4000,1,0,0.0,False,3987,KG:MANIFEST
+YB-18,local_offline,kg_and_documents,답변 한계,eval,VectorRAG,4000,2,0,0.0,False,3993,DS-THERM-2200:p1:text1 | SOP-002:p1:table2:chunk#r1
+YV2-Q01,local_offline,document_qa,단일 규칙,dev,VectorRAG,4000,1,1,1.0,True,2131,
+YV2-Q02,local_offline,document_qa,단일 규칙,eval,VectorRAG,4000,1,1,1.0,True,2366,
+YV2-Q03,local_offline,document_qa,단일 규칙,eval,VectorRAG,4000,1,1,1.0,True,2278,
+YV2-Q04,local_offline,document_qa,단일 규칙,eval,VectorRAG,4000,1,1,1.0,True,2369,
+YV2-Q05,local_offline,document_qa,단일 규칙,eval,VectorRAG,4000,1,1,1.0,True,1844,
+YV2-Q06,local_offline,document_qa,수치·조건,dev,VectorRAG,4000,1,1,1.0,True,2410,
+YV2-Q07,local_offline,document_qa,수치·조건,eval,VectorRAG,4000,1,1,1.0,True,2119,
+YV2-Q08,local_offline,document_qa,수치·조건,eval,VectorRAG,4000,1,1,1.0,True,2076,
+YV2-Q09,local_offline,document_qa,수치·조건,eval,VectorRAG,4000,2,2,1.0,True,1928,
+YV2-Q10,local_offline,document_qa,수치·조건,eval,VectorRAG,4000,1,0,0.0,False,2114,SOP-001:p1:RULE-ST02-02
+YV2-Q11,local_offline,document_qa,연결·절차,dev,VectorRAG,4000,5,5,1.0,True,1814,
+YV2-Q12,local_offline,document_qa,연결·절차,eval,VectorRAG,4000,1,1,1.0,True,2328,
+YV2-Q13,local_offline,document_qa,연결·절차,eval,VectorRAG,4000,2,1,0.5,False,2269,SOP-001:p1:RULE-ST02-04
+YV2-Q14,local_offline,document_qa,연결·절차,eval,VectorRAG,4000,1,1,1.0,True,2354,
+YV2-Q15,local_offline,document_qa,연결·절차,eval,VectorRAG,4000,2,2,1.0,True,2370,
+YV2-Q16,local_offline,document_qa,문서 비교,dev,VectorRAG,4000,3,3,1.0,True,2224,
+YV2-Q17,local_offline,document_qa,문서 비교,eval,VectorRAG,4000,4,4,1.0,True,2313,
+YV2-Q18,local_offline,document_qa,문서 비교,eval,VectorRAG,4000,2,2,1.0,True,2452,
+YV2-Q19,local_offline,document_qa,문서 비교,eval,VectorRAG,4000,2,2,1.0,True,2098,
+YV2-Q20,local_offline,document_qa,문서 비교,eval,VectorRAG,4000,2,2,1.0,True,2107,
+YV2-Q21,local_offline,document_qa,근거·권한,dev,VectorRAG,4000,1,1,1.0,True,2284,
+YV2-Q22,local_offline,document_qa,근거·권한,eval,VectorRAG,4000,1,1,1.0,True,2215,
+YV2-Q23,local_offline,document_qa,근거·권한,eval,VectorRAG,4000,2,0,0.0,False,2475,SOP-004:p1:table3:chunk#r2 | SOP-004:p1:table3:chunk#r3
+YV2-Q24,local_offline,document_qa,근거·권한,eval,VectorRAG,4000,1,1,1.0,True,2185,
+YV2-Q25,local_offline,document_qa,근거·권한,eval,VectorRAG,4000,2,0,0.0,False,2313,SOP-001:p2:RULE-CHM01-03 | SOP-004:p1:table1:chunk#r5
+YV2-Q26,local_offline,document_qa,답변 한계,dev,VectorRAG,4000,2,2,1.0,True,2181,
+YV2-Q27,local_offline,document_qa,답변 한계,eval,VectorRAG,4000,2,2,1.0,True,2170,
+YV2-Q28,local_offline,document_qa,답변 한계,eval,VectorRAG,4000,3,2,0.6666666666666666,False,2219,SOP-002:p2:table6:chunk#r5
+YV2-Q29,local_offline,document_qa,답변 한계,eval,VectorRAG,4000,4,3,0.75,False,2232,SOP-001:p1:RULE-ST02-01
+YV2-Q30,local_offline,document_qa,답변 한계,eval,VectorRAG,4000,3,3,1.0,True,2098,
+ADD-01,local_offline,kg_structure,관계 조건의 교집합,draft_exposed,GraphNoTopology,8000,2,2,1.0,True,7994,
+ADD-02,local_offline,kg_structure,정확한 대상 집합,draft_exposed,GraphNoTopology,8000,55,14,0.2545454545454545,False,7988,KG:N0011 | KG:N0012 | KG:N0013 | KG:N0014 | KG:N0015 | KG:N0016 | KG:N0017 | KG:N0047 | KG:N0049 | KG:N0050 | KG:N0051 | KG:N0054 | KG:N0056 | KG:N0060 | KG:N0063 | KG:N0064 | KG:N0065 | KG:N0068 | KG:N0072 | KG:N0075 | KG:N0079 | KG:N0104 | KG:N0105 | KG:N0106 | KG:N0107 | KG:N0108 | KG:N0120 | KG:N0121 | KG:N0122 | KG:N0130 | KG:N0133 | KG:N0137 | KG:N0138 | KG:N0139 | KG:N0140 | KG:N0141 | KG:N0142 | KG:N0143 | KG:N0144 | KG:N0145 | KG:N0146
+ADD-03,local_offline,kg_structure,문서 간 공통 적용 대상,draft_exposed,GraphNoTopology,8000,44,15,0.3409090909090909,False,7982,KG:N0006 | KG:N0010 | KG:N0011 | KG:N0012 | KG:N0013 | KG:N0014 | KG:N0015 | KG:N0016 | KG:N0017 | KG:N0019 | KG:N0027 | KG:N0030 | KG:N0039 | KG:N0046 | KG:N0054 | KG:N0055 | KG:N0061 | KG:N0062 | KG:N0064 | KG:N0067 | KG:N0079 | KG:N0080 | KG:N0109 | KG:N0113 | KG:N0114 | KG:N0115 | KG:N0116 | KG:N0118 | KG:N0119
+ADD-04,local_offline,kg_structure,최소 경로와 관계 제한,draft_exposed,GraphNoTopology,8000,5,5,1.0,True,7994,
+ADD-05,local_offline,kg_structure,출처별 지식 범위,draft_exposed,GraphNoTopology,8000,6,6,1.0,True,8000,
+ADD-06,local_offline,kg_structure,연결 누락과 실세계 부재,draft_exposed,GraphNoTopology,8000,39,22,0.5641025641025641,False,7988,KG:N0050 | KG:N0051 | KG:N0058 | KG:N0059 | KG:N0124 | KG:N0125 | KG:N0126 | KG:N0127 | KG:N0128 | KG:N0129 | KG:N0130 | KG:N0131 | KG:N0132 | KG:N0133 | KG:N0134 | KG:N0135 | KG:N0136
+REL-K01,local_offline,kg_structure,두 역할의 집합 비교,draft_exposed,GraphNoTopology,8000,13,13,1.0,True,7997,
+REL-K02,local_offline,kg_structure,다중 관계 교차 조회,draft_exposed,GraphNoTopology,8000,5,5,1.0,True,8000,
+REL-K03,local_offline,kg_structure,문서에서 역방향 영향 추적,draft_exposed,GraphNoTopology,8000,19,17,0.8947368421052632,False,7993,KG:N0016 | KG:N0118
+REL-K04,local_offline,kg_structure,유향 경로와 부재 판정,draft_exposed,GraphNoTopology,8000,4,4,1.0,True,7979,
+REL-K05,local_offline,kg_structure,원문까지의 출처 추적,draft_exposed,GraphNoTopology,8000,4,2,0.5,False,7983,KG:N0173 | KG:N0352
+REL-K06,local_offline,kg_structure,필터와 저장 누락 구별,draft_exposed,GraphNoTopology,8000,6,6,1.0,True,7986,
+YB-01,local_offline,kg_and_documents,구조·센서,dev,GraphNoTopology,8000,4,4,1.0,True,8000,
+YB-02,local_offline,kg_and_documents,구조·센서,eval,GraphNoTopology,8000,2,2,1.0,True,7993,
+YB-03,local_offline,kg_and_documents,연결·순서,dev,GraphNoTopology,8000,4,3,0.75,False,7998,KG:N0040
+YB-04,local_offline,kg_and_documents,구조·구역,eval,GraphNoTopology,8000,1,1,1.0,True,7994,
+YB-05,local_offline,kg_and_documents,수치·조건,eval,GraphNoTopology,8000,1,1,1.0,True,7980,
+YB-06,local_offline,kg_and_documents,조건·조치,eval,GraphNoTopology,8000,4,3,0.75,False,7984,SOP-001:p1:table1:chunk#r4
+YB-07,local_offline,kg_and_documents,정비 규칙,dev,GraphNoTopology,8000,1,1,1.0,True,7998,
+YB-08,local_offline,kg_and_documents,변화량·시간,eval,GraphNoTopology,8000,1,1,1.0,True,7998,
+YB-09,local_offline,kg_and_documents,샘플·조건,eval,GraphNoTopology,8000,1,1,1.0,True,8000,
+YB-10,local_offline,kg_and_documents,수치·조건,eval,GraphNoTopology,8000,1,1,1.0,True,7989,
+YB-11,local_offline,kg_and_documents,근거·메타데이터,dev,GraphNoTopology,8000,3,2,0.6666666666666666,False,7986,KG:N0248
+YB-12,local_offline,kg_and_documents,문서·메타데이터,dev,GraphNoTopology,8000,1,1,1.0,True,7997,
+YB-13,local_offline,kg_and_documents,연결·정비,eval,GraphNoTopology,8000,3,3,1.0,True,7990,
+YB-14,local_offline,kg_and_documents,출입·시간,eval,GraphNoTopology,8000,1,1,1.0,True,7980,
+YB-15,local_offline,kg_and_documents,문서 비교,eval,GraphNoTopology,8000,2,2,1.0,True,7985,
+YB-16,local_offline,kg_and_documents,답변 한계,dev,GraphNoTopology,8000,1,0,0.0,False,7998,KG:MANIFEST
+YB-17,local_offline,kg_and_documents,미등록 식별자,eval,GraphNoTopology,8000,1,1,1.0,True,7998,
+YB-18,local_offline,kg_and_documents,답변 한계,eval,GraphNoTopology,8000,2,1,0.5,False,7992,DS-THERM-2200:p1:text1
+ADD-01,local_offline,kg_structure,관계 조건의 교집합,draft_exposed,GraphRAG,8000,2,2,1.0,True,7994,
+ADD-02,local_offline,kg_structure,정확한 대상 집합,draft_exposed,GraphRAG,8000,55,33,0.6,False,7987,KG:N0104 | KG:N0105 | KG:N0106 | KG:N0107 | KG:N0108 | KG:N0109 | KG:N0117 | KG:N0120 | KG:N0121 | KG:N0122 | KG:N0130 | KG:N0133 | KG:N0137 | KG:N0138 | KG:N0139 | KG:N0140 | KG:N0141 | KG:N0142 | KG:N0143 | KG:N0144 | KG:N0145 | KG:N0146
+ADD-03,local_offline,kg_structure,문서 간 공통 적용 대상,draft_exposed,GraphRAG,8000,44,33,0.75,False,7980,KG:N0109 | KG:N0110 | KG:N0111 | KG:N0112 | KG:N0113 | KG:N0114 | KG:N0115 | KG:N0116 | KG:N0117 | KG:N0118 | KG:N0119
+ADD-04,local_offline,kg_structure,최소 경로와 관계 제한,draft_exposed,GraphRAG,8000,5,5,1.0,True,7992,
+ADD-05,local_offline,kg_structure,출처별 지식 범위,draft_exposed,GraphRAG,8000,6,6,1.0,True,8000,
+ADD-06,local_offline,kg_structure,연결 누락과 실세계 부재,draft_exposed,GraphRAG,8000,39,39,1.0,True,7983,
+REL-K01,local_offline,kg_structure,두 역할의 집합 비교,draft_exposed,GraphRAG,8000,13,13,1.0,True,7991,
+REL-K02,local_offline,kg_structure,다중 관계 교차 조회,draft_exposed,GraphRAG,8000,5,5,1.0,True,7986,
+REL-K03,local_offline,kg_structure,문서에서 역방향 영향 추적,draft_exposed,GraphRAG,8000,19,19,1.0,True,7989,
+REL-K04,local_offline,kg_structure,유향 경로와 부재 판정,draft_exposed,GraphRAG,8000,4,4,1.0,True,7996,
+REL-K05,local_offline,kg_structure,원문까지의 출처 추적,draft_exposed,GraphRAG,8000,4,4,1.0,True,7996,
+REL-K06,local_offline,kg_structure,필터와 저장 누락 구별,draft_exposed,GraphRAG,8000,6,6,1.0,True,7986,
+YB-01,local_offline,kg_and_documents,구조·센서,dev,GraphRAG,8000,4,4,1.0,True,8000,
+YB-02,local_offline,kg_and_documents,구조·센서,eval,GraphRAG,8000,2,2,1.0,True,7993,
+YB-03,local_offline,kg_and_documents,연결·순서,dev,GraphRAG,8000,4,4,1.0,True,8000,
+YB-04,local_offline,kg_and_documents,구조·구역,eval,GraphRAG,8000,1,1,1.0,True,7994,
+YB-05,local_offline,kg_and_documents,수치·조건,eval,GraphRAG,8000,1,1,1.0,True,7991,
+YB-06,local_offline,kg_and_documents,조건·조치,eval,GraphRAG,8000,4,3,0.75,False,7998,SOP-001:p1:table1:chunk#r4
+YB-07,local_offline,kg_and_documents,정비 규칙,dev,GraphRAG,8000,1,1,1.0,True,7987,
+YB-08,local_offline,kg_and_documents,변화량·시간,eval,GraphRAG,8000,1,1,1.0,True,7994,
+YB-09,local_offline,kg_and_documents,샘플·조건,eval,GraphRAG,8000,1,1,1.0,True,7995,
+YB-10,local_offline,kg_and_documents,수치·조건,eval,GraphRAG,8000,1,1,1.0,True,7991,
+YB-11,local_offline,kg_and_documents,근거·메타데이터,dev,GraphRAG,8000,3,3,1.0,True,7985,
+YB-12,local_offline,kg_and_documents,문서·메타데이터,dev,GraphRAG,8000,1,1,1.0,True,7997,
+YB-13,local_offline,kg_and_documents,연결·정비,eval,GraphRAG,8000,3,3,1.0,True,7988,
+YB-14,local_offline,kg_and_documents,출입·시간,eval,GraphRAG,8000,1,1,1.0,True,7980,
+YB-15,local_offline,kg_and_documents,문서 비교,eval,GraphRAG,8000,2,2,1.0,True,7983,
+YB-16,local_offline,kg_and_documents,답변 한계,dev,GraphRAG,8000,1,0,0.0,False,8000,KG:MANIFEST
+YB-17,local_offline,kg_and_documents,미등록 식별자,eval,GraphRAG,8000,1,1,1.0,True,7998,
+YB-18,local_offline,kg_and_documents,답변 한계,eval,GraphRAG,8000,2,1,0.5,False,7997,DS-THERM-2200:p1:text1
+ADD-01,local_offline,kg_structure,관계 조건의 교집합,draft_exposed,VectorRAG,8000,2,2,1.0,True,7979,
+ADD-02,local_offline,kg_structure,정확한 대상 집합,draft_exposed,VectorRAG,8000,55,27,0.4909090909090909,False,7999,KG:N0010 | KG:N0012 | KG:N0013 | KG:N0014 | KG:N0015 | KG:N0016 | KG:N0017 | KG:N0050 | KG:N0051 | KG:N0054 | KG:N0056 | KG:N0060 | KG:N0063 | KG:N0064 | KG:N0079 | KG:N0085 | KG:N0092 | KG:N0105 | KG:N0106 | KG:N0107 | KG:N0108 | KG:N0130 | KG:N0133 | KG:N0138 | KG:N0141 | KG:N0142 | KG:N0144 | KG:N0146
+ADD-03,local_offline,kg_structure,문서 간 공통 적용 대상,draft_exposed,VectorRAG,8000,44,16,0.36363636363636365,False,8000,KG:N0006 | KG:N0010 | KG:N0011 | KG:N0012 | KG:N0013 | KG:N0014 | KG:N0015 | KG:N0016 | KG:N0017 | KG:N0019 | KG:N0027 | KG:N0039 | KG:N0046 | KG:N0054 | KG:N0055 | KG:N0061 | KG:N0062 | KG:N0064 | KG:N0067 | KG:N0079 | KG:N0080 | KG:N0109 | KG:N0113 | KG:N0114 | KG:N0115 | KG:N0116 | KG:N0118 | KG:N0119
+ADD-04,local_offline,kg_structure,최소 경로와 관계 제한,draft_exposed,VectorRAG,8000,5,3,0.6,False,7990,KG:N0040 | KG:N0087
+ADD-05,local_offline,kg_structure,출처별 지식 범위,draft_exposed,VectorRAG,8000,6,3,0.5,False,7981,KG:N0071 | KG:N0087 | KG:N0117
+ADD-06,local_offline,kg_structure,연결 누락과 실세계 부재,draft_exposed,VectorRAG,8000,39,22,0.5641025641025641,False,7997,KG:N0050 | KG:N0051 | KG:N0058 | KG:N0059 | KG:N0124 | KG:N0125 | KG:N0126 | KG:N0127 | KG:N0128 | KG:N0129 | KG:N0130 | KG:N0131 | KG:N0132 | KG:N0133 | KG:N0134 | KG:N0135 | KG:N0136
+REL-K01,local_offline,kg_structure,두 역할의 집합 비교,draft_exposed,VectorRAG,8000,13,7,0.5384615384615384,False,7996,KG:N0010 | KG:N0078 | KG:N0085 | KG:N0092 | KG:N0109 | KG:N0117
+REL-K02,local_offline,kg_structure,다중 관계 교차 조회,draft_exposed,VectorRAG,8000,5,3,0.6,False,7996,KG:N0071 | KG:N0117
+REL-K03,local_offline,kg_structure,문서에서 역방향 영향 추적,draft_exposed,VectorRAG,8000,19,4,0.21052631578947367,False,7996,KG:N0012 | KG:N0013 | KG:N0015 | KG:N0016 | KG:N0017 | KG:N0109 | KG:N0111 | KG:N0112 | KG:N0113 | KG:N0114 | KG:N0115 | KG:N0116 | KG:N0117 | KG:N0118 | KG:N0119
+REL-K04,local_offline,kg_structure,유향 경로와 부재 판정,draft_exposed,VectorRAG,8000,4,1,0.25,False,7999,KG:N0032 | KG:N0036 | KG:N0040
+REL-K05,local_offline,kg_structure,원문까지의 출처 추적,draft_exposed,VectorRAG,8000,4,1,0.25,False,7995,KG:N0113 | KG:N0173 | KG:N0352
+REL-K06,local_offline,kg_structure,필터와 저장 누락 구별,draft_exposed,VectorRAG,8000,6,5,0.8333333333333334,False,7986,KG:N0094
+YB-01,local_offline,kg_and_documents,구조·센서,dev,VectorRAG,8000,4,4,1.0,True,7982,
+YB-02,local_offline,kg_and_documents,구조·센서,eval,VectorRAG,8000,2,1,0.5,False,7980,KG:N0040
+YB-03,local_offline,kg_and_documents,연결·순서,dev,VectorRAG,8000,4,1,0.25,False,7987,KG:N0032 | KG:N0036 | KG:N0040
+YB-04,local_offline,kg_and_documents,구조·구역,eval,VectorRAG,8000,1,1,1.0,True,7984,
+YB-05,local_offline,kg_and_documents,수치·조건,eval,VectorRAG,8000,1,1,1.0,True,7998,
+YB-06,local_offline,kg_and_documents,조건·조치,eval,VectorRAG,8000,4,3,0.75,False,7997,SOP-001:p1:table1:chunk#r4
+YB-07,local_offline,kg_and_documents,정비 규칙,dev,VectorRAG,8000,1,1,1.0,True,7986,
+YB-08,local_offline,kg_and_documents,변화량·시간,eval,VectorRAG,8000,1,1,1.0,True,7994,
+YB-09,local_offline,kg_and_documents,샘플·조건,eval,VectorRAG,8000,1,1,1.0,True,7997,
+YB-10,local_offline,kg_and_documents,수치·조건,eval,VectorRAG,8000,1,1,1.0,True,7986,
+YB-11,local_offline,kg_and_documents,근거·메타데이터,dev,VectorRAG,8000,3,0,0.0,False,7979,KG:N0011 | KG:N0171 | KG:N0248
+YB-12,local_offline,kg_and_documents,문서·메타데이터,dev,VectorRAG,8000,1,0,0.0,False,7980,KG:N0023
+YB-13,local_offline,kg_and_documents,연결·정비,eval,VectorRAG,8000,3,2,0.6666666666666666,False,7992,KG:N0117
+YB-14,local_offline,kg_and_documents,출입·시간,eval,VectorRAG,8000,1,1,1.0,True,7993,
+YB-15,local_offline,kg_and_documents,문서 비교,eval,VectorRAG,8000,2,2,1.0,True,7994,
+YB-16,local_offline,kg_and_documents,답변 한계,dev,VectorRAG,8000,1,0,0.0,False,7999,KG:MANIFEST
+YB-17,local_offline,kg_and_documents,미등록 식별자,eval,VectorRAG,8000,1,0,0.0,False,7991,KG:MANIFEST
+YB-18,local_offline,kg_and_documents,답변 한계,eval,VectorRAG,8000,2,0,0.0,False,7994,DS-THERM-2200:p1:text1 | SOP-002:p1:table2:chunk#r1

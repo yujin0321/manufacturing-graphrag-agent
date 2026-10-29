@@ -1,0 +1,8 @@
+# Local inputs and paid-call artifacts are intentionally not published.
+/evaluation/
+/runs/
+/api_cache/
+/benchmark_sources/
+*.npy
+.env
+__pycache__/

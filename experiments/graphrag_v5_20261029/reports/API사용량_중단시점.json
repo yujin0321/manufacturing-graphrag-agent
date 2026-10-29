@@ -1,0 +1,64 @@
+{
+  "status": "API execution stopped after user cost concern; no automatic continuation authorized",
+  "recorded_at_kst": "2026-10-29T19:11:48.037388+09:00",
+  "stages": {
+    "answer_generation": {
+      "saved_responses": 104,
+      "models": {
+        "gpt-6.1-sol": 104
+      },
+      "usage": {
+        "prompt_tokens": 189333,
+        "completion_tokens": 42673,
+        "total_tokens": 232006,
+        "cached_prompt_tokens": 35744
+      }
+    },
+    "question_embeddings": {
+      "saved_responses": 35,
+      "models": {
+        "text-embedding-3-small": 35
+      },
+      "usage": {
+        "prompt_tokens": 2987,
+        "completion_tokens": 0,
+        "total_tokens": 2987,
+        "cached_prompt_tokens": 0
+      }
+    },
+    "additional_key_authoring": {
+      "saved_responses": 10,
+      "models": {
+        "gpt-6.1-sol": 10
+      },
+      "usage": {
+        "prompt_tokens": 103888,
+        "completion_tokens": 11490,
+        "total_tokens": 115378,
+        "cached_prompt_tokens": 0
+      }
+    }
+  },
+  "recorded_total": {
+    "prompt_tokens": 296208,
+    "completion_tokens": 54163,
+    "total_tokens": 350371,
+    "cached_prompt_tokens": 35744
+  },
+  "saved_answers": 104,
+  "by_system": {
+    "GraphNoTopology": 15,
+    "GraphRAG": 30,
+    "LLM": 30,
+    "VectorRAG": 29
+  },
+  "by_status": {
+    "complete": 104
+  },
+  "unresolved_attempts": [
+    "runs\\answers_final\\VectorRAG\\NEW-15\\api\\12b6f3318a23ed6008cb7c6d2e1feeaa5ec074e40e861d5f14f0bfaa92b9c16d.attempt.json"
+  ],
+  "billing_limit": "Saved response usage is not an invoice. In-flight/interrupted requests may incur additional usage not saved locally.",
+  "final_comparison_ready": false,
+  "no_new_api_calls_in_this_audit": true
+}

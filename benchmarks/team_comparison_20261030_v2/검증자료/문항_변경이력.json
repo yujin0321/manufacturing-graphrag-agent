@@ -1,0 +1,26 @@
+{
+  "update_date": "2026-10-30",
+  "original_count": 103,
+  "unchanged_source_questions": 83,
+  "current_duplicate_merges": {
+    "YB-03": "YV2-Q11",
+    "YB-09": "YV2-Q21",
+    "YB-15": "YV2-Q16",
+    "YB-18": "YV2-Q29"
+  },
+  "excluded": {
+    "NEW-12": "Explicit user exclusion; missing ST02 TMP maintenance premise"
+  },
+  "reused_qa": 77,
+  "reused_answers": 231,
+  "added_qa": 19,
+  "added_answers": 57,
+  "combined_qa": 96,
+  "combined_answers": 288,
+  "dev": 16,
+  "eval": 80,
+  "system_validation": 2,
+  "active_pending": 0,
+  "legacy_pending": "Old YJ event questions superseded; YB19/20 absent from revised attachment. Not part of new active scores.",
+  "baseline_files_unchanged": true
+}

@@ -1,0 +1,14 @@
+{
+  "complete": true,
+  "qa_items": 96,
+  "answers": 288,
+  "grades": 288,
+  "reused_answers": 231,
+  "new_answers": 57,
+  "new_grades": 57,
+  "dev": 16,
+  "eval": 80,
+  "excluded_NEW12": true,
+  "system_validation_reused": 2,
+  "active_pending": 0
+}

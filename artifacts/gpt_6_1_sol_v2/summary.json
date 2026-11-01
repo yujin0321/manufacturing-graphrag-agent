@@ -1,0 +1,127 @@
+{
+  "run": "openai_sol_v2_20261016",
+  "F1_content": 0.861878453038674,
+  "micro": {
+    "tp": 78,
+    "fp": 17,
+    "fn": 8,
+    "precision": 0.8210526315789474,
+    "recall": 0.9069767441860465,
+    "f1": 0.861878453038674
+  },
+  "processed_scope_F1": 0.861878453038674,
+  "SOP_predictions": 95,
+  "datasheet_predictions": 5,
+  "reference_count": 86,
+  "class_agreement": {
+    "tp": 78,
+    "fp": 17,
+    "fn": 8,
+    "precision": 0.8210526315789474,
+    "recall": 0.9069767441860465,
+    "f1": 0.861878453038674
+  },
+  "confusion_gold_rows_pred_columns": {
+    "AccessRule": {
+      "AccessRule": 17,
+      "MaintenanceRule": 0,
+      "OperationalRule": 0,
+      "ThresholdRule": 0
+    },
+    "MaintenanceRule": {
+      "AccessRule": 0,
+      "MaintenanceRule": 9,
+      "OperationalRule": 0,
+      "ThresholdRule": 0
+    },
+    "OperationalRule": {
+      "AccessRule": 0,
+      "MaintenanceRule": 0,
+      "OperationalRule": 25,
+      "ThresholdRule": 0
+    },
+    "ThresholdRule": {
+      "AccessRule": 0,
+      "MaintenanceRule": 0,
+      "OperationalRule": 0,
+      "ThresholdRule": 27
+    }
+  },
+  "per_document": {
+    "SOP-001": {
+      "tp": 26,
+      "fp": 4,
+      "fn": 3,
+      "precision": 0.8666666666666667,
+      "recall": 0.896551724137931,
+      "f1": 0.8813559322033898
+    },
+    "SOP-002": {
+      "tp": 27,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "SOP-003": {
+      "tp": 9,
+      "fp": 2,
+      "fn": 2,
+      "precision": 0.8181818181818182,
+      "recall": 0.8181818181818182,
+      "f1": 0.8181818181818182
+    },
+    "SOP-004": {
+      "tp": 16,
+      "fp": 11,
+      "fn": 3,
+      "precision": 0.5925925925925926,
+      "recall": 0.8421052631578947,
+      "f1": 0.6956521739130435
+    }
+  },
+  "sensitivity": {
+    "0.5": {
+      "tp": 84,
+      "fp": 11,
+      "fn": 2,
+      "precision": 0.8842105263157894,
+      "recall": 0.9767441860465116,
+      "f1": 0.9281767955801105
+    },
+    "0.6": {
+      "tp": 78,
+      "fp": 17,
+      "fn": 8,
+      "precision": 0.8210526315789474,
+      "recall": 0.9069767441860465,
+      "f1": 0.861878453038674
+    },
+    "0.7": {
+      "tp": 61,
+      "fp": 34,
+      "fn": 25,
+      "precision": 0.6421052631578947,
+      "recall": 0.7093023255813954,
+      "f1": 0.6740331491712708
+    }
+  },
+  "granularity_ratio": 1.1046511627906976,
+  "theoretical_F1_ceiling": 0.9502762430939227,
+  "sensor_set_agreement": {
+    "equal": 73,
+    "denominator": 78,
+    "ratio": 0.9358974358974359,
+    "normalization": "uppercase alphanumeric; underscores/hyphens removed; empty-empty included"
+  },
+  "format_sensitivity": "NOT MEASURED: alternative prefixed embeddings unavailable",
+  "GT_0009": "N/A",
+  "definition_sha256": "35be575441258dbf80d8909fd8083124d0aa523476b878c14e22f002920a3e94",
+  "predictions_sha256": "ed6c1c3c4e1d10262fb9c25cf2a9639c6df3224d33ada3fd4e9a9d2d07e240b4",
+  "reference_sha256": "856f5bc09ac9559cf999c89d9d9962615be704b3a85d2b785317d665f1bb3a91",
+  "archived_matrix_reused": true,
+  "embedding_regenerated": false,
+  "matching": "same document; no class constraint; maximize valid pair count then valid cosine sum",
+  "lock_limitation": "Retrospective; original definition-specific pre-evaluation lock did not exist"
+}

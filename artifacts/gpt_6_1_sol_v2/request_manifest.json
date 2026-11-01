@@ -1,0 +1,15 @@
+{
+  "source_only": true,
+  "documents": 7,
+  "files": {
+    "DS-ELEC-3300.json": "525006a2dac3fcb6e2e6207b8e3ae2a1f349d52b759f620b5bb7a0da8b94f3c7",
+    "DS-MECH-4400.json": "fc99ba1a55569c7576572ac6eca9996da75540c3a1187b0ea470b9c743fdb089",
+    "DS-THERM-2200.json": "3346d4306dcb9505ab4261fc9b69716f156bd71cf878e88c484c15266b7fd619",
+    "SOP-001.json": "37fd356223d4d48ad97fc4da141ae6ca2e2d86a1e0de8cf51c14db7a41b631fc",
+    "SOP-002.json": "978976566d8e7b2589d4a6daa3cb60bece7df7efc16f1c95a25f96f1a956e4d4",
+    "SOP-003.json": "cb0c5e72dcef9097a2307376cda608b4ce7daac25ea612823009bdd056a3b14a",
+    "SOP-004.json": "6e4457b6d25c8176e7f233be6aed04dad4afa31abcc427c19d18689ceef5fdca"
+  },
+  "development_set_informed": true,
+  "independent_evaluation": false
+}

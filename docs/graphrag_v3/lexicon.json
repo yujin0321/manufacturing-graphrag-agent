@@ -1,0 +1,27 @@
+{
+  "version": "graphrag-v3-lexicon-20261028",
+  "note": "Generic plant vocabulary for the 9 stations and 9 sensor types that exist in the KG. Written from the KG node list before the v3 questions were drafted. Contains no question text, answer, rule ID or threshold. Any change requires a new version.",
+  "stations": {
+    "ST01_FILLING": ["충전", "충진", "필링", "주입 공정", "filling", "filler"],
+    "ST02_SEALING": ["실링", "밀봉", "실러", "sealing", "sealer"],
+    "ST03_LABELLING": ["라벨링", "라벨러", "라벨 부착", "labelling", "labeling", "labeller"],
+    "ST04_PACKAGING": ["포장", "패키징", "packaging", "packer"],
+    "SRV01_SERVERROOM": ["서버실", "서버룸", "전산실", "server room"],
+    "WRH01_WAREHOUSE": ["일반 창고", "냉장 창고", "저온 창고", "창고", "general warehouse", "warehouse"],
+    "CHM01_CHEMICALSTORAGE": ["화학물질 보관", "화학물질 창고", "화학 창고", "약품 보관", "약품 창고", "chemical storage"],
+    "RND01_RDLAB": ["연구실", "실험실", "R&D 랩", "R&D Lab", "rd lab"],
+    "CAF01_CAFETERIA": ["구내식당", "식당", "카페테리아", "cafeteria"]
+  },
+  "sensor_types": {
+    "TMP": ["온도", "기온", "temperature", "temp"],
+    "PRS": ["압력", "pressure"],
+    "FLW": ["유량", "flow"],
+    "CUR": ["전류", "current", "amp"],
+    "VIB": ["진동", "vibration"],
+    "SPD": ["속도", "speed"],
+    "TEN": ["장력", "텐션", "tension"],
+    "CNT": ["생산 수량", "카운트", "수량", "count"],
+    "HUM": ["습도", "humidity"]
+  },
+  "sensor_window_chars": 14
+}

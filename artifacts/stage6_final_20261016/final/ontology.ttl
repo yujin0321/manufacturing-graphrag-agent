@@ -1,0 +1,99 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rc: <https://example.org/imaks/relation-review/v1#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+rc: a owl:Ontology ;
+    owl:versionInfo "0.2.0-ai-reviewed-document-kg" .
+
+rc:AIReview a owl:Class .
+
+rc:RelationCandidate a owl:Class ;
+    rdfs:comment "Reified conditional source claim. Does not assert a direct operational or causal edge." .
+
+rc:action a owl:DatatypeProperty .
+
+rc:aiReviewStatus a owl:DatatypeProperty .
+
+rc:assertionScope a owl:DatatypeProperty .
+
+rc:comparisonOperator a owl:DatatypeProperty .
+
+rc:conditionText a owl:DatatypeProperty .
+
+rc:decision a owl:DatatypeProperty .
+
+rc:documentedAssociation a owl:NamedIndividual ;
+    rdfs:comment "Document reports association; ordering follows source wording, not causal proof." .
+
+rc:documentedThermalEffect a owl:NamedIndividual ;
+    rdfs:comment "Source describes a thermal fault effect; empirical causality is not validated." .
+
+rc:effectDescription a owl:DatatypeProperty .
+
+rc:empiricalCausalityValidated a owl:DatatypeProperty .
+
+rc:evidence a owl:ObjectProperty .
+
+rc:evidenceMode a owl:DatatypeProperty .
+
+rc:hasAIReview a owl:ObjectProperty .
+
+rc:humanReviewStatus a owl:DatatypeProperty .
+
+rc:limitation a owl:DatatypeProperty .
+
+rc:novelty a owl:DatatypeProperty .
+
+rc:object a owl:ObjectProperty .
+
+rc:obligationGroup a owl:ObjectProperty .
+
+rc:page a owl:DatatypeProperty .
+
+rc:reason a owl:DatatypeProperty .
+
+rc:relationType a owl:ObjectProperty .
+
+rc:requiresEmergencyStop a owl:NamedIndividual ;
+    rdfs:comment "Document instruction requires emergency stop of target; not an executable control command." .
+
+rc:requiresMonitoring a owl:NamedIndividual ;
+    rdfs:comment "Subject condition requires monitoring the object sensor." .
+
+rc:requiresRuleCheck a owl:NamedIndividual ;
+    rdfs:comment "Source rule directs checking target rule." .
+
+rc:reviewDate a owl:DatatypeProperty .
+
+rc:reviewInputSha256 a owl:DatatypeProperty .
+
+rc:reviewStatus a owl:DatatypeProperty .
+
+rc:reviewerType a owl:DatatypeProperty .
+
+rc:severity a owl:DatatypeProperty .
+
+rc:sourceDocument a owl:ObjectProperty .
+
+rc:sourceFileSha256 a owl:DatatypeProperty .
+
+rc:sourceQuote a owl:DatatypeProperty .
+
+rc:sourceUnit a owl:DatatypeProperty .
+
+rc:subject a owl:ObjectProperty .
+
+rc:supportedByRule a owl:ObjectProperty .
+
+rc:thresholdValue a owl:DatatypeProperty .
+
+rc:triggerDescription a owl:DatatypeProperty .
+
+rc:triggerSensor a owl:ObjectProperty .
+
+rc:triggerState a owl:DatatypeProperty .
+
+rc:unit a owl:DatatypeProperty .
+
+rc:withoutOperatorCommand a owl:DatatypeProperty .
+

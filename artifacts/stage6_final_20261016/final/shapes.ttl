@@ -1,0 +1,525 @@
+@prefix im: <https://example.org/imaks/v1#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rc: <https://example.org/imaks/relation-review/v1#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+owl:Class rdfs:subClassOf rdfs:Class .
+
+owl:DatatypeProperty rdfs:subClassOf rdf:Property .
+
+rc:CandidateShape a sh:NodeShape ;
+    sh:or ( [ sh:property [ sh:hasValue rc:documentedAssociation ;
+                        sh:path rc:relationType ],
+                    [ sh:class im:Sensor ;
+                        sh:path rc:subject ],
+                    [ sh:class im:Sensor ;
+                        sh:path rc:object ] ] [ sh:property [ sh:hasValue rc:requiresMonitoring ;
+                        sh:path rc:relationType ],
+                    [ sh:class im:Sensor ;
+                        sh:path rc:subject ],
+                    [ sh:class im:Sensor ;
+                        sh:path rc:object ] ] [ sh:property [ sh:hasValue rc:requiresEmergencyStop ;
+                        sh:path rc:relationType ],
+                    [ sh:class im:Sensor ;
+                        sh:path rc:subject ],
+                    [ sh:class im:Station ;
+                        sh:path rc:object ] ] [ sh:property [ sh:hasValue rc:documentedThermalEffect ;
+                        sh:path rc:relationType ],
+                    [ sh:class im:Station ;
+                        sh:path rc:subject ],
+                    [ sh:class im:Station ;
+                        sh:path rc:object ] ] [ sh:property [ sh:hasValue rc:requiresRuleCheck ;
+                        sh:path rc:relationType ],
+                    [ sh:or ( [ sh:class im:OperationalRule ] [ sh:class im:ThresholdRule ] [ sh:class im:MaintenanceRule ] [ sh:class im:AccessRule ] ) ;
+                        sh:path rc:subject ],
+                    [ sh:or ( [ sh:class im:OperationalRule ] [ sh:class im:ThresholdRule ] [ sh:class im:MaintenanceRule ] [ sh:class im:AccessRule ] ) ;
+                        sh:path rc:object ] ] ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:path rc:subject ],
+        [ sh:in ( "pending" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:reviewStatus ],
+        [ sh:in ( "document_explicit" ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:evidenceMode ],
+        [ sh:minCount 1 ;
+            sh:node rc:EvidenceShape ;
+            sh:path rc:evidence ],
+        [ sh:maxCount 0 ;
+            sh:path im:causallyAffects ],
+        [ sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:path rc:object ],
+        [ sh:in ( rc:documentedAssociation rc:requiresMonitoring rc:requiresRuleCheck rc:requiresEmergencyStop rc:documentedThermalEffect ) ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:relationType ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:minLength 1 ;
+            sh:path rc:conditionText ] ;
+    sh:targetClass rc:RelationCandidate .
+
+rc:Final-REL-02 a sh:NodeShape ;
+    sh:property [ sh:hasValue <https://example.org/imaks/id/ST02_SEALING_CUR> ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:triggerSensor ],
+        [ sh:hasValue "pending" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:humanReviewStatus ],
+        [ sh:hasValue "ST02 current WARNING: monitor ST04 speed." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:conditionText ],
+        [ sh:hasValue "monitor" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:action ],
+        [ sh:hasValue "completed" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:aiReviewStatus ],
+        [ sh:hasValue <https://example.org/imaks/id/ST04_PACKAGING_SPD> ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:object ],
+        [ sh:hasValue false ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:empiricalCausalityValidated ],
+        [ sh:hasValue <https://example.org/imaks/id/ST02_SEALING_CUR> ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:subject ],
+        [ sh:hasValue "WARNING" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:triggerState ],
+        [ sh:hasValue rc:requiresMonitoring ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:relationType ],
+        [ sh:hasValue "document_instruction" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:assertionScope ],
+        [ sh:hasValue rc:review-REL-02-20261016 ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:hasAIReview ] ;
+    sh:targetNode rc:REL-02 .
+
+rc:Final-REL-03 a sh:NodeShape ;
+    sh:property [ sh:hasValue <https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-ST04-03> ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:subject ],
+        [ sh:hasValue "pending" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:humanReviewStatus ],
+        [ sh:hasValue rc:requiresRuleCheck ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:relationType ],
+        [ sh:hasValue "m/s" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:unit ],
+        [ sh:hasValue 1.0 ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:thresholdValue ],
+        [ sh:hasValue "<" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:comparisonOperator ],
+        [ sh:hasValue "completed" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:aiReviewStatus ],
+        [ sh:hasValue <https://example.org/imaks/id/ST04_PACKAGING_SPD> ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:triggerSensor ],
+        [ sh:hasValue rc:review-REL-03-20261016 ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:hasAIReview ],
+        [ sh:hasValue "ST04 speed <1.00 m/s without operator command: verify referenced rule." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:conditionText ],
+        [ sh:hasValue "document_instruction" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:assertionScope ],
+        [ sh:hasValue <https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-ST02-04> ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:object ],
+        [ sh:hasValue false ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:empiricalCausalityValidated ],
+        [ sh:hasValue "verify_rule" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:action ],
+        [ sh:hasValue true ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:withoutOperatorCommand ] ;
+    sh:targetNode rc:REL-03 .
+
+rc:Final-REL-04 a sh:NodeShape ;
+    sh:property [ sh:hasValue <https://example.org/imaks/id/ST02_SEALING_TMP> ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:triggerSensor ],
+        [ sh:hasValue ">" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:comparisonOperator ],
+        [ sh:hasValue "emergency_stop" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:action ],
+        [ sh:hasValue "degC" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:unit ],
+        [ sh:hasValue rc:requiresEmergencyStop ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:relationType ],
+        [ sh:hasValue <https://example.org/imaks/id/ST02_SEALING> ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:object ],
+        [ sh:hasValue 210.0 ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:thresholdValue ],
+        [ sh:hasValue <https://example.org/imaks/id/ST02_SEALING_TMP> ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:subject ],
+        [ sh:hasValue "pending" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:humanReviewStatus ],
+        [ sh:hasValue "ST02_SEALING_TMP >210°C (CRITICAL): emergency stop ST02_SEALING." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:conditionText ],
+        [ sh:hasValue <https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-ST02-02> ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:obligationGroup ],
+        [ sh:hasValue "CRITICAL" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:severity ],
+        [ sh:hasValue "completed" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:aiReviewStatus ],
+        [ sh:hasValue "document_instruction" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:assertionScope ],
+        [ sh:hasValue rc:review-REL-04-20261016 ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:hasAIReview ],
+        [ sh:hasValue false ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:empiricalCausalityValidated ] ;
+    sh:targetNode rc:REL-04 .
+
+rc:Final-REL-05 a sh:NodeShape ;
+    sh:property [ sh:hasValue "ST02_SEALING_TMP >210°C (CRITICAL): emergency stop ST03_LABELLING." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:conditionText ],
+        [ sh:hasValue <https://example.org/imaks/id/ST02_SEALING_TMP> ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:subject ],
+        [ sh:hasValue <https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-ST02-02> ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:obligationGroup ],
+        [ sh:hasValue "document_instruction" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:assertionScope ],
+        [ sh:hasValue rc:requiresEmergencyStop ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:relationType ],
+        [ sh:hasValue <https://example.org/imaks/id/ST02_SEALING_TMP> ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:triggerSensor ],
+        [ sh:hasValue 210.0 ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:thresholdValue ],
+        [ sh:hasValue "completed" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:aiReviewStatus ],
+        [ sh:hasValue <https://example.org/imaks/id/ST03_LABELLING> ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:object ],
+        [ sh:hasValue "pending" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:humanReviewStatus ],
+        [ sh:hasValue false ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:empiricalCausalityValidated ],
+        [ sh:hasValue "degC" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:unit ],
+        [ sh:hasValue rc:review-REL-05-20261016 ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:hasAIReview ],
+        [ sh:hasValue ">" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:comparisonOperator ],
+        [ sh:hasValue "emergency_stop" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:action ],
+        [ sh:hasValue "CRITICAL" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:severity ] ;
+    sh:targetNode rc:REL-05 .
+
+rc:Final-REL-06 a sh:NodeShape ;
+    sh:property [ sh:hasValue rc:requiresEmergencyStop ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:relationType ],
+        [ sh:hasValue "pending" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:humanReviewStatus ],
+        [ sh:hasValue "completed" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:aiReviewStatus ],
+        [ sh:hasValue <https://example.org/imaks/id/ST04_PACKAGING> ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:object ],
+        [ sh:hasValue false ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:empiricalCausalityValidated ],
+        [ sh:hasValue <https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-ST02-02> ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:obligationGroup ],
+        [ sh:hasValue "ST02_SEALING_TMP >210°C (CRITICAL): emergency stop ST04_PACKAGING." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:conditionText ],
+        [ sh:hasValue "emergency_stop" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:action ],
+        [ sh:hasValue "degC" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:unit ],
+        [ sh:hasValue 210.0 ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:thresholdValue ],
+        [ sh:hasValue ">" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:comparisonOperator ],
+        [ sh:hasValue <https://example.org/imaks/id/ST02_SEALING_TMP> ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:triggerSensor ],
+        [ sh:hasValue rc:review-REL-06-20261016 ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:hasAIReview ],
+        [ sh:hasValue "CRITICAL" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:severity ],
+        [ sh:hasValue <https://example.org/imaks/id/ST02_SEALING_TMP> ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:subject ],
+        [ sh:hasValue "document_instruction" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:assertionScope ] ;
+    sh:targetNode rc:REL-06 .
+
+rc:Final-REL-07 a sh:NodeShape ;
+    sh:property [ sh:hasValue "Thermal fault at sealing: documented downstream speed reduction; not an empirically validated causal link." ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:conditionText ],
+        [ sh:hasValue <https://example.org/imaks/id/ST02_SEALING> ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:subject ],
+        [ sh:maxCount 0 ;
+            sh:path rc:obligationGroup ],
+        [ sh:hasValue "thermal fault" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:triggerDescription ],
+        [ sh:hasValue "speed reduction" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:effectDescription ],
+        [ sh:hasValue false ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:empiricalCausalityValidated ],
+        [ sh:hasValue "pending" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:humanReviewStatus ],
+        [ sh:maxCount 0 ;
+            sh:path rc:thresholdValue ],
+        [ sh:hasValue <https://example.org/imaks/id/ST04_PACKAGING> ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:object ],
+        [ sh:hasValue "completed" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:aiReviewStatus ],
+        [ sh:hasValue rc:documentedThermalEffect ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:relationType ],
+        [ sh:hasValue "document_claim" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:assertionScope ],
+        [ sh:hasValue rc:review-REL-07-20261016 ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:hasAIReview ],
+        [ sh:maxCount 0 ;
+            sh:path rc:comparisonOperator ] ;
+    sh:targetNode rc:REL-07 .
+
+rc:Review-REL-02 a sh:NodeShape ;
+    sh:property [ sh:hasValue "supported_document_instruction" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:decision ],
+        [ sh:hasValue "AI" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:reviewerType ] ;
+    sh:targetNode rc:review-REL-02-20261016 .
+
+rc:Review-REL-03 a sh:NodeShape ;
+    sh:property [ sh:hasValue "supported_document_instruction" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:decision ],
+        [ sh:hasValue "AI" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:reviewerType ] ;
+    sh:targetNode rc:review-REL-03-20261016 .
+
+rc:Review-REL-04 a sh:NodeShape ;
+    sh:property [ sh:hasValue "AI" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:reviewerType ],
+        [ sh:hasValue "supported_with_action_label_clarification" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:decision ] ;
+    sh:targetNode rc:review-REL-04-20261016 .
+
+rc:Review-REL-05 a sh:NodeShape ;
+    sh:property [ sh:hasValue "supported_with_action_label_clarification" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:decision ],
+        [ sh:hasValue "AI" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:reviewerType ] ;
+    sh:targetNode rc:review-REL-05-20261016 .
+
+rc:Review-REL-06 a sh:NodeShape ;
+    sh:property [ sh:hasValue "supported_with_action_label_clarification" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:decision ],
+        [ sh:hasValue "AI" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:reviewerType ] ;
+    sh:targetNode rc:review-REL-06-20261016 .
+
+rc:Review-REL-07 a sh:NodeShape ;
+    sh:property [ sh:hasValue "AI" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:reviewerType ],
+        [ sh:hasValue "retain_as_document_claim_only" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:decision ] ;
+    sh:targetNode rc:review-REL-07-20261016 .
+
+rc:EvidenceShape a sh:NodeShape ;
+    sh:property [ sh:class im:Document ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path rc:sourceDocument ],
+        [ sh:datatype xsd:string ;
+            sh:minCount 1 ;
+            sh:minLength 1 ;
+            sh:path rc:sourceQuote ],
+        [ sh:datatype xsd:string ;
+            sh:minCount 1 ;
+            sh:path rc:sourceUnit ],
+        [ sh:minCount 1 ;
+            sh:path rc:sourceFileSha256 ;
+            sh:pattern "^[a-f0-9]{64}$" ],
+        [ sh:datatype xsd:integer ;
+            sh:minCount 1 ;
+            sh:minInclusive 1 ;
+            sh:path rc:page ] .
+

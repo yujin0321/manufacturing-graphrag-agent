@@ -1,0 +1,23 @@
+@prefix rc: <https://example.org/imaks/relation-review/v1#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+rc: a owl:Ontology; owl:versionInfo "0.1.0-candidate" .
+rc:RelationCandidate a owl:Class; rdfs:comment "Reified conditional source claim. Does not assert a direct operational or causal edge." .
+rc:subject a owl:ObjectProperty .
+rc:object a owl:ObjectProperty .
+rc:relationType a owl:ObjectProperty .
+rc:supportedByRule a owl:ObjectProperty .
+rc:evidence a owl:ObjectProperty .
+rc:conditionText a owl:DatatypeProperty .
+rc:reviewStatus a owl:DatatypeProperty .
+rc:evidenceMode a owl:DatatypeProperty .
+rc:novelty a owl:DatatypeProperty .
+rc:sourceQuote a owl:DatatypeProperty .
+rc:sourceUnit a owl:DatatypeProperty .
+rc:sourceFileSha256 a owl:DatatypeProperty .
+rc:page a owl:DatatypeProperty .
+rc:documentedAssociation a owl:NamedIndividual; rdfs:comment "Document reports association; ordering follows source wording, not causal proof." .
+rc:requiresMonitoring a owl:NamedIndividual; rdfs:comment "Subject condition requires monitoring the object sensor." .
+rc:requiresRuleCheck a owl:NamedIndividual; rdfs:comment "Source rule directs checking target rule." .
+rc:requiresShutdown a owl:NamedIndividual; rdfs:comment "Subject sensor condition requires stopping target station." .
+rc:documentedThermalEffect a owl:NamedIndividual; rdfs:comment "Source describes a thermal fault effect; empirical causality is not validated." .

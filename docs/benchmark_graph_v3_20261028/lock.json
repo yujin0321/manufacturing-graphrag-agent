@@ -1,0 +1,37 @@
+{
+  "version": "graph-v3-benchmark-20261028",
+  "frozen_before_any_system_run": true,
+  "questions": 15,
+  "hypotheses": {
+    "G01": "no_advantage_expected",
+    "G02": "advantage_expected",
+    "G03": "advantage_expected",
+    "G04": "advantage_expected",
+    "G05": "partial_advantage_expected",
+    "G06": "advantage_expected",
+    "G07": "advantage_expected",
+    "G08": "partial_advantage_expected",
+    "G09": "advantage_expected",
+    "G10": "advantage_expected",
+    "G11": "advantage_expected",
+    "G12": "partial_advantage_expected",
+    "G13": "no_advantage_expected",
+    "G14": "no_advantage_expected",
+    "G15": "no_advantage_expected"
+  },
+  "scoring_policy": "docs/benchmark_yewon_v2_20261023/채점기준_확정_v1.md (unchanged, reused)",
+  "hashes": {
+    "docs/benchmark_graph_v3_20261028/questions.jsonl": "cdd7670fd4bf0009e2b022e6fb207abb3a73864fb55b48d393aa2548498e8209",
+    "evaluation/benchmark_graph_v3_20261028/answer_key_PRIVATE.json": "0989d1642cd8698ed9dd4656b36c551bd6384c61f7b53dff65890c3f19a76ca7",
+    "docs/graphrag_v3/lexicon.json": "fa4da97f030652795cf90826a8c50b7e1eb798e87f288bb29a5f038aa59f7836",
+    "docs/graphrag_v3/policy.json": "375c90b177e3088727f191d6cb1f3877b7c770fe8eef9629659af83bf326d528",
+    "preprocessed/documents/chunks.jsonl": "7616d25cc638c47474324edc3fa22c011671fdff87a1735806ffa28854591665",
+    "docs/benchmark_yewon_v2_20261023/채점기준_확정_v1.md": "ff6be6313fe91533e71b96ef67bc87be143e52a6e37ade2ee234aaba0d261950",
+    "src/imaks_kg/rag/retrieval_v3.py": "e05fa78dd3954baa121276534107d1a929e25e93c920d7d7f1c6939f9a281ddb",
+    "src/imaks_kg/rag/linking.py": "3458567c29722c1d5f11e70f2352662f02412cd5705fb0ca684b75200b4d83b6",
+    "src/imaks_kg/rag/lexical.py": "f3a5cce88acdda0df669cda6063b1f17cdc9a238974d9c1debb7dafa0f368591",
+    "src/imaks_kg/rag/chunking.py": "cd3900c33825b80984f2a9310f9079c7e51e9ea15f0a7c071554b656f3ae86b7",
+    "scripts/run_benchmark_v3.py": "40280ef39bb7774d1a1067efa85fcdbe3edb80947f48684cca03017eb3962347"
+  },
+  "note": "Questions and answer key were frozen before any system run. Code/policy hashes are the versions used for the first offline retrieval check; any later change must be versioned."
+}

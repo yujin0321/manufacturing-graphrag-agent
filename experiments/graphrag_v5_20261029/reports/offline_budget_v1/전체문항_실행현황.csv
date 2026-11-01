@@ -1,0 +1,131 @@
+id,track,question,retrieval_status,cached_api_query,representative_answer_review,pending_reason
+YV2-Q01,document_qa,SOP-001에 따르면 ST01_FILLING의 유량 유지 범위와 단위는?,completed_local,False,False,
+YV2-Q02,document_qa,ST01_FILLING의 온도가 27°C일 때 SOP-001의 해당 규칙은 무엇을 하라고 하는가?,completed_local,False,False,
+YV2-Q03,document_qa,ST04_PACKAGING의 진동이 0.36 mm/s일 때 SOP-001의 CRITICAL 규칙이 지시하는 조치와 기준을 설명하라.,completed_local,False,False,
+YV2-Q04,document_qa,RND01_RDLAB 습도가 76%RH일 때 SOP-001 RULE-RND01-02의 CRITICAL 분기에서 요구하는 조치와 기준은?,completed_local,False,False,
+YV2-Q05,document_qa,SOP-004의 화학물질 보관 구역 무단 출입 특별 규칙은 어떻게 대응하도록 하는가?,completed_local,False,False,
+YV2-Q06,document_qa,"SOP-002 ST02_SEALING 전류 행의 명목값(허용오차 포함), 경고 상한, 위험 상한을 단위와 함께 제시하라.",completed_local,False,False,
+YV2-Q07,document_qa,ST02 전류가 명목보다 1.6 A 높게 6분 지속되었다. SOP-001 RULE-ST02-03 적용 여부와 조치를 설명하라.,completed_local,False,False,
+YV2-Q08,document_qa,ST01 압력이 3.2 bar로 16분 지속되었다. SOP-003의 정비 규칙 ID·조치·우선순위는?,completed_local,False,False,
+YV2-Q09,document_qa,서버실 온도가 26°C로 6분 지속되었다. SOP-003 정비 기준과 SOP-001 PLC 종료 기준을 구별하라.,completed_local,False,False,
+YV2-Q10,document_qa,SOP-001 RULE-ST02-02의 문구만 적용할 때 정확히 210°C에서도 해당 비상정지 조건이 성립하는가? 이 규칙만으로 설비의 안전까지 판단할 수 있는지도 설명하라.,completed_local,False,False,
+YV2-Q11,document_qa,SOP-001에 적힌 ST01부터 ST04까지의 물류 진행 순서를 설명하라.,completed_local,False,False,
+YV2-Q12,document_qa,"ST02_SEALING 전류에 WARNING이 발생했다. SOP-001의 어떤 규칙 ID에 따라 다른 어느 센서를 모니터링해야 하며, 문서가 설명하는 이유는 무엇인가?",completed_local,False,False,
+YV2-Q13,document_qa,작업자 명령 없이 ST04 속도가 0.95 m/s로 떨어졌다. SOP-001에서 어떤 규칙을 거쳐 어느 상류 센서를 확인해야 하는가?,completed_local,False,False,
+YV2-Q14,document_qa,ST02 전류 상승과 ST04 속도 저하가 함께 나타나는 패턴에 대해 SOP-003의 해소 순서를 제시하라.,completed_local,False,False,
+YV2-Q15,document_qa,ST02 온도가 212°C이다. SOP-001과 SOP-002를 함께 참고해 정지 대상과 추가 점검 대상을 설명하라.,completed_local,False,False,
+YV2-Q16,document_qa,ST02 전류에 대해 SOP-002 경고·위험 상한과 DS-ELEC-3300 연속 운전 정격을 비교하라. 이를 동일한 종류의 값으로 취급해도 되는가?,completed_local,False,False,
+YV2-Q17,document_qa,ST02 온도 위험 상한과 DS-THERM-2200의 연속 운전 한계·고온 지속 운전 권고를 출처별로 비교하라.,completed_local,False,False,
+YV2-Q18,document_qa,PRS-4410 적용을 가정할 때 ST01 압력의 nominal→WARN_HI 간격은 데이터시트 권고 0.50 bar와 비교해 어떠한가? 0.30 bar 기준과도 구별하라.,completed_local,False,False,
+YV2-Q19,document_qa,DS-ELEC-3300 표의 Short-time overload 항목과 Note 2의 between 14 A and 20 A 문장을 각각 전류·시간 조건과 함께 비교하라. 두 문구를 단일 허용시간으로 확정할 수 있는가?,completed_local,False,False,
+YV2-Q20,document_qa,서버실 온도가 29°C일 때 SOP-001과 SOP-002의 대응 문구를 각각 설명하라.,completed_local,False,False,
+YV2-Q21,document_qa,SOP-003 MAINT-03의 센서·발동 조건·조치·우선순위를 출처와 함께 제시하라.,completed_local,False,False,
+YV2-Q22,document_qa,SOP-004 역할표만 기준으로 operator는 서버실과 일반 창고에 각각 출입 가능한가? 이 역할표만으로 특정 개인의 실제 권한·출입 이력도 확인할 수 있는가?,completed_local,False,False,
+YV2-Q23,document_qa,SOP-004에서 technician과 supervisor의 CRITICAL 경보 최대 확인 시간은 각각 얼마이고 차이는 몇 분인가? 이 시간이 경보 확인인지 정비 완료 기한인지도 구별하라.,completed_local,False,False,
+YV2-Q24,document_qa,SOP-004의 생산 구역 최대 인원은 몇 명인가? 11명 및 13명이 있다고 가정할 때 각각 어떤 가장 높은 경보 조건을 충족하는가?,completed_local,False,False,
+YV2-Q25,document_qa,Chemical Storage에 security 역할이 출입 가능한지 SOP-004 역할표와 SOP-001 RULE-CHM01-03을 함께 검토하라.,completed_local,False,False,
+YV2-Q26,document_qa,제공된 문서만으로 지금 ST04 속도 저하의 실제 원인이 ST02 모터 과부하라고 확정할 수 있는가?,completed_local,False,False,
+YV2-Q27,document_qa,SOP에 적힌 ST02→ST04 연관만으로 이번 프로젝트가 새로운 인과관계를 발견했다고 말할 수 있는가?,completed_local,False,False,
+YV2-Q28,document_qa,제공된 SOP·데이터시트만으로 ST02 전류 경고 후 ST04 속도 저하까지의 정확한 시차와 발생 확률을 알 수 있는가? SOP-002의 일반 CORRELATED 시간 정의를 이 쌍의 측정 시차로 볼 수 있는지도 설명하라.,completed_local,False,False,
+YV2-Q29,document_qa,제공된 SOP 4개·데이터시트 3개만으로 ST02에 실제 설치된 온도 센서가 TMP-2210인지 확정할 수 있는가? 그 이유와 확인에 필요한 추가 자료를 설명하라.,completed_local,False,False,
+YV2-Q30,document_qa,제공된 정적 SOP·데이터시트만으로 현재 서버실 온도와 PLC 종료 실행 여부를 알려 달라.,completed_local,False,False,
+REL-D01,document_qa,"SOP-001의 RULE-* 본문 전체에서 ST04_PACKAGING을 비상정지 대상으로 명시한 규칙을 모두 찾아라. 규칙 ID, 조건(수치·단위·부등호 포함), 전체 정지 대상, 출처 위치를 행별로 제시하라. ST04의 속도를 감시하거나 점검하라는 지시는 비상정지 규칙 집합에 넣지 말라. 표와 다른 문서는 제외한다.",completed_local,False,False,
+REL-D02,document_qa,"SOP-001의 ST02_SEALING 절과 SOP-002의 ST02_SEALING 임계값 표에서, ST02 이외 공정에 대한 정지·감시·확인을 명시한 항목을 모두 찾아라. 출발 센서, 발동 조건, 다른 공정·센서, 조치 종류를 구분하고 문서별로 제시하라. 서로 다른 조건을 합쳐 무조건적인 지시로 만들지 말라.",completed_local,False,False,
+REL-D03,document_qa,"SOP-003 Predictive Maintenance Rules 표 전체에서 센서 유형이 TMP인 정비 규칙을 모두 찾아라. 각 규칙의 공정, 발동 조건, 조치, 우선순위를 정리하고, 복수 규칙에 등장하는 조치 유형과 공정별 차이를 설명하라. 현재 고장 발생이나 실제 조치 수행을 추정하지 말라.",completed_local,False,False,
+REL-D04,document_qa,"SOP-001 RULE-* 본문 전체에서 다른 RULE ID를 verify 또는 check하도록 명시한 항목을 모두 찾아라. 지시하는 규칙→확인할 규칙의 방향과 발동 조건을 제시하고, 확인 대상 규칙별로 자신을 참조하는 규칙을 역으로 묶어라. 단순한 ID 공동 출현이나 설명상의 연관은 확인 지시와 구분하라.",completed_local,False,False,
+REL-D05,document_qa,"SOP-001 Station Dependencies 표의 Feeds 문구만 사용하여 ST01_FILLING에서 ST04_PACKAGING까지의 모든 단순 유향 경로를 나열하라. 각 단계의 방향과 출처 행을 제시하라. 같은 표의 thermal fault→speed reduction 문구를 물류 공급 간선에 포함할 수 있는지, 경로가 있다는 사실만으로 실제 고장 전파를 입증할 수 있는지도 구분하라.",completed_local,False,False,
+REL-D06,document_qa,"SOP-003 p.1의 정비 규칙 표와 Correlated Fault Resolution 표를 개정할 때 문서 검토 대상으로 추적해야 할 모든 공정·센서 언급을 찾아라. 각 대상을 원문 표·행에 연결하고, 직접 명시된 대상과 추가로 추론해야 하는 대상을 구분하라. 중복 대상은 합치되 모든 출처를 보존하고, 실제 설비 고장·정지 영향이라고 표현하지 말라.",completed_local,False,False,
+REL-K01,kg_structure,"고정된 예원 v2에서 A=ST04_PACKAGING 소속 센서에 appliesToSensor로 연결된 규칙, B=ST04_PACKAGING을 actionTarget으로 가리키는 규칙을 각각 모두 조회하라. A∩B, A−B, B−A를 규칙 identifier로 제시하고 각 집합의 대표 경로를 방향과 관계명까지 설명하라. 저장된 간선만 사용하고 새 관계를 추론하지 말라.",completed_local,False,False,
+REL-K02,kg_structure,"예원 v2에서 ST02_SEALING→hasSensor→센서←appliesToSensor←규칙→actionTarget→다른 Station 경로를 만족하는 모든 조합을 찾아라. 규칙·센서·다른 Station·출처 문서 identifier를 제시하고, 같은 규칙이 여러 대상을 가지면 각각 보존하라. ST02 자체는 다른 Station 결과에서 제외하라.",completed_local,False,False,
+REL-K03,kg_structure,"예원 v2에서 sourceDocument가 SOP-003인 규칙을 모두 찾고, 각 규칙의 appliesToSensor 및 actionTarget 대상을 열거하라. 반환되지 않는 속성은 미연결로 표시하라. 문서←규칙→센서/공정의 경로를 제시하고 seed MAINT 노드와 candidate 규칙 노드를 임의로 하나로 합치지 말라. 후속 feedsInto 확장은 제외한다.",completed_local,False,False,
+REL-K04,kg_structure,"예원 v2의 feedsInto 간선만 사용하여 ST01_FILLING→ST04_PACKAGING의 모든 단순 유향 경로와 ST04_PACKAGING→ST01_FILLING의 모든 단순 유향 경로를 각각 조회하라. 경로가 없으면 이 스냅샷에 저장된 경로가 없다고 답하고, 이를 현실의 공급·인과관계 부재로 확대하지 말라. 경로 안에서 노드를 반복하지 않는다.",completed_local,False,False,
+REL-K05,kg_structure,"예원 v2의 candidate-SOP-001::RULE-ST02-02와 candidate-SOP-003::MAINT-05에 대해 sourceDocument와 모든 hasProvenance 경로를 조회하라. 문서 identifier, 페이지, sourceQuote, 저장된 위치 필드와 textSha256을 제시하라. 제공된 원문 청크와 인용문·해시를 대조하고, 이 검사가 규칙의 도메인 타당성까지 보장하는지 설명하라.",completed_local,False,False,
+REL-K06,kg_structure,예원 v2에서 서버실(SRV01_SERVERROOM)에 소속된 TMP 센서에 appliesToSensor로 연결된 규칙을 모두 찾아라. 규칙 identifier·유형·sourceDocument·conditionText 유무를 표시하고 conditionText가 없는 규칙을 별도로 나열하라. 텍스트 속성 부재를 원문 조건 자체가 없다는 뜻으로 해석하지 말라.,completed_local,False,False,
+ADD-01,kg_structure,"현재 고정 KG에서 **SOP-001을 출처로 가지면서, ST02_SEALING 소속 센서에 적용되고, ST04_PACKAGING을 조치 대상으로 지정한 규칙**을 모두 찾아라. 각 조건을 만족하는 실제 연결과 원문 근거를 제시하라.",completed_local,False,False,
+ADD-02,kg_structure,현재 고정 KG에서 **actionTarget에 ST04_PACKAGING이 포함된 규칙**을 ‘ST04만 대상으로 하는 규칙’과 ‘다른 공정도 함께 대상으로 하는 규칙’으로 나누어 모두 제시하라. 대상 연결이 없는 경우는 별도 구분하라.,completed_local,False,False,
+ADD-03,kg_structure,현재 고정 KG에서 **SOP-001 출처 규칙과 SOP-003 출처 규칙이 각각 하나 이상 연결된 센서**를 모두 찾아라. 센서별로 양쪽 규칙 ID와 출처 경로를 제시하라. 같은 센서에 적용된다는 사실만으로 규칙의 조건·조치가 같다고 판단할 수 있는가?,completed_local,False,False,
+ADD-04,kg_structure,현재 고정 KG에서 ST02_SEALING_CUR와 ST04_PACKAGING을 연결하는 경로 중 **appliesToSensor의 역방향 조회와 actionTarget만 허용한 최소 길이 경로**를 모두 제시하라. 탐색 방향과 저장된 간선 방향을 구분하라. 허용 관계를 feedsInto만으로 바꾸면 같은 센서 노드에서 경로를 찾을 수 있는지도 설명하라.,completed_local,False,False,
+ADD-05,kg_structure,"현재 고정 KG에서 ST02_SEALING_CUR에 적용되는 규칙을 **sourceDocument별로 묶어** 제시하라. 문서별 규칙 수와 조건·조치의 차이를 설명하되, 저장된 노드 수를 독립적인 제조 지식 수로 해석하지 말라.",completed_local,False,False,
+ADD-06,kg_structure,"현재 고정 KG의 모든 규칙 중 **sourceDocument는 있지만 appliesToSensor가 없는 규칙**을 찾아 규칙 유형별로 정리하라. 원문을 확인해 센서 연결이 필요하지 않은 규칙인지, 연결 누락 가능성이 있는지, 판단할 수 없는지를 구분하라.",completed_local,False,False,
+ADD-07,fault_injection,"원래 KG를 보존한 복사본에서 `candidate-SOP-001::RULE-ST02-02`의 **sourceDocument 연결만 제거**했을 때, 조치 대상 조회·문서 조회·hasProvenance를 통한 출처 조회 중 어떤 결과가 유지되고 어떤 결과가 달라지는가? 실제 조회 결과와 SHACL 위반을 제시하라.",completed_fault_injection,False,False,
+ADD-08,fault_injection,"동일 규칙의 복사본에 ① actionTarget으로 Sensor 연결, ② sourceQuote를 유지한 채 textSha256을 다른 유효한 64자리 값으로 변경하는 오류를 각각 넣어라. SHACL과 원문 대조가 각 오류를 검출하는지 비교하고, SHACL 통과만으로 근거의 진위를 보장할 수 있는지 설명하라.",completed_fault_injection,False,False,
+G01,document_qa,"예측 정비 규칙 가운데 우선순위가 CRITICAL인 것을 모두 찾아, 각 규칙이 어느 공정의 어떤 센서에 대한 것인지 답하라.",completed_local,True,False,
+G02,document_qa,"실링 공정 전류 센서에 걸려 있는 운영 규칙, 경보 임계값, 예측 정비 규칙을 문서별로 모두 정리하라.",completed_local,True,True,
+G03,document_qa,"서버실 온도와 관련된 기준을 모든 문서에서 찾아 경고, 위험, 정비, 자동 조치 기준을 구분해 설명하라.",completed_local,True,False,
+G04,document_qa,화학물질 보관 구역의 온도와 습도에 대해 문서들이 지시하는 기준과 조치를 모두 나열하라.,completed_local,True,False,
+G05,document_qa,실링 공정에 열 관련 고장이 생기면 공정 의존 관계상 어느 공정에 어떤 영향이 전파되는가? 또 실링 온도가 위험 수준을 넘으면 어떤 공정들을 멈춰야 하는가?,completed_local,True,False,
+G06,document_qa,"포장 공정 컨베이어 속도가 작업자 지시 없이 떨어졌다. 문서의 규칙 참조를 따라가면 최종적으로 어느 공정의 어떤 센서를 확인해야 하며, 연관 고장의 해소 절차는 어떤 순서인가?",completed_local,True,True,
+G07,document_qa,"충전 공정 압력이 3.25 bar로 20분 동안 유지되었다. 즉시 조치해야 할 운영 규칙, 해당되는 예측 정비 규칙, 경보 임계값 기준의 등급을 각각 답하라.",completed_local,True,False,
+G08,document_qa,"라벨링 공정 장력 센서 값이 12회 연속으로 완전히 같게 기록되었다. 운영 규칙, 정비 규칙, 이상 유형 정의를 연결해 판정과 조치를 설명하라.",completed_local,True,False,
+G09,document_qa,"포장기 진동이 0.28 mm/s 정도 나와요. 지금 해야 할 일이랑, 길게 보고 챙겨야 할 정비 항목이 뭔가요?",completed_local,True,False,
+G10,document_qa,"냉장 창고 온도가 10도까지 올라갔어요. 어떻게 해야 하고, 품질 쪽 조치까지 알려 주세요.",completed_local,True,True,
+G11,document_qa,연구실 습도가 70%예요. 실험 계속해도 되나요?,completed_local,True,False,
+G12,document_qa,"실러 전류가 13.8 A로 나오는데, 이게 센서 사양이나 운영 규칙상 괜찮은 건가요?",completed_local,True,False,
+G13,document_qa,CRITICAL 경보 확인 시간이 가장 짧은 역할과 가장 긴 역할은 무엇이며 각각 몇 분인가?,completed_local,True,True,
+G14,document_qa,"이상 유형 중 경고 기준 위반이 지속되는 경우로 정의된 유형은 무엇이며, 정의와 탐지 기준은 무엇인가?",completed_local,True,False,
+G15,document_qa,일반 창고에 방문객과 작업자가 각각 출입할 수 있는가? 그리고 일반 창고의 최대 인원과 경고 기준은?,completed_local,True,False,
+YB-01,kg_and_documents,ST02_SEALING에 연결된 센서의 전체 식별자와 각 단위를 알려주세요.,completed_local,False,False,
+YB-02,kg_and_documents,ST04_PACKAGING_SPD 센서는 어느 공정에 속하고 무엇을 측정하며 단위는 무엇인가요?,completed_local,False,False,
+YB-03,kg_and_documents,ST01_FILLING 다음의 생산 공정들을 feedsInto 관계에 따라 순서대로 나열해 주세요. 이 연결만으로 고장 원인까지 확정할 수 있나요?,completed_local,False,False,
+YB-04,kg_and_documents,CHM01_CHEMICALSTORAGE의 stationType과 zone은 무엇인가요?,completed_local,False,False,
+YB-05,kg_and_documents,"SOP-002에서 ST02_SEALING_TMP의 nominal(원문 ± 표기 포함), warnLo, warnHi, critLo, critHi를 단위와 함께 알려주세요.",completed_local,False,False,
+YB-06,kg_and_documents,ST02 온도가 212°C라고 가정합니다. SOP-001의 RULE-ST02-02에 따르면 어떤 조치를 어느 공정들에 해야 하나요?,completed_local,False,False,
+YB-07,kg_and_documents,"MAINT-02의 발동 조건, 조치, 우선순위와 적용 센서는 무엇인가요?",completed_local,False,False,
+YB-08,kg_and_documents,"MAINT-01은 어떤 센서의 어떤 변화가 어느 기간 나타날 때 적용되며, 무엇을 해야 하나요?",completed_local,False,False,
+YB-09,kg_and_documents,ST03_LABELLING_TEN 값이 10개 초과 샘플 동안 고정된 경우 MAINT-03은 어떤 조치와 우선순위를 안내하나요?,completed_local,False,False,
+YB-10,kg_and_documents,SOP-002에서 서버룸 온도 센서의 경고 상한과 위험 상한은 각각 몇 °C인가요?,completed_local,False,False,
+YB-11,kg_and_documents,"MAINT-02의 근거 문서·쪽·표·행·열을 알려주세요. KG에 저장된 정규화 표 행 문자열과 그 SHA-256을 제시하고, 이것이 PDF의 연속된 원문 문장과 어떻게 다른지도 설명해 주세요.",completed_local,False,False,
+YB-12,kg_and_documents,SOP-003의 페이지 수와 기록된 원본 PDF SHA-256은 무엇인가요?,completed_local,False,False,
+YB-13,kg_and_documents,현재 고정 KG에서 ST02_SEALING_CUR에 연결되어 있고 MaintenanceRule로 명시적으로 분류된 규칙들의 식별자·조건·조치를 알려주세요.,completed_local,False,False,
+YB-14,kg_and_documents,RULE-ACCESS-02에 따르면 무단 출입 감지 후 누구에게 몇 분 이내 알려야 하나요?,completed_local,False,False,
+YB-15,kg_and_documents,ST02 전류의 SOP-002 경고·위험 상한과 전류 데이터시트의 연속 운전 관련 권고는 어떻게 다른가요? 이 정보만으로 실제 설치 센서가 부적합하다고 확정할 수 있나요?,completed_local,False,False,
+YB-16,kg_and_documents,"현재 고정 KG만 근거로 ST04 속도 저하의 원인 공정 상위 3개를 실제 점수와 시차까지 제시할 수 있나요? 가능하면 근거와 값을, 불가능하면 부족한 정보를 설명해 주세요.",completed_local,False,False,
+YB-17,kg_and_documents,ST99_UNKNOWN에 연결된 온도 센서와 위험 상한을 알려주세요.,completed_local,False,False,
+YB-18,kg_and_documents,현재 고정 KG와 제공 문서만으로 ST02_SEALING_TMP에 실제 설치된 센서의 제조사와 모델명을 확정할 수 있나요? 판단 근거도 설명해 주세요.,completed_local,False,False,
+YB-19,pending_causal,"특정 시간 구간의 ST04 속도 이상 이벤트에 대해, 원인 후보를 점수·시차·시계열 근거와 함께 제시해 주세요.",pending_input,False,False,No fixed event interval/candidate scores/lags or novelty reference results
+YB-20,pending_causal,"새로 발견한 공정 간 인과 후보와 문서에 이미 적혀 있던 관계를 구분하고, 해당 후보의 근거를 제시해 주세요.",pending_input,False,False,No fixed event interval/candidate scores/lags or novelty reference results
+NEW-01,document_qa,ST02_SEALING_TMP의 측정값이 485.15 K로 전달되었다. °C로 변환한 뒤 SOP-002의 해당 센서 상한 기준과 비교하라. 변환식·변환값·비교 기준을 제시하고 원래 단위의 수치를 °C 기준과 직접 비교했을 때의 오류를 설명하라.,completed_local,True,False,
+NEW-02,document_qa,ST04_PACKAGING_SPD의 측정값이 60 rpm으로 수신되었다. 문서의 해당 센서 단위를 확인하고 이 값을 속도 기준과 직접 비교할 수 있는지 판단하라. 변환에 필요한 물리량을 명시하고 제공되지 않은 변환 계수는 만들지 말라.,completed_local,True,False,
+NEW-03,document_qa,ST02_SEALING_TMP 관측값이 209°C이고 측정 불확실성이 ±3°C라고 가정한다. 실제값이 포함될 수 있는 구간을 계산하고 RULE-ST02-02의 조건을 반드시 충족/충족 가능하지만 확정 불가/충족 불가 중 하나로 판정하라. 명목 관측값만 사용한 판정과 구분하라.,completed_local,True,True,
+NEW-04,document_qa,ST02_SEALING_TMP가 소수 첫째 자리에서 반올림되어 210°C로 저장되었다. 사사오입을 가정해 반올림 전 값의 범위를 구하고 이 기록만으로 RULE-ST02-02의 수치 조건 충족 여부를 확정할 수 있는지 설명하라.,completed_local,True,False,
+NEW-05,document_qa,ST01 압력이 09:00과 09:20에 각각 3.2 bar로 기록되었고 그 사이 측정값은 없다. SOP-003의 해당 정비 조건 발동 여부를 판정하라. 시간 차이와 조건의 연속 유지시간을 구분하고 필요한 추가 기록을 제시하라.,completed_local,True,False,
+NEW-06,document_qa,"ST02 전류가 명목값보다 1.6 A 높은 상태 3분, 정상 범위 1분, 같은 상승 상태 3분 순으로 기록되었다. RULE-ST02-03에 따라 두 상승 구간을 합산해 발동 조건을 충족한다고 판단할 수 있는지 설명하라.",completed_local,True,False,
+NEW-07,document_qa,서버실 온도가 26°C로 6분 유지되었다는 작업자 진술과 26°C 측정값 한 개가 제공되었다. SOP-003 정비 조건에 대해 진술을 사실로 수용한 경우와 센서 기록만 사용한 경우의 판정을 각각 제시하라.,completed_local,True,False,
+NEW-08,document_qa,"MAINT-01 대상 센서에서 A: 값이 높지만 일정한 경우, B: 낮은 수준에서 시작해 증가하는 경우를 비교한다. 원문 조건 판정에 필요한 입력을 절대값·변화량·관측기간으로 분류하고 값이 높다는 설명만으로 발동을 판단할 수 있는지 답하라.",completed_local,True,False,
+NEW-09,document_qa,ST03_LABELLING_TEN 값이 12개 연속 샘플에서 동일하지만 샘플링 주기는 알려져 있지 않다. MAINT-03의 샘플 조건을 평가하고 몇 초 또는 몇 분 지속되었는지도 계산할 수 있는지 별도로 판단하라.,completed_local,True,False,
+NEW-10,document_qa,"ST03_LABELLING_TEN 기록이 동일값 6개, 결측 1개, 동일값 6개 순서로 주어졌다. MAINT-03의 원문만으로 이를 하나의 연속 고정 구간으로 처리할 수 있는지 판단하고 문서 조건과 추가 결측 처리 가정을 구분하라.",completed_local,True,True,
+NEW-11,document_qa,SOP-001 RULE-ST02-03 조건을 논리식으로 표현하라. 전류 차이 조건만 충족/지속시간 조건만 충족/둘 다 충족 세 경우의 적용 여부를 표로 작성하라. 원문에 없는 조건은 추가하지 말라.,completed_local,True,False,
+NEW-12,document_qa,SRV01_SERVERROOM_TMP가 29°C로 6분 연속 유지되었다고 가정한다. SOP-002 임계값 기준과 SOP-003 정비 조건의 관련 지시를 각각 제시하고 함께 수행 가능한지 또는 충돌하는지 검토하라. 문서에 없는 우선순위·선후관계는 만들지 말라.,completed_local,True,False,
+NEW-13,document_qa,작업일지에 ST02_SEALING과 ST04_PACKAGING을 정지했다고만 기록되어 있다. 이것만으로 RULE-ST02-02가 발동했거나 온도가 해당 기준을 넘었다고 결론 내릴 수 있는지 판단하라. 조건→조치와 조치→조건 추정을 구분하라.,completed_local,True,False,
+NEW-14,document_qa,ST02_SEALING_TMP가 RULE-ST02-02 조건을 충족하지 않았다는 정보만 있다. 다른 규칙도 적용되지 않는다와 운전을 계속해도 된다는 두 결론을 각각 판단하고 필요한 추가 확인을 설명하라.,completed_local,True,False,
+NEW-15,document_qa,다음 답변의 두 문장을 독립 검증해 근거 있는 내용은 보존하고 없는 내용만 수정하라: ST02 온도가 212°C이므로 RULE-ST02-02 조치를 적용한다. 따라서 실제 온도 센서 모델도 TMP-2210으로 확인된다.,completed_local,True,False,
+NEW-16,document_qa,주장: ST02 전류 상승 후 ST04 속도 저하 시차는 정확히 5분이다. 근거: 두 현상은 서로 연관된다. 제공 문서에서 정확한 시차의 별도 근거를 찾아 없으면 인용문이 지지하는 범위까지만 주장을 수정하라.,completed_local,True,False,
+NEW-17,document_qa,ST02_SEALING_TMP 위험 상한 답변에 SOP-002의 ST02_SEALING_CUR 행을 근거로 제시한 경우를 검토하라. TMP 행과 CUR 행의 대상·측정량·단위를 대조해 답변과 인용을 함께 수정하고 문서명이 같다는 것만으로 적절한 근거인지 답하라.,completed_local,True,False,
+NEW-18,document_qa,SOP-002 ST02_SEALING_TMP의 warnHi와 critHi 사이 간격을 계산하라. 문서 추출값과 계산값을 구분하고 단위를 제시하라. 간격만으로 위험 발생 확률이나 안전 여유를 정량화할 수 있는지도 판단하라.,completed_local,True,False,
+NEW-19,document_qa,현장 작업자가 실링 센서가 경고래요라고만 문의했다. ST02_SEALING 소속 센서를 확인해 대상이 하나로 정해지는지 판단하고 둘 이상이면 조치를 선택하지 말고 필요한 정보를 묻는 최소한의 후속 질문 한 문장을 작성하라.,completed_local,True,False,
+NEW-20,document_qa,"ST02_SEALING_TMP의 문서상 단위, 지금 측정값, 현재 경보 등급, 최근 24시간 최고값을 알려 달라. 각 항목을 독립 처리해 답할 수 있는 것은 답하고 나머지는 필요한 데이터와 함께 표시하라.",completed_local,True,False,
+CQ01,pending_event_fixture,"ST04_PACKAGING의 속도(SPD) 저하가 관측될 때, 원인 후보 공정 상위 3개와 각 점수는?",pending_input,False,False,Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.
+CQ02,pending_event_fixture,"ST02_SEALING→ST04_PACKAGING 후보는 SOP 규칙 근거인가, 시계열에서만 관측된 것인가? 시차는?",pending_input,False,False,Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.
+CQ03,pending_event_fixture,이 후보(또는 규칙)의 근거는 어느 문서·쪽·위치이며 원문 해시는? 시계열 근거는 어느 파일·센서·시간 구간인가?,pending_input,False,False,Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.
+CQ04,document_qa,ST02 온도가 SOP 위험 기준을 넘으면(212℃ 가정) SOP가 안내하는 조치·대상 스테이션·근거 문서는?,completed_local,False,False,
+CQ05,pending_event_fixture,원인 후보 공정의 센서가 이상일 때 적용되는 정비 규칙(조치·우선순위)과 SOP-003 §2의 해소 절차는?,pending_input,False,False,Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.
+CQ06,pending_event_fixture,"지정한 ST04 속도 저하 사건 두 건에서 원인 후보 공정의 순위가 어떻게 달라지는가? 공통 후보와 한 사건에만 있는 후보를 나누고, 각 사건의 점수·관측 구간·근거를 제시하라.",pending_input,False,False,Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.
+CQ07,pending_event_fixture,"지정한 사건에서 점수 0.6 이상인 후보만 점수 내림차순으로 최대 3개 제시하라. 제외된 후보와 제외 사유도 제시하고, 같은 점수가 있으면 동점임을 밝혀라.",pending_input,False,False,Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.
+CQ08,pending_event_fixture,"동일한 공정 쌍이 두 관측 구간에서 후보로 기록됐다. 두 구간의 시차·점수·근거 종류를 각각 비교하고, 둘 중 하나의 값을 전체 기간의 대표값으로 사용해도 되는지 설명하라.",pending_input,False,False,Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.
+CQ09,pending_event_fixture,"지정한 사건의 후보에서 시차가 어느 센서에서 어느 센서로 정의됐는지 확인하라. 두 센서의 이상 시작 시각과 저장된 시차를 대조하고, 부호·단위·기준 시각을 확인할 수 없는 항목은 따로 표시하라.",pending_input,False,False,Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.
+CQ10,pending_event_fixture,"지정한 원인 후보의 근거 구간과 설명 대상 사건 구간이 겹치는지 확인하라. 겹치지 않는다면 해당 후보를 이번 사건의 직접 관측 근거로 제시할 수 있는지, 과거 참고 사례인지 구분하라.",pending_input,False,False,Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.
+CQ11,pending_event_fixture,"지정한 후보 공정에서 ST04_PACKAGING까지 물리적 공정 연결 경로가 있는가? 있다면 중간 공정과 방향을 순서대로 제시하고, 이 경로가 원인 후보 관계와 어떻게 다른지 설명하라.",pending_input,False,False,Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.
+CQ12,pending_event_fixture,"지정한 두 공정 사이에 직접 원인 후보 관계가 저장돼 있는지, 중간 공정을 거친 경로만 있는지 구별하라. 간접 경로만 있을 때 직접 관계나 그 점수를 새로 만들어 답하지 마라.",pending_input,False,False,Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.
+CQ13,pending_event_fixture,"지정한 사건의 후보 관계 방향이 물리적 생산 흐름의 방향과 일치하는지 후보별로 확인하라. 불일치하거나 비교 경로가 없는 후보를 구분하고, 그 사실만으로 후보를 오류라고 확정할 수 있는지도 설명하라.",pending_input,False,False,Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.
+CQ14,pending_event_fixture,"지정한 사건에서 두 원인 후보가 같은 센서·같은 관측 구간을 근거로 사용하는가? 공유 근거와 독립 근거를 나누고, 후보가 두 개라는 이유만으로 독립적인 증거가 두 개라고 셀 수 있는지 설명하라.",pending_input,False,False,Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.
+CQ15,pending_event_fixture,"지정한 사건에서 후보 공정을 선택했을 때, 후보 → 공정 → 센서 → 적용 정비 규칙 → 원문 근거를 따라 연결된 경로를 제시하라. 연결이 끊기는 지점은 어디이며, 그 뒤 내용을 다른 근거로 보완했다면 구분하라.",pending_input,False,False,Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.
+CQ16,pending_event_fixture,"지정한 후보가 참조하는 모든 ruleIds와 windowId가 실제 저장소에 존재하는가? 존재 여부, 연결된 문서 또는 관측 구간을 확인하고, 확인하지 못한 참조를 명시하라.",pending_input,False,False,Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.
+CQ17,pending_event_fixture,"지정한 후보의 hasEvidence 표기와 실제 연결 근거가 일치하는가? SOP와 시계열 양쪽 근거를 각각 확인하고, 표기는 있으나 실제 자료로 검증하지 못한 부분을 구별하라.",pending_input,False,False,Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.
+CQ18,pending_event_fixture,"지정한 규칙에 저장된 인용문이 원문의 해당 위치와 일치하는지 확인하라. 문서·쪽·위치·저장 해시·재계산 해시를 대조하고, 위치와 해시 중 하나만 맞는 경우를 어떻게 보고할지 설명하라.",pending_input,False,False,Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.
+CQ19,pending_event_fixture,"지정한 후보가 사용한 센서 파일과 현재 평가에 제공된 센서 파일이 같은 버전인지 확인하라. 파일명뿐 아니라 해시와 관측 구간을 대조하고, 다르거나 저장 해시가 없으면 재현 가능 범위를 밝혀라.",pending_input,False,False,Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.
+CQ20,pending_event_fixture,"지정한 정비 규칙의 같은 identifier가 여러 노드에 나타난다. seed 유래 표현과 문서 추출 표현을 출처별로 비교하고, 중복 표현인지 서로 다른 조건인지 구분하라. 근거 없이 규칙 수나 우선순위를 합치지 마라.",pending_input,False,False,Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.
+CQ21,pending_event_fixture,"지정한 사건의 원인 후보 센서에 관측 공백이나 중복 시각이 있는가? 있다면 어느 구간이며, 저장된 지속 시간·선후 관계를 검증할 수 있는 범위가 어디까지인지 설명하라.",pending_input,False,False,Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.
+CQ22,pending_event_fixture,"지정한 후보의 근거를 검토할 때 원인 후보 센서보다 ST04 속도 변화가 먼저 시작된 구간이 있는가? 있다면 그 구간과 기록된 관계의 충돌을 제시하고, 관측 순서만으로 인과를 확정하거나 부정할 수 있는지 설명하라.",pending_input,False,False,Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.
+CQ23,pending_event_fixture,"평가자가 지정한 동일 길이의 두 구간 중 한쪽은 후보 센서 변화와 ST04 속도 저하가 함께 있고, 다른 쪽은 후보 센서 변화만 있다. 관측값을 대조해 관계가 항상 성립하는지 검토하고, 이 두 구간만으로 발생 확률을 산출해도 되는지 설명하라.",pending_input,False,False,Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.
+CQ24,pending_event_fixture,"지정한 사건의 저장소에서 점수 0.6 이상인 원인 후보가 하나도 없다면 어떻게 답해야 하는가? 기준 미달 후보의 존재와 근거 부족을 구별하고, 원인 후보를 제시하려면 어떤 추가 분석·자료가 필요한지 설명하라.",pending_input,False,False,Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.
+CQ25,pending_event_fixture,"지정한 사건에서 정비 조치를 한 뒤 ST04 속도가 회복됐다는 주장을 검증하라. 실제 정비 실행 시각·실행 기록·전후 센서 관측을 확인하고, 문서상 권고만 있거나 기록이 부족하면 무엇을 확인할 수 없는지 밝혀라.",pending_input,False,False,Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.

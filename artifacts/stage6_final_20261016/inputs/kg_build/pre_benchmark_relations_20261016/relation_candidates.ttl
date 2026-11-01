@@ -1,0 +1,106 @@
+@prefix rc: <https://example.org/imaks/relation-review/v1#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+rc:REL-01 a rc:RelationCandidate ;
+    rc:conditionText "Current drift / speed reduction; shared electrical coupling. Direction in the claim does not prove causality." ;
+    rc:evidence rc:evidence-88918870d66e5004,
+        rc:evidence-9d76ddff8299fd72 ;
+    rc:evidenceMode "document_explicit" ;
+    rc:novelty "existing_seed_relation_evidence_enrichment" ;
+    rc:object <https://example.org/imaks/id/ST04_PACKAGING_SPD> ;
+    rc:relationType rc:documentedAssociation ;
+    rc:reviewStatus "pending" ;
+    rc:subject <https://example.org/imaks/id/ST02_SEALING_CUR> ;
+    rc:supportedByRule <https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-ST02-04>,
+        <https://example.org/imaks/id/candidate-SOP-003%3A%3ASOP-003-EX-01> .
+
+rc:REL-02 a rc:RelationCandidate ;
+    rc:conditionText "ST02 current WARNING: monitor ST04 speed." ;
+    rc:evidence rc:evidence-88918870d66e5004 ;
+    rc:evidenceMode "document_explicit" ;
+    rc:novelty "new_structured_relation_not_new_document_fact" ;
+    rc:object <https://example.org/imaks/id/ST04_PACKAGING_SPD> ;
+    rc:relationType rc:requiresMonitoring ;
+    rc:reviewStatus "pending" ;
+    rc:subject <https://example.org/imaks/id/ST02_SEALING_CUR> ;
+    rc:supportedByRule <https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-ST02-04> .
+
+rc:REL-03 a rc:RelationCandidate ;
+    rc:conditionText "ST04 speed <1.00 m/s without operator command: verify referenced rule." ;
+    rc:evidence rc:evidence-c56336afb82e24b6 ;
+    rc:evidenceMode "document_explicit" ;
+    rc:novelty "new_structured_relation_not_new_document_fact" ;
+    rc:object <https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-ST02-04> ;
+    rc:relationType rc:requiresRuleCheck ;
+    rc:reviewStatus "pending" ;
+    rc:subject <https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-ST04-03> ;
+    rc:supportedByRule <https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-ST04-03> .
+
+rc:REL-04 a rc:RelationCandidate ;
+    rc:conditionText "Temperature >210°C: emergency stop." ;
+    rc:evidence rc:evidence-7d3b219fd040f748 ;
+    rc:evidenceMode "document_explicit" ;
+    rc:novelty "new_structured_relation_not_new_document_fact" ;
+    rc:object <https://example.org/imaks/id/ST02_SEALING> ;
+    rc:relationType rc:requiresShutdown ;
+    rc:reviewStatus "pending" ;
+    rc:subject <https://example.org/imaks/id/ST02_SEALING_TMP> ;
+    rc:supportedByRule <https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-ST02-02> .
+
+rc:REL-05 a rc:RelationCandidate ;
+    rc:conditionText "Temperature >210°C: emergency stop." ;
+    rc:evidence rc:evidence-7d3b219fd040f748 ;
+    rc:evidenceMode "document_explicit" ;
+    rc:novelty "new_structured_relation_not_new_document_fact" ;
+    rc:object <https://example.org/imaks/id/ST03_LABELLING> ;
+    rc:relationType rc:requiresShutdown ;
+    rc:reviewStatus "pending" ;
+    rc:subject <https://example.org/imaks/id/ST02_SEALING_TMP> ;
+    rc:supportedByRule <https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-ST02-02> .
+
+rc:REL-06 a rc:RelationCandidate ;
+    rc:conditionText "Temperature >210°C: emergency stop." ;
+    rc:evidence rc:evidence-7d3b219fd040f748 ;
+    rc:evidenceMode "document_explicit" ;
+    rc:novelty "new_structured_relation_not_new_document_fact" ;
+    rc:object <https://example.org/imaks/id/ST04_PACKAGING> ;
+    rc:relationType rc:requiresShutdown ;
+    rc:reviewStatus "pending" ;
+    rc:subject <https://example.org/imaks/id/ST02_SEALING_TMP> ;
+    rc:supportedByRule <https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-ST02-02> .
+
+rc:REL-07 a rc:RelationCandidate ;
+    rc:conditionText "Thermal fault at sealing: documented downstream speed reduction; not an empirically validated causal link." ;
+    rc:evidence rc:evidence-784d97c31a650495 ;
+    rc:evidenceMode "document_explicit" ;
+    rc:novelty "new_structured_relation_not_new_document_fact" ;
+    rc:object <https://example.org/imaks/id/ST04_PACKAGING> ;
+    rc:relationType rc:documentedThermalEffect ;
+    rc:reviewStatus "pending" ;
+    rc:subject <https://example.org/imaks/id/ST02_SEALING> .
+
+rc:evidence-784d97c31a650495 rc:page 1 ;
+    rc:sourceFileSha256 "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89" ;
+    rc:sourceQuote "Station ID: ST02_SEALING; Zone: Production Area; Depends On: ST01; Downstream Effect: Feeds ST03; thermal fault → ST04 speed reduction" ;
+    rc:sourceUnit "SOP-001:p1:table1:row3" .
+
+rc:evidence-9d76ddff8299fd72 rc:page 1 ;
+    rc:sourceFileSha256 "89bb8bebc3e0bc6ac9a157a9bc30b6de09fb526711cbc1c9631258444fe865b7" ;
+    rc:sourceQuote "Pattern: ST02_SEALING-CUR↑ → ST04_PACKAGING-SPD↓; Primary Fault: Sealing motor overload; Secondary Effect: Conveyor speed drop via electrical coupling; Resolution: 1.Verify ST02-CUR trend. 2.Inspect sealing jaw. 3.Reset ST04 speed setpoint." ;
+    rc:sourceUnit "SOP-003:p1:table2:row2" .
+
+rc:evidence-c56336afb82e24b6 rc:page 2 ;
+    rc:sourceFileSha256 "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89" ;
+    rc:sourceQuote "RULE-ST04-03: SPD drops below 1.00 m/s without operator command — verify RULE-ST02-04." ;
+    rc:sourceUnit "SOP-001:p2:RULE-ST04-03" .
+
+rc:evidence-88918870d66e5004 rc:page 1 ;
+    rc:sourceFileSha256 "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89" ;
+    rc:sourceQuote "RULE-ST02-04: CUR drift at ST02_SEALING CORRELATES with speed reduction at ST04_PACKAGING due to shared electrical coupling. Monitor ST04_PACKAGING-SPD whenever ST02_SEALING-CUR triggers a WARNING." ;
+    rc:sourceUnit "SOP-001:p1:RULE-ST02-04" .
+
+rc:evidence-7d3b219fd040f748 rc:page 1 ;
+    rc:sourceFileSha256 "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89" ;
+    rc:sourceQuote "RULE-ST02-02: TMP > 210°C (CRITICAL) — emergency stop ST02, ST03, ST04." ;
+    rc:sourceUnit "SOP-001:p1:RULE-ST02-02" .
+

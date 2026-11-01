@@ -1,0 +1,283 @@
+{
+  "date": "2026-10-16",
+  "method": "AI-authored source-fidelity and semantic review; not an independent human/domain validation",
+  "review_scope": "six selected candidates only; no benchmark creation or model rerun",
+  "protected_artifact_sha256": {
+    "kg_build\\pre_benchmark_relations_20261016\\candidates.json": "17b30de13d41e1851e9ed76fbbc090f9b45532d26350ffc1c3d407105c4d7e98",
+    "kg_build\\pre_benchmark_relations_20261016\\candidate_kg.ttl": "95af8b2aff7cb8bbcbcd998c46dfff94b10544f51191bf0a5773150c800edaf0",
+    "kg_build\\pre_benchmark_relations_20261016\\human_review.json": "c1bc247ba0d4686df533242c09484c0b4e6ad86f0dc7063c01f4a7bbcf9af6ea",
+    "kg_build\\pre_benchmark_relations_20261016\\approved_relations.ttl": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "kg_build\\openai_sol_v2_20261016\\llm_predictions.jsonl": "ed6c1c3c4e1d10262fb9c25cf2a9639c6df3224d33ada3fd4e9a9d2d07e240b4"
+  },
+  "source_evidence_checks_passed": true,
+  "reviewed_count": 6,
+  "independent_source_units": 4,
+  "human_approved_count": 0,
+  "validated_new_causal_relations": 0,
+  "normalization_applied_to_frozen_graph": false,
+  "reviews": [
+    {
+      "identifier": "REL-02",
+      "reviewer_type": "AI",
+      "decision": "supported_document_instruction",
+      "reason_ko": "WARNING 발생 시 ST04 속도를 감시하라는 문장이 직접 존재한다. 센서가 다른 센서를 감시한다는 뜻이 아니라 조건에 따른 감시 의무이다.",
+      "proposed_normalization": {
+        "trigger_sensor": "ST02_SEALING_CUR",
+        "trigger_state": "WARNING",
+        "action": "monitor",
+        "target": "ST04_PACKAGING_SPD"
+      },
+      "limitations_ko": [
+        "WARNING 수치와 지속시간을 이 문장만으로 추가하지 않는다.",
+        "상관관계 문장을 인과관계로 승격하지 않는다."
+      ],
+      "evidence": [
+        {
+          "chunk_id": "SOP-001:p1:RULE-ST02-04",
+          "doc_id": "SOP-001",
+          "page": 1,
+          "kind": "rule",
+          "text": "RULE-ST02-04: CUR drift at ST02_SEALING CORRELATES with speed reduction at ST04_PACKAGING due to shared electrical coupling. Monitor ST04_PACKAGING-SPD whenever ST02_SEALING-CUR triggers a WARNING.",
+          "char_start": 1437,
+          "char_end": 1634,
+          "section": "2.2 ST02_SEALING",
+          "table_id": null,
+          "bbox": null,
+          "text_sha256": "73f1353341c57c7d796301cd3a64e1f215f044da6a7fd48eae9e2793ac863857",
+          "source_file_sha256": "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89",
+          "rule_id": "RULE-ST02-04",
+          "unit_id": "SOP-001:p1:RULE-ST02-04",
+          "row_index": null,
+          "cells": null
+        }
+      ],
+      "human_approved": false,
+      "empirical_causality_validated": false
+    },
+    {
+      "identifier": "REL-03",
+      "reviewer_type": "AI",
+      "decision": "supported_document_instruction",
+      "reason_ko": "ST04 속도 저하 시 RULE-ST02-04를 확인하도록 명시되어 있어 참조 방향이 타당하다.",
+      "proposed_normalization": {
+        "trigger_sensor": "ST04_PACKAGING_SPD",
+        "operator": "<",
+        "value": 1.0,
+        "unit": "m/s",
+        "without_operator_command": true,
+        "action": "verify_rule",
+        "target": "SOP-001::RULE-ST02-04"
+      },
+      "limitations_ko": [
+        "속도 조건과 운전자 명령 없음 조건을 함께 보존한다.",
+        "참조 규칙을 확인하라는 지시가 원인 확정을 뜻하지 않는다."
+      ],
+      "evidence": [
+        {
+          "chunk_id": "SOP-001:p2:RULE-ST04-03",
+          "doc_id": "SOP-001",
+          "page": 2,
+          "kind": "rule",
+          "text": "RULE-ST04-03: SPD drops below 1.00 m/s without operator command — verify RULE-ST02-04.",
+          "char_start": 0,
+          "char_end": 86,
+          "section": "2.4 ST04_PACKAGING",
+          "table_id": null,
+          "bbox": null,
+          "text_sha256": "250c09598246046f2ca766eef449b1340a89115bcbdae9cad0bbac1d1c6c03bc",
+          "source_file_sha256": "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89",
+          "rule_id": "RULE-ST04-03",
+          "unit_id": "SOP-001:p2:RULE-ST04-03",
+          "row_index": null,
+          "cells": null
+        }
+      ],
+      "human_approved": false,
+      "empirical_causality_validated": false
+    },
+    {
+      "identifier": "REL-04",
+      "reviewer_type": "AI",
+      "decision": "supported_with_action_label_clarification",
+      "reason_ko": "원문이 ST02·ST03·ST04를 비상정지 대상으로 직접 열거한다. requiresShutdown은 포괄적이므로 emergency_stop 동작을 명시해야 한다.",
+      "proposed_normalization": {
+        "trigger_sensor": "ST02_SEALING_TMP",
+        "operator": ">",
+        "value": 210,
+        "unit": "degC",
+        "severity": "CRITICAL",
+        "action": "emergency_stop",
+        "target": "ST02_SEALING",
+        "obligation_group": "SOP-001::RULE-ST02-02",
+        "suggested_relation_type": "requiresEmergencyStop"
+      },
+      "limitations_ko": [
+        "세 관계는 동일한 한 지시의 세 대상이며 독립적인 세 발견이 아니다.",
+        "자동 실행, 정지 순서·정확한 동시성, 복구 절차, 안전 인증을 추론하지 않는다.",
+        "210°C 초과를 이상(>=)으로 바꾸지 않는다. 임계값의 실제 안전성은 검증되지 않았다."
+      ],
+      "evidence": [
+        {
+          "chunk_id": "SOP-001:p1:RULE-ST02-02",
+          "doc_id": "SOP-001",
+          "page": 1,
+          "kind": "rule",
+          "text": "RULE-ST02-02: TMP > 210°C (CRITICAL) — emergency stop ST02, ST03, ST04.",
+          "char_start": 1276,
+          "char_end": 1347,
+          "section": "2.2 ST02_SEALING",
+          "table_id": null,
+          "bbox": null,
+          "text_sha256": "0e2de067573be179dcdc1b180dfe071c0fae3ea3a91f47df1418cadab40ce6e7",
+          "source_file_sha256": "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89",
+          "rule_id": "RULE-ST02-02",
+          "unit_id": "SOP-001:p1:RULE-ST02-02",
+          "row_index": null,
+          "cells": null
+        }
+      ],
+      "human_approved": false,
+      "empirical_causality_validated": false
+    },
+    {
+      "identifier": "REL-05",
+      "reviewer_type": "AI",
+      "decision": "supported_with_action_label_clarification",
+      "reason_ko": "원문이 ST02·ST03·ST04를 비상정지 대상으로 직접 열거한다. requiresShutdown은 포괄적이므로 emergency_stop 동작을 명시해야 한다.",
+      "proposed_normalization": {
+        "trigger_sensor": "ST02_SEALING_TMP",
+        "operator": ">",
+        "value": 210,
+        "unit": "degC",
+        "severity": "CRITICAL",
+        "action": "emergency_stop",
+        "target": "ST03_LABELLING",
+        "obligation_group": "SOP-001::RULE-ST02-02",
+        "suggested_relation_type": "requiresEmergencyStop"
+      },
+      "limitations_ko": [
+        "세 관계는 동일한 한 지시의 세 대상이며 독립적인 세 발견이 아니다.",
+        "자동 실행, 정지 순서·정확한 동시성, 복구 절차, 안전 인증을 추론하지 않는다.",
+        "210°C 초과를 이상(>=)으로 바꾸지 않는다. 임계값의 실제 안전성은 검증되지 않았다."
+      ],
+      "evidence": [
+        {
+          "chunk_id": "SOP-001:p1:RULE-ST02-02",
+          "doc_id": "SOP-001",
+          "page": 1,
+          "kind": "rule",
+          "text": "RULE-ST02-02: TMP > 210°C (CRITICAL) — emergency stop ST02, ST03, ST04.",
+          "char_start": 1276,
+          "char_end": 1347,
+          "section": "2.2 ST02_SEALING",
+          "table_id": null,
+          "bbox": null,
+          "text_sha256": "0e2de067573be179dcdc1b180dfe071c0fae3ea3a91f47df1418cadab40ce6e7",
+          "source_file_sha256": "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89",
+          "rule_id": "RULE-ST02-02",
+          "unit_id": "SOP-001:p1:RULE-ST02-02",
+          "row_index": null,
+          "cells": null
+        }
+      ],
+      "human_approved": false,
+      "empirical_causality_validated": false
+    },
+    {
+      "identifier": "REL-06",
+      "reviewer_type": "AI",
+      "decision": "supported_with_action_label_clarification",
+      "reason_ko": "원문이 ST02·ST03·ST04를 비상정지 대상으로 직접 열거한다. requiresShutdown은 포괄적이므로 emergency_stop 동작을 명시해야 한다.",
+      "proposed_normalization": {
+        "trigger_sensor": "ST02_SEALING_TMP",
+        "operator": ">",
+        "value": 210,
+        "unit": "degC",
+        "severity": "CRITICAL",
+        "action": "emergency_stop",
+        "target": "ST04_PACKAGING",
+        "obligation_group": "SOP-001::RULE-ST02-02",
+        "suggested_relation_type": "requiresEmergencyStop"
+      },
+      "limitations_ko": [
+        "세 관계는 동일한 한 지시의 세 대상이며 독립적인 세 발견이 아니다.",
+        "자동 실행, 정지 순서·정확한 동시성, 복구 절차, 안전 인증을 추론하지 않는다.",
+        "210°C 초과를 이상(>=)으로 바꾸지 않는다. 임계값의 실제 안전성은 검증되지 않았다."
+      ],
+      "evidence": [
+        {
+          "chunk_id": "SOP-001:p1:RULE-ST02-02",
+          "doc_id": "SOP-001",
+          "page": 1,
+          "kind": "rule",
+          "text": "RULE-ST02-02: TMP > 210°C (CRITICAL) — emergency stop ST02, ST03, ST04.",
+          "char_start": 1276,
+          "char_end": 1347,
+          "section": "2.2 ST02_SEALING",
+          "table_id": null,
+          "bbox": null,
+          "text_sha256": "0e2de067573be179dcdc1b180dfe071c0fae3ea3a91f47df1418cadab40ce6e7",
+          "source_file_sha256": "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89",
+          "rule_id": "RULE-ST02-02",
+          "unit_id": "SOP-001:p1:RULE-ST02-02",
+          "row_index": null,
+          "cells": null
+        }
+      ],
+      "human_approved": false,
+      "empirical_causality_validated": false
+    },
+    {
+      "identifier": "REL-07",
+      "reviewer_type": "AI",
+      "decision": "retain_as_document_claim_only",
+      "reason_ko": "의존성 표에 thermal fault → ST04 speed reduction이 직접 기록되어 있다. 문서 주장으로는 근거가 있으나 관측자료로 인과성을 검증한 결과가 아니다.",
+      "proposed_normalization": {
+        "source_station": "ST02_SEALING",
+        "trigger_description": "thermal fault",
+        "target_station": "ST04_PACKAGING",
+        "effect_description": "speed reduction",
+        "assertion_scope": "document_claim",
+        "threshold": null,
+        "lag": null
+      },
+      "limitations_ko": [
+        "다른 규칙의 210°C를 이 관계의 임계값으로 가져오지 않는다.",
+        "전류 변화·전기적 결합 관계의 메커니즘을 열 이상 관계로 가져오지 않는다.",
+        "직접 Rule 노드가 없어도 표 행과 Document 근거로 보관 가능하다."
+      ],
+      "evidence": [
+        {
+          "chunk_id": "SOP-001:p1:table1:chunk",
+          "doc_id": "SOP-001",
+          "page": 1,
+          "kind": "table",
+          "text": "Station ID: ST02_SEALING; Zone: Production Area; Depends On: ST01; Downstream Effect: Feeds ST03; thermal fault → ST04 speed reduction",
+          "char_start": 305,
+          "char_end": 946,
+          "section": "1. Station Dependencies",
+          "table_id": "SOP-001:p1:table1",
+          "bbox": [
+            77.95,
+            190.87,
+            517.32,
+            400.87
+          ],
+          "text_sha256": "767786a563d6b48def0108c8281a0b1dd571b751a978f7d766318094ac2f2efa",
+          "source_file_sha256": "0e209d7e484691a7ee90849b7754c44c1145e8b6f4751e3ce8e5a940556fbe89",
+          "unit_id": "SOP-001:p1:table1:row3",
+          "row_index": 3,
+          "cells": {
+            "Station ID": "ST02_SEALING",
+            "Zone": "Production Area",
+            "Depends On": "ST01",
+            "Downstream Effect": "Feeds ST03; thermal fault → ST04 speed reduction"
+          },
+          "caption": null
+        }
+      ],
+      "human_approved": false,
+      "empirical_causality_validated": false
+    }
+  ]
+}

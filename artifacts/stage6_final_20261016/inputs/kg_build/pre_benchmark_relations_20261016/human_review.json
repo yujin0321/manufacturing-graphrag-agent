@@ -1,0 +1,58 @@
+[
+  {
+    "identifier": "REL-01",
+    "candidate_graph_sha256": "1596536b3ec3f9c280eaf9a620ae2f6efc7a6b6d26264d853c979040c3a75fdf",
+    "first_reviewer": "",
+    "second_reviewer": "",
+    "decision": "pending",
+    "notes": ""
+  },
+  {
+    "identifier": "REL-02",
+    "candidate_graph_sha256": "1596536b3ec3f9c280eaf9a620ae2f6efc7a6b6d26264d853c979040c3a75fdf",
+    "first_reviewer": "",
+    "second_reviewer": "",
+    "decision": "pending",
+    "notes": ""
+  },
+  {
+    "identifier": "REL-03",
+    "candidate_graph_sha256": "1596536b3ec3f9c280eaf9a620ae2f6efc7a6b6d26264d853c979040c3a75fdf",
+    "first_reviewer": "",
+    "second_reviewer": "",
+    "decision": "pending",
+    "notes": ""
+  },
+  {
+    "identifier": "REL-04",
+    "candidate_graph_sha256": "1596536b3ec3f9c280eaf9a620ae2f6efc7a6b6d26264d853c979040c3a75fdf",
+    "first_reviewer": "",
+    "second_reviewer": "",
+    "decision": "pending",
+    "notes": ""
+  },
+  {
+    "identifier": "REL-05",
+    "candidate_graph_sha256": "1596536b3ec3f9c280eaf9a620ae2f6efc7a6b6d26264d853c979040c3a75fdf",
+    "first_reviewer": "",
+    "second_reviewer": "",
+    "decision": "pending",
+    "notes": ""
+  },
+  {
+    "identifier": "REL-06",
+    "candidate_graph_sha256": "1596536b3ec3f9c280eaf9a620ae2f6efc7a6b6d26264d853c979040c3a75fdf",
+    "first_reviewer": "",
+    "second_reviewer": "",
+    "decision": "pending",
+    "notes": ""
+  },
+  {
+    "identifier": "REL-07",
+    "candidate_graph_sha256": "1596536b3ec3f9c280eaf9a620ae2f6efc7a6b6d26264d853c979040c3a75fdf",
+    "first_reviewer": "",
+    "second_reviewer": "",
+    "decision": "pending",
+    "notes": ""
+  }
+]

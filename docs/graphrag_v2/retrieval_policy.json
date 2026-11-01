@@ -1,0 +1,15 @@
+{
+  "version": "graphrag-retrieval-v2-20261024",
+  "rrf_constant": 60,
+  "per_explicit_document": 2,
+  "max_source_candidates": 24,
+  "max_seed_nodes": 6,
+  "max_graph_nodes": 24,
+  "graph_hops": 2,
+  "max_graph_tokens": 800,
+  "context_token_budget": 4000,
+  "context_encoding": "o200k_base",
+  "traverse_predicates": ["appliesToSensor", "actionTarget", "hasSensor", "feedsInto"],
+  "source_before_graph_cards": true,
+  "embedding_api_enabled": false
+}

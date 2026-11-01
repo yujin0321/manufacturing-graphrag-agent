@@ -1,0 +1,32 @@
+{
+  "version": "yewon-v2-qa-scoring-v1-20261023",
+  "status": "fixed_by_user_delegation_before_system_evaluation",
+  "authorization": "User explicitly delegated final scoring criteria to assistant",
+  "expert_certification": false,
+  "all_team_signoff_claimed": false,
+  "rule_extraction_F1_modified": false,
+  "primary_metric": "mean total /5 on eval 24",
+  "content_points": [
+    0,
+    1
+  ],
+  "evidence": "valid required source units / required source units",
+  "faithfulness_points": [
+    0,
+    1
+  ],
+  "strict_correct": "all three content atoms + all evidence units + faithfulness satisfied",
+  "formal_eval_count": 24,
+  "dev_count": 6,
+  "hashes": {
+    "docs/benchmark_yewon_v2_20261023/questions_dev.jsonl": "af4a6ab6f6990bd798d92a0d2f5960b85b8a2be96916f8d5bd7095b74421ea1c",
+    "docs/benchmark_yewon_v2_20261023/questions_eval.jsonl": "5d77c4012790012db8ef3e1e22bc6ec3ef321578a97230487f305ae697bc7f04",
+    "docs/benchmark_yewon_v2_20261023/채점기준_확정_v1.md": "ff6be6313fe91533e71b96ef67bc87be143e52a6e37ade2ee234aaba0d261950",
+    "evaluation/benchmark_yewon_v2_20261023/answer_key_PRIVATE.json": "2192a9613a89725343b24e65048856cb48993ea537575341f69835364298e6ab",
+    "evaluation/benchmark_yewon_v2_20261023/문항별_채점체크리스트_PRIVATE.md": "4020f91711eb6df3367685b19d532491596633eb596656a4dc916f5f8828174c",
+    "evaluation/benchmark_yewon_v2_20261023/채점예시_PRIVATE.md": "573abfd9f82d154e01b21a1c43140adb4b4c8be44fc28577c364945f0d3a4e03",
+    "preprocessed/documents/chunks.jsonl": "7616d25cc638c47474324edc3fa22c011671fdff87a1735806ffa28854591665",
+    "artifacts/stage6_final_20261016/inputs/kg_build/openai_sol_v2_20261016/graph/candidate.ttl": "8ab82a866135afd1335caab06fe6e6e223d7b1ea37195e3fe6509cbbd407ef51"
+  },
+  "review_record_status_note": "answer_key source_review fields describe the prior review stage; this lock records subsequent scoring finalization"
+}

@@ -1,0 +1,4 @@
+# Lightweight API-based baseline; no torch, local weights, vector DB or OpenAI SDK.
+numpy>=1.24,<3
+tiktoken>=0.7,<1
+rdflib>=7,<8

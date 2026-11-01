@@ -20,13 +20,17 @@ iMAKS(제조 공정 합성 데이터셋)로 지식그래프(KG)를 직접 구축
 | ⑤ | 검증: ground_truth.csv 86규칙 대비 F1_content, MAINT-01~08 매핑표, 데이터시트 vs SOP-002 수치 충돌 |
 | ⑥ | 센서 시계열 기반 공정 간 인과관계 추론: `causallyAffects` 후보 발굴 (likelihoodScore). 입력은 라벨 없는 raw 시계열이며 임계값 컬럼은 제외(4장) |
 | ⑦ | 탐지 결과를 AnomalyEvent로 KG에 추가. 대표 테스트케이스는 GT-0009 |
-| ⑧ | GraphRAG 검색: Sparse-Dense-Graph 하이브리드 + 자연어→Cypher + Graph-to-Text |
+| ⑧ | GraphRAG 검색: Sparse-Dense-Graph 하이브리드 + 자연어→Cypher + Graph-to-Text. 기존 v3 경로는 `rag/agent_v3.py`, 최신 개선 경로는 `scripts/run_agent_v4.py` (dense 명시 선택) |
 | ⑨ | Agent 답변: 2-에이전트(추론 생성 + 자기검증), Premise→Inference→Conclusion→Evidence 구조 |
 | ⑩ | 평가: Baseline RAG vs GraphRAG ablation, RAGAS, 관계 유형별 Confusion Matrix |
 
 일정 기준: 10/1~10/7 전처리·온톨로지·SHACL, 10/8~10/14 KG 구축, 10/15~10/31 베이스라인·탐지기, 11/1~11/10 GraphRAG+Agent, 11/12~11/16 평가.
 
 ## 3. 확정된 결정 (임의로 바꾸지 말 것)
+
+- **v4.1 문서 Agent 개선(2026-10-28):** `scripts/run_agent_v4.py`가 최신 실행 경로다. 상황값 질문/실제 조회를 분리하고, 문서 전용 지침·선택적 dense·유형별 구조 검색·초안/근거 검증을 사용한다. 최대 검색2회·초안2회·검증2회이며 전체 검색 미확인과 원문 오류를 구분한다. 기존 v3는 보존한다. 이 제한형 경로를 프로젝트 전체의 2회 연속 수렴 하네스 완료로 표현하지 않는다. 사용법과 개발 회귀 결과는 `docs/graphrag_v4/`에 기록한다.
+
+- **v3 Agent 문서 검색 경로(2026-10-28):** `python -m imaks_kg.rag.agent_v3`는 graph_v3를 사용한다. 기존 Agent/v1/v2 경로는 보존한다. 문서 검색은 v2 인덱스·과거 탐지 저장소 없이 실행된다. 기본 BM25, `--dense`에서만 행 임베딩 인덱스를 사용한다. 후보 도구는 기존 봉인 저장소를 그대로 사용하며 KG 탐지기 v2의 연결은 아직 아니다. 검색 전용 `--retrieve-only`는 API 호출이 없다. 라우팅·답변 생성은 유료 API 경로다. 자세한 실행은 `docs/graphrag_v3/AGENT_V3.md`.
 
 - **Station(공정) 수준까지만 다룬다.** 내부 부품(Component) 계층은 만들지 않는다. 원본 Component 9개는 이름이 스테이션과 같으므로 Station으로 1:1 매핑한다.
 - **센서–스테이션 연결은 `hasSensor`(Station→Sensor) 단방향이다.** 원본 monitors 양방향 44줄(22쌍)은 하나로 정리한다.
@@ -101,3 +105,11 @@ iMAKS(제조 공정 합성 데이터셋)로 지식그래프(KG)를 직접 구축
 - 산출물 위치: 질문 `docs/competency_questions.md`, 온톨로지 `ontology_v1/`(`ontology.ttl`, `schema_tables.md`, `shapes.ttl`, `examples/`), 누수 검사 `guards/`, 테스트 `tests/test_shacl.py`, 결정 기록 `work_log.md`.
 - 데이터셋: iMAKS v3 (Zenodo, https://zenodo.org/records/20075430)
   - 로컬 저장 위치: `C:\Users\LG\manufacturing-graphrag-agent\imaks_data` (저장소 기준 상대 경로: `imaks_data/`). 코드에서는 절대 경로를 하드코딩하지 말고 저장소 기준 상대 경로나 설정 파일로 참조한다.
+
+## 2026-10-29: v5 검색 실험과 비용 정책
+
+- `5th-yujin`은 `4th-yujin` 기반이다. 기존 Agent v4.1 경로를 유지하고 `retrieval_v5.py`, `kg_query_v5.py`와 `experiments/graphrag_v5_20261029/`를 추가한다.
+- 사용자는 저장 임베딩 기반 전수 검색 비교 후 대표 문항만 검토하는 비용 제한 순서를 선택했다. 기본 실행은 네트워크 차단·API 0회이며 유료 대량 재실행을 자동으로 시작하지 않는다.
+- 130문항 중 검색 102개, 별도 오류 주입 2개, 입력 미지정 대기 26개. 대표 답변은 기존 6문항×3방식 18개 재사용·정성 대조다.
+- API 임베딩 캐시 35문항과 로컬 모델 102문항을 별도 보고한다. 문서 QA에서는 구조화 조회를 끈 대조군과 동률이며 KG 구조 조회에서 추가 이득을 확인했다. 신규 인과·전체 답변 정확도·독립 미노출 성능을 주장하지 않는다.
+- 원문·가중치·API 캐시·PRIVATE 정답은 공개 커밋에 넣지 않는다. 로컬 재현 입력은 실험 README에 명시한다.

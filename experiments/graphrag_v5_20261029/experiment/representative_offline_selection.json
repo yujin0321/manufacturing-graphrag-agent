@@ -1,0 +1,116 @@
+{
+  "questions": [
+    {
+      "id": "G02",
+      "reason": "교차 문서·센서 규칙 전체 회수",
+      "answers": {
+        "LLM": {
+          "path": "graphrag_v5_20261029\\runs\\answers_final\\LLM\\G02\\answer.json",
+          "sha256": "b77dbefe666a924c16a6b7ba58e6033965c7d2684cd472e0d8b5c13527369f39"
+        },
+        "VectorRAG": {
+          "path": "graphrag_v5_20261029\\runs\\answers_final\\VectorRAG\\G02\\answer.json",
+          "sha256": "1f1a9a660308575774c6c16330857ea4d5806d159de9dfa971d15c1de8a109de"
+        },
+        "GraphRAG": {
+          "path": "graphrag_v5_20261029\\runs\\answers_final\\GraphRAG\\G02\\answer.json",
+          "sha256": "11083524c2ff0aacd3cc1294375534f33a0399f21401cb94a4f58fa268a32115"
+        }
+      }
+    },
+    {
+      "id": "G06",
+      "reason": "규칙 참조와 조치 순서",
+      "answers": {
+        "LLM": {
+          "path": "graphrag_v5_20261029\\runs\\answers_final\\LLM\\G06\\answer.json",
+          "sha256": "1a3d2303c3f19891966e887cf09d31b0d7afd0f29a4cf68040782e9b090499f1"
+        },
+        "VectorRAG": {
+          "path": "graphrag_v5_20261029\\runs\\answers_final\\VectorRAG\\G06\\answer.json",
+          "sha256": "bee31825e5670ce4cbc10947402c1ea2c2f0dda828bd2501f93d6e64266814d4"
+        },
+        "GraphRAG": {
+          "path": "graphrag_v5_20261029\\runs\\answers_final\\GraphRAG\\G06\\answer.json",
+          "sha256": "f5208292f598a55e7d577e04b85b2a308c2ff24772cd450570556c728aeb3c15"
+        }
+      }
+    },
+    {
+      "id": "G10",
+      "reason": "현장 표현·복합 조치",
+      "answers": {
+        "LLM": {
+          "path": "graphrag_v5_20261029\\runs\\answers_final\\LLM\\G10\\answer.json",
+          "sha256": "c7a8b84933ae2dd7511acd086152ed9f5a20363e0753d7f1aa99043604b6d6ae"
+        },
+        "VectorRAG": {
+          "path": "graphrag_v5_20261029\\runs\\answers_final\\VectorRAG\\G10\\answer.json",
+          "sha256": "43808f0e2d24ac4e612c4c0aaa5bbfc2765a01cd38d0a2a57c9eade1ba06cc79"
+        },
+        "GraphRAG": {
+          "path": "graphrag_v5_20261029\\runs\\answers_final\\GraphRAG\\G10\\answer.json",
+          "sha256": "92498c2bbe67c54171b5dcc3304acefa6964b70a61b83eef613a892255538c17"
+        }
+      }
+    },
+    {
+      "id": "G13",
+      "reason": "그래프 이득이 없어야 하는 대조 문항",
+      "answers": {
+        "LLM": {
+          "path": "graphrag_v5_20261029\\runs\\answers_final\\LLM\\G13\\answer.json",
+          "sha256": "419be0a5e9e6c942df9a67929254060814dfc629c74af703b0b5afefe3f00d19"
+        },
+        "VectorRAG": {
+          "path": "graphrag_v5_20261029\\runs\\answers_final\\VectorRAG\\G13\\answer.json",
+          "sha256": "5599a6ccec0da527f57b6617672322794ca8dfdd03fdc73287c6e40ff693e145"
+        },
+        "GraphRAG": {
+          "path": "graphrag_v5_20261029\\runs\\answers_final\\GraphRAG\\G13\\answer.json",
+          "sha256": "c1b000c82ef51d1aa6f0911f2233cc2203c2c8b03fb6c48c0604210d6004aba2"
+        }
+      }
+    },
+    {
+      "id": "NEW-03",
+      "reason": "측정 불확실성",
+      "answers": {
+        "LLM": {
+          "path": "graphrag_v5_20261029\\runs\\answers_final\\LLM\\NEW-03\\answer.json",
+          "sha256": "6669b766e64e2dbbf8e40a8c7995293b419acf2d4e6d4a9469df8ba8c3415bb7"
+        },
+        "VectorRAG": {
+          "path": "graphrag_v5_20261029\\runs\\answers_final\\VectorRAG\\NEW-03\\answer.json",
+          "sha256": "9efffaaf32f5724e159b65332e54e51e2f3219cf5f207e2947db4bba780c0bc4"
+        },
+        "GraphRAG": {
+          "path": "graphrag_v5_20261029\\runs\\answers_final\\GraphRAG\\NEW-03\\answer.json",
+          "sha256": "46e98e34806a85ccc476db2d53c3f4b04fd73899cf7ca61bdf36d28c95320fb3"
+        }
+      }
+    },
+    {
+      "id": "NEW-10",
+      "reason": "결측·연속 조건",
+      "answers": {
+        "LLM": {
+          "path": "graphrag_v5_20261029\\runs\\answers_final\\LLM\\NEW-10\\answer.json",
+          "sha256": "8010556c342aa727b0491b8c649c1e188c6499ce4f5a2c7c3eecf2d9002ea8e8"
+        },
+        "VectorRAG": {
+          "path": "graphrag_v5_20261029\\runs\\answers_final\\VectorRAG\\NEW-10\\answer.json",
+          "sha256": "50277ca92d506c782b3ab53cdbdb5081f1907a53310ff4a0bc4367fb24250a9d"
+        },
+        "GraphRAG": {
+          "path": "graphrag_v5_20261029\\runs\\answers_final\\GraphRAG\\NEW-10\\answer.json",
+          "sha256": "16d6416752f1cab4d4c84f6abd72c26b67a506d37a484f07f63c494a102f9246"
+        }
+      }
+    }
+  ],
+  "new_generation_calls": 0,
+  "new_judge_calls": 0,
+  "selection": "Predeclared coverage-based cases before opening answer texts in this review; existing historical API outputs reused.",
+  "limit": "Historical API answer review is separate from the new local encoder retrieval results."
+}

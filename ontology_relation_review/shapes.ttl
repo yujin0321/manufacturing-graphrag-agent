@@ -1,0 +1,20 @@
+@prefix rc: <https://example.org/imaks/relation-review/v1#> .
+@prefix im: <https://example.org/imaks/v1#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+rc:CandidateShape a sh:NodeShape; sh:targetClass rc:RelationCandidate;
+ sh:property [ sh:path rc:subject; sh:minCount 1; sh:maxCount 1; sh:nodeKind sh:IRI ];
+ sh:property [ sh:path rc:object; sh:minCount 1; sh:maxCount 1; sh:nodeKind sh:IRI ];
+ sh:property [ sh:path rc:relationType; sh:minCount 1; sh:maxCount 1; sh:in (rc:documentedAssociation rc:requiresMonitoring rc:requiresRuleCheck rc:requiresShutdown rc:documentedThermalEffect) ];
+ sh:property [ sh:path rc:conditionText; sh:minCount 1; sh:maxCount 1; sh:datatype xsd:string; sh:minLength 1 ];
+ sh:property [ sh:path rc:reviewStatus; sh:minCount 1; sh:maxCount 1; sh:in ("pending") ];
+ sh:property [ sh:path rc:evidenceMode; sh:minCount 1; sh:maxCount 1; sh:in ("document_explicit") ];
+ sh:property [ sh:path rc:evidence; sh:minCount 1; sh:node rc:EvidenceShape ];
+ sh:property [ sh:path im:causallyAffects; sh:maxCount 0 ].
+rc:EvidenceShape a sh:NodeShape;
+ sh:property [ sh:path rc:sourceQuote; sh:minCount 1; sh:datatype xsd:string; sh:minLength 1 ];
+ sh:property [ sh:path rc:sourceUnit; sh:minCount 1; sh:datatype xsd:string ];
+ sh:property [ sh:path rc:sourceFileSha256; sh:minCount 1; sh:pattern "^[a-f0-9]{64}$" ];
+ sh:property [ sh:path rc:page; sh:minCount 1; sh:datatype xsd:integer; sh:minInclusive 1 ].
+
+rc:CandidateShape sh:or ( [ sh:property [ sh:path rc:relationType; sh:hasValue rc:documentedAssociation ]; sh:property [ sh:path rc:subject; sh:class im:Sensor ]; sh:property [ sh:path rc:object; sh:class im:Sensor ] ] [ sh:property [ sh:path rc:relationType; sh:hasValue rc:requiresMonitoring ]; sh:property [ sh:path rc:subject; sh:class im:Sensor ]; sh:property [ sh:path rc:object; sh:class im:Sensor ] ] [ sh:property [ sh:path rc:relationType; sh:hasValue rc:requiresShutdown ]; sh:property [ sh:path rc:subject; sh:class im:Sensor ]; sh:property [ sh:path rc:object; sh:class im:Station ] ] [ sh:property [ sh:path rc:relationType; sh:hasValue rc:documentedThermalEffect ]; sh:property [ sh:path rc:subject; sh:class im:Station ]; sh:property [ sh:path rc:object; sh:class im:Station ] ] [ sh:property [ sh:path rc:relationType; sh:hasValue rc:requiresRuleCheck ]; sh:property [ sh:path rc:subject; sh:or ( [ sh:class im:OperationalRule ] [ sh:class im:ThresholdRule ] [ sh:class im:MaintenanceRule ] [ sh:class im:AccessRule ] ) ]; sh:property [ sh:path rc:object; sh:or ( [ sh:class im:OperationalRule ] [ sh:class im:ThresholdRule ] [ sh:class im:MaintenanceRule ] [ sh:class im:AccessRule ] ) ] ] ) .

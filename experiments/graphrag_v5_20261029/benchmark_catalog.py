@@ -1,0 +1,1920 @@
+"""Complete question catalog: IDs, text, provenance, tracks and missing inputs. No answer keys."""
+import json
+
+BENCHMARKS = json.loads(r'''
+[
+  {
+    "id": "YV2-Q01",
+    "question": "SOP-001에 따르면 ST01_FILLING의 유량 유지 범위와 단위는?",
+    "category": "단일 규칙",
+    "split": "dev",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "YV2-Q01",
+      "dev",
+      "단일 규칙",
+      "SOP-001에 따르면 ST01_FILLING의 유량 유지 범위와 단위는?"
+    ],
+    "family_id": "same_original_question_YV2-Q01",
+    "question_sha256": "8c79c1dd2d015af6c5c27ce48ddaedd1315afc71da0ec891855c605a38630071"
+  },
+  {
+    "id": "YV2-Q02",
+    "question": "ST01_FILLING의 온도가 27°C일 때 SOP-001의 해당 규칙은 무엇을 하라고 하는가?",
+    "category": "단일 규칙",
+    "split": "eval",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "YV2-Q02",
+      "eval",
+      "단일 규칙",
+      "ST01_FILLING의 온도가 27°C일 때 SOP-001의 해당 규칙은 무엇을 하라고 하는가?"
+    ],
+    "family_id": "same_original_question_YV2-Q02",
+    "question_sha256": "a0d423dfd72b831222baed05f0c7e337b8075ab2b2bd91f8689cc771452c50bd"
+  },
+  {
+    "id": "YV2-Q03",
+    "question": "ST04_PACKAGING의 진동이 0.36 mm/s일 때 SOP-001의 CRITICAL 규칙이 지시하는 조치와 기준을 설명하라.",
+    "category": "단일 규칙",
+    "split": "eval",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "YV2-Q03",
+      "eval",
+      "단일 규칙",
+      "ST04_PACKAGING의 진동이 0.36 mm/s일 때 SOP-001의 CRITICAL 규칙이 지시하는 조치와 기준을 설명하라."
+    ],
+    "family_id": "same_original_question_YV2-Q03",
+    "question_sha256": "b59e6344d9c1d7a7ec7f93db70a1945f85e0db207c781574ddb1fb85440e21b5"
+  },
+  {
+    "id": "YV2-Q04",
+    "question": "RND01_RDLAB 습도가 76%RH일 때 SOP-001 RULE-RND01-02의 CRITICAL 분기에서 요구하는 조치와 기준은?",
+    "category": "단일 규칙",
+    "split": "eval",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "YV2-Q04",
+      "eval",
+      "단일 규칙",
+      "RND01_RDLAB 습도가 76%RH일 때 SOP-001 RULE-RND01-02의 CRITICAL 분기에서 요구하는 조치와 기준은?"
+    ],
+    "family_id": "same_original_question_YV2-Q04",
+    "question_sha256": "d10535a436889942a483afef01c5f67d969ec5f37288beffa78110ca7ee821db"
+  },
+  {
+    "id": "YV2-Q05",
+    "question": "SOP-004의 화학물질 보관 구역 무단 출입 특별 규칙은 어떻게 대응하도록 하는가?",
+    "category": "단일 규칙",
+    "split": "eval",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "YV2-Q05",
+      "eval",
+      "단일 규칙",
+      "SOP-004의 화학물질 보관 구역 무단 출입 특별 규칙은 어떻게 대응하도록 하는가?"
+    ],
+    "family_id": "same_original_question_YV2-Q05",
+    "question_sha256": "2bbb68db37e884967fb0e1c46201f6acd3e3a865bb6c781ebb8db25dc8a5c65c"
+  },
+  {
+    "id": "YV2-Q06",
+    "question": "SOP-002 ST02_SEALING 전류 행의 명목값(허용오차 포함), 경고 상한, 위험 상한을 단위와 함께 제시하라.",
+    "category": "수치·조건",
+    "split": "dev",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "YV2-Q06",
+      "dev",
+      "수치·조건",
+      "SOP-002 ST02_SEALING 전류 행의 명목값(허용오차 포함), 경고 상한, 위험 상한을 단위와 함께 제시하라."
+    ],
+    "family_id": "same_original_question_YV2-Q06",
+    "question_sha256": "1397ae3cacf47615ce51456265d5ab4b615415c71b1b53a588edadac866c3b8b"
+  },
+  {
+    "id": "YV2-Q07",
+    "question": "ST02 전류가 명목보다 1.6 A 높게 6분 지속되었다. SOP-001 RULE-ST02-03 적용 여부와 조치를 설명하라.",
+    "category": "수치·조건",
+    "split": "eval",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "YV2-Q07",
+      "eval",
+      "수치·조건",
+      "ST02 전류가 명목보다 1.6 A 높게 6분 지속되었다. SOP-001 RULE-ST02-03 적용 여부와 조치를 설명하라."
+    ],
+    "family_id": "same_original_question_YV2-Q07",
+    "question_sha256": "ebc44f1c8e4f186c24ada41f7ecf11ba34f62c6c299c7b21193328b88db83d22"
+  },
+  {
+    "id": "YV2-Q08",
+    "question": "ST01 압력이 3.2 bar로 16분 지속되었다. SOP-003의 정비 규칙 ID·조치·우선순위는?",
+    "category": "수치·조건",
+    "split": "eval",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "YV2-Q08",
+      "eval",
+      "수치·조건",
+      "ST01 압력이 3.2 bar로 16분 지속되었다. SOP-003의 정비 규칙 ID·조치·우선순위는?"
+    ],
+    "family_id": "same_original_question_YV2-Q08",
+    "question_sha256": "f33c3a8f38a659723236da8dc7133fa5d26c86e638d3da80865b7c47cd9fbb53"
+  },
+  {
+    "id": "YV2-Q09",
+    "question": "서버실 온도가 26°C로 6분 지속되었다. SOP-003 정비 기준과 SOP-001 PLC 종료 기준을 구별하라.",
+    "category": "수치·조건",
+    "split": "eval",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "YV2-Q09",
+      "eval",
+      "수치·조건",
+      "서버실 온도가 26°C로 6분 지속되었다. SOP-003 정비 기준과 SOP-001 PLC 종료 기준을 구별하라."
+    ],
+    "family_id": "same_original_question_YV2-Q09",
+    "question_sha256": "a6c64c344b08d5e57f2245b207cb3aa78df691e82f9b5e48a1e71875ced8c3ea"
+  },
+  {
+    "id": "YV2-Q10",
+    "question": "SOP-001 RULE-ST02-02의 문구만 적용할 때 정확히 210°C에서도 해당 비상정지 조건이 성립하는가? 이 규칙만으로 설비의 안전까지 판단할 수 있는지도 설명하라.",
+    "category": "수치·조건",
+    "split": "eval",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "YV2-Q10",
+      "eval",
+      "수치·조건",
+      "SOP-001 RULE-ST02-02의 문구만 적용할 때 정확히 210°C에서도 해당 비상정지 조건이 성립하는가? 이 규칙만으로 설비의 안전까지 판단할 수 있는지도 설명하라."
+    ],
+    "family_id": "same_original_question_YV2-Q10",
+    "question_sha256": "89274f1e57ee57f988ed22b84dca607a47e0b001693b8e22cd8c16fbfb4eed37"
+  },
+  {
+    "id": "YV2-Q11",
+    "question": "SOP-001에 적힌 ST01부터 ST04까지의 물류 진행 순서를 설명하라.",
+    "category": "연결·절차",
+    "split": "dev",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "YV2-Q11",
+      "dev",
+      "연결·절차",
+      "SOP-001에 적힌 ST01부터 ST04까지의 물류 진행 순서를 설명하라."
+    ],
+    "family_id": "same_original_question_YV2-Q11",
+    "question_sha256": "a8428111eaebbb3ba4ba8326e0e452ec092934181aa0be12ebac44e82420f8ea"
+  },
+  {
+    "id": "YV2-Q12",
+    "question": "ST02_SEALING 전류에 WARNING이 발생했다. SOP-001의 어떤 규칙 ID에 따라 다른 어느 센서를 모니터링해야 하며, 문서가 설명하는 이유는 무엇인가?",
+    "category": "연결·절차",
+    "split": "eval",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "YV2-Q12",
+      "eval",
+      "연결·절차",
+      "ST02_SEALING 전류에 WARNING이 발생했다. SOP-001의 어떤 규칙 ID에 따라 다른 어느 센서를 모니터링해야 하며, 문서가 설명하는 이유는 무엇인가?"
+    ],
+    "family_id": "same_original_question_YV2-Q12",
+    "question_sha256": "7c2a760911ebf320da9eae3e22044ebb024d56efdba935a9f9ee52c5550c6804"
+  },
+  {
+    "id": "YV2-Q13",
+    "question": "작업자 명령 없이 ST04 속도가 0.95 m/s로 떨어졌다. SOP-001에서 어떤 규칙을 거쳐 어느 상류 센서를 확인해야 하는가?",
+    "category": "연결·절차",
+    "split": "eval",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "YV2-Q13",
+      "eval",
+      "연결·절차",
+      "작업자 명령 없이 ST04 속도가 0.95 m/s로 떨어졌다. SOP-001에서 어떤 규칙을 거쳐 어느 상류 센서를 확인해야 하는가?"
+    ],
+    "family_id": "same_original_question_YV2-Q13",
+    "question_sha256": "cf0acf6865b1c5cfde5e3867ac571241fc0a3ce8e02fb2db268bde479b57fab7"
+  },
+  {
+    "id": "YV2-Q14",
+    "question": "ST02 전류 상승과 ST04 속도 저하가 함께 나타나는 패턴에 대해 SOP-003의 해소 순서를 제시하라.",
+    "category": "연결·절차",
+    "split": "eval",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "YV2-Q14",
+      "eval",
+      "연결·절차",
+      "ST02 전류 상승과 ST04 속도 저하가 함께 나타나는 패턴에 대해 SOP-003의 해소 순서를 제시하라."
+    ],
+    "family_id": "same_original_question_YV2-Q14",
+    "question_sha256": "24804fe02c0ba525287158bb475c562e986c293b28f70b678d7c702f3e44f7f0"
+  },
+  {
+    "id": "YV2-Q15",
+    "question": "ST02 온도가 212°C이다. SOP-001과 SOP-002를 함께 참고해 정지 대상과 추가 점검 대상을 설명하라.",
+    "category": "연결·절차",
+    "split": "eval",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "YV2-Q15",
+      "eval",
+      "연결·절차",
+      "ST02 온도가 212°C이다. SOP-001과 SOP-002를 함께 참고해 정지 대상과 추가 점검 대상을 설명하라."
+    ],
+    "family_id": "temperature_shutdown",
+    "question_sha256": "d8eddd585cbd0f284a8edb017c277763c2bbeb2ce3dc4f073608803afe63e8af"
+  },
+  {
+    "id": "YV2-Q16",
+    "question": "ST02 전류에 대해 SOP-002 경고·위험 상한과 DS-ELEC-3300 연속 운전 정격을 비교하라. 이를 동일한 종류의 값으로 취급해도 되는가?",
+    "category": "문서 비교",
+    "split": "dev",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "YV2-Q16",
+      "dev",
+      "문서 비교",
+      "ST02 전류에 대해 SOP-002 경고·위험 상한과 DS-ELEC-3300 연속 운전 정격을 비교하라. 이를 동일한 종류의 값으로 취급해도 되는가?"
+    ],
+    "family_id": "same_original_question_YV2-Q16",
+    "question_sha256": "42121e0454e8962f8dde61e2245f8915b9db91f8927edebed3766677e7c80249"
+  },
+  {
+    "id": "YV2-Q17",
+    "question": "ST02 온도 위험 상한과 DS-THERM-2200의 연속 운전 한계·고온 지속 운전 권고를 출처별로 비교하라.",
+    "category": "문서 비교",
+    "split": "eval",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "YV2-Q17",
+      "eval",
+      "문서 비교",
+      "ST02 온도 위험 상한과 DS-THERM-2200의 연속 운전 한계·고온 지속 운전 권고를 출처별로 비교하라."
+    ],
+    "family_id": "same_original_question_YV2-Q17",
+    "question_sha256": "9fc2ea2442567e15dccd6104cf76ea77777452439aac7c322d5301fa6f59a2d0"
+  },
+  {
+    "id": "YV2-Q18",
+    "question": "PRS-4410 적용을 가정할 때 ST01 압력의 nominal→WARN_HI 간격은 데이터시트 권고 0.50 bar와 비교해 어떠한가? 0.30 bar 기준과도 구별하라.",
+    "category": "문서 비교",
+    "split": "eval",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "YV2-Q18",
+      "eval",
+      "문서 비교",
+      "PRS-4410 적용을 가정할 때 ST01 압력의 nominal→WARN_HI 간격은 데이터시트 권고 0.50 bar와 비교해 어떠한가? 0.30 bar 기준과도 구별하라."
+    ],
+    "family_id": "same_original_question_YV2-Q18",
+    "question_sha256": "707219e9c5f84d74210233a2f69903b97f113d8101f1bc22af050d5ff9a3d619"
+  },
+  {
+    "id": "YV2-Q19",
+    "question": "DS-ELEC-3300 표의 Short-time overload 항목과 Note 2의 between 14 A and 20 A 문장을 각각 전류·시간 조건과 함께 비교하라. 두 문구를 단일 허용시간으로 확정할 수 있는가?",
+    "category": "문서 비교",
+    "split": "eval",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "YV2-Q19",
+      "eval",
+      "문서 비교",
+      "DS-ELEC-3300 표의 Short-time overload 항목과 Note 2의 between 14 A and 20 A 문장을 각각 전류·시간 조건과 함께 비교하라. 두 문구를 단일 허용시간으로 확정할 수 있는가?"
+    ],
+    "family_id": "same_original_question_YV2-Q19",
+    "question_sha256": "d31539043f785cde5f4a38c49d92383ccb580e97cdac7894918c56f36267ad53"
+  },
+  {
+    "id": "YV2-Q20",
+    "question": "서버실 온도가 29°C일 때 SOP-001과 SOP-002의 대응 문구를 각각 설명하라.",
+    "category": "문서 비교",
+    "split": "eval",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "YV2-Q20",
+      "eval",
+      "문서 비교",
+      "서버실 온도가 29°C일 때 SOP-001과 SOP-002의 대응 문구를 각각 설명하라."
+    ],
+    "family_id": "same_original_question_YV2-Q20",
+    "question_sha256": "d06c097d5c98f65eae030122dc8e3713d80bcf19faf878a0041baf385e63ebab"
+  },
+  {
+    "id": "YV2-Q21",
+    "question": "SOP-003 MAINT-03의 센서·발동 조건·조치·우선순위를 출처와 함께 제시하라.",
+    "category": "근거·권한",
+    "split": "dev",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "YV2-Q21",
+      "dev",
+      "근거·권한",
+      "SOP-003 MAINT-03의 센서·발동 조건·조치·우선순위를 출처와 함께 제시하라."
+    ],
+    "family_id": "same_original_question_YV2-Q21",
+    "question_sha256": "776c2d5ecf1e19bba007dc501151c68236015615e354b22f181296486543a1d8"
+  },
+  {
+    "id": "YV2-Q22",
+    "question": "SOP-004 역할표만 기준으로 operator는 서버실과 일반 창고에 각각 출입 가능한가? 이 역할표만으로 특정 개인의 실제 권한·출입 이력도 확인할 수 있는가?",
+    "category": "근거·권한",
+    "split": "eval",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "YV2-Q22",
+      "eval",
+      "근거·권한",
+      "SOP-004 역할표만 기준으로 operator는 서버실과 일반 창고에 각각 출입 가능한가? 이 역할표만으로 특정 개인의 실제 권한·출입 이력도 확인할 수 있는가?"
+    ],
+    "family_id": "same_original_question_YV2-Q22",
+    "question_sha256": "27dd7794e96a3331f8eb559ff877e79563b279b4bef2f0bce2f6c12ff342a706"
+  },
+  {
+    "id": "YV2-Q23",
+    "question": "SOP-004에서 technician과 supervisor의 CRITICAL 경보 최대 확인 시간은 각각 얼마이고 차이는 몇 분인가? 이 시간이 경보 확인인지 정비 완료 기한인지도 구별하라.",
+    "category": "근거·권한",
+    "split": "eval",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "YV2-Q23",
+      "eval",
+      "근거·권한",
+      "SOP-004에서 technician과 supervisor의 CRITICAL 경보 최대 확인 시간은 각각 얼마이고 차이는 몇 분인가? 이 시간이 경보 확인인지 정비 완료 기한인지도 구별하라."
+    ],
+    "family_id": "same_original_question_YV2-Q23",
+    "question_sha256": "fc2299b55590501206b5f44675de321662c3c268d08bf645b533a3db3bbb167e"
+  },
+  {
+    "id": "YV2-Q24",
+    "question": "SOP-004의 생산 구역 최대 인원은 몇 명인가? 11명 및 13명이 있다고 가정할 때 각각 어떤 가장 높은 경보 조건을 충족하는가?",
+    "category": "근거·권한",
+    "split": "eval",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "YV2-Q24",
+      "eval",
+      "근거·권한",
+      "SOP-004의 생산 구역 최대 인원은 몇 명인가? 11명 및 13명이 있다고 가정할 때 각각 어떤 가장 높은 경보 조건을 충족하는가?"
+    ],
+    "family_id": "same_original_question_YV2-Q24",
+    "question_sha256": "06c28754f9f9ce88070519d407f5c4077f86484812966a66eda26e511f85ead0"
+  },
+  {
+    "id": "YV2-Q25",
+    "question": "Chemical Storage에 security 역할이 출입 가능한지 SOP-004 역할표와 SOP-001 RULE-CHM01-03을 함께 검토하라.",
+    "category": "근거·권한",
+    "split": "eval",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "YV2-Q25",
+      "eval",
+      "근거·권한",
+      "Chemical Storage에 security 역할이 출입 가능한지 SOP-004 역할표와 SOP-001 RULE-CHM01-03을 함께 검토하라."
+    ],
+    "family_id": "same_original_question_YV2-Q25",
+    "question_sha256": "f3a575cadd2caff59fbbc0c1a5f7534584ad5ae7f4bbf94d4aedf27f39b04067"
+  },
+  {
+    "id": "YV2-Q26",
+    "question": "제공된 문서만으로 지금 ST04 속도 저하의 실제 원인이 ST02 모터 과부하라고 확정할 수 있는가?",
+    "category": "답변 한계",
+    "split": "dev",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "YV2-Q26",
+      "dev",
+      "답변 한계",
+      "제공된 문서만으로 지금 ST04 속도 저하의 실제 원인이 ST02 모터 과부하라고 확정할 수 있는가?"
+    ],
+    "family_id": "same_original_question_YV2-Q26",
+    "question_sha256": "39ffa40593287f9ae0935ed10afa608249fec6f0c7895e59726958db8b83183c"
+  },
+  {
+    "id": "YV2-Q27",
+    "question": "SOP에 적힌 ST02→ST04 연관만으로 이번 프로젝트가 새로운 인과관계를 발견했다고 말할 수 있는가?",
+    "category": "답변 한계",
+    "split": "eval",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "YV2-Q27",
+      "eval",
+      "답변 한계",
+      "SOP에 적힌 ST02→ST04 연관만으로 이번 프로젝트가 새로운 인과관계를 발견했다고 말할 수 있는가?"
+    ],
+    "family_id": "same_original_question_YV2-Q27",
+    "question_sha256": "1be80f73da3e67e9e003cbb2955998e9e9b93377d337a032b29c8715507b401c"
+  },
+  {
+    "id": "YV2-Q28",
+    "question": "제공된 SOP·데이터시트만으로 ST02 전류 경고 후 ST04 속도 저하까지의 정확한 시차와 발생 확률을 알 수 있는가? SOP-002의 일반 CORRELATED 시간 정의를 이 쌍의 측정 시차로 볼 수 있는지도 설명하라.",
+    "category": "답변 한계",
+    "split": "eval",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "YV2-Q28",
+      "eval",
+      "답변 한계",
+      "제공된 SOP·데이터시트만으로 ST02 전류 경고 후 ST04 속도 저하까지의 정확한 시차와 발생 확률을 알 수 있는가? SOP-002의 일반 CORRELATED 시간 정의를 이 쌍의 측정 시차로 볼 수 있는지도 설명하라."
+    ],
+    "family_id": "same_original_question_YV2-Q28",
+    "question_sha256": "e96e321ae136af6fe40e062e2032d79cb221492ca70fb7765cf48f94961aa46c"
+  },
+  {
+    "id": "YV2-Q29",
+    "question": "제공된 SOP 4개·데이터시트 3개만으로 ST02에 실제 설치된 온도 센서가 TMP-2210인지 확정할 수 있는가? 그 이유와 확인에 필요한 추가 자료를 설명하라.",
+    "category": "답변 한계",
+    "split": "eval",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "YV2-Q29",
+      "eval",
+      "답변 한계",
+      "제공된 SOP 4개·데이터시트 3개만으로 ST02에 실제 설치된 온도 센서가 TMP-2210인지 확정할 수 있는가? 그 이유와 확인에 필요한 추가 자료를 설명하라."
+    ],
+    "family_id": "same_original_question_YV2-Q29",
+    "question_sha256": "ce379623c63f9738fe3601757d66672a253ef0168c9f9741eb1a36ee3d712353"
+  },
+  {
+    "id": "YV2-Q30",
+    "question": "제공된 정적 SOP·데이터시트만으로 현재 서버실 온도와 PLC 종료 실행 여부를 알려 달라.",
+    "category": "답변 한계",
+    "split": "eval",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "YV2-Q30",
+      "eval",
+      "답변 한계",
+      "제공된 정적 SOP·데이터시트만으로 현재 서버실 온도와 PLC 종료 실행 여부를 알려 달라."
+    ],
+    "family_id": "same_original_question_YV2-Q30",
+    "question_sha256": "65a2e17f0b93e941a13a9cad37e43c3d60096f27ce935e7041786a9de6f5b8e4"
+  },
+  {
+    "id": "REL-D01",
+    "question": "SOP-001의 RULE-* 본문 전체에서 ST04_PACKAGING을 비상정지 대상으로 명시한 규칙을 모두 찾아라. 규칙 ID, 조건(수치·단위·부등호 포함), 전체 정지 대상, 출처 위치를 행별로 제시하라. ST04의 속도를 감시하거나 점검하라는 지시는 비상정지 규칙 집합에 넣지 말라. 표와 다른 문서는 제외한다.",
+    "category": "전체 대상 회수",
+    "split": "draft_exposed",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "REL-D01",
+      "추가 초안·문서 QA",
+      "전체 대상 회수",
+      "SOP-001의 RULE-* 본문 전체에서 ST04_PACKAGING을 비상정지 대상으로 명시한 규칙을 모두 찾아라. 규칙 ID, 조건(수치·단위·부등호 포함), 전체 정지 대상, 출처 위치를 행별로 제시하라. ST04의 속도를 감시하거나 점검하라는 지시는 비상정지 규칙 집합에 넣지 말라. 표와 다른 문서는 제외한다."
+    ],
+    "family_id": "same_original_question_REL-D01",
+    "question_sha256": "b603ffef9174cc982b4ad1c52b2952fc882c7ea39f8b28a0f442d8fa44fa89bc"
+  },
+  {
+    "id": "REL-D02",
+    "question": "SOP-001의 ST02_SEALING 절과 SOP-002의 ST02_SEALING 임계값 표에서, ST02 이외 공정에 대한 정지·감시·확인을 명시한 항목을 모두 찾아라. 출발 센서, 발동 조건, 다른 공정·센서, 조치 종류를 구분하고 문서별로 제시하라. 서로 다른 조건을 합쳐 무조건적인 지시로 만들지 말라.",
+    "category": "조건부 교차 대상",
+    "split": "draft_exposed",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "REL-D02",
+      "추가 초안·문서 QA",
+      "조건부 교차 대상",
+      "SOP-001의 ST02_SEALING 절과 SOP-002의 ST02_SEALING 임계값 표에서, ST02 이외 공정에 대한 정지·감시·확인을 명시한 항목을 모두 찾아라. 출발 센서, 발동 조건, 다른 공정·센서, 조치 종류를 구분하고 문서별로 제시하라. 서로 다른 조건을 합쳐 무조건적인 지시로 만들지 말라."
+    ],
+    "family_id": "same_original_question_REL-D02",
+    "question_sha256": "265eb9e274e9ca68461093ee503c30c8497641f181e56be3f3a0b867a88a1be7"
+  },
+  {
+    "id": "REL-D03",
+    "question": "SOP-003 Predictive Maintenance Rules 표 전체에서 센서 유형이 TMP인 정비 규칙을 모두 찾아라. 각 규칙의 공정, 발동 조건, 조치, 우선순위를 정리하고, 복수 규칙에 등장하는 조치 유형과 공정별 차이를 설명하라. 현재 고장 발생이나 실제 조치 수행을 추정하지 말라.",
+    "category": "공유 속성 전체 조회",
+    "split": "draft_exposed",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "REL-D03",
+      "추가 초안·문서 QA",
+      "공유 속성 전체 조회",
+      "SOP-003 Predictive Maintenance Rules 표 전체에서 센서 유형이 TMP인 정비 규칙을 모두 찾아라. 각 규칙의 공정, 발동 조건, 조치, 우선순위를 정리하고, 복수 규칙에 등장하는 조치 유형과 공정별 차이를 설명하라. 현재 고장 발생이나 실제 조치 수행을 추정하지 말라."
+    ],
+    "family_id": "same_original_question_REL-D03",
+    "question_sha256": "5fe4e59628a6af1c1b7d1cb8927b63aab184b9cc1b7fcc93a165d9ea0e743956"
+  },
+  {
+    "id": "REL-D04",
+    "question": "SOP-001 RULE-* 본문 전체에서 다른 RULE ID를 verify 또는 check하도록 명시한 항목을 모두 찾아라. 지시하는 규칙→확인할 규칙의 방향과 발동 조건을 제시하고, 확인 대상 규칙별로 자신을 참조하는 규칙을 역으로 묶어라. 단순한 ID 공동 출현이나 설명상의 연관은 확인 지시와 구분하라.",
+    "category": "참조 방향과 역조회",
+    "split": "draft_exposed",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "REL-D04",
+      "추가 초안·문서 QA",
+      "참조 방향과 역조회",
+      "SOP-001 RULE-* 본문 전체에서 다른 RULE ID를 verify 또는 check하도록 명시한 항목을 모두 찾아라. 지시하는 규칙→확인할 규칙의 방향과 발동 조건을 제시하고, 확인 대상 규칙별로 자신을 참조하는 규칙을 역으로 묶어라. 단순한 ID 공동 출현이나 설명상의 연관은 확인 지시와 구분하라."
+    ],
+    "family_id": "same_original_question_REL-D04",
+    "question_sha256": "fe715c24c022883a560923b11c4d0df598bd4e6569e884762d769ef6814d2c57"
+  },
+  {
+    "id": "REL-D05",
+    "question": "SOP-001 Station Dependencies 표의 Feeds 문구만 사용하여 ST01_FILLING에서 ST04_PACKAGING까지의 모든 단순 유향 경로를 나열하라. 각 단계의 방향과 출처 행을 제시하라. 같은 표의 thermal fault→speed reduction 문구를 물류 공급 간선에 포함할 수 있는지, 경로가 있다는 사실만으로 실제 고장 전파를 입증할 수 있는지도 구분하라.",
+    "category": "관계 경로와 인과 구별",
+    "split": "draft_exposed",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "REL-D05",
+      "추가 초안·문서 QA",
+      "관계 경로와 인과 구별",
+      "SOP-001 Station Dependencies 표의 Feeds 문구만 사용하여 ST01_FILLING에서 ST04_PACKAGING까지의 모든 단순 유향 경로를 나열하라. 각 단계의 방향과 출처 행을 제시하라. 같은 표의 thermal fault→speed reduction 문구를 물류 공급 간선에 포함할 수 있는지, 경로가 있다는 사실만으로 실제 고장 전파를 입증할 수 있는지도 구분하라."
+    ],
+    "family_id": "same_original_question_REL-D05",
+    "question_sha256": "ae2f74f4d0fdd06af5656610ce989ab896a57d02b4afb45b2f3d24ece2f3b38f"
+  },
+  {
+    "id": "REL-D06",
+    "question": "SOP-003 p.1의 정비 규칙 표와 Correlated Fault Resolution 표를 개정할 때 문서 검토 대상으로 추적해야 할 모든 공정·센서 언급을 찾아라. 각 대상을 원문 표·행에 연결하고, 직접 명시된 대상과 추가로 추론해야 하는 대상을 구분하라. 중복 대상은 합치되 모든 출처를 보존하고, 실제 설비 고장·정지 영향이라고 표현하지 말라.",
+    "category": "문서 개정 영향 범위",
+    "split": "draft_exposed",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "REL-D06",
+      "추가 초안·문서 QA",
+      "문서 개정 영향 범위",
+      "SOP-003 p.1의 정비 규칙 표와 Correlated Fault Resolution 표를 개정할 때 문서 검토 대상으로 추적해야 할 모든 공정·센서 언급을 찾아라. 각 대상을 원문 표·행에 연결하고, 직접 명시된 대상과 추가로 추론해야 하는 대상을 구분하라. 중복 대상은 합치되 모든 출처를 보존하고, 실제 설비 고장·정지 영향이라고 표현하지 말라."
+    ],
+    "family_id": "same_original_question_REL-D06",
+    "question_sha256": "509a09490583b63dac9f52d3884a9bd7ff7ee4800df1837f44d907108b68e453"
+  },
+  {
+    "id": "REL-K01",
+    "question": "고정된 예원 v2에서 A=ST04_PACKAGING 소속 센서에 appliesToSensor로 연결된 규칙, B=ST04_PACKAGING을 actionTarget으로 가리키는 규칙을 각각 모두 조회하라. A∩B, A−B, B−A를 규칙 identifier로 제시하고 각 집합의 대표 경로를 방향과 관계명까지 설명하라. 저장된 간선만 사용하고 새 관계를 추론하지 말라.",
+    "category": "두 역할의 집합 비교",
+    "split": "draft_exposed",
+    "track": "kg_structure",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "REL-K01",
+      "추가 초안·KG 조회",
+      "두 역할의 집합 비교",
+      "고정된 예원 v2에서 A=ST04_PACKAGING 소속 센서에 appliesToSensor로 연결된 규칙, B=ST04_PACKAGING을 actionTarget으로 가리키는 규칙을 각각 모두 조회하라. A∩B, A−B, B−A를 규칙 identifier로 제시하고 각 집합의 대표 경로를 방향과 관계명까지 설명하라. 저장된 간선만 사용하고 새 관계를 추론하지 말라."
+    ],
+    "family_id": "same_original_question_REL-K01",
+    "question_sha256": "d1997a3ff0c9bc458e8496275764b33e1bdac75e19aaac8244401a926b585406"
+  },
+  {
+    "id": "REL-K02",
+    "question": "예원 v2에서 ST02_SEALING→hasSensor→센서←appliesToSensor←규칙→actionTarget→다른 Station 경로를 만족하는 모든 조합을 찾아라. 규칙·센서·다른 Station·출처 문서 identifier를 제시하고, 같은 규칙이 여러 대상을 가지면 각각 보존하라. ST02 자체는 다른 Station 결과에서 제외하라.",
+    "category": "다중 관계 교차 조회",
+    "split": "draft_exposed",
+    "track": "kg_structure",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "REL-K02",
+      "추가 초안·KG 조회",
+      "다중 관계 교차 조회",
+      "예원 v2에서 ST02_SEALING→hasSensor→센서←appliesToSensor←규칙→actionTarget→다른 Station 경로를 만족하는 모든 조합을 찾아라. 규칙·센서·다른 Station·출처 문서 identifier를 제시하고, 같은 규칙이 여러 대상을 가지면 각각 보존하라. ST02 자체는 다른 Station 결과에서 제외하라."
+    ],
+    "family_id": "same_original_question_REL-K02",
+    "question_sha256": "593950356e74234e16ef1646a166756aa8b39de330df6c7d714b30643376d18c"
+  },
+  {
+    "id": "REL-K03",
+    "question": "예원 v2에서 sourceDocument가 SOP-003인 규칙을 모두 찾고, 각 규칙의 appliesToSensor 및 actionTarget 대상을 열거하라. 반환되지 않는 속성은 미연결로 표시하라. 문서←규칙→센서/공정의 경로를 제시하고 seed MAINT 노드와 candidate 규칙 노드를 임의로 하나로 합치지 말라. 후속 feedsInto 확장은 제외한다.",
+    "category": "문서에서 역방향 영향 추적",
+    "split": "draft_exposed",
+    "track": "kg_structure",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "REL-K03",
+      "추가 초안·KG 조회",
+      "문서에서 역방향 영향 추적",
+      "예원 v2에서 sourceDocument가 SOP-003인 규칙을 모두 찾고, 각 규칙의 appliesToSensor 및 actionTarget 대상을 열거하라. 반환되지 않는 속성은 미연결로 표시하라. 문서←규칙→센서/공정의 경로를 제시하고 seed MAINT 노드와 candidate 규칙 노드를 임의로 하나로 합치지 말라. 후속 feedsInto 확장은 제외한다."
+    ],
+    "family_id": "same_original_question_REL-K03",
+    "question_sha256": "d71beea0bffe8aa3a4a1b1f327abb89fda9b7dc2b7a5735f14ff22b5cf26db7e"
+  },
+  {
+    "id": "REL-K04",
+    "question": "예원 v2의 feedsInto 간선만 사용하여 ST01_FILLING→ST04_PACKAGING의 모든 단순 유향 경로와 ST04_PACKAGING→ST01_FILLING의 모든 단순 유향 경로를 각각 조회하라. 경로가 없으면 이 스냅샷에 저장된 경로가 없다고 답하고, 이를 현실의 공급·인과관계 부재로 확대하지 말라. 경로 안에서 노드를 반복하지 않는다.",
+    "category": "유향 경로와 부재 판정",
+    "split": "draft_exposed",
+    "track": "kg_structure",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "REL-K04",
+      "추가 초안·KG 조회",
+      "유향 경로와 부재 판정",
+      "예원 v2의 feedsInto 간선만 사용하여 ST01_FILLING→ST04_PACKAGING의 모든 단순 유향 경로와 ST04_PACKAGING→ST01_FILLING의 모든 단순 유향 경로를 각각 조회하라. 경로가 없으면 이 스냅샷에 저장된 경로가 없다고 답하고, 이를 현실의 공급·인과관계 부재로 확대하지 말라. 경로 안에서 노드를 반복하지 않는다."
+    ],
+    "family_id": "same_original_question_REL-K04",
+    "question_sha256": "33a864def8c74cdd9962cd2b847d7094effadca3f30a2d96a5ea5a3db4147c55"
+  },
+  {
+    "id": "REL-K05",
+    "question": "예원 v2의 candidate-SOP-001::RULE-ST02-02와 candidate-SOP-003::MAINT-05에 대해 sourceDocument와 모든 hasProvenance 경로를 조회하라. 문서 identifier, 페이지, sourceQuote, 저장된 위치 필드와 textSha256을 제시하라. 제공된 원문 청크와 인용문·해시를 대조하고, 이 검사가 규칙의 도메인 타당성까지 보장하는지 설명하라.",
+    "category": "원문까지의 출처 추적",
+    "split": "draft_exposed",
+    "track": "kg_structure",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "REL-K05",
+      "추가 초안·KG 조회",
+      "원문까지의 출처 추적",
+      "예원 v2의 candidate-SOP-001::RULE-ST02-02와 candidate-SOP-003::MAINT-05에 대해 sourceDocument와 모든 hasProvenance 경로를 조회하라. 문서 identifier, 페이지, sourceQuote, 저장된 위치 필드와 textSha256을 제시하라. 제공된 원문 청크와 인용문·해시를 대조하고, 이 검사가 규칙의 도메인 타당성까지 보장하는지 설명하라."
+    ],
+    "family_id": "same_original_question_REL-K05",
+    "question_sha256": "a3a6d7ca9d86267807e84703c84b690761cb46cfa382aeaa07c7399c30a7702d"
+  },
+  {
+    "id": "REL-K06",
+    "question": "예원 v2에서 서버실(SRV01_SERVERROOM)에 소속된 TMP 센서에 appliesToSensor로 연결된 규칙을 모두 찾아라. 규칙 identifier·유형·sourceDocument·conditionText 유무를 표시하고 conditionText가 없는 규칙을 별도로 나열하라. 텍스트 속성 부재를 원문 조건 자체가 없다는 뜻으로 해석하지 말라.",
+    "category": "필터와 저장 누락 구별",
+    "split": "draft_exposed",
+    "track": "kg_structure",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "REL-K06",
+      "추가 초안·KG 조회",
+      "필터와 저장 누락 구별",
+      "예원 v2에서 서버실(SRV01_SERVERROOM)에 소속된 TMP 센서에 appliesToSensor로 연결된 규칙을 모두 찾아라. 규칙 identifier·유형·sourceDocument·conditionText 유무를 표시하고 conditionText가 없는 규칙을 별도로 나열하라. 텍스트 속성 부재를 원문 조건 자체가 없다는 뜻으로 해석하지 말라."
+    ],
+    "family_id": "same_original_question_REL-K06",
+    "question_sha256": "38bb5fd4704da6c62d794881deafb3d4c8c1565a997d9587db06ffacb9f36548"
+  },
+  {
+    "id": "ADD-01",
+    "question": "현재 고정 KG에서 **SOP-001을 출처로 가지면서, ST02_SEALING 소속 센서에 적용되고, ST04_PACKAGING을 조치 대상으로 지정한 규칙**을 모두 찾아라. 각 조건을 만족하는 실제 연결과 원문 근거를 제시하라.",
+    "category": "관계 조건의 교집합",
+    "split": "draft_exposed",
+    "track": "kg_structure",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "ADD-01",
+      "KG 구조 조회",
+      "관계 조건의 교집합",
+      "현재 고정 KG에서 **SOP-001을 출처로 가지면서, ST02_SEALING 소속 센서에 적용되고, ST04_PACKAGING을 조치 대상으로 지정한 규칙**을 모두 찾아라. 각 조건을 만족하는 실제 연결과 원문 근거를 제시하라."
+    ],
+    "family_id": "same_original_question_ADD-01",
+    "question_sha256": "47655ed033e6d6f12874d796ed928c2d1e39b26e402c5d6d7f5ee1cb1a3fb4e6"
+  },
+  {
+    "id": "ADD-02",
+    "question": "현재 고정 KG에서 **actionTarget에 ST04_PACKAGING이 포함된 규칙**을 ‘ST04만 대상으로 하는 규칙’과 ‘다른 공정도 함께 대상으로 하는 규칙’으로 나누어 모두 제시하라. 대상 연결이 없는 경우는 별도 구분하라.",
+    "category": "정확한 대상 집합",
+    "split": "draft_exposed",
+    "track": "kg_structure",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "ADD-02",
+      "KG 구조 조회",
+      "정확한 대상 집합",
+      "현재 고정 KG에서 **actionTarget에 ST04_PACKAGING이 포함된 규칙**을 ‘ST04만 대상으로 하는 규칙’과 ‘다른 공정도 함께 대상으로 하는 규칙’으로 나누어 모두 제시하라. 대상 연결이 없는 경우는 별도 구분하라."
+    ],
+    "family_id": "same_original_question_ADD-02",
+    "question_sha256": "be47d85677458e71015d478a950269a83a64f30141923954f6d8c1e8ee2e01bd"
+  },
+  {
+    "id": "ADD-03",
+    "question": "현재 고정 KG에서 **SOP-001 출처 규칙과 SOP-003 출처 규칙이 각각 하나 이상 연결된 센서**를 모두 찾아라. 센서별로 양쪽 규칙 ID와 출처 경로를 제시하라. 같은 센서에 적용된다는 사실만으로 규칙의 조건·조치가 같다고 판단할 수 있는가?",
+    "category": "문서 간 공통 적용 대상",
+    "split": "draft_exposed",
+    "track": "kg_structure",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "ADD-03",
+      "KG 구조 조회",
+      "문서 간 공통 적용 대상",
+      "현재 고정 KG에서 **SOP-001 출처 규칙과 SOP-003 출처 규칙이 각각 하나 이상 연결된 센서**를 모두 찾아라. 센서별로 양쪽 규칙 ID와 출처 경로를 제시하라. 같은 센서에 적용된다는 사실만으로 규칙의 조건·조치가 같다고 판단할 수 있는가?"
+    ],
+    "family_id": "same_original_question_ADD-03",
+    "question_sha256": "d2099068d7281eba8bcd1a672fd2883d5d85bf7ec58b3775ba35c58ce26d8777"
+  },
+  {
+    "id": "ADD-04",
+    "question": "현재 고정 KG에서 ST02_SEALING_CUR와 ST04_PACKAGING을 연결하는 경로 중 **appliesToSensor의 역방향 조회와 actionTarget만 허용한 최소 길이 경로**를 모두 제시하라. 탐색 방향과 저장된 간선 방향을 구분하라. 허용 관계를 feedsInto만으로 바꾸면 같은 센서 노드에서 경로를 찾을 수 있는지도 설명하라.",
+    "category": "최소 경로와 관계 제한",
+    "split": "draft_exposed",
+    "track": "kg_structure",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "ADD-04",
+      "KG 구조 조회",
+      "최소 경로와 관계 제한",
+      "현재 고정 KG에서 ST02_SEALING_CUR와 ST04_PACKAGING을 연결하는 경로 중 **appliesToSensor의 역방향 조회와 actionTarget만 허용한 최소 길이 경로**를 모두 제시하라. 탐색 방향과 저장된 간선 방향을 구분하라. 허용 관계를 feedsInto만으로 바꾸면 같은 센서 노드에서 경로를 찾을 수 있는지도 설명하라."
+    ],
+    "family_id": "same_original_question_ADD-04",
+    "question_sha256": "2ad80d0024bf4019c97fa020c602b5421fb137000eb14bf31a9edc6b74feb415"
+  },
+  {
+    "id": "ADD-05",
+    "question": "현재 고정 KG에서 ST02_SEALING_CUR에 적용되는 규칙을 **sourceDocument별로 묶어** 제시하라. 문서별 규칙 수와 조건·조치의 차이를 설명하되, 저장된 노드 수를 독립적인 제조 지식 수로 해석하지 말라.",
+    "category": "출처별 지식 범위",
+    "split": "draft_exposed",
+    "track": "kg_structure",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "ADD-05",
+      "KG 구조 조회",
+      "출처별 지식 범위",
+      "현재 고정 KG에서 ST02_SEALING_CUR에 적용되는 규칙을 **sourceDocument별로 묶어** 제시하라. 문서별 규칙 수와 조건·조치의 차이를 설명하되, 저장된 노드 수를 독립적인 제조 지식 수로 해석하지 말라."
+    ],
+    "family_id": "same_original_question_ADD-05",
+    "question_sha256": "638527ccd39d28f3b991ee6efaaea754bb1e1a9ff7a6559022f8d9987fd3d560"
+  },
+  {
+    "id": "ADD-06",
+    "question": "현재 고정 KG의 모든 규칙 중 **sourceDocument는 있지만 appliesToSensor가 없는 규칙**을 찾아 규칙 유형별로 정리하라. 원문을 확인해 센서 연결이 필요하지 않은 규칙인지, 연결 누락 가능성이 있는지, 판단할 수 없는지를 구분하라.",
+    "category": "연결 누락과 실세계 부재",
+    "split": "draft_exposed",
+    "track": "kg_structure",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "ADD-06",
+      "KG 구조 조회",
+      "연결 누락과 실세계 부재",
+      "현재 고정 KG의 모든 규칙 중 **sourceDocument는 있지만 appliesToSensor가 없는 규칙**을 찾아 규칙 유형별로 정리하라. 원문을 확인해 센서 연결이 필요하지 않은 규칙인지, 연결 누락 가능성이 있는지, 판단할 수 없는지를 구분하라."
+    ],
+    "family_id": "same_original_question_ADD-06",
+    "question_sha256": "21585546a13161a664e9411941226d44fe077fba7e475ee8c17873c64d107fab"
+  },
+  {
+    "id": "ADD-07",
+    "question": "원래 KG를 보존한 복사본에서 `candidate-SOP-001::RULE-ST02-02`의 **sourceDocument 연결만 제거**했을 때, 조치 대상 조회·문서 조회·hasProvenance를 통한 출처 조회 중 어떤 결과가 유지되고 어떤 결과가 달라지는가? 실제 조회 결과와 SHACL 위반을 제시하라.",
+    "category": "근거 간선 제거의 영향",
+    "split": "draft_exposed",
+    "track": "fault_injection",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "ADD-07",
+      "*주의* 이미 수행한 오류 주입 검증을 **반복 가능한 벤치마크 형태로 정리한 것**이지 새로운 실험 성과는 아님",
+      "근거 간선 제거의 영향",
+      "원래 KG를 보존한 복사본에서 `candidate-SOP-001::RULE-ST02-02`의 **sourceDocument 연결만 제거**했을 때, 조치 대상 조회·문서 조회·hasProvenance를 통한 출처 조회 중 어떤 결과가 유지되고 어떤 결과가 달라지는가? 실제 조회 결과와 SHACL 위반을 제시하라."
+    ],
+    "family_id": "same_original_question_ADD-07",
+    "question_sha256": "609911a6a45fe48679bc45122b1dc01c038d869f2ae2ff4195bf6c7ac0f80579"
+  },
+  {
+    "id": "ADD-08",
+    "question": "동일 규칙의 복사본에 ① actionTarget으로 Sensor 연결, ② sourceQuote를 유지한 채 textSha256을 다른 유효한 64자리 값으로 변경하는 오류를 각각 넣어라. SHACL과 원문 대조가 각 오류를 검출하는지 비교하고, SHACL 통과만으로 근거의 진위를 보장할 수 있는지 설명하라.",
+    "category": "구조 검증의 한계",
+    "split": "draft_exposed",
+    "track": "fault_injection",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "ADD-08",
+      "",
+      "구조 검증의 한계",
+      "동일 규칙의 복사본에 ① actionTarget으로 Sensor 연결, ② sourceQuote를 유지한 채 textSha256을 다른 유효한 64자리 값으로 변경하는 오류를 각각 넣어라. SHACL과 원문 대조가 각 오류를 검출하는지 비교하고, SHACL 통과만으로 근거의 진위를 보장할 수 있는지 설명하라."
+    ],
+    "family_id": "same_original_question_ADD-08",
+    "question_sha256": "1d06452ad186dfab8a106bc7561a58c8554d8b64cec1ae7dab8ab143ca4e45e2"
+  },
+  {
+    "id": "G01",
+    "question": "예측 정비 규칙 가운데 우선순위가 CRITICAL인 것을 모두 찾아, 각 규칙이 어느 공정의 어떤 센서에 대한 것인지 답하라.",
+    "category": "이득 없음 예상",
+    "split": "draft_exposed",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "G01",
+      "나열형",
+      "이득 없음 예상",
+      "예측 정비 규칙 가운데 우선순위가 CRITICAL인 것을 모두 찾아, 각 규칙이 어느 공정의 어떤 센서에 대한 것인지 답하라."
+    ],
+    "family_id": "same_original_question_G01",
+    "question_sha256": "d8fcc44417b08cfaa8dd4fecd9d3f301c975808f77a46f23cab1bc476c712a45"
+  },
+  {
+    "id": "G02",
+    "question": "실링 공정 전류 센서에 걸려 있는 운영 규칙, 경보 임계값, 예측 정비 규칙을 문서별로 모두 정리하라.",
+    "category": "이득 예상",
+    "split": "draft_exposed",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "G02",
+      "나열형",
+      "이득 예상",
+      "실링 공정 전류 센서에 걸려 있는 운영 규칙, 경보 임계값, 예측 정비 규칙을 문서별로 모두 정리하라."
+    ],
+    "family_id": "same_original_question_G02",
+    "question_sha256": "9f3090b1fba1ddf53a70f9152b8d5897fe65051361635fd5b62b8efef48d055a"
+  },
+  {
+    "id": "G03",
+    "question": "서버실 온도와 관련된 기준을 모든 문서에서 찾아 경고, 위험, 정비, 자동 조치 기준을 구분해 설명하라.",
+    "category": "이득 예상",
+    "split": "draft_exposed",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "G03",
+      "나열형",
+      "이득 예상",
+      "서버실 온도와 관련된 기준을 모든 문서에서 찾아 경고, 위험, 정비, 자동 조치 기준을 구분해 설명하라."
+    ],
+    "family_id": "same_original_question_G03",
+    "question_sha256": "2766505dc0e1c19c25a13749f8a4251dba0feb50d08084b3fa724badb86e3a48"
+  },
+  {
+    "id": "G04",
+    "question": "화학물질 보관 구역의 온도와 습도에 대해 문서들이 지시하는 기준과 조치를 모두 나열하라.",
+    "category": "이득 예상",
+    "split": "draft_exposed",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "G04",
+      "나열형",
+      "이득 예상",
+      "화학물질 보관 구역의 온도와 습도에 대해 문서들이 지시하는 기준과 조치를 모두 나열하라."
+    ],
+    "family_id": "same_original_question_G04",
+    "question_sha256": "8945994d89be414866848ce6cc41566e6536693200c53b3e0317c41fc07e1d45"
+  },
+  {
+    "id": "G05",
+    "question": "실링 공정에 열 관련 고장이 생기면 공정 의존 관계상 어느 공정에 어떤 영향이 전파되는가? 또 실링 온도가 위험 수준을 넘으면 어떤 공정들을 멈춰야 하는가?",
+    "category": "부분 이득 예상",
+    "split": "draft_exposed",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "G05",
+      "다단계",
+      "부분 이득 예상",
+      "실링 공정에 열 관련 고장이 생기면 공정 의존 관계상 어느 공정에 어떤 영향이 전파되는가? 또 실링 온도가 위험 수준을 넘으면 어떤 공정들을 멈춰야 하는가?"
+    ],
+    "family_id": "same_original_question_G05",
+    "question_sha256": "0fe8ba2789d34c99cd9f8dfb930b6da4d0e6caaf04af0222e1444a3c307afe1b"
+  },
+  {
+    "id": "G06",
+    "question": "포장 공정 컨베이어 속도가 작업자 지시 없이 떨어졌다. 문서의 규칙 참조를 따라가면 최종적으로 어느 공정의 어떤 센서를 확인해야 하며, 연관 고장의 해소 절차는 어떤 순서인가?",
+    "category": "이득 예상",
+    "split": "draft_exposed",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "G06",
+      "다단계",
+      "이득 예상",
+      "포장 공정 컨베이어 속도가 작업자 지시 없이 떨어졌다. 문서의 규칙 참조를 따라가면 최종적으로 어느 공정의 어떤 센서를 확인해야 하며, 연관 고장의 해소 절차는 어떤 순서인가?"
+    ],
+    "family_id": "same_original_question_G06",
+    "question_sha256": "ef64f8a9d828798226bbdcb97a6911ac05c2323ecc41ccaf251f91b5aa11b46c"
+  },
+  {
+    "id": "G07",
+    "question": "충전 공정 압력이 3.25 bar로 20분 동안 유지되었다. 즉시 조치해야 할 운영 규칙, 해당되는 예측 정비 규칙, 경보 임계값 기준의 등급을 각각 답하라.",
+    "category": "이득 예상",
+    "split": "draft_exposed",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "G07",
+      "다단계",
+      "이득 예상",
+      "충전 공정 압력이 3.25 bar로 20분 동안 유지되었다. 즉시 조치해야 할 운영 규칙, 해당되는 예측 정비 규칙, 경보 임계값 기준의 등급을 각각 답하라."
+    ],
+    "family_id": "same_original_question_G07",
+    "question_sha256": "465f9d296cd6949110924f08f9140934bc44d109c25a1a730a1b0998324be0a2"
+  },
+  {
+    "id": "G08",
+    "question": "라벨링 공정 장력 센서 값이 12회 연속으로 완전히 같게 기록되었다. 운영 규칙, 정비 규칙, 이상 유형 정의를 연결해 판정과 조치를 설명하라.",
+    "category": "부분 이득 예상",
+    "split": "draft_exposed",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "G08",
+      "다단계",
+      "부분 이득 예상",
+      "라벨링 공정 장력 센서 값이 12회 연속으로 완전히 같게 기록되었다. 운영 규칙, 정비 규칙, 이상 유형 정의를 연결해 판정과 조치를 설명하라."
+    ],
+    "family_id": "same_original_question_G08",
+    "question_sha256": "0e7a34f4acb3927d52c3d87bca022a277c3e4ad3d4d7fc6039e00b3552c7563d"
+  },
+  {
+    "id": "G09",
+    "question": "포장기 진동이 0.28 mm/s 정도 나와요. 지금 해야 할 일이랑, 길게 보고 챙겨야 할 정비 항목이 뭔가요?",
+    "category": "이득 예상",
+    "split": "draft_exposed",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "G09",
+      "현장 표현",
+      "이득 예상",
+      "포장기 진동이 0.28 mm/s 정도 나와요. 지금 해야 할 일이랑, 길게 보고 챙겨야 할 정비 항목이 뭔가요?"
+    ],
+    "family_id": "same_original_question_G09",
+    "question_sha256": "ad09c8cd2845ffb9fa1e28e74580b222160d7d27571fb24ec54591b2f70bc398"
+  },
+  {
+    "id": "G10",
+    "question": "냉장 창고 온도가 10도까지 올라갔어요. 어떻게 해야 하고, 품질 쪽 조치까지 알려 주세요.",
+    "category": "이득 예상",
+    "split": "draft_exposed",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "G10",
+      "현장 표현",
+      "이득 예상",
+      "냉장 창고 온도가 10도까지 올라갔어요. 어떻게 해야 하고, 품질 쪽 조치까지 알려 주세요."
+    ],
+    "family_id": "same_original_question_G10",
+    "question_sha256": "80a2e1143a8db463d574eac9f1cbebd0a41dfbc0797907f1b8af903d5cb74fa9"
+  },
+  {
+    "id": "G11",
+    "question": "연구실 습도가 70%예요. 실험 계속해도 되나요?",
+    "category": "이득 예상",
+    "split": "draft_exposed",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "G11",
+      "현장 표현",
+      "이득 예상",
+      "연구실 습도가 70%예요. 실험 계속해도 되나요?"
+    ],
+    "family_id": "same_original_question_G11",
+    "question_sha256": "04207bd060e4c46d2152354fafbd4699c1716bfb2d1a55d37fecf88b0783087d"
+  },
+  {
+    "id": "G12",
+    "question": "실러 전류가 13.8 A로 나오는데, 이게 센서 사양이나 운영 규칙상 괜찮은 건가요?",
+    "category": "부분 이득 예상",
+    "split": "draft_exposed",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "G12",
+      "현장 표현",
+      "부분 이득 예상",
+      "실러 전류가 13.8 A로 나오는데, 이게 센서 사양이나 운영 규칙상 괜찮은 건가요?"
+    ],
+    "family_id": "same_original_question_G12",
+    "question_sha256": "63fd142f5dd236047d85d0c0accbadeb24d157a3d67f1883e9651f5835c973d4"
+  },
+  {
+    "id": "G13",
+    "question": "CRITICAL 경보 확인 시간이 가장 짧은 역할과 가장 긴 역할은 무엇이며 각각 몇 분인가?",
+    "category": "이득 없음 예상",
+    "split": "draft_exposed",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "G13",
+      "대조",
+      "이득 없음 예상",
+      "CRITICAL 경보 확인 시간이 가장 짧은 역할과 가장 긴 역할은 무엇이며 각각 몇 분인가?"
+    ],
+    "family_id": "same_original_question_G13",
+    "question_sha256": "f605f9696949322f8577ac4ddab3aef7b537293dc1b999249bdb30787311f5f5"
+  },
+  {
+    "id": "G14",
+    "question": "이상 유형 중 경고 기준 위반이 지속되는 경우로 정의된 유형은 무엇이며, 정의와 탐지 기준은 무엇인가?",
+    "category": "이득 없음 예상",
+    "split": "draft_exposed",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "G14",
+      "대조",
+      "이득 없음 예상",
+      "이상 유형 중 경고 기준 위반이 지속되는 경우로 정의된 유형은 무엇이며, 정의와 탐지 기준은 무엇인가?"
+    ],
+    "family_id": "same_original_question_G14",
+    "question_sha256": "c191619e44124de100cb24d6ec016dd15c0fd761f00f28dfb45b0216dc196c21"
+  },
+  {
+    "id": "G15",
+    "question": "일반 창고에 방문객과 작업자가 각각 출입할 수 있는가? 그리고 일반 창고의 최대 인원과 경고 기준은?",
+    "category": "이득 없음 예상",
+    "split": "draft_exposed",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "user_attachment",
+    "original_cells": [
+      "G15",
+      "대조",
+      "이득 없음 예상",
+      "일반 창고에 방문객과 작업자가 각각 출입할 수 있는가? 그리고 일반 창고의 최대 인원과 경고 기준은?"
+    ],
+    "family_id": "same_original_question_G15",
+    "question_sha256": "0c0e4c1da39f387ce10b599d4ef8717b6d6c34446849a46cf60463fbcf701b6f"
+  },
+  {
+    "id": "YB-01",
+    "question": "ST02_SEALING에 연결된 센서의 전체 식별자와 각 단위를 알려주세요.",
+    "category": "구조·센서",
+    "split": "dev",
+    "track": "kg_and_documents",
+    "origin": "user_pasted_table",
+    "status": "executable",
+    "pending_reason": null,
+    "family_id": "same_original_question_YB-01",
+    "question_sha256": "17444f9d816b93421a9af29a753afe24bb4970b73241f45223bcf86a7073cfd3"
+  },
+  {
+    "id": "YB-02",
+    "question": "ST04_PACKAGING_SPD 센서는 어느 공정에 속하고 무엇을 측정하며 단위는 무엇인가요?",
+    "category": "구조·센서",
+    "split": "eval",
+    "track": "kg_and_documents",
+    "origin": "user_pasted_table",
+    "status": "executable",
+    "pending_reason": null,
+    "family_id": "same_original_question_YB-02",
+    "question_sha256": "c4c48150088049df58d70af4f7016f7254ad1411ab755607f5d349a5528c8447"
+  },
+  {
+    "id": "YB-03",
+    "question": "ST01_FILLING 다음의 생산 공정들을 feedsInto 관계에 따라 순서대로 나열해 주세요. 이 연결만으로 고장 원인까지 확정할 수 있나요?",
+    "category": "연결·순서",
+    "split": "dev",
+    "track": "kg_and_documents",
+    "origin": "user_pasted_table",
+    "status": "executable",
+    "pending_reason": null,
+    "family_id": "same_original_question_YB-03",
+    "question_sha256": "3121da337b2871106d0a98ad3e961ff27d4fa2fb2dbcdfdbf268fa1b2cf54227"
+  },
+  {
+    "id": "YB-04",
+    "question": "CHM01_CHEMICALSTORAGE의 stationType과 zone은 무엇인가요?",
+    "category": "구조·구역",
+    "split": "eval",
+    "track": "kg_and_documents",
+    "origin": "user_pasted_table",
+    "status": "executable",
+    "pending_reason": null,
+    "family_id": "same_original_question_YB-04",
+    "question_sha256": "e7f63b201f9a37050bd3c870e570719936866688c3c4a5fed9eb4a55507e3477"
+  },
+  {
+    "id": "YB-05",
+    "question": "SOP-002에서 ST02_SEALING_TMP의 nominal(원문 ± 표기 포함), warnLo, warnHi, critLo, critHi를 단위와 함께 알려주세요.",
+    "category": "수치·조건",
+    "split": "eval",
+    "track": "kg_and_documents",
+    "origin": "user_pasted_table",
+    "status": "executable",
+    "pending_reason": null,
+    "family_id": "same_original_question_YB-05",
+    "question_sha256": "acdf5a8f38b76533033217a308f3ed543c958bdfb4639388466efa1730c92ee4"
+  },
+  {
+    "id": "YB-06",
+    "question": "ST02 온도가 212°C라고 가정합니다. SOP-001의 RULE-ST02-02에 따르면 어떤 조치를 어느 공정들에 해야 하나요?",
+    "category": "조건·조치",
+    "split": "eval",
+    "track": "kg_and_documents",
+    "origin": "user_pasted_table",
+    "status": "executable",
+    "pending_reason": null,
+    "family_id": "temperature_shutdown",
+    "question_sha256": "1f826b974d997f18a5d9ff331b7521da511cbd422ed321d16fcd97d630d40bd4"
+  },
+  {
+    "id": "YB-07",
+    "question": "MAINT-02의 발동 조건, 조치, 우선순위와 적용 센서는 무엇인가요?",
+    "category": "정비 규칙",
+    "split": "dev",
+    "track": "kg_and_documents",
+    "origin": "user_pasted_table",
+    "status": "executable",
+    "pending_reason": null,
+    "family_id": "same_original_question_YB-07",
+    "question_sha256": "8c7ac6aaf456f24c005f4e447eb4d97cc6b5d0df986227fb4df74a4c29f03d50"
+  },
+  {
+    "id": "YB-08",
+    "question": "MAINT-01은 어떤 센서의 어떤 변화가 어느 기간 나타날 때 적용되며, 무엇을 해야 하나요?",
+    "category": "변화량·시간",
+    "split": "eval",
+    "track": "kg_and_documents",
+    "origin": "user_pasted_table",
+    "status": "executable",
+    "pending_reason": null,
+    "family_id": "same_original_question_YB-08",
+    "question_sha256": "b6cef9838679172761b88ede1e918892708fb1fec186fae99dc808390d832978"
+  },
+  {
+    "id": "YB-09",
+    "question": "ST03_LABELLING_TEN 값이 10개 초과 샘플 동안 고정된 경우 MAINT-03은 어떤 조치와 우선순위를 안내하나요?",
+    "category": "샘플·조건",
+    "split": "eval",
+    "track": "kg_and_documents",
+    "origin": "user_pasted_table",
+    "status": "executable",
+    "pending_reason": null,
+    "family_id": "same_original_question_YB-09",
+    "question_sha256": "5ac40784d0ea2a58151fb7567a6a72691198f1554041b9373b6ba516873fe759"
+  },
+  {
+    "id": "YB-10",
+    "question": "SOP-002에서 서버룸 온도 센서의 경고 상한과 위험 상한은 각각 몇 °C인가요?",
+    "category": "수치·조건",
+    "split": "eval",
+    "track": "kg_and_documents",
+    "origin": "user_pasted_table",
+    "status": "executable",
+    "pending_reason": null,
+    "family_id": "same_original_question_YB-10",
+    "question_sha256": "ece73c5a8e6e731b48533e8df892a21050dd0803419c147cb46f4daf3c77834f"
+  },
+  {
+    "id": "YB-11",
+    "question": "MAINT-02의 근거 문서·쪽·표·행·열을 알려주세요. KG에 저장된 정규화 표 행 문자열과 그 SHA-256을 제시하고, 이것이 PDF의 연속된 원문 문장과 어떻게 다른지도 설명해 주세요.",
+    "category": "근거·메타데이터",
+    "split": "dev",
+    "track": "kg_and_documents",
+    "origin": "user_pasted_table",
+    "status": "executable",
+    "pending_reason": null,
+    "family_id": "same_original_question_YB-11",
+    "question_sha256": "7192fcc1756b6bcc4a6a882ebf8f4942336eed28b75f151a3372a910ab9b5c05"
+  },
+  {
+    "id": "YB-12",
+    "question": "SOP-003의 페이지 수와 기록된 원본 PDF SHA-256은 무엇인가요?",
+    "category": "문서·메타데이터",
+    "split": "dev",
+    "track": "kg_and_documents",
+    "origin": "user_pasted_table",
+    "status": "executable",
+    "pending_reason": null,
+    "family_id": "same_original_question_YB-12",
+    "question_sha256": "752b18c13db324d6365c52806f40b62357ceb7c5340fd06c580c3c4880cf6fb9"
+  },
+  {
+    "id": "YB-13",
+    "question": "현재 고정 KG에서 ST02_SEALING_CUR에 연결되어 있고 MaintenanceRule로 명시적으로 분류된 규칙들의 식별자·조건·조치를 알려주세요.",
+    "category": "연결·정비",
+    "split": "eval",
+    "track": "kg_and_documents",
+    "origin": "user_pasted_table",
+    "status": "executable",
+    "pending_reason": null,
+    "family_id": "same_original_question_YB-13",
+    "question_sha256": "ec52efebdc0de19be24a938999745266d486ce516bf1b3488fdf23890e8e3f30"
+  },
+  {
+    "id": "YB-14",
+    "question": "RULE-ACCESS-02에 따르면 무단 출입 감지 후 누구에게 몇 분 이내 알려야 하나요?",
+    "category": "출입·시간",
+    "split": "eval",
+    "track": "kg_and_documents",
+    "origin": "user_pasted_table",
+    "status": "executable",
+    "pending_reason": null,
+    "family_id": "same_original_question_YB-14",
+    "question_sha256": "50908267884c1bacdfb08957b973b020b2c271636686281a5122222dbed24912"
+  },
+  {
+    "id": "YB-15",
+    "question": "ST02 전류의 SOP-002 경고·위험 상한과 전류 데이터시트의 연속 운전 관련 권고는 어떻게 다른가요? 이 정보만으로 실제 설치 센서가 부적합하다고 확정할 수 있나요?",
+    "category": "문서 비교",
+    "split": "eval",
+    "track": "kg_and_documents",
+    "origin": "user_pasted_table",
+    "status": "executable",
+    "pending_reason": null,
+    "family_id": "same_original_question_YB-15",
+    "question_sha256": "5c1ba84536af79998e2c9b00d45e652321c74eb07727f0a7280e0f65276fd9cb"
+  },
+  {
+    "id": "YB-16",
+    "question": "현재 고정 KG만 근거로 ST04 속도 저하의 원인 공정 상위 3개를 실제 점수와 시차까지 제시할 수 있나요? 가능하면 근거와 값을, 불가능하면 부족한 정보를 설명해 주세요.",
+    "category": "답변 한계",
+    "split": "dev",
+    "track": "kg_and_documents",
+    "origin": "user_pasted_table",
+    "status": "executable",
+    "pending_reason": null,
+    "family_id": "same_original_question_YB-16",
+    "question_sha256": "fd16a9169d329e06251aef9929c5caafd661c16969dc6f5152f411c0a70a74b9"
+  },
+  {
+    "id": "YB-17",
+    "question": "ST99_UNKNOWN에 연결된 온도 센서와 위험 상한을 알려주세요.",
+    "category": "미등록 식별자",
+    "split": "eval",
+    "track": "kg_and_documents",
+    "origin": "user_pasted_table",
+    "status": "executable",
+    "pending_reason": null,
+    "family_id": "same_original_question_YB-17",
+    "question_sha256": "d960b94d41b2ee8414f1eaf4fe6bedc69b3e400554b8b16257abed61a82bb19d"
+  },
+  {
+    "id": "YB-18",
+    "question": "현재 고정 KG와 제공 문서만으로 ST02_SEALING_TMP에 실제 설치된 센서의 제조사와 모델명을 확정할 수 있나요? 판단 근거도 설명해 주세요.",
+    "category": "답변 한계",
+    "split": "eval",
+    "track": "kg_and_documents",
+    "origin": "user_pasted_table",
+    "status": "executable",
+    "pending_reason": null,
+    "family_id": "same_original_question_YB-18",
+    "question_sha256": "036c398e2d3e54cb21f4808e0682571ee285567592ea407d38657bfe1825d56e"
+  },
+  {
+    "id": "YB-19",
+    "question": "특정 시간 구간의 ST04 속도 이상 이벤트에 대해, 원인 후보를 점수·시차·시계열 근거와 함께 제시해 주세요.",
+    "category": "시계열·인과",
+    "split": "pending",
+    "track": "pending_causal",
+    "origin": "user_pasted_table",
+    "status": "pending_input",
+    "pending_reason": "No fixed event interval/candidate scores/lags or novelty reference results",
+    "family_id": "same_original_question_YB-19",
+    "question_sha256": "25a531a4b5f05640639cca15746e839ce044ca218b7fbec69b626f6ea90f8b5d"
+  },
+  {
+    "id": "YB-20",
+    "question": "새로 발견한 공정 간 인과 후보와 문서에 이미 적혀 있던 관계를 구분하고, 해당 후보의 근거를 제시해 주세요.",
+    "category": "신규성·인과",
+    "split": "pending",
+    "track": "pending_causal",
+    "origin": "user_pasted_table",
+    "status": "pending_input",
+    "pending_reason": "No fixed event interval/candidate scores/lags or novelty reference results",
+    "family_id": "same_original_question_YB-20",
+    "question_sha256": "34572d4efbecd35de06689cd4f2da10b3606e7cd4d6fc855cc43882f48de48ac"
+  },
+  {
+    "id": "NEW-01",
+    "category": "단위 정규화",
+    "question": "ST02_SEALING_TMP의 측정값이 485.15 K로 전달되었다. °C로 변환한 뒤 SOP-002의 해당 센서 상한 기준과 비교하라. 변환식·변환값·비교 기준을 제시하고 원래 단위의 수치를 °C 기준과 직접 비교했을 때의 오류를 설명하라.",
+    "split": "extension_draft_exposed",
+    "track": "document_qa",
+    "revision_note": null,
+    "origin": "assistant_revised_new20",
+    "status": "executable",
+    "family_id": "same_original_question_NEW-01",
+    "question_sha256": "fcfc6e7442efa90e39177a1c9af8c9cd9607f0493dfae30f324cd6cbae590db0"
+  },
+  {
+    "id": "NEW-02",
+    "category": "단위 불일치",
+    "question": "ST04_PACKAGING_SPD의 측정값이 60 rpm으로 수신되었다. 문서의 해당 센서 단위를 확인하고 이 값을 속도 기준과 직접 비교할 수 있는지 판단하라. 변환에 필요한 물리량을 명시하고 제공되지 않은 변환 계수는 만들지 말라.",
+    "split": "extension_draft_exposed",
+    "track": "document_qa",
+    "revision_note": null,
+    "origin": "assistant_revised_new20",
+    "status": "executable",
+    "family_id": "same_original_question_NEW-02",
+    "question_sha256": "32e1743d8f0c1b1a787c47454c6724cd655c7e61ea453d21c68369ba26f862d5"
+  },
+  {
+    "id": "NEW-03",
+    "category": "측정 불확실성",
+    "question": "ST02_SEALING_TMP 관측값이 209°C이고 측정 불확실성이 ±3°C라고 가정한다. 실제값이 포함될 수 있는 구간을 계산하고 RULE-ST02-02의 조건을 반드시 충족/충족 가능하지만 확정 불가/충족 불가 중 하나로 판정하라. 명목 관측값만 사용한 판정과 구분하라.",
+    "split": "extension_draft_exposed",
+    "track": "document_qa",
+    "revision_note": null,
+    "origin": "assistant_revised_new20",
+    "status": "executable",
+    "family_id": "same_original_question_NEW-03",
+    "question_sha256": "4028755f6ba0d368b35d34538b39ebc9de753354f9dd85ae255f044e9497e298"
+  },
+  {
+    "id": "NEW-04",
+    "category": "반올림 기록",
+    "question": "ST02_SEALING_TMP가 소수 첫째 자리에서 반올림되어 210°C로 저장되었다. 사사오입을 가정해 반올림 전 값의 범위를 구하고 이 기록만으로 RULE-ST02-02의 수치 조건 충족 여부를 확정할 수 있는지 설명하라.",
+    "split": "extension_draft_exposed",
+    "track": "document_qa",
+    "revision_note": null,
+    "origin": "assistant_revised_new20",
+    "status": "executable",
+    "family_id": "same_original_question_NEW-04",
+    "question_sha256": "c1fc51633a855295f5c2d13de143a7d8575de572c9a9a9e69c213c93db77c770"
+  },
+  {
+    "id": "NEW-05",
+    "category": "시간 관측 공백",
+    "question": "ST01 압력이 09:00과 09:20에 각각 3.2 bar로 기록되었고 그 사이 측정값은 없다. SOP-003의 해당 정비 조건 발동 여부를 판정하라. 시간 차이와 조건의 연속 유지시간을 구분하고 필요한 추가 기록을 제시하라.",
+    "split": "extension_draft_exposed",
+    "track": "document_qa",
+    "revision_note": null,
+    "origin": "assistant_revised_new20",
+    "status": "executable",
+    "family_id": "same_original_question_NEW-05",
+    "question_sha256": "6487c507b13c2d8c143639deb11a1716683e72253436b9c97baeac9d2920edad"
+  },
+  {
+    "id": "NEW-06",
+    "category": "연속과 누적",
+    "question": "ST02 전류가 명목값보다 1.6 A 높은 상태 3분, 정상 범위 1분, 같은 상승 상태 3분 순으로 기록되었다. RULE-ST02-03에 따라 두 상승 구간을 합산해 발동 조건을 충족한다고 판단할 수 있는지 설명하라.",
+    "split": "extension_draft_exposed",
+    "track": "document_qa",
+    "revision_note": null,
+    "origin": "assistant_revised_new20",
+    "status": "executable",
+    "family_id": "same_original_question_NEW-06",
+    "question_sha256": "f322314600ee798d6cfb5946006b75d321a6ee587aa55c28f630fc3ab1945e40"
+  },
+  {
+    "id": "NEW-07",
+    "category": "증거 수준",
+    "question": "서버실 온도가 26°C로 6분 유지되었다는 작업자 진술과 26°C 측정값 한 개가 제공되었다. SOP-003 정비 조건에 대해 진술을 사실로 수용한 경우와 센서 기록만 사용한 경우의 판정을 각각 제시하라.",
+    "split": "extension_draft_exposed",
+    "track": "document_qa",
+    "revision_note": null,
+    "origin": "assistant_revised_new20",
+    "status": "executable",
+    "family_id": "same_original_question_NEW-07",
+    "question_sha256": "d9e966e1763dcd72d9fedccb0bd26317375ea1322bd1919e204068dbb37bac4c"
+  },
+  {
+    "id": "NEW-08",
+    "category": "변화량 입력",
+    "question": "MAINT-01 대상 센서에서 A: 값이 높지만 일정한 경우, B: 낮은 수준에서 시작해 증가하는 경우를 비교한다. 원문 조건 판정에 필요한 입력을 절대값·변화량·관측기간으로 분류하고 값이 높다는 설명만으로 발동을 판단할 수 있는지 답하라.",
+    "split": "extension_draft_exposed",
+    "track": "document_qa",
+    "revision_note": null,
+    "origin": "assistant_revised_new20",
+    "status": "executable",
+    "family_id": "same_original_question_NEW-08",
+    "question_sha256": "340c485733c6c8358b6795d1bf3ab80ab47ee9f44ab857176646fd6a1a525b6b"
+  },
+  {
+    "id": "NEW-09",
+    "category": "샘플과 시간",
+    "question": "ST03_LABELLING_TEN 값이 12개 연속 샘플에서 동일하지만 샘플링 주기는 알려져 있지 않다. MAINT-03의 샘플 조건을 평가하고 몇 초 또는 몇 분 지속되었는지도 계산할 수 있는지 별도로 판단하라.",
+    "split": "extension_draft_exposed",
+    "track": "document_qa",
+    "revision_note": null,
+    "origin": "assistant_revised_new20",
+    "status": "executable",
+    "family_id": "same_original_question_NEW-09",
+    "question_sha256": "bdb299531eee4d8c52e86e62ccc3ba18ef7f3ebd2792aa2378e5952acad386ff"
+  },
+  {
+    "id": "NEW-10",
+    "category": "결측 처리",
+    "question": "ST03_LABELLING_TEN 기록이 동일값 6개, 결측 1개, 동일값 6개 순서로 주어졌다. MAINT-03의 원문만으로 이를 하나의 연속 고정 구간으로 처리할 수 있는지 판단하고 문서 조건과 추가 결측 처리 가정을 구분하라.",
+    "split": "extension_draft_exposed",
+    "track": "document_qa",
+    "revision_note": null,
+    "origin": "assistant_revised_new20",
+    "status": "executable",
+    "family_id": "same_original_question_NEW-10",
+    "question_sha256": "3b381a6b4ff685c1dca64708f3d5a6fd2b1496ad1d9a43bfab1458c2554e31a8"
+  },
+  {
+    "id": "NEW-11",
+    "category": "복합 논리",
+    "question": "SOP-001 RULE-ST02-03 조건을 논리식으로 표현하라. 전류 차이 조건만 충족/지속시간 조건만 충족/둘 다 충족 세 경우의 적용 여부를 표로 작성하라. 원문에 없는 조건은 추가하지 말라.",
+    "split": "extension_draft_exposed",
+    "track": "document_qa",
+    "revision_note": null,
+    "origin": "assistant_revised_new20",
+    "status": "executable",
+    "family_id": "same_original_question_NEW-11",
+    "question_sha256": "722746fb73fcc939f9c589ba4e31f266c69f826947655ea6398a548c00e52c74"
+  },
+  {
+    "id": "NEW-12",
+    "category": "동시 규칙",
+    "question": "SRV01_SERVERROOM_TMP가 29°C로 6분 연속 유지되었다고 가정한다. SOP-002 임계값 기준과 SOP-003 정비 조건의 관련 지시를 각각 제시하고 함께 수행 가능한지 또는 충돌하는지 검토하라. 문서에 없는 우선순위·선후관계는 만들지 말라.",
+    "split": "extension_draft_exposed",
+    "track": "document_qa",
+    "revision_note": "NEW-12 corrected to server-room TMP; ST02 TMP has no matching maintenance rule.",
+    "origin": "assistant_revised_new20",
+    "status": "executable",
+    "family_id": "same_original_question_NEW-12",
+    "question_sha256": "8b67fb6ff9a5c0231e4f5737a459ca5e0065622e7ceb06c39e93947aaf6c6bc1"
+  },
+  {
+    "id": "NEW-13",
+    "category": "역추론 오류",
+    "question": "작업일지에 ST02_SEALING과 ST04_PACKAGING을 정지했다고만 기록되어 있다. 이것만으로 RULE-ST02-02가 발동했거나 온도가 해당 기준을 넘었다고 결론 내릴 수 있는지 판단하라. 조건→조치와 조치→조건 추정을 구분하라.",
+    "split": "extension_draft_exposed",
+    "track": "document_qa",
+    "revision_note": null,
+    "origin": "assistant_revised_new20",
+    "status": "executable",
+    "family_id": "same_original_question_NEW-13",
+    "question_sha256": "c265386a5d1c7ed27c76e6a0179553ea32a95bdb7f4bbc68801c88d68c70c28c"
+  },
+  {
+    "id": "NEW-14",
+    "category": "규칙 비발동 해석",
+    "question": "ST02_SEALING_TMP가 RULE-ST02-02 조건을 충족하지 않았다는 정보만 있다. 다른 규칙도 적용되지 않는다와 운전을 계속해도 된다는 두 결론을 각각 판단하고 필요한 추가 확인을 설명하라.",
+    "split": "extension_draft_exposed",
+    "track": "document_qa",
+    "revision_note": null,
+    "origin": "assistant_revised_new20",
+    "status": "executable",
+    "family_id": "same_original_question_NEW-14",
+    "question_sha256": "5d9e1b050f6bbba394dc5166df911e8231dec35e3a79aab2ee4d381d3b65201a"
+  },
+  {
+    "id": "NEW-15",
+    "category": "부분 교정",
+    "question": "다음 답변의 두 문장을 독립 검증해 근거 있는 내용은 보존하고 없는 내용만 수정하라: ST02 온도가 212°C이므로 RULE-ST02-02 조치를 적용한다. 따라서 실제 온도 센서 모델도 TMP-2210으로 확인된다.",
+    "split": "extension_draft_exposed",
+    "track": "document_qa",
+    "revision_note": null,
+    "origin": "assistant_revised_new20",
+    "status": "executable",
+    "family_id": "same_original_question_NEW-15",
+    "question_sha256": "2f915385c059df9e9b96df7573dac99eefbecd3cb47ebe5a7345c39d11ad0ed1"
+  },
+  {
+    "id": "NEW-16",
+    "category": "주장과 근거",
+    "question": "주장: ST02 전류 상승 후 ST04 속도 저하 시차는 정확히 5분이다. 근거: 두 현상은 서로 연관된다. 제공 문서에서 정확한 시차의 별도 근거를 찾아 없으면 인용문이 지지하는 범위까지만 주장을 수정하라.",
+    "split": "extension_draft_exposed",
+    "track": "document_qa",
+    "revision_note": null,
+    "origin": "assistant_revised_new20",
+    "status": "executable",
+    "family_id": "same_original_question_NEW-16",
+    "question_sha256": "6a98f4f1d14badd37dde1fc9a60f57f05c2faf023a9af1cde9c16b4cac05117e"
+  },
+  {
+    "id": "NEW-17",
+    "category": "잘못된 행 인용",
+    "question": "ST02_SEALING_TMP 위험 상한 답변에 SOP-002의 ST02_SEALING_CUR 행을 근거로 제시한 경우를 검토하라. TMP 행과 CUR 행의 대상·측정량·단위를 대조해 답변과 인용을 함께 수정하고 문서명이 같다는 것만으로 적절한 근거인지 답하라.",
+    "split": "extension_draft_exposed",
+    "track": "document_qa",
+    "revision_note": null,
+    "origin": "assistant_revised_new20",
+    "status": "executable",
+    "family_id": "same_original_question_NEW-17",
+    "question_sha256": "4b875d55fab3817e21025cbe5f2f8e802ff33c72d08d891cb43c6555f6572957"
+  },
+  {
+    "id": "NEW-18",
+    "category": "추출과 계산",
+    "question": "SOP-002 ST02_SEALING_TMP의 warnHi와 critHi 사이 간격을 계산하라. 문서 추출값과 계산값을 구분하고 단위를 제시하라. 간격만으로 위험 발생 확률이나 안전 여유를 정량화할 수 있는지도 판단하라.",
+    "split": "extension_draft_exposed",
+    "track": "document_qa",
+    "revision_note": null,
+    "origin": "assistant_revised_new20",
+    "status": "executable",
+    "family_id": "same_original_question_NEW-18",
+    "question_sha256": "624e72f3e725c113e74d6fbb2e25e28fcf3adb32b506ef703f2e9201a4bf9545"
+  },
+  {
+    "id": "NEW-19",
+    "category": "명확화",
+    "question": "현장 작업자가 실링 센서가 경고래요라고만 문의했다. ST02_SEALING 소속 센서를 확인해 대상이 하나로 정해지는지 판단하고 둘 이상이면 조치를 선택하지 말고 필요한 정보를 묻는 최소한의 후속 질문 한 문장을 작성하라.",
+    "split": "extension_draft_exposed",
+    "track": "document_qa",
+    "revision_note": null,
+    "origin": "assistant_revised_new20",
+    "status": "executable",
+    "family_id": "same_original_question_NEW-19",
+    "question_sha256": "e5e3530340875112e848ad075086f6fa169263906f9b1ceeebc47c716aa2e407"
+  },
+  {
+    "id": "NEW-20",
+    "category": "선택적 응답",
+    "question": "ST02_SEALING_TMP의 문서상 단위, 지금 측정값, 현재 경보 등급, 최근 24시간 최고값을 알려 달라. 각 항목을 독립 처리해 답할 수 있는 것은 답하고 나머지는 필요한 데이터와 함께 표시하라.",
+    "split": "extension_draft_exposed",
+    "track": "document_qa",
+    "revision_note": null,
+    "origin": "assistant_revised_new20",
+    "status": "executable",
+    "family_id": "same_original_question_NEW-20",
+    "question_sha256": "50ef9de64b159dff9e40a589dc123413a99ba20067fcef093b172bbcd5f16681"
+  },
+  {
+    "id": "CQ01",
+    "question": "ST04_PACKAGING의 속도(SPD) 저하가 관측될 때, 원인 후보 공정 상위 3개와 각 점수는?",
+    "category": "원인 후보 순위",
+    "split": "draft_exposed",
+    "track": "pending_event_fixture",
+    "status": "pending_input",
+    "origin": "local_team_cq25",
+    "required_inputs": "사건 구간·후보 저장소",
+    "pending_reason": "Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.",
+    "family_id": "same_original_question_CQ01",
+    "question_sha256": "c6670c3a2d4b0c8476057577bc3b2a5f7bc5805b59184442680257271876819d"
+  },
+  {
+    "id": "CQ02",
+    "question": "ST02_SEALING→ST04_PACKAGING 후보는 SOP 규칙 근거인가, 시계열에서만 관측된 것인가? 시차는?",
+    "category": "근거 종류·시차",
+    "split": "draft_exposed",
+    "track": "pending_event_fixture",
+    "status": "pending_input",
+    "origin": "local_team_cq25",
+    "required_inputs": "해당 후보·시계열·SOP",
+    "pending_reason": "Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.",
+    "family_id": "same_original_question_CQ02",
+    "question_sha256": "fb9ed5df349a7e51a4add396460e8acc3a66900ade156c0e687312eb5a1d5543"
+  },
+  {
+    "id": "CQ03",
+    "question": "이 후보(또는 규칙)의 근거는 어느 문서·쪽·위치이며 원문 해시는? 시계열 근거는 어느 파일·센서·시간 구간인가?",
+    "category": "출처 추적",
+    "split": "draft_exposed",
+    "track": "pending_event_fixture",
+    "status": "pending_input",
+    "origin": "local_team_cq25",
+    "required_inputs": "대상 후보/규칙 ID·출처 기록",
+    "pending_reason": "Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.",
+    "family_id": "same_original_question_CQ03",
+    "question_sha256": "2a6ec563791913f16f0cfd54345e70b638cc5a452e51a6a645004feab9c24e7e"
+  },
+  {
+    "id": "CQ04",
+    "question": "ST02 온도가 SOP 위험 기준을 넘으면(212℃ 가정) SOP가 안내하는 조치·대상 스테이션·근거 문서는?",
+    "category": "규칙·조치 대상·출처",
+    "split": "draft_exposed",
+    "track": "document_qa",
+    "status": "executable",
+    "origin": "local_team_cq25",
+    "required_inputs": "문서·KG",
+    "pending_reason": null,
+    "family_id": "temperature_shutdown",
+    "question_sha256": "ea720e8126cc6bad608fe334ee4cbf82788ab044442b4cfff64bbe161a352e43"
+  },
+  {
+    "id": "CQ05",
+    "question": "원인 후보 공정의 센서가 이상일 때 적용되는 정비 규칙(조치·우선순위)과 SOP-003 §2의 해소 절차는?",
+    "category": "후보에서 정비 근거 연결",
+    "split": "draft_exposed",
+    "track": "pending_event_fixture",
+    "status": "pending_input",
+    "origin": "local_team_cq25",
+    "required_inputs": "대상 후보·센서·문서·KG",
+    "pending_reason": "Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.",
+    "family_id": "same_original_question_CQ05",
+    "question_sha256": "762e97d7851fd38f4587a464abaf888adbcbc8c7ffa548e969a68c89519ffd5f"
+  },
+  {
+    "id": "CQ06",
+    "question": "지정한 ST04 속도 저하 사건 두 건에서 원인 후보 공정의 순위가 어떻게 달라지는가? 공통 후보와 한 사건에만 있는 후보를 나누고, 각 사건의 점수·관측 구간·근거를 제시하라.",
+    "category": "사건을 섞지 않는 비교",
+    "split": "draft_exposed",
+    "track": "pending_event_fixture",
+    "status": "pending_input",
+    "origin": "local_team_cq25",
+    "required_inputs": "서로 다른 사건 2건과 후보",
+    "pending_reason": "Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.",
+    "family_id": "same_original_question_CQ06",
+    "question_sha256": "0e4c8eea6df669b33ebc959f84047f3ce640b7e6d389734e09e9627b5c5acc13"
+  },
+  {
+    "id": "CQ07",
+    "question": "지정한 사건에서 점수 0.6 이상인 후보만 점수 내림차순으로 최대 3개 제시하라. 제외된 후보와 제외 사유도 제시하고, 같은 점수가 있으면 동점임을 밝혀라.",
+    "category": "필터·정렬·동점 처리",
+    "split": "draft_exposed",
+    "track": "pending_event_fixture",
+    "status": "pending_input",
+    "origin": "local_team_cq25",
+    "required_inputs": "기준 이상/미만이 포함된 후보 묶음",
+    "pending_reason": "Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.",
+    "family_id": "same_original_question_CQ07",
+    "question_sha256": "8675127360eade1484ef801912e545274499f8535cd5a062b4b2ddc13b2af2f5"
+  },
+  {
+    "id": "CQ08",
+    "question": "동일한 공정 쌍이 두 관측 구간에서 후보로 기록됐다. 두 구간의 시차·점수·근거 종류를 각각 비교하고, 둘 중 하나의 값을 전체 기간의 대표값으로 사용해도 되는지 설명하라.",
+    "category": "관계의 구간별 속성",
+    "split": "draft_exposed",
+    "track": "pending_event_fixture",
+    "status": "pending_input",
+    "origin": "local_team_cq25",
+    "required_inputs": "같은 공정 쌍의 구간 2개",
+    "pending_reason": "Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.",
+    "family_id": "same_original_question_CQ08",
+    "question_sha256": "a20519d2053d252a6836a2663c4b8b20436aa24109dbb9b8d29127c9a6517c23"
+  },
+  {
+    "id": "CQ09",
+    "question": "지정한 사건의 후보에서 시차가 어느 센서에서 어느 센서로 정의됐는지 확인하라. 두 센서의 이상 시작 시각과 저장된 시차를 대조하고, 부호·단위·기준 시각을 확인할 수 없는 항목은 따로 표시하라.",
+    "category": "시차 방향·단위 검증",
+    "split": "draft_exposed",
+    "track": "pending_event_fixture",
+    "status": "pending_input",
+    "origin": "local_team_cq25",
+    "required_inputs": "시차 정의·센서 구간·후보 기록",
+    "pending_reason": "Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.",
+    "family_id": "same_original_question_CQ09",
+    "question_sha256": "82576ad79242d12d5246f3c95bc5733c8a1fa6cd7a0ca8a70bbd2dd5a6372b7f"
+  },
+  {
+    "id": "CQ10",
+    "question": "지정한 원인 후보의 근거 구간과 설명 대상 사건 구간이 겹치는지 확인하라. 겹치지 않는다면 해당 후보를 이번 사건의 직접 관측 근거로 제시할 수 있는지, 과거 참고 사례인지 구분하라.",
+    "category": "시간 범위 일치",
+    "split": "draft_exposed",
+    "track": "pending_event_fixture",
+    "status": "pending_input",
+    "origin": "local_team_cq25",
+    "required_inputs": "사건·후보 근거의 시작/종료 시각",
+    "pending_reason": "Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.",
+    "family_id": "same_original_question_CQ10",
+    "question_sha256": "b55d8bf59aadf2d20fb081c96ffd1853708b6fab7d86a10afac308e0180489bf"
+  },
+  {
+    "id": "CQ11",
+    "question": "지정한 후보 공정에서 ST04_PACKAGING까지 물리적 공정 연결 경로가 있는가? 있다면 중간 공정과 방향을 순서대로 제시하고, 이 경로가 원인 후보 관계와 어떻게 다른지 설명하라.",
+    "category": "물리 경로·후보 관계 구별",
+    "split": "draft_exposed",
+    "track": "pending_event_fixture",
+    "status": "pending_input",
+    "origin": "local_team_cq25",
+    "required_inputs": "대상 후보·feedsInto 그래프",
+    "pending_reason": "Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.",
+    "family_id": "same_original_question_CQ11",
+    "question_sha256": "7b3d9e460984d906be4fe4ee6192fd1a032b5f2b3712bf79b2f516905303e3e8"
+  },
+  {
+    "id": "CQ12",
+    "question": "지정한 두 공정 사이에 직접 원인 후보 관계가 저장돼 있는지, 중간 공정을 거친 경로만 있는지 구별하라. 간접 경로만 있을 때 직접 관계나 그 점수를 새로 만들어 답하지 마라.",
+    "category": "직접 관계와 다단계 경로 구별",
+    "split": "draft_exposed",
+    "track": "pending_event_fixture",
+    "status": "pending_input",
+    "origin": "local_team_cq25",
+    "required_inputs": "대상 공정 쌍·후보 그래프",
+    "pending_reason": "Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.",
+    "family_id": "same_original_question_CQ12",
+    "question_sha256": "2373bcc01027d53aa74bfe38b0ea89afb0c60a2b4218cf04a808d14a7d54882b"
+  },
+  {
+    "id": "CQ13",
+    "question": "지정한 사건의 후보 관계 방향이 물리적 생산 흐름의 방향과 일치하는지 후보별로 확인하라. 불일치하거나 비교 경로가 없는 후보를 구분하고, 그 사실만으로 후보를 오류라고 확정할 수 있는지도 설명하라.",
+    "category": "관계 방향 교차 점검",
+    "split": "draft_exposed",
+    "track": "pending_event_fixture",
+    "status": "pending_input",
+    "origin": "local_team_cq25",
+    "required_inputs": "사건 후보·물리 공정 그래프",
+    "pending_reason": "Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.",
+    "family_id": "same_original_question_CQ13",
+    "question_sha256": "cad6a7db30410628a7e0ef3d1333338dc2909b7687316c116c765e8c0d320405"
+  },
+  {
+    "id": "CQ14",
+    "question": "지정한 사건에서 두 원인 후보가 같은 센서·같은 관측 구간을 근거로 사용하는가? 공유 근거와 독립 근거를 나누고, 후보가 두 개라는 이유만으로 독립적인 증거가 두 개라고 셀 수 있는지 설명하라.",
+    "category": "근거 중복과 독립성",
+    "split": "draft_exposed",
+    "track": "pending_event_fixture",
+    "status": "pending_input",
+    "origin": "local_team_cq25",
+    "required_inputs": "후보 2개·센서·구간별 출처",
+    "pending_reason": "Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.",
+    "family_id": "same_original_question_CQ14",
+    "question_sha256": "af2602d51338e1d60d8320d941b54fc828d17722e73ff18cc4bae6d9e7924c92"
+  },
+  {
+    "id": "CQ15",
+    "question": "지정한 사건에서 후보 공정을 선택했을 때, 후보 → 공정 → 센서 → 적용 정비 규칙 → 원문 근거를 따라 연결된 경로를 제시하라. 연결이 끊기는 지점은 어디이며, 그 뒤 내용을 다른 근거로 보완했다면 구분하라.",
+    "category": "전체 설명 경로의 완전성",
+    "split": "draft_exposed",
+    "track": "pending_event_fixture",
+    "status": "pending_input",
+    "origin": "local_team_cq25",
+    "required_inputs": "사건 후보·센서·정비 규칙·출처",
+    "pending_reason": "Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.",
+    "family_id": "same_original_question_CQ15",
+    "question_sha256": "bbf2e9b11bbd3b7f0214ce7bb0e45c143f09d67210ebf6a62058e4c7385ce13c"
+  },
+  {
+    "id": "CQ16",
+    "question": "지정한 후보가 참조하는 모든 ruleIds와 windowId가 실제 저장소에 존재하는가? 존재 여부, 연결된 문서 또는 관측 구간을 확인하고, 확인하지 못한 참조를 명시하라.",
+    "category": "참조 무결성",
+    "split": "draft_exposed",
+    "track": "pending_event_fixture",
+    "status": "pending_input",
+    "origin": "local_team_cq25",
+    "required_inputs": "후보·규칙·관측 구간 등록부",
+    "pending_reason": "Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.",
+    "family_id": "same_original_question_CQ16",
+    "question_sha256": "7956c01e93d7198ac1272b8dffe5035fc3251004bb1d5ea4403d75f2e7b544bf"
+  },
+  {
+    "id": "CQ17",
+    "question": "지정한 후보의 hasEvidence 표기와 실제 연결 근거가 일치하는가? SOP와 시계열 양쪽 근거를 각각 확인하고, 표기는 있으나 실제 자료로 검증하지 못한 부분을 구별하라.",
+    "category": "근거 종류 표기 검증",
+    "split": "draft_exposed",
+    "track": "pending_event_fixture",
+    "status": "pending_input",
+    "origin": "local_team_cq25",
+    "required_inputs": "후보 속성·문서/시계열 근거",
+    "pending_reason": "Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.",
+    "family_id": "same_original_question_CQ17",
+    "question_sha256": "15be2b8bba34767d3e95d61abd0a6ea868984bc705dc88c4a26aaf659181cd82"
+  },
+  {
+    "id": "CQ18",
+    "question": "지정한 규칙에 저장된 인용문이 원문의 해당 위치와 일치하는지 확인하라. 문서·쪽·위치·저장 해시·재계산 해시를 대조하고, 위치와 해시 중 하나만 맞는 경우를 어떻게 보고할지 설명하라.",
+    "category": "인용과 원문 무결성",
+    "split": "draft_exposed",
+    "track": "pending_event_fixture",
+    "status": "pending_input",
+    "origin": "local_team_cq25",
+    "required_inputs": "규칙 출처·고정 원문·해시 계산 도구",
+    "pending_reason": "Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.",
+    "family_id": "same_original_question_CQ18",
+    "question_sha256": "05cffc894ebc96abe3e2cdf5ea8a6e5189ff942aeb78e113f349de72929b69fc"
+  },
+  {
+    "id": "CQ19",
+    "question": "지정한 후보가 사용한 센서 파일과 현재 평가에 제공된 센서 파일이 같은 버전인지 확인하라. 파일명뿐 아니라 해시와 관측 구간을 대조하고, 다르거나 저장 해시가 없으면 재현 가능 범위를 밝혀라.",
+    "category": "시계열 근거 버전 추적",
+    "split": "draft_exposed",
+    "track": "pending_event_fixture",
+    "status": "pending_input",
+    "origin": "local_team_cq25",
+    "required_inputs": "과거 파일 출처·평가 파일·해시 도구",
+    "pending_reason": "Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.",
+    "family_id": "same_original_question_CQ19",
+    "question_sha256": "6bc5f3c56eb89b69756c28da5e205bc713325a299709d9e334316ff96f2809b1"
+  },
+  {
+    "id": "CQ20",
+    "question": "지정한 정비 규칙의 같은 identifier가 여러 노드에 나타난다. seed 유래 표현과 문서 추출 표현을 출처별로 비교하고, 중복 표현인지 서로 다른 조건인지 구분하라. 근거 없이 규칙 수나 우선순위를 합치지 마라.",
+    "category": "중복 규칙·출처별 표현",
+    "split": "draft_exposed",
+    "track": "pending_event_fixture",
+    "status": "pending_input",
+    "origin": "local_team_cq25",
+    "required_inputs": "동일 identifier 복수 노드 사례·원문",
+    "pending_reason": "Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.",
+    "family_id": "same_original_question_CQ20",
+    "question_sha256": "a2bb0139003f77b24f3b56e80a7305095f8dce56fce6d1488c19c7d23d81c2a1"
+  },
+  {
+    "id": "CQ21",
+    "question": "지정한 사건의 원인 후보 센서에 관측 공백이나 중복 시각이 있는가? 있다면 어느 구간이며, 저장된 지속 시간·선후 관계를 검증할 수 있는 범위가 어디까지인지 설명하라.",
+    "category": "시계열 품질과 판단 범위",
+    "split": "draft_exposed",
+    "track": "pending_event_fixture",
+    "status": "pending_input",
+    "origin": "local_team_cq25",
+    "required_inputs": "해당 센서 원시 관측·시간 규약",
+    "pending_reason": "Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.",
+    "family_id": "same_original_question_CQ21",
+    "question_sha256": "8533b07e00d1714b0b782fb3c452f0a1151bc0005538f8666b944cc137cd1e4d"
+  },
+  {
+    "id": "CQ22",
+    "question": "지정한 후보의 근거를 검토할 때 원인 후보 센서보다 ST04 속도 변화가 먼저 시작된 구간이 있는가? 있다면 그 구간과 기록된 관계의 충돌을 제시하고, 관측 순서만으로 인과를 확정하거나 부정할 수 있는지 설명하라.",
+    "category": "반대 시간 증거 확인",
+    "split": "draft_exposed",
+    "track": "pending_event_fixture",
+    "status": "pending_input",
+    "origin": "local_team_cq25",
+    "required_inputs": "고정 시간 범위·시작 판정 기준·시계열",
+    "pending_reason": "Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.",
+    "family_id": "same_original_question_CQ22",
+    "question_sha256": "ad0d4c877c6d197d7724f4efadf7d4383303eca7ea6562359b7e3653460e6fbb"
+  },
+  {
+    "id": "CQ23",
+    "question": "평가자가 지정한 동일 길이의 두 구간 중 한쪽은 후보 센서 변화와 ST04 속도 저하가 함께 있고, 다른 쪽은 후보 센서 변화만 있다. 관측값을 대조해 관계가 항상 성립하는지 검토하고, 이 두 구간만으로 발생 확률을 산출해도 되는지 설명하라.",
+    "category": "비교 구간·충분조건 과잉 해석 방지",
+    "split": "draft_exposed",
+    "track": "pending_event_fixture",
+    "status": "pending_input",
+    "origin": "local_team_cq25",
+    "required_inputs": "선택 규칙이 고정된 구간 2개·시계열",
+    "pending_reason": "Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.",
+    "family_id": "same_original_question_CQ23",
+    "question_sha256": "091c63f03ef255abe69777aec9290fe4325482aa6efa95e41c426079f73dbff2"
+  },
+  {
+    "id": "CQ24",
+    "question": "지정한 사건의 저장소에서 점수 0.6 이상인 원인 후보가 하나도 없다면 어떻게 답해야 하는가? 기준 미달 후보의 존재와 근거 부족을 구별하고, 원인 후보를 제시하려면 어떤 추가 분석·자료가 필요한지 설명하라.",
+    "category": "후보 부재·응답 유보",
+    "split": "draft_exposed",
+    "track": "pending_event_fixture",
+    "status": "pending_input",
+    "origin": "local_team_cq25",
+    "required_inputs": "적격 후보가 없는 고정 사례",
+    "pending_reason": "Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.",
+    "family_id": "same_original_question_CQ24",
+    "question_sha256": "82c02ad4bea563151ff1a634330020734313015dcaf58dadfd31f707c7891ff9"
+  },
+  {
+    "id": "CQ25",
+    "question": "지정한 사건에서 정비 조치를 한 뒤 ST04 속도가 회복됐다는 주장을 검증하라. 실제 정비 실행 시각·실행 기록·전후 센서 관측을 확인하고, 문서상 권고만 있거나 기록이 부족하면 무엇을 확인할 수 없는지 밝혀라.",
+    "category": "권고와 실제 실행·효과 구별",
+    "split": "draft_exposed",
+    "track": "pending_event_fixture",
+    "status": "pending_input",
+    "origin": "local_team_cq25",
+    "required_inputs": "조치 이력의 제공 여부가 명시된 사건·시계열",
+    "pending_reason": "Original question requires a selected event/candidate/rule/window fixture that has not been specified. No fabricated fixture.",
+    "family_id": "same_original_question_CQ25",
+    "question_sha256": "516fb6d08028dc77f809d485e66f281a3c7775cd6b9ef11e2cef653f90d36b30"
+  }
+]
+''')
+
+def by_id(identifier):
+    return next(q for q in BENCHMARKS if q["id"] == identifier)

@@ -1,0 +1,6 @@
+{"id": "YV2-Q01", "split": "dev", "category": "단일 규칙", "question": "SOP-001에 따르면 ST01_FILLING의 유량 유지 범위와 단위는?"}
+{"id": "YV2-Q06", "split": "dev", "category": "수치·조건", "question": "SOP-002 ST02_SEALING 전류 행의 명목값(허용오차 포함), 경고 상한, 위험 상한을 단위와 함께 제시하라."}
+{"id": "YV2-Q11", "split": "dev", "category": "연결·절차", "question": "SOP-001에 적힌 ST01부터 ST04까지의 물류 진행 순서를 설명하라."}
+{"id": "YV2-Q16", "split": "dev", "category": "문서 비교", "question": "ST02 전류에 대해 SOP-002 경고·위험 상한과 DS-ELEC-3300 연속 운전 정격을 비교하라. 이를 동일한 종류의 값으로 취급해도 되는가?"}
+{"id": "YV2-Q21", "split": "dev", "category": "근거·권한", "question": "SOP-003 MAINT-03의 센서·발동 조건·조치·우선순위를 출처와 함께 제시하라."}
+{"id": "YV2-Q26", "split": "dev", "category": "답변 한계", "question": "제공된 문서만으로 지금 ST04 속도 저하의 실제 원인이 ST02 모터 과부하라고 확정할 수 있는가?"}

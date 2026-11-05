@@ -1,9 +1,5 @@
 # work_log.md
 
-선택과 이유, 미결정 사항을 단계가 끝날 때마다 적는다. 기준 문서는 `CLAUDE.md`이며, 다르면 `CLAUDE.md`가 우선한다. 커밋은 작업 완료 후 한꺼번에 한다(사용자 결정).
-
-> **로컬 전용 안내:** 이 문서와 `docs/`, `ontology_v1/schema_tables.md`가 언급하는 `reports/`의 초안(`own_*`), 팀원 비교(`comparison_rubric.md`, `teammate_comparison.md`), CLAUDE.md 백업(`*.bak`)은 git에 올리지 않는 **로컬 전용** 파일이다(`.gitignore`로 제외, 2026-10-07 결정). 결정과 이유는 이 문서에 모두 요약돼 있다. git에 추적하는 것은 구현·검증 보고서(`reports/*_impl.md`, `reports/*_verify.md`)뿐이다.
-
 ## 2026-10-07
 
 ### 진행한 것

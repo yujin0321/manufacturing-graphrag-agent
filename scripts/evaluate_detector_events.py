@@ -105,6 +105,34 @@ def evaluate(detections: list[dict], gold: list[dict], grace_minutes: int) -> di
     return report
 
 
+def evaluate_incidents(incidents: list[dict], gold: list[dict], grace_minutes: int) -> dict:
+    """Incident-level view (v3+): one grouped incident per alarm cluster, typed.
+
+    Type accuracy compares the first overlapping incident's anomaly_type with
+    the gold label. Incidents are adapted to the alarm overlap test."""
+    grace = timedelta(minutes=grace_minutes)
+    as_det = [{**i, "trigger_at": i["start"], "last_positive_at": i["end"]} for i in incidents]
+    per_event, confusion = [], defaultdict(lambda: defaultdict(int))
+    for g in gold:
+        hits = sorted((d for d in as_det if overlaps(d, g, grace)), key=lambda d: d["start"])
+        predicted = hits[0]["anomaly_type"] if hits else "MISSED"
+        confusion[g["label"]][predicted] += 1
+        per_event.append({"sensor_id": g["sensor_id"], "label": g["label"], "start": g["start"],
+                          "predicted_type": predicted, "incident": hits[0]["id"] if hits else None})
+    caught = [e for e in per_event if e["predicted_type"] != "MISSED"]
+    false_incidents = [d for d in as_det if not any(overlaps(d, g, grace) for g in gold)]
+    return {"incidents": len(incidents), "gold_events": len(gold), "events_caught": len(caught),
+            "false_incidents": len(false_incidents),
+            "incident_precision": (len(incidents) - len(false_incidents)) / len(incidents) if incidents else 0.0,
+            "type_correct": sum(e["predicted_type"] == e["label"] for e in caught),
+            "type_accuracy_on_caught": (sum(e["predicted_type"] == e["label"] for e in caught) / len(caught))
+            if caught else None,
+            "false_incidents_by_type": {t: sum(d["anomaly_type"] == t for d in false_incidents)
+                                        for t in sorted({d["anomaly_type"] for d in false_incidents})},
+            "confusion_gold_rows_pred_columns": {k: dict(v) for k, v in sorted(confusion.items())},
+            "events": per_event}
+
+
 def main() -> None:
     p = argparse.ArgumentParser()
     p.add_argument("--run", type=Path, required=True)
@@ -123,12 +151,23 @@ def main() -> None:
     report = evaluate(v.read(a.run / "events.json"), gold, a.grace_minutes)
     out = v.REPO_ROOT / "evaluation" / f"detector_events_{a.run.name}"
     out.mkdir(parents=True, exist_ok=True)
+    incident_report = None
+    if (a.run / "incidents.json").exists():
+        if "incidents.json" not in seal:
+            raise ValueError("incidents.json is not sealed")
+        incident_report = evaluate_incidents(v.read(a.run / "incidents.json"), gold, a.grace_minutes)
     v.write(out / "event_metrics.json", {"run": str(a.run), "grace_minutes": a.grace_minutes,
                                          "detector_seal_sha256": v.digest((a.run / "complete.json").read_bytes()),
-                                         "report": report})
+                                         "report": report, "incident_report": incident_report})
     for family, r in report.items():
         print(f"{family:24} caught {r['events_caught']}/{r['gold_events']}  precision {r['alarm_precision']:.2f} "
               f"false_alarms {r['false_alarms']}  median_latency {r['median_latency_min']}  {r['recall_by_type']}")
+    if incident_report:
+        r = incident_report
+        print(f"INCIDENTS {r['incidents']}  caught {r['events_caught']}/{r['gold_events']}  "
+              f"false {r['false_incidents']} {r['false_incidents_by_type']}  "
+              f"type correct {r['type_correct']}/{r['events_caught']}")
+        print(json.dumps(r["confusion_gold_rows_pred_columns"], ensure_ascii=False))
     print(json.dumps([{k: e[k] for k in ("sensor_id", "label", "start", "end", "caught")} |
                       ({"latency_min": e["latency_min"], "rules": e["rules"]} if e["caught"] else {})
                       for e in report["ALL"]["events"]], ensure_ascii=False, indent=1))

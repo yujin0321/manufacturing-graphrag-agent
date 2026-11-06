@@ -153,9 +153,13 @@ def compile_rules(graph) -> tuple[list[dict], list[dict]]:
 
 
 # ------------------------------------------------------------------ execution
-def scan(rows: list[dict], rule: dict) -> list[dict]:
+def scan(rows: list[dict], rule: dict, *, warning_samples: int = 1,
+         warning_transitions: list[dict] | None = None) -> list[dict]:
     """Forward-only. A gap between samples resets persistence; day/split
     boundaries do not. Boundaries follow the source wording (">" is strict)."""
+    if warning_samples < 1:
+        raise ValueError("warning_samples must be positive")
+    confirm = warning_samples if rule["kind"] == "kg_threshold_warning" else 1
     events: list[dict] = []
     current = None
     start = None
@@ -170,7 +174,10 @@ def scan(rows: list[dict], rule: dict) -> list[dict]:
         if row["unit"] != rule["unit"] or not value.is_finite():
             raise ValueError("Unit mismatch or non-finite observation")
         contiguous = last_ts is not None and (ts - last_ts).total_seconds() == SAMPLE_SECONDS
-        if not contiguous:
+        switched_side = (confirm > 1 and contiguous and
+                         ((last_value < limit and value > second) or
+                          (last_value > second and value < limit)))
+        if not contiguous or switched_side:
             start, same = None, 0
             if current:
                 events.append(current)
@@ -192,9 +199,19 @@ def scan(rows: list[dict], rule: dict) -> list[dict]:
         start = (start or ts) if condition else None
         hit = condition and (rule["duration_seconds"] == 0
                              or (ts - start).total_seconds() > rule["duration_seconds"])
+        if hit and confirm > 1:
+            hit = (ts - start).total_seconds() >= (confirm - 1) * SAMPLE_SECONDS
+        if warning_transitions is not None and confirm > 1 and condition and (start == ts or (hit and current is None)):
+            warning_transitions.append({
+                "stage": "watch" if start == ts else "confirmed",
+                "sensor_id": row["sensor_id"], "rule_id": rule["rule_id"],
+                "watch_at": start.isoformat(), "observed_at": row["timestamp"],
+                "value": str(value), "unit": row["unit"],
+                "side": "low" if value < limit else "high",
+            })
         if hit:
             if current is None:
-                condition_start = start if rule["duration_seconds"] else (
+                condition_start = start if rule["duration_seconds"] or confirm > 1 else (
                     ts - timedelta(seconds=(same - 1) * SAMPLE_SECONDS) if op == "stuck_exact" else ts)
                 current = {"sensor_id": row["sensor_id"], "rule_id": rule["rule_id"], "kind": rule["kind"],
                            "trigger_at": row["timestamp"], "condition_start": condition_start.isoformat(),
@@ -229,22 +246,29 @@ def threshold_consistency(graph, thresholds: dict) -> list[dict]:
     return diffs
 
 
-def run(out: Path = OUT) -> dict:
+def run(out: Path = OUT, *, warning_samples: int = 1) -> dict:
+    if warning_samples < 1:
+        raise ValueError("warning_samples must be positive")
     out = Path(out)
     out.mkdir(parents=True, exist_ok=False)
     groups, thresholds, _ = v1.read_inputs()
     graph = c.load_graph()
     rules, unsupported = compile_rules(graph)
     v.write(out / "rules.json", {"rules": rules, "unsupported": unsupported,
-                                 "policy": {"split_reset": False, "gap_reset": True,
+                                 "policy": {"split_reset": False, "gap_reset": True, "warning_samples": warning_samples,
                                             "duration": "strict elapsed seconds > limit"}})
     events = []
+    warning_transitions = []
     for rule in rules:
-        events.extend(scan(groups[rule["sensor_id"]], rule))
+        events.extend(scan(groups[rule["sensor_id"]], rule, warning_samples=warning_samples,
+                           warning_transitions=warning_transitions))
     events.sort(key=lambda e: (e["trigger_at"], e["sensor_id"], e["rule_id"]))
     for e in events:
         e["id"] = "det2-" + v.digest(v.encoded(e))[:20]
     v.write(out / "events.json", events)
+    if warning_samples > 1:
+        warning_transitions.sort(key=lambda item: (item["observed_at"], item["sensor_id"], item["rule_id"]))
+        v.write(out / "warning_transitions.json", warning_transitions)
     summary = {"executable_rules": len(rules), "unsupported_rules": len(unsupported), "events": len(events),
                "events_by_kind": {k: sum(e["kind"] == k for e in events) for k in sorted({r["kind"] for r in rules})},
                "kg_vs_metadata_threshold_diffs": threshold_consistency(graph, thresholds),
@@ -258,5 +282,8 @@ def run(out: Path = OUT) -> dict:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--out", type=Path, default=OUT)
+    parser.add_argument("--warning-samples", type=int, default=1,
+                        help="consecutive 30-second readings on the same side before a band warning")
     import json
-    print(json.dumps(run(parser.parse_args().out), ensure_ascii=False, indent=2))
+    args = parser.parse_args()
+    print(json.dumps(run(args.out, warning_samples=args.warning_samples), ensure_ascii=False, indent=2))

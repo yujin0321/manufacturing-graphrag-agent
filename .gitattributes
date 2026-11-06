@@ -37,3 +37,6 @@ docs/benchmark_graph_v3_20261028/questions.jsonl -text whitespace=cr-at-eol
 docs/benchmark_graph_v3_20261028/lock.json -text whitespace=cr-at-eol
 docs/graphrag_v3/lexicon.json -text whitespace=cr-at-eol
 docs/graphrag_v3/policy.json -text whitespace=cr-at-eol
+
+# Preserve sealed detector results across Windows and Linux.
+artifacts/rule_detector_yewon7_20261106/** -text whitespace=cr-at-eol,-blank-at-eof

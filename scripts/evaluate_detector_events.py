@@ -21,6 +21,7 @@ import argparse
 import csv
 import json
 import sys
+from statistics import median
 from collections import defaultdict
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -99,10 +100,36 @@ def evaluate(detections: list[dict], gold: list[dict], grace_minutes: int) -> di
             "event_recall": caught / len(gold) if gold else 0.0,
             "alarm_precision": (len(dets) - len(false_alarms)) / len(dets) if dets else 0.0,
             "false_alarms": len(false_alarms),
-            "median_latency_min": sorted(latencies)[len(latencies) // 2] if latencies else None,
+            "median_latency_min": median(latencies) if latencies else None,
             "recall_by_type": {k: f"{a}/{b}" for k, (a, b) in sorted(by_type.items())},
             "events": per_event}
     return report
+
+
+def evaluate_warning_stages(transitions: list[dict], gold: list[dict]) -> dict:
+    """Measure emitted notifications inside the labelled interval, without grace."""
+    from imaks_kg.detection.rules import split
+    def key(row):
+        return row["sensor_id"], row["rule_id"], row["watch_at"]
+
+    confirmed = {key(t) for t in transitions if t["stage"] == "confirmed"}
+    counts = defaultdict(lambda: {"watch": 0, "confirmed": 0, "unconfirmed": 0})
+    for t in transitions:
+        if t["stage"] == "watch":
+            for group in ("ALL", t["sensor_id"], split(t["watch_at"])):
+                counts[group]["watch"] += 1
+                counts[group]["confirmed" if key(t) in confirmed else "unconfirmed"] += 1
+    timings = []
+    for g in gold:
+        result = {"sensor_id": g["sensor_id"], "start": g["start"], "end": g["end"],
+                  "label": g["label"], "split": split(g["start"])}
+        for stage in ("watch", "confirmed"):
+            stamps = [t["observed_at"] for t in transitions if t["stage"] == stage
+                      and t["sensor_id"] == g["sensor_id"] and g["start"] <= t["observed_at"] <= g["end"]]
+            result[stage + "_min"] = ((datetime.fromisoformat(min(stamps)) - datetime.fromisoformat(g["start"]))
+                                     .total_seconds() / 60 if stamps else None)
+        timings.append(result)
+    return {"counts_by_watch_start": dict(counts), "first_notification_in_each_event": timings}
 
 
 def main() -> None:
@@ -123,6 +150,10 @@ def main() -> None:
     report = evaluate(v.read(a.run / "events.json"), gold, a.grace_minutes)
     out = v.REPO_ROOT / "evaluation" / f"detector_events_{a.run.name}"
     out.mkdir(parents=True, exist_ok=True)
+    if "warning_transitions.json" in seal:
+        stages = evaluate_warning_stages(v.read(a.run / "warning_transitions.json"), gold)
+        stages["detector_seal_sha256"] = v.digest((a.run / "complete.json").read_bytes())
+        v.write(out / "warning_stages.json", stages)
     v.write(out / "event_metrics.json", {"run": str(a.run), "grace_minutes": a.grace_minutes,
                                          "detector_seal_sha256": v.digest((a.run / "complete.json").read_bytes()),
                                          "report": report})

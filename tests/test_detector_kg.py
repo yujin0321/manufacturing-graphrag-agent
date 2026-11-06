@@ -100,8 +100,43 @@ class ScanTests(unittest.TestCase):
         self.assertEqual(k.scan(self.rows(["13.9"]), self.rule()), [])
         self.assertEqual(len(k.scan(self.rows(["13.9001"]), self.rule())), 1)
 
+    def test_confirm_same_side_and_preserve_witness_start(self):
+        rule = self.rule(kind="kg_threshold_warning", op="outside", value="10", second="20")
+        rows = self.rows([21, 20, 21, 9, 8, 21, 22])
+        events = k.scan(rows, rule, warning_samples=2)
+        self.assertEqual([(e["condition_start"], e["trigger_at"]) for e in events],
+                         [(rows[3]["timestamp"], rows[4]["timestamp"]),
+                          (rows[5]["timestamp"], rows[6]["timestamp"])])
+        self.assertEqual(k.scan(rows[:1], rule, warning_samples=2), [])
+        self.assertEqual(len(k.scan(rows[:1], {**rule, "kind": "kg_threshold_critical"}, warning_samples=2)), 1)
+        self.assertEqual(k.scan(rows[:1], rule)[0]["trigger_at"], rows[0]["timestamp"])
+
+    def test_confirmation_resets_at_gap(self):
+        rule = self.rule(kind="kg_threshold_warning", op="outside", value="10", second="20")
+        rows = self.rows([21, 22, 23])
+        self.assertEqual(k.scan([rows[0], rows[2]], rule, warning_samples=2), [])
+
+    def test_watch_is_observable_before_confirmation(self):
+        rule = self.rule(kind="kg_threshold_warning", op="outside", value="10", second="20")
+        rows = self.rows([21, 9, 8, 7, 12, 23])
+        for count in range(1, len(rows) + 1):
+            transitions = []
+            events = k.scan(rows[:count], rule, warning_samples=2, warning_transitions=transitions)
+            expected = [(0, "watch", 0), (1, "watch", 1), (2, "confirmed", 1), (5, "watch", 5)]
+            self.assertEqual([(t["observed_at"], t["stage"], t["watch_at"]) for t in transitions],
+                             [(rows[i]["timestamp"], stage, rows[j]["timestamp"])
+                              for i, stage, j in expected if i < count])
+            self.assertEqual(len(events), int(count >= 3))
+
 
 class EventEvaluationTests(unittest.TestCase):
+    def test_even_number_of_latencies(self):
+        gold = [dict(sensor_id=s, start="2026-01-01T00:00:00", end="2026-01-01T00:05:00", label="SPIKE")
+                for s in ("A", "B")]
+        dets = [dict(sensor_id=g["sensor_id"], kind="test", rule_id="R", trigger_at=t, last_positive_at=t)
+                for g, t in zip(gold, ["2026-01-01T00:00:00", "2026-01-01T00:04:00"])]
+        self.assertEqual(ev.evaluate(dets, gold, 0)["ALL"]["median_latency_min"], 2)
+
     def test_overlap_and_latency(self):
         gold = {"sensor_id": "S", "start": "2026-01-06T10:00:00", "end": "2026-01-06T10:30:00", "label": "DRIFT"}
         det = {"sensor_id": "S", "kind": "x", "rule_id": "R", "trigger_at": "2026-01-06T10:20:00",

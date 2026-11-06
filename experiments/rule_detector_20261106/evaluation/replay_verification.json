@@ -1,0 +1,10 @@
+{
+  "pass": true,
+  "three_event_files_byte_identical": [
+    "baseline_v2",
+    "two_point_only",
+    "improved"
+  ],
+  "evaluation_metrics_byte_identical": true,
+  "fresh_output_folder": "tmp\\rule_detector_replay_20261106"
+}

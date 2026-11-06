@@ -1,0 +1,33 @@
+test_decrease_not_positive_drift (test_detector.DetectorTests.test_decrease_not_positive_drift) ... ok
+test_drift_delta (test_detector.DetectorTests.test_drift_delta) ... ok
+test_drift_exact_threshold (test_detector.DetectorTests.test_drift_exact_threshold) ... ok
+test_drift_gap_requires_new_window (test_detector.DetectorTests.test_drift_gap_requires_new_window) ... ok
+test_drift_no_early_warmup (test_detector.DetectorTests.test_drift_no_early_warmup) ... ok
+test_duplicate_input_rejected (test_detector.DetectorTests.test_duplicate_input_rejected) ... ok
+test_duration_interruption_resets (test_detector.DetectorTests.test_duration_interruption_resets) ... ok
+test_duration_strict_and_two_qualified (test_detector.DetectorTests.test_duration_strict_and_two_qualified) ... ok
+test_early_alarm_not_new_detection (test_detector.DetectorTests.test_early_alarm_not_new_detection) ... ok
+test_end_of_file_not_recovery (test_detector.DetectorTests.test_end_of_file_not_recovery) ... ok
+test_equality_not_violation (test_detector.DetectorTests.test_equality_not_violation) ... ok
+test_gap_resets_confirmation (test_detector.DetectorTests.test_gap_resets_confirmation) ... ok
+test_gap_truncates_not_recovers (test_detector.DetectorTests.test_gap_truncates_not_recovers) ... ok
+test_gold_fields_rejected (test_detector.DetectorTests.test_gold_fields_rejected) ... ok
+test_lower_limit (test_detector.DetectorTests.test_lower_limit) ... ok
+test_missing_value (test_detector.DetectorTests.test_missing_value) ... ok
+test_multiple_rules_do_not_inflate_event_tp (test_detector.DetectorTests.test_multiple_rules_do_not_inflate_event_tp) ... ok
+test_no_external_input_no_unknown_events (test_detector.DetectorTests.test_no_external_input_no_unknown_events) ... ok
+test_no_future_changes_past_alarm (test_detector.DetectorTests.test_no_future_changes_past_alarm) ... ok
+test_one_normal_does_not_clear (test_detector.DetectorTests.test_one_normal_does_not_clear) ... ok
+test_outside_endpoints (test_detector.DetectorTests.test_outside_endpoints) ... ok
+test_sample_count_not_time (test_detector.DetectorTests.test_sample_count_not_time) ... ok
+test_single_outlier_rejected (test_detector.DetectorTests.test_single_outlier_rejected) ... ok
+test_stuck_two_fully_qualified (test_detector.DetectorTests.test_stuck_two_fully_qualified) ... ok
+test_two_normals_clear (test_detector.DetectorTests.test_two_normals_clear) ... ok
+test_two_points_confirm (test_detector.DetectorTests.test_two_points_confirm) ... ok
+test_unit_mismatch (test_detector.DetectorTests.test_unit_mismatch) ... ok
+test_unknown_needs_expert_and_is_not_discovery (test_detector.DetectorTests.test_unknown_needs_expert_and_is_not_discovery) ... ok
+
+----------------------------------------------------------------------
+Ran 28 tests in 0.026s
+
+OK

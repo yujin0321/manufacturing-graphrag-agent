@@ -1,0 +1,242 @@
+@prefix im: <https://example.org/imaks/v1#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Five targeted core shapes. Helpers have no target and are reached through sh:node.
+im:SensorShape a sh:NodeShape ;
+    sh:targetClass im:Sensor ;
+    sh:message "C1 센서 식별·타입·단위·스테이션 연결"@ko ;
+    sh:property [ sh:path im:identifier ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ; sh:minLength 1 ; sh:pattern "\\S" ] ;
+    sh:property [ sh:path im:sensorType ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ; sh:in ("TMP" "PRS" "FLW" "CUR" "SPD" "TEN" "CNT" "VIB" "HUM") ] ;
+    sh:property [ sh:path im:unit ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ; sh:minLength 1 ] ;
+    sh:property [ sh:path [ sh:inversePath im:hasSensor ] ; sh:class im:Station ; sh:node im:StationHelper ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:sparql [ a sh:SPARQLConstraint ;
+        sh:message "C1 센서 타입과 단위가 지정된 9개 대응과 일치해야 합니다."@ko ;
+        sh:select """
+            PREFIX im: <https://example.org/imaks/v1#>
+            SELECT $this ?value WHERE {
+                $this im:sensorType ?type ; im:unit ?value .
+                FILTER (!( (?type = "TMP" && ?value = "°C") ||
+                           (?type = "PRS" && ?value = "bar") ||
+                           (?type = "FLW" && ?value = "L/min") ||
+                           (?type = "CUR" && ?value = "A") ||
+                           (?type = "SPD" && ?value = "m/s") ||
+                           (?type = "TEN" && ?value = "N") ||
+                           (?type = "CNT" && ?value = "pcs/min") ||
+                           (?type = "VIB" && ?value = "mm/s") ||
+                           (?type = "HUM" && ?value = "%RH") ))
+            }
+        """ ] .
+
+im:ObservationShape a sh:NodeShape ;
+    sh:targetClass im:Observation ;
+    sh:message "C2 관측 형식·센서·단위. 이상 관측을 임계값으로 거부하지 않습니다."@ko ;
+    sh:property [ sh:path im:observedBy ; sh:class im:Sensor ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path im:timestamp ; sh:datatype xsd:dateTime ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path im:value ; sh:datatype xsd:double ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path im:unit ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ; sh:minLength 1 ] ;
+    sh:sparql [ a sh:SPARQLConstraint ;
+        sh:message "C2 관측값은 유한한 수여야 합니다. NaN·무한값만 차단하며 이상 크기 자체는 차단하지 않습니다."@ko ;
+        sh:select """
+            PREFIX im: <https://example.org/imaks/v1#>
+            PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+            SELECT $this ?value WHERE {
+                $this im:value ?value .
+                FILTER (LCASE(STR(?value)) IN ("nan", "inf", "+inf", "-inf", "infinity", "+infinity", "-infinity") ||
+                        ?value != ?value || ?value = "INF"^^xsd:double || ?value = "-INF"^^xsd:double)
+            }
+        """ ] ;
+    sh:sparql [ a sh:SPARQLConstraint ;
+        sh:message "C2 관측 단위가 연결된 센서 단위와 다릅니다."@ko ;
+        sh:select """
+            PREFIX im: <https://example.org/imaks/v1#>
+            SELECT $this ?value WHERE {
+                $this im:observedBy ?sensor ; im:unit ?value .
+                ?sensor im:unit ?sensorUnit .
+                FILTER (?value != ?sensorUnit)
+            }
+        """ ] .
+
+im:RuleShape a sh:NodeShape ;
+    sh:targetClass im:Rule, im:Document ;
+    sh:message "C3 규칙과 문서의 출처 메타데이터"@ko ;
+    sh:or (
+        [ sh:class im:Rule ; sh:node im:RuleHelper ]
+        [ sh:class im:Document ; sh:node im:DocumentHelper ]
+    ) .
+
+im:RuleHelper a sh:NodeShape ;
+    sh:class im:Rule ;
+    sh:message "C3 규칙의 출처·조건·조치·추출 방법"@ko ;
+    sh:property [ sh:path im:sourceDocument ; sh:class im:Document ; sh:node im:DocumentHelper ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path im:sourcePage ; sh:datatype xsd:positiveInteger ; sh:minInclusive 1 ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path im:sourceQuote ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ; sh:minLength 1 ; sh:pattern "\\S" ] ;
+    sh:property [ sh:path im:conditionText ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ; sh:minLength 1 ; sh:pattern "\\S" ] ;
+    sh:property [ sh:path im:responseText ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ; sh:minLength 1 ; sh:pattern "\\S" ] ;
+    sh:property [ sh:path im:extractionMethod ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ; sh:minLength 1 ; sh:pattern "\\S" ] ;
+    sh:property [ sh:path im:appliesToSensor ; sh:class im:Sensor ; sh:maxCount 1 ] ;
+    sh:property [ sh:path im:monitorsSensor ; sh:class im:Sensor ] ;
+    sh:property [ sh:path im:actionTarget ; sh:class im:Station ] ;
+    sh:property [ sh:path im:sourceTable ; sh:datatype xsd:string ; sh:maxCount 1 ; sh:minLength 1 ] ;
+    sh:property [ sh:path im:sourceRow ; sh:datatype xsd:positiveInteger ; sh:minInclusive 1 ; sh:maxCount 1 ] ;
+    sh:sparql [ a sh:SPARQLConstraint ;
+        sh:message "C3 sourcePage가 출처 문서의 pageCount를 초과합니다."@ko ;
+        sh:select """
+            PREFIX im: <https://example.org/imaks/v1#>
+            SELECT $this ?value WHERE {
+                $this im:sourceDocument ?document ; im:sourcePage ?value .
+                ?document im:pageCount ?pages .
+                FILTER (?value > ?pages)
+            }
+        """ ] .
+
+im:ThresholdRuleShape a sh:NodeShape ;
+    sh:targetClass im:ThresholdRule ; sh:class im:Rule ; sh:node im:RuleShape ;
+    sh:message "C4 SOP 임계값의 순서·단위. 관측값의 정상 범위 검사가 아닙니다."@ko ;
+    sh:property [ sh:path im:appliesToSensor ; sh:class im:Sensor ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path im:nominal ; sh:datatype xsd:double ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path im:warnHi ; sh:datatype xsd:double ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path im:critHi ; sh:datatype xsd:double ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path im:warnLo ; sh:datatype xsd:double ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path im:critLo ; sh:datatype xsd:double ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path im:unit ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ; sh:minLength 1 ] ;
+    sh:property [ sh:path im:nominalTolerance ; sh:datatype xsd:double ; sh:maxCount 1 ; sh:minInclusive 0 ] ;
+    sh:property [ sh:path im:nominalText ; sh:datatype xsd:string ; sh:maxCount 1 ; sh:minLength 1 ] ;
+    sh:sparql [ a sh:SPARQLConstraint ;
+        sh:message "C4 임계값과 nominalTolerance는 유한한 수여야 합니다."@ko ;
+        sh:select """
+            PREFIX im: <https://example.org/imaks/v1#>
+            PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+            SELECT $this ?path ?value WHERE {
+                $this ?path ?value .
+                FILTER (?path IN (im:critLo, im:warnLo, im:nominal, im:warnHi, im:critHi, im:nominalTolerance))
+                FILTER (LCASE(STR(?value)) IN ("nan", "inf", "+inf", "-inf", "infinity", "+infinity", "-infinity") ||
+                        ?value != ?value || ?value = "INF"^^xsd:double || ?value = "-INF"^^xsd:double)
+            }
+        """ ] ;
+    sh:sparql [ a sh:SPARQLConstraint ;
+        sh:message "C4 critLo < warnLo < nominal < warnHi < critHi 순서를 만족해야 합니다."@ko ;
+        sh:select """
+            PREFIX im: <https://example.org/imaks/v1#>
+            SELECT $this WHERE {
+                $this im:critLo ?critLo ; im:warnLo ?warnLo ; im:nominal ?nominal ; im:warnHi ?warnHi ; im:critHi ?critHi .
+                FILTER (!(?critLo < ?warnLo && ?warnLo < ?nominal && ?nominal < ?warnHi && ?warnHi < ?critHi))
+            }
+        """ ] ;
+    sh:sparql [ a sh:SPARQLConstraint ;
+        sh:message "C4 임계값 규칙 단위가 연결된 센서 단위와 다릅니다."@ko ;
+        sh:select """
+            PREFIX im: <https://example.org/imaks/v1#>
+            SELECT $this ?value WHERE {
+                $this im:appliesToSensor ?sensor ; im:unit ?value .
+                ?sensor im:unit ?sensorUnit .
+                FILTER (?value != ?sensorUnit)
+            }
+        """ ] .
+
+im:InputGraphShape a sh:NodeShape ;
+    sh:targetClass im:InputGraph ; sh:targetNode im:InputData ; sh:class im:InputGraph ;
+    sh:message "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다."@ko ;
+    sh:property [ sh:path im:inputProfile ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ; sh:in ("ml_metadata" "rule_context") ] ;
+    sh:sparql [ a sh:SPARQLConstraint ;
+        sh:message "C5 제어 노드는 im:InputData 한 개여야 합니다."@ko ;
+        sh:select """
+            PREFIX im: <https://example.org/imaks/v1#>
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+            SELECT $this ?value WHERE {
+                ?value rdf:type im:InputGraph .
+                FILTER (?value != im:InputData)
+            }
+        """ ] ;
+    sh:sparql [ a sh:SPARQLConstraint ;
+        sh:message "C5 입력 그래프에 금지 라벨·알람·정답·시간 라벨 predicate가 있습니다."@ko ;
+        sh:select """
+            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+            SELECT $this ?path ?value WHERE {
+                ?subject ?path ?value .
+                BIND(LCASE(REPLACE(REPLACE(STR(?path), "^.*[/#: ]", ""), "[_-]", "")) AS ?local)
+                FILTER (?local IN ("label", "quality", "status", "alarms", "gtid", "anomalylabel", "datasetseverity", "severity", "alarmflag", "shift", "day", "batchid"))
+                FILTER (?path != rdfs:label)
+            }
+        """ ] ;
+    sh:sparql [ a sh:SPARQLConstraint ;
+        sh:message "C5 GT-#### 평가 사건 식별자가 입력 그래프에 있습니다."@ko ;
+        sh:select """
+            PREFIX im: <https://example.org/imaks/v1#>
+            SELECT $this ?value WHERE {
+                { ?subject ?predicate ?value .
+                  BIND(LCASE(REPLACE(REPLACE(STR(?predicate), "^.*[/#: ]", ""), "[_-]", "")) AS ?local)
+                  FILTER (?local IN ("identifier", "id", "nodeid", "gtid"))
+                  FILTER (REGEX(STR(?value), "^GT-[0-9]{4}$", "i"))
+                }
+                UNION
+                { ?value ?predicate ?object .
+                  FILTER (isIRI(?value) && REGEX(STR(?value), "[/#: ]GT-[0-9]{4}$", "i"))
+                }
+            }
+        """ ] ;
+    sh:sparql [ a sh:SPARQLConstraint ;
+        sh:message "C5 AnomalyEvent·SafetyEvent·MaintenanceEvent 인스턴스는 평가용으로 분리해야 합니다."@ko ;
+        sh:select """
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+            SELECT $this ?value WHERE {
+                ?value rdf:type ?type .
+                BIND(LCASE(REPLACE(REPLACE(STR(?type), "^.*[/#: ]", ""), "[_-]", "")) AS ?local)
+                FILTER (?local IN ("anomalyevent", "safetyevent", "maintenanceevent", "maintenance"))
+            }
+        """ ] ;
+    sh:sparql [ a sh:SPARQLConstraint ;
+        sh:message "C5 ml_metadata에는 Rule·ThresholdRule·Document 인스턴스를 넣을 수 없습니다."@ko ;
+        sh:select """
+            PREFIX im: <https://example.org/imaks/v1#>
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+            SELECT $this ?value WHERE {
+                $this im:inputProfile "ml_metadata" .
+                ?value rdf:type ?type .
+                BIND(LCASE(REPLACE(REPLACE(STR(?type), "^.*[/#: ]", ""), "[_-]", "")) AS ?local)
+                FILTER (?local IN ("rule", "thresholdrule", "document"))
+            }
+        """ ] ;
+    sh:sparql [ a sh:SPARQLConstraint ;
+        sh:message "C5 ml_metadata에는 임계값·임계값 원문·문서 원문 속성을 넣을 수 없습니다."@ko ;
+        sh:select """
+            PREFIX im: <https://example.org/imaks/v1#>
+            SELECT $this ?path ?value WHERE {
+                $this im:inputProfile "ml_metadata" .
+                ?subject ?path ?value .
+                BIND(LCASE(REPLACE(REPLACE(STR(?path), "^.*[/#: ]", ""), "[_-]", "")) AS ?local)
+                FILTER (?local IN ("nominal", "warnhi", "crithi", "warnlo", "critlo", "nominaltolerance", "nominaltext", "documenttext"))
+            }
+        """ ] .
+
+im:StationHelper a sh:NodeShape ;
+    sh:class im:Station ;
+    sh:property [ sh:path im:identifier ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ; sh:minLength 1 ] ;
+    sh:property [ sh:path im:name ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ; sh:minLength 1 ] ;
+    sh:property [ sh:path im:stationType ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ; sh:in ("FILLING" "SEALING" "LABELLING" "PACKAGING" "SERVERROOM" "WAREHOUSE" "CHEMICALSTORAGE" "RDLAB" "CAFETERIA") ] ;
+    sh:property [ sh:path im:locatedIn ; sh:class im:Zone ; sh:node im:ZoneHelper ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path im:partOf ; sh:class im:System ; sh:node im:SystemHelper ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path im:hasSensor ; sh:class im:Sensor ] ;
+    sh:property [ sh:path im:feedsInto ; sh:class im:Station ] .
+
+im:ZoneHelper a sh:NodeShape ;
+    sh:class im:Zone ;
+    sh:property [ sh:path im:identifier ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ; sh:minLength 1 ] ;
+    sh:property [ sh:path im:name ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ; sh:minLength 1 ] ;
+    sh:property [ sh:path im:contains ; sh:class im:Station ] .
+
+im:SystemHelper a sh:NodeShape ;
+    sh:class im:System ;
+    sh:property [ sh:path im:identifier ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ; sh:minLength 1 ] ;
+    sh:property [ sh:path im:name ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ; sh:minLength 1 ] ;
+    sh:property [ sh:path im:contains ; sh:class im:Zone ] .
+
+im:DocumentHelper a sh:NodeShape ;
+    sh:class im:Document ;
+    sh:property [ sh:path im:identifier ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ; sh:minLength 1 ; sh:pattern "\\S" ] ;
+    sh:property [ sh:path im:title ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ; sh:minLength 1 ; sh:pattern "\\S" ] ;
+    sh:property [ sh:path im:sourcePath ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ; sh:minLength 1 ; sh:pattern "\\S" ] ;
+    sh:property [ sh:path im:sourceSha256 ; sh:datatype xsd:string ; sh:minCount 1 ; sh:maxCount 1 ; sh:pattern "^[0-9a-fA-F]{64}$" ] ;
+    sh:property [ sh:path im:pageCount ; sh:datatype xsd:positiveInteger ; sh:minInclusive 1 ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path im:documentText ; sh:datatype xsd:string ; sh:maxCount 1 ; sh:minLength 1 ] .

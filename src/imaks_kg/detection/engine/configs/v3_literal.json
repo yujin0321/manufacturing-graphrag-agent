@@ -1,0 +1,29 @@
+{
+  "name": "v3_literal",
+  "description": "pre-registered v3 design (--slope-as-alarm): slope hits raise alarms",
+  "slope_mode": "alarm",
+  "maint_direction": "abs",
+  "monitor_gate": null,
+  "monitor_anchor": "incident_start",
+  "id_prefix": {
+    "alarm": "det3-",
+    "incident": "inc3-"
+  },
+  "outputs": [
+    "events",
+    "signals",
+    "incidents",
+    "correlations"
+  ],
+  "sample_seconds": 30,
+  "train_end": "2026-01-07",
+  "smooth_samples": 10,
+  "incident_gap_min": 10,
+  "_notes": {
+    "train_end": "sigma = 1.4826*MAD of values with timestamp < train_end (team value, no labels)",
+    "smooth_samples": "mean width for MAINT 'over W' change (team value)",
+    "incident_gap_min": "same-sensor alarms <= gap apart form one incident (team value)"
+  },
+  "link_policy": "legacy",
+  "severity_policy": "sop002_bands"
+}

@@ -1,0 +1,31 @@
+{
+  "name": "v3_2",
+  "description": "v3.2 (2026-11-11, designed without labels): v3.1 + SOP-text fidelity fixes. Monitoring window starts at the cause WARNING alarm (RULE-ST02-04 'whenever ... triggers a WARNING'); correlation links re-check the cause WARNING, window, effect direction and reuse the monitoring cause; document-rule severity tags (CRITICAL)/(WARNING) raise incident severity.",
+  "slope_mode": "signal",
+  "maint_direction": "away",
+  "monitor_gate": "warning_any",
+  "monitor_anchor": "warning_trigger",
+  "id_prefix": {
+    "alarm": "det32-",
+    "incident": "inc32-"
+  },
+  "outputs": [
+    "events",
+    "signals",
+    "monitor_windows",
+    "incidents",
+    "correlations"
+  ],
+  "post_hoc": "designed after v3/v3.1 evaluations were published; evaluated with label-free metrics and synthetic benchmark only",
+  "sample_seconds": 30,
+  "train_end": "2026-01-07",
+  "smooth_samples": 10,
+  "incident_gap_min": 10,
+  "_notes": {
+    "train_end": "sigma = 1.4826*MAD of values with timestamp < train_end (team value, no labels)",
+    "smooth_samples": "mean width for MAINT 'over W' change (team value)",
+    "incident_gap_min": "same-sensor alarms <= gap apart form one incident (team value)"
+  },
+  "link_policy": "verified",
+  "severity_policy": "with_document_tags"
+}

@@ -1,0 +1,14 @@
+{
+  "pass": true,
+  "new_questions": 19,
+  "new_answers": 57,
+  "new_grades": 57,
+  "excluded_NEW12": true,
+  "baseline_77_answers_and_grades_byte_unchanged": true,
+  "source_and_budget_unchanged": true,
+  "new_key_frozen_before_answers": true,
+  "audited_key_and_context_hashes_match": true,
+  "corpus_vectors_byte_identical": true,
+  "baseline_runner_and_retrieval_code_files_verified": 9,
+  "scores_and_strict_correct_flags_verified": true
+}

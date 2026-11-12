@@ -1,0 +1,320 @@
+{
+  "checks": [
+    {
+      "check": "threshold_mapping:THR-ST01_FILLING_TMP",
+      "passed": true,
+      "detail": "Sensor/heading continuation, all threshold columns, nominal tolerance and critical response exact."
+    },
+    {
+      "check": "threshold_mapping:THR-ST01_FILLING_PRS",
+      "passed": true,
+      "detail": "Sensor/heading continuation, all threshold columns, nominal tolerance and critical response exact."
+    },
+    {
+      "check": "threshold_mapping:THR-ST01_FILLING_FLW",
+      "passed": true,
+      "detail": "Sensor/heading continuation, all threshold columns, nominal tolerance and critical response exact."
+    },
+    {
+      "check": "threshold_mapping:THR-ST02_SEALING_TMP",
+      "passed": true,
+      "detail": "Sensor/heading continuation, all threshold columns, nominal tolerance and critical response exact."
+    },
+    {
+      "check": "threshold_mapping:THR-ST02_SEALING_PRS",
+      "passed": true,
+      "detail": "Sensor/heading continuation, all threshold columns, nominal tolerance and critical response exact."
+    },
+    {
+      "check": "threshold_mapping:THR-ST02_SEALING_CUR",
+      "passed": true,
+      "detail": "Sensor/heading continuation, all threshold columns, nominal tolerance and critical response exact."
+    },
+    {
+      "check": "threshold_mapping:THR-ST03_LABELLING_SPD",
+      "passed": true,
+      "detail": "Sensor/heading continuation, all threshold columns, nominal tolerance and critical response exact."
+    },
+    {
+      "check": "threshold_mapping:THR-ST03_LABELLING_TEN",
+      "passed": true,
+      "detail": "Sensor/heading continuation, all threshold columns, nominal tolerance and critical response exact."
+    },
+    {
+      "check": "threshold_mapping:THR-ST03_LABELLING_CNT",
+      "passed": true,
+      "detail": "Sensor/heading continuation, all threshold columns, nominal tolerance and critical response exact."
+    },
+    {
+      "check": "threshold_mapping:THR-ST04_PACKAGING_VIB",
+      "passed": true,
+      "detail": "Sensor/heading continuation, all threshold columns, nominal tolerance and critical response exact."
+    },
+    {
+      "check": "threshold_mapping:THR-ST04_PACKAGING_CUR",
+      "passed": true,
+      "detail": "Sensor/heading continuation, all threshold columns, nominal tolerance and critical response exact."
+    },
+    {
+      "check": "threshold_mapping:THR-ST04_PACKAGING_SPD",
+      "passed": true,
+      "detail": "Sensor/heading continuation, all threshold columns, nominal tolerance and critical response exact."
+    },
+    {
+      "check": "threshold_mapping:THR-SRV01_SERVERROOM_TMP",
+      "passed": true,
+      "detail": "Sensor/heading continuation, all threshold columns, nominal tolerance and critical response exact."
+    },
+    {
+      "check": "threshold_mapping:THR-SRV01_SERVERROOM_HUM",
+      "passed": true,
+      "detail": "Sensor/heading continuation, all threshold columns, nominal tolerance and critical response exact."
+    },
+    {
+      "check": "threshold_mapping:THR-WRH01_WAREHOUSE_TMP",
+      "passed": true,
+      "detail": "Sensor/heading continuation, all threshold columns, nominal tolerance and critical response exact."
+    },
+    {
+      "check": "threshold_mapping:THR-WRH01_WAREHOUSE_HUM",
+      "passed": true,
+      "detail": "Sensor/heading continuation, all threshold columns, nominal tolerance and critical response exact."
+    },
+    {
+      "check": "threshold_mapping:THR-CHM01_CHEMICALSTORAGE_TMP",
+      "passed": true,
+      "detail": "Sensor/heading continuation, all threshold columns, nominal tolerance and critical response exact."
+    },
+    {
+      "check": "threshold_mapping:THR-CHM01_CHEMICALSTORAGE_HUM",
+      "passed": true,
+      "detail": "Sensor/heading continuation, all threshold columns, nominal tolerance and critical response exact."
+    },
+    {
+      "check": "threshold_mapping:THR-RND01_RDLAB_TMP",
+      "passed": true,
+      "detail": "Sensor/heading continuation, all threshold columns, nominal tolerance and critical response exact."
+    },
+    {
+      "check": "threshold_mapping:THR-RND01_RDLAB_HUM",
+      "passed": true,
+      "detail": "Sensor/heading continuation, all threshold columns, nominal tolerance and critical response exact."
+    },
+    {
+      "check": "threshold_mapping:THR-CAF01_CAFETERIA_TMP",
+      "passed": true,
+      "detail": "Sensor/heading continuation, all threshold columns, nominal tolerance and critical response exact."
+    },
+    {
+      "check": "threshold_mapping:THR-CAF01_CAFETERIA_HUM",
+      "passed": true,
+      "detail": "Sensor/heading continuation, all threshold columns, nominal tolerance and critical response exact."
+    },
+    {
+      "check": "definition_mapping:ANOMALY-SPIKE",
+      "passed": true,
+      "detail": "Definition and detector preserved; no invented response."
+    },
+    {
+      "check": "definition_mapping:ANOMALY-DRIFT",
+      "passed": true,
+      "detail": "Definition and detector preserved; no invented response."
+    },
+    {
+      "check": "definition_mapping:ANOMALY-STUCK",
+      "passed": true,
+      "detail": "Definition and detector preserved; no invented response."
+    },
+    {
+      "check": "definition_mapping:ANOMALY-OUT_OF_RANGE",
+      "passed": true,
+      "detail": "Definition and detector preserved; no invented response."
+    },
+    {
+      "check": "definition_mapping:ANOMALY-CORRELATED",
+      "passed": true,
+      "detail": "Definition and detector preserved; no invented response."
+    },
+    {
+      "check": "maintenance_mapping:MAINT-01",
+      "passed": true,
+      "detail": "All maintenance fields from same row."
+    },
+    {
+      "check": "maintenance_mapping:MAINT-02",
+      "passed": true,
+      "detail": "All maintenance fields from same row."
+    },
+    {
+      "check": "maintenance_mapping:MAINT-03",
+      "passed": true,
+      "detail": "All maintenance fields from same row."
+    },
+    {
+      "check": "maintenance_mapping:MAINT-04",
+      "passed": true,
+      "detail": "All maintenance fields from same row."
+    },
+    {
+      "check": "maintenance_mapping:MAINT-05",
+      "passed": true,
+      "detail": "All maintenance fields from same row."
+    },
+    {
+      "check": "maintenance_mapping:MAINT-06",
+      "passed": true,
+      "detail": "All maintenance fields from same row."
+    },
+    {
+      "check": "maintenance_mapping:MAINT-07",
+      "passed": true,
+      "detail": "All maintenance fields from same row."
+    },
+    {
+      "check": "maintenance_mapping:MAINT-08",
+      "passed": true,
+      "detail": "All maintenance fields from same row."
+    },
+    {
+      "check": "resolution_mapping:SOP-003-p1-RESOLUTION-1",
+      "passed": true,
+      "detail": "Pattern and complete ordered resolution from one row."
+    },
+    {
+      "check": "resolution_mapping:SOP-003-p1-RESOLUTION-2",
+      "passed": true,
+      "detail": "Pattern and complete ordered resolution from one row."
+    },
+    {
+      "check": "resolution_mapping:SOP-003-p1-RESOLUTION-3",
+      "passed": true,
+      "detail": "Pattern and complete ordered resolution from one row."
+    },
+    {
+      "check": "access_mapping:SOP-004-p1-AUTH-operator",
+      "passed": true,
+      "detail": "Matrix/enforcement/acknowledgement labels and values exact."
+    },
+    {
+      "check": "access_mapping:SOP-004-p1-AUTH-technician",
+      "passed": true,
+      "detail": "Matrix/enforcement/acknowledgement labels and values exact."
+    },
+    {
+      "check": "access_mapping:SOP-004-p1-AUTH-supervisor",
+      "passed": true,
+      "detail": "Matrix/enforcement/acknowledgement labels and values exact."
+    },
+    {
+      "check": "access_mapping:SOP-004-p1-AUTH-manager",
+      "passed": true,
+      "detail": "Matrix/enforcement/acknowledgement labels and values exact."
+    },
+    {
+      "check": "access_mapping:SOP-004-p1-AUTH-security",
+      "passed": true,
+      "detail": "Matrix/enforcement/acknowledgement labels and values exact."
+    },
+    {
+      "check": "access_mapping:SOP-004-p1-AUTH-visitor",
+      "passed": true,
+      "detail": "Matrix/enforcement/acknowledgement labels and values exact."
+    },
+    {
+      "check": "access_mapping:SOP-004-p1-OCCUPANCY-1",
+      "passed": true,
+      "detail": "Matrix/enforcement/acknowledgement labels and values exact."
+    },
+    {
+      "check": "access_mapping:SOP-004-p1-OCCUPANCY-2",
+      "passed": true,
+      "detail": "Matrix/enforcement/acknowledgement labels and values exact."
+    },
+    {
+      "check": "access_mapping:SOP-004-p1-OCCUPANCY-3",
+      "passed": true,
+      "detail": "Matrix/enforcement/acknowledgement labels and values exact."
+    },
+    {
+      "check": "access_mapping:SOP-004-p1-OCCUPANCY-4",
+      "passed": true,
+      "detail": "Matrix/enforcement/acknowledgement labels and values exact."
+    },
+    {
+      "check": "access_mapping:SOP-004-p1-OCCUPANCY-5",
+      "passed": true,
+      "detail": "Matrix/enforcement/acknowledgement labels and values exact."
+    },
+    {
+      "check": "access_mapping:SOP-004-p1-OCCUPANCY-6",
+      "passed": true,
+      "detail": "Matrix/enforcement/acknowledgement labels and values exact."
+    },
+    {
+      "check": "access_mapping:SOP-004-p1-OCCUPANCY-7",
+      "passed": true,
+      "detail": "Matrix/enforcement/acknowledgement labels and values exact."
+    },
+    {
+      "check": "access_mapping:SOP-004-p1-ACK-operator",
+      "passed": true,
+      "detail": "Matrix/enforcement/acknowledgement labels and values exact."
+    },
+    {
+      "check": "access_mapping:SOP-004-p1-ACK-technician",
+      "passed": true,
+      "detail": "Matrix/enforcement/acknowledgement labels and values exact."
+    },
+    {
+      "check": "access_mapping:SOP-004-p1-ACK-supervisor",
+      "passed": true,
+      "detail": "Matrix/enforcement/acknowledgement labels and values exact."
+    },
+    {
+      "check": "access_mapping:SOP-004-p1-ACK-manager",
+      "passed": true,
+      "detail": "Matrix/enforcement/acknowledgement labels and values exact."
+    },
+    {
+      "check": "access_mapping:SOP-004-p1-ACK-security",
+      "passed": true,
+      "detail": "Matrix/enforcement/acknowledgement labels and values exact."
+    },
+    {
+      "check": "numbered_rule_coverage",
+      "passed": true,
+      "detail": {
+        "source_identifiers": 28,
+        "missing": []
+      }
+    },
+    {
+      "check": "document_coverage",
+      "passed": true,
+      "detail": "All seven documents produce rules including explicit datasheet guidance."
+    },
+    {
+      "check": "table_coverage",
+      "passed": true,
+      "detail": "All supplied tables have corresponding chunks and were inspected; specification-only tables need no Rule."
+    },
+    {
+      "check": "no_duplicate_identifiers",
+      "passed": true,
+      "detail": "Local generated identifiers do not overlap source IDs."
+    },
+    {
+      "check": "no_invented_action_for_diagnosis",
+      "passed": true,
+      "detail": "Sensor failure is a diagnosis, not replacement instruction."
+    },
+    {
+      "check": "compound_clauses_present",
+      "passed": true,
+      "detail": "Unconditional mandates and conditional branches preserved separately."
+    }
+  ],
+  "passed": 62,
+  "failed": 0,
+  "limits": "Coverage is source-record coverage, not gold recall. Datatype/SHACL constraints are structural checks, not semantic correctness scores."
+}

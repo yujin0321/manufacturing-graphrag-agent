@@ -1,0 +1,21 @@
+{
+  "files": [
+    {
+      "name": "01_탐지기_코드와실행근거.zip",
+      "sha256": "57d91f95db20f90ff144b5aa0c44aedca1aee19fc429614e2ecbdcaf87f450f8",
+      "bytes": 1722212
+    },
+    {
+      "name": "02_구현결정과설명.md",
+      "sha256": "dce8ab3afc313a756a848518aa198ad13ac4fe47f91f3ef764f51666c9e468e9",
+      "bytes": 7849
+    },
+    {
+      "name": "03_평가결과.md",
+      "sha256": "75c63ea53740b50960f3a0270652c8c08cd38121c5df51e2692ff53cafc86aec",
+      "bytes": 7452
+    }
+  ],
+  "zip_crc_pass": true,
+  "archived_files": 39
+}

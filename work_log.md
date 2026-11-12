@@ -173,3 +173,54 @@
 - v3 평가 뒤 규칙집 원문 근거가 있는 두 가지만 고쳤다. 첫째, MAINT 드리프트는 명목값에서 멀어지는 변화만 센다. 둘째, RULE-ST02-04 원문대로 ST02 전류 경고 뒤 90분 동안 ST04 속도 저하 신호를 알람으로 올린다. 유형 분류 기준은 근거가 없어 고치지 않았다. v3 코드와 결과는 보존했다.
 - 결과: 14/14, 오경보 7→2, 정답과 겹치지 않는 사건 3→2, 유형 정확도 12/14. GT-0009를 처음 잡았다. 남은 오경보 2개는 v2부터 있던 ST02 전류 1표본 경고와, 그 경고가 연 감시 구간에서 나온 알람이다.
 - 같은 정답으로 다시 잰 사후 개선이며 미노출 평가가 아니다.
+
+## 2026-11-11: 룰 탐지 엔진 1단계 구조 분리 (`6th-yujin`)
+
+- 목적: KG 규칙 컴파일, 시계열 실행, 사건 후처리를 분리하고 v3 기본·v3 literal·v3.1을 한 엔진과 설정 파일로 실행한다. 탐지 의미는 바꾸지 않는다. v1·v2·v3·v3.1 소스와 산출물은 그대로 둔다.
+- 추가: `src/imaks_kg/detection/engine/`(`compiler.py` KG→규칙 IR, `executor.py` 표본+IR→알람, `postprocess.py` 사건·유형·심각도·상관·감시, `quality.py` KG 품질 보고, `config.py`, `run.py`, `configs/v3.json`·`v3_literal.json`·`v3_1.json`), `scripts/compare_detector_engine.py`, `tests/test_detector_engine.py`, `reports/rule_detector_engine_kg_quality_20261111_verify.md`.
+- 규칙 IR: 규칙마다 `kg_node`, 실행 ID(`rule_id`, 예 `SOP-002-EX-01:warning`)와 KG 규칙 ID(`kg_rule_id`), 원문, 해석, 파라미터와 출처(`kg:conditionText`, `kg:ThresholdRule.*`, `config.*`, `calibration:*`)를 남긴다. 실행기는 KG를 읽지 않는다(테스트로 확인).
+- 설정으로 드러낸 해석: `slope_mode`(signal/alarm), `maint_direction`(abs/away), `monitor_gate`(null/warning_any), `monitor_anchor`(이번 단계는 `incident_start`만 허용). 팀이 정한 값(`train_end`, `smooth_samples`, `incident_gap_min`)도 설정 파일에 둔다.
+- 재사용: 기존 파서(`k2.compile_rules`, `k3.compile_v3`, `k31.pair_directions`)와 표본 계산(`k2.scan`, `k3.runs`, `k3.slope_condition`, `k3.stuck_condition`), 유형 판정(`k3.classify`), 상관 연결(`k3.link_correlations`). 사건 묶기는 묶기·보조 신호 부착·기록 생성으로 나눴다. MAINT 창 변화는 abs/away를 한 함수로 합쳤다.
+- 동등성(라벨 미열람, 평가 스크립트 미실행): 같은 센서 입력·KG로 기존 모듈과 엔진을 새 경로에 실행해 세 설정의 `events`·`incidents`·`correlations`·`signals`(v3.1은 `monitor_windows` 포함) 13개 파일이 모두 **바이트 일치**했다. 실행 중 연 파일을 감사 훅으로 기록했고 라벨·평가 파일은 열지 않았다. 각 실행의 `complete.json` 해시도 검증했다.
+- 테스트: 새 17개 + 기존 탐지기 44개(`test_detector_v3`, `_v3_1`, `_kg`, `_rules`) = 61개 통과. `test_detector_kg`의 v1 대조 테스트는 `preprocessed/documents/chunks.jsonl`이 필요하다.
+- 교차 확인 메모: 앞선 검토에서 전달된 v3.1 참고 해시(`events` `f703efa1734b` 등)와 이번 기존 모듈 출력 해시(`cbe6cb764c33` 등)가 다르다. 기존 모듈 출력과 엔진 출력은 서로 같고 개수(알람 120, 사건 17)는 문서와 같다. 참고 해시를 만든 환경을 모르므로 원인은 미확인이다. PC에서 비교 스크립트를 다시 실행해 확인한다.
+- KG 품질(보고만): 센서 연결 규칙 61개 모두 `ruleSeverity`가 비어 있다. 원문에 `(CRITICAL)`/`(WARNING)` 표기가 있는 문서 규칙 8개는 사건 심각도에 쓰이지 않는다. seed `MAINT-01`~`08` 노드는 `conditionText`가 없어 건너뛰며, 같은 ID의 SOP-003 원문 노드가 실행된다. 미지원 2개(SOP-003-EX-02, EX-03).
+- 개선 후보(이번 범위 밖, 탐지 결과가 바뀜): (1) v3.1 감시 시작을 사건 시작이 아니라 실제 WARNING 알람 `trigger_at`에 맞추고 원인 알람 ID를 기록, (2) `link_correlations`가 원인 WARNING·결과 방향을 다시 확인하지 않고 감시 원인과 다른 원인을 고를 수 있는 문제, (3) 문서 규칙 등급의 심각도 반영. 정답 비의존 평가 체계(4단계) 이후 설정 옵션으로 비교한다.
+- 실행:
+  ```powershell
+  $env:PYTHONPATH="src"
+  python -m unittest tests.test_detector_engine tests.test_detector_v3 tests.test_detector_v3_1 tests.test_detector_kg tests.test_detector_rules
+  python scripts/compare_detector_engine.py --work kg_build/engine_equivalence_20261111
+  python -m imaks_kg.detection.engine.run --config v3_1 --out kg_build/rule_engine_v3_1 --quality-md reports/rule_detector_engine_kg_quality_20261111_verify.md
+  ```
+
+## 2026-11-11: 룰 탐지 엔진 2~5단계 (`6th-yujin`)
+
+- 사용자가 단계별 확인 대신 한 번에 진행을 요청했다. 라벨·공개 평가 결과는 계속 열지 않았고 유료 API 호출은 없다. 상세: `docs/RULE_ENGINE_20261111.md`.
+- **2단계 KG 오버레이(⑦):** `detection/engine/overlay.py`. 봉인 검증 → 사건을 AnomalyEvent 하위 유형 1개·`triggers`·`startTime/endTime`·timeseries Provenance(`windowId` = 센서+시각)로 매핑, 일치 규칙은 `det:matchedRule`로 실제 Rule 노드에 연결. 기존 KG+오버레이 SHACL(S1~S8, 추론 끔)에서 오버레이가 새로 만든 위반, 적재 검사 오류, guards L4가 하나라도 있으면 적재 거부. v3.1: 이벤트 17, 상관 후보 2, 위반 0.
+- **결정(미결 보고):** CausalLink/`causallyAffects`는 쓰지 않았다. S5가 `likelihoodScore`를 요구하는데 규칙 일치 후보의 점수 정의가 없다. `det:CorrelationCandidate`로 보관. guards L1~L3은 파일 머리말대로 ⑥ 입력 전용이라 ⑦ 오버레이에는 L4와 적재 검사만 적용했다.
+- **3단계 Agent 도구:** `rag/incident_tools.py`(`list_incidents`, `get_incident_evidence`, `get_correlated_incidents`, 기존 계약 한도·선택 규칙 재사용, 실행 봉인과 오버레이 봉인의 연결 확인). `event_explain.prepare_incident/answer_incident`(v3.1 기준 지침, "확정 이상·입증된 인과로 쓰지 않음"), `demo`에 `GET /api/incidents`, `POST /api/explain-incident` 추가. v1 경로는 그대로. 모의 응답으로만 시험.
+- **4단계 정답 비의존 평가:** `detection/engine/benchmark.py`. 라벨 없는 지표 + SOP-002 합성 주입(시드 0·1·2, 호스트 구간은 설정과 무관하게 WARN 대역 안·±60분 v2 알람 없음, σ는 원본으로 고정). 첫 실행 뒤 벤치마크 구성 수정 2건: OUT_OF_RANGE 주입이 평평한 선이라 STUCK에도 해당 → 잡음 유지, 감시 기준 시각을 구분하는 미끼 시나리오 추가. 탐지기 값은 바꾸지 않았다. `scripts/evaluate_detector_events.py`에 `statistics.median` 지연을 기존 값과 함께 추가(스크립트는 실행하지 않음, 합성 입력 단위 테스트만).
+- **5단계 v3.2 설정:** `configs/v3_2.json` — 감시 창을 원인 경고 알람 시각에 맞춤, 상관 연결 재확인(`verified`), 원문 등급 표기 심각도 반영. v3·v3.1 설정은 legacy 값으로 고정되어 출력이 그대로다(동등성 재확인).
+- 결과: 원본 입력에서 v3.1=v3.2(알람 120, 사건 17, 연결 2). 합성: 둘 다 탐지 51/51·유형 46/51·상관 연결 6/6, 미끼 오연결 v3.1 3/3 → v3.2 1/3, 주입 부작용 사건 1 → 0. 합성 OUT_OF_RANGE 계단 9건 중 5건이 DRIFT로 분류(라벨 없이 드러난 유형 분류 약점, 이번에는 미수정).
+- 테스트: 엔진 17 + 단계 13 + 기존 탐지기 44 = 74개 통과. `test_event_explain`·`test_rag_demo`·`test_seed_event_demo`는 이 환경에 PC 전용 산출물(v1 봉인 폴더, 저장된 실행)이 없어 9개가 수정 전후 동일하게 실패한다. PC에서 재실행해 확인한다.
+- 다음 후보: `likelihoodScore` 정의 후 CausalLink 적재, DRIFT "Monotonic deviation >15 min" 판정 반영(설계 고정 후 별도 시드로 평가), 결과 사건 onset과 경고 시각 비교, v3.2 공개 정답 평가 1회(사용자 결정), 데모 화면 연결.
+
+## 2026-11-11: LLM 단독 · VectorRAG · GraphRAG 3종 비교 문서화
+
+- 사용자 선택: 기존 결과 종합 + 신규 오프라인 비교(API 0회). 비교 보고서는 claude.ai 문서 「LLM 단독 · VectorRAG · GraphRAG 3종 비교 보고서」로 작성했다.
+- 종합한 기존 결과: 10/24 실제 답변(eval 24: LLM 0.79/5, VectorRAG 4.44, GraphRAG 4.44), 10/29 오프라인 검색(102문항, KG 관계 질문에서 그래프 구조 이득 55.0%→83.7%, 문서 QA는 대조군과 동률).
+- 신규: `experiments/three_way_incident_20261111/`. v5에서 사건 입력이 없어 보류된 CQ02·03·05·11·15·16·22·24를 룰 엔진 v3.1 상관 후보 2건으로 지정해 16문항 구성(집합 질문 2 포함). 필수 근거는 봉인된 엔진 출력·오버레이·KG에서 코드로 결정, 라벨 미열람. 결과: 회수율 LLM 0% · 텍스트 검색(BM25, VectorRAG 대체) 81.0% · GraphRAG 100%.
+- 한계(문서에 명시): 필수 근거와 GraphRAG 탐색이 같은 KG 구조에서 나옴, 같은 작업자가 질문·검색기 작성, BM25 대체, 답변 정확도 아님. 다음: PC 로컬 임베딩으로 VectorRAG 교체, 구조 조회를 끈 대조군 추가, 외부 정의 질문으로 블라인드 답변 평가(유료, 승인 후).
+
+
+## 2026-11-13 팀원 원격 실험 통합
+
+- 예원8(4a6d31e), 6th-yujin(5cf4f41), compare-sumin(817ce06)을 main 기반 통합 브랜치에 병합했다.
+- 성호(abcd1a1)는 초기 프로젝트 구조이므로 비교·탐지·추출 실험의 독립 경로 세 곳만 가져왔다. 기존 main 코드의 삭제나 루트 설정 덮어쓰기는 적용하지 않았다.
+- 성호의 원격 게시물은 10/30 QA 비교·11/6 탐지·10/16 추출이며, 별도 공유된 11/9 정정본과 구분한다.
+- 실험 조건과 지표를 합산하지 않는 안내를 docs/TEAM_EXPERIMENTS_20261113.md에 추가했다.
+- 사용자 요청에 따라 별도로 만든 사건 17건 검색·답변 연계 재평가 자료는 통합하지 않는다.
+- 유진 사건 검색 결과의 Windows 줄바꿈 변환으로 봉인 해시가 달라지는 것을 확인해 해당 results 경로에 -text 속성을 추가했다. 원격 원본 blob과 기록된 해시는 유지했다.
+- 통합 검증: 기존·신규 탐지기/KG/Agent 회귀 96개와 성호 탐지기 테스트 28개, 총 124개 통과. 유료 생성·채점은 실행하지 않았다.
+- 원본 보존 검증: 성호 실험 108개 파일의 원격 blob 일치, 봉인 파일 해시 66개, 새 안내 링크 8개 확인. 기존 main 파일 삭제와 제외 요청된 연계 재평가 경로가 없음을 검사했다.

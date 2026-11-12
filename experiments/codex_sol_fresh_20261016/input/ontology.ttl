@@ -1,0 +1,327 @@
+@prefix im: <https://example.org/imaks/v1#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# iMAKS 온톨로지 v1 (초안). 설계 근거는 CLAUDE.md 3장, work_log.md의 D1~D6와 설계 6건, 열린 쟁점 5건이다.
+# 이름공간 IRI는 임시(example.org)이다. schema_tables.md와 1:1로 대응한다.
+# OWL 선언은 의미 명세이며 필수값·개수·누수 정책은 shapes.ttl(4단계)에서 검증한다.
+
+im: a owl:Ontology ;
+    owl:versionInfo "1.0.0-draft" ;
+    rdfs:comment "제조 공정 KG 온톨로지 v1. Station 수준의 causallyAffects를 중심으로, SOP 규칙·출처·이상 이벤트를 표현한다."@ko .
+
+im:decisionRef a owl:AnnotationProperty ;
+    rdfs:comment "이 항목을 확정한 근거(work_log.md의 결정 번호 또는 CLAUDE.md 장)."@ko .
+
+# ---------------------------------------------------------------- 클래스
+
+im:Station a owl:Class ;
+    rdfs:label "Station"@en ;
+    rdfs:comment "공정(스테이션) 단위. 원본 Component 9개를 1:1로 매핑한다(생산 4 + 보조구역 5). 내부 부품이 아니다."@ko ;
+    im:decisionRef "CLAUDE.md §3, 설계 #6" .
+
+im:Sensor a owl:Class ;
+    rdfs:label "Sensor"@en ;
+    rdfs:comment "센서 22개. identifier는 시계열 sensor_id와 같다."@ko ;
+    im:decisionRef "CLAUDE.md §3" .
+
+im:Rule a owl:Class ;
+    rdfs:label "Rule"@en ;
+    rdfs:comment "SOP 문서에서 뽑은 조건-조치 규칙. 하위 4분류는 평가용 정답 규칙 파일의 class와 같은 이름이다."@ko ;
+    im:decisionRef "설계 열린 쟁점 #3" .
+
+im:OperationalRule a owl:Class ; rdfs:subClassOf im:Rule ;
+    rdfs:label "OperationalRule"@en ;
+    rdfs:comment "SOP-001 운전 규칙."@ko ;
+    im:decisionRef "설계 열린 쟁점 #3" .
+
+im:ThresholdRule a owl:Class ; rdfs:subClassOf im:Rule ;
+    rdfs:label "ThresholdRule"@en ;
+    rdfs:comment "SOP-002 센서별 임계값 규칙과 이상 유형 정의."@ko ;
+    im:decisionRef "설계 열린 쟁점 #3" .
+
+im:MaintenanceRule a owl:Class ; rdfs:subClassOf im:Rule ;
+    rdfs:label "MaintenanceRule"@en ;
+    rdfs:comment "SOP-003 정비 규칙. 원본 KG의 Maintenance 노드 8개(MAINT-01~08)와 같은 개념이다."@ko ;
+    im:decisionRef "D5, 설계 #3, 열린 쟁점 #3" .
+
+im:AccessRule a owl:Class ; rdfs:subClassOf im:Rule ;
+    rdfs:label "AccessRule"@en ;
+    rdfs:comment "SOP-004 접근·인원·확인시간 규칙. Person과 연결하지 않고 텍스트 규칙으로만 추출한다."@ko ;
+    im:decisionRef "D5, 열린 쟁점 #3" .
+
+im:Document a owl:Class ;
+    rdfs:label "Document"@en ;
+    rdfs:comment "출처 PDF(SOP 4개, 데이터시트 3개)."@ko ;
+    im:decisionRef "열린 쟁점 #3" .
+
+im:Provenance a owl:Class ;
+    rdfs:label "Provenance"@en ;
+    rdfs:comment "출처 기록. sourceKind로 문서 유래, seed CSV 유래, 시계열 CSV 유래를 구분한다. 시계열 유래 Provenance는 windowId로 후보 구간을 등록하는 역할도 한다."@ko ;
+    im:decisionRef "D3, CLAUDE.md §4, 열린 쟁점 #1·#3" .
+
+im:AnomalyEvent a owl:Class ;
+    rdfs:label "AnomalyEvent"@en ;
+    rdfs:comment "이상 이벤트. ⑦ 이후에만 인스턴스화한다(⑥ 발굴 입력에는 없다)."@ko ;
+    im:decisionRef "CLAUDE.md §4, 설계 #1" .
+
+im:Spike a owl:Class ; rdfs:subClassOf im:AnomalyEvent ;
+    rdfs:label "Spike"@en ; rdfs:comment "5분 미만의 순간 변화."@ko ; im:decisionRef "설계 #1" .
+im:Drift a owl:Class ; rdfs:subClassOf im:AnomalyEvent ;
+    rdfs:label "Drift"@en ; rdfs:comment "한 방향으로 서서히 계속되는 변화."@ko ; im:decisionRef "설계 #1" .
+im:StuckSensor a owl:Class ; rdfs:subClassOf im:AnomalyEvent ;
+    rdfs:label "StuckSensor"@en ; rdfs:comment "값이 고정된 상태."@ko ; im:decisionRef "설계 #1" .
+im:OutOfRange a owl:Class ; rdfs:subClassOf im:AnomalyEvent ;
+    rdfs:label "OutOfRange"@en ; rdfs:comment "경고 한계 밖에 한동안 머무는 상태."@ko ; im:decisionRef "설계 #1" .
+im:Correlated a owl:Class ; rdfs:subClassOf im:AnomalyEvent ;
+    rdfs:label "Correlated"@en ; rdfs:comment "다른 센서의 이상 때문에 일정 시차를 두고 따라 변한 이상."@ko ; im:decisionRef "설계 #1" .
+
+im:CausalLink a owl:Class ;
+    rdfs:label "CausalLink"@en ;
+    rdfs:comment "SHACL 검증 전용 클래스. Neo4j에는 만들지 않는다. causallyAffects 관계의 속성을 RDF에서 검사하기 위해 변환할 때만 쓴다."@ko ;
+    im:decisionRef "D2" .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( im:Spike im:Drift im:StuckSensor im:OutOfRange im:Correlated ) .
+
+[] a owl:AllDisjointClasses ;
+    owl:members ( im:OperationalRule im:ThresholdRule im:MaintenanceRule im:AccessRule ) .
+
+# ---------------------------------------------------------------- 객체 관계
+
+im:hasSensor a owl:ObjectProperty ;
+    rdfs:domain im:Station ; rdfs:range im:Sensor ;
+    rdfs:label "hasSensor"@en ;
+    rdfs:comment "스테이션이 센서를 가진다. 원본 monitors 양방향 44줄(22쌍)을 이 방향 하나로 정리한다."@ko ;
+    im:decisionRef "D4, 설계 #4" .
+
+im:feedsInto a owl:ObjectProperty ;
+    rdfs:domain im:Station ; rdfs:range im:Station ;
+    rdfs:label "feedsInto"@en ;
+    rdfs:comment "물리적 공정 순서(ST01→ST02→ST03→ST04). 인과 관계가 아니다."@ko ;
+    im:decisionRef "CLAUDE.md §3" .
+
+im:correlatesWith a owl:ObjectProperty ;
+    rdfs:domain im:Sensor ; rdfs:range im:Sensor ;
+    rdfs:label "correlatesWith"@en ;
+    rdfs:comment "원본 센서 간 문서 근거 관계 1건(ST02 CUR→ST04 SPD). 신규 발견이 아니며 ⑦ 이후 경로에서만 적재한다."@ko ;
+    im:decisionRef "설계 #2, CLAUDE.md §4" .
+
+im:triggers a owl:ObjectProperty ;
+    rdfs:domain im:Sensor ; rdfs:range im:AnomalyEvent ;
+    rdfs:label "triggers"@en ;
+    rdfs:comment "센서가 이상 이벤트를 발생시킨다(원본 방향 그대로). ⑦ 이후에만 사용."@ko ;
+    im:decisionRef "설계 #2" .
+
+im:causallyAffects a owl:ObjectProperty ;
+    rdfs:domain im:Station ; rdfs:range im:Station ;
+    rdfs:label "causallyAffects"@en ;
+    rdfs:comment "원인 공정 → 결과 공정의 인과 후보. 속성 hasLag, hasEvidence, likelihoodScore, ruleIds, windowId는 Neo4j에서 관계 속성이고, RDF 검증 변환에서는 CausalLink의 속성이다."@ko ;
+    im:decisionRef "CLAUDE.md §3, D2, 열린 쟁점 #1·#2" .
+
+im:appliesToSensor a owl:ObjectProperty ;
+    rdfs:domain im:Rule ; rdfs:range im:Sensor ;
+    rdfs:label "appliesToSensor"@en ;
+    rdfs:comment "규칙이 적용되는 센서. 정비 규칙(MaintenanceRule)도 이 관계를 쓴다. 원본의 Sensor→Maintenance triggers와 Maintenance→Sensor resolves를 이 하나로 합친다."@ko ;
+    im:decisionRef "설계 #3, 열린 쟁점 #4" .
+
+im:actionTarget a owl:ObjectProperty ;
+    rdfs:domain im:Rule ; rdfs:range im:Station ;
+    rdfs:label "actionTarget"@en ;
+    rdfs:comment "규칙의 조치가 향하는 스테이션(예: 비상 정지 대상). 실제 조치 수행 이력이 아니다."@ko ;
+    im:decisionRef "제안(재도출 6장, CQ4)" .
+
+im:sourceDocument a owl:ObjectProperty ;
+    rdfs:domain im:Rule ; rdfs:range im:Document ;
+    rdfs:label "sourceDocument"@en ;
+    rdfs:comment "규칙이 나온 문서. 문서 안의 위치는 hasProvenance로 가리키는 Provenance가 가진다."@ko ;
+    im:decisionRef "제안(재도출 6장, CQ3·CQ4)" .
+
+im:hasProvenance a owl:ObjectProperty ;
+    rdfs:domain [ a owl:Class ; owl:unionOf ( im:Rule im:Station im:Sensor im:AnomalyEvent im:CausalLink ) ] ;
+    rdfs:range im:Provenance ;
+    rdfs:label "hasProvenance"@en ;
+    rdfs:comment "출처 기록을 가리킨다. 주 대상은 Rule이며 Station·Sensor·AnomalyEvent도 쓸 수 있다."@ko ;
+    im:decisionRef "D3, CLAUDE.md §4" .
+
+im:hasCause a owl:ObjectProperty ;
+    rdfs:domain im:CausalLink ; rdfs:range im:Station ;
+    rdfs:label "hasCause"@en ;
+    rdfs:comment "SHACL 검증 변환 전용: 원인 공정."@ko ;
+    im:decisionRef "D2" .
+
+im:hasEffect a owl:ObjectProperty ;
+    rdfs:domain im:CausalLink ; rdfs:range im:Station ;
+    rdfs:label "hasEffect"@en ;
+    rdfs:comment "SHACL 검증 변환 전용: 결과 공정."@ko ;
+    im:decisionRef "D2" .
+
+# ---------------------------------------------------------------- 데이터 속성: 공통
+
+im:identifier a owl:DatatypeProperty ;
+    rdfs:domain [ a owl:Class ; owl:unionOf ( im:Station im:Sensor im:Rule im:Document ) ] ;
+    rdfs:range xsd:string ;
+    rdfs:label "identifier"@en ;
+    rdfs:comment "외부 식별자. Station·Sensor는 원본 name(예: ST02_SEALING_CUR), Rule은 ruleId, Document는 문서 ID."@ko ;
+    im:decisionRef "설계" .
+
+im:sourceNodeId a owl:DatatypeProperty ;
+    rdfs:domain [ a owl:Class ; owl:unionOf ( im:Station im:Sensor im:MaintenanceRule ) ] ;
+    rdfs:range xsd:string ;
+    rdfs:label "sourceNodeId"@en ;
+    rdfs:comment "원본 nodes.csv의 nodeId. 변환 후에도 원본을 역추적하기 위해 보존한다."@ko ;
+    im:decisionRef "D3(seed 출처)" .
+
+# ---------------------------------------------------------------- 데이터 속성: Station, Sensor
+
+im:stationType a owl:DatatypeProperty ; rdfs:domain im:Station ; rdfs:range xsd:string ;
+    rdfs:label "stationType"@en ;
+    rdfs:comment "FILLING, SEALING, LABELLING, PACKAGING, SERVERROOM, WAREHOUSE, CHEMICALSTORAGE, RDLAB, CAFETERIA."@ko ;
+    im:decisionRef "설계" .
+
+im:zone a owl:DatatypeProperty ; rdfs:domain im:Station ; rdfs:range xsd:string ;
+    rdfs:label "zone"@en ;
+    rdfs:comment "스테이션이 속한 구역 이름(예: Production Area). Zone 클래스를 만들지 않고 속성으로 흡수한다."@ko ;
+    im:decisionRef "설계 #6" .
+
+im:sensorType a owl:DatatypeProperty ; rdfs:domain im:Sensor ; rdfs:range xsd:string ;
+    rdfs:label "sensorType"@en ;
+    rdfs:comment "TMP, PRS, FLW, CUR, SPD, TEN, CNT, VIB, HUM."@ko ;
+    im:decisionRef "설계" .
+
+im:unit a owl:DatatypeProperty ; rdfs:domain im:Sensor ; rdfs:range xsd:string ;
+    rdfs:label "unit"@en ;
+    rdfs:comment "원문 단위 그대로(°C, bar, L/min, A, m/s, N, pcs/min, mm/s, %RH)."@ko ;
+    im:decisionRef "설계" .
+
+# ---------------------------------------------------------------- 데이터 속성: Rule
+
+im:conditionText a owl:DatatypeProperty ; rdfs:domain im:Rule ; rdfs:range xsd:string ;
+    rdfs:label "conditionText"@en ;
+    rdfs:comment "규칙의 조건 문장."@ko ;
+    im:decisionRef "제안(CQ3·CQ4)" .
+
+im:responseText a owl:DatatypeProperty ; rdfs:domain im:Rule ; rdfs:range xsd:string ;
+    rdfs:label "responseText"@en ;
+    rdfs:comment "규칙의 조치 문장. Task 클래스를 만들지 않고 조치를 이 속성으로 둔다(④ 시작 전 재검토)."@ko ;
+    im:decisionRef "열린 쟁점 #3" .
+
+im:ruleSeverity a owl:DatatypeProperty ; rdfs:domain im:Rule ; rdfs:range xsd:string ;
+    rdfs:label "ruleSeverity"@en ;
+    rdfs:comment "규칙 문서가 정한 심각도 등급(CRITICAL, MANDATORY, WARNING 등)."@ko ;
+    im:decisionRef "누수 금지어 회피" .
+
+im:extractionMethod a owl:DatatypeProperty ; rdfs:domain im:Rule ; rdfs:range xsd:string ;
+    rdfs:label "extractionMethod"@en ;
+    rdfs:comment "규칙을 만든 방법(LLM 추출, 표 결정적 변환, 수동 등)."@ko ;
+    im:decisionRef "재도출 6장" .
+
+im:priority a owl:DatatypeProperty ; rdfs:domain im:MaintenanceRule ; rdfs:range xsd:string ;
+    rdfs:label "priority"@en ;
+    rdfs:comment "정비 우선순위(CRITICAL, HIGH, MEDIUM)."@ko ;
+    im:decisionRef "D5" .
+
+im:nominal a owl:DatatypeProperty ; rdfs:domain im:ThresholdRule ; rdfs:range xsd:decimal ;
+    rdfs:label "nominal"@en ; rdfs:comment "SOP-002의 평상값(± 표기는 제외)."@ko ; im:decisionRef "설계" .
+im:warnHi a owl:DatatypeProperty ; rdfs:domain im:ThresholdRule ; rdfs:range xsd:decimal ;
+    rdfs:label "warnHi"@en ; rdfs:comment "경고 상한."@ko ; im:decisionRef "설계" .
+im:warnLo a owl:DatatypeProperty ; rdfs:domain im:ThresholdRule ; rdfs:range xsd:decimal ;
+    rdfs:label "warnLo"@en ; rdfs:comment "경고 하한."@ko ; im:decisionRef "설계" .
+im:critHi a owl:DatatypeProperty ; rdfs:domain im:ThresholdRule ; rdfs:range xsd:decimal ;
+    rdfs:label "critHi"@en ; rdfs:comment "위험 상한. 시계열 입력(⑥)이 아니라 룰·⑧⑨ 경로에서만 쓴다."@ko ; im:decisionRef "D1" .
+im:critLo a owl:DatatypeProperty ; rdfs:domain im:ThresholdRule ; rdfs:range xsd:decimal ;
+    rdfs:label "critLo"@en ; rdfs:comment "위험 하한."@ko ; im:decisionRef "D1" .
+
+# ---------------------------------------------------------------- 데이터 속성: Document
+
+im:title a owl:DatatypeProperty ; rdfs:domain im:Document ; rdfs:range xsd:string ;
+    rdfs:label "title"@en ; rdfs:comment "문서 제목."@ko ; im:decisionRef "설계" .
+im:sourcePath a owl:DatatypeProperty ; rdfs:domain im:Document ; rdfs:range xsd:string ;
+    rdfs:label "sourcePath"@en ; rdfs:comment "저장소 기준 상대 경로(예: imaks_data/rules/SOP_001_OperatingProcedures.pdf)."@ko ; im:decisionRef "CLAUDE.md §7" .
+im:sourceSha256 a owl:DatatypeProperty ; rdfs:domain im:Document ; rdfs:range xsd:string ;
+    rdfs:label "sourceSha256"@en ; rdfs:comment "PDF 바이너리의 SHA-256(64자리 16진수)."@ko ; im:decisionRef "CLAUDE.md §4" .
+im:pageCount a owl:DatatypeProperty ; rdfs:domain im:Document ; rdfs:range xsd:positiveInteger ;
+    rdfs:label "pageCount"@en ; rdfs:comment "문서 쪽수."@ko ; im:decisionRef "설계" .
+
+# ---------------------------------------------------------------- 데이터 속성: Provenance
+
+im:sourceKind a owl:DatatypeProperty ; rdfs:domain im:Provenance ; rdfs:range xsd:string ;
+    rdfs:label "sourceKind"@en ;
+    rdfs:comment "출처 종류: document(SOP·데이터시트), seedCsv(원본 KG CSV), timeseries(시계열 CSV)."@ko ;
+    im:decisionRef "D3" .
+im:page a owl:DatatypeProperty ; rdfs:domain im:Provenance ; rdfs:range xsd:positiveInteger ;
+    rdfs:label "page"@en ; rdfs:comment "document 유래: 1부터 시작하는 쪽 번호."@ko ; im:decisionRef "D3" .
+im:charStart a owl:DatatypeProperty ; rdfs:domain im:Provenance ; rdfs:range xsd:nonNegativeInteger ;
+    rdfs:label "charStart"@en ; rdfs:comment "document 유래: 쪽 텍스트 안의 시작 문자 위치."@ko ; im:decisionRef "CLAUDE.md §4" .
+im:charEnd a owl:DatatypeProperty ; rdfs:domain im:Provenance ; rdfs:range xsd:nonNegativeInteger ;
+    rdfs:label "charEnd"@en ; rdfs:comment "document 유래: 끝 문자 위치."@ko ; im:decisionRef "CLAUDE.md §4" .
+im:tableId a owl:DatatypeProperty ; rdfs:domain im:Provenance ; rdfs:range xsd:string ;
+    rdfs:label "tableId"@en ; rdfs:comment "document 유래(표): 표 ID(예: SOP-002:p1:table2)."@ko ; im:decisionRef "CLAUDE.md §4" .
+im:rowIndex a owl:DatatypeProperty ; rdfs:domain im:Provenance ; rdfs:range xsd:positiveInteger ;
+    rdfs:label "rowIndex"@en ; rdfs:comment "document 유래(표): 표 안의 행 번호."@ko ; im:decisionRef "CLAUDE.md §4" .
+im:colIndex a owl:DatatypeProperty ; rdfs:domain im:Provenance ; rdfs:range xsd:positiveInteger ;
+    rdfs:label "colIndex"@en ; rdfs:comment "document 유래(표): 표 안의 열 번호."@ko ; im:decisionRef "CLAUDE.md §4" .
+im:bbox a owl:DatatypeProperty ; rdfs:domain im:Provenance ; rdfs:range xsd:string ;
+    rdfs:label "bbox"@en ; rdfs:comment "document 유래(표): 좌표 x0,y0,x1,y1(point 단위)."@ko ; im:decisionRef "CLAUDE.md §4" .
+im:sourceQuote a owl:DatatypeProperty ; rdfs:domain im:Provenance ; rdfs:range xsd:string ;
+    rdfs:label "sourceQuote"@en ; rdfs:comment "document 유래: 근거가 된 원문 인용."@ko ; im:decisionRef "재도출 6장" .
+im:textSha256 a owl:DatatypeProperty ; rdfs:domain im:Provenance ; rdfs:range xsd:string ;
+    rdfs:label "textSha256"@en ; rdfs:comment "document 유래: 인용 원문의 SHA-256."@ko ; im:decisionRef "CLAUDE.md §4" .
+im:fileName a owl:DatatypeProperty ; rdfs:domain im:Provenance ; rdfs:range xsd:string ;
+    rdfs:label "fileName"@en ; rdfs:comment "seedCsv·timeseries 유래: 원본 파일 경로(저장소 기준 상대 경로)."@ko ; im:decisionRef "D3" .
+im:sourceRowId a owl:DatatypeProperty ; rdfs:domain im:Provenance ; rdfs:range xsd:string ;
+    rdfs:label "sourceRowId"@en ; rdfs:comment "seedCsv 유래: 원본 행의 식별자(nodeId 또는 엣지 줄)."@ko ; im:decisionRef "D3" .
+im:sensorId a owl:DatatypeProperty ; rdfs:domain im:Provenance ; rdfs:range xsd:string ;
+    rdfs:label "sensorId"@en ; rdfs:comment "timeseries 유래: 센서 ID."@ko ; im:decisionRef "D3" .
+im:intervalStart a owl:DatatypeProperty ; rdfs:domain im:Provenance ; rdfs:range xsd:dateTime ;
+    rdfs:label "intervalStart"@en ; rdfs:comment "timeseries 유래: 구간 시작(시간대 미지정 timestamp 그대로)."@ko ; im:decisionRef "D3" .
+im:intervalEnd a owl:DatatypeProperty ; rdfs:domain im:Provenance ; rdfs:range xsd:dateTime ;
+    rdfs:label "intervalEnd"@en ; rdfs:comment "timeseries 유래: 구간 끝."@ko ; im:decisionRef "D3" .
+im:fileSha256 a owl:DatatypeProperty ; rdfs:domain im:Provenance ; rdfs:range xsd:string ;
+    rdfs:label "fileSha256"@en ; rdfs:comment "timeseries 유래: 시계열 파일의 SHA-256."@ko ; im:decisionRef "D3" .
+
+# ---------------------------------------------------------------- 데이터 속성: windowId (여러 곳에서 쓴다)
+
+im:windowId a owl:DatatypeProperty ;
+    rdfs:domain [ a owl:Class ; owl:unionOf ( im:Provenance im:AnomalyEvent im:CausalLink ) ] ;
+    rdfs:range xsd:string ;
+    rdfs:label "windowId"@en ;
+    rdfs:comment "⑥이 정한 후보 구간 ID(센서+시각 기반, GT id 아님). timeseries 유래 Provenance가 구간을 등록하고, causallyAffects 선과 ⑦의 AnomalyEvent가 이 값으로 구간을 가리킨다."@ko ;
+    im:decisionRef "열린 쟁점 #2" .
+
+# ---------------------------------------------------------------- 데이터 속성: AnomalyEvent (⑦ 이후)
+
+im:startTime a owl:DatatypeProperty ; rdfs:domain im:AnomalyEvent ; rdfs:range xsd:dateTime ;
+    rdfs:label "startTime"@en ; rdfs:comment "이벤트 시작(⑦ 이후)."@ko ; im:decisionRef "설계 #2" .
+im:endTime a owl:DatatypeProperty ; rdfs:domain im:AnomalyEvent ; rdfs:range xsd:dateTime ;
+    rdfs:label "endTime"@en ; rdfs:comment "이벤트 끝(⑦ 이후)."@ko ; im:decisionRef "설계 #2" .
+im:magnitude a owl:DatatypeProperty ; rdfs:domain im:AnomalyEvent ; rdfs:range xsd:decimal ;
+    rdfs:label "magnitude"@en ; rdfs:comment "변화 크기(⑦ 이후)."@ko ; im:decisionRef "설계 #2" .
+im:datasetSeverity a owl:DatatypeProperty ; rdfs:domain im:AnomalyEvent ; rdfs:range xsd:string ;
+    rdfs:label "datasetSeverity"@en ;
+    rdfs:comment "데이터셋이 붙인 심각도(WARNING, CRITICAL). 규칙 판정과 분리해 보존한다(결함 B07)."@ko ;
+    im:decisionRef "결함 B07" .
+
+# ---------------------------------------------------------------- 데이터 속성: causallyAffects 관계 속성 (RDF에서는 CausalLink의 속성)
+
+im:hasLag a owl:DatatypeProperty ; rdfs:domain im:CausalLink ; rdfs:range xsd:decimal ;
+    rdfs:label "hasLag"@en ;
+    rdfs:comment "시차(분, 0 이상). Neo4j에서는 causallyAffects 관계 속성이다."@ko ;
+    im:decisionRef "CLAUDE.md §3, D2" .
+
+im:hasEvidence a owl:DatatypeProperty ; rdfs:domain im:CausalLink ; rdfs:range xsd:string ;
+    rdfs:label "hasEvidence"@en ;
+    rdfs:comment "근거 종류: TimeseriesCorrelation, SOPRule, Both 중 하나."@ko ;
+    im:decisionRef "CLAUDE.md §3, D2" .
+
+im:likelihoodScore a owl:DatatypeProperty ; rdfs:domain im:CausalLink ; rdfs:range xsd:decimal ;
+    rdfs:label "likelihoodScore"@en ;
+    rdfs:comment "가능성 점수(0.0~1.0). 0.6 이상·이벤트당 상위 3개만 채택하는 필터는 SHACL이 아니라 적재 스크립트가 처리한다."@ko ;
+    im:decisionRef "CLAUDE.md §3, D2" .
+
+im:ruleIds a owl:DatatypeProperty ; rdfs:domain im:CausalLink ; rdfs:range xsd:string ;
+    rdfs:label "ruleIds"@en ;
+    rdfs:comment "SOP 규칙 근거 번호표(Rule의 identifier). 값이 여러 개일 수 있다. 적재 스크립트가 실제 Rule 노드의 존재를 검사한다."@ko ;
+    im:decisionRef "열린 쟁점 #1" .

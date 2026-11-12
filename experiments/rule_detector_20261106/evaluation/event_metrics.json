@@ -1,0 +1,5145 @@
+{
+  "baseline_v2": {
+    "ALL": {
+      "rule_alarm_count": 102,
+      "gold_events": 14,
+      "events_covered": 13,
+      "events_with_new_alarm": 13,
+      "coverage_recall": 0.9285714285714286,
+      "rule_alarms_without_gold_overlap": 1,
+      "rule_alarm_overlap_precision": 0.9901960784313726,
+      "median_latency_minutes_non_preexisting": 0.5,
+      "preexisting_alarm_events": 0,
+      "merged_episode_count": 51,
+      "one_to_one_TP": 13,
+      "one_to_one_FP": 38,
+      "one_to_one_FN": 1,
+      "one_to_one_precision": 0.2549019607843137,
+      "one_to_one_recall": 0.9285714285714286,
+      "one_to_one_F1": 0.4,
+      "by_type": {
+        "CORRELATED": {
+          "caught": 0,
+          "total": 1
+        },
+        "DRIFT": {
+          "caught": 5,
+          "total": 5
+        },
+        "OUT_OF_RANGE": {
+          "caught": 4,
+          "total": 4
+        },
+        "SPIKE": {
+          "caught": 3,
+          "total": 3
+        },
+        "STUCK": {
+          "caught": 1,
+          "total": 1
+        }
+      },
+      "events": [
+        {
+          "sensor_id": "ST02_SEALING_TMP",
+          "label": "SPIKE",
+          "start": "2026-01-06T08:30:00",
+          "end": "2026-01-06T08:33:00",
+          "samples": 7,
+          "covered": true,
+          "new_alarm_in_gold_window": true,
+          "first_alarm": "2026-01-06T08:30:00",
+          "latency_minutes_signed": 0.0,
+          "preexisting_alarm": false,
+          "rules": [
+            "RULE-ST02-01",
+            "RULE-ST02-02",
+            "SOP-002-EX-04:critical",
+            "SOP-002-EX-04:warning"
+          ]
+        },
+        {
+          "sensor_id": "ST01_FILLING_PRS",
+          "label": "DRIFT",
+          "start": "2026-01-06T11:00:00",
+          "end": "2026-01-06T11:45:00",
+          "samples": 91,
+          "covered": true,
+          "new_alarm_in_gold_window": true,
+          "first_alarm": "2026-01-06T11:29:00",
+          "latency_minutes_signed": 29.0,
+          "preexisting_alarm": false,
+          "rules": [
+            "SOP-002-EX-02:warning"
+          ]
+        },
+        {
+          "sensor_id": "ST04_PACKAGING_VIB",
+          "label": "DRIFT",
+          "start": "2026-01-07T07:00:00",
+          "end": "2026-01-07T08:30:00",
+          "samples": 181,
+          "covered": true,
+          "new_alarm_in_gold_window": true,
+          "first_alarm": "2026-01-07T07:40:00",
+          "latency_minutes_signed": 40.0,
+          "preexisting_alarm": false,
+          "rules": [
+            "RULE-ST04-01",
+            "SOP-002-EX-10:warning"
+          ]
+        },
+        {
+          "sensor_id": "ST03_LABELLING_TEN",
+          "label": "STUCK",
+          "start": "2026-01-07T09:30:00",
+          "end": "2026-01-07T09:42:00",
+          "samples": 25,
+          "covered": true,
+          "new_alarm_in_gold_window": true,
+          "first_alarm": "2026-01-07T09:35:00",
+          "latency_minutes_signed": 5.0,
+          "preexisting_alarm": false,
+          "rules": [
+            "MAINT-03",
+            "RULE-ST03-03"
+          ]
+        },
+        {
+          "sensor_id": "SRV01_SERVERROOM_TMP",
+          "label": "OUT_OF_RANGE",
+          "start": "2026-01-07T12:00:00",
+          "end": "2026-01-07T12:20:00",
+          "samples": 41,
+          "covered": true,
+          "new_alarm_in_gold_window": true,
+          "first_alarm": "2026-01-07T12:00:00",
+          "latency_minutes_signed": 0.0,
+          "preexisting_alarm": false,
+          "rules": [
+            "MAINT-05",
+            "RULE-SRV01-01",
+            "SOP-002-EX-13:warning"
+          ]
+        },
+        {
+          "sensor_id": "CAF01_CAFETERIA_TMP",
+          "label": "OUT_OF_RANGE",
+          "start": "2026-01-07T16:00:00",
+          "end": "2026-01-07T16:30:00",
+          "samples": 61,
+          "covered": true,
+          "new_alarm_in_gold_window": true,
+          "first_alarm": "2026-01-07T16:00:30",
+          "latency_minutes_signed": 0.5,
+          "preexisting_alarm": false,
+          "rules": [
+            "RULE-CAF01-01",
+            "SOP-002-EX-21:warning"
+          ]
+        },
+        {
+          "sensor_id": "ST01_FILLING_FLW",
+          "label": "SPIKE",
+          "start": "2026-01-08T06:30:00",
+          "end": "2026-01-08T06:32:00",
+          "samples": 5,
+          "covered": true,
+          "new_alarm_in_gold_window": true,
+          "first_alarm": "2026-01-08T06:30:00",
+          "latency_minutes_signed": 0.0,
+          "preexisting_alarm": false,
+          "rules": [
+            "RULE-ST01-01",
+            "SOP-002-EX-03:critical",
+            "SOP-002-EX-03:warning"
+          ]
+        },
+        {
+          "sensor_id": "ST02_SEALING_CUR",
+          "label": "DRIFT",
+          "start": "2026-01-08T08:00:00",
+          "end": "2026-01-08T10:00:00",
+          "samples": 241,
+          "covered": true,
+          "new_alarm_in_gold_window": true,
+          "first_alarm": "2026-01-08T08:22:00",
+          "latency_minutes_signed": 22.0,
+          "preexisting_alarm": false,
+          "rules": [
+            "RULE-ST02-03",
+            "SOP-002-EX-06:warning"
+          ]
+        },
+        {
+          "sensor_id": "ST04_PACKAGING_SPD",
+          "label": "CORRELATED",
+          "start": "2026-01-08T09:30:00",
+          "end": "2026-01-08T10:30:00",
+          "samples": 121,
+          "covered": false,
+          "new_alarm_in_gold_window": false,
+          "first_alarm": null,
+          "latency_minutes_signed": null,
+          "preexisting_alarm": false,
+          "rules": []
+        },
+        {
+          "sensor_id": "ST03_LABELLING_CNT",
+          "label": "OUT_OF_RANGE",
+          "start": "2026-01-09T07:30:00",
+          "end": "2026-01-09T07:55:00",
+          "samples": 51,
+          "covered": true,
+          "new_alarm_in_gold_window": true,
+          "first_alarm": "2026-01-09T07:30:00",
+          "latency_minutes_signed": 0.0,
+          "preexisting_alarm": false,
+          "rules": [
+            "RULE-ST03-02",
+            "RULE-ST03-02-CRITICAL",
+            "SOP-002-EX-09:critical",
+            "SOP-002-EX-09:warning"
+          ]
+        },
+        {
+          "sensor_id": "CHM01_CHEMICALSTORAGE_TMP",
+          "label": "OUT_OF_RANGE",
+          "start": "2026-01-09T08:00:00",
+          "end": "2026-01-09T08:45:00",
+          "samples": 91,
+          "covered": true,
+          "new_alarm_in_gold_window": true,
+          "first_alarm": "2026-01-09T08:00:00",
+          "latency_minutes_signed": 0.0,
+          "preexisting_alarm": false,
+          "rules": [
+            "MAINT-07",
+            "RULE-CHM01-01",
+            "SOP-002-EX-17:warning"
+          ]
+        },
+        {
+          "sensor_id": "WRH01_WAREHOUSE_TMP",
+          "label": "DRIFT",
+          "start": "2026-01-09T10:00:00",
+          "end": "2026-01-09T13:00:00",
+          "samples": 361,
+          "covered": true,
+          "new_alarm_in_gold_window": true,
+          "first_alarm": "2026-01-09T11:48:00",
+          "latency_minutes_signed": 108.0,
+          "preexisting_alarm": false,
+          "rules": [
+            "RULE-WRH01-01",
+            "SOP-002-EX-15:warning"
+          ]
+        },
+        {
+          "sensor_id": "RND01_RDLAB_HUM",
+          "label": "DRIFT",
+          "start": "2026-01-09T11:30:00",
+          "end": "2026-01-09T13:00:00",
+          "samples": 181,
+          "covered": true,
+          "new_alarm_in_gold_window": true,
+          "first_alarm": "2026-01-09T12:44:30",
+          "latency_minutes_signed": 74.5,
+          "preexisting_alarm": false,
+          "rules": [
+            "RULE-RND01-02",
+            "SOP-002-EX-20:warning"
+          ]
+        },
+        {
+          "sensor_id": "ST04_PACKAGING_VIB",
+          "label": "SPIKE",
+          "start": "2026-01-09T13:00:00",
+          "end": "2026-01-09T13:01:00",
+          "samples": 3,
+          "covered": true,
+          "new_alarm_in_gold_window": true,
+          "first_alarm": "2026-01-09T13:00:00",
+          "latency_minutes_signed": 0.0,
+          "preexisting_alarm": false,
+          "rules": [
+            "RULE-ST04-01",
+            "RULE-ST04-02",
+            "SOP-002-EX-10:critical",
+            "SOP-002-EX-10:warning"
+          ]
+        }
+      ],
+      "unmatched_rule_alarms": [
+        {
+          "sensor_id": "ST02_SEALING_CUR",
+          "rule_id": "SOP-002-EX-06:warning",
+          "kind": "kg_threshold_warning",
+          "trigger_at": "2026-01-07T13:27:00",
+          "condition_start": "2026-01-07T13:27:00",
+          "trigger_value": "13.5668",
+          "unit": "A",
+          "positive_samples": 1,
+          "report_split": "validation",
+          "last_positive_at": "2026-01-07T13:27:00"
+        }
+      ]
+    },
+    "by_family": {
+      "kg_document_rule": {
+        "rule_alarm_count": 43,
+        "gold_events": 14,
+        "events_covered": 12,
+        "events_with_new_alarm": 12,
+        "coverage_recall": 0.8571428571428571,
+        "rule_alarms_without_gold_overlap": 0,
+        "rule_alarm_overlap_precision": 1.0,
+        "median_latency_minutes_non_preexisting": 0.25,
+        "preexisting_alarm_events": 0,
+        "merged_episode_count": 32,
+        "one_to_one_TP": 12,
+        "one_to_one_FP": 20,
+        "one_to_one_FN": 2,
+        "one_to_one_precision": 0.375,
+        "one_to_one_recall": 0.8571428571428571,
+        "one_to_one_F1": 0.5217391304347826,
+        "by_type": {
+          "CORRELATED": {
+            "caught": 0,
+            "total": 1
+          },
+          "DRIFT": {
+            "caught": 4,
+            "total": 5
+          },
+          "OUT_OF_RANGE": {
+            "caught": 4,
+            "total": 4
+          },
+          "SPIKE": {
+            "caught": 3,
+            "total": 3
+          },
+          "STUCK": {
+            "caught": 1,
+            "total": 1
+          }
+        },
+        "events": [
+          {
+            "sensor_id": "ST02_SEALING_TMP",
+            "label": "SPIKE",
+            "start": "2026-01-06T08:30:00",
+            "end": "2026-01-06T08:33:00",
+            "samples": 7,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-06T08:30:00",
+            "latency_minutes_signed": 0.0,
+            "preexisting_alarm": false,
+            "rules": [
+              "RULE-ST02-01",
+              "RULE-ST02-02"
+            ]
+          },
+          {
+            "sensor_id": "ST01_FILLING_PRS",
+            "label": "DRIFT",
+            "start": "2026-01-06T11:00:00",
+            "end": "2026-01-06T11:45:00",
+            "samples": 91,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "ST04_PACKAGING_VIB",
+            "label": "DRIFT",
+            "start": "2026-01-07T07:00:00",
+            "end": "2026-01-07T08:30:00",
+            "samples": 181,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-07T07:40:00",
+            "latency_minutes_signed": 40.0,
+            "preexisting_alarm": false,
+            "rules": [
+              "RULE-ST04-01"
+            ]
+          },
+          {
+            "sensor_id": "ST03_LABELLING_TEN",
+            "label": "STUCK",
+            "start": "2026-01-07T09:30:00",
+            "end": "2026-01-07T09:42:00",
+            "samples": 25,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-07T09:35:00",
+            "latency_minutes_signed": 5.0,
+            "preexisting_alarm": false,
+            "rules": [
+              "MAINT-03",
+              "RULE-ST03-03"
+            ]
+          },
+          {
+            "sensor_id": "SRV01_SERVERROOM_TMP",
+            "label": "OUT_OF_RANGE",
+            "start": "2026-01-07T12:00:00",
+            "end": "2026-01-07T12:20:00",
+            "samples": 41,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-07T12:00:00",
+            "latency_minutes_signed": 0.0,
+            "preexisting_alarm": false,
+            "rules": [
+              "MAINT-05",
+              "RULE-SRV01-01"
+            ]
+          },
+          {
+            "sensor_id": "CAF01_CAFETERIA_TMP",
+            "label": "OUT_OF_RANGE",
+            "start": "2026-01-07T16:00:00",
+            "end": "2026-01-07T16:30:00",
+            "samples": 61,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-07T16:00:30",
+            "latency_minutes_signed": 0.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "RULE-CAF01-01"
+            ]
+          },
+          {
+            "sensor_id": "ST01_FILLING_FLW",
+            "label": "SPIKE",
+            "start": "2026-01-08T06:30:00",
+            "end": "2026-01-08T06:32:00",
+            "samples": 5,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-08T06:30:00",
+            "latency_minutes_signed": 0.0,
+            "preexisting_alarm": false,
+            "rules": [
+              "RULE-ST01-01"
+            ]
+          },
+          {
+            "sensor_id": "ST02_SEALING_CUR",
+            "label": "DRIFT",
+            "start": "2026-01-08T08:00:00",
+            "end": "2026-01-08T10:00:00",
+            "samples": 241,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-08T09:35:30",
+            "latency_minutes_signed": 95.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "RULE-ST02-03"
+            ]
+          },
+          {
+            "sensor_id": "ST04_PACKAGING_SPD",
+            "label": "CORRELATED",
+            "start": "2026-01-08T09:30:00",
+            "end": "2026-01-08T10:30:00",
+            "samples": 121,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "ST03_LABELLING_CNT",
+            "label": "OUT_OF_RANGE",
+            "start": "2026-01-09T07:30:00",
+            "end": "2026-01-09T07:55:00",
+            "samples": 51,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-09T07:30:00",
+            "latency_minutes_signed": 0.0,
+            "preexisting_alarm": false,
+            "rules": [
+              "RULE-ST03-02",
+              "RULE-ST03-02-CRITICAL"
+            ]
+          },
+          {
+            "sensor_id": "CHM01_CHEMICALSTORAGE_TMP",
+            "label": "OUT_OF_RANGE",
+            "start": "2026-01-09T08:00:00",
+            "end": "2026-01-09T08:45:00",
+            "samples": 91,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-09T08:00:00",
+            "latency_minutes_signed": 0.0,
+            "preexisting_alarm": false,
+            "rules": [
+              "MAINT-07",
+              "RULE-CHM01-01"
+            ]
+          },
+          {
+            "sensor_id": "WRH01_WAREHOUSE_TMP",
+            "label": "DRIFT",
+            "start": "2026-01-09T10:00:00",
+            "end": "2026-01-09T13:00:00",
+            "samples": 361,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-09T11:48:00",
+            "latency_minutes_signed": 108.0,
+            "preexisting_alarm": false,
+            "rules": [
+              "RULE-WRH01-01"
+            ]
+          },
+          {
+            "sensor_id": "RND01_RDLAB_HUM",
+            "label": "DRIFT",
+            "start": "2026-01-09T11:30:00",
+            "end": "2026-01-09T13:00:00",
+            "samples": 181,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-09T12:44:30",
+            "latency_minutes_signed": 74.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "RULE-RND01-02"
+            ]
+          },
+          {
+            "sensor_id": "ST04_PACKAGING_VIB",
+            "label": "SPIKE",
+            "start": "2026-01-09T13:00:00",
+            "end": "2026-01-09T13:01:00",
+            "samples": 3,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-09T13:00:00",
+            "latency_minutes_signed": 0.0,
+            "preexisting_alarm": false,
+            "rules": [
+              "RULE-ST04-01",
+              "RULE-ST04-02"
+            ]
+          }
+        ],
+        "unmatched_rule_alarms": []
+      },
+      "kg_threshold_critical": {
+        "rule_alarm_count": 9,
+        "gold_events": 14,
+        "events_covered": 4,
+        "events_with_new_alarm": 4,
+        "coverage_recall": 0.2857142857142857,
+        "rule_alarms_without_gold_overlap": 0,
+        "rule_alarm_overlap_precision": 1.0,
+        "median_latency_minutes_non_preexisting": 0.0,
+        "preexisting_alarm_events": 0,
+        "merged_episode_count": 9,
+        "one_to_one_TP": 4,
+        "one_to_one_FP": 5,
+        "one_to_one_FN": 10,
+        "one_to_one_precision": 0.4444444444444444,
+        "one_to_one_recall": 0.2857142857142857,
+        "one_to_one_F1": 0.34782608695652173,
+        "by_type": {
+          "CORRELATED": {
+            "caught": 0,
+            "total": 1
+          },
+          "DRIFT": {
+            "caught": 0,
+            "total": 5
+          },
+          "OUT_OF_RANGE": {
+            "caught": 1,
+            "total": 4
+          },
+          "SPIKE": {
+            "caught": 3,
+            "total": 3
+          },
+          "STUCK": {
+            "caught": 0,
+            "total": 1
+          }
+        },
+        "events": [
+          {
+            "sensor_id": "ST02_SEALING_TMP",
+            "label": "SPIKE",
+            "start": "2026-01-06T08:30:00",
+            "end": "2026-01-06T08:33:00",
+            "samples": 7,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-06T08:30:00",
+            "latency_minutes_signed": 0.0,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-04:critical"
+            ]
+          },
+          {
+            "sensor_id": "ST01_FILLING_PRS",
+            "label": "DRIFT",
+            "start": "2026-01-06T11:00:00",
+            "end": "2026-01-06T11:45:00",
+            "samples": 91,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "ST04_PACKAGING_VIB",
+            "label": "DRIFT",
+            "start": "2026-01-07T07:00:00",
+            "end": "2026-01-07T08:30:00",
+            "samples": 181,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "ST03_LABELLING_TEN",
+            "label": "STUCK",
+            "start": "2026-01-07T09:30:00",
+            "end": "2026-01-07T09:42:00",
+            "samples": 25,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "SRV01_SERVERROOM_TMP",
+            "label": "OUT_OF_RANGE",
+            "start": "2026-01-07T12:00:00",
+            "end": "2026-01-07T12:20:00",
+            "samples": 41,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "CAF01_CAFETERIA_TMP",
+            "label": "OUT_OF_RANGE",
+            "start": "2026-01-07T16:00:00",
+            "end": "2026-01-07T16:30:00",
+            "samples": 61,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "ST01_FILLING_FLW",
+            "label": "SPIKE",
+            "start": "2026-01-08T06:30:00",
+            "end": "2026-01-08T06:32:00",
+            "samples": 5,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-08T06:30:00",
+            "latency_minutes_signed": 0.0,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-03:critical"
+            ]
+          },
+          {
+            "sensor_id": "ST02_SEALING_CUR",
+            "label": "DRIFT",
+            "start": "2026-01-08T08:00:00",
+            "end": "2026-01-08T10:00:00",
+            "samples": 241,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "ST04_PACKAGING_SPD",
+            "label": "CORRELATED",
+            "start": "2026-01-08T09:30:00",
+            "end": "2026-01-08T10:30:00",
+            "samples": 121,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "ST03_LABELLING_CNT",
+            "label": "OUT_OF_RANGE",
+            "start": "2026-01-09T07:30:00",
+            "end": "2026-01-09T07:55:00",
+            "samples": 51,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-09T07:40:30",
+            "latency_minutes_signed": 10.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-09:critical"
+            ]
+          },
+          {
+            "sensor_id": "CHM01_CHEMICALSTORAGE_TMP",
+            "label": "OUT_OF_RANGE",
+            "start": "2026-01-09T08:00:00",
+            "end": "2026-01-09T08:45:00",
+            "samples": 91,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "WRH01_WAREHOUSE_TMP",
+            "label": "DRIFT",
+            "start": "2026-01-09T10:00:00",
+            "end": "2026-01-09T13:00:00",
+            "samples": 361,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "RND01_RDLAB_HUM",
+            "label": "DRIFT",
+            "start": "2026-01-09T11:30:00",
+            "end": "2026-01-09T13:00:00",
+            "samples": 181,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "ST04_PACKAGING_VIB",
+            "label": "SPIKE",
+            "start": "2026-01-09T13:00:00",
+            "end": "2026-01-09T13:01:00",
+            "samples": 3,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-09T13:00:00",
+            "latency_minutes_signed": 0.0,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-10:critical"
+            ]
+          }
+        ],
+        "unmatched_rule_alarms": []
+      },
+      "kg_threshold_warning": {
+        "rule_alarm_count": 50,
+        "gold_events": 14,
+        "events_covered": 12,
+        "events_with_new_alarm": 12,
+        "coverage_recall": 0.8571428571428571,
+        "rule_alarms_without_gold_overlap": 1,
+        "rule_alarm_overlap_precision": 0.98,
+        "median_latency_minutes_non_preexisting": 0.25,
+        "preexisting_alarm_events": 0,
+        "merged_episode_count": 50,
+        "one_to_one_TP": 12,
+        "one_to_one_FP": 38,
+        "one_to_one_FN": 2,
+        "one_to_one_precision": 0.24,
+        "one_to_one_recall": 0.8571428571428571,
+        "one_to_one_F1": 0.375,
+        "by_type": {
+          "CORRELATED": {
+            "caught": 0,
+            "total": 1
+          },
+          "DRIFT": {
+            "caught": 5,
+            "total": 5
+          },
+          "OUT_OF_RANGE": {
+            "caught": 4,
+            "total": 4
+          },
+          "SPIKE": {
+            "caught": 3,
+            "total": 3
+          },
+          "STUCK": {
+            "caught": 0,
+            "total": 1
+          }
+        },
+        "events": [
+          {
+            "sensor_id": "ST02_SEALING_TMP",
+            "label": "SPIKE",
+            "start": "2026-01-06T08:30:00",
+            "end": "2026-01-06T08:33:00",
+            "samples": 7,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-06T08:30:00",
+            "latency_minutes_signed": 0.0,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-04:warning"
+            ]
+          },
+          {
+            "sensor_id": "ST01_FILLING_PRS",
+            "label": "DRIFT",
+            "start": "2026-01-06T11:00:00",
+            "end": "2026-01-06T11:45:00",
+            "samples": 91,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-06T11:29:00",
+            "latency_minutes_signed": 29.0,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-02:warning"
+            ]
+          },
+          {
+            "sensor_id": "ST04_PACKAGING_VIB",
+            "label": "DRIFT",
+            "start": "2026-01-07T07:00:00",
+            "end": "2026-01-07T08:30:00",
+            "samples": 181,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-07T07:40:00",
+            "latency_minutes_signed": 40.0,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-10:warning"
+            ]
+          },
+          {
+            "sensor_id": "ST03_LABELLING_TEN",
+            "label": "STUCK",
+            "start": "2026-01-07T09:30:00",
+            "end": "2026-01-07T09:42:00",
+            "samples": 25,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "SRV01_SERVERROOM_TMP",
+            "label": "OUT_OF_RANGE",
+            "start": "2026-01-07T12:00:00",
+            "end": "2026-01-07T12:20:00",
+            "samples": 41,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-07T12:00:00",
+            "latency_minutes_signed": 0.0,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-13:warning"
+            ]
+          },
+          {
+            "sensor_id": "CAF01_CAFETERIA_TMP",
+            "label": "OUT_OF_RANGE",
+            "start": "2026-01-07T16:00:00",
+            "end": "2026-01-07T16:30:00",
+            "samples": 61,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-07T16:00:30",
+            "latency_minutes_signed": 0.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-21:warning"
+            ]
+          },
+          {
+            "sensor_id": "ST01_FILLING_FLW",
+            "label": "SPIKE",
+            "start": "2026-01-08T06:30:00",
+            "end": "2026-01-08T06:32:00",
+            "samples": 5,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-08T06:30:00",
+            "latency_minutes_signed": 0.0,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-03:warning"
+            ]
+          },
+          {
+            "sensor_id": "ST02_SEALING_CUR",
+            "label": "DRIFT",
+            "start": "2026-01-08T08:00:00",
+            "end": "2026-01-08T10:00:00",
+            "samples": 241,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-08T08:22:00",
+            "latency_minutes_signed": 22.0,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-06:warning"
+            ]
+          },
+          {
+            "sensor_id": "ST04_PACKAGING_SPD",
+            "label": "CORRELATED",
+            "start": "2026-01-08T09:30:00",
+            "end": "2026-01-08T10:30:00",
+            "samples": 121,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "ST03_LABELLING_CNT",
+            "label": "OUT_OF_RANGE",
+            "start": "2026-01-09T07:30:00",
+            "end": "2026-01-09T07:55:00",
+            "samples": 51,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-09T07:30:00",
+            "latency_minutes_signed": 0.0,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-09:warning"
+            ]
+          },
+          {
+            "sensor_id": "CHM01_CHEMICALSTORAGE_TMP",
+            "label": "OUT_OF_RANGE",
+            "start": "2026-01-09T08:00:00",
+            "end": "2026-01-09T08:45:00",
+            "samples": 91,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-09T08:00:00",
+            "latency_minutes_signed": 0.0,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-17:warning"
+            ]
+          },
+          {
+            "sensor_id": "WRH01_WAREHOUSE_TMP",
+            "label": "DRIFT",
+            "start": "2026-01-09T10:00:00",
+            "end": "2026-01-09T13:00:00",
+            "samples": 361,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-09T11:48:00",
+            "latency_minutes_signed": 108.0,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-15:warning"
+            ]
+          },
+          {
+            "sensor_id": "RND01_RDLAB_HUM",
+            "label": "DRIFT",
+            "start": "2026-01-09T11:30:00",
+            "end": "2026-01-09T13:00:00",
+            "samples": 181,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-09T12:44:30",
+            "latency_minutes_signed": 74.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-20:warning"
+            ]
+          },
+          {
+            "sensor_id": "ST04_PACKAGING_VIB",
+            "label": "SPIKE",
+            "start": "2026-01-09T13:00:00",
+            "end": "2026-01-09T13:01:00",
+            "samples": 3,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-09T13:00:00",
+            "latency_minutes_signed": 0.0,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-10:warning"
+            ]
+          }
+        ],
+        "unmatched_rule_alarms": [
+          {
+            "sensor_id": "ST02_SEALING_CUR",
+            "rule_id": "SOP-002-EX-06:warning",
+            "kind": "kg_threshold_warning",
+            "trigger_at": "2026-01-07T13:27:00",
+            "condition_start": "2026-01-07T13:27:00",
+            "trigger_value": "13.5668",
+            "unit": "A",
+            "positive_samples": 1,
+            "report_split": "validation",
+            "last_positive_at": "2026-01-07T13:27:00"
+          }
+        ]
+      }
+    }
+  },
+  "two_point_only": {
+    "ALL": {
+      "rule_alarm_count": 55,
+      "gold_events": 14,
+      "events_covered": 13,
+      "events_with_new_alarm": 13,
+      "coverage_recall": 0.9285714285714286,
+      "rule_alarms_without_gold_overlap": 0,
+      "rule_alarm_overlap_precision": 1.0,
+      "median_latency_minutes_non_preexisting": 2.0,
+      "preexisting_alarm_events": 0,
+      "merged_episode_count": 26,
+      "one_to_one_TP": 13,
+      "one_to_one_FP": 13,
+      "one_to_one_FN": 1,
+      "one_to_one_precision": 0.5,
+      "one_to_one_recall": 0.9285714285714286,
+      "one_to_one_F1": 0.65,
+      "by_type": {
+        "CORRELATED": {
+          "caught": 0,
+          "total": 1
+        },
+        "DRIFT": {
+          "caught": 5,
+          "total": 5
+        },
+        "OUT_OF_RANGE": {
+          "caught": 4,
+          "total": 4
+        },
+        "SPIKE": {
+          "caught": 3,
+          "total": 3
+        },
+        "STUCK": {
+          "caught": 1,
+          "total": 1
+        }
+      },
+      "events": [
+        {
+          "sensor_id": "ST02_SEALING_TMP",
+          "label": "SPIKE",
+          "start": "2026-01-06T08:30:00",
+          "end": "2026-01-06T08:33:00",
+          "samples": 7,
+          "covered": true,
+          "new_alarm_in_gold_window": true,
+          "first_alarm": "2026-01-06T08:30:30",
+          "latency_minutes_signed": 0.5,
+          "preexisting_alarm": false,
+          "rules": [
+            "RULE-ST02-01",
+            "RULE-ST02-02",
+            "SOP-002-EX-04:critical",
+            "SOP-002-EX-04:warning"
+          ]
+        },
+        {
+          "sensor_id": "ST01_FILLING_PRS",
+          "label": "DRIFT",
+          "start": "2026-01-06T11:00:00",
+          "end": "2026-01-06T11:45:00",
+          "samples": 91,
+          "covered": true,
+          "new_alarm_in_gold_window": true,
+          "first_alarm": "2026-01-06T11:29:30",
+          "latency_minutes_signed": 29.5,
+          "preexisting_alarm": false,
+          "rules": [
+            "SOP-002-EX-02:warning"
+          ]
+        },
+        {
+          "sensor_id": "ST04_PACKAGING_VIB",
+          "label": "DRIFT",
+          "start": "2026-01-07T07:00:00",
+          "end": "2026-01-07T08:30:00",
+          "samples": 181,
+          "covered": true,
+          "new_alarm_in_gold_window": true,
+          "first_alarm": "2026-01-07T07:40:30",
+          "latency_minutes_signed": 40.5,
+          "preexisting_alarm": false,
+          "rules": [
+            "RULE-ST04-01",
+            "SOP-002-EX-10:warning"
+          ]
+        },
+        {
+          "sensor_id": "ST03_LABELLING_TEN",
+          "label": "STUCK",
+          "start": "2026-01-07T09:30:00",
+          "end": "2026-01-07T09:42:00",
+          "samples": 25,
+          "covered": true,
+          "new_alarm_in_gold_window": true,
+          "first_alarm": "2026-01-07T09:35:30",
+          "latency_minutes_signed": 5.5,
+          "preexisting_alarm": false,
+          "rules": [
+            "MAINT-03",
+            "RULE-ST03-03"
+          ]
+        },
+        {
+          "sensor_id": "SRV01_SERVERROOM_TMP",
+          "label": "OUT_OF_RANGE",
+          "start": "2026-01-07T12:00:00",
+          "end": "2026-01-07T12:20:00",
+          "samples": 41,
+          "covered": true,
+          "new_alarm_in_gold_window": true,
+          "first_alarm": "2026-01-07T12:00:30",
+          "latency_minutes_signed": 0.5,
+          "preexisting_alarm": false,
+          "rules": [
+            "MAINT-05",
+            "RULE-SRV01-01",
+            "SOP-002-EX-13:warning"
+          ]
+        },
+        {
+          "sensor_id": "CAF01_CAFETERIA_TMP",
+          "label": "OUT_OF_RANGE",
+          "start": "2026-01-07T16:00:00",
+          "end": "2026-01-07T16:30:00",
+          "samples": 61,
+          "covered": true,
+          "new_alarm_in_gold_window": true,
+          "first_alarm": "2026-01-07T16:02:00",
+          "latency_minutes_signed": 2.0,
+          "preexisting_alarm": false,
+          "rules": [
+            "RULE-CAF01-01",
+            "SOP-002-EX-21:warning"
+          ]
+        },
+        {
+          "sensor_id": "ST01_FILLING_FLW",
+          "label": "SPIKE",
+          "start": "2026-01-08T06:30:00",
+          "end": "2026-01-08T06:32:00",
+          "samples": 5,
+          "covered": true,
+          "new_alarm_in_gold_window": true,
+          "first_alarm": "2026-01-08T06:30:30",
+          "latency_minutes_signed": 0.5,
+          "preexisting_alarm": false,
+          "rules": [
+            "RULE-ST01-01",
+            "SOP-002-EX-03:critical",
+            "SOP-002-EX-03:warning"
+          ]
+        },
+        {
+          "sensor_id": "ST02_SEALING_CUR",
+          "label": "DRIFT",
+          "start": "2026-01-08T08:00:00",
+          "end": "2026-01-08T10:00:00",
+          "samples": 241,
+          "covered": true,
+          "new_alarm_in_gold_window": true,
+          "first_alarm": "2026-01-08T08:40:00",
+          "latency_minutes_signed": 40.0,
+          "preexisting_alarm": false,
+          "rules": [
+            "RULE-ST02-03",
+            "SOP-002-EX-06:warning"
+          ]
+        },
+        {
+          "sensor_id": "ST04_PACKAGING_SPD",
+          "label": "CORRELATED",
+          "start": "2026-01-08T09:30:00",
+          "end": "2026-01-08T10:30:00",
+          "samples": 121,
+          "covered": false,
+          "new_alarm_in_gold_window": false,
+          "first_alarm": null,
+          "latency_minutes_signed": null,
+          "preexisting_alarm": false,
+          "rules": []
+        },
+        {
+          "sensor_id": "ST03_LABELLING_CNT",
+          "label": "OUT_OF_RANGE",
+          "start": "2026-01-09T07:30:00",
+          "end": "2026-01-09T07:55:00",
+          "samples": 51,
+          "covered": true,
+          "new_alarm_in_gold_window": true,
+          "first_alarm": "2026-01-09T07:30:30",
+          "latency_minutes_signed": 0.5,
+          "preexisting_alarm": false,
+          "rules": [
+            "RULE-ST03-02",
+            "RULE-ST03-02-CRITICAL",
+            "SOP-002-EX-09:critical",
+            "SOP-002-EX-09:warning"
+          ]
+        },
+        {
+          "sensor_id": "CHM01_CHEMICALSTORAGE_TMP",
+          "label": "OUT_OF_RANGE",
+          "start": "2026-01-09T08:00:00",
+          "end": "2026-01-09T08:45:00",
+          "samples": 91,
+          "covered": true,
+          "new_alarm_in_gold_window": true,
+          "first_alarm": "2026-01-09T08:00:30",
+          "latency_minutes_signed": 0.5,
+          "preexisting_alarm": false,
+          "rules": [
+            "MAINT-07",
+            "RULE-CHM01-01",
+            "SOP-002-EX-17:warning"
+          ]
+        },
+        {
+          "sensor_id": "WRH01_WAREHOUSE_TMP",
+          "label": "DRIFT",
+          "start": "2026-01-09T10:00:00",
+          "end": "2026-01-09T13:00:00",
+          "samples": 361,
+          "covered": true,
+          "new_alarm_in_gold_window": true,
+          "first_alarm": "2026-01-09T11:48:30",
+          "latency_minutes_signed": 108.5,
+          "preexisting_alarm": false,
+          "rules": [
+            "RULE-WRH01-01",
+            "SOP-002-EX-15:warning"
+          ]
+        },
+        {
+          "sensor_id": "RND01_RDLAB_HUM",
+          "label": "DRIFT",
+          "start": "2026-01-09T11:30:00",
+          "end": "2026-01-09T13:00:00",
+          "samples": 181,
+          "covered": true,
+          "new_alarm_in_gold_window": true,
+          "first_alarm": "2026-01-09T12:45:00",
+          "latency_minutes_signed": 75.0,
+          "preexisting_alarm": false,
+          "rules": [
+            "RULE-RND01-02",
+            "SOP-002-EX-20:warning"
+          ]
+        },
+        {
+          "sensor_id": "ST04_PACKAGING_VIB",
+          "label": "SPIKE",
+          "start": "2026-01-09T13:00:00",
+          "end": "2026-01-09T13:01:00",
+          "samples": 3,
+          "covered": true,
+          "new_alarm_in_gold_window": true,
+          "first_alarm": "2026-01-09T13:00:30",
+          "latency_minutes_signed": 0.5,
+          "preexisting_alarm": false,
+          "rules": [
+            "RULE-ST04-01",
+            "RULE-ST04-02",
+            "SOP-002-EX-10:critical",
+            "SOP-002-EX-10:warning"
+          ]
+        }
+      ],
+      "unmatched_rule_alarms": []
+    },
+    "by_family": {
+      "kg_document_rule": {
+        "rule_alarm_count": 26,
+        "gold_events": 14,
+        "events_covered": 12,
+        "events_with_new_alarm": 12,
+        "coverage_recall": 0.8571428571428571,
+        "rule_alarms_without_gold_overlap": 0,
+        "rule_alarm_overlap_precision": 1.0,
+        "median_latency_minutes_non_preexisting": 1.25,
+        "preexisting_alarm_events": 0,
+        "merged_episode_count": 20,
+        "one_to_one_TP": 12,
+        "one_to_one_FP": 8,
+        "one_to_one_FN": 2,
+        "one_to_one_precision": 0.6,
+        "one_to_one_recall": 0.8571428571428571,
+        "one_to_one_F1": 0.7058823529411765,
+        "by_type": {
+          "CORRELATED": {
+            "caught": 0,
+            "total": 1
+          },
+          "DRIFT": {
+            "caught": 4,
+            "total": 5
+          },
+          "OUT_OF_RANGE": {
+            "caught": 4,
+            "total": 4
+          },
+          "SPIKE": {
+            "caught": 3,
+            "total": 3
+          },
+          "STUCK": {
+            "caught": 1,
+            "total": 1
+          }
+        },
+        "events": [
+          {
+            "sensor_id": "ST02_SEALING_TMP",
+            "label": "SPIKE",
+            "start": "2026-01-06T08:30:00",
+            "end": "2026-01-06T08:33:00",
+            "samples": 7,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-06T08:30:30",
+            "latency_minutes_signed": 0.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "RULE-ST02-01",
+              "RULE-ST02-02"
+            ]
+          },
+          {
+            "sensor_id": "ST01_FILLING_PRS",
+            "label": "DRIFT",
+            "start": "2026-01-06T11:00:00",
+            "end": "2026-01-06T11:45:00",
+            "samples": 91,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "ST04_PACKAGING_VIB",
+            "label": "DRIFT",
+            "start": "2026-01-07T07:00:00",
+            "end": "2026-01-07T08:30:00",
+            "samples": 181,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-07T07:40:30",
+            "latency_minutes_signed": 40.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "RULE-ST04-01"
+            ]
+          },
+          {
+            "sensor_id": "ST03_LABELLING_TEN",
+            "label": "STUCK",
+            "start": "2026-01-07T09:30:00",
+            "end": "2026-01-07T09:42:00",
+            "samples": 25,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-07T09:35:30",
+            "latency_minutes_signed": 5.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "MAINT-03",
+              "RULE-ST03-03"
+            ]
+          },
+          {
+            "sensor_id": "SRV01_SERVERROOM_TMP",
+            "label": "OUT_OF_RANGE",
+            "start": "2026-01-07T12:00:00",
+            "end": "2026-01-07T12:20:00",
+            "samples": 41,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-07T12:00:30",
+            "latency_minutes_signed": 0.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "MAINT-05",
+              "RULE-SRV01-01"
+            ]
+          },
+          {
+            "sensor_id": "CAF01_CAFETERIA_TMP",
+            "label": "OUT_OF_RANGE",
+            "start": "2026-01-07T16:00:00",
+            "end": "2026-01-07T16:30:00",
+            "samples": 61,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-07T16:02:00",
+            "latency_minutes_signed": 2.0,
+            "preexisting_alarm": false,
+            "rules": [
+              "RULE-CAF01-01"
+            ]
+          },
+          {
+            "sensor_id": "ST01_FILLING_FLW",
+            "label": "SPIKE",
+            "start": "2026-01-08T06:30:00",
+            "end": "2026-01-08T06:32:00",
+            "samples": 5,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-08T06:30:30",
+            "latency_minutes_signed": 0.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "RULE-ST01-01"
+            ]
+          },
+          {
+            "sensor_id": "ST02_SEALING_CUR",
+            "label": "DRIFT",
+            "start": "2026-01-08T08:00:00",
+            "end": "2026-01-08T10:00:00",
+            "samples": 241,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-08T09:36:00",
+            "latency_minutes_signed": 96.0,
+            "preexisting_alarm": false,
+            "rules": [
+              "RULE-ST02-03"
+            ]
+          },
+          {
+            "sensor_id": "ST04_PACKAGING_SPD",
+            "label": "CORRELATED",
+            "start": "2026-01-08T09:30:00",
+            "end": "2026-01-08T10:30:00",
+            "samples": 121,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "ST03_LABELLING_CNT",
+            "label": "OUT_OF_RANGE",
+            "start": "2026-01-09T07:30:00",
+            "end": "2026-01-09T07:55:00",
+            "samples": 51,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-09T07:30:30",
+            "latency_minutes_signed": 0.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "RULE-ST03-02",
+              "RULE-ST03-02-CRITICAL"
+            ]
+          },
+          {
+            "sensor_id": "CHM01_CHEMICALSTORAGE_TMP",
+            "label": "OUT_OF_RANGE",
+            "start": "2026-01-09T08:00:00",
+            "end": "2026-01-09T08:45:00",
+            "samples": 91,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-09T08:00:30",
+            "latency_minutes_signed": 0.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "MAINT-07",
+              "RULE-CHM01-01"
+            ]
+          },
+          {
+            "sensor_id": "WRH01_WAREHOUSE_TMP",
+            "label": "DRIFT",
+            "start": "2026-01-09T10:00:00",
+            "end": "2026-01-09T13:00:00",
+            "samples": 361,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-09T11:48:30",
+            "latency_minutes_signed": 108.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "RULE-WRH01-01"
+            ]
+          },
+          {
+            "sensor_id": "RND01_RDLAB_HUM",
+            "label": "DRIFT",
+            "start": "2026-01-09T11:30:00",
+            "end": "2026-01-09T13:00:00",
+            "samples": 181,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-09T12:45:00",
+            "latency_minutes_signed": 75.0,
+            "preexisting_alarm": false,
+            "rules": [
+              "RULE-RND01-02"
+            ]
+          },
+          {
+            "sensor_id": "ST04_PACKAGING_VIB",
+            "label": "SPIKE",
+            "start": "2026-01-09T13:00:00",
+            "end": "2026-01-09T13:01:00",
+            "samples": 3,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-09T13:00:30",
+            "latency_minutes_signed": 0.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "RULE-ST04-01",
+              "RULE-ST04-02"
+            ]
+          }
+        ],
+        "unmatched_rule_alarms": []
+      },
+      "kg_threshold_critical": {
+        "rule_alarm_count": 4,
+        "gold_events": 14,
+        "events_covered": 4,
+        "events_with_new_alarm": 4,
+        "coverage_recall": 0.2857142857142857,
+        "rule_alarms_without_gold_overlap": 0,
+        "rule_alarm_overlap_precision": 1.0,
+        "median_latency_minutes_non_preexisting": 0.5,
+        "preexisting_alarm_events": 0,
+        "merged_episode_count": 4,
+        "one_to_one_TP": 4,
+        "one_to_one_FP": 0,
+        "one_to_one_FN": 10,
+        "one_to_one_precision": 1.0,
+        "one_to_one_recall": 0.2857142857142857,
+        "one_to_one_F1": 0.4444444444444444,
+        "by_type": {
+          "CORRELATED": {
+            "caught": 0,
+            "total": 1
+          },
+          "DRIFT": {
+            "caught": 0,
+            "total": 5
+          },
+          "OUT_OF_RANGE": {
+            "caught": 1,
+            "total": 4
+          },
+          "SPIKE": {
+            "caught": 3,
+            "total": 3
+          },
+          "STUCK": {
+            "caught": 0,
+            "total": 1
+          }
+        },
+        "events": [
+          {
+            "sensor_id": "ST02_SEALING_TMP",
+            "label": "SPIKE",
+            "start": "2026-01-06T08:30:00",
+            "end": "2026-01-06T08:33:00",
+            "samples": 7,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-06T08:30:30",
+            "latency_minutes_signed": 0.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-04:critical"
+            ]
+          },
+          {
+            "sensor_id": "ST01_FILLING_PRS",
+            "label": "DRIFT",
+            "start": "2026-01-06T11:00:00",
+            "end": "2026-01-06T11:45:00",
+            "samples": 91,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "ST04_PACKAGING_VIB",
+            "label": "DRIFT",
+            "start": "2026-01-07T07:00:00",
+            "end": "2026-01-07T08:30:00",
+            "samples": 181,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "ST03_LABELLING_TEN",
+            "label": "STUCK",
+            "start": "2026-01-07T09:30:00",
+            "end": "2026-01-07T09:42:00",
+            "samples": 25,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "SRV01_SERVERROOM_TMP",
+            "label": "OUT_OF_RANGE",
+            "start": "2026-01-07T12:00:00",
+            "end": "2026-01-07T12:20:00",
+            "samples": 41,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "CAF01_CAFETERIA_TMP",
+            "label": "OUT_OF_RANGE",
+            "start": "2026-01-07T16:00:00",
+            "end": "2026-01-07T16:30:00",
+            "samples": 61,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "ST01_FILLING_FLW",
+            "label": "SPIKE",
+            "start": "2026-01-08T06:30:00",
+            "end": "2026-01-08T06:32:00",
+            "samples": 5,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-08T06:30:30",
+            "latency_minutes_signed": 0.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-03:critical"
+            ]
+          },
+          {
+            "sensor_id": "ST02_SEALING_CUR",
+            "label": "DRIFT",
+            "start": "2026-01-08T08:00:00",
+            "end": "2026-01-08T10:00:00",
+            "samples": 241,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "ST04_PACKAGING_SPD",
+            "label": "CORRELATED",
+            "start": "2026-01-08T09:30:00",
+            "end": "2026-01-08T10:30:00",
+            "samples": 121,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "ST03_LABELLING_CNT",
+            "label": "OUT_OF_RANGE",
+            "start": "2026-01-09T07:30:00",
+            "end": "2026-01-09T07:55:00",
+            "samples": 51,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-09T07:52:00",
+            "latency_minutes_signed": 22.0,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-09:critical"
+            ]
+          },
+          {
+            "sensor_id": "CHM01_CHEMICALSTORAGE_TMP",
+            "label": "OUT_OF_RANGE",
+            "start": "2026-01-09T08:00:00",
+            "end": "2026-01-09T08:45:00",
+            "samples": 91,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "WRH01_WAREHOUSE_TMP",
+            "label": "DRIFT",
+            "start": "2026-01-09T10:00:00",
+            "end": "2026-01-09T13:00:00",
+            "samples": 361,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "RND01_RDLAB_HUM",
+            "label": "DRIFT",
+            "start": "2026-01-09T11:30:00",
+            "end": "2026-01-09T13:00:00",
+            "samples": 181,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "ST04_PACKAGING_VIB",
+            "label": "SPIKE",
+            "start": "2026-01-09T13:00:00",
+            "end": "2026-01-09T13:01:00",
+            "samples": 3,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-09T13:00:30",
+            "latency_minutes_signed": 0.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-10:critical"
+            ]
+          }
+        ],
+        "unmatched_rule_alarms": []
+      },
+      "kg_threshold_warning": {
+        "rule_alarm_count": 25,
+        "gold_events": 14,
+        "events_covered": 12,
+        "events_with_new_alarm": 12,
+        "coverage_recall": 0.8571428571428571,
+        "rule_alarms_without_gold_overlap": 0,
+        "rule_alarm_overlap_precision": 1.0,
+        "median_latency_minutes_non_preexisting": 1.25,
+        "preexisting_alarm_events": 0,
+        "merged_episode_count": 25,
+        "one_to_one_TP": 12,
+        "one_to_one_FP": 13,
+        "one_to_one_FN": 2,
+        "one_to_one_precision": 0.48,
+        "one_to_one_recall": 0.8571428571428571,
+        "one_to_one_F1": 0.6153846153846154,
+        "by_type": {
+          "CORRELATED": {
+            "caught": 0,
+            "total": 1
+          },
+          "DRIFT": {
+            "caught": 5,
+            "total": 5
+          },
+          "OUT_OF_RANGE": {
+            "caught": 4,
+            "total": 4
+          },
+          "SPIKE": {
+            "caught": 3,
+            "total": 3
+          },
+          "STUCK": {
+            "caught": 0,
+            "total": 1
+          }
+        },
+        "events": [
+          {
+            "sensor_id": "ST02_SEALING_TMP",
+            "label": "SPIKE",
+            "start": "2026-01-06T08:30:00",
+            "end": "2026-01-06T08:33:00",
+            "samples": 7,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-06T08:30:30",
+            "latency_minutes_signed": 0.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-04:warning"
+            ]
+          },
+          {
+            "sensor_id": "ST01_FILLING_PRS",
+            "label": "DRIFT",
+            "start": "2026-01-06T11:00:00",
+            "end": "2026-01-06T11:45:00",
+            "samples": 91,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-06T11:29:30",
+            "latency_minutes_signed": 29.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-02:warning"
+            ]
+          },
+          {
+            "sensor_id": "ST04_PACKAGING_VIB",
+            "label": "DRIFT",
+            "start": "2026-01-07T07:00:00",
+            "end": "2026-01-07T08:30:00",
+            "samples": 181,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-07T07:40:30",
+            "latency_minutes_signed": 40.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-10:warning"
+            ]
+          },
+          {
+            "sensor_id": "ST03_LABELLING_TEN",
+            "label": "STUCK",
+            "start": "2026-01-07T09:30:00",
+            "end": "2026-01-07T09:42:00",
+            "samples": 25,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "SRV01_SERVERROOM_TMP",
+            "label": "OUT_OF_RANGE",
+            "start": "2026-01-07T12:00:00",
+            "end": "2026-01-07T12:20:00",
+            "samples": 41,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-07T12:00:30",
+            "latency_minutes_signed": 0.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-13:warning"
+            ]
+          },
+          {
+            "sensor_id": "CAF01_CAFETERIA_TMP",
+            "label": "OUT_OF_RANGE",
+            "start": "2026-01-07T16:00:00",
+            "end": "2026-01-07T16:30:00",
+            "samples": 61,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-07T16:02:00",
+            "latency_minutes_signed": 2.0,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-21:warning"
+            ]
+          },
+          {
+            "sensor_id": "ST01_FILLING_FLW",
+            "label": "SPIKE",
+            "start": "2026-01-08T06:30:00",
+            "end": "2026-01-08T06:32:00",
+            "samples": 5,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-08T06:30:30",
+            "latency_minutes_signed": 0.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-03:warning"
+            ]
+          },
+          {
+            "sensor_id": "ST02_SEALING_CUR",
+            "label": "DRIFT",
+            "start": "2026-01-08T08:00:00",
+            "end": "2026-01-08T10:00:00",
+            "samples": 241,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-08T08:40:00",
+            "latency_minutes_signed": 40.0,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-06:warning"
+            ]
+          },
+          {
+            "sensor_id": "ST04_PACKAGING_SPD",
+            "label": "CORRELATED",
+            "start": "2026-01-08T09:30:00",
+            "end": "2026-01-08T10:30:00",
+            "samples": 121,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "ST03_LABELLING_CNT",
+            "label": "OUT_OF_RANGE",
+            "start": "2026-01-09T07:30:00",
+            "end": "2026-01-09T07:55:00",
+            "samples": 51,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-09T07:30:30",
+            "latency_minutes_signed": 0.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-09:warning"
+            ]
+          },
+          {
+            "sensor_id": "CHM01_CHEMICALSTORAGE_TMP",
+            "label": "OUT_OF_RANGE",
+            "start": "2026-01-09T08:00:00",
+            "end": "2026-01-09T08:45:00",
+            "samples": 91,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-09T08:00:30",
+            "latency_minutes_signed": 0.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-17:warning"
+            ]
+          },
+          {
+            "sensor_id": "WRH01_WAREHOUSE_TMP",
+            "label": "DRIFT",
+            "start": "2026-01-09T10:00:00",
+            "end": "2026-01-09T13:00:00",
+            "samples": 361,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-09T11:48:30",
+            "latency_minutes_signed": 108.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-15:warning"
+            ]
+          },
+          {
+            "sensor_id": "RND01_RDLAB_HUM",
+            "label": "DRIFT",
+            "start": "2026-01-09T11:30:00",
+            "end": "2026-01-09T13:00:00",
+            "samples": 181,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-09T12:45:00",
+            "latency_minutes_signed": 75.0,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-20:warning"
+            ]
+          },
+          {
+            "sensor_id": "ST04_PACKAGING_VIB",
+            "label": "SPIKE",
+            "start": "2026-01-09T13:00:00",
+            "end": "2026-01-09T13:01:00",
+            "samples": 3,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-09T13:00:30",
+            "latency_minutes_signed": 0.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-10:warning"
+            ]
+          }
+        ],
+        "unmatched_rule_alarms": []
+      }
+    }
+  },
+  "improved": {
+    "ALL": {
+      "rule_alarm_count": 89,
+      "gold_events": 14,
+      "events_covered": 13,
+      "events_with_new_alarm": 13,
+      "coverage_recall": 0.9285714285714286,
+      "rule_alarms_without_gold_overlap": 18,
+      "rule_alarm_overlap_precision": 0.797752808988764,
+      "median_latency_minutes_non_preexisting": 2.0,
+      "preexisting_alarm_events": 0,
+      "merged_episode_count": 45,
+      "one_to_one_TP": 13,
+      "one_to_one_FP": 32,
+      "one_to_one_FN": 1,
+      "one_to_one_precision": 0.28888888888888886,
+      "one_to_one_recall": 0.9285714285714286,
+      "one_to_one_F1": 0.4406779661016949,
+      "by_type": {
+        "CORRELATED": {
+          "caught": 0,
+          "total": 1
+        },
+        "DRIFT": {
+          "caught": 5,
+          "total": 5
+        },
+        "OUT_OF_RANGE": {
+          "caught": 4,
+          "total": 4
+        },
+        "SPIKE": {
+          "caught": 3,
+          "total": 3
+        },
+        "STUCK": {
+          "caught": 1,
+          "total": 1
+        }
+      },
+      "events": [
+        {
+          "sensor_id": "ST02_SEALING_TMP",
+          "label": "SPIKE",
+          "start": "2026-01-06T08:30:00",
+          "end": "2026-01-06T08:33:00",
+          "samples": 7,
+          "covered": true,
+          "new_alarm_in_gold_window": true,
+          "first_alarm": "2026-01-06T08:30:30",
+          "latency_minutes_signed": 0.5,
+          "preexisting_alarm": false,
+          "rules": [
+            "RULE-ST02-01",
+            "RULE-ST02-02",
+            "SOP-002-EX-04:critical",
+            "SOP-002-EX-04:warning"
+          ]
+        },
+        {
+          "sensor_id": "ST01_FILLING_PRS",
+          "label": "DRIFT",
+          "start": "2026-01-06T11:00:00",
+          "end": "2026-01-06T11:45:00",
+          "samples": 91,
+          "covered": true,
+          "new_alarm_in_gold_window": true,
+          "first_alarm": "2026-01-06T11:29:30",
+          "latency_minutes_signed": 29.5,
+          "preexisting_alarm": false,
+          "rules": [
+            "SOP-002-EX-02:warning"
+          ]
+        },
+        {
+          "sensor_id": "ST04_PACKAGING_VIB",
+          "label": "DRIFT",
+          "start": "2026-01-07T07:00:00",
+          "end": "2026-01-07T08:30:00",
+          "samples": 181,
+          "covered": true,
+          "new_alarm_in_gold_window": true,
+          "first_alarm": "2026-01-07T07:27:30",
+          "latency_minutes_signed": 27.5,
+          "preexisting_alarm": false,
+          "rules": [
+            "MAINT-01",
+            "RULE-ST04-01",
+            "SOP-002-EX-10:warning"
+          ]
+        },
+        {
+          "sensor_id": "ST03_LABELLING_TEN",
+          "label": "STUCK",
+          "start": "2026-01-07T09:30:00",
+          "end": "2026-01-07T09:42:00",
+          "samples": 25,
+          "covered": true,
+          "new_alarm_in_gold_window": true,
+          "first_alarm": "2026-01-07T09:35:30",
+          "latency_minutes_signed": 5.5,
+          "preexisting_alarm": false,
+          "rules": [
+            "MAINT-03",
+            "RULE-ST03-03"
+          ]
+        },
+        {
+          "sensor_id": "SRV01_SERVERROOM_TMP",
+          "label": "OUT_OF_RANGE",
+          "start": "2026-01-07T12:00:00",
+          "end": "2026-01-07T12:20:00",
+          "samples": 41,
+          "covered": true,
+          "new_alarm_in_gold_window": true,
+          "first_alarm": "2026-01-07T12:00:30",
+          "latency_minutes_signed": 0.5,
+          "preexisting_alarm": false,
+          "rules": [
+            "MAINT-05",
+            "RULE-SRV01-01",
+            "SOP-002-EX-13:warning"
+          ]
+        },
+        {
+          "sensor_id": "CAF01_CAFETERIA_TMP",
+          "label": "OUT_OF_RANGE",
+          "start": "2026-01-07T16:00:00",
+          "end": "2026-01-07T16:30:00",
+          "samples": 61,
+          "covered": true,
+          "new_alarm_in_gold_window": true,
+          "first_alarm": "2026-01-07T16:02:00",
+          "latency_minutes_signed": 2.0,
+          "preexisting_alarm": false,
+          "rules": [
+            "RULE-CAF01-01",
+            "SOP-002-EX-21:warning"
+          ]
+        },
+        {
+          "sensor_id": "ST01_FILLING_FLW",
+          "label": "SPIKE",
+          "start": "2026-01-08T06:30:00",
+          "end": "2026-01-08T06:32:00",
+          "samples": 5,
+          "covered": true,
+          "new_alarm_in_gold_window": true,
+          "first_alarm": "2026-01-08T06:30:30",
+          "latency_minutes_signed": 0.5,
+          "preexisting_alarm": false,
+          "rules": [
+            "RULE-ST01-01",
+            "SOP-002-EX-03:critical",
+            "SOP-002-EX-03:warning"
+          ]
+        },
+        {
+          "sensor_id": "ST02_SEALING_CUR",
+          "label": "DRIFT",
+          "start": "2026-01-08T08:00:00",
+          "end": "2026-01-08T10:00:00",
+          "samples": 241,
+          "covered": true,
+          "new_alarm_in_gold_window": true,
+          "first_alarm": "2026-01-08T08:22:30",
+          "latency_minutes_signed": 22.5,
+          "preexisting_alarm": false,
+          "rules": [
+            "MAINT-02",
+            "RULE-ST02-03",
+            "SOP-002-EX-06:warning"
+          ]
+        },
+        {
+          "sensor_id": "ST04_PACKAGING_SPD",
+          "label": "CORRELATED",
+          "start": "2026-01-08T09:30:00",
+          "end": "2026-01-08T10:30:00",
+          "samples": 121,
+          "covered": false,
+          "new_alarm_in_gold_window": false,
+          "first_alarm": null,
+          "latency_minutes_signed": null,
+          "preexisting_alarm": false,
+          "rules": []
+        },
+        {
+          "sensor_id": "ST03_LABELLING_CNT",
+          "label": "OUT_OF_RANGE",
+          "start": "2026-01-09T07:30:00",
+          "end": "2026-01-09T07:55:00",
+          "samples": 51,
+          "covered": true,
+          "new_alarm_in_gold_window": true,
+          "first_alarm": "2026-01-09T07:30:30",
+          "latency_minutes_signed": 0.5,
+          "preexisting_alarm": false,
+          "rules": [
+            "RULE-ST03-02",
+            "RULE-ST03-02-CRITICAL",
+            "SOP-002-EX-09:critical",
+            "SOP-002-EX-09:warning"
+          ]
+        },
+        {
+          "sensor_id": "CHM01_CHEMICALSTORAGE_TMP",
+          "label": "OUT_OF_RANGE",
+          "start": "2026-01-09T08:00:00",
+          "end": "2026-01-09T08:45:00",
+          "samples": 91,
+          "covered": true,
+          "new_alarm_in_gold_window": true,
+          "first_alarm": "2026-01-09T08:00:30",
+          "latency_minutes_signed": 0.5,
+          "preexisting_alarm": false,
+          "rules": [
+            "MAINT-07",
+            "RULE-CHM01-01",
+            "SOP-002-EX-17:warning"
+          ]
+        },
+        {
+          "sensor_id": "WRH01_WAREHOUSE_TMP",
+          "label": "DRIFT",
+          "start": "2026-01-09T10:00:00",
+          "end": "2026-01-09T13:00:00",
+          "samples": 361,
+          "covered": true,
+          "new_alarm_in_gold_window": true,
+          "first_alarm": "2026-01-09T11:02:30",
+          "latency_minutes_signed": 62.5,
+          "preexisting_alarm": false,
+          "rules": [
+            "MAINT-06",
+            "RULE-WRH01-01",
+            "SOP-002-EX-15:warning"
+          ]
+        },
+        {
+          "sensor_id": "RND01_RDLAB_HUM",
+          "label": "DRIFT",
+          "start": "2026-01-09T11:30:00",
+          "end": "2026-01-09T13:00:00",
+          "samples": 181,
+          "covered": true,
+          "new_alarm_in_gold_window": true,
+          "first_alarm": "2026-01-09T12:14:30",
+          "latency_minutes_signed": 44.5,
+          "preexisting_alarm": false,
+          "rules": [
+            "MAINT-08",
+            "RULE-RND01-02",
+            "SOP-002-EX-20:warning"
+          ]
+        },
+        {
+          "sensor_id": "ST04_PACKAGING_VIB",
+          "label": "SPIKE",
+          "start": "2026-01-09T13:00:00",
+          "end": "2026-01-09T13:01:00",
+          "samples": 3,
+          "covered": true,
+          "new_alarm_in_gold_window": true,
+          "first_alarm": "2026-01-09T13:00:30",
+          "latency_minutes_signed": 0.5,
+          "preexisting_alarm": false,
+          "rules": [
+            "MAINT-01",
+            "RULE-ST04-01",
+            "RULE-ST04-02",
+            "SOP-002-EX-10:critical",
+            "SOP-002-EX-10:warning"
+          ]
+        }
+      ],
+      "unmatched_rule_alarms": [
+        {
+          "sensor_id": "ST02_SEALING_CUR",
+          "station_id": "ST02_SEALING",
+          "rule_id": "MAINT-02",
+          "kind": "kg_document_drift",
+          "op": "delta_gt",
+          "condition_start": "2026-01-06T10:03:00",
+          "trigger_at": "2026-01-06T10:03:30",
+          "last_positive_at": "2026-01-06T10:04:00",
+          "trigger_value": "12.8335",
+          "last_value": "12.8973",
+          "unit": "A",
+          "feature_value": "1.2349",
+          "baseline_value": "11.5986",
+          "baseline_at": "2026-01-06T09:33:30",
+          "threshold": "1.0",
+          "second_threshold": null,
+          "window_seconds": 1800,
+          "duration_seconds": 0,
+          "positive_observations": 3,
+          "qualified_observations": 3,
+          "nonqualifying_observations": 2,
+          "source_evidence": [
+            {
+              "chunk_ids": [
+                "SOP-003:p1:table1:chunk"
+              ],
+              "quote": "Rule ID: MAINT-02; Sensor: CUR; Station: ST02_SEALING; Trigger: CUR DRIFT >1.0 A for 30+ min; Action: Inspect sealing jaw; Priority: HIGH",
+              "quote_sha256": "a5a70c4599feaefe2dfb77cb39ecaa248be426c56d5d7752af9a6d13fe4ded60"
+            }
+          ],
+          "source_kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-02",
+          "document_recommended_response": "Inspect sealing jaw",
+          "response_label": "문서가 권고하는 대응",
+          "action_executed": false,
+          "cause_status": "규칙 조건 일치; 실제 고장 원인 미확정",
+          "expert_review_required": false,
+          "operational_assumptions": [
+            "signed endpoint increase; exact fixed lookback; all intervening samples required",
+            "not equivalent to SOP-002 sigma-based monotonic slope definition",
+            "30+ min interpreted as fixed 30-minute change, subject to team review"
+          ],
+          "clear_started_at": "2026-01-06T10:04:30",
+          "status": "recovered",
+          "closed_at": "2026-01-06T10:05:00",
+          "normal_confirmed_at": "2026-01-06T10:05:00",
+          "elapsed_to_last_positive_seconds": 60.0,
+          "continuous_violation_claim": false,
+          "bridging_policy": "one observed nonqualifying point may be retained inside event; two clear; gaps never bridged",
+          "id": "det3-b443fb9ec7f2f4f668c6"
+        },
+        {
+          "sensor_id": "WRH01_WAREHOUSE_TMP",
+          "station_id": "WRH01_WAREHOUSE",
+          "rule_id": "MAINT-06",
+          "kind": "kg_document_drift",
+          "op": "delta_gt",
+          "condition_start": "2026-01-06T18:08:30",
+          "trigger_at": "2026-01-06T18:09:00",
+          "last_positive_at": "2026-01-06T18:09:00",
+          "trigger_value": "4.4264",
+          "last_value": "4.4264",
+          "unit": "°C",
+          "feature_value": "2.0347",
+          "baseline_value": "2.3917",
+          "baseline_at": "2026-01-06T16:09:00",
+          "threshold": "2",
+          "second_threshold": null,
+          "window_seconds": 7200,
+          "duration_seconds": 0,
+          "positive_observations": 2,
+          "qualified_observations": 2,
+          "nonqualifying_observations": 2,
+          "source_evidence": [
+            {
+              "chunk_ids": [
+                "SOP-003:p1:table1:chunk"
+              ],
+              "quote": "Rule ID: MAINT-06; Sensor: TMP; Station: WRH01_WAREHOUSE; Trigger: TMP DRIFT >2°C over 2 h; Action: Inspect compressor; notify QC; Priority: CRITICAL",
+              "quote_sha256": "d5f5763e829cc5cbcc1eb37c9b437cf5836254d92acce21c9219b9489e0c0704"
+            }
+          ],
+          "source_kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-06",
+          "document_recommended_response": "Inspect compressor; notify QC",
+          "response_label": "문서가 권고하는 대응",
+          "action_executed": false,
+          "cause_status": "규칙 조건 일치; 실제 고장 원인 미확정",
+          "expert_review_required": false,
+          "operational_assumptions": [
+            "signed endpoint increase; exact fixed lookback; all intervening samples required",
+            "not equivalent to SOP-002 sigma-based monotonic slope definition",
+            "fixed document lookback"
+          ],
+          "clear_started_at": "2026-01-06T18:09:30",
+          "status": "recovered",
+          "closed_at": "2026-01-06T18:10:00",
+          "normal_confirmed_at": "2026-01-06T18:10:00",
+          "elapsed_to_last_positive_seconds": 30.0,
+          "continuous_violation_claim": false,
+          "bridging_policy": "one observed nonqualifying point may be retained inside event; two clear; gaps never bridged",
+          "id": "det3-33c64e92053613b98eb9"
+        },
+        {
+          "sensor_id": "ST02_SEALING_CUR",
+          "station_id": "ST02_SEALING",
+          "rule_id": "MAINT-02",
+          "kind": "kg_document_drift",
+          "op": "delta_gt",
+          "condition_start": "2026-01-06T18:09:00",
+          "trigger_at": "2026-01-06T18:09:30",
+          "last_positive_at": "2026-01-06T18:09:30",
+          "trigger_value": "12.9117",
+          "last_value": "12.9117",
+          "unit": "A",
+          "feature_value": "1.0816",
+          "baseline_value": "11.8301",
+          "baseline_at": "2026-01-06T17:39:30",
+          "threshold": "1.0",
+          "second_threshold": null,
+          "window_seconds": 1800,
+          "duration_seconds": 0,
+          "positive_observations": 2,
+          "qualified_observations": 2,
+          "nonqualifying_observations": 2,
+          "source_evidence": [
+            {
+              "chunk_ids": [
+                "SOP-003:p1:table1:chunk"
+              ],
+              "quote": "Rule ID: MAINT-02; Sensor: CUR; Station: ST02_SEALING; Trigger: CUR DRIFT >1.0 A for 30+ min; Action: Inspect sealing jaw; Priority: HIGH",
+              "quote_sha256": "a5a70c4599feaefe2dfb77cb39ecaa248be426c56d5d7752af9a6d13fe4ded60"
+            }
+          ],
+          "source_kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-02",
+          "document_recommended_response": "Inspect sealing jaw",
+          "response_label": "문서가 권고하는 대응",
+          "action_executed": false,
+          "cause_status": "규칙 조건 일치; 실제 고장 원인 미확정",
+          "expert_review_required": false,
+          "operational_assumptions": [
+            "signed endpoint increase; exact fixed lookback; all intervening samples required",
+            "not equivalent to SOP-002 sigma-based monotonic slope definition",
+            "30+ min interpreted as fixed 30-minute change, subject to team review"
+          ],
+          "clear_started_at": "2026-01-06T18:10:00",
+          "status": "recovered",
+          "closed_at": "2026-01-06T18:10:30",
+          "normal_confirmed_at": "2026-01-06T18:10:30",
+          "elapsed_to_last_positive_seconds": 30.0,
+          "continuous_violation_claim": false,
+          "bridging_policy": "one observed nonqualifying point may be retained inside event; two clear; gaps never bridged",
+          "id": "det3-a2f50512233ea694a1bb"
+        },
+        {
+          "sensor_id": "WRH01_WAREHOUSE_TMP",
+          "station_id": "WRH01_WAREHOUSE",
+          "rule_id": "MAINT-06",
+          "kind": "kg_document_drift",
+          "op": "delta_gt",
+          "condition_start": "2026-01-07T04:02:00",
+          "trigger_at": "2026-01-07T04:02:30",
+          "last_positive_at": "2026-01-07T04:02:30",
+          "trigger_value": "4.8618",
+          "last_value": "4.8618",
+          "unit": "°C",
+          "feature_value": "2.2385",
+          "baseline_value": "2.6233",
+          "baseline_at": "2026-01-07T02:02:30",
+          "threshold": "2",
+          "second_threshold": null,
+          "window_seconds": 7200,
+          "duration_seconds": 0,
+          "positive_observations": 2,
+          "qualified_observations": 2,
+          "nonqualifying_observations": 2,
+          "source_evidence": [
+            {
+              "chunk_ids": [
+                "SOP-003:p1:table1:chunk"
+              ],
+              "quote": "Rule ID: MAINT-06; Sensor: TMP; Station: WRH01_WAREHOUSE; Trigger: TMP DRIFT >2°C over 2 h; Action: Inspect compressor; notify QC; Priority: CRITICAL",
+              "quote_sha256": "d5f5763e829cc5cbcc1eb37c9b437cf5836254d92acce21c9219b9489e0c0704"
+            }
+          ],
+          "source_kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-06",
+          "document_recommended_response": "Inspect compressor; notify QC",
+          "response_label": "문서가 권고하는 대응",
+          "action_executed": false,
+          "cause_status": "규칙 조건 일치; 실제 고장 원인 미확정",
+          "expert_review_required": false,
+          "operational_assumptions": [
+            "signed endpoint increase; exact fixed lookback; all intervening samples required",
+            "not equivalent to SOP-002 sigma-based monotonic slope definition",
+            "fixed document lookback"
+          ],
+          "clear_started_at": "2026-01-07T04:03:00",
+          "status": "recovered",
+          "closed_at": "2026-01-07T04:03:30",
+          "normal_confirmed_at": "2026-01-07T04:03:30",
+          "elapsed_to_last_positive_seconds": 30.0,
+          "continuous_violation_claim": false,
+          "bridging_policy": "one observed nonqualifying point may be retained inside event; two clear; gaps never bridged",
+          "id": "det3-4da97df9412e7bea02b6"
+        },
+        {
+          "sensor_id": "WRH01_WAREHOUSE_TMP",
+          "station_id": "WRH01_WAREHOUSE",
+          "rule_id": "MAINT-06",
+          "kind": "kg_document_drift",
+          "op": "delta_gt",
+          "condition_start": "2026-01-07T09:02:30",
+          "trigger_at": "2026-01-07T09:03:00",
+          "last_positive_at": "2026-01-07T09:03:00",
+          "trigger_value": "5.0825",
+          "last_value": "5.0825",
+          "unit": "°C",
+          "feature_value": "2.2509",
+          "baseline_value": "2.8316",
+          "baseline_at": "2026-01-07T07:03:00",
+          "threshold": "2",
+          "second_threshold": null,
+          "window_seconds": 7200,
+          "duration_seconds": 0,
+          "positive_observations": 2,
+          "qualified_observations": 2,
+          "nonqualifying_observations": 2,
+          "source_evidence": [
+            {
+              "chunk_ids": [
+                "SOP-003:p1:table1:chunk"
+              ],
+              "quote": "Rule ID: MAINT-06; Sensor: TMP; Station: WRH01_WAREHOUSE; Trigger: TMP DRIFT >2°C over 2 h; Action: Inspect compressor; notify QC; Priority: CRITICAL",
+              "quote_sha256": "d5f5763e829cc5cbcc1eb37c9b437cf5836254d92acce21c9219b9489e0c0704"
+            }
+          ],
+          "source_kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-06",
+          "document_recommended_response": "Inspect compressor; notify QC",
+          "response_label": "문서가 권고하는 대응",
+          "action_executed": false,
+          "cause_status": "규칙 조건 일치; 실제 고장 원인 미확정",
+          "expert_review_required": false,
+          "operational_assumptions": [
+            "signed endpoint increase; exact fixed lookback; all intervening samples required",
+            "not equivalent to SOP-002 sigma-based monotonic slope definition",
+            "fixed document lookback"
+          ],
+          "clear_started_at": "2026-01-07T09:03:30",
+          "status": "recovered",
+          "closed_at": "2026-01-07T09:04:00",
+          "normal_confirmed_at": "2026-01-07T09:04:00",
+          "elapsed_to_last_positive_seconds": 30.0,
+          "continuous_violation_claim": false,
+          "bridging_policy": "one observed nonqualifying point may be retained inside event; two clear; gaps never bridged",
+          "id": "det3-bf18b36586c6f6ee8182"
+        },
+        {
+          "sensor_id": "ST02_SEALING_CUR",
+          "station_id": "ST02_SEALING",
+          "rule_id": "MAINT-02",
+          "kind": "kg_document_drift",
+          "op": "delta_gt",
+          "condition_start": "2026-01-07T09:52:00",
+          "trigger_at": "2026-01-07T09:52:30",
+          "last_positive_at": "2026-01-07T09:52:30",
+          "trigger_value": "12.5316",
+          "last_value": "12.5316",
+          "unit": "A",
+          "feature_value": "1.0257",
+          "baseline_value": "11.5059",
+          "baseline_at": "2026-01-07T09:22:30",
+          "threshold": "1.0",
+          "second_threshold": null,
+          "window_seconds": 1800,
+          "duration_seconds": 0,
+          "positive_observations": 2,
+          "qualified_observations": 2,
+          "nonqualifying_observations": 2,
+          "source_evidence": [
+            {
+              "chunk_ids": [
+                "SOP-003:p1:table1:chunk"
+              ],
+              "quote": "Rule ID: MAINT-02; Sensor: CUR; Station: ST02_SEALING; Trigger: CUR DRIFT >1.0 A for 30+ min; Action: Inspect sealing jaw; Priority: HIGH",
+              "quote_sha256": "a5a70c4599feaefe2dfb77cb39ecaa248be426c56d5d7752af9a6d13fe4ded60"
+            }
+          ],
+          "source_kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-02",
+          "document_recommended_response": "Inspect sealing jaw",
+          "response_label": "문서가 권고하는 대응",
+          "action_executed": false,
+          "cause_status": "규칙 조건 일치; 실제 고장 원인 미확정",
+          "expert_review_required": false,
+          "operational_assumptions": [
+            "signed endpoint increase; exact fixed lookback; all intervening samples required",
+            "not equivalent to SOP-002 sigma-based monotonic slope definition",
+            "30+ min interpreted as fixed 30-minute change, subject to team review"
+          ],
+          "clear_started_at": "2026-01-07T09:53:00",
+          "status": "recovered",
+          "closed_at": "2026-01-07T09:53:30",
+          "normal_confirmed_at": "2026-01-07T09:53:30",
+          "elapsed_to_last_positive_seconds": 30.0,
+          "continuous_violation_claim": false,
+          "bridging_policy": "one observed nonqualifying point may be retained inside event; two clear; gaps never bridged",
+          "id": "det3-b7a839deb21648ecdb03"
+        },
+        {
+          "sensor_id": "ST02_SEALING_CUR",
+          "station_id": "ST02_SEALING",
+          "rule_id": "MAINT-02",
+          "kind": "kg_document_drift",
+          "op": "delta_gt",
+          "condition_start": "2026-01-07T13:26:00",
+          "trigger_at": "2026-01-07T13:26:30",
+          "last_positive_at": "2026-01-07T13:27:00",
+          "trigger_value": "12.6738",
+          "last_value": "13.5668",
+          "unit": "A",
+          "feature_value": "1.0066",
+          "baseline_value": "11.6672",
+          "baseline_at": "2026-01-07T12:56:30",
+          "threshold": "1.0",
+          "second_threshold": null,
+          "window_seconds": 1800,
+          "duration_seconds": 0,
+          "positive_observations": 3,
+          "qualified_observations": 3,
+          "nonqualifying_observations": 2,
+          "source_evidence": [
+            {
+              "chunk_ids": [
+                "SOP-003:p1:table1:chunk"
+              ],
+              "quote": "Rule ID: MAINT-02; Sensor: CUR; Station: ST02_SEALING; Trigger: CUR DRIFT >1.0 A for 30+ min; Action: Inspect sealing jaw; Priority: HIGH",
+              "quote_sha256": "a5a70c4599feaefe2dfb77cb39ecaa248be426c56d5d7752af9a6d13fe4ded60"
+            }
+          ],
+          "source_kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-02",
+          "document_recommended_response": "Inspect sealing jaw",
+          "response_label": "문서가 권고하는 대응",
+          "action_executed": false,
+          "cause_status": "규칙 조건 일치; 실제 고장 원인 미확정",
+          "expert_review_required": false,
+          "operational_assumptions": [
+            "signed endpoint increase; exact fixed lookback; all intervening samples required",
+            "not equivalent to SOP-002 sigma-based monotonic slope definition",
+            "30+ min interpreted as fixed 30-minute change, subject to team review"
+          ],
+          "clear_started_at": "2026-01-07T13:27:30",
+          "status": "recovered",
+          "closed_at": "2026-01-07T13:28:00",
+          "normal_confirmed_at": "2026-01-07T13:28:00",
+          "elapsed_to_last_positive_seconds": 60.0,
+          "continuous_violation_claim": false,
+          "bridging_policy": "one observed nonqualifying point may be retained inside event; two clear; gaps never bridged",
+          "id": "det3-8a69ff1559fa8b87526e"
+        },
+        {
+          "sensor_id": "ST02_SEALING_CUR",
+          "station_id": "ST02_SEALING",
+          "rule_id": "MAINT-02",
+          "kind": "kg_document_drift",
+          "op": "delta_gt",
+          "condition_start": "2026-01-07T14:50:00",
+          "trigger_at": "2026-01-07T14:50:30",
+          "last_positive_at": "2026-01-07T14:50:30",
+          "trigger_value": "13.2094",
+          "last_value": "13.2094",
+          "unit": "A",
+          "feature_value": "1.2931",
+          "baseline_value": "11.9163",
+          "baseline_at": "2026-01-07T14:20:30",
+          "threshold": "1.0",
+          "second_threshold": null,
+          "window_seconds": 1800,
+          "duration_seconds": 0,
+          "positive_observations": 2,
+          "qualified_observations": 2,
+          "nonqualifying_observations": 2,
+          "source_evidence": [
+            {
+              "chunk_ids": [
+                "SOP-003:p1:table1:chunk"
+              ],
+              "quote": "Rule ID: MAINT-02; Sensor: CUR; Station: ST02_SEALING; Trigger: CUR DRIFT >1.0 A for 30+ min; Action: Inspect sealing jaw; Priority: HIGH",
+              "quote_sha256": "a5a70c4599feaefe2dfb77cb39ecaa248be426c56d5d7752af9a6d13fe4ded60"
+            }
+          ],
+          "source_kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-02",
+          "document_recommended_response": "Inspect sealing jaw",
+          "response_label": "문서가 권고하는 대응",
+          "action_executed": false,
+          "cause_status": "규칙 조건 일치; 실제 고장 원인 미확정",
+          "expert_review_required": false,
+          "operational_assumptions": [
+            "signed endpoint increase; exact fixed lookback; all intervening samples required",
+            "not equivalent to SOP-002 sigma-based monotonic slope definition",
+            "30+ min interpreted as fixed 30-minute change, subject to team review"
+          ],
+          "clear_started_at": "2026-01-07T14:51:00",
+          "status": "recovered",
+          "closed_at": "2026-01-07T14:51:30",
+          "normal_confirmed_at": "2026-01-07T14:51:30",
+          "elapsed_to_last_positive_seconds": 30.0,
+          "continuous_violation_claim": false,
+          "bridging_policy": "one observed nonqualifying point may be retained inside event; two clear; gaps never bridged",
+          "id": "det3-ed9497cb9f8ba898d6d8"
+        },
+        {
+          "sensor_id": "ST02_SEALING_CUR",
+          "station_id": "ST02_SEALING",
+          "rule_id": "MAINT-02",
+          "kind": "kg_document_drift",
+          "op": "delta_gt",
+          "condition_start": "2026-01-07T18:39:00",
+          "trigger_at": "2026-01-07T18:39:30",
+          "last_positive_at": "2026-01-07T18:39:30",
+          "trigger_value": "13.1761",
+          "last_value": "13.1761",
+          "unit": "A",
+          "feature_value": "1.4079",
+          "baseline_value": "11.7682",
+          "baseline_at": "2026-01-07T18:09:30",
+          "threshold": "1.0",
+          "second_threshold": null,
+          "window_seconds": 1800,
+          "duration_seconds": 0,
+          "positive_observations": 2,
+          "qualified_observations": 2,
+          "nonqualifying_observations": 2,
+          "source_evidence": [
+            {
+              "chunk_ids": [
+                "SOP-003:p1:table1:chunk"
+              ],
+              "quote": "Rule ID: MAINT-02; Sensor: CUR; Station: ST02_SEALING; Trigger: CUR DRIFT >1.0 A for 30+ min; Action: Inspect sealing jaw; Priority: HIGH",
+              "quote_sha256": "a5a70c4599feaefe2dfb77cb39ecaa248be426c56d5d7752af9a6d13fe4ded60"
+            }
+          ],
+          "source_kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-02",
+          "document_recommended_response": "Inspect sealing jaw",
+          "response_label": "문서가 권고하는 대응",
+          "action_executed": false,
+          "cause_status": "규칙 조건 일치; 실제 고장 원인 미확정",
+          "expert_review_required": false,
+          "operational_assumptions": [
+            "signed endpoint increase; exact fixed lookback; all intervening samples required",
+            "not equivalent to SOP-002 sigma-based monotonic slope definition",
+            "30+ min interpreted as fixed 30-minute change, subject to team review"
+          ],
+          "clear_started_at": "2026-01-07T18:40:00",
+          "status": "recovered",
+          "closed_at": "2026-01-07T18:40:30",
+          "normal_confirmed_at": "2026-01-07T18:40:30",
+          "elapsed_to_last_positive_seconds": 30.0,
+          "continuous_violation_claim": false,
+          "bridging_policy": "one observed nonqualifying point may be retained inside event; two clear; gaps never bridged",
+          "id": "det3-51b867ceda43bc5ebc88"
+        },
+        {
+          "sensor_id": "ST02_SEALING_CUR",
+          "station_id": "ST02_SEALING",
+          "rule_id": "MAINT-02",
+          "kind": "kg_document_drift",
+          "op": "delta_gt",
+          "condition_start": "2026-01-08T00:38:00",
+          "trigger_at": "2026-01-08T00:38:30",
+          "last_positive_at": "2026-01-08T00:38:30",
+          "trigger_value": "12.8053",
+          "last_value": "12.8053",
+          "unit": "A",
+          "feature_value": "1.1503",
+          "baseline_value": "11.655",
+          "baseline_at": "2026-01-08T00:08:30",
+          "threshold": "1.0",
+          "second_threshold": null,
+          "window_seconds": 1800,
+          "duration_seconds": 0,
+          "positive_observations": 2,
+          "qualified_observations": 2,
+          "nonqualifying_observations": 2,
+          "source_evidence": [
+            {
+              "chunk_ids": [
+                "SOP-003:p1:table1:chunk"
+              ],
+              "quote": "Rule ID: MAINT-02; Sensor: CUR; Station: ST02_SEALING; Trigger: CUR DRIFT >1.0 A for 30+ min; Action: Inspect sealing jaw; Priority: HIGH",
+              "quote_sha256": "a5a70c4599feaefe2dfb77cb39ecaa248be426c56d5d7752af9a6d13fe4ded60"
+            }
+          ],
+          "source_kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-02",
+          "document_recommended_response": "Inspect sealing jaw",
+          "response_label": "문서가 권고하는 대응",
+          "action_executed": false,
+          "cause_status": "규칙 조건 일치; 실제 고장 원인 미확정",
+          "expert_review_required": false,
+          "operational_assumptions": [
+            "signed endpoint increase; exact fixed lookback; all intervening samples required",
+            "not equivalent to SOP-002 sigma-based monotonic slope definition",
+            "30+ min interpreted as fixed 30-minute change, subject to team review"
+          ],
+          "clear_started_at": "2026-01-08T00:39:00",
+          "status": "recovered",
+          "closed_at": "2026-01-08T00:39:30",
+          "normal_confirmed_at": "2026-01-08T00:39:30",
+          "elapsed_to_last_positive_seconds": 30.0,
+          "continuous_violation_claim": false,
+          "bridging_policy": "one observed nonqualifying point may be retained inside event; two clear; gaps never bridged",
+          "id": "det3-e02f4a1d070324cbc169"
+        },
+        {
+          "sensor_id": "ST02_SEALING_CUR",
+          "station_id": "ST02_SEALING",
+          "rule_id": "MAINT-02",
+          "kind": "kg_document_drift",
+          "op": "delta_gt",
+          "condition_start": "2026-01-08T11:23:30",
+          "trigger_at": "2026-01-08T11:24:00",
+          "last_positive_at": "2026-01-08T11:24:00",
+          "trigger_value": "12.6383",
+          "last_value": "12.6383",
+          "unit": "A",
+          "feature_value": "1.0392",
+          "baseline_value": "11.5991",
+          "baseline_at": "2026-01-08T10:54:00",
+          "threshold": "1.0",
+          "second_threshold": null,
+          "window_seconds": 1800,
+          "duration_seconds": 0,
+          "positive_observations": 2,
+          "qualified_observations": 2,
+          "nonqualifying_observations": 2,
+          "source_evidence": [
+            {
+              "chunk_ids": [
+                "SOP-003:p1:table1:chunk"
+              ],
+              "quote": "Rule ID: MAINT-02; Sensor: CUR; Station: ST02_SEALING; Trigger: CUR DRIFT >1.0 A for 30+ min; Action: Inspect sealing jaw; Priority: HIGH",
+              "quote_sha256": "a5a70c4599feaefe2dfb77cb39ecaa248be426c56d5d7752af9a6d13fe4ded60"
+            }
+          ],
+          "source_kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-02",
+          "document_recommended_response": "Inspect sealing jaw",
+          "response_label": "문서가 권고하는 대응",
+          "action_executed": false,
+          "cause_status": "규칙 조건 일치; 실제 고장 원인 미확정",
+          "expert_review_required": false,
+          "operational_assumptions": [
+            "signed endpoint increase; exact fixed lookback; all intervening samples required",
+            "not equivalent to SOP-002 sigma-based monotonic slope definition",
+            "30+ min interpreted as fixed 30-minute change, subject to team review"
+          ],
+          "clear_started_at": "2026-01-08T11:24:30",
+          "status": "recovered",
+          "closed_at": "2026-01-08T11:25:00",
+          "normal_confirmed_at": "2026-01-08T11:25:00",
+          "elapsed_to_last_positive_seconds": 30.0,
+          "continuous_violation_claim": false,
+          "bridging_policy": "one observed nonqualifying point may be retained inside event; two clear; gaps never bridged",
+          "id": "det3-e65f2401de75fc2901c5"
+        },
+        {
+          "sensor_id": "ST02_SEALING_CUR",
+          "station_id": "ST02_SEALING",
+          "rule_id": "MAINT-02",
+          "kind": "kg_document_drift",
+          "op": "delta_gt",
+          "condition_start": "2026-01-08T19:59:30",
+          "trigger_at": "2026-01-08T20:00:00",
+          "last_positive_at": "2026-01-08T20:00:00",
+          "trigger_value": "13.3432",
+          "last_value": "13.3432",
+          "unit": "A",
+          "feature_value": "1.5457",
+          "baseline_value": "11.7975",
+          "baseline_at": "2026-01-08T19:30:00",
+          "threshold": "1.0",
+          "second_threshold": null,
+          "window_seconds": 1800,
+          "duration_seconds": 0,
+          "positive_observations": 2,
+          "qualified_observations": 2,
+          "nonqualifying_observations": 2,
+          "source_evidence": [
+            {
+              "chunk_ids": [
+                "SOP-003:p1:table1:chunk"
+              ],
+              "quote": "Rule ID: MAINT-02; Sensor: CUR; Station: ST02_SEALING; Trigger: CUR DRIFT >1.0 A for 30+ min; Action: Inspect sealing jaw; Priority: HIGH",
+              "quote_sha256": "a5a70c4599feaefe2dfb77cb39ecaa248be426c56d5d7752af9a6d13fe4ded60"
+            }
+          ],
+          "source_kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-02",
+          "document_recommended_response": "Inspect sealing jaw",
+          "response_label": "문서가 권고하는 대응",
+          "action_executed": false,
+          "cause_status": "규칙 조건 일치; 실제 고장 원인 미확정",
+          "expert_review_required": false,
+          "operational_assumptions": [
+            "signed endpoint increase; exact fixed lookback; all intervening samples required",
+            "not equivalent to SOP-002 sigma-based monotonic slope definition",
+            "30+ min interpreted as fixed 30-minute change, subject to team review"
+          ],
+          "clear_started_at": "2026-01-08T20:00:30",
+          "status": "recovered",
+          "closed_at": "2026-01-08T20:01:00",
+          "normal_confirmed_at": "2026-01-08T20:01:00",
+          "elapsed_to_last_positive_seconds": 30.0,
+          "continuous_violation_claim": false,
+          "bridging_policy": "one observed nonqualifying point may be retained inside event; two clear; gaps never bridged",
+          "id": "det3-f007edde26819882a99e"
+        },
+        {
+          "sensor_id": "ST02_SEALING_CUR",
+          "station_id": "ST02_SEALING",
+          "rule_id": "MAINT-02",
+          "kind": "kg_document_drift",
+          "op": "delta_gt",
+          "condition_start": "2026-01-08T20:32:00",
+          "trigger_at": "2026-01-08T20:32:30",
+          "last_positive_at": "2026-01-08T20:32:30",
+          "trigger_value": "12.9706",
+          "last_value": "12.9706",
+          "unit": "A",
+          "feature_value": "1.1533",
+          "baseline_value": "11.8173",
+          "baseline_at": "2026-01-08T20:02:30",
+          "threshold": "1.0",
+          "second_threshold": null,
+          "window_seconds": 1800,
+          "duration_seconds": 0,
+          "positive_observations": 2,
+          "qualified_observations": 2,
+          "nonqualifying_observations": 2,
+          "source_evidence": [
+            {
+              "chunk_ids": [
+                "SOP-003:p1:table1:chunk"
+              ],
+              "quote": "Rule ID: MAINT-02; Sensor: CUR; Station: ST02_SEALING; Trigger: CUR DRIFT >1.0 A for 30+ min; Action: Inspect sealing jaw; Priority: HIGH",
+              "quote_sha256": "a5a70c4599feaefe2dfb77cb39ecaa248be426c56d5d7752af9a6d13fe4ded60"
+            }
+          ],
+          "source_kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-02",
+          "document_recommended_response": "Inspect sealing jaw",
+          "response_label": "문서가 권고하는 대응",
+          "action_executed": false,
+          "cause_status": "규칙 조건 일치; 실제 고장 원인 미확정",
+          "expert_review_required": false,
+          "operational_assumptions": [
+            "signed endpoint increase; exact fixed lookback; all intervening samples required",
+            "not equivalent to SOP-002 sigma-based monotonic slope definition",
+            "30+ min interpreted as fixed 30-minute change, subject to team review"
+          ],
+          "clear_started_at": "2026-01-08T20:33:00",
+          "status": "recovered",
+          "closed_at": "2026-01-08T20:33:30",
+          "normal_confirmed_at": "2026-01-08T20:33:30",
+          "elapsed_to_last_positive_seconds": 30.0,
+          "continuous_violation_claim": false,
+          "bridging_policy": "one observed nonqualifying point may be retained inside event; two clear; gaps never bridged",
+          "id": "det3-9c49616700cd65051d10"
+        },
+        {
+          "sensor_id": "ST02_SEALING_CUR",
+          "station_id": "ST02_SEALING",
+          "rule_id": "MAINT-02",
+          "kind": "kg_document_drift",
+          "op": "delta_gt",
+          "condition_start": "2026-01-09T00:16:00",
+          "trigger_at": "2026-01-09T00:16:30",
+          "last_positive_at": "2026-01-09T00:16:30",
+          "trigger_value": "13.1733",
+          "last_value": "13.1733",
+          "unit": "A",
+          "feature_value": "1.3173",
+          "baseline_value": "11.856",
+          "baseline_at": "2026-01-08T23:46:30",
+          "threshold": "1.0",
+          "second_threshold": null,
+          "window_seconds": 1800,
+          "duration_seconds": 0,
+          "positive_observations": 2,
+          "qualified_observations": 2,
+          "nonqualifying_observations": 2,
+          "source_evidence": [
+            {
+              "chunk_ids": [
+                "SOP-003:p1:table1:chunk"
+              ],
+              "quote": "Rule ID: MAINT-02; Sensor: CUR; Station: ST02_SEALING; Trigger: CUR DRIFT >1.0 A for 30+ min; Action: Inspect sealing jaw; Priority: HIGH",
+              "quote_sha256": "a5a70c4599feaefe2dfb77cb39ecaa248be426c56d5d7752af9a6d13fe4ded60"
+            }
+          ],
+          "source_kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-02",
+          "document_recommended_response": "Inspect sealing jaw",
+          "response_label": "문서가 권고하는 대응",
+          "action_executed": false,
+          "cause_status": "규칙 조건 일치; 실제 고장 원인 미확정",
+          "expert_review_required": false,
+          "operational_assumptions": [
+            "signed endpoint increase; exact fixed lookback; all intervening samples required",
+            "not equivalent to SOP-002 sigma-based monotonic slope definition",
+            "30+ min interpreted as fixed 30-minute change, subject to team review"
+          ],
+          "clear_started_at": "2026-01-09T00:17:00",
+          "status": "recovered",
+          "closed_at": "2026-01-09T00:17:30",
+          "normal_confirmed_at": "2026-01-09T00:17:30",
+          "elapsed_to_last_positive_seconds": 30.0,
+          "continuous_violation_claim": false,
+          "bridging_policy": "one observed nonqualifying point may be retained inside event; two clear; gaps never bridged",
+          "id": "det3-9eefb08e456f34e8083b"
+        },
+        {
+          "sensor_id": "ST02_SEALING_CUR",
+          "station_id": "ST02_SEALING",
+          "rule_id": "MAINT-02",
+          "kind": "kg_document_drift",
+          "op": "delta_gt",
+          "condition_start": "2026-01-09T00:37:30",
+          "trigger_at": "2026-01-09T00:38:00",
+          "last_positive_at": "2026-01-09T00:38:00",
+          "trigger_value": "12.9586",
+          "last_value": "12.9586",
+          "unit": "A",
+          "feature_value": "1.3587",
+          "baseline_value": "11.5999",
+          "baseline_at": "2026-01-09T00:08:00",
+          "threshold": "1.0",
+          "second_threshold": null,
+          "window_seconds": 1800,
+          "duration_seconds": 0,
+          "positive_observations": 2,
+          "qualified_observations": 2,
+          "nonqualifying_observations": 2,
+          "source_evidence": [
+            {
+              "chunk_ids": [
+                "SOP-003:p1:table1:chunk"
+              ],
+              "quote": "Rule ID: MAINT-02; Sensor: CUR; Station: ST02_SEALING; Trigger: CUR DRIFT >1.0 A for 30+ min; Action: Inspect sealing jaw; Priority: HIGH",
+              "quote_sha256": "a5a70c4599feaefe2dfb77cb39ecaa248be426c56d5d7752af9a6d13fe4ded60"
+            }
+          ],
+          "source_kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-02",
+          "document_recommended_response": "Inspect sealing jaw",
+          "response_label": "문서가 권고하는 대응",
+          "action_executed": false,
+          "cause_status": "규칙 조건 일치; 실제 고장 원인 미확정",
+          "expert_review_required": false,
+          "operational_assumptions": [
+            "signed endpoint increase; exact fixed lookback; all intervening samples required",
+            "not equivalent to SOP-002 sigma-based monotonic slope definition",
+            "30+ min interpreted as fixed 30-minute change, subject to team review"
+          ],
+          "clear_started_at": "2026-01-09T00:38:30",
+          "status": "recovered",
+          "closed_at": "2026-01-09T00:39:00",
+          "normal_confirmed_at": "2026-01-09T00:39:00",
+          "elapsed_to_last_positive_seconds": 30.0,
+          "continuous_violation_claim": false,
+          "bridging_policy": "one observed nonqualifying point may be retained inside event; two clear; gaps never bridged",
+          "id": "det3-237aaf5a13fa3da9bff7"
+        },
+        {
+          "sensor_id": "ST02_SEALING_CUR",
+          "station_id": "ST02_SEALING",
+          "rule_id": "MAINT-02",
+          "kind": "kg_document_drift",
+          "op": "delta_gt",
+          "condition_start": "2026-01-09T01:48:00",
+          "trigger_at": "2026-01-09T01:48:30",
+          "last_positive_at": "2026-01-09T01:48:30",
+          "trigger_value": "12.8832",
+          "last_value": "12.8832",
+          "unit": "A",
+          "feature_value": "1.0591",
+          "baseline_value": "11.8241",
+          "baseline_at": "2026-01-09T01:18:30",
+          "threshold": "1.0",
+          "second_threshold": null,
+          "window_seconds": 1800,
+          "duration_seconds": 0,
+          "positive_observations": 2,
+          "qualified_observations": 2,
+          "nonqualifying_observations": 2,
+          "source_evidence": [
+            {
+              "chunk_ids": [
+                "SOP-003:p1:table1:chunk"
+              ],
+              "quote": "Rule ID: MAINT-02; Sensor: CUR; Station: ST02_SEALING; Trigger: CUR DRIFT >1.0 A for 30+ min; Action: Inspect sealing jaw; Priority: HIGH",
+              "quote_sha256": "a5a70c4599feaefe2dfb77cb39ecaa248be426c56d5d7752af9a6d13fe4ded60"
+            }
+          ],
+          "source_kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-02",
+          "document_recommended_response": "Inspect sealing jaw",
+          "response_label": "문서가 권고하는 대응",
+          "action_executed": false,
+          "cause_status": "규칙 조건 일치; 실제 고장 원인 미확정",
+          "expert_review_required": false,
+          "operational_assumptions": [
+            "signed endpoint increase; exact fixed lookback; all intervening samples required",
+            "not equivalent to SOP-002 sigma-based monotonic slope definition",
+            "30+ min interpreted as fixed 30-minute change, subject to team review"
+          ],
+          "clear_started_at": "2026-01-09T01:49:00",
+          "status": "recovered",
+          "closed_at": "2026-01-09T01:49:30",
+          "normal_confirmed_at": "2026-01-09T01:49:30",
+          "elapsed_to_last_positive_seconds": 30.0,
+          "continuous_violation_claim": false,
+          "bridging_policy": "one observed nonqualifying point may be retained inside event; two clear; gaps never bridged",
+          "id": "det3-e9935f3d5d1812f6a872"
+        },
+        {
+          "sensor_id": "ST02_SEALING_CUR",
+          "station_id": "ST02_SEALING",
+          "rule_id": "MAINT-02",
+          "kind": "kg_document_drift",
+          "op": "delta_gt",
+          "condition_start": "2026-01-09T03:24:00",
+          "trigger_at": "2026-01-09T03:24:30",
+          "last_positive_at": "2026-01-09T03:25:00",
+          "trigger_value": "13.2278",
+          "last_value": "12.8638",
+          "unit": "A",
+          "feature_value": "1.5613",
+          "baseline_value": "11.6665",
+          "baseline_at": "2026-01-09T02:54:30",
+          "threshold": "1.0",
+          "second_threshold": null,
+          "window_seconds": 1800,
+          "duration_seconds": 0,
+          "positive_observations": 3,
+          "qualified_observations": 3,
+          "nonqualifying_observations": 2,
+          "source_evidence": [
+            {
+              "chunk_ids": [
+                "SOP-003:p1:table1:chunk"
+              ],
+              "quote": "Rule ID: MAINT-02; Sensor: CUR; Station: ST02_SEALING; Trigger: CUR DRIFT >1.0 A for 30+ min; Action: Inspect sealing jaw; Priority: HIGH",
+              "quote_sha256": "a5a70c4599feaefe2dfb77cb39ecaa248be426c56d5d7752af9a6d13fe4ded60"
+            }
+          ],
+          "source_kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-02",
+          "document_recommended_response": "Inspect sealing jaw",
+          "response_label": "문서가 권고하는 대응",
+          "action_executed": false,
+          "cause_status": "규칙 조건 일치; 실제 고장 원인 미확정",
+          "expert_review_required": false,
+          "operational_assumptions": [
+            "signed endpoint increase; exact fixed lookback; all intervening samples required",
+            "not equivalent to SOP-002 sigma-based monotonic slope definition",
+            "30+ min interpreted as fixed 30-minute change, subject to team review"
+          ],
+          "clear_started_at": "2026-01-09T03:25:30",
+          "status": "recovered",
+          "closed_at": "2026-01-09T03:26:00",
+          "normal_confirmed_at": "2026-01-09T03:26:00",
+          "elapsed_to_last_positive_seconds": 60.0,
+          "continuous_violation_claim": false,
+          "bridging_policy": "one observed nonqualifying point may be retained inside event; two clear; gaps never bridged",
+          "id": "det3-e6400a1654369cbe9f5e"
+        },
+        {
+          "sensor_id": "ST02_SEALING_CUR",
+          "station_id": "ST02_SEALING",
+          "rule_id": "MAINT-02",
+          "kind": "kg_document_drift",
+          "op": "delta_gt",
+          "condition_start": "2026-01-09T05:51:00",
+          "trigger_at": "2026-01-09T05:51:30",
+          "last_positive_at": "2026-01-09T05:51:30",
+          "trigger_value": "12.7024",
+          "last_value": "12.7024",
+          "unit": "A",
+          "feature_value": "1.0192",
+          "baseline_value": "11.6832",
+          "baseline_at": "2026-01-09T05:21:30",
+          "threshold": "1.0",
+          "second_threshold": null,
+          "window_seconds": 1800,
+          "duration_seconds": 0,
+          "positive_observations": 2,
+          "qualified_observations": 2,
+          "nonqualifying_observations": 2,
+          "source_evidence": [
+            {
+              "chunk_ids": [
+                "SOP-003:p1:table1:chunk"
+              ],
+              "quote": "Rule ID: MAINT-02; Sensor: CUR; Station: ST02_SEALING; Trigger: CUR DRIFT >1.0 A for 30+ min; Action: Inspect sealing jaw; Priority: HIGH",
+              "quote_sha256": "a5a70c4599feaefe2dfb77cb39ecaa248be426c56d5d7752af9a6d13fe4ded60"
+            }
+          ],
+          "source_kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-02",
+          "document_recommended_response": "Inspect sealing jaw",
+          "response_label": "문서가 권고하는 대응",
+          "action_executed": false,
+          "cause_status": "규칙 조건 일치; 실제 고장 원인 미확정",
+          "expert_review_required": false,
+          "operational_assumptions": [
+            "signed endpoint increase; exact fixed lookback; all intervening samples required",
+            "not equivalent to SOP-002 sigma-based monotonic slope definition",
+            "30+ min interpreted as fixed 30-minute change, subject to team review"
+          ],
+          "clear_started_at": "2026-01-09T05:52:00",
+          "status": "recovered",
+          "closed_at": "2026-01-09T05:52:30",
+          "normal_confirmed_at": "2026-01-09T05:52:30",
+          "elapsed_to_last_positive_seconds": 30.0,
+          "continuous_violation_claim": false,
+          "bridging_policy": "one observed nonqualifying point may be retained inside event; two clear; gaps never bridged",
+          "id": "det3-50072cdcbeb14a9651c3"
+        }
+      ]
+    },
+    "by_family": {
+      "kg_document_drift": {
+        "rule_alarm_count": 34,
+        "gold_events": 14,
+        "events_covered": 5,
+        "events_with_new_alarm": 5,
+        "coverage_recall": 0.35714285714285715,
+        "rule_alarms_without_gold_overlap": 18,
+        "rule_alarm_overlap_precision": 0.47058823529411764,
+        "median_latency_minutes_non_preexisting": 27.5,
+        "preexisting_alarm_events": 0,
+        "merged_episode_count": 34,
+        "one_to_one_TP": 5,
+        "one_to_one_FP": 29,
+        "one_to_one_FN": 9,
+        "one_to_one_precision": 0.14705882352941177,
+        "one_to_one_recall": 0.35714285714285715,
+        "one_to_one_F1": 0.20833333333333334,
+        "by_type": {
+          "CORRELATED": {
+            "caught": 0,
+            "total": 1
+          },
+          "DRIFT": {
+            "caught": 4,
+            "total": 5
+          },
+          "OUT_OF_RANGE": {
+            "caught": 0,
+            "total": 4
+          },
+          "SPIKE": {
+            "caught": 1,
+            "total": 3
+          },
+          "STUCK": {
+            "caught": 0,
+            "total": 1
+          }
+        },
+        "events": [
+          {
+            "sensor_id": "ST02_SEALING_TMP",
+            "label": "SPIKE",
+            "start": "2026-01-06T08:30:00",
+            "end": "2026-01-06T08:33:00",
+            "samples": 7,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "ST01_FILLING_PRS",
+            "label": "DRIFT",
+            "start": "2026-01-06T11:00:00",
+            "end": "2026-01-06T11:45:00",
+            "samples": 91,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "ST04_PACKAGING_VIB",
+            "label": "DRIFT",
+            "start": "2026-01-07T07:00:00",
+            "end": "2026-01-07T08:30:00",
+            "samples": 181,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-07T07:27:30",
+            "latency_minutes_signed": 27.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "MAINT-01"
+            ]
+          },
+          {
+            "sensor_id": "ST03_LABELLING_TEN",
+            "label": "STUCK",
+            "start": "2026-01-07T09:30:00",
+            "end": "2026-01-07T09:42:00",
+            "samples": 25,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "SRV01_SERVERROOM_TMP",
+            "label": "OUT_OF_RANGE",
+            "start": "2026-01-07T12:00:00",
+            "end": "2026-01-07T12:20:00",
+            "samples": 41,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "CAF01_CAFETERIA_TMP",
+            "label": "OUT_OF_RANGE",
+            "start": "2026-01-07T16:00:00",
+            "end": "2026-01-07T16:30:00",
+            "samples": 61,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "ST01_FILLING_FLW",
+            "label": "SPIKE",
+            "start": "2026-01-08T06:30:00",
+            "end": "2026-01-08T06:32:00",
+            "samples": 5,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "ST02_SEALING_CUR",
+            "label": "DRIFT",
+            "start": "2026-01-08T08:00:00",
+            "end": "2026-01-08T10:00:00",
+            "samples": 241,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-08T08:22:30",
+            "latency_minutes_signed": 22.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "MAINT-02"
+            ]
+          },
+          {
+            "sensor_id": "ST04_PACKAGING_SPD",
+            "label": "CORRELATED",
+            "start": "2026-01-08T09:30:00",
+            "end": "2026-01-08T10:30:00",
+            "samples": 121,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "ST03_LABELLING_CNT",
+            "label": "OUT_OF_RANGE",
+            "start": "2026-01-09T07:30:00",
+            "end": "2026-01-09T07:55:00",
+            "samples": 51,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "CHM01_CHEMICALSTORAGE_TMP",
+            "label": "OUT_OF_RANGE",
+            "start": "2026-01-09T08:00:00",
+            "end": "2026-01-09T08:45:00",
+            "samples": 91,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "WRH01_WAREHOUSE_TMP",
+            "label": "DRIFT",
+            "start": "2026-01-09T10:00:00",
+            "end": "2026-01-09T13:00:00",
+            "samples": 361,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-09T11:02:30",
+            "latency_minutes_signed": 62.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "MAINT-06"
+            ]
+          },
+          {
+            "sensor_id": "RND01_RDLAB_HUM",
+            "label": "DRIFT",
+            "start": "2026-01-09T11:30:00",
+            "end": "2026-01-09T13:00:00",
+            "samples": 181,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-09T12:14:30",
+            "latency_minutes_signed": 44.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "MAINT-08"
+            ]
+          },
+          {
+            "sensor_id": "ST04_PACKAGING_VIB",
+            "label": "SPIKE",
+            "start": "2026-01-09T13:00:00",
+            "end": "2026-01-09T13:01:00",
+            "samples": 3,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-09T13:00:30",
+            "latency_minutes_signed": 0.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "MAINT-01"
+            ]
+          }
+        ],
+        "unmatched_rule_alarms": [
+          {
+            "sensor_id": "ST02_SEALING_CUR",
+            "station_id": "ST02_SEALING",
+            "rule_id": "MAINT-02",
+            "kind": "kg_document_drift",
+            "op": "delta_gt",
+            "condition_start": "2026-01-06T10:03:00",
+            "trigger_at": "2026-01-06T10:03:30",
+            "last_positive_at": "2026-01-06T10:04:00",
+            "trigger_value": "12.8335",
+            "last_value": "12.8973",
+            "unit": "A",
+            "feature_value": "1.2349",
+            "baseline_value": "11.5986",
+            "baseline_at": "2026-01-06T09:33:30",
+            "threshold": "1.0",
+            "second_threshold": null,
+            "window_seconds": 1800,
+            "duration_seconds": 0,
+            "positive_observations": 3,
+            "qualified_observations": 3,
+            "nonqualifying_observations": 2,
+            "source_evidence": [
+              {
+                "chunk_ids": [
+                  "SOP-003:p1:table1:chunk"
+                ],
+                "quote": "Rule ID: MAINT-02; Sensor: CUR; Station: ST02_SEALING; Trigger: CUR DRIFT >1.0 A for 30+ min; Action: Inspect sealing jaw; Priority: HIGH",
+                "quote_sha256": "a5a70c4599feaefe2dfb77cb39ecaa248be426c56d5d7752af9a6d13fe4ded60"
+              }
+            ],
+            "source_kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-02",
+            "document_recommended_response": "Inspect sealing jaw",
+            "response_label": "문서가 권고하는 대응",
+            "action_executed": false,
+            "cause_status": "규칙 조건 일치; 실제 고장 원인 미확정",
+            "expert_review_required": false,
+            "operational_assumptions": [
+              "signed endpoint increase; exact fixed lookback; all intervening samples required",
+              "not equivalent to SOP-002 sigma-based monotonic slope definition",
+              "30+ min interpreted as fixed 30-minute change, subject to team review"
+            ],
+            "clear_started_at": "2026-01-06T10:04:30",
+            "status": "recovered",
+            "closed_at": "2026-01-06T10:05:00",
+            "normal_confirmed_at": "2026-01-06T10:05:00",
+            "elapsed_to_last_positive_seconds": 60.0,
+            "continuous_violation_claim": false,
+            "bridging_policy": "one observed nonqualifying point may be retained inside event; two clear; gaps never bridged",
+            "id": "det3-b443fb9ec7f2f4f668c6"
+          },
+          {
+            "sensor_id": "WRH01_WAREHOUSE_TMP",
+            "station_id": "WRH01_WAREHOUSE",
+            "rule_id": "MAINT-06",
+            "kind": "kg_document_drift",
+            "op": "delta_gt",
+            "condition_start": "2026-01-06T18:08:30",
+            "trigger_at": "2026-01-06T18:09:00",
+            "last_positive_at": "2026-01-06T18:09:00",
+            "trigger_value": "4.4264",
+            "last_value": "4.4264",
+            "unit": "°C",
+            "feature_value": "2.0347",
+            "baseline_value": "2.3917",
+            "baseline_at": "2026-01-06T16:09:00",
+            "threshold": "2",
+            "second_threshold": null,
+            "window_seconds": 7200,
+            "duration_seconds": 0,
+            "positive_observations": 2,
+            "qualified_observations": 2,
+            "nonqualifying_observations": 2,
+            "source_evidence": [
+              {
+                "chunk_ids": [
+                  "SOP-003:p1:table1:chunk"
+                ],
+                "quote": "Rule ID: MAINT-06; Sensor: TMP; Station: WRH01_WAREHOUSE; Trigger: TMP DRIFT >2°C over 2 h; Action: Inspect compressor; notify QC; Priority: CRITICAL",
+                "quote_sha256": "d5f5763e829cc5cbcc1eb37c9b437cf5836254d92acce21c9219b9489e0c0704"
+              }
+            ],
+            "source_kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-06",
+            "document_recommended_response": "Inspect compressor; notify QC",
+            "response_label": "문서가 권고하는 대응",
+            "action_executed": false,
+            "cause_status": "규칙 조건 일치; 실제 고장 원인 미확정",
+            "expert_review_required": false,
+            "operational_assumptions": [
+              "signed endpoint increase; exact fixed lookback; all intervening samples required",
+              "not equivalent to SOP-002 sigma-based monotonic slope definition",
+              "fixed document lookback"
+            ],
+            "clear_started_at": "2026-01-06T18:09:30",
+            "status": "recovered",
+            "closed_at": "2026-01-06T18:10:00",
+            "normal_confirmed_at": "2026-01-06T18:10:00",
+            "elapsed_to_last_positive_seconds": 30.0,
+            "continuous_violation_claim": false,
+            "bridging_policy": "one observed nonqualifying point may be retained inside event; two clear; gaps never bridged",
+            "id": "det3-33c64e92053613b98eb9"
+          },
+          {
+            "sensor_id": "ST02_SEALING_CUR",
+            "station_id": "ST02_SEALING",
+            "rule_id": "MAINT-02",
+            "kind": "kg_document_drift",
+            "op": "delta_gt",
+            "condition_start": "2026-01-06T18:09:00",
+            "trigger_at": "2026-01-06T18:09:30",
+            "last_positive_at": "2026-01-06T18:09:30",
+            "trigger_value": "12.9117",
+            "last_value": "12.9117",
+            "unit": "A",
+            "feature_value": "1.0816",
+            "baseline_value": "11.8301",
+            "baseline_at": "2026-01-06T17:39:30",
+            "threshold": "1.0",
+            "second_threshold": null,
+            "window_seconds": 1800,
+            "duration_seconds": 0,
+            "positive_observations": 2,
+            "qualified_observations": 2,
+            "nonqualifying_observations": 2,
+            "source_evidence": [
+              {
+                "chunk_ids": [
+                  "SOP-003:p1:table1:chunk"
+                ],
+                "quote": "Rule ID: MAINT-02; Sensor: CUR; Station: ST02_SEALING; Trigger: CUR DRIFT >1.0 A for 30+ min; Action: Inspect sealing jaw; Priority: HIGH",
+                "quote_sha256": "a5a70c4599feaefe2dfb77cb39ecaa248be426c56d5d7752af9a6d13fe4ded60"
+              }
+            ],
+            "source_kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-02",
+            "document_recommended_response": "Inspect sealing jaw",
+            "response_label": "문서가 권고하는 대응",
+            "action_executed": false,
+            "cause_status": "규칙 조건 일치; 실제 고장 원인 미확정",
+            "expert_review_required": false,
+            "operational_assumptions": [
+              "signed endpoint increase; exact fixed lookback; all intervening samples required",
+              "not equivalent to SOP-002 sigma-based monotonic slope definition",
+              "30+ min interpreted as fixed 30-minute change, subject to team review"
+            ],
+            "clear_started_at": "2026-01-06T18:10:00",
+            "status": "recovered",
+            "closed_at": "2026-01-06T18:10:30",
+            "normal_confirmed_at": "2026-01-06T18:10:30",
+            "elapsed_to_last_positive_seconds": 30.0,
+            "continuous_violation_claim": false,
+            "bridging_policy": "one observed nonqualifying point may be retained inside event; two clear; gaps never bridged",
+            "id": "det3-a2f50512233ea694a1bb"
+          },
+          {
+            "sensor_id": "WRH01_WAREHOUSE_TMP",
+            "station_id": "WRH01_WAREHOUSE",
+            "rule_id": "MAINT-06",
+            "kind": "kg_document_drift",
+            "op": "delta_gt",
+            "condition_start": "2026-01-07T04:02:00",
+            "trigger_at": "2026-01-07T04:02:30",
+            "last_positive_at": "2026-01-07T04:02:30",
+            "trigger_value": "4.8618",
+            "last_value": "4.8618",
+            "unit": "°C",
+            "feature_value": "2.2385",
+            "baseline_value": "2.6233",
+            "baseline_at": "2026-01-07T02:02:30",
+            "threshold": "2",
+            "second_threshold": null,
+            "window_seconds": 7200,
+            "duration_seconds": 0,
+            "positive_observations": 2,
+            "qualified_observations": 2,
+            "nonqualifying_observations": 2,
+            "source_evidence": [
+              {
+                "chunk_ids": [
+                  "SOP-003:p1:table1:chunk"
+                ],
+                "quote": "Rule ID: MAINT-06; Sensor: TMP; Station: WRH01_WAREHOUSE; Trigger: TMP DRIFT >2°C over 2 h; Action: Inspect compressor; notify QC; Priority: CRITICAL",
+                "quote_sha256": "d5f5763e829cc5cbcc1eb37c9b437cf5836254d92acce21c9219b9489e0c0704"
+              }
+            ],
+            "source_kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-06",
+            "document_recommended_response": "Inspect compressor; notify QC",
+            "response_label": "문서가 권고하는 대응",
+            "action_executed": false,
+            "cause_status": "규칙 조건 일치; 실제 고장 원인 미확정",
+            "expert_review_required": false,
+            "operational_assumptions": [
+              "signed endpoint increase; exact fixed lookback; all intervening samples required",
+              "not equivalent to SOP-002 sigma-based monotonic slope definition",
+              "fixed document lookback"
+            ],
+            "clear_started_at": "2026-01-07T04:03:00",
+            "status": "recovered",
+            "closed_at": "2026-01-07T04:03:30",
+            "normal_confirmed_at": "2026-01-07T04:03:30",
+            "elapsed_to_last_positive_seconds": 30.0,
+            "continuous_violation_claim": false,
+            "bridging_policy": "one observed nonqualifying point may be retained inside event; two clear; gaps never bridged",
+            "id": "det3-4da97df9412e7bea02b6"
+          },
+          {
+            "sensor_id": "WRH01_WAREHOUSE_TMP",
+            "station_id": "WRH01_WAREHOUSE",
+            "rule_id": "MAINT-06",
+            "kind": "kg_document_drift",
+            "op": "delta_gt",
+            "condition_start": "2026-01-07T09:02:30",
+            "trigger_at": "2026-01-07T09:03:00",
+            "last_positive_at": "2026-01-07T09:03:00",
+            "trigger_value": "5.0825",
+            "last_value": "5.0825",
+            "unit": "°C",
+            "feature_value": "2.2509",
+            "baseline_value": "2.8316",
+            "baseline_at": "2026-01-07T07:03:00",
+            "threshold": "2",
+            "second_threshold": null,
+            "window_seconds": 7200,
+            "duration_seconds": 0,
+            "positive_observations": 2,
+            "qualified_observations": 2,
+            "nonqualifying_observations": 2,
+            "source_evidence": [
+              {
+                "chunk_ids": [
+                  "SOP-003:p1:table1:chunk"
+                ],
+                "quote": "Rule ID: MAINT-06; Sensor: TMP; Station: WRH01_WAREHOUSE; Trigger: TMP DRIFT >2°C over 2 h; Action: Inspect compressor; notify QC; Priority: CRITICAL",
+                "quote_sha256": "d5f5763e829cc5cbcc1eb37c9b437cf5836254d92acce21c9219b9489e0c0704"
+              }
+            ],
+            "source_kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-06",
+            "document_recommended_response": "Inspect compressor; notify QC",
+            "response_label": "문서가 권고하는 대응",
+            "action_executed": false,
+            "cause_status": "규칙 조건 일치; 실제 고장 원인 미확정",
+            "expert_review_required": false,
+            "operational_assumptions": [
+              "signed endpoint increase; exact fixed lookback; all intervening samples required",
+              "not equivalent to SOP-002 sigma-based monotonic slope definition",
+              "fixed document lookback"
+            ],
+            "clear_started_at": "2026-01-07T09:03:30",
+            "status": "recovered",
+            "closed_at": "2026-01-07T09:04:00",
+            "normal_confirmed_at": "2026-01-07T09:04:00",
+            "elapsed_to_last_positive_seconds": 30.0,
+            "continuous_violation_claim": false,
+            "bridging_policy": "one observed nonqualifying point may be retained inside event; two clear; gaps never bridged",
+            "id": "det3-bf18b36586c6f6ee8182"
+          },
+          {
+            "sensor_id": "ST02_SEALING_CUR",
+            "station_id": "ST02_SEALING",
+            "rule_id": "MAINT-02",
+            "kind": "kg_document_drift",
+            "op": "delta_gt",
+            "condition_start": "2026-01-07T09:52:00",
+            "trigger_at": "2026-01-07T09:52:30",
+            "last_positive_at": "2026-01-07T09:52:30",
+            "trigger_value": "12.5316",
+            "last_value": "12.5316",
+            "unit": "A",
+            "feature_value": "1.0257",
+            "baseline_value": "11.5059",
+            "baseline_at": "2026-01-07T09:22:30",
+            "threshold": "1.0",
+            "second_threshold": null,
+            "window_seconds": 1800,
+            "duration_seconds": 0,
+            "positive_observations": 2,
+            "qualified_observations": 2,
+            "nonqualifying_observations": 2,
+            "source_evidence": [
+              {
+                "chunk_ids": [
+                  "SOP-003:p1:table1:chunk"
+                ],
+                "quote": "Rule ID: MAINT-02; Sensor: CUR; Station: ST02_SEALING; Trigger: CUR DRIFT >1.0 A for 30+ min; Action: Inspect sealing jaw; Priority: HIGH",
+                "quote_sha256": "a5a70c4599feaefe2dfb77cb39ecaa248be426c56d5d7752af9a6d13fe4ded60"
+              }
+            ],
+            "source_kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-02",
+            "document_recommended_response": "Inspect sealing jaw",
+            "response_label": "문서가 권고하는 대응",
+            "action_executed": false,
+            "cause_status": "규칙 조건 일치; 실제 고장 원인 미확정",
+            "expert_review_required": false,
+            "operational_assumptions": [
+              "signed endpoint increase; exact fixed lookback; all intervening samples required",
+              "not equivalent to SOP-002 sigma-based monotonic slope definition",
+              "30+ min interpreted as fixed 30-minute change, subject to team review"
+            ],
+            "clear_started_at": "2026-01-07T09:53:00",
+            "status": "recovered",
+            "closed_at": "2026-01-07T09:53:30",
+            "normal_confirmed_at": "2026-01-07T09:53:30",
+            "elapsed_to_last_positive_seconds": 30.0,
+            "continuous_violation_claim": false,
+            "bridging_policy": "one observed nonqualifying point may be retained inside event; two clear; gaps never bridged",
+            "id": "det3-b7a839deb21648ecdb03"
+          },
+          {
+            "sensor_id": "ST02_SEALING_CUR",
+            "station_id": "ST02_SEALING",
+            "rule_id": "MAINT-02",
+            "kind": "kg_document_drift",
+            "op": "delta_gt",
+            "condition_start": "2026-01-07T13:26:00",
+            "trigger_at": "2026-01-07T13:26:30",
+            "last_positive_at": "2026-01-07T13:27:00",
+            "trigger_value": "12.6738",
+            "last_value": "13.5668",
+            "unit": "A",
+            "feature_value": "1.0066",
+            "baseline_value": "11.6672",
+            "baseline_at": "2026-01-07T12:56:30",
+            "threshold": "1.0",
+            "second_threshold": null,
+            "window_seconds": 1800,
+            "duration_seconds": 0,
+            "positive_observations": 3,
+            "qualified_observations": 3,
+            "nonqualifying_observations": 2,
+            "source_evidence": [
+              {
+                "chunk_ids": [
+                  "SOP-003:p1:table1:chunk"
+                ],
+                "quote": "Rule ID: MAINT-02; Sensor: CUR; Station: ST02_SEALING; Trigger: CUR DRIFT >1.0 A for 30+ min; Action: Inspect sealing jaw; Priority: HIGH",
+                "quote_sha256": "a5a70c4599feaefe2dfb77cb39ecaa248be426c56d5d7752af9a6d13fe4ded60"
+              }
+            ],
+            "source_kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-02",
+            "document_recommended_response": "Inspect sealing jaw",
+            "response_label": "문서가 권고하는 대응",
+            "action_executed": false,
+            "cause_status": "규칙 조건 일치; 실제 고장 원인 미확정",
+            "expert_review_required": false,
+            "operational_assumptions": [
+              "signed endpoint increase; exact fixed lookback; all intervening samples required",
+              "not equivalent to SOP-002 sigma-based monotonic slope definition",
+              "30+ min interpreted as fixed 30-minute change, subject to team review"
+            ],
+            "clear_started_at": "2026-01-07T13:27:30",
+            "status": "recovered",
+            "closed_at": "2026-01-07T13:28:00",
+            "normal_confirmed_at": "2026-01-07T13:28:00",
+            "elapsed_to_last_positive_seconds": 60.0,
+            "continuous_violation_claim": false,
+            "bridging_policy": "one observed nonqualifying point may be retained inside event; two clear; gaps never bridged",
+            "id": "det3-8a69ff1559fa8b87526e"
+          },
+          {
+            "sensor_id": "ST02_SEALING_CUR",
+            "station_id": "ST02_SEALING",
+            "rule_id": "MAINT-02",
+            "kind": "kg_document_drift",
+            "op": "delta_gt",
+            "condition_start": "2026-01-07T14:50:00",
+            "trigger_at": "2026-01-07T14:50:30",
+            "last_positive_at": "2026-01-07T14:50:30",
+            "trigger_value": "13.2094",
+            "last_value": "13.2094",
+            "unit": "A",
+            "feature_value": "1.2931",
+            "baseline_value": "11.9163",
+            "baseline_at": "2026-01-07T14:20:30",
+            "threshold": "1.0",
+            "second_threshold": null,
+            "window_seconds": 1800,
+            "duration_seconds": 0,
+            "positive_observations": 2,
+            "qualified_observations": 2,
+            "nonqualifying_observations": 2,
+            "source_evidence": [
+              {
+                "chunk_ids": [
+                  "SOP-003:p1:table1:chunk"
+                ],
+                "quote": "Rule ID: MAINT-02; Sensor: CUR; Station: ST02_SEALING; Trigger: CUR DRIFT >1.0 A for 30+ min; Action: Inspect sealing jaw; Priority: HIGH",
+                "quote_sha256": "a5a70c4599feaefe2dfb77cb39ecaa248be426c56d5d7752af9a6d13fe4ded60"
+              }
+            ],
+            "source_kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-02",
+            "document_recommended_response": "Inspect sealing jaw",
+            "response_label": "문서가 권고하는 대응",
+            "action_executed": false,
+            "cause_status": "규칙 조건 일치; 실제 고장 원인 미확정",
+            "expert_review_required": false,
+            "operational_assumptions": [
+              "signed endpoint increase; exact fixed lookback; all intervening samples required",
+              "not equivalent to SOP-002 sigma-based monotonic slope definition",
+              "30+ min interpreted as fixed 30-minute change, subject to team review"
+            ],
+            "clear_started_at": "2026-01-07T14:51:00",
+            "status": "recovered",
+            "closed_at": "2026-01-07T14:51:30",
+            "normal_confirmed_at": "2026-01-07T14:51:30",
+            "elapsed_to_last_positive_seconds": 30.0,
+            "continuous_violation_claim": false,
+            "bridging_policy": "one observed nonqualifying point may be retained inside event; two clear; gaps never bridged",
+            "id": "det3-ed9497cb9f8ba898d6d8"
+          },
+          {
+            "sensor_id": "ST02_SEALING_CUR",
+            "station_id": "ST02_SEALING",
+            "rule_id": "MAINT-02",
+            "kind": "kg_document_drift",
+            "op": "delta_gt",
+            "condition_start": "2026-01-07T18:39:00",
+            "trigger_at": "2026-01-07T18:39:30",
+            "last_positive_at": "2026-01-07T18:39:30",
+            "trigger_value": "13.1761",
+            "last_value": "13.1761",
+            "unit": "A",
+            "feature_value": "1.4079",
+            "baseline_value": "11.7682",
+            "baseline_at": "2026-01-07T18:09:30",
+            "threshold": "1.0",
+            "second_threshold": null,
+            "window_seconds": 1800,
+            "duration_seconds": 0,
+            "positive_observations": 2,
+            "qualified_observations": 2,
+            "nonqualifying_observations": 2,
+            "source_evidence": [
+              {
+                "chunk_ids": [
+                  "SOP-003:p1:table1:chunk"
+                ],
+                "quote": "Rule ID: MAINT-02; Sensor: CUR; Station: ST02_SEALING; Trigger: CUR DRIFT >1.0 A for 30+ min; Action: Inspect sealing jaw; Priority: HIGH",
+                "quote_sha256": "a5a70c4599feaefe2dfb77cb39ecaa248be426c56d5d7752af9a6d13fe4ded60"
+              }
+            ],
+            "source_kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-02",
+            "document_recommended_response": "Inspect sealing jaw",
+            "response_label": "문서가 권고하는 대응",
+            "action_executed": false,
+            "cause_status": "규칙 조건 일치; 실제 고장 원인 미확정",
+            "expert_review_required": false,
+            "operational_assumptions": [
+              "signed endpoint increase; exact fixed lookback; all intervening samples required",
+              "not equivalent to SOP-002 sigma-based monotonic slope definition",
+              "30+ min interpreted as fixed 30-minute change, subject to team review"
+            ],
+            "clear_started_at": "2026-01-07T18:40:00",
+            "status": "recovered",
+            "closed_at": "2026-01-07T18:40:30",
+            "normal_confirmed_at": "2026-01-07T18:40:30",
+            "elapsed_to_last_positive_seconds": 30.0,
+            "continuous_violation_claim": false,
+            "bridging_policy": "one observed nonqualifying point may be retained inside event; two clear; gaps never bridged",
+            "id": "det3-51b867ceda43bc5ebc88"
+          },
+          {
+            "sensor_id": "ST02_SEALING_CUR",
+            "station_id": "ST02_SEALING",
+            "rule_id": "MAINT-02",
+            "kind": "kg_document_drift",
+            "op": "delta_gt",
+            "condition_start": "2026-01-08T00:38:00",
+            "trigger_at": "2026-01-08T00:38:30",
+            "last_positive_at": "2026-01-08T00:38:30",
+            "trigger_value": "12.8053",
+            "last_value": "12.8053",
+            "unit": "A",
+            "feature_value": "1.1503",
+            "baseline_value": "11.655",
+            "baseline_at": "2026-01-08T00:08:30",
+            "threshold": "1.0",
+            "second_threshold": null,
+            "window_seconds": 1800,
+            "duration_seconds": 0,
+            "positive_observations": 2,
+            "qualified_observations": 2,
+            "nonqualifying_observations": 2,
+            "source_evidence": [
+              {
+                "chunk_ids": [
+                  "SOP-003:p1:table1:chunk"
+                ],
+                "quote": "Rule ID: MAINT-02; Sensor: CUR; Station: ST02_SEALING; Trigger: CUR DRIFT >1.0 A for 30+ min; Action: Inspect sealing jaw; Priority: HIGH",
+                "quote_sha256": "a5a70c4599feaefe2dfb77cb39ecaa248be426c56d5d7752af9a6d13fe4ded60"
+              }
+            ],
+            "source_kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-02",
+            "document_recommended_response": "Inspect sealing jaw",
+            "response_label": "문서가 권고하는 대응",
+            "action_executed": false,
+            "cause_status": "규칙 조건 일치; 실제 고장 원인 미확정",
+            "expert_review_required": false,
+            "operational_assumptions": [
+              "signed endpoint increase; exact fixed lookback; all intervening samples required",
+              "not equivalent to SOP-002 sigma-based monotonic slope definition",
+              "30+ min interpreted as fixed 30-minute change, subject to team review"
+            ],
+            "clear_started_at": "2026-01-08T00:39:00",
+            "status": "recovered",
+            "closed_at": "2026-01-08T00:39:30",
+            "normal_confirmed_at": "2026-01-08T00:39:30",
+            "elapsed_to_last_positive_seconds": 30.0,
+            "continuous_violation_claim": false,
+            "bridging_policy": "one observed nonqualifying point may be retained inside event; two clear; gaps never bridged",
+            "id": "det3-e02f4a1d070324cbc169"
+          },
+          {
+            "sensor_id": "ST02_SEALING_CUR",
+            "station_id": "ST02_SEALING",
+            "rule_id": "MAINT-02",
+            "kind": "kg_document_drift",
+            "op": "delta_gt",
+            "condition_start": "2026-01-08T11:23:30",
+            "trigger_at": "2026-01-08T11:24:00",
+            "last_positive_at": "2026-01-08T11:24:00",
+            "trigger_value": "12.6383",
+            "last_value": "12.6383",
+            "unit": "A",
+            "feature_value": "1.0392",
+            "baseline_value": "11.5991",
+            "baseline_at": "2026-01-08T10:54:00",
+            "threshold": "1.0",
+            "second_threshold": null,
+            "window_seconds": 1800,
+            "duration_seconds": 0,
+            "positive_observations": 2,
+            "qualified_observations": 2,
+            "nonqualifying_observations": 2,
+            "source_evidence": [
+              {
+                "chunk_ids": [
+                  "SOP-003:p1:table1:chunk"
+                ],
+                "quote": "Rule ID: MAINT-02; Sensor: CUR; Station: ST02_SEALING; Trigger: CUR DRIFT >1.0 A for 30+ min; Action: Inspect sealing jaw; Priority: HIGH",
+                "quote_sha256": "a5a70c4599feaefe2dfb77cb39ecaa248be426c56d5d7752af9a6d13fe4ded60"
+              }
+            ],
+            "source_kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-02",
+            "document_recommended_response": "Inspect sealing jaw",
+            "response_label": "문서가 권고하는 대응",
+            "action_executed": false,
+            "cause_status": "규칙 조건 일치; 실제 고장 원인 미확정",
+            "expert_review_required": false,
+            "operational_assumptions": [
+              "signed endpoint increase; exact fixed lookback; all intervening samples required",
+              "not equivalent to SOP-002 sigma-based monotonic slope definition",
+              "30+ min interpreted as fixed 30-minute change, subject to team review"
+            ],
+            "clear_started_at": "2026-01-08T11:24:30",
+            "status": "recovered",
+            "closed_at": "2026-01-08T11:25:00",
+            "normal_confirmed_at": "2026-01-08T11:25:00",
+            "elapsed_to_last_positive_seconds": 30.0,
+            "continuous_violation_claim": false,
+            "bridging_policy": "one observed nonqualifying point may be retained inside event; two clear; gaps never bridged",
+            "id": "det3-e65f2401de75fc2901c5"
+          },
+          {
+            "sensor_id": "ST02_SEALING_CUR",
+            "station_id": "ST02_SEALING",
+            "rule_id": "MAINT-02",
+            "kind": "kg_document_drift",
+            "op": "delta_gt",
+            "condition_start": "2026-01-08T19:59:30",
+            "trigger_at": "2026-01-08T20:00:00",
+            "last_positive_at": "2026-01-08T20:00:00",
+            "trigger_value": "13.3432",
+            "last_value": "13.3432",
+            "unit": "A",
+            "feature_value": "1.5457",
+            "baseline_value": "11.7975",
+            "baseline_at": "2026-01-08T19:30:00",
+            "threshold": "1.0",
+            "second_threshold": null,
+            "window_seconds": 1800,
+            "duration_seconds": 0,
+            "positive_observations": 2,
+            "qualified_observations": 2,
+            "nonqualifying_observations": 2,
+            "source_evidence": [
+              {
+                "chunk_ids": [
+                  "SOP-003:p1:table1:chunk"
+                ],
+                "quote": "Rule ID: MAINT-02; Sensor: CUR; Station: ST02_SEALING; Trigger: CUR DRIFT >1.0 A for 30+ min; Action: Inspect sealing jaw; Priority: HIGH",
+                "quote_sha256": "a5a70c4599feaefe2dfb77cb39ecaa248be426c56d5d7752af9a6d13fe4ded60"
+              }
+            ],
+            "source_kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-02",
+            "document_recommended_response": "Inspect sealing jaw",
+            "response_label": "문서가 권고하는 대응",
+            "action_executed": false,
+            "cause_status": "규칙 조건 일치; 실제 고장 원인 미확정",
+            "expert_review_required": false,
+            "operational_assumptions": [
+              "signed endpoint increase; exact fixed lookback; all intervening samples required",
+              "not equivalent to SOP-002 sigma-based monotonic slope definition",
+              "30+ min interpreted as fixed 30-minute change, subject to team review"
+            ],
+            "clear_started_at": "2026-01-08T20:00:30",
+            "status": "recovered",
+            "closed_at": "2026-01-08T20:01:00",
+            "normal_confirmed_at": "2026-01-08T20:01:00",
+            "elapsed_to_last_positive_seconds": 30.0,
+            "continuous_violation_claim": false,
+            "bridging_policy": "one observed nonqualifying point may be retained inside event; two clear; gaps never bridged",
+            "id": "det3-f007edde26819882a99e"
+          },
+          {
+            "sensor_id": "ST02_SEALING_CUR",
+            "station_id": "ST02_SEALING",
+            "rule_id": "MAINT-02",
+            "kind": "kg_document_drift",
+            "op": "delta_gt",
+            "condition_start": "2026-01-08T20:32:00",
+            "trigger_at": "2026-01-08T20:32:30",
+            "last_positive_at": "2026-01-08T20:32:30",
+            "trigger_value": "12.9706",
+            "last_value": "12.9706",
+            "unit": "A",
+            "feature_value": "1.1533",
+            "baseline_value": "11.8173",
+            "baseline_at": "2026-01-08T20:02:30",
+            "threshold": "1.0",
+            "second_threshold": null,
+            "window_seconds": 1800,
+            "duration_seconds": 0,
+            "positive_observations": 2,
+            "qualified_observations": 2,
+            "nonqualifying_observations": 2,
+            "source_evidence": [
+              {
+                "chunk_ids": [
+                  "SOP-003:p1:table1:chunk"
+                ],
+                "quote": "Rule ID: MAINT-02; Sensor: CUR; Station: ST02_SEALING; Trigger: CUR DRIFT >1.0 A for 30+ min; Action: Inspect sealing jaw; Priority: HIGH",
+                "quote_sha256": "a5a70c4599feaefe2dfb77cb39ecaa248be426c56d5d7752af9a6d13fe4ded60"
+              }
+            ],
+            "source_kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-02",
+            "document_recommended_response": "Inspect sealing jaw",
+            "response_label": "문서가 권고하는 대응",
+            "action_executed": false,
+            "cause_status": "규칙 조건 일치; 실제 고장 원인 미확정",
+            "expert_review_required": false,
+            "operational_assumptions": [
+              "signed endpoint increase; exact fixed lookback; all intervening samples required",
+              "not equivalent to SOP-002 sigma-based monotonic slope definition",
+              "30+ min interpreted as fixed 30-minute change, subject to team review"
+            ],
+            "clear_started_at": "2026-01-08T20:33:00",
+            "status": "recovered",
+            "closed_at": "2026-01-08T20:33:30",
+            "normal_confirmed_at": "2026-01-08T20:33:30",
+            "elapsed_to_last_positive_seconds": 30.0,
+            "continuous_violation_claim": false,
+            "bridging_policy": "one observed nonqualifying point may be retained inside event; two clear; gaps never bridged",
+            "id": "det3-9c49616700cd65051d10"
+          },
+          {
+            "sensor_id": "ST02_SEALING_CUR",
+            "station_id": "ST02_SEALING",
+            "rule_id": "MAINT-02",
+            "kind": "kg_document_drift",
+            "op": "delta_gt",
+            "condition_start": "2026-01-09T00:16:00",
+            "trigger_at": "2026-01-09T00:16:30",
+            "last_positive_at": "2026-01-09T00:16:30",
+            "trigger_value": "13.1733",
+            "last_value": "13.1733",
+            "unit": "A",
+            "feature_value": "1.3173",
+            "baseline_value": "11.856",
+            "baseline_at": "2026-01-08T23:46:30",
+            "threshold": "1.0",
+            "second_threshold": null,
+            "window_seconds": 1800,
+            "duration_seconds": 0,
+            "positive_observations": 2,
+            "qualified_observations": 2,
+            "nonqualifying_observations": 2,
+            "source_evidence": [
+              {
+                "chunk_ids": [
+                  "SOP-003:p1:table1:chunk"
+                ],
+                "quote": "Rule ID: MAINT-02; Sensor: CUR; Station: ST02_SEALING; Trigger: CUR DRIFT >1.0 A for 30+ min; Action: Inspect sealing jaw; Priority: HIGH",
+                "quote_sha256": "a5a70c4599feaefe2dfb77cb39ecaa248be426c56d5d7752af9a6d13fe4ded60"
+              }
+            ],
+            "source_kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-02",
+            "document_recommended_response": "Inspect sealing jaw",
+            "response_label": "문서가 권고하는 대응",
+            "action_executed": false,
+            "cause_status": "규칙 조건 일치; 실제 고장 원인 미확정",
+            "expert_review_required": false,
+            "operational_assumptions": [
+              "signed endpoint increase; exact fixed lookback; all intervening samples required",
+              "not equivalent to SOP-002 sigma-based monotonic slope definition",
+              "30+ min interpreted as fixed 30-minute change, subject to team review"
+            ],
+            "clear_started_at": "2026-01-09T00:17:00",
+            "status": "recovered",
+            "closed_at": "2026-01-09T00:17:30",
+            "normal_confirmed_at": "2026-01-09T00:17:30",
+            "elapsed_to_last_positive_seconds": 30.0,
+            "continuous_violation_claim": false,
+            "bridging_policy": "one observed nonqualifying point may be retained inside event; two clear; gaps never bridged",
+            "id": "det3-9eefb08e456f34e8083b"
+          },
+          {
+            "sensor_id": "ST02_SEALING_CUR",
+            "station_id": "ST02_SEALING",
+            "rule_id": "MAINT-02",
+            "kind": "kg_document_drift",
+            "op": "delta_gt",
+            "condition_start": "2026-01-09T00:37:30",
+            "trigger_at": "2026-01-09T00:38:00",
+            "last_positive_at": "2026-01-09T00:38:00",
+            "trigger_value": "12.9586",
+            "last_value": "12.9586",
+            "unit": "A",
+            "feature_value": "1.3587",
+            "baseline_value": "11.5999",
+            "baseline_at": "2026-01-09T00:08:00",
+            "threshold": "1.0",
+            "second_threshold": null,
+            "window_seconds": 1800,
+            "duration_seconds": 0,
+            "positive_observations": 2,
+            "qualified_observations": 2,
+            "nonqualifying_observations": 2,
+            "source_evidence": [
+              {
+                "chunk_ids": [
+                  "SOP-003:p1:table1:chunk"
+                ],
+                "quote": "Rule ID: MAINT-02; Sensor: CUR; Station: ST02_SEALING; Trigger: CUR DRIFT >1.0 A for 30+ min; Action: Inspect sealing jaw; Priority: HIGH",
+                "quote_sha256": "a5a70c4599feaefe2dfb77cb39ecaa248be426c56d5d7752af9a6d13fe4ded60"
+              }
+            ],
+            "source_kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-02",
+            "document_recommended_response": "Inspect sealing jaw",
+            "response_label": "문서가 권고하는 대응",
+            "action_executed": false,
+            "cause_status": "규칙 조건 일치; 실제 고장 원인 미확정",
+            "expert_review_required": false,
+            "operational_assumptions": [
+              "signed endpoint increase; exact fixed lookback; all intervening samples required",
+              "not equivalent to SOP-002 sigma-based monotonic slope definition",
+              "30+ min interpreted as fixed 30-minute change, subject to team review"
+            ],
+            "clear_started_at": "2026-01-09T00:38:30",
+            "status": "recovered",
+            "closed_at": "2026-01-09T00:39:00",
+            "normal_confirmed_at": "2026-01-09T00:39:00",
+            "elapsed_to_last_positive_seconds": 30.0,
+            "continuous_violation_claim": false,
+            "bridging_policy": "one observed nonqualifying point may be retained inside event; two clear; gaps never bridged",
+            "id": "det3-237aaf5a13fa3da9bff7"
+          },
+          {
+            "sensor_id": "ST02_SEALING_CUR",
+            "station_id": "ST02_SEALING",
+            "rule_id": "MAINT-02",
+            "kind": "kg_document_drift",
+            "op": "delta_gt",
+            "condition_start": "2026-01-09T01:48:00",
+            "trigger_at": "2026-01-09T01:48:30",
+            "last_positive_at": "2026-01-09T01:48:30",
+            "trigger_value": "12.8832",
+            "last_value": "12.8832",
+            "unit": "A",
+            "feature_value": "1.0591",
+            "baseline_value": "11.8241",
+            "baseline_at": "2026-01-09T01:18:30",
+            "threshold": "1.0",
+            "second_threshold": null,
+            "window_seconds": 1800,
+            "duration_seconds": 0,
+            "positive_observations": 2,
+            "qualified_observations": 2,
+            "nonqualifying_observations": 2,
+            "source_evidence": [
+              {
+                "chunk_ids": [
+                  "SOP-003:p1:table1:chunk"
+                ],
+                "quote": "Rule ID: MAINT-02; Sensor: CUR; Station: ST02_SEALING; Trigger: CUR DRIFT >1.0 A for 30+ min; Action: Inspect sealing jaw; Priority: HIGH",
+                "quote_sha256": "a5a70c4599feaefe2dfb77cb39ecaa248be426c56d5d7752af9a6d13fe4ded60"
+              }
+            ],
+            "source_kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-02",
+            "document_recommended_response": "Inspect sealing jaw",
+            "response_label": "문서가 권고하는 대응",
+            "action_executed": false,
+            "cause_status": "규칙 조건 일치; 실제 고장 원인 미확정",
+            "expert_review_required": false,
+            "operational_assumptions": [
+              "signed endpoint increase; exact fixed lookback; all intervening samples required",
+              "not equivalent to SOP-002 sigma-based monotonic slope definition",
+              "30+ min interpreted as fixed 30-minute change, subject to team review"
+            ],
+            "clear_started_at": "2026-01-09T01:49:00",
+            "status": "recovered",
+            "closed_at": "2026-01-09T01:49:30",
+            "normal_confirmed_at": "2026-01-09T01:49:30",
+            "elapsed_to_last_positive_seconds": 30.0,
+            "continuous_violation_claim": false,
+            "bridging_policy": "one observed nonqualifying point may be retained inside event; two clear; gaps never bridged",
+            "id": "det3-e9935f3d5d1812f6a872"
+          },
+          {
+            "sensor_id": "ST02_SEALING_CUR",
+            "station_id": "ST02_SEALING",
+            "rule_id": "MAINT-02",
+            "kind": "kg_document_drift",
+            "op": "delta_gt",
+            "condition_start": "2026-01-09T03:24:00",
+            "trigger_at": "2026-01-09T03:24:30",
+            "last_positive_at": "2026-01-09T03:25:00",
+            "trigger_value": "13.2278",
+            "last_value": "12.8638",
+            "unit": "A",
+            "feature_value": "1.5613",
+            "baseline_value": "11.6665",
+            "baseline_at": "2026-01-09T02:54:30",
+            "threshold": "1.0",
+            "second_threshold": null,
+            "window_seconds": 1800,
+            "duration_seconds": 0,
+            "positive_observations": 3,
+            "qualified_observations": 3,
+            "nonqualifying_observations": 2,
+            "source_evidence": [
+              {
+                "chunk_ids": [
+                  "SOP-003:p1:table1:chunk"
+                ],
+                "quote": "Rule ID: MAINT-02; Sensor: CUR; Station: ST02_SEALING; Trigger: CUR DRIFT >1.0 A for 30+ min; Action: Inspect sealing jaw; Priority: HIGH",
+                "quote_sha256": "a5a70c4599feaefe2dfb77cb39ecaa248be426c56d5d7752af9a6d13fe4ded60"
+              }
+            ],
+            "source_kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-02",
+            "document_recommended_response": "Inspect sealing jaw",
+            "response_label": "문서가 권고하는 대응",
+            "action_executed": false,
+            "cause_status": "규칙 조건 일치; 실제 고장 원인 미확정",
+            "expert_review_required": false,
+            "operational_assumptions": [
+              "signed endpoint increase; exact fixed lookback; all intervening samples required",
+              "not equivalent to SOP-002 sigma-based monotonic slope definition",
+              "30+ min interpreted as fixed 30-minute change, subject to team review"
+            ],
+            "clear_started_at": "2026-01-09T03:25:30",
+            "status": "recovered",
+            "closed_at": "2026-01-09T03:26:00",
+            "normal_confirmed_at": "2026-01-09T03:26:00",
+            "elapsed_to_last_positive_seconds": 60.0,
+            "continuous_violation_claim": false,
+            "bridging_policy": "one observed nonqualifying point may be retained inside event; two clear; gaps never bridged",
+            "id": "det3-e6400a1654369cbe9f5e"
+          },
+          {
+            "sensor_id": "ST02_SEALING_CUR",
+            "station_id": "ST02_SEALING",
+            "rule_id": "MAINT-02",
+            "kind": "kg_document_drift",
+            "op": "delta_gt",
+            "condition_start": "2026-01-09T05:51:00",
+            "trigger_at": "2026-01-09T05:51:30",
+            "last_positive_at": "2026-01-09T05:51:30",
+            "trigger_value": "12.7024",
+            "last_value": "12.7024",
+            "unit": "A",
+            "feature_value": "1.0192",
+            "baseline_value": "11.6832",
+            "baseline_at": "2026-01-09T05:21:30",
+            "threshold": "1.0",
+            "second_threshold": null,
+            "window_seconds": 1800,
+            "duration_seconds": 0,
+            "positive_observations": 2,
+            "qualified_observations": 2,
+            "nonqualifying_observations": 2,
+            "source_evidence": [
+              {
+                "chunk_ids": [
+                  "SOP-003:p1:table1:chunk"
+                ],
+                "quote": "Rule ID: MAINT-02; Sensor: CUR; Station: ST02_SEALING; Trigger: CUR DRIFT >1.0 A for 30+ min; Action: Inspect sealing jaw; Priority: HIGH",
+                "quote_sha256": "a5a70c4599feaefe2dfb77cb39ecaa248be426c56d5d7752af9a6d13fe4ded60"
+              }
+            ],
+            "source_kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-02",
+            "document_recommended_response": "Inspect sealing jaw",
+            "response_label": "문서가 권고하는 대응",
+            "action_executed": false,
+            "cause_status": "규칙 조건 일치; 실제 고장 원인 미확정",
+            "expert_review_required": false,
+            "operational_assumptions": [
+              "signed endpoint increase; exact fixed lookback; all intervening samples required",
+              "not equivalent to SOP-002 sigma-based monotonic slope definition",
+              "30+ min interpreted as fixed 30-minute change, subject to team review"
+            ],
+            "clear_started_at": "2026-01-09T05:52:00",
+            "status": "recovered",
+            "closed_at": "2026-01-09T05:52:30",
+            "normal_confirmed_at": "2026-01-09T05:52:30",
+            "elapsed_to_last_positive_seconds": 30.0,
+            "continuous_violation_claim": false,
+            "bridging_policy": "one observed nonqualifying point may be retained inside event; two clear; gaps never bridged",
+            "id": "det3-50072cdcbeb14a9651c3"
+          }
+        ]
+      },
+      "kg_document_rule": {
+        "rule_alarm_count": 26,
+        "gold_events": 14,
+        "events_covered": 12,
+        "events_with_new_alarm": 12,
+        "coverage_recall": 0.8571428571428571,
+        "rule_alarms_without_gold_overlap": 0,
+        "rule_alarm_overlap_precision": 1.0,
+        "median_latency_minutes_non_preexisting": 1.25,
+        "preexisting_alarm_events": 0,
+        "merged_episode_count": 20,
+        "one_to_one_TP": 12,
+        "one_to_one_FP": 8,
+        "one_to_one_FN": 2,
+        "one_to_one_precision": 0.6,
+        "one_to_one_recall": 0.8571428571428571,
+        "one_to_one_F1": 0.7058823529411765,
+        "by_type": {
+          "CORRELATED": {
+            "caught": 0,
+            "total": 1
+          },
+          "DRIFT": {
+            "caught": 4,
+            "total": 5
+          },
+          "OUT_OF_RANGE": {
+            "caught": 4,
+            "total": 4
+          },
+          "SPIKE": {
+            "caught": 3,
+            "total": 3
+          },
+          "STUCK": {
+            "caught": 1,
+            "total": 1
+          }
+        },
+        "events": [
+          {
+            "sensor_id": "ST02_SEALING_TMP",
+            "label": "SPIKE",
+            "start": "2026-01-06T08:30:00",
+            "end": "2026-01-06T08:33:00",
+            "samples": 7,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-06T08:30:30",
+            "latency_minutes_signed": 0.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "RULE-ST02-01",
+              "RULE-ST02-02"
+            ]
+          },
+          {
+            "sensor_id": "ST01_FILLING_PRS",
+            "label": "DRIFT",
+            "start": "2026-01-06T11:00:00",
+            "end": "2026-01-06T11:45:00",
+            "samples": 91,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "ST04_PACKAGING_VIB",
+            "label": "DRIFT",
+            "start": "2026-01-07T07:00:00",
+            "end": "2026-01-07T08:30:00",
+            "samples": 181,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-07T07:40:30",
+            "latency_minutes_signed": 40.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "RULE-ST04-01"
+            ]
+          },
+          {
+            "sensor_id": "ST03_LABELLING_TEN",
+            "label": "STUCK",
+            "start": "2026-01-07T09:30:00",
+            "end": "2026-01-07T09:42:00",
+            "samples": 25,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-07T09:35:30",
+            "latency_minutes_signed": 5.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "MAINT-03",
+              "RULE-ST03-03"
+            ]
+          },
+          {
+            "sensor_id": "SRV01_SERVERROOM_TMP",
+            "label": "OUT_OF_RANGE",
+            "start": "2026-01-07T12:00:00",
+            "end": "2026-01-07T12:20:00",
+            "samples": 41,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-07T12:00:30",
+            "latency_minutes_signed": 0.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "MAINT-05",
+              "RULE-SRV01-01"
+            ]
+          },
+          {
+            "sensor_id": "CAF01_CAFETERIA_TMP",
+            "label": "OUT_OF_RANGE",
+            "start": "2026-01-07T16:00:00",
+            "end": "2026-01-07T16:30:00",
+            "samples": 61,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-07T16:02:00",
+            "latency_minutes_signed": 2.0,
+            "preexisting_alarm": false,
+            "rules": [
+              "RULE-CAF01-01"
+            ]
+          },
+          {
+            "sensor_id": "ST01_FILLING_FLW",
+            "label": "SPIKE",
+            "start": "2026-01-08T06:30:00",
+            "end": "2026-01-08T06:32:00",
+            "samples": 5,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-08T06:30:30",
+            "latency_minutes_signed": 0.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "RULE-ST01-01"
+            ]
+          },
+          {
+            "sensor_id": "ST02_SEALING_CUR",
+            "label": "DRIFT",
+            "start": "2026-01-08T08:00:00",
+            "end": "2026-01-08T10:00:00",
+            "samples": 241,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-08T09:36:00",
+            "latency_minutes_signed": 96.0,
+            "preexisting_alarm": false,
+            "rules": [
+              "RULE-ST02-03"
+            ]
+          },
+          {
+            "sensor_id": "ST04_PACKAGING_SPD",
+            "label": "CORRELATED",
+            "start": "2026-01-08T09:30:00",
+            "end": "2026-01-08T10:30:00",
+            "samples": 121,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "ST03_LABELLING_CNT",
+            "label": "OUT_OF_RANGE",
+            "start": "2026-01-09T07:30:00",
+            "end": "2026-01-09T07:55:00",
+            "samples": 51,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-09T07:30:30",
+            "latency_minutes_signed": 0.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "RULE-ST03-02",
+              "RULE-ST03-02-CRITICAL"
+            ]
+          },
+          {
+            "sensor_id": "CHM01_CHEMICALSTORAGE_TMP",
+            "label": "OUT_OF_RANGE",
+            "start": "2026-01-09T08:00:00",
+            "end": "2026-01-09T08:45:00",
+            "samples": 91,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-09T08:00:30",
+            "latency_minutes_signed": 0.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "MAINT-07",
+              "RULE-CHM01-01"
+            ]
+          },
+          {
+            "sensor_id": "WRH01_WAREHOUSE_TMP",
+            "label": "DRIFT",
+            "start": "2026-01-09T10:00:00",
+            "end": "2026-01-09T13:00:00",
+            "samples": 361,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-09T11:48:30",
+            "latency_minutes_signed": 108.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "RULE-WRH01-01"
+            ]
+          },
+          {
+            "sensor_id": "RND01_RDLAB_HUM",
+            "label": "DRIFT",
+            "start": "2026-01-09T11:30:00",
+            "end": "2026-01-09T13:00:00",
+            "samples": 181,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-09T12:45:00",
+            "latency_minutes_signed": 75.0,
+            "preexisting_alarm": false,
+            "rules": [
+              "RULE-RND01-02"
+            ]
+          },
+          {
+            "sensor_id": "ST04_PACKAGING_VIB",
+            "label": "SPIKE",
+            "start": "2026-01-09T13:00:00",
+            "end": "2026-01-09T13:01:00",
+            "samples": 3,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-09T13:00:30",
+            "latency_minutes_signed": 0.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "RULE-ST04-01",
+              "RULE-ST04-02"
+            ]
+          }
+        ],
+        "unmatched_rule_alarms": []
+      },
+      "kg_threshold_critical": {
+        "rule_alarm_count": 4,
+        "gold_events": 14,
+        "events_covered": 4,
+        "events_with_new_alarm": 4,
+        "coverage_recall": 0.2857142857142857,
+        "rule_alarms_without_gold_overlap": 0,
+        "rule_alarm_overlap_precision": 1.0,
+        "median_latency_minutes_non_preexisting": 0.5,
+        "preexisting_alarm_events": 0,
+        "merged_episode_count": 4,
+        "one_to_one_TP": 4,
+        "one_to_one_FP": 0,
+        "one_to_one_FN": 10,
+        "one_to_one_precision": 1.0,
+        "one_to_one_recall": 0.2857142857142857,
+        "one_to_one_F1": 0.4444444444444444,
+        "by_type": {
+          "CORRELATED": {
+            "caught": 0,
+            "total": 1
+          },
+          "DRIFT": {
+            "caught": 0,
+            "total": 5
+          },
+          "OUT_OF_RANGE": {
+            "caught": 1,
+            "total": 4
+          },
+          "SPIKE": {
+            "caught": 3,
+            "total": 3
+          },
+          "STUCK": {
+            "caught": 0,
+            "total": 1
+          }
+        },
+        "events": [
+          {
+            "sensor_id": "ST02_SEALING_TMP",
+            "label": "SPIKE",
+            "start": "2026-01-06T08:30:00",
+            "end": "2026-01-06T08:33:00",
+            "samples": 7,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-06T08:30:30",
+            "latency_minutes_signed": 0.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-04:critical"
+            ]
+          },
+          {
+            "sensor_id": "ST01_FILLING_PRS",
+            "label": "DRIFT",
+            "start": "2026-01-06T11:00:00",
+            "end": "2026-01-06T11:45:00",
+            "samples": 91,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "ST04_PACKAGING_VIB",
+            "label": "DRIFT",
+            "start": "2026-01-07T07:00:00",
+            "end": "2026-01-07T08:30:00",
+            "samples": 181,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "ST03_LABELLING_TEN",
+            "label": "STUCK",
+            "start": "2026-01-07T09:30:00",
+            "end": "2026-01-07T09:42:00",
+            "samples": 25,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "SRV01_SERVERROOM_TMP",
+            "label": "OUT_OF_RANGE",
+            "start": "2026-01-07T12:00:00",
+            "end": "2026-01-07T12:20:00",
+            "samples": 41,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "CAF01_CAFETERIA_TMP",
+            "label": "OUT_OF_RANGE",
+            "start": "2026-01-07T16:00:00",
+            "end": "2026-01-07T16:30:00",
+            "samples": 61,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "ST01_FILLING_FLW",
+            "label": "SPIKE",
+            "start": "2026-01-08T06:30:00",
+            "end": "2026-01-08T06:32:00",
+            "samples": 5,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-08T06:30:30",
+            "latency_minutes_signed": 0.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-03:critical"
+            ]
+          },
+          {
+            "sensor_id": "ST02_SEALING_CUR",
+            "label": "DRIFT",
+            "start": "2026-01-08T08:00:00",
+            "end": "2026-01-08T10:00:00",
+            "samples": 241,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "ST04_PACKAGING_SPD",
+            "label": "CORRELATED",
+            "start": "2026-01-08T09:30:00",
+            "end": "2026-01-08T10:30:00",
+            "samples": 121,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "ST03_LABELLING_CNT",
+            "label": "OUT_OF_RANGE",
+            "start": "2026-01-09T07:30:00",
+            "end": "2026-01-09T07:55:00",
+            "samples": 51,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-09T07:52:00",
+            "latency_minutes_signed": 22.0,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-09:critical"
+            ]
+          },
+          {
+            "sensor_id": "CHM01_CHEMICALSTORAGE_TMP",
+            "label": "OUT_OF_RANGE",
+            "start": "2026-01-09T08:00:00",
+            "end": "2026-01-09T08:45:00",
+            "samples": 91,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "WRH01_WAREHOUSE_TMP",
+            "label": "DRIFT",
+            "start": "2026-01-09T10:00:00",
+            "end": "2026-01-09T13:00:00",
+            "samples": 361,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "RND01_RDLAB_HUM",
+            "label": "DRIFT",
+            "start": "2026-01-09T11:30:00",
+            "end": "2026-01-09T13:00:00",
+            "samples": 181,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "ST04_PACKAGING_VIB",
+            "label": "SPIKE",
+            "start": "2026-01-09T13:00:00",
+            "end": "2026-01-09T13:01:00",
+            "samples": 3,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-09T13:00:30",
+            "latency_minutes_signed": 0.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-10:critical"
+            ]
+          }
+        ],
+        "unmatched_rule_alarms": []
+      },
+      "kg_threshold_warning": {
+        "rule_alarm_count": 25,
+        "gold_events": 14,
+        "events_covered": 12,
+        "events_with_new_alarm": 12,
+        "coverage_recall": 0.8571428571428571,
+        "rule_alarms_without_gold_overlap": 0,
+        "rule_alarm_overlap_precision": 1.0,
+        "median_latency_minutes_non_preexisting": 1.25,
+        "preexisting_alarm_events": 0,
+        "merged_episode_count": 25,
+        "one_to_one_TP": 12,
+        "one_to_one_FP": 13,
+        "one_to_one_FN": 2,
+        "one_to_one_precision": 0.48,
+        "one_to_one_recall": 0.8571428571428571,
+        "one_to_one_F1": 0.6153846153846154,
+        "by_type": {
+          "CORRELATED": {
+            "caught": 0,
+            "total": 1
+          },
+          "DRIFT": {
+            "caught": 5,
+            "total": 5
+          },
+          "OUT_OF_RANGE": {
+            "caught": 4,
+            "total": 4
+          },
+          "SPIKE": {
+            "caught": 3,
+            "total": 3
+          },
+          "STUCK": {
+            "caught": 0,
+            "total": 1
+          }
+        },
+        "events": [
+          {
+            "sensor_id": "ST02_SEALING_TMP",
+            "label": "SPIKE",
+            "start": "2026-01-06T08:30:00",
+            "end": "2026-01-06T08:33:00",
+            "samples": 7,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-06T08:30:30",
+            "latency_minutes_signed": 0.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-04:warning"
+            ]
+          },
+          {
+            "sensor_id": "ST01_FILLING_PRS",
+            "label": "DRIFT",
+            "start": "2026-01-06T11:00:00",
+            "end": "2026-01-06T11:45:00",
+            "samples": 91,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-06T11:29:30",
+            "latency_minutes_signed": 29.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-02:warning"
+            ]
+          },
+          {
+            "sensor_id": "ST04_PACKAGING_VIB",
+            "label": "DRIFT",
+            "start": "2026-01-07T07:00:00",
+            "end": "2026-01-07T08:30:00",
+            "samples": 181,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-07T07:40:30",
+            "latency_minutes_signed": 40.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-10:warning"
+            ]
+          },
+          {
+            "sensor_id": "ST03_LABELLING_TEN",
+            "label": "STUCK",
+            "start": "2026-01-07T09:30:00",
+            "end": "2026-01-07T09:42:00",
+            "samples": 25,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "SRV01_SERVERROOM_TMP",
+            "label": "OUT_OF_RANGE",
+            "start": "2026-01-07T12:00:00",
+            "end": "2026-01-07T12:20:00",
+            "samples": 41,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-07T12:00:30",
+            "latency_minutes_signed": 0.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-13:warning"
+            ]
+          },
+          {
+            "sensor_id": "CAF01_CAFETERIA_TMP",
+            "label": "OUT_OF_RANGE",
+            "start": "2026-01-07T16:00:00",
+            "end": "2026-01-07T16:30:00",
+            "samples": 61,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-07T16:02:00",
+            "latency_minutes_signed": 2.0,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-21:warning"
+            ]
+          },
+          {
+            "sensor_id": "ST01_FILLING_FLW",
+            "label": "SPIKE",
+            "start": "2026-01-08T06:30:00",
+            "end": "2026-01-08T06:32:00",
+            "samples": 5,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-08T06:30:30",
+            "latency_minutes_signed": 0.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-03:warning"
+            ]
+          },
+          {
+            "sensor_id": "ST02_SEALING_CUR",
+            "label": "DRIFT",
+            "start": "2026-01-08T08:00:00",
+            "end": "2026-01-08T10:00:00",
+            "samples": 241,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-08T08:40:00",
+            "latency_minutes_signed": 40.0,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-06:warning"
+            ]
+          },
+          {
+            "sensor_id": "ST04_PACKAGING_SPD",
+            "label": "CORRELATED",
+            "start": "2026-01-08T09:30:00",
+            "end": "2026-01-08T10:30:00",
+            "samples": 121,
+            "covered": false,
+            "new_alarm_in_gold_window": false,
+            "first_alarm": null,
+            "latency_minutes_signed": null,
+            "preexisting_alarm": false,
+            "rules": []
+          },
+          {
+            "sensor_id": "ST03_LABELLING_CNT",
+            "label": "OUT_OF_RANGE",
+            "start": "2026-01-09T07:30:00",
+            "end": "2026-01-09T07:55:00",
+            "samples": 51,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-09T07:30:30",
+            "latency_minutes_signed": 0.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-09:warning"
+            ]
+          },
+          {
+            "sensor_id": "CHM01_CHEMICALSTORAGE_TMP",
+            "label": "OUT_OF_RANGE",
+            "start": "2026-01-09T08:00:00",
+            "end": "2026-01-09T08:45:00",
+            "samples": 91,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-09T08:00:30",
+            "latency_minutes_signed": 0.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-17:warning"
+            ]
+          },
+          {
+            "sensor_id": "WRH01_WAREHOUSE_TMP",
+            "label": "DRIFT",
+            "start": "2026-01-09T10:00:00",
+            "end": "2026-01-09T13:00:00",
+            "samples": 361,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-09T11:48:30",
+            "latency_minutes_signed": 108.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-15:warning"
+            ]
+          },
+          {
+            "sensor_id": "RND01_RDLAB_HUM",
+            "label": "DRIFT",
+            "start": "2026-01-09T11:30:00",
+            "end": "2026-01-09T13:00:00",
+            "samples": 181,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-09T12:45:00",
+            "latency_minutes_signed": 75.0,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-20:warning"
+            ]
+          },
+          {
+            "sensor_id": "ST04_PACKAGING_VIB",
+            "label": "SPIKE",
+            "start": "2026-01-09T13:00:00",
+            "end": "2026-01-09T13:01:00",
+            "samples": 3,
+            "covered": true,
+            "new_alarm_in_gold_window": true,
+            "first_alarm": "2026-01-09T13:00:30",
+            "latency_minutes_signed": 0.5,
+            "preexisting_alarm": false,
+            "rules": [
+              "SOP-002-EX-10:warning"
+            ]
+          }
+        ],
+        "unmatched_rule_alarms": []
+      }
+    }
+  }
+}

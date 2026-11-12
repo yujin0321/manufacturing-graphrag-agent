@@ -32,6 +32,8 @@ iMAKS(제조 공정 합성 데이터셋)로 지식그래프(KG)를 직접 구축
 
 - **v3 Agent 문서 검색 경로(2026-10-28):** `python -m imaks_kg.rag.agent_v3`는 graph_v3를 사용한다. 기존 Agent/v1/v2 경로는 보존한다. 문서 검색은 v2 인덱스·과거 탐지 저장소 없이 실행된다. 기본 BM25, `--dense`에서만 행 임베딩 인덱스를 사용한다. 후보 도구는 기존 봉인 저장소를 그대로 사용하며 KG 탐지기 v2의 연결은 아직 아니다. 검색 전용 `--retrieve-only`는 API 호출이 없다. 라우팅·답변 생성은 유료 API 경로다. 자세한 실행은 `docs/graphrag_v3/AGENT_V3.md`.
 
+- **룰 탐지 엔진·⑦ 오버레이(2026-11-11):** `detection/engine/`이 KG 컴파일→실행→후처리를 설정(`configs/v3*.json`)으로 실행한다. 기존 v1~v3.1 탐지기는 보존하며 엔진의 v3·v3-literal·v3.1 설정은 기존 출력과 바이트 일치해야 한다. 사건은 `engine/overlay.py`로 별도 TTL 오버레이에 AnomalyEvent로 올리며 SHACL·적재 검사를 통과해야 한다. `likelihoodScore` 정의 전까지 CausalLink/`causallyAffects`는 만들지 않는다. Agent 도구는 `rag/incident_tools.py`. 탐지 결과가 바뀌는 개선은 새 설정으로 추가하고 라벨 없는 지표·합성 벤치마크로 먼저 평가한다. 상세 `docs/RULE_ENGINE_20261111.md`.
+
 - **Station(공정) 수준까지만 다룬다.** 내부 부품(Component) 계층은 만들지 않는다. 원본 Component 9개는 이름이 스테이션과 같으므로 Station으로 1:1 매핑한다.
 - **센서–스테이션 연결은 `hasSensor`(Station→Sensor) 단방향이다.** 원본 monitors 양방향 44줄(22쌍)은 하나로 정리한다.
 - **Person(작업자 44명)과 authorized_for(218개)는 만들지 않는다.** Zone 클래스도 만들지 않고 Station의 zone 속성으로 흡수한다(Main Entrance 불필요).

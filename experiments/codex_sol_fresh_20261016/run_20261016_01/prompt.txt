@@ -1,0 +1,2 @@
+Task source: user delegation in this chat.
+Extract source-supported rules, conditions, actions, sensor/equipment links and exact evidence from all seven documents in the six allowed files. Preserve English, follow extraction_policy.txt and output_schema.json; freeze original predictions before source validation and AI review. Build supported KG, validate SHACL, write Korean 최종평가.md with 12 requested sections; no evaluation/gold/API/Git operations.

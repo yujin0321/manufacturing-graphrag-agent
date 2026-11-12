@@ -1,0 +1,93 @@
+{
+  "prediction_file": "C:\\Users\\ysh\\Documents\\ChatGPT\\비타민 2학기 자연어처리 프로젝트\\experiments\\codex_sol_fresh_20261016\\run_20261016_01\\predictions.raw.jsonl",
+  "prediction_sha256": "179f66e9c4dad9fd99c71528fece42bea58edb76409d6ff4f6c2172567af39ef",
+  "original_freeze_sha256": "1c6e502fb24051089aad0fb2e0384b5f70ab3c8a2729712b455fb9df91199e31",
+  "definition_files": {
+    "eval_definition_F1_content.md": {
+      "path": "C:\\Users\\ysh\\Desktop\\대학교\\동아리\\비타민\\프로젝트\\26-2\\지훈코드\\eval_definition_F1_content.md",
+      "sha256": "35be575441258dbf80d8909fd8083124d0aa523476b878c14e22f002920a3e94"
+    },
+    "eval_definition_team_summary.md": {
+      "path": "C:\\Users\\ysh\\Desktop\\대학교\\동아리\\비타민\\프로젝트\\26-2\\지훈코드\\eval_definition_team_summary.md",
+      "sha256": "faef7200df00773a0a88b19bb22be1261b7102d8259cbddafde1693a723b8409"
+    }
+  },
+  "original_configuration_hashes": {
+    "prompt.txt": "aabfafc2a88861a7c62eea044acc644e021a80e616f7fe57f786590db6907b40",
+    "extraction_policy.txt": "734ef865d4e34fca881d3f2a14959d3906af5860a1397bfc05069eca7e121620",
+    "output_schema.json": "da15f55c86320a08c126b0994175f68b8848b4004bd2f084090a7016291d27b0",
+    "configuration.json": "9bacae850c7e68fded7acb3a2954324c4b7f49886c547707b61fb51f37881491",
+    "extract.py": "b722e4f027ad2f8bac1e4f3bef78ab7e5b0715ad32cef6fac1042666eaef0d33"
+  },
+  "examples": {
+    "used": false,
+    "file": null
+  },
+  "requested_model": "GPT-6.1 Sol",
+  "actual_model": "unverified",
+  "evaluation_policy": {
+    "version": "attached-definitions-20261016-v1",
+    "prediction_source": "../run_20261016_01/predictions.raw.jsonl",
+    "prediction_mutation": "forbidden",
+    "primary_population": "all SOP predictions against full original ground truth; datasheets excluded from FP",
+    "primary_text": "(condition or '') + ' ' + (action or '')",
+    "secondary_text": "Condition: {condition or ''}\nAction: {action or ''}",
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "embedding_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+    "embedding_normalization": true,
+    "similarity": "cosine",
+    "primary_threshold": 0.6,
+    "sensitivity_thresholds": [
+      0.5,
+      0.6,
+      0.7
+    ],
+    "assignment": "same document only; Hungarian; maximize valid pair count, then sum of valid cosine similarities; invalid pairs contribute zero",
+    "assignment_class_restriction": false,
+    "compound_prediction_merging": false,
+    "class_auxiliary": "retain primary matching; equal-class pairs count as TP, all other predictions/GT count FP/FN",
+    "sensor_auxiliary": "exact sensor set equality for content-matched pairs with interpretable sensor fields; missing GT sensor field is N/A",
+    "null_text_policy": "null condition/action becomes empty string; no invented replacement text",
+    "gold_document_policy": "source must equal a manifest document ID, original path, or original PDF filename (case-insensitive basename); otherwise stop",
+    "expected_gold_rows_from_definitions": 86,
+    "gt0009_binary": "N/A: later event-stage metric",
+    "gold_access": "evaluation code only in this output's src/imaks_kg/eval/; never print gold rule text to chat",
+    "matches_publication": "local only, no repository upload",
+    "requested_model": "GPT-6.1 Sol",
+    "actual_model_verification": "unverified; do not change frozen provenance",
+    "report_model_label": "모델(요청 설정): GPT-6.1 Sol",
+    "exposure": "project has historical gold exposure; schema and attached definitions contain counts/metadata; this is development evaluation, not independent blind test",
+    "api_calls": false
+  },
+  "policy_sha256": "e98140b9e4cfc87ad844d41a52483b9c77abec3e90aff0e3a07834d266cc1d5b",
+  "evaluator_sha256": "7e358fce3e113fd6937579cab08f734d8735717d5a175640e86a755eae8fb6a4",
+  "embedding_model": {
+    "name": "sentence-transformers/all-MiniLM-L6-v2",
+    "revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+    "dimension": 384,
+    "files": {
+      "1_Pooling/config.json": "4be450dde3b0273bb9787637cfbd28fe04a7ba6ab9d36ac48e92b11e350ffc23",
+      "config.json": "953f9c0d463486b10a6871cc2fd59f223b2c70184f49815e7efbcab5d8908b41",
+      "config_sentence_transformers.json": "061ca9d39661d6c6d6de5ba27f79a1cd5770ea247f8d46412a68a498dc5ac9f3",
+      "model.safetensors": "53aa51172d142c89d9012cce15ae4d6cc0ca6895895114379cacb4fab128d9db",
+      "modules.json": "84e40c8e006c9b1d6c122e02cba9b02458120b5fb0c87b746c41e0207cf642cf",
+      "pytorch_model.bin": "c3a85f238711653950f6a79ece63eb0ea93d76f6a6284be04019c53733baf256",
+      "sentence_bert_config.json": "fc1993fde0a95c24ec6c022539d41cf6e2f7c9721e5415d6fb6897472a9cd4b7",
+      "special_tokens_map.json": "303df45a03609e4ead04bc3dc1536d0ab19b5358db685b6f3da123d05ec200e3",
+      "tokenizer.json": "be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037",
+      "tokenizer_config.json": "acb92769e8195aabd29b7b2137a9e6d6e25c476a4f15aa4355c233426c61576b",
+      "vocab.txt": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3"
+    }
+  },
+  "versions": {
+    "torch": "2.14.1+cpu",
+    "sentence-transformers": "6.1.0",
+    "transformers": "5.20.0",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "huggingface-hub": "1.33.0"
+  },
+  "gold_not_read_by_this_preparation": true,
+  "exposure": "Attached definitions disclose gold aggregate counts. Historical project gold exposure inherited. This chat has not read individual gold rules.",
+  "scope": "Fixed original raw predictions; no prediction rewrite or rule merging."
+}

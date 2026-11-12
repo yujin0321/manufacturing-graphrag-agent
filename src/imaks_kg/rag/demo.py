@@ -24,6 +24,14 @@ def detection_presentation():
             'events': [dict(e, rule=rules[e['rule_id']]) for e in v.read(OUT/'events.json')]}
 
 
+def incident_presentation(store=None):
+    """Rule-engine incidents (sealed run + overlay). Selectable next to the v1 detections."""
+    from . import incident_tools
+    store = store or incident_tools.IncidentStore()
+    return {'source': 'rule_engine', 'lock': store.lock(), 'incidents': store.incidents,
+            'correlations': store.correlations, 'warnings': incident_tools.WARNINGS}
+
+
 def saved_run(run_id):
     if not run_id or any(ch not in 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-' for ch in run_id):
         raise ValueError('Invalid run ID')
@@ -58,7 +66,8 @@ def presentation(path):
             'source_reasons':r['source_candidate_reasons']}
 
 
-def make_server(port=8765, answer=live.answer, explain=event_explain.answer, agent_answer=agent.answer):
+def make_server(port=8765, answer=live.answer, explain=event_explain.answer, agent_answer=agent.answer,
+                explain_incident=event_explain.answer_incident):
     token=secrets.token_urlsafe(32);busy=threading.Lock()
     class Handler(BaseHTTPRequestHandler):
         def log_message(self,*args):pass
@@ -86,6 +95,9 @@ def make_server(port=8765, answer=live.answer, explain=event_explain.answer, age
             if path=='/api/detections':
                 try:return self.reply(200,detection_presentation())
                 except (ValueError,FileNotFoundError):return self.reply(503,{'error':'탐지 결과가 없거나 무결성 검사를 통과하지 못했습니다.'})
+            if path=='/api/incidents':
+                try:return self.reply(200,incident_presentation())
+                except (ValueError,FileNotFoundError):return self.reply(503,{'error':'룰 엔진 사건 결과가 없거나 무결성 검사를 통과하지 못했습니다.'})
             if path.startswith('/api/run/'):
                 try:return self.reply(200,presentation(saved_run(unquote(path[len('/api/run/'):]))))
                 except (ValueError,FileNotFoundError):return self.reply(404,{'error':'저장된 결과를 찾을 수 없습니다.'})
@@ -95,19 +107,21 @@ def make_server(port=8765, answer=live.answer, explain=event_explain.answer, age
             if (not self.local() or self.headers.get('X-Demo-Token')!=token or
                 origin not in (None,f'http://127.0.0.1:{self.server.server_port}')):
                 return self.reply(403,{'error':'요청 출처를 확인할 수 없습니다.'})
-            if self.path not in ('/api/ask','/api/explain-event','/api/agent'):return self.reply(404,{'error':'Not found'})
+            if self.path not in ('/api/ask','/api/explain-event','/api/explain-incident','/api/agent'):return self.reply(404,{'error':'Not found'})
             event_mode=self.path=='/api/explain-event'
+            incident_mode=self.path=='/api/explain-incident'
             try:
                 n=int(self.headers.get('Content-Length','0'))
                 if not 0<n<=40000:raise ValueError()
-                data=json.loads(self.rfile.read(n));q=data['event_id' if event_mode else 'question']
+                data=json.loads(self.rfile.read(n));q=data['event_id' if event_mode else 'incident_id' if incident_mode else 'question']
                 if not isinstance(q,str) or not q.strip() or len(q.encode())>8000:raise ValueError()
                 if event_mode and q not in {e['id'] for e in detection_presentation()['events']}:raise ValueError()
+                if incident_mode and q not in {i['id'] for i in incident_presentation()['incidents']}:raise ValueError()
             except (ValueError,KeyError,TypeError):return self.reply(400,{'error':'질문은 1~8000 UTF-8 바이트로 입력해 주세요.'})
             if not busy.acquire(blocking=False):return self.reply(409,{'error':'다른 질문을 처리 중입니다. 완료 후 다시 시도해 주세요.'})
             run=saved_run('ui_'+uuid.uuid4().hex)
             try:
-                (agent_answer if self.path=='/api/agent' else explain if event_mode else answer)(q,run)
+                (agent_answer if self.path=='/api/agent' else explain if event_mode else explain_incident if incident_mode else answer)(q,run)
                 self.reply(200,presentation(run))
             except Exception:
                 self.reply(500,{'error':'처리를 완료하지 못했습니다. 자동 재시도하지 않습니다. 로컬 실행 기록을 확인해 주세요.','run_id':run.name})

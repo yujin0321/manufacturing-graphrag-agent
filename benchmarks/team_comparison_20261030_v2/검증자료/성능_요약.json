@@ -1,0 +1,80 @@
+{
+  "llm": {
+    "old": {
+      "n": 66,
+      "mean": 0.5,
+      "strict": 0,
+      "content": 0.2727272727272727,
+      "evidence": 0.015151515151515152,
+      "faithfulness": 0.21212121212121213
+    },
+    "new": {
+      "n": 14,
+      "mean": 2.0714285714285716,
+      "strict": 0,
+      "content": 1.1428571428571428,
+      "evidence": 0,
+      "faithfulness": 0.9285714285714286
+    },
+    "all": {
+      "n": 80,
+      "mean": 0.775,
+      "strict": 0,
+      "content": 0.425,
+      "evidence": 0.0125,
+      "faithfulness": 0.3375
+    }
+  },
+  "vector": {
+    "old": {
+      "n": 66,
+      "mean": 4.146105069879574,
+      "strict": 44,
+      "content": 2.3636363636363638,
+      "evidence": 0.7976202213947254,
+      "faithfulness": 0.9848484848484849
+    },
+    "new": {
+      "n": 14,
+      "mean": 4.928571428571429,
+      "strict": 13,
+      "content": 2.9285714285714284,
+      "evidence": 1,
+      "faithfulness": 1
+    },
+    "all": {
+      "n": 80,
+      "mean": 4.283036682650648,
+      "strict": 57,
+      "content": 2.4625,
+      "evidence": 0.8330366826506485,
+      "faithfulness": 0.9875
+    }
+  },
+  "graph": {
+    "old": {
+      "n": 66,
+      "mean": 4.353498775631507,
+      "strict": 44,
+      "content": 2.5,
+      "evidence": 0.8686502907830219,
+      "faithfulness": 0.9848484848484849
+    },
+    "new": {
+      "n": 14,
+      "mean": 4.928571428571429,
+      "strict": 13,
+      "content": 2.9285714285714284,
+      "evidence": 1,
+      "faithfulness": 1
+    },
+    "all": {
+      "n": 80,
+      "mean": 4.454136489895993,
+      "strict": 57,
+      "content": 2.575,
+      "evidence": 0.8916364898959931,
+      "faithfulness": 0.9875
+    }
+  }
+}

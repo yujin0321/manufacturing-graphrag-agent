@@ -1,0 +1,34 @@
+{
+  "complete": true,
+  "qa_items": 96,
+  "answers": 288,
+  "grades": 288,
+  "reused_answers": 231,
+  "new_answers": 57,
+  "excluded_NEW12": true,
+  "eval": 80,
+  "dev": 16,
+  "zip_crc_ok": true,
+  "files": [
+    {
+      "file": "01_통합_벤치마크_문항표.md",
+      "sha256": "61acea0131c44055e05e28a0f73842b5cd5acdd941b76c10e6acf9930d93cf97",
+      "bytes": 29717
+    },
+    {
+      "file": "02_세방식_성능과비용_비교.md",
+      "sha256": "4f3ea2d2e4f2750ff02a7aaae41e280c05a8721687a6e69c9199efaaef638979",
+      "bytes": 13097
+    },
+    {
+      "file": "03_GraphRAG_실패분석과개선안.md",
+      "sha256": "1fde7774d796e855003c63bfec5d0f975da93957dc5da3f33c82bbb0d46c7d28",
+      "bytes": 23144
+    },
+    {
+      "file": "검증자료/실행근거와재현코드.zip",
+      "sha256": "8bfa7245778b493a14a4ed0ed7fdc1d38a0f31c3c00ccf4afdd0791f1b5cd04d",
+      "bytes": 6689279
+    }
+  ]
+}

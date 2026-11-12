@@ -1,0 +1,37 @@
+{
+  "fixed_before_label_evaluation": true,
+  "policy": {
+    "sample_seconds": 30,
+    "confirm_observations": 2,
+    "clear_observations": 2,
+    "duration": "strict elapsed > document limit; two consecutive fully qualifying observations",
+    "gap": "report; reset pending state; truncate active event as unconfirmed, never recovered",
+    "drift": "signed current minus exact historical observation; complete contiguous fixed window",
+    "drift_direction": "positive increase only; no absolute-value conversion",
+    "drift_maint02": "30+ min operationalized as fixed 30-minute lookback, NOT >1A held 30min",
+    "unknown": "external candidate only; no automatic discovery; expert review required",
+    "recovery": "document-recommended response only; no execution or confirmed cause"
+  },
+  "evaluation": "same-sensor zero-grace overlap; coverage + confirmed-alarm-in-gold-window; merged alarm episodes one-to-one maximum matching",
+  "label_access": "only evaluator after all output seals; previous team result exposure disclosed",
+  "inputs": {
+    "candidate.ttl": "8ab82a866135afd1335caab06fe6e6e223d7b1ea37195e3fe6509cbbd407ef51",
+    "chunks.jsonl": "7616d25cc638c47474324edc3fa22c011671fdff87a1735806ffa28854591665",
+    "observations.csv": "92775d5be2816848e50141ffd66c3c1284cd1791584b68333ceecc7bb0ecc745",
+    "upstream_kg_rules.py": "cfb731b5abdd3351e713da12532c5167e0224c27d38378e49f9a22e4628a4883",
+    "upstream_rules.py": "1574b4cfc1e306e0722f79860fb4c2f3b95bfce7776c4e18d545459e1e832aa0"
+  },
+  "rules": {
+    "rules_baseline.json": "5a7955904ff2e00a800f1c834fc891f826083ad3cb4336f0c59992d142a8950f",
+    "rules_improved.json": "facc315a631951da90e986d737657c83523cde1f1c2bb6b3aaaba0c32530500a"
+  },
+  "code": {
+    "detector.py": "f2c25e3fdf0a5901017effe73399379d6660e2c00953042b72ebfa631b34d171",
+    "evaluate.py": "13f4b399c5628500343b543b0a93ad054f916b938bd16d921f4a3fbc22f1b6ea",
+    "prepare.py": "7f47cf4a6a2efccc544fb35507136d14fbfe56ec71ca2656dde15aef3eba0a7a",
+    "run_experiment.py": "003ae9b9b8bb17b0fe6a08ba25ebd9b05bce86fae6b56bad06fb43fdc4db8cad",
+    "test_detector.py": "de008cd3bd96f60d32c1c99564dd572c2b647fe96067a175df48699a1d98a7ae"
+  },
+  "raw_source_sha256": "6434ebbe990d09a6796a04d6f4b68fea06f5f72f2acd39e90a8ff65c8e5a9075",
+  "upstream_commit": "2b19fc6a05be86485282266925b94b96ae0dd230"
+}

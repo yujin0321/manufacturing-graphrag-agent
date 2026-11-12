@@ -37,3 +37,6 @@ docs/benchmark_graph_v3_20261028/questions.jsonl -text whitespace=cr-at-eol
 docs/benchmark_graph_v3_20261028/lock.json -text whitespace=cr-at-eol
 docs/graphrag_v3/lexicon.json -text whitespace=cr-at-eol
 docs/graphrag_v3/policy.json -text whitespace=cr-at-eol
+
+# Preserve sealed incident-retrieval result hashes across Windows/Linux.
+experiments/three_way_incident_20261111/results/** -text whitespace=cr-at-eol

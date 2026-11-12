@@ -1,0 +1,8 @@
+{
+  "gold_loaded": false,
+  "runs": {
+    "baseline_v2": "0142abb1e2c7eddd59a38db8e1b2832bbd22560a9c223f774aefbec5045170ab",
+    "two_point_only": "d2fe817e43e3cdce3b9e74bf497ffab5f61daece5d4e5d281077901c844d508d",
+    "improved": "366103de50823296196d10513945eb880a6c668fcf6895e6af6c4ccecaa47778"
+  }
+}

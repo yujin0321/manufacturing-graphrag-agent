@@ -1,0 +1,9 @@
+vendor/
+runtime/
+embedding_model/
+model_cache/
+__pycache__/
+.cache/
+*.local.*
+.env
+.env.*

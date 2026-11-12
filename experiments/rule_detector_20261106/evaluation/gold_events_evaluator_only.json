@@ -1,0 +1,100 @@
+[
+  {
+    "sensor_id": "ST02_SEALING_TMP",
+    "label": "SPIKE",
+    "start": "2026-01-06T08:30:00",
+    "end": "2026-01-06T08:33:00",
+    "samples": 7
+  },
+  {
+    "sensor_id": "ST01_FILLING_PRS",
+    "label": "DRIFT",
+    "start": "2026-01-06T11:00:00",
+    "end": "2026-01-06T11:45:00",
+    "samples": 91
+  },
+  {
+    "sensor_id": "ST04_PACKAGING_VIB",
+    "label": "DRIFT",
+    "start": "2026-01-07T07:00:00",
+    "end": "2026-01-07T08:30:00",
+    "samples": 181
+  },
+  {
+    "sensor_id": "ST03_LABELLING_TEN",
+    "label": "STUCK",
+    "start": "2026-01-07T09:30:00",
+    "end": "2026-01-07T09:42:00",
+    "samples": 25
+  },
+  {
+    "sensor_id": "SRV01_SERVERROOM_TMP",
+    "label": "OUT_OF_RANGE",
+    "start": "2026-01-07T12:00:00",
+    "end": "2026-01-07T12:20:00",
+    "samples": 41
+  },
+  {
+    "sensor_id": "CAF01_CAFETERIA_TMP",
+    "label": "OUT_OF_RANGE",
+    "start": "2026-01-07T16:00:00",
+    "end": "2026-01-07T16:30:00",
+    "samples": 61
+  },
+  {
+    "sensor_id": "ST01_FILLING_FLW",
+    "label": "SPIKE",
+    "start": "2026-01-08T06:30:00",
+    "end": "2026-01-08T06:32:00",
+    "samples": 5
+  },
+  {
+    "sensor_id": "ST02_SEALING_CUR",
+    "label": "DRIFT",
+    "start": "2026-01-08T08:00:00",
+    "end": "2026-01-08T10:00:00",
+    "samples": 241
+  },
+  {
+    "sensor_id": "ST04_PACKAGING_SPD",
+    "label": "CORRELATED",
+    "start": "2026-01-08T09:30:00",
+    "end": "2026-01-08T10:30:00",
+    "samples": 121
+  },
+  {
+    "sensor_id": "ST03_LABELLING_CNT",
+    "label": "OUT_OF_RANGE",
+    "start": "2026-01-09T07:30:00",
+    "end": "2026-01-09T07:55:00",
+    "samples": 51
+  },
+  {
+    "sensor_id": "CHM01_CHEMICALSTORAGE_TMP",
+    "label": "OUT_OF_RANGE",
+    "start": "2026-01-09T08:00:00",
+    "end": "2026-01-09T08:45:00",
+    "samples": 91
+  },
+  {
+    "sensor_id": "WRH01_WAREHOUSE_TMP",
+    "label": "DRIFT",
+    "start": "2026-01-09T10:00:00",
+    "end": "2026-01-09T13:00:00",
+    "samples": 361
+  },
+  {
+    "sensor_id": "RND01_RDLAB_HUM",
+    "label": "DRIFT",
+    "start": "2026-01-09T11:30:00",
+    "end": "2026-01-09T13:00:00",
+    "samples": 181
+  },
+  {
+    "sensor_id": "ST04_PACKAGING_VIB",
+    "label": "SPIKE",
+    "start": "2026-01-09T13:00:00",
+    "end": "2026-01-09T13:01:00",
+    "samples": 3
+  }
+]

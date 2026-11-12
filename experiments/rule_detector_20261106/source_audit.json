@@ -1,0 +1,13 @@
+{
+  "baseline_conditions_match_v1": 30,
+  "threshold_conditions_match_metadata": 44,
+  "threshold_mismatches": [],
+  "added_delta_rules": 4,
+  "triples": 2806,
+  "chunks": 86,
+  "quotes_validated": true,
+  "rules_baseline": 74,
+  "rules_improved": 78,
+  "unsupported_numeric_candidates": 5,
+  "note": "v1 reviewed table and KG are checked against one another, not independent domain expert certification"
+}

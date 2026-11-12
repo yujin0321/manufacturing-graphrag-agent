@@ -1,0 +1,15 @@
+﻿sensor_id,label,start,end,baseline_v2_covered,baseline_v2_new_alarm_in_gold_window,baseline_v2_latency_minutes_signed,two_point_only_covered,two_point_only_new_alarm_in_gold_window,two_point_only_latency_minutes_signed,improved_covered,improved_new_alarm_in_gold_window,improved_latency_minutes_signed
+ST02_SEALING_TMP,SPIKE,2026-01-06T08:30:00,2026-01-06T08:33:00,True,True,0.0,True,True,0.5,True,True,0.5
+ST01_FILLING_PRS,DRIFT,2026-01-06T11:00:00,2026-01-06T11:45:00,True,True,29.0,True,True,29.5,True,True,29.5
+ST04_PACKAGING_VIB,DRIFT,2026-01-07T07:00:00,2026-01-07T08:30:00,True,True,40.0,True,True,40.5,True,True,27.5
+ST03_LABELLING_TEN,STUCK,2026-01-07T09:30:00,2026-01-07T09:42:00,True,True,5.0,True,True,5.5,True,True,5.5
+SRV01_SERVERROOM_TMP,OUT_OF_RANGE,2026-01-07T12:00:00,2026-01-07T12:20:00,True,True,0.0,True,True,0.5,True,True,0.5
+CAF01_CAFETERIA_TMP,OUT_OF_RANGE,2026-01-07T16:00:00,2026-01-07T16:30:00,True,True,0.5,True,True,2.0,True,True,2.0
+ST01_FILLING_FLW,SPIKE,2026-01-08T06:30:00,2026-01-08T06:32:00,True,True,0.0,True,True,0.5,True,True,0.5
+ST02_SEALING_CUR,DRIFT,2026-01-08T08:00:00,2026-01-08T10:00:00,True,True,22.0,True,True,40.0,True,True,22.5
+ST04_PACKAGING_SPD,CORRELATED,2026-01-08T09:30:00,2026-01-08T10:30:00,False,False,,False,False,,False,False,
+ST03_LABELLING_CNT,OUT_OF_RANGE,2026-01-09T07:30:00,2026-01-09T07:55:00,True,True,0.0,True,True,0.5,True,True,0.5
+CHM01_CHEMICALSTORAGE_TMP,OUT_OF_RANGE,2026-01-09T08:00:00,2026-01-09T08:45:00,True,True,0.0,True,True,0.5,True,True,0.5
+WRH01_WAREHOUSE_TMP,DRIFT,2026-01-09T10:00:00,2026-01-09T13:00:00,True,True,108.0,True,True,108.5,True,True,62.5
+RND01_RDLAB_HUM,DRIFT,2026-01-09T11:30:00,2026-01-09T13:00:00,True,True,74.5,True,True,75.0,True,True,44.5
+ST04_PACKAGING_VIB,SPIKE,2026-01-09T13:00:00,2026-01-09T13:01:00,True,True,0.0,True,True,0.5,True,True,0.5

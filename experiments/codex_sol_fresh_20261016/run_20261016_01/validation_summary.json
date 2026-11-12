@@ -1,0 +1,239 @@
+{
+  "documents": 7,
+  "pages": 10,
+  "chunks": 86,
+  "tables": 24,
+  "raw_rules": 88,
+  "validated_rules": 88,
+  "rejected_rules": 0,
+  "class_counts": {
+    "OperationalRule": 25,
+    "AccessRule": 23,
+    "ThresholdRule": 29,
+    "MaintenanceRule": 11
+  },
+  "documents_detail": {
+    "DS-ELEC-3300": {
+      "pages": 1,
+      "chunks": 3,
+      "tables": 1,
+      "raw": 2,
+      "validated": 2,
+      "rejected": 0
+    },
+    "DS-MECH-4400": {
+      "pages": 1,
+      "chunks": 8,
+      "tables": 4,
+      "raw": 1,
+      "validated": 1,
+      "rejected": 0
+    },
+    "DS-THERM-2200": {
+      "pages": 1,
+      "chunks": 4,
+      "tables": 2,
+      "raw": 1,
+      "validated": 1,
+      "rejected": 0
+    },
+    "SOP-001": {
+      "pages": 2,
+      "chunks": 35,
+      "tables": 1,
+      "raw": 24,
+      "validated": 24,
+      "rejected": 0
+    },
+    "SOP-002": {
+      "pages": 2,
+      "chunks": 21,
+      "tables": 11,
+      "raw": 27,
+      "validated": 27,
+      "rejected": 0
+    },
+    "SOP-003": {
+      "pages": 1,
+      "chunks": 4,
+      "tables": 2,
+      "raw": 11,
+      "validated": 11,
+      "rejected": 0
+    },
+    "SOP-004": {
+      "pages": 2,
+      "chunks": 11,
+      "tables": 3,
+      "raw": 22,
+      "validated": 22,
+      "rejected": 0
+    }
+  },
+  "freeze_hash_verified": true,
+  "input_checks_passed": 158,
+  "input_checks_failed": [
+    {
+      "kind": "chunk_page_span_whitespace_normalized",
+      "chunk": "SOP-001:p1:table1:chunk",
+      "passed": false,
+      "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+    },
+    {
+      "kind": "chunk_page_span_whitespace_normalized",
+      "chunk": "SOP-002:p1:table1:chunk",
+      "passed": false,
+      "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+    },
+    {
+      "kind": "chunk_page_span_whitespace_normalized",
+      "chunk": "SOP-002:p1:table2:chunk",
+      "passed": false,
+      "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+    },
+    {
+      "kind": "chunk_page_span_whitespace_normalized",
+      "chunk": "SOP-002:p1:table3:chunk",
+      "passed": false,
+      "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+    },
+    {
+      "kind": "chunk_page_span_whitespace_normalized",
+      "chunk": "SOP-002:p1:table4:chunk",
+      "passed": false,
+      "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+    },
+    {
+      "kind": "chunk_page_span_whitespace_normalized",
+      "chunk": "SOP-002:p1:table5:chunk",
+      "passed": false,
+      "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+    },
+    {
+      "kind": "chunk_page_span_whitespace_normalized",
+      "chunk": "SOP-002:p2:table1:chunk",
+      "passed": false,
+      "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+    },
+    {
+      "kind": "chunk_page_span_whitespace_normalized",
+      "chunk": "SOP-002:p2:table2:chunk",
+      "passed": false,
+      "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+    },
+    {
+      "kind": "chunk_page_span_whitespace_normalized",
+      "chunk": "SOP-002:p2:table3:chunk",
+      "passed": false,
+      "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+    },
+    {
+      "kind": "chunk_page_span_whitespace_normalized",
+      "chunk": "SOP-002:p2:table4:chunk",
+      "passed": false,
+      "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+    },
+    {
+      "kind": "chunk_page_span_whitespace_normalized",
+      "chunk": "SOP-002:p2:table5:chunk",
+      "passed": false,
+      "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+    },
+    {
+      "kind": "chunk_page_span_whitespace_normalized",
+      "chunk": "SOP-002:p2:table6:chunk",
+      "passed": false,
+      "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+    },
+    {
+      "kind": "chunk_page_span_whitespace_normalized",
+      "chunk": "SOP-003:p1:table1:chunk",
+      "passed": false,
+      "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+    },
+    {
+      "kind": "chunk_page_span_whitespace_normalized",
+      "chunk": "SOP-003:p1:table2:chunk",
+      "passed": false,
+      "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+    },
+    {
+      "kind": "chunk_page_span_whitespace_normalized",
+      "chunk": "SOP-004:p1:table1:chunk",
+      "passed": false,
+      "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+    },
+    {
+      "kind": "chunk_page_span_whitespace_normalized",
+      "chunk": "SOP-004:p1:table2:chunk",
+      "passed": false,
+      "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+    },
+    {
+      "kind": "chunk_page_span_whitespace_normalized",
+      "chunk": "SOP-004:p1:table3:chunk",
+      "passed": false,
+      "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+    },
+    {
+      "kind": "chunk_page_span_whitespace_normalized",
+      "chunk": "DS-ELEC-3300:p1:table1:chunk",
+      "passed": false,
+      "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+    },
+    {
+      "kind": "chunk_page_span_whitespace_normalized",
+      "chunk": "DS-MECH-4400:p1:table1:chunk",
+      "passed": false,
+      "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+    },
+    {
+      "kind": "chunk_page_span_whitespace_normalized",
+      "chunk": "DS-MECH-4400:p1:table2:chunk",
+      "passed": false,
+      "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+    },
+    {
+      "kind": "chunk_page_span_whitespace_normalized",
+      "chunk": "DS-MECH-4400:p1:table3:chunk",
+      "passed": false,
+      "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+    },
+    {
+      "kind": "chunk_page_span_whitespace_normalized",
+      "chunk": "DS-MECH-4400:p1:table4:chunk",
+      "passed": false,
+      "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+    },
+    {
+      "kind": "chunk_page_span_whitespace_normalized",
+      "chunk": "DS-THERM-2200:p1:table1:chunk",
+      "passed": false,
+      "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+    },
+    {
+      "kind": "chunk_page_span_whitespace_normalized",
+      "chunk": "DS-THERM-2200:p1:table2:chunk",
+      "passed": false,
+      "note": "Table layout may differ between flattened page and normalized table/chunk; cell validation used for table evidence."
+    }
+  ],
+  "evidence_occurrences": 878,
+  "entities": 31,
+  "stations": 9,
+  "sensors": 22,
+  "kg_triples": 11800,
+  "provenance_nodes": 1090,
+  "shacl_conforms": false,
+  "shacl_inference": "none",
+  "shacl_result_count": 1121,
+  "out_of_ontology_predicates_in_kg": 0,
+  "source_validation_is_not_semantic_accuracy": true,
+  "evaluation": "고정 후 별도 평가 대기",
+  "pdf_binary_hash_recomputation": "not performed: PDFs outside allowlist",
+  "versions": {
+    "rdflib": "7.6.0",
+    "pyshacl": "0.40.1",
+    "jsonschema": "4.26.0"
+  }
+}

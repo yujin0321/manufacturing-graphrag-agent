@@ -1,0 +1,14 @@
+{
+  "labels_sha256": "1d4ba63d8d5d120adf5c630d03f7d282a363e6dac26a18e5d378a79a76dbe926",
+  "gold_events": 14,
+  "labels_opened_after_all_runs_sealed": true,
+  "grace_seconds": 0,
+  "matching": "same sensor; alarm-confirmation to last-positive interval overlap; no type agreement required",
+  "limits": [
+    "Interval coverage is not correct anomaly-type or root-cause identification",
+    "Persistent early alarms can overlap gold; separately report new alarms and negative latency",
+    "One-to-one precision uses merged same-sensor overlapping alarm episodes, not raw rule counts",
+    "No independent holdout: team has previously inspected these 14 events",
+    "Unmatched alarms are relative to provided labels, not expert-certified false physical events"
+  ]
+}

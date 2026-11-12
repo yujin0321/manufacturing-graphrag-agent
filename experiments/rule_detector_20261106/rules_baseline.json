@@ -1,0 +1,1790 @@
+{
+  "rules": [
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-CAF01-01",
+      "rule_id": "RULE-CAF01-01",
+      "condition_text": "CAF01_CAFETERIA temperature (TMP) is above 26°C; occupant comfort is the primary criterion.",
+      "sensor_id": "CAF01_CAFETERIA_TMP",
+      "unit": "°C",
+      "kind": "kg_document_rule",
+      "op": "gt",
+      "value": "26",
+      "second": null,
+      "duration_seconds": 0,
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-001:p2:RULE-CAF01-01"
+          ],
+          "quote": "RULE-CAF01-01: TMP above 26°C — check ventilation system. Occupant comfort is the primary criterion.",
+          "quote_sha256": "f2e1bf23f599c7b467635895cccd6582da08cab28f4e30f315ec5ba502642080"
+        }
+      ],
+      "document_recommended_response": "Check the ventilation system.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-CAF01-02",
+      "rule_id": "RULE-CAF01-02",
+      "condition_text": "CAF01_CAFETERIA humidity (HUM) is above 70%RH.",
+      "sensor_id": "CAF01_CAFETERIA_HUM",
+      "unit": "%RH",
+      "kind": "kg_document_rule",
+      "op": "gt",
+      "value": "70",
+      "second": null,
+      "duration_seconds": 0,
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-001:p2:RULE-CAF01-02"
+          ],
+          "quote": "RULE-CAF01-02: HUM above 70%RH — inspect drainage and activate ventilation.",
+          "quote_sha256": "79f33a60a505d4124e2db5272ef361b4411198feec1e853cae6305001f3a1198"
+        }
+      ],
+      "document_recommended_response": "Inspect drainage and activate ventilation.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-CHM01-01",
+      "rule_id": "RULE-CHM01-01",
+      "condition_text": "CHM01_CHEMICALSTORAGE temperature (TMP) must remain between 10°C and 20°C.",
+      "sensor_id": "CHM01_CHEMICALSTORAGE_TMP",
+      "unit": "°C",
+      "kind": "kg_document_rule",
+      "op": "outside",
+      "value": "10",
+      "second": "20",
+      "duration_seconds": 0,
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-001:p2:RULE-CHM01-01"
+          ],
+          "quote": "RULE-CHM01-01: TMP MUST remain between 10°C and 20°C.",
+          "quote_sha256": "d3da7d2674fed09a8e0b83f3a7bbd7ac0ff95139a6d5ea7477b463affedef93b"
+        }
+      ],
+      "document_recommended_response": "",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-CHM01-01-CRITICAL",
+      "rule_id": "RULE-CHM01-01-CRITICAL",
+      "condition_text": "CHM01_CHEMICALSTORAGE temperature (TMP) is above 25°C (CRITICAL).",
+      "sensor_id": "CHM01_CHEMICALSTORAGE_TMP",
+      "unit": "°C",
+      "kind": "kg_document_rule",
+      "op": "gt",
+      "value": "25",
+      "second": null,
+      "duration_seconds": 0,
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-001:p2:RULE-CHM01-01"
+          ],
+          "quote": "CRITICAL above 25°C — activate emergency ventilation and notify safety officer immediately.",
+          "quote_sha256": "32f228a8e7814ca79482d6aa6a2e20a28bee7d95cb549833cf636c01e3efd223"
+        }
+      ],
+      "document_recommended_response": "Activate emergency ventilation and notify the safety officer immediately.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-CHM01-02",
+      "rule_id": "RULE-CHM01-02",
+      "condition_text": "CHM01_CHEMICALSTORAGE humidity (HUM) must not exceed 50%RH; elevated humidity accelerates degradation of hygroscopic reagents.",
+      "sensor_id": "CHM01_CHEMICALSTORAGE_HUM",
+      "unit": "%RH",
+      "kind": "kg_document_rule",
+      "op": "gt",
+      "value": "50",
+      "second": null,
+      "duration_seconds": 0,
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-001:p2:RULE-CHM01-02"
+          ],
+          "quote": "RULE-CHM01-02: HUM MUST NOT exceed 50%RH. Elevated humidity accelerates degradation of hygroscopic reagents.",
+          "quote_sha256": "6f8d68ace97ac489759c8bb23d3fd6a633edcaaa3b5caf557c8da953eaf67b11"
+        }
+      ],
+      "document_recommended_response": "",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-CHM01-02-DESICCANT",
+      "rule_id": "RULE-CHM01-02-DESICCANT",
+      "condition_text": "CHM01_CHEMICALSTORAGE humidity (HUM) >45%RH.",
+      "sensor_id": "CHM01_CHEMICALSTORAGE_HUM",
+      "unit": "%RH",
+      "kind": "kg_document_rule",
+      "op": "gt",
+      "value": "45",
+      "second": null,
+      "duration_seconds": 0,
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-001:p2:RULE-CHM01-02"
+          ],
+          "quote": "Activate desiccant system if HUM >45%RH.",
+          "quote_sha256": "2ce0f8209260aab33177986862835d19d7e62e1d73dabb57449da278213f0fed"
+        }
+      ],
+      "document_recommended_response": "Activate the desiccant system.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-RND01-01",
+      "rule_id": "RULE-RND01-01",
+      "condition_text": "RND01_RDLAB temperature (TMP) must remain between 18°C and 26°C for experimental validity.",
+      "sensor_id": "RND01_RDLAB_TMP",
+      "unit": "°C",
+      "kind": "kg_document_rule",
+      "op": "outside",
+      "value": "18",
+      "second": "26",
+      "duration_seconds": 0,
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-001:p2:RULE-RND01-01"
+          ],
+          "quote": "RULE-RND01-01: TMP MUST remain between 18°C and 26°C for experimental validity.",
+          "quote_sha256": "1ccc808cfbb4522fdef5d468b165eb3116523c264f677f347fcb33d76e0c1967"
+        }
+      ],
+      "document_recommended_response": "",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-RND01-02",
+      "rule_id": "RULE-RND01-02",
+      "condition_text": "RND01_RDLAB humidity (HUM) drifts above 65%RH.",
+      "sensor_id": "RND01_RDLAB_HUM",
+      "unit": "%RH",
+      "kind": "kg_document_rule",
+      "op": "gt",
+      "value": "65",
+      "second": null,
+      "duration_seconds": 0,
+      "note": "drift wording executed as absolute threshold (v1 decision)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-001:p2:RULE-RND01-02"
+          ],
+          "quote": "RULE-RND01-02: HUM drift above 65%RH — activate dehumidifier.",
+          "quote_sha256": "7510055c06c8ed32e84b02d7addb19114105d0dc5600068ecea715ec4f7571d8"
+        }
+      ],
+      "document_recommended_response": "Activate the dehumidifier.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-RND01-02-CRITICAL",
+      "rule_id": "RULE-RND01-02-CRITICAL",
+      "condition_text": "RND01_RDLAB humidity (HUM) is above 75%RH (CRITICAL).",
+      "sensor_id": "RND01_RDLAB_HUM",
+      "unit": "%RH",
+      "kind": "kg_document_rule",
+      "op": "gt",
+      "value": "75",
+      "second": null,
+      "duration_seconds": 0,
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-001:p2:RULE-RND01-02"
+          ],
+          "quote": "Above 75%RH (CRITICAL) — suspend sensitive experiments and inspect HVAC system.",
+          "quote_sha256": "1c4d077640903f41b717c6e1f57e90210c07c52666c117726680c3ba0eb59cc6"
+        }
+      ],
+      "document_recommended_response": "Suspend sensitive experiments and inspect the HVAC system.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-SRV01-01",
+      "rule_id": "RULE-SRV01-01",
+      "condition_text": "SRV01_SERVERROOM temperature (TMP) must not exceed 25°C.",
+      "sensor_id": "SRV01_SERVERROOM_TMP",
+      "unit": "°C",
+      "kind": "kg_document_rule",
+      "op": "gt",
+      "value": "25",
+      "second": null,
+      "duration_seconds": 0,
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-001:p2:RULE-SRV01-01"
+          ],
+          "quote": "RULE-SRV01-01: TMP MUST NOT exceed 25°C.",
+          "quote_sha256": "c612095d691618b98a6e5fce1d52bdc384f66c3dedee7fca9e935f8093158dc9"
+        }
+      ],
+      "document_recommended_response": "",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-SRV01-02",
+      "rule_id": "RULE-SRV01-02",
+      "condition_text": "SRV01_SERVERROOM temperature (TMP) > 28°C (CRITICAL).",
+      "sensor_id": "SRV01_SERVERROOM_TMP",
+      "unit": "°C",
+      "kind": "kg_document_rule",
+      "op": "gt",
+      "value": "28",
+      "second": null,
+      "duration_seconds": 0,
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-001:p2:RULE-SRV01-02"
+          ],
+          "quote": "RULE-SRV01-02: TMP > 28°C (CRITICAL) — automatic controlled shutdown of all PLC nodes.",
+          "quote_sha256": "fd53e57f0030686e7a5b67a898f1f958e7395b08b319b8c427b169837d8b59bc"
+        }
+      ],
+      "document_recommended_response": "Automatic controlled shutdown of all PLC nodes.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-ST01-01",
+      "rule_id": "RULE-ST01-01",
+      "condition_text": "ST01_FILLING flow (FLW) must be maintained between 112 and 128 L/min.",
+      "sensor_id": "ST01_FILLING_FLW",
+      "unit": "L/min",
+      "kind": "kg_document_rule",
+      "op": "outside",
+      "value": "112",
+      "second": "128",
+      "duration_seconds": 0,
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-001:p1:RULE-ST01-01"
+          ],
+          "quote": "RULE-ST01-01: FLW MUST be maintained between 112 and 128 L/min.",
+          "quote_sha256": "d8ad78e87651a95826841915371587cad4f8e6b4160f8d06e055f4e66d1f5231"
+        }
+      ],
+      "document_recommended_response": "",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-ST01-02",
+      "rule_id": "RULE-ST01-02",
+      "condition_text": "ST01_FILLING temperature (TMP) exceeds 26°C.",
+      "sensor_id": "ST01_FILLING_TMP",
+      "unit": "°C",
+      "kind": "kg_document_rule",
+      "op": "gt",
+      "value": "26",
+      "second": null,
+      "duration_seconds": 0,
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-001:p1:RULE-ST01-02"
+          ],
+          "quote": "RULE-ST01-02: If TMP exceeds 26°C, reduce speed by 10% and notify QC.",
+          "quote_sha256": "73ee97e31cfc87199c90371432c2676f2060989803b4b2c3bb07305003e2be3b"
+        }
+      ],
+      "document_recommended_response": "Reduce speed by 10% and notify QC.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-ST01-03",
+      "rule_id": "RULE-ST01-03",
+      "condition_text": "ST01_FILLING pressure (PRS) drops below 3.3 bar.",
+      "sensor_id": "ST01_FILLING_PRS",
+      "unit": "bar",
+      "kind": "kg_document_rule",
+      "op": "lt",
+      "value": "3.3",
+      "second": null,
+      "duration_seconds": 0,
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-001:p1:RULE-ST01-03"
+          ],
+          "quote": "RULE-ST01-03: PRS drop below 3.3 bar — inspect inlet valve within 5 min.",
+          "quote_sha256": "7715a13471accd30da4bf0acac0bbc99f239b32976e50a1c0bf701d3150f24d0"
+        }
+      ],
+      "document_recommended_response": "Inspect the inlet valve within 5 min.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-ST02-01",
+      "rule_id": "RULE-ST02-01",
+      "condition_text": "ST02_SEALING temperature (TMP) must remain between 175°C and 195°C.",
+      "sensor_id": "ST02_SEALING_TMP",
+      "unit": "°C",
+      "kind": "kg_document_rule",
+      "op": "outside",
+      "value": "175",
+      "second": "195",
+      "duration_seconds": 0,
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-001:p1:RULE-ST02-01"
+          ],
+          "quote": "RULE-ST02-01: TMP MUST remain between 175°C and 195°C.",
+          "quote_sha256": "13ca5b0d19263e1b5d194cc39150830d2c62febde76b2f4c97558cf824ccb7dd"
+        }
+      ],
+      "document_recommended_response": "",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-ST02-02",
+      "rule_id": "RULE-ST02-02",
+      "condition_text": "ST02_SEALING temperature (TMP) > 210°C (CRITICAL).",
+      "sensor_id": "ST02_SEALING_TMP",
+      "unit": "°C",
+      "kind": "kg_document_rule",
+      "op": "gt",
+      "value": "210",
+      "second": null,
+      "duration_seconds": 0,
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-001:p1:RULE-ST02-02"
+          ],
+          "quote": "RULE-ST02-02: TMP > 210°C (CRITICAL) — emergency stop ST02, ST03, ST04.",
+          "quote_sha256": "0e2de067573be179dcdc1b180dfe071c0fae3ea3a91f47df1418cadab40ce6e7"
+        }
+      ],
+      "document_recommended_response": "Emergency stop ST02_SEALING, ST03_LABELLING and ST04_PACKAGING.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-ST02-03",
+      "rule_id": "RULE-ST02-03",
+      "condition_text": "ST02_SEALING current (CUR) increases >1.5 A above nominal, sustained >5 min.",
+      "sensor_id": "ST02_SEALING_CUR",
+      "unit": "A",
+      "kind": "kg_document_rule",
+      "op": "gt",
+      "value": "13.9",
+      "second": null,
+      "duration_seconds": 300,
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-001:p1:RULE-ST02-03"
+          ],
+          "quote": "RULE-ST02-03: CUR increase >1.5 A above nominal sustained >5 min — schedule maintenance.",
+          "quote_sha256": "f3ab1bc29e8930a8b3d257bca6d35f392e414958ac5a9bf193baa259edcb3acd"
+        }
+      ],
+      "document_recommended_response": "Schedule maintenance.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-ST03-01",
+      "rule_id": "RULE-ST03-01",
+      "condition_text": "ST03_LABELLING tension (TEN) must be between 1.8 and 2.6 N.",
+      "sensor_id": "ST03_LABELLING_TEN",
+      "unit": "N",
+      "kind": "kg_document_rule",
+      "op": "outside",
+      "value": "1.8",
+      "second": "2.6",
+      "duration_seconds": 0,
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-001:p1:RULE-ST03-01"
+          ],
+          "quote": "RULE-ST03-01: TEN MUST be between 1.8 and 2.6 N.",
+          "quote_sha256": "50f6c1b9bf7749bf8cfd7b588fc4f114c3c43adfa4f320516295cd3e1bbdb3da"
+        }
+      ],
+      "document_recommended_response": "",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-ST03-02",
+      "rule_id": "RULE-ST03-02",
+      "condition_text": "ST03_LABELLING count rate (CNT) is below 110 pcs/min.",
+      "sensor_id": "ST03_LABELLING_CNT",
+      "unit": "pcs/min",
+      "kind": "kg_document_rule",
+      "op": "lt",
+      "value": "110",
+      "second": null,
+      "duration_seconds": 0,
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-001:p1:RULE-ST03-02"
+          ],
+          "quote": "RULE-ST03-02: CNT below 110 pcs/min — check for label jam.",
+          "quote_sha256": "4b78959e63318424fba0ea7d183c55caf48e0dd90338999639eca6c9beec5ecd"
+        }
+      ],
+      "document_recommended_response": "Check for a label jam.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-ST03-02-CRITICAL",
+      "rule_id": "RULE-ST03-02-CRITICAL",
+      "condition_text": "ST03_LABELLING count rate (CNT) is below 100 pcs/min (CRITICAL).",
+      "sensor_id": "ST03_LABELLING_CNT",
+      "unit": "pcs/min",
+      "kind": "kg_document_rule",
+      "op": "lt",
+      "value": "100",
+      "second": null,
+      "duration_seconds": 0,
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-001:p1:RULE-ST03-02"
+          ],
+          "quote": "Below 100 (CRITICAL): halt.",
+          "quote_sha256": "6cb05ba556167ef134bae5b3da65b677f0388cf56f8ca37e2b304bde7fc5c294"
+        }
+      ],
+      "document_recommended_response": "Halt.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-ST03-03",
+      "rule_id": "RULE-ST03-03",
+      "condition_text": "ST03_LABELLING tension (TEN) is STUCK for >10 consecutive samples, indicating sensor failure.",
+      "sensor_id": "ST03_LABELLING_TEN",
+      "unit": "N",
+      "kind": "kg_document_rule",
+      "op": "stuck_exact",
+      "value": "11",
+      "second": null,
+      "duration_seconds": 0,
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-001:p1:RULE-ST03-03"
+          ],
+          "quote": "RULE-ST03-03: TEN STUCK >10 consecutive samples — sensor failure.",
+          "quote_sha256": "c0e8d93331c8c89ffa3526cbf4500958de207047c09bb60349a669c935a0d767"
+        }
+      ],
+      "document_recommended_response": "",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-ST04-01",
+      "rule_id": "RULE-ST04-01",
+      "condition_text": "ST04_PACKAGING vibration (VIB) > 0.20 mm/s (WARNING).",
+      "sensor_id": "ST04_PACKAGING_VIB",
+      "unit": "mm/s",
+      "kind": "kg_document_rule",
+      "op": "gt",
+      "value": "0.20",
+      "second": null,
+      "duration_seconds": 0,
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-001:p1:RULE-ST04-01"
+          ],
+          "quote": "RULE-ST04-01: VIB > 0.20 mm/s (WARNING) — schedule maintenance within 24 h.",
+          "quote_sha256": "99d7497ab5f32a3e8f5325803496b1b4e935224205d34a37d63340cc12b4f9c9"
+        }
+      ],
+      "document_recommended_response": "Schedule maintenance within 24 h.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-ST04-02",
+      "rule_id": "RULE-ST04-02",
+      "condition_text": "ST04_PACKAGING vibration (VIB) > 0.35 mm/s (CRITICAL).",
+      "sensor_id": "ST04_PACKAGING_VIB",
+      "unit": "mm/s",
+      "kind": "kg_document_rule",
+      "op": "gt",
+      "value": "0.35",
+      "second": null,
+      "duration_seconds": 0,
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-001:p1:RULE-ST04-02"
+          ],
+          "quote": "RULE-ST04-02: VIB > 0.35 mm/s (CRITICAL) — emergency stop; inspect bearings.",
+          "quote_sha256": "642a28ef1a6c1b2f948b33a5f558fece7d827dded713dff5cf03f6eda53622c5"
+        }
+      ],
+      "document_recommended_response": "Emergency stop and inspect bearings.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-WRH01-01",
+      "rule_id": "RULE-WRH01-01",
+      "condition_text": "WRH01_WAREHOUSE temperature (TMP) must remain between 0.5°C and 8°C.",
+      "sensor_id": "WRH01_WAREHOUSE_TMP",
+      "unit": "°C",
+      "kind": "kg_document_rule",
+      "op": "outside",
+      "value": "0.5",
+      "second": "8",
+      "duration_seconds": 0,
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-001:p2:RULE-WRH01-01"
+          ],
+          "quote": "RULE-WRH01-01: TMP MUST remain between 0.5°C and 8°C.",
+          "quote_sha256": "7973f72d4e89a7b036bca9924dc5088bc18c13019f5af3bfa6ba5d16899cea73"
+        }
+      ],
+      "document_recommended_response": "",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-WRH01-01-CRITICAL",
+      "rule_id": "RULE-WRH01-01-CRITICAL",
+      "condition_text": "WRH01_WAREHOUSE temperature (TMP) is above 12°C (CRITICAL).",
+      "sensor_id": "WRH01_WAREHOUSE_TMP",
+      "unit": "°C",
+      "kind": "kg_document_rule",
+      "op": "gt",
+      "value": "12",
+      "second": null,
+      "duration_seconds": 0,
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-001:p2:RULE-WRH01-01"
+          ],
+          "quote": "CRITICAL above 12°C — notify QC and quarantine batch.",
+          "quote_sha256": "5a630c001e095b1dc2455499fbbfda20dc88623dd7536bca59a371f8c5c9d3ea"
+        }
+      ],
+      "document_recommended_response": "Notify QC and quarantine the batch.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-WRH01-02",
+      "rule_id": "RULE-WRH01-02",
+      "condition_text": "WRH01_WAREHOUSE humidity (HUM) is above 85%RH.",
+      "sensor_id": "WRH01_WAREHOUSE_HUM",
+      "unit": "%RH",
+      "kind": "kg_document_rule",
+      "op": "gt",
+      "value": "85",
+      "second": null,
+      "duration_seconds": 0,
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-001:p2:RULE-WRH01-02"
+          ],
+          "quote": "RULE-WRH01-02: HUM above 85%RH — inspect door seals and activate dehumidifier.",
+          "quote_sha256": "80e86efa6cb0f94b3419445fce02ae11753203e847371c486e48ba84029b314c"
+        }
+      ],
+      "document_recommended_response": "Inspect door seals and activate the dehumidifier.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-03",
+      "rule_id": "MAINT-03",
+      "condition_text": "ST03_LABELLING tension reading is STUCK for >10 samples.",
+      "sensor_id": "ST03_LABELLING_TEN",
+      "unit": "N",
+      "kind": "kg_document_rule",
+      "op": "stuck_exact",
+      "value": "11",
+      "second": null,
+      "duration_seconds": 0,
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-003:p1:table1:chunk"
+          ],
+          "quote": "Rule ID: MAINT-03; Sensor: TEN; Station: ST03_LABELLING; Trigger: TEN STUCK >10 samples; Action: Replace sensor; Priority: MEDIUM",
+          "quote_sha256": "621bef90f7d114f38b8aafe50a2565fef0bb483ba870bccc273a43259e8c0527"
+        }
+      ],
+      "document_recommended_response": "Replace sensor. Priority: MEDIUM.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-04",
+      "rule_id": "MAINT-04",
+      "condition_text": "ST01_FILLING pressure <3.3 bar for >15 min.",
+      "sensor_id": "ST01_FILLING_PRS",
+      "unit": "bar",
+      "kind": "kg_document_rule",
+      "op": "lt",
+      "value": "3.3",
+      "second": null,
+      "duration_seconds": 900,
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-003:p1:table1:chunk"
+          ],
+          "quote": "Rule ID: MAINT-04; Sensor: PRS; Station: ST01_FILLING; Trigger: PRS <3.3 bar for >15 min; Action: Inspect filter and pump; Priority: MEDIUM",
+          "quote_sha256": "095211f7e30a17d712ae3eefa1b234e45436d4104d1fab6e6ad722895bb4aa80"
+        }
+      ],
+      "document_recommended_response": "Inspect filter and pump. Priority: MEDIUM.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-05",
+      "rule_id": "MAINT-05",
+      "condition_text": "SRV01_SERVERROOM temperature >25°C for >5 min.",
+      "sensor_id": "SRV01_SERVERROOM_TMP",
+      "unit": "°C",
+      "kind": "kg_document_rule",
+      "op": "gt",
+      "value": "25",
+      "second": null,
+      "duration_seconds": 300,
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-003:p1:table1:chunk"
+          ],
+          "quote": "Rule ID: MAINT-05; Sensor: TMP; Station: SRV01_SERVERROOM; Trigger: TMP >25°C for >5 min; Action: Activate secondary cooling; Priority: CRITICAL",
+          "quote_sha256": "5af7517abdd21876084b25761685555587b22a6c759c057965afba5dddac57e9"
+        }
+      ],
+      "document_recommended_response": "Activate secondary cooling. Priority: CRITICAL.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-07",
+      "rule_id": "MAINT-07",
+      "condition_text": "CHM01_CHEMICALSTORAGE temperature >20°C for >10 min.",
+      "sensor_id": "CHM01_CHEMICALSTORAGE_TMP",
+      "unit": "°C",
+      "kind": "kg_document_rule",
+      "op": "gt",
+      "value": "20",
+      "second": null,
+      "duration_seconds": 600,
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-003:p1:table1:chunk"
+          ],
+          "quote": "Rule ID: MAINT-07; Sensor: TMP; Station: CHM01_CHEMICALSTORAGE; Trigger: TMP >20°C for >10 min; Action: Emergency ventilation; notify safety officer; Priority: CRITICAL",
+          "quote_sha256": "90c307dd276c0a76667055b00e83af0f12a5d2abfcfd9a7628c52a4cf44f7435"
+        }
+      ],
+      "document_recommended_response": "Activate emergency ventilation; notify safety officer. Priority: CRITICAL.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-01",
+      "rule_id": "SOP-002-EX-01:warning",
+      "sensor_id": "ST01_FILLING_TMP",
+      "unit": "°C",
+      "kind": "kg_threshold_warning",
+      "op": "outside",
+      "value": "18.0",
+      "second": "26.0",
+      "duration_seconds": 0,
+      "condition_text": "value < warnLo or value > warnHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p1:table1:chunk"
+          ],
+          "quote": "Sensor: TMP; Unit: °C; CRIT_LO: 15.0; WARN_LO: 18.0; Nominal: 22.0 ± 0.4; WARN_HI: 26.0; CRIT_HI: 30.0; CRITICAL Response: Inspect and notify maintenance",
+          "quote_sha256": "67c7fa19d4a9949339552b63dc89a6bbeb7acc916f73e1f11beacb75f751bf7d"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: Inspect and notify maintenance.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-01",
+      "rule_id": "SOP-002-EX-01:critical",
+      "sensor_id": "ST01_FILLING_TMP",
+      "unit": "°C",
+      "kind": "kg_threshold_critical",
+      "op": "outside",
+      "value": "15.0",
+      "second": "30.0",
+      "duration_seconds": 0,
+      "condition_text": "value < critLo or value > critHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p1:table1:chunk"
+          ],
+          "quote": "Sensor: TMP; Unit: °C; CRIT_LO: 15.0; WARN_LO: 18.0; Nominal: 22.0 ± 0.4; WARN_HI: 26.0; CRIT_HI: 30.0; CRITICAL Response: Inspect and notify maintenance",
+          "quote_sha256": "67c7fa19d4a9949339552b63dc89a6bbeb7acc916f73e1f11beacb75f751bf7d"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: Inspect and notify maintenance.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-02",
+      "rule_id": "SOP-002-EX-02:warning",
+      "sensor_id": "ST01_FILLING_PRS",
+      "unit": "bar",
+      "kind": "kg_threshold_warning",
+      "op": "outside",
+      "value": "3.3",
+      "second": "4.2",
+      "duration_seconds": 0,
+      "condition_text": "value < warnLo or value > warnHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p1:table1:chunk"
+          ],
+          "quote": "Sensor: PRS; Unit: bar; CRIT_LO: 3.0; WARN_LO: 3.3; Nominal: 3.8 ± 0.05; WARN_HI: 4.2; CRIT_HI: 4.8; CRITICAL Response: Inspect and notify maintenance",
+          "quote_sha256": "88da5193a1de64ae6791bf5d9e7782ba76159793691171221a401ff67fd1eaa9"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: Inspect and notify maintenance.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-02",
+      "rule_id": "SOP-002-EX-02:critical",
+      "sensor_id": "ST01_FILLING_PRS",
+      "unit": "bar",
+      "kind": "kg_threshold_critical",
+      "op": "outside",
+      "value": "3.0",
+      "second": "4.8",
+      "duration_seconds": 0,
+      "condition_text": "value < critLo or value > critHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p1:table1:chunk"
+          ],
+          "quote": "Sensor: PRS; Unit: bar; CRIT_LO: 3.0; WARN_LO: 3.3; Nominal: 3.8 ± 0.05; WARN_HI: 4.2; CRIT_HI: 4.8; CRITICAL Response: Inspect and notify maintenance",
+          "quote_sha256": "88da5193a1de64ae6791bf5d9e7782ba76159793691171221a401ff67fd1eaa9"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: Inspect and notify maintenance.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-03",
+      "rule_id": "SOP-002-EX-03:warning",
+      "sensor_id": "ST01_FILLING_FLW",
+      "unit": "L/min",
+      "kind": "kg_threshold_warning",
+      "op": "outside",
+      "value": "112.0",
+      "second": "128.0",
+      "duration_seconds": 0,
+      "condition_text": "value < warnLo or value > warnHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p1:table1:chunk"
+          ],
+          "quote": "Sensor: FLW; Unit: L/min; CRIT_LO: 105.0; WARN_LO: 112.0; Nominal: 120.0 ± 1.5; WARN_HI: 128.0; CRIT_HI: 135.0; CRITICAL Response: Inspect and notify maintenance",
+          "quote_sha256": "640578e8c4481ac661af83f790f99d205886459a5f768205d2b0d1b795659a06"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: Inspect and notify maintenance.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-03",
+      "rule_id": "SOP-002-EX-03:critical",
+      "sensor_id": "ST01_FILLING_FLW",
+      "unit": "L/min",
+      "kind": "kg_threshold_critical",
+      "op": "outside",
+      "value": "105.0",
+      "second": "135.0",
+      "duration_seconds": 0,
+      "condition_text": "value < critLo or value > critHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p1:table1:chunk"
+          ],
+          "quote": "Sensor: FLW; Unit: L/min; CRIT_LO: 105.0; WARN_LO: 112.0; Nominal: 120.0 ± 1.5; WARN_HI: 128.0; CRIT_HI: 135.0; CRITICAL Response: Inspect and notify maintenance",
+          "quote_sha256": "640578e8c4481ac661af83f790f99d205886459a5f768205d2b0d1b795659a06"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: Inspect and notify maintenance.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-04",
+      "rule_id": "SOP-002-EX-04:warning",
+      "sensor_id": "ST02_SEALING_TMP",
+      "unit": "°C",
+      "kind": "kg_threshold_warning",
+      "op": "outside",
+      "value": "175.0",
+      "second": "195.0",
+      "duration_seconds": 0,
+      "condition_text": "value < warnLo or value > warnHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p1:table2:chunk"
+          ],
+          "quote": "Sensor: TMP; Unit: °C; CRIT_LO: 165.0; WARN_LO: 175.0; Nominal: 185.0 ± 1.2; WARN_HI: 195.0; CRIT_HI: 210.0; CRITICAL Response: E-STOP ST02/ST03/ST04; inspect element",
+          "quote_sha256": "dd6ec2427c8bacbf0490040887c67cd9c0e1ba4a9abcd230577dfa6e54f63cad"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: E-STOP ST02/ST03/ST04; inspect element.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-04",
+      "rule_id": "SOP-002-EX-04:critical",
+      "sensor_id": "ST02_SEALING_TMP",
+      "unit": "°C",
+      "kind": "kg_threshold_critical",
+      "op": "outside",
+      "value": "165.0",
+      "second": "210.0",
+      "duration_seconds": 0,
+      "condition_text": "value < critLo or value > critHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p1:table2:chunk"
+          ],
+          "quote": "Sensor: TMP; Unit: °C; CRIT_LO: 165.0; WARN_LO: 175.0; Nominal: 185.0 ± 1.2; WARN_HI: 195.0; CRIT_HI: 210.0; CRITICAL Response: E-STOP ST02/ST03/ST04; inspect element",
+          "quote_sha256": "dd6ec2427c8bacbf0490040887c67cd9c0e1ba4a9abcd230577dfa6e54f63cad"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: E-STOP ST02/ST03/ST04; inspect element.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-05",
+      "rule_id": "SOP-002-EX-05:warning",
+      "sensor_id": "ST02_SEALING_PRS",
+      "unit": "bar",
+      "kind": "kg_threshold_warning",
+      "op": "outside",
+      "value": "4.6",
+      "second": "5.7",
+      "duration_seconds": 0,
+      "condition_text": "value < warnLo or value > warnHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p1:table2:chunk"
+          ],
+          "quote": "Sensor: PRS; Unit: bar; CRIT_LO: 4.2; WARN_LO: 4.6; Nominal: 5.2 ± 0.08; WARN_HI: 5.7; CRIT_HI: 6.2; CRITICAL Response: Inspect and notify maintenance",
+          "quote_sha256": "afbd21d79030927a68423d3afc3656cedf1e23539b2f6df20e92dacff8ee8f90"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: Inspect and notify maintenance.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-05",
+      "rule_id": "SOP-002-EX-05:critical",
+      "sensor_id": "ST02_SEALING_PRS",
+      "unit": "bar",
+      "kind": "kg_threshold_critical",
+      "op": "outside",
+      "value": "4.2",
+      "second": "6.2",
+      "duration_seconds": 0,
+      "condition_text": "value < critLo or value > critHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p1:table2:chunk"
+          ],
+          "quote": "Sensor: PRS; Unit: bar; CRIT_LO: 4.2; WARN_LO: 4.6; Nominal: 5.2 ± 0.08; WARN_HI: 5.7; CRIT_HI: 6.2; CRITICAL Response: Inspect and notify maintenance",
+          "quote_sha256": "afbd21d79030927a68423d3afc3656cedf1e23539b2f6df20e92dacff8ee8f90"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: Inspect and notify maintenance.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-06",
+      "rule_id": "SOP-002-EX-06:warning",
+      "sensor_id": "ST02_SEALING_CUR",
+      "unit": "A",
+      "kind": "kg_threshold_warning",
+      "op": "outside",
+      "value": "11.0",
+      "second": "13.5",
+      "duration_seconds": 0,
+      "condition_text": "value < warnLo or value > warnHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p1:table2:chunk"
+          ],
+          "quote": "Sensor: CUR; Unit: A; CRIT_LO: 9.5; WARN_LO: 11.0; Nominal: 12.4 ± 0.3; WARN_HI: 13.5; CRIT_HI: 15.0; CRITICAL Response: E-STOP; inspect load; verify ST04-SPD (RULE-ST02-04)",
+          "quote_sha256": "5f83bd0cc0d32cb264b23f9597704ca52d4025e5fd20fdfef63755c1bb0cc0f6"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: E-STOP; inspect load; verify ST04-SPD (RULE-ST02-04).",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-06",
+      "rule_id": "SOP-002-EX-06:critical",
+      "sensor_id": "ST02_SEALING_CUR",
+      "unit": "A",
+      "kind": "kg_threshold_critical",
+      "op": "outside",
+      "value": "9.5",
+      "second": "15.0",
+      "duration_seconds": 0,
+      "condition_text": "value < critLo or value > critHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p1:table2:chunk"
+          ],
+          "quote": "Sensor: CUR; Unit: A; CRIT_LO: 9.5; WARN_LO: 11.0; Nominal: 12.4 ± 0.3; WARN_HI: 13.5; CRIT_HI: 15.0; CRITICAL Response: E-STOP; inspect load; verify ST04-SPD (RULE-ST02-04)",
+          "quote_sha256": "5f83bd0cc0d32cb264b23f9597704ca52d4025e5fd20fdfef63755c1bb0cc0f6"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: E-STOP; inspect load; verify ST04-SPD (RULE-ST02-04).",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-07",
+      "rule_id": "SOP-002-EX-07:warning",
+      "sensor_id": "ST03_LABELLING_SPD",
+      "unit": "m/s",
+      "kind": "kg_threshold_warning",
+      "op": "outside",
+      "value": "0.75",
+      "second": "0.95",
+      "duration_seconds": 0,
+      "condition_text": "value < warnLo or value > warnHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p1:table3:chunk"
+          ],
+          "quote": "Sensor: SPD; Unit: m/s; CRIT_LO: 0.65; WARN_LO: 0.75; Nominal: 0.85 ± 0.01; WARN_HI: 0.95; CRIT_HI: 1.05; CRITICAL Response: Inspect and notify maintenance",
+          "quote_sha256": "63049ece64369524db3250ddf237e035fcbf9cdb597df65fd51a04cd7fc6bec0"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: Inspect and notify maintenance.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-07",
+      "rule_id": "SOP-002-EX-07:critical",
+      "sensor_id": "ST03_LABELLING_SPD",
+      "unit": "m/s",
+      "kind": "kg_threshold_critical",
+      "op": "outside",
+      "value": "0.65",
+      "second": "1.05",
+      "duration_seconds": 0,
+      "condition_text": "value < critLo or value > critHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p1:table3:chunk"
+          ],
+          "quote": "Sensor: SPD; Unit: m/s; CRIT_LO: 0.65; WARN_LO: 0.75; Nominal: 0.85 ± 0.01; WARN_HI: 0.95; CRIT_HI: 1.05; CRITICAL Response: Inspect and notify maintenance",
+          "quote_sha256": "63049ece64369524db3250ddf237e035fcbf9cdb597df65fd51a04cd7fc6bec0"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: Inspect and notify maintenance.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-08",
+      "rule_id": "SOP-002-EX-08:warning",
+      "sensor_id": "ST03_LABELLING_TEN",
+      "unit": "N",
+      "kind": "kg_threshold_warning",
+      "op": "outside",
+      "value": "1.8",
+      "second": "2.6",
+      "duration_seconds": 0,
+      "condition_text": "value < warnLo or value > warnHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p1:table3:chunk"
+          ],
+          "quote": "Sensor: TEN; Unit: N; CRIT_LO: 1.5; WARN_LO: 1.8; Nominal: 2.2 ± 0.05; WARN_HI: 2.6; CRIT_HI: 3.0; CRITICAL Response: Inspect and notify maintenance",
+          "quote_sha256": "be1cfe826e431367daab0dddbce463e251ae4dbbd03b7f5ce5becbb5264af4e6"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: Inspect and notify maintenance.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-08",
+      "rule_id": "SOP-002-EX-08:critical",
+      "sensor_id": "ST03_LABELLING_TEN",
+      "unit": "N",
+      "kind": "kg_threshold_critical",
+      "op": "outside",
+      "value": "1.5",
+      "second": "3.0",
+      "duration_seconds": 0,
+      "condition_text": "value < critLo or value > critHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p1:table3:chunk"
+          ],
+          "quote": "Sensor: TEN; Unit: N; CRIT_LO: 1.5; WARN_LO: 1.8; Nominal: 2.2 ± 0.05; WARN_HI: 2.6; CRIT_HI: 3.0; CRITICAL Response: Inspect and notify maintenance",
+          "quote_sha256": "be1cfe826e431367daab0dddbce463e251ae4dbbd03b7f5ce5becbb5264af4e6"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: Inspect and notify maintenance.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-09",
+      "rule_id": "SOP-002-EX-09:warning",
+      "sensor_id": "ST03_LABELLING_CNT",
+      "unit": "pcs/min",
+      "kind": "kg_threshold_warning",
+      "op": "outside",
+      "value": "110.0",
+      "second": "130.0",
+      "duration_seconds": 0,
+      "condition_text": "value < warnLo or value > warnHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p1:table3:chunk"
+          ],
+          "quote": "Sensor: CNT; Unit: pcs/min; CRIT_LO: 100; WARN_LO: 110; Nominal: 120 ± 2.0; WARN_HI: 130; CRIT_HI: 140; CRITICAL Response: E-STOP labelling; inspect label path",
+          "quote_sha256": "307083a1e786806d4cfab0ae239363dc2d0d1cfd35f721cb2dc19e26de2268db"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: E-STOP labelling; inspect label path.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-09",
+      "rule_id": "SOP-002-EX-09:critical",
+      "sensor_id": "ST03_LABELLING_CNT",
+      "unit": "pcs/min",
+      "kind": "kg_threshold_critical",
+      "op": "outside",
+      "value": "100.0",
+      "second": "140.0",
+      "duration_seconds": 0,
+      "condition_text": "value < critLo or value > critHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p1:table3:chunk"
+          ],
+          "quote": "Sensor: CNT; Unit: pcs/min; CRIT_LO: 100; WARN_LO: 110; Nominal: 120 ± 2.0; WARN_HI: 130; CRIT_HI: 140; CRITICAL Response: E-STOP labelling; inspect label path",
+          "quote_sha256": "307083a1e786806d4cfab0ae239363dc2d0d1cfd35f721cb2dc19e26de2268db"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: E-STOP labelling; inspect label path.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-10",
+      "rule_id": "SOP-002-EX-10:warning",
+      "sensor_id": "ST04_PACKAGING_VIB",
+      "unit": "mm/s",
+      "kind": "kg_threshold_warning",
+      "op": "outside",
+      "value": "0.02",
+      "second": "0.2",
+      "duration_seconds": 0,
+      "condition_text": "value < warnLo or value > warnHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p1:table4:chunk"
+          ],
+          "quote": "Sensor: VIB; Unit: mm/s; CRIT_LO: 0.01; WARN_LO: 0.02; Nominal: 0.12 ± 0.005; WARN_HI: 0.2; CRIT_HI: 0.35; CRITICAL Response: E-STOP; inspect main bearing",
+          "quote_sha256": "7db3e3fd17a8aa64bea65c489f08b80c1f90374dac7750e4db94f0767ca2269f"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: E-STOP; inspect main bearing.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-10",
+      "rule_id": "SOP-002-EX-10:critical",
+      "sensor_id": "ST04_PACKAGING_VIB",
+      "unit": "mm/s",
+      "kind": "kg_threshold_critical",
+      "op": "outside",
+      "value": "0.01",
+      "second": "0.35",
+      "duration_seconds": 0,
+      "condition_text": "value < critLo or value > critHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p1:table4:chunk"
+          ],
+          "quote": "Sensor: VIB; Unit: mm/s; CRIT_LO: 0.01; WARN_LO: 0.02; Nominal: 0.12 ± 0.005; WARN_HI: 0.2; CRIT_HI: 0.35; CRITICAL Response: E-STOP; inspect main bearing",
+          "quote_sha256": "7db3e3fd17a8aa64bea65c489f08b80c1f90374dac7750e4db94f0767ca2269f"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: E-STOP; inspect main bearing.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-11",
+      "rule_id": "SOP-002-EX-11:warning",
+      "sensor_id": "ST04_PACKAGING_CUR",
+      "unit": "A",
+      "kind": "kg_threshold_warning",
+      "op": "outside",
+      "value": "7.5",
+      "second": "9.8",
+      "duration_seconds": 0,
+      "condition_text": "value < warnLo or value > warnHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p1:table4:chunk"
+          ],
+          "quote": "Sensor: CUR; Unit: A; CRIT_LO: 6.5; WARN_LO: 7.5; Nominal: 8.7 ± 0.2; WARN_HI: 9.8; CRIT_HI: 11.0; CRITICAL Response: Inspect and notify maintenance",
+          "quote_sha256": "37135571a9065c8d01a57a1cd1c13e35d0b30c09e03b4a278c332a83e1957532"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: Inspect and notify maintenance.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-11",
+      "rule_id": "SOP-002-EX-11:critical",
+      "sensor_id": "ST04_PACKAGING_CUR",
+      "unit": "A",
+      "kind": "kg_threshold_critical",
+      "op": "outside",
+      "value": "6.5",
+      "second": "11.0",
+      "duration_seconds": 0,
+      "condition_text": "value < critLo or value > critHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p1:table4:chunk"
+          ],
+          "quote": "Sensor: CUR; Unit: A; CRIT_LO: 6.5; WARN_LO: 7.5; Nominal: 8.7 ± 0.2; WARN_HI: 9.8; CRIT_HI: 11.0; CRITICAL Response: Inspect and notify maintenance",
+          "quote_sha256": "37135571a9065c8d01a57a1cd1c13e35d0b30c09e03b4a278c332a83e1957532"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: Inspect and notify maintenance.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-12",
+      "rule_id": "SOP-002-EX-12:warning",
+      "sensor_id": "ST04_PACKAGING_SPD",
+      "unit": "m/s",
+      "kind": "kg_threshold_warning",
+      "op": "outside",
+      "value": "1.0",
+      "second": "1.4",
+      "duration_seconds": 0,
+      "condition_text": "value < warnLo or value > warnHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p1:table4:chunk"
+          ],
+          "quote": "Sensor: SPD; Unit: m/s; CRIT_LO: 0.85; WARN_LO: 1.0; Nominal: 1.2 ± 0.02; WARN_HI: 1.4; CRIT_HI: 1.6; CRITICAL Response: Inspect and notify maintenance",
+          "quote_sha256": "b37b4aa75bb4dd037588584e1e7afd40cdf636b46abddd9a87f1c9c6e2d2d50b"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: Inspect and notify maintenance.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-12",
+      "rule_id": "SOP-002-EX-12:critical",
+      "sensor_id": "ST04_PACKAGING_SPD",
+      "unit": "m/s",
+      "kind": "kg_threshold_critical",
+      "op": "outside",
+      "value": "0.85",
+      "second": "1.6",
+      "duration_seconds": 0,
+      "condition_text": "value < critLo or value > critHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p1:table4:chunk"
+          ],
+          "quote": "Sensor: SPD; Unit: m/s; CRIT_LO: 0.85; WARN_LO: 1.0; Nominal: 1.2 ± 0.02; WARN_HI: 1.4; CRIT_HI: 1.6; CRITICAL Response: Inspect and notify maintenance",
+          "quote_sha256": "b37b4aa75bb4dd037588584e1e7afd40cdf636b46abddd9a87f1c9c6e2d2d50b"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: Inspect and notify maintenance.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-13",
+      "rule_id": "SOP-002-EX-13:warning",
+      "sensor_id": "SRV01_SERVERROOM_TMP",
+      "unit": "°C",
+      "kind": "kg_threshold_warning",
+      "op": "outside",
+      "value": "18.0",
+      "second": "25.0",
+      "duration_seconds": 0,
+      "condition_text": "value < warnLo or value > warnHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p1:table5:chunk"
+          ],
+          "quote": "Sensor: TMP; Unit: °C; CRIT_LO: 16.0; WARN_LO: 18.0; Nominal: 21.0 ± 0.3; WARN_HI: 25.0; CRIT_HI: 28.0; CRITICAL Response: Activate backup cooling; prepare controlled PLC shutdown",
+          "quote_sha256": "6af3fffda6cd0ac26c768d4ef53dbc6028f4e360f8cc55c80cb8f5daffeae5fa"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: Activate backup cooling; prepare controlled PLC shutdown.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-13",
+      "rule_id": "SOP-002-EX-13:critical",
+      "sensor_id": "SRV01_SERVERROOM_TMP",
+      "unit": "°C",
+      "kind": "kg_threshold_critical",
+      "op": "outside",
+      "value": "16.0",
+      "second": "28.0",
+      "duration_seconds": 0,
+      "condition_text": "value < critLo or value > critHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p1:table5:chunk"
+          ],
+          "quote": "Sensor: TMP; Unit: °C; CRIT_LO: 16.0; WARN_LO: 18.0; Nominal: 21.0 ± 0.3; WARN_HI: 25.0; CRIT_HI: 28.0; CRITICAL Response: Activate backup cooling; prepare controlled PLC shutdown",
+          "quote_sha256": "6af3fffda6cd0ac26c768d4ef53dbc6028f4e360f8cc55c80cb8f5daffeae5fa"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: Activate backup cooling; prepare controlled PLC shutdown.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-14",
+      "rule_id": "SOP-002-EX-14:warning",
+      "sensor_id": "SRV01_SERVERROOM_HUM",
+      "unit": "%RH",
+      "kind": "kg_threshold_warning",
+      "op": "outside",
+      "value": "30.0",
+      "second": "60.0",
+      "duration_seconds": 0,
+      "condition_text": "value < warnLo or value > warnHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p2:table1:chunk"
+          ],
+          "quote": "Sensor: HUM; Unit: %RH; CRIT_LO: 25.0; WARN_LO: 30.0; Nominal: 45.0 ± 1.0; WARN_HI: 60.0; CRIT_HI: 70.0; CRITICAL Response: Inspect and notify maintenance",
+          "quote_sha256": "a2024328ff499618681044d5f3e5aa0aeb93af065f4f8d1ad7d551ae76a3d66b"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: Inspect and notify maintenance.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-14",
+      "rule_id": "SOP-002-EX-14:critical",
+      "sensor_id": "SRV01_SERVERROOM_HUM",
+      "unit": "%RH",
+      "kind": "kg_threshold_critical",
+      "op": "outside",
+      "value": "25.0",
+      "second": "70.0",
+      "duration_seconds": 0,
+      "condition_text": "value < critLo or value > critHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p2:table1:chunk"
+          ],
+          "quote": "Sensor: HUM; Unit: %RH; CRIT_LO: 25.0; WARN_LO: 30.0; Nominal: 45.0 ± 1.0; WARN_HI: 60.0; CRIT_HI: 70.0; CRITICAL Response: Inspect and notify maintenance",
+          "quote_sha256": "a2024328ff499618681044d5f3e5aa0aeb93af065f4f8d1ad7d551ae76a3d66b"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: Inspect and notify maintenance.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-15",
+      "rule_id": "SOP-002-EX-15:warning",
+      "sensor_id": "WRH01_WAREHOUSE_TMP",
+      "unit": "°C",
+      "kind": "kg_threshold_warning",
+      "op": "outside",
+      "value": "0.5",
+      "second": "8.0",
+      "duration_seconds": 0,
+      "condition_text": "value < warnLo or value > warnHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p2:table2:chunk"
+          ],
+          "quote": "Sensor: TMP; Unit: °C; CRIT_LO: -1.0; WARN_LO: 0.5; Nominal: 4.0 ± 0.5; WARN_HI: 8.0; CRIT_HI: 12.0; CRITICAL Response: Activate backup refrigeration; notify QC",
+          "quote_sha256": "37dbc696f0caeed58489ac4773a49f53f1103a4887d85e51c9e4ad4df9511371"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: Activate backup refrigeration; notify QC.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-15",
+      "rule_id": "SOP-002-EX-15:critical",
+      "sensor_id": "WRH01_WAREHOUSE_TMP",
+      "unit": "°C",
+      "kind": "kg_threshold_critical",
+      "op": "outside",
+      "value": "-1.0",
+      "second": "12.0",
+      "duration_seconds": 0,
+      "condition_text": "value < critLo or value > critHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p2:table2:chunk"
+          ],
+          "quote": "Sensor: TMP; Unit: °C; CRIT_LO: -1.0; WARN_LO: 0.5; Nominal: 4.0 ± 0.5; WARN_HI: 8.0; CRIT_HI: 12.0; CRITICAL Response: Activate backup refrigeration; notify QC",
+          "quote_sha256": "37dbc696f0caeed58489ac4773a49f53f1103a4887d85e51c9e4ad4df9511371"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: Activate backup refrigeration; notify QC.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-16",
+      "rule_id": "SOP-002-EX-16:warning",
+      "sensor_id": "WRH01_WAREHOUSE_HUM",
+      "unit": "%RH",
+      "kind": "kg_threshold_warning",
+      "op": "outside",
+      "value": "60.0",
+      "second": "85.0",
+      "duration_seconds": 0,
+      "condition_text": "value < warnLo or value > warnHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p2:table2:chunk"
+          ],
+          "quote": "Sensor: HUM; Unit: %RH; CRIT_LO: 55.0; WARN_LO: 60.0; Nominal: 75.0 ± 1.5; WARN_HI: 85.0; CRIT_HI: 90.0; CRITICAL Response: Inspect and notify maintenance",
+          "quote_sha256": "1877d27c24dd82592e9ffe18b82c048d607182778434327e20484f3db0d60a9d"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: Inspect and notify maintenance.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-16",
+      "rule_id": "SOP-002-EX-16:critical",
+      "sensor_id": "WRH01_WAREHOUSE_HUM",
+      "unit": "%RH",
+      "kind": "kg_threshold_critical",
+      "op": "outside",
+      "value": "55.0",
+      "second": "90.0",
+      "duration_seconds": 0,
+      "condition_text": "value < critLo or value > critHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p2:table2:chunk"
+          ],
+          "quote": "Sensor: HUM; Unit: %RH; CRIT_LO: 55.0; WARN_LO: 60.0; Nominal: 75.0 ± 1.5; WARN_HI: 85.0; CRIT_HI: 90.0; CRITICAL Response: Inspect and notify maintenance",
+          "quote_sha256": "1877d27c24dd82592e9ffe18b82c048d607182778434327e20484f3db0d60a9d"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: Inspect and notify maintenance.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-17",
+      "rule_id": "SOP-002-EX-17:warning",
+      "sensor_id": "CHM01_CHEMICALSTORAGE_TMP",
+      "unit": "°C",
+      "kind": "kg_threshold_warning",
+      "op": "outside",
+      "value": "10.0",
+      "second": "20.0",
+      "duration_seconds": 0,
+      "condition_text": "value < warnLo or value > warnHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p2:table3:chunk"
+          ],
+          "quote": "Sensor: TMP; Unit: °C; CRIT_LO: 5.0; WARN_LO: 10.0; Nominal: 15.0 ± 0.3; WARN_HI: 20.0; CRIT_HI: 25.0; CRITICAL Response: Activate emergency ventilation; notify safety officer immediately",
+          "quote_sha256": "471c041d992fa454f7942eabdfe395505bf694759d1cab06f535b40df94a33e4"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: Activate emergency ventilation; notify safety officer immediately.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-17",
+      "rule_id": "SOP-002-EX-17:critical",
+      "sensor_id": "CHM01_CHEMICALSTORAGE_TMP",
+      "unit": "°C",
+      "kind": "kg_threshold_critical",
+      "op": "outside",
+      "value": "5.0",
+      "second": "25.0",
+      "duration_seconds": 0,
+      "condition_text": "value < critLo or value > critHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p2:table3:chunk"
+          ],
+          "quote": "Sensor: TMP; Unit: °C; CRIT_LO: 5.0; WARN_LO: 10.0; Nominal: 15.0 ± 0.3; WARN_HI: 20.0; CRIT_HI: 25.0; CRITICAL Response: Activate emergency ventilation; notify safety officer immediately",
+          "quote_sha256": "471c041d992fa454f7942eabdfe395505bf694759d1cab06f535b40df94a33e4"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: Activate emergency ventilation; notify safety officer immediately.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-18",
+      "rule_id": "SOP-002-EX-18:warning",
+      "sensor_id": "CHM01_CHEMICALSTORAGE_HUM",
+      "unit": "%RH",
+      "kind": "kg_threshold_warning",
+      "op": "outside",
+      "value": "20.0",
+      "second": "50.0",
+      "duration_seconds": 0,
+      "condition_text": "value < warnLo or value > warnHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p2:table3:chunk"
+          ],
+          "quote": "Sensor: HUM; Unit: %RH; CRIT_LO: 15.0; WARN_LO: 20.0; Nominal: 35.0 ± 1.0; WARN_HI: 50.0; CRIT_HI: 60.0; CRITICAL Response: Activate desiccant system; inspect storage containers for leaks",
+          "quote_sha256": "b7e28b535c1399c5ba1ae0586400100100f3da2af3c7df0da79792a5a71f7965"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: Activate desiccant system; inspect storage containers for leaks.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-18",
+      "rule_id": "SOP-002-EX-18:critical",
+      "sensor_id": "CHM01_CHEMICALSTORAGE_HUM",
+      "unit": "%RH",
+      "kind": "kg_threshold_critical",
+      "op": "outside",
+      "value": "15.0",
+      "second": "60.0",
+      "duration_seconds": 0,
+      "condition_text": "value < critLo or value > critHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p2:table3:chunk"
+          ],
+          "quote": "Sensor: HUM; Unit: %RH; CRIT_LO: 15.0; WARN_LO: 20.0; Nominal: 35.0 ± 1.0; WARN_HI: 50.0; CRIT_HI: 60.0; CRITICAL Response: Activate desiccant system; inspect storage containers for leaks",
+          "quote_sha256": "b7e28b535c1399c5ba1ae0586400100100f3da2af3c7df0da79792a5a71f7965"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: Activate desiccant system; inspect storage containers for leaks.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-19",
+      "rule_id": "SOP-002-EX-19:warning",
+      "sensor_id": "RND01_RDLAB_TMP",
+      "unit": "°C",
+      "kind": "kg_threshold_warning",
+      "op": "outside",
+      "value": "18.0",
+      "second": "26.0",
+      "duration_seconds": 0,
+      "condition_text": "value < warnLo or value > warnHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p2:table4:chunk"
+          ],
+          "quote": "Sensor: TMP; Unit: °C; CRIT_LO: 15.0; WARN_LO: 18.0; Nominal: 22.0 ± 0.2; WARN_HI: 26.0; CRIT_HI: 30.0; CRITICAL Response: Inspect and notify maintenance",
+          "quote_sha256": "8f59e7846937bcc97155a8f70ae7b3e717de6a59f9a105db604c125c638e57da"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: Inspect and notify maintenance.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-19",
+      "rule_id": "SOP-002-EX-19:critical",
+      "sensor_id": "RND01_RDLAB_TMP",
+      "unit": "°C",
+      "kind": "kg_threshold_critical",
+      "op": "outside",
+      "value": "15.0",
+      "second": "30.0",
+      "duration_seconds": 0,
+      "condition_text": "value < critLo or value > critHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p2:table4:chunk"
+          ],
+          "quote": "Sensor: TMP; Unit: °C; CRIT_LO: 15.0; WARN_LO: 18.0; Nominal: 22.0 ± 0.2; WARN_HI: 26.0; CRIT_HI: 30.0; CRITICAL Response: Inspect and notify maintenance",
+          "quote_sha256": "8f59e7846937bcc97155a8f70ae7b3e717de6a59f9a105db604c125c638e57da"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: Inspect and notify maintenance.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-20",
+      "rule_id": "SOP-002-EX-20:warning",
+      "sensor_id": "RND01_RDLAB_HUM",
+      "unit": "%RH",
+      "kind": "kg_threshold_warning",
+      "op": "outside",
+      "value": "35.0",
+      "second": "65.0",
+      "duration_seconds": 0,
+      "condition_text": "value < warnLo or value > warnHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p2:table4:chunk"
+          ],
+          "quote": "Sensor: HUM; Unit: %RH; CRIT_LO: 25.0; WARN_LO: 35.0; Nominal: 50.0 ± 1.0; WARN_HI: 65.0; CRIT_HI: 75.0; CRITICAL Response: Suspend experiments; inspect HVAC system",
+          "quote_sha256": "308ca5499f7856da00d8f11cff5a699b6f4e2903fc8ab00fbf76421d57ddf7a7"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: Suspend experiments; inspect HVAC system.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-20",
+      "rule_id": "SOP-002-EX-20:critical",
+      "sensor_id": "RND01_RDLAB_HUM",
+      "unit": "%RH",
+      "kind": "kg_threshold_critical",
+      "op": "outside",
+      "value": "25.0",
+      "second": "75.0",
+      "duration_seconds": 0,
+      "condition_text": "value < critLo or value > critHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p2:table4:chunk"
+          ],
+          "quote": "Sensor: HUM; Unit: %RH; CRIT_LO: 25.0; WARN_LO: 35.0; Nominal: 50.0 ± 1.0; WARN_HI: 65.0; CRIT_HI: 75.0; CRITICAL Response: Suspend experiments; inspect HVAC system",
+          "quote_sha256": "308ca5499f7856da00d8f11cff5a699b6f4e2903fc8ab00fbf76421d57ddf7a7"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: Suspend experiments; inspect HVAC system.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-21",
+      "rule_id": "SOP-002-EX-21:warning",
+      "sensor_id": "CAF01_CAFETERIA_TMP",
+      "unit": "°C",
+      "kind": "kg_threshold_warning",
+      "op": "outside",
+      "value": "17.0",
+      "second": "26.0",
+      "duration_seconds": 0,
+      "condition_text": "value < warnLo or value > warnHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p2:table5:chunk"
+          ],
+          "quote": "Sensor: TMP; Unit: °C; CRIT_LO: 14.0; WARN_LO: 17.0; Nominal: 21.0 ± 0.4; WARN_HI: 26.0; CRIT_HI: 30.0; CRITICAL Response: Inspect and notify maintenance",
+          "quote_sha256": "138118bb9b9983b30826ba67d624e1bafb6dd210400199fcbe2fc6fce930dca3"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: Inspect and notify maintenance.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-21",
+      "rule_id": "SOP-002-EX-21:critical",
+      "sensor_id": "CAF01_CAFETERIA_TMP",
+      "unit": "°C",
+      "kind": "kg_threshold_critical",
+      "op": "outside",
+      "value": "14.0",
+      "second": "30.0",
+      "duration_seconds": 0,
+      "condition_text": "value < critLo or value > critHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p2:table5:chunk"
+          ],
+          "quote": "Sensor: TMP; Unit: °C; CRIT_LO: 14.0; WARN_LO: 17.0; Nominal: 21.0 ± 0.4; WARN_HI: 26.0; CRIT_HI: 30.0; CRITICAL Response: Inspect and notify maintenance",
+          "quote_sha256": "138118bb9b9983b30826ba67d624e1bafb6dd210400199fcbe2fc6fce930dca3"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: Inspect and notify maintenance.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-22",
+      "rule_id": "SOP-002-EX-22:warning",
+      "sensor_id": "CAF01_CAFETERIA_HUM",
+      "unit": "%RH",
+      "kind": "kg_threshold_warning",
+      "op": "outside",
+      "value": "35.0",
+      "second": "70.0",
+      "duration_seconds": 0,
+      "condition_text": "value < warnLo or value > warnHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p2:table5:chunk"
+          ],
+          "quote": "Sensor: HUM; Unit: %RH; CRIT_LO: 25.0; WARN_LO: 35.0; Nominal: 55.0 ± 1.5; WARN_HI: 70.0; CRIT_HI: 80.0; CRITICAL Response: Inspect and notify maintenance",
+          "quote_sha256": "6e72a432ff517d3ac1be9df3fc401cc1b76cc87d5656548be7232a35c61c6304"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: Inspect and notify maintenance.",
+      "operational_assumptions": []
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-002%3A%3ASOP-002-EX-22",
+      "rule_id": "SOP-002-EX-22:critical",
+      "sensor_id": "CAF01_CAFETERIA_HUM",
+      "unit": "%RH",
+      "kind": "kg_threshold_critical",
+      "op": "outside",
+      "value": "25.0",
+      "second": "80.0",
+      "duration_seconds": 0,
+      "condition_text": "value < critLo or value > critHi (SOP-002 via KG)",
+      "source_evidence": [
+        {
+          "chunk_ids": [
+            "SOP-002:p2:table5:chunk"
+          ],
+          "quote": "Sensor: HUM; Unit: %RH; CRIT_LO: 25.0; WARN_LO: 35.0; Nominal: 55.0 ± 1.5; WARN_HI: 70.0; CRIT_HI: 80.0; CRITICAL Response: Inspect and notify maintenance",
+          "quote_sha256": "6e72a432ff517d3ac1be9df3fc401cc1b76cc87d5656548be7232a35c61c6304"
+        }
+      ],
+      "document_recommended_response": "CRITICAL: Inspect and notify maintenance.",
+      "operational_assumptions": []
+    }
+  ],
+  "unsupported": [
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-ST02-04",
+      "rule_id": "RULE-ST02-04",
+      "condition_text": "ST02_SEALING current (CUR) triggers a WARNING; its drift correlates with ST04_PACKAGING speed reduction due to shared electrical coupling.",
+      "sensor_id": "ST02_SEALING_CUR",
+      "unit": "A",
+      "nominal": "12.4",
+      "reason": "monitoring/correlation instruction, not a threshold condition"
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-001%3A%3ARULE-ST04-03",
+      "rule_id": "RULE-ST04-03",
+      "condition_text": "ST04_PACKAGING speed (SPD) drops below 1.00 m/s without an operator command.",
+      "sensor_id": "ST04_PACKAGING_SPD",
+      "unit": "m/s",
+      "nominal": "1.2",
+      "reason": "precondition 'no operator command' is not observable in sensor data"
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-01",
+      "rule_id": "MAINT-01",
+      "condition_text": "ST04_PACKAGING vibration drift >0.05 mm/s over 60 min.",
+      "sensor_id": "ST04_PACKAGING_VIB",
+      "unit": "mm/s",
+      "nominal": "0.12",
+      "reason": "DRIFT slope/baseline is not specified operationally"
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-02",
+      "rule_id": "MAINT-02",
+      "condition_text": "ST02_SEALING current drift >1.0 A for 30+ min.",
+      "sensor_id": "ST02_SEALING_CUR",
+      "unit": "A",
+      "nominal": "12.4",
+      "reason": "DRIFT slope/baseline is not specified operationally"
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-06",
+      "rule_id": "MAINT-06",
+      "condition_text": "WRH01_WAREHOUSE temperature drift >2°C over 2 h.",
+      "sensor_id": "WRH01_WAREHOUSE_TMP",
+      "unit": "°C",
+      "nominal": "4.0",
+      "reason": "DRIFT slope/baseline is not specified operationally"
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3AMAINT-08",
+      "rule_id": "MAINT-08",
+      "condition_text": "RND01_RDLAB humidity drift >10%RH over 60 min.",
+      "sensor_id": "RND01_RDLAB_HUM",
+      "unit": "%RH",
+      "nominal": "50.0",
+      "reason": "DRIFT slope/baseline is not specified operationally"
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3ASOP-003-EX-01",
+      "rule_id": "SOP-003-EX-01",
+      "condition_text": "ST02_SEALING current increases with ST04_PACKAGING speed decreasing: sealing motor overload with conveyor speed drop via electrical coupling.",
+      "sensor_id": "ST02_SEALING_CUR",
+      "unit": "A",
+      "nominal": "12.4",
+      "reason": "monitoring/correlation instruction, not a threshold condition"
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3ASOP-003-EX-02",
+      "rule_id": "SOP-003-EX-02",
+      "condition_text": "SRV01_SERVERROOM temperature increases with SCADA latency increasing: server room overheating increases scan time, producing apparent STUCK readings.",
+      "sensor_id": "SRV01_SERVERROOM_TMP",
+      "unit": "°C",
+      "nominal": "21.0",
+      "reason": "monitoring/correlation instruction, not a threshold condition"
+    },
+    {
+      "kg_node": "https://example.org/imaks/id/candidate-SOP-003%3A%3ASOP-003-EX-03",
+      "rule_id": "SOP-003-EX-03",
+      "condition_text": "WRH01_WAREHOUSE temperature increases in the WRH01-TMP↑ → QC HOLD pattern: cold warehouse drift presents a product quality risk.",
+      "sensor_id": "WRH01_WAREHOUSE_TMP",
+      "unit": "°C",
+      "nominal": "4.0",
+      "reason": "DRIFT slope/baseline is not specified operationally"
+    }
+  ]
+}

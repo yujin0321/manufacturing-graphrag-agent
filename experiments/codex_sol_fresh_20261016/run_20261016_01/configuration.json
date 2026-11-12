@@ -1,0 +1,18 @@
+{
+  "requested_model": "GPT-6.1 Sol",
+  "actual_model": "unverified",
+  "execution": "Codex subscription conversation AI extraction + local code",
+  "api_used": false,
+  "evaluation": "고정 후 별도 평가 대기",
+  "shacl_inference": "none",
+  "input_allowlist": [
+    "chunks.jsonl",
+    "pages.jsonl",
+    "tables.jsonl",
+    "doc_manifest.csv",
+    "ontology.ttl",
+    "shapes.ttl"
+  ],
+  "output_schema_version": "v1",
+  "policy_fixed_before_full_read": true
+}

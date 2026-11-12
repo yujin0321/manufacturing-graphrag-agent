@@ -20,6 +20,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import statistics
 import sys
 from collections import defaultdict
 from datetime import datetime, timedelta
@@ -99,7 +100,10 @@ def evaluate(detections: list[dict], gold: list[dict], grace_minutes: int) -> di
             "event_recall": caught / len(gold) if gold else 0.0,
             "alarm_precision": (len(dets) - len(false_alarms)) / len(dets) if dets else 0.0,
             "false_alarms": len(false_alarms),
+            # Kept for comparability with earlier reports: upper middle element when the count is even.
             "median_latency_min": sorted(latencies)[len(latencies) // 2] if latencies else None,
+            # Statistical median (mean of the two middle values when the count is even), added 2026-11-11.
+            "median_latency_min_statistics": statistics.median(latencies) if latencies else None,
             "recall_by_type": {k: f"{a}/{b}" for k, (a, b) in sorted(by_type.items())},
             "events": per_event}
     return report
@@ -161,7 +165,8 @@ def main() -> None:
                                          "report": report, "incident_report": incident_report})
     for family, r in report.items():
         print(f"{family:24} caught {r['events_caught']}/{r['gold_events']}  precision {r['alarm_precision']:.2f} "
-              f"false_alarms {r['false_alarms']}  median_latency {r['median_latency_min']}  {r['recall_by_type']}")
+              f"false_alarms {r['false_alarms']}  median_latency {r['median_latency_min']} "
+              f"(statistics.median {r['median_latency_min_statistics']})  {r['recall_by_type']}")
     if incident_report:
         r = incident_report
         print(f"INCIDENTS {r['incidents']}  caught {r['events_caught']}/{r['gold_events']}  "

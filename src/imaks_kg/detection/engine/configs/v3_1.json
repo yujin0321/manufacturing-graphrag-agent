@@ -1,0 +1,31 @@
+{
+  "name": "v3_1",
+  "description": "v3.1 post-hoc: MAINT drift away from nominal + RULE-ST02-04 monitoring window",
+  "slope_mode": "signal",
+  "maint_direction": "away",
+  "monitor_gate": "warning_any",
+  "monitor_anchor": "incident_start",
+  "id_prefix": {
+    "alarm": "det31-",
+    "incident": "inc3-"
+  },
+  "outputs": [
+    "events",
+    "signals",
+    "monitor_windows",
+    "incidents",
+    "correlations"
+  ],
+  "post_hoc": "designed after v3 evaluation; not a blind evaluation",
+  "sample_seconds": 30,
+  "train_end": "2026-01-07",
+  "smooth_samples": 10,
+  "incident_gap_min": 10,
+  "_notes": {
+    "train_end": "sigma = 1.4826*MAD of values with timestamp < train_end (team value, no labels)",
+    "smooth_samples": "mean width for MAINT 'over W' change (team value)",
+    "incident_gap_min": "same-sensor alarms <= gap apart form one incident (team value)"
+  },
+  "link_policy": "legacy",
+  "severity_policy": "sop002_bands"
+}

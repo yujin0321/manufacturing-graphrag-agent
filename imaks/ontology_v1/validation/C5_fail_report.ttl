@@ -1,0 +1,29 @@
+_:cb0 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/shacl#ValidationReport> .
+_:cb0 <http://www.w3.org/ns/shacl#conforms> "false"^^<http://www.w3.org/2001/XMLSchema#boolean> .
+_:cb0 <http://www.w3.org/ns/shacl#result> _:cb1899ee40a2e51e3bfd32c731fb68c642f946d06ff1002a9d5fbe3a84a5ac3971 .
+_:cb0 <http://www.w3.org/ns/shacl#result> _:cbc4a8a572b6aec20cbaeeaebbbcdf1bf675e82eb5c5305f828bb68b711fd4823b .
+_:cb16ad213b0540907c17635e60b1b3d65307ff1b6a3a21aeb1b21238de3279e3b90 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/shacl#SPARQLConstraint> .
+_:cb16ad213b0540907c17635e60b1b3d65307ff1b6a3a21aeb1b21238de3279e3b90 <http://www.w3.org/ns/shacl#message> "C5 GT-#### 평가 사건 식별자가 입력 그래프에 있습니다."@ko .
+_:cb16ad213b0540907c17635e60b1b3d65307ff1b6a3a21aeb1b21238de3279e3b90 <http://www.w3.org/ns/shacl#select> "\n            PREFIX im: <https://example.org/imaks/v1#>\n            SELECT $this ?value WHERE {\n                { ?subject ?predicate ?value .\n                  BIND(LCASE(REPLACE(REPLACE(STR(?predicate), \"^.*[/#: ]\", \"\"), \"[_-]\", \"\")) AS ?local)\n                  FILTER (?local IN (\"identifier\", \"id\", \"nodeid\", \"gtid\"))\n                  FILTER (REGEX(STR(?value), \"^GT-[0-9]{4}$\", \"i\"))\n                }\n                UNION\n                { ?value ?predicate ?object .\n                  FILTER (isIRI(?value) && REGEX(STR(?value), \"[/#: ]GT-[0-9]{4}$\", \"i\"))\n                }\n            }\n        " .
+_:cb1899ee40a2e51e3bfd32c731fb68c642f946d06ff1002a9d5fbe3a84a5ac3971 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/shacl#ValidationResult> .
+_:cb1899ee40a2e51e3bfd32c731fb68c642f946d06ff1002a9d5fbe3a84a5ac3971 <http://www.w3.org/ns/shacl#focusNode> <https://example.org/imaks/v1#InputData> .
+_:cb1899ee40a2e51e3bfd32c731fb68c642f946d06ff1002a9d5fbe3a84a5ac3971 <http://www.w3.org/ns/shacl#resultMessage> "C5 입력 그래프에 금지 라벨·알람·정답·시간 라벨 predicate가 있습니다." .
+_:cb1899ee40a2e51e3bfd32c731fb68c642f946d06ff1002a9d5fbe3a84a5ac3971 <http://www.w3.org/ns/shacl#resultMessage> "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다." .
+_:cb1899ee40a2e51e3bfd32c731fb68c642f946d06ff1002a9d5fbe3a84a5ac3971 <http://www.w3.org/ns/shacl#resultPath> <https://example.org/imaks/v1#gt_id> .
+_:cb1899ee40a2e51e3bfd32c731fb68c642f946d06ff1002a9d5fbe3a84a5ac3971 <http://www.w3.org/ns/shacl#resultSeverity> <http://www.w3.org/ns/shacl#Violation> .
+_:cb1899ee40a2e51e3bfd32c731fb68c642f946d06ff1002a9d5fbe3a84a5ac3971 <http://www.w3.org/ns/shacl#sourceConstraint> _:cb44a6af01cdf678c8655a53214912814370c315701978ff14b09971298657814b .
+_:cb1899ee40a2e51e3bfd32c731fb68c642f946d06ff1002a9d5fbe3a84a5ac3971 <http://www.w3.org/ns/shacl#sourceConstraintComponent> <http://www.w3.org/ns/shacl#SPARQLConstraintComponent> .
+_:cb1899ee40a2e51e3bfd32c731fb68c642f946d06ff1002a9d5fbe3a84a5ac3971 <http://www.w3.org/ns/shacl#sourceShape> <https://example.org/imaks/v1#InputGraphShape> .
+_:cb1899ee40a2e51e3bfd32c731fb68c642f946d06ff1002a9d5fbe3a84a5ac3971 <http://www.w3.org/ns/shacl#value> "GT-0007" .
+_:cb44a6af01cdf678c8655a53214912814370c315701978ff14b09971298657814b <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/shacl#SPARQLConstraint> .
+_:cb44a6af01cdf678c8655a53214912814370c315701978ff14b09971298657814b <http://www.w3.org/ns/shacl#message> "C5 입력 그래프에 금지 라벨·알람·정답·시간 라벨 predicate가 있습니다."@ko .
+_:cb44a6af01cdf678c8655a53214912814370c315701978ff14b09971298657814b <http://www.w3.org/ns/shacl#select> "\n            PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n            SELECT $this ?path ?value WHERE {\n                ?subject ?path ?value .\n                BIND(LCASE(REPLACE(REPLACE(STR(?path), \"^.*[/#: ]\", \"\"), \"[_-]\", \"\")) AS ?local)\n                FILTER (?local IN (\"label\", \"quality\", \"status\", \"alarms\", \"gtid\", \"anomalylabel\", \"datasetseverity\", \"severity\", \"alarmflag\", \"shift\", \"day\", \"batchid\"))\n                FILTER (?path != rdfs:label)\n            }\n        " .
+_:cbc4a8a572b6aec20cbaeeaebbbcdf1bf675e82eb5c5305f828bb68b711fd4823b <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/shacl#ValidationResult> .
+_:cbc4a8a572b6aec20cbaeeaebbbcdf1bf675e82eb5c5305f828bb68b711fd4823b <http://www.w3.org/ns/shacl#focusNode> <https://example.org/imaks/v1#InputData> .
+_:cbc4a8a572b6aec20cbaeeaebbbcdf1bf675e82eb5c5305f828bb68b711fd4823b <http://www.w3.org/ns/shacl#resultMessage> "C5 GT-#### 평가 사건 식별자가 입력 그래프에 있습니다." .
+_:cbc4a8a572b6aec20cbaeeaebbbcdf1bf675e82eb5c5305f828bb68b711fd4823b <http://www.w3.org/ns/shacl#resultMessage> "C5 입력 프로필과 명시적인 정답·알람 누출 차단. 의미적 프록시 누출의 완전 증명이 아닙니다." .
+_:cbc4a8a572b6aec20cbaeeaebbbcdf1bf675e82eb5c5305f828bb68b711fd4823b <http://www.w3.org/ns/shacl#resultSeverity> <http://www.w3.org/ns/shacl#Violation> .
+_:cbc4a8a572b6aec20cbaeeaebbbcdf1bf675e82eb5c5305f828bb68b711fd4823b <http://www.w3.org/ns/shacl#sourceConstraint> _:cb16ad213b0540907c17635e60b1b3d65307ff1b6a3a21aeb1b21238de3279e3b90 .
+_:cbc4a8a572b6aec20cbaeeaebbbcdf1bf675e82eb5c5305f828bb68b711fd4823b <http://www.w3.org/ns/shacl#sourceConstraintComponent> <http://www.w3.org/ns/shacl#SPARQLConstraintComponent> .
+_:cbc4a8a572b6aec20cbaeeaebbbcdf1bf675e82eb5c5305f828bb68b711fd4823b <http://www.w3.org/ns/shacl#sourceShape> <https://example.org/imaks/v1#InputGraphShape> .
+_:cbc4a8a572b6aec20cbaeeaebbbcdf1bf675e82eb5c5305f828bb68b711fd4823b <http://www.w3.org/ns/shacl#value> "GT-0007" .

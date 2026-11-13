@@ -1,0 +1,62 @@
+@prefix im: <https://example.org/imaks/v1#> .
+@prefix inst: <https://example.org/imaks/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+inst:N0013 a im:Station ;
+    im:hasSensor inst:N0014 ;
+    im:identifier "ST02_SEALING" ;
+    im:locatedIn inst:N0002 ;
+    im:name "ST02_SEALING" ;
+    im:partOf inst:N0001 ;
+    im:sourceLabel "Component" ;
+    im:stationType "SEALING" .
+
+<https://example.org/imaks/id/rule/SOP002-THRESHOLD-ST02_SEALING_TMP> a im:Rule,
+        im:ThresholdRule ;
+    im:appliesToSensor inst:N0014 ;
+    im:conditionText "CRIT_LO < WARN_LO < NOMINAL < WARN_HI < CRIT_HI; CRITICAL response applies outside critical bounds." ;
+    im:critHi 2.1e+02 ;
+    im:critLo 1.65e+02 ;
+    im:extractionMethod "deterministic SOP-002 corrected table mapping; not LLM extraction" ;
+    im:identifier "SOP002-THRESHOLD-ST02_SEALING_TMP" ;
+    im:nominal 1.85e+02 ;
+    im:nominalText "185.0 ± 1.2" ;
+    im:nominalTolerance 1.2e+00 ;
+    im:responseText "E-STOP ST02/ST03/ST04; inspect element" ;
+    im:sourceDocument <https://example.org/imaks/id/document/SOP-002> ;
+    im:sourcePage "1"^^xsd:positiveInteger ;
+    im:sourceQuote "[\"TMP\", \"°C\", \"165.0\", \"175.0\", \"185.0 ± 1.2\", \"195.0\", \"210.0\", \"E-STOP ST02/ST03/ST04; inspect\\nelement\"]" ;
+    im:sourceRow "2"^^xsd:positiveInteger ;
+    im:sourceTable "SOP-002:p1:table2" ;
+    im:unit "°C" ;
+    im:warnHi 1.95e+02 ;
+    im:warnLo 1.75e+02 .
+
+im:InputData a im:InputGraph ;
+    im:inputProfile "rule_context" .
+
+inst:N0001 a im:System ;
+    im:identifier "N0001" ;
+    im:line "LineaA" ;
+    im:name "iMAKS" ;
+    im:sourceLabel "System" .
+
+inst:N0002 a im:Zone ;
+    im:identifier "N0002" ;
+    im:name "Production Area" ;
+    im:sourceLabel "Zone" .
+
+<https://example.org/imaks/id/document/SOP-002> a im:Document ;
+    im:identifier "SOP-002" ;
+    im:pageCount "2"^^xsd:positiveInteger ;
+    im:sourcePath "rules/SOP_002_AlarmThresholds.pdf" ;
+    im:sourceSha256 "f9cd382e743add947ac0b311be9474ca726a8faf6a31f8b1e0e72a62c6fd5f7e" ;
+    im:title "Alarm Thresholds and Response Matrix — Production Line A" .
+
+inst:N0014 a im:Sensor ;
+    im:identifier "ST02_SEALING_TMP" ;
+    im:name "ST02_SEALING_TMP" ;
+    im:sensorType "TMP" ;
+    im:sourceLabel "Sensor" ;
+    im:unit "°C" .
+

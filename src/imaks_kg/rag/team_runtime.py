@@ -24,6 +24,8 @@ DEFAULTS = {'detector_profile': 'main_v3_1', 'document_mode': 'auto'}
 
 def application_config():
     return {'version': 'team-app-v1-20261113', 'defaults': DEFAULTS.copy(),
+            'features': {'decision_evidence': True, 'repair_incident_default': False,
+                         'repair_incident_max_attempts': 2},
             'detectors': [{'id': key, **value} for key, value in PROFILES.items()],
             'search_modes': SEARCH_MODES.copy(),
             'members': contributions(DEFAULTS['detector_profile'], DEFAULTS['document_mode'])['members']}

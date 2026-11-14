@@ -22,6 +22,7 @@
 | GET `/api/incidents?profile=<ID>` | 봉인된 과거 후보, 상관 후보, 주의사항 | 없음 |
 | GET `/api/history` | 최근 저장 실행 최대 50개, 각 실행의 선택 설정 | 없음 |
 | GET `/api/run/<ID>` | 아래의 화면 전달 응답 | 없음 |
+| GET `/api/decision-evidence/<ID>` | 저장 사건의 관측·규칙·출처와 지원되는 단순 발동 조건을 별도로 재점검. 원 답변 유지 | 없음 |
 | POST `/api/agent` | 질문→도구→답변→검토, 완료 후 응답 | 일반 서버에서 발생 가능 |
 
 `csrf_token`은 OpenAI 키가 아니다. 서버 재시작 후 새 토큰을 받아야 한다. 새 질문 요청에는 `Content-Type: application/json`, `X-Demo-Token: <csrf_token>` 헤더를 사용한다. 브라우저 Origin과 Host를 검사한다. 키는 백엔드 환경변수로만 관리한다.
@@ -40,6 +41,8 @@
 
 - 탐지: `main_v3_1`, `yujin_v3_2`, `seongho_two_point`, `seongho_drift`.
 - 문서: `auto`, `vector`, `graph`, `full`.
+
+추가 선택값 `repair_incident`는 JSON boolean이며 기본값 `false`다. `true`인 경우 사건 설명의 근거 검토가 거절되면 같은 근거로 한 번만 수정·재검토한다. 최대 계획1 + 초안2 + 검토2회다. 실제 요청에서는 추가 비용이 생길 수 있다. 전송 실패·잘못된 검토 JSON·구조적 근거 불일치는 자동 재시도하지 않는다. 문서 Agent의 기존 제한은 이 옵션과 별도다.
 
 선택된 탐지기는 사건 경로에, 문서 방식은 문서 경로에 적용한다. `xai.integration.route`와 `actual_*_backend`로 실제 사용 경로를 확인한다. KG 집합·경로는 전수 질의로 계산하며 모든 질문이 문서 검색을 거치는 것은 아니다.
 
@@ -66,8 +69,11 @@
 | `xai.execution_parameters`, `implementation_policy`, `type_definitions` | 실행 조건·기본값의 출처·유형 정의 |
 | `xai.document_retrieval` | 문서 방식, 선택 청크, 근거 완전성. 이 경로에서만 존재 |
 | `xai.kg_query` | 전수 질의 인자·전체 결과 개수·항목·방향 경로. 이 경로에서만 존재 |
+| `xai.decision_evidence` | 새 사건 실행의 구조적 근거 검사. 알람별 관측·규칙·출처 ID·지원되는 조건 재계산·명시적 미검증 범위. `consistent`는 이 범위의 일치이며 전체 자연어 정확도나 인과 확정이 아님 |
 
 자료가 없으면 `sources=[]`, `edges=[]`, `verification=[]`일 수 있다. 빈 검토 배열을 ‘통과’로 표시하지 않는다. `complete`는 실행 완료 상태이며 사실 정확도 100%를 뜻하지 않는다. 성호의 `UNCLASSIFIED`는 미분류, `severity_origin`이 표시용인 `ADVISORY`는 실제 심각도 판단이 아니다.
+
+자기수정 실행에서는 `verification`에 첫 거절과 두 번째 승인 모두 남을 수 있다. 각 항목의 `attempt`를 표시하고 최종 상태와 마지막 검토를 함께 읽는다. 과거 기록에는 새 구조 검사 필드가 없을 수 있다. 기존 결과는 수정하지 않고 `/api/decision-evidence/<ID>`로 무료 재점검한다. 이 응답의 `answer_unchanged_sha256`과 `audit_version`은 원래 답변과 별도 점검을 구분한다. 문서·KG 전용 실행은 사건 근거가 없어 이 재점검 경로에서 HTTP 400이다. 상세 [구조 검사 범위](DECISION_EVIDENCE.md).
 
 ## 상태와 오류
 

@@ -23,7 +23,7 @@ class TeamServerTests(unittest.TestCase):
             return object()
         self.server = demo.make_server(0, agent_answer=answer, incident_store_factory=factory,
             agent_options={'detector_profile': {'main_v3_1', 'seongho_two_point'},
-                           'document_mode': {'auto', 'vector'}},
+                           'document_mode': {'auto', 'vector'}, 'repair_incident': {True, False}},
             team_config=team_config or (lambda: {'detectors': ['main_v3_1', 'seongho_two_point']}),
             page=Path(demo.__file__).with_name('xai_demo.html'), generation_enabled=generation_enabled)
         self.thread = threading.Thread(target=self.server.serve_forever, daemon=True)
@@ -76,6 +76,27 @@ class TeamServerTests(unittest.TestCase):
         self.assertEqual(status, 503)
         self.assertEqual(json.loads(body)['code'], 'read_only')
         self.assertEqual(self.calls, [])
+
+    def test_repair_boolean_is_forwarded_and_integer_is_rejected(self):
+        _, body = self.request('GET', '/api/session')
+        headers = {'X-Demo-Token': json.loads(body)['csrf_token']}
+        with patch.object(demo, 'presentation', return_value={'agent_status': 'complete'}):
+            status, _ = self.request('POST', '/api/agent', json.dumps({'question': 'test', 'repair_incident': True}), headers)
+        self.assertEqual(status, 200)
+        self.assertTrue(self.calls[-1][1]['repair_incident'])
+        status, _ = self.request('POST', '/api/agent', '{"question":"test","repair_incident":1}', headers)
+        self.assertEqual(status, 400)
+        self.assertEqual(len(self.calls), 1)
+
+    def test_saved_decision_recheck_uses_no_generation_callback(self):
+        from imaks_kg.rag import decision_evidence
+        with patch.object(decision_evidence, 'for_saved_run', return_value={'new_api_calls': 0, 'decision_evidence': {'status': 'consistent'}}):
+            status, body = self.request('GET', '/api/decision-evidence/safe_example')
+        self.assertEqual(status, 200)
+        self.assertEqual(json.loads(body)['new_api_calls'], 0)
+        status, _ = self.request('GET', '/api/decision-evidence/..%2Foutside')
+        self.assertEqual(status, 400)
+        self.assertFalse(self.calls)
 
     def test_free_config_and_selected_incident_store(self):
         status, body = self.request('GET', '/api/team-config')

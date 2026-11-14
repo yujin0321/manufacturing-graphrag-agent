@@ -42,9 +42,12 @@ def main():
     parser.add_argument('--document-mode', choices=team_runtime.SEARCH_MODES, default=team_runtime.DEFAULTS['document_mode'])
     parser.add_argument('--reuse-embedding-cache', type=Path)
     parser.add_argument('--read-only', action='store_true', help='Serve saved results without a key; reject generation')
+    parser.add_argument('--repair-incident', action='store_true', help='Opt in to one extra incident draft/verification for --question')
     args = parser.parse_args()
     if args.read_only and not args.serve:
         parser.error('--read-only requires --serve')
+    if args.repair_incident and args.question is None:
+        parser.error('--repair-incident requires --question')
     if args.prepare:
         prepare()
         return
@@ -67,7 +70,8 @@ def main():
         hidden_runs = v.read(display_path).get('hidden_run_ids', []) if display_path.exists() else []
         server = demo.make_server(args.port, agent_answer=incident_agent.answer, page=page,
             hidden_run_ids=hidden_runs, incident_store_factory=team_runtime.store,
-            agent_options={'detector_profile':set(team_runtime.PROFILES), 'document_mode':set(team_runtime.SEARCH_MODES)},
+            agent_options={'detector_profile':set(team_runtime.PROFILES), 'document_mode':set(team_runtime.SEARCH_MODES),
+                           'repair_incident': {True, False}},
             team_config=team_runtime.application_config, generation_enabled=not args.read_only)
         print(f'XAI demo http://127.0.0.1:{server.server_port}/', flush=True)
         try:
@@ -80,7 +84,7 @@ def main():
     if not args.run_dir:
         parser.error('--question requires a new --run-dir')
     result = incident_agent.answer(args.question, args.run_dir, detector_profile=args.detector_profile,
-                                   document_mode=args.document_mode)
+                                   document_mode=args.document_mode, repair_incident=args.repair_incident)
     print(json.dumps({'status': result['status'], 'answer': result['answer'], 'run_dir': str(args.run_dir)}, ensure_ascii=False, indent=2))
     if result['status'] == 'failed':
         raise SystemExit(1)

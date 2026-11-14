@@ -110,6 +110,13 @@ def make_server(port=8765, answer=live.answer, explain=event_explain.answer, age
                     store=incident_store_factory(profile) if incident_store_factory is not None else None
                     return self.reply(200,incident_presentation(store))
                 except (ValueError,FileNotFoundError):return self.reply(503,{'error':'룰 엔진 사건 결과가 없거나 무결성 검사를 통과하지 못했습니다.'})
+            if path.startswith('/api/decision-evidence/'):
+                from . import decision_evidence
+                try:
+                    run=saved_run(unquote(path[len('/api/decision-evidence/'):]))
+                    return self.reply(200,decision_evidence.for_saved_run(run))
+                except FileNotFoundError:return self.reply(404,{'error':'저장된 사건 근거를 찾을 수 없습니다.'})
+                except (ValueError,KeyError,TypeError):return self.reply(400,{'error':'사건 근거와 봉인이 일치하는 저장 실행만 점검할 수 있습니다.'})
             if path.startswith('/api/run/'):
                 try:return self.reply(200,presentation(saved_run(unquote(path[len('/api/run/'):]))))
                 except (ValueError,FileNotFoundError):return self.reply(404,{'error':'저장된 결과를 찾을 수 없습니다.'})
@@ -130,6 +137,7 @@ def make_server(port=8765, answer=live.answer, explain=event_explain.answer, age
                 data=json.loads(self.rfile.read(n));q=data['event_id' if event_mode else 'incident_id' if incident_mode else 'question']
                 if not isinstance(q,str) or not q.strip() or len(q.encode())>8000:raise ValueError()
                 options={key:data[key] for key in (agent_options or {}) if key in data}
+                if 'repair_incident' in options and type(options['repair_incident']) is not bool:raise ValueError()
                 if any(value not in agent_options[key] for key,value in options.items()):raise ValueError()
                 if event_mode and q not in {e['id'] for e in detection_presentation()['events']}:raise ValueError()
                 if incident_mode and q not in {i['id'] for i in incident_presentation()['incidents']}:raise ValueError()

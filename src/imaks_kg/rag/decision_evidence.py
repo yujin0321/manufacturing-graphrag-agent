@@ -8,7 +8,7 @@ from rdflib import Literal, URIRef
 from . import comparison as c, vector as v
 from ..detection import rules
 
-VERSION = 'decision-evidence-v1-20261114'
+VERSION = 'decision-evidence-v2-20261114'
 
 
 def number(value):
@@ -90,8 +90,14 @@ def observations(sensor_id):
     return rows, expected
 
 
+def add_dependencies(evidence, store):
+    from .window_evidence import add_monitor_sources
+    return add_monitor_sources(evidence, store)
+
+
 def build(evidence, store, *, rows=None, input_sha256=None):
     """Bind provided evidence to sealed alarms, raw samples, IR and real sources."""
+    from . import window_evidence as windows
     incident = evidence['incident']
     original = store.by_id.get(incident['id'])
     issues, items = [], []
@@ -105,7 +111,10 @@ def build(evidence, store, *, rows=None, input_sha256=None):
         by_time.setdefault(row['timestamp'], []).append(row)
     sensor = next(store.base.subjects(c.IM.identifier, Literal(sensor_id)), None)
     unit = str(store.base.value(sensor, c.IM.unit)) if sensor else None
-    ir = v.read(store.run_dir / 'ir.json')['rules']
+    bundle = windows.checked_file(store, 'ir.json')
+    params_bundle = windows.checked_file(store, 'params.json')
+    cfg = params_bundle['config']
+    ir = bundle['rules']
     supplied = {source['chunk_id']: source for source in evidence['untrusted_reference_documents']}
     canonical, _ = v.source_records()
     canonical = {source['chunk_id']: source for source in canonical}
@@ -162,14 +171,40 @@ def build(evidence, store, *, rows=None, input_sha256=None):
             supported = rule.get('executor') == 'threshold_scan' or 'confirm_observations' in params
             if supported:
                 proof = threshold_proof(rows, alarm['trigger_at'], params,
-                    confirm=params.get('confirm_observations', 1))
-                if proof['state'] == 'inconsistent':
-                    errors.append('trigger predicate, persistence or first confirmation inconsistent')
+                    confirm=params.get('confirm_observations', 1), sample_seconds=cfg['sample_seconds'])
+                proof['operator'] = 'threshold_scan' if params.get('op') in ('gt', 'lt', 'outside') else params.get('op')
                 if proof.get('state') == 'consistent':
                     # Legacy immediate rules record trigger time, two-point rules record streak start.
                     expected_start = proof['condition_start'] if params.get('duration_seconds') or 'confirm_observations' in params else alarm['trigger_at']
                     if alarm['condition_start'] != expected_start:
                         errors.append('recorded condition start differs from contiguous raw observations')
+            if proof['state'] == 'unassessed':
+                if rule.get('executor') == 'slope':
+                    cal = windows.calibration(rows, cfg, params_bundle['sigma_by_sensor'][sensor_id], alarm['trigger_at'])
+                    proof = windows.rule_proof(rows, alarm['trigger_at'], rule, cfg, sigma=cal.get('sigma')) if cal['state'] == 'consistent' else cal
+                    proof['calibration'] = cal
+                else:
+                    proof = windows.rule_proof(rows, alarm['trigger_at'], rule, cfg)
+                if proof['state'] == 'consistent' and alarm['condition_start'] != proof['condition_start']:
+                    errors.append('window condition start differs from raw observations')
+                if params.get('op') == 'delta_gt' and proof['state'] == 'consistent':
+                    metrics = proof['metrics']
+                    for field, metric in (('feature_value', 'signed_delta'), ('baseline_value', 'baseline')):
+                        if number(sealed[field]) != number(metrics[metric]):
+                            errors.append('stored delta feature differs from raw window')
+                    if sealed['baseline_at'] != metrics['baseline_at']:
+                        errors.append('stored delta baseline time differs from raw window')
+        elif sealed:
+            proof = windows.monitor_proof(rows, sealed, store, bundle, params_bundle)
+            source_ids = sorted({cid for node in proof.get('evidence_rule_nodes', []) +
+                                 ([proof['source_rule_node']] if proof.get('source_rule_node') else [])
+                                 for cid in links.get(node, [])})
+            if proof['state'] == 'consistent':
+                for cid in source_ids:
+                    if cid not in supplied:
+                        errors.append('monitor or slope source missing from evidence: ' + cid)
+        if proof['state'] == 'inconsistent':
+            errors.append('trigger predicate, window, persistence or first confirmation inconsistent')
         items.append({'evidence_id': 'DEC-' + v.digest(alarm['id'].encode())[:12],
             'alarm_id': alarm['id'], 'observation': {'sensor_id': sensor_id, 'at': alarm['trigger_at'],
                 'value': alarm['trigger_value'], 'unit': alarm['unit']},
@@ -180,14 +215,16 @@ def build(evidence, store, *, rows=None, input_sha256=None):
         issues.extend(errors)
     return {'version': VERSION, 'status': 'inconsistent' if issues else 'consistent',
             'input_file': rules.INPUT, 'input_sha256': input_sha256, 'items': items, 'issues': issues,
-            'scope': 'evidence grounding and supported simple trigger checks only',
-            'not_verified': ['complex window/slope/stuck operators', 'event classification and recovery',
+            'scope': 'evidence grounding and supported trigger recomputation; not anomaly truth',
+            'not_verified': ['event classification, grouping and recovery',
                              'all natural-language claims', 'causality or action execution']}
 
 
 def summary(report):
     return {'status': report['status'], 'grounded_alarm_count': len(report['items']),
-            'simple_trigger_checks': sum(item['trigger_check']['state'] == 'consistent' for item in report['items']),
+            'verified_trigger_count': sum(item['trigger_check']['state'] == 'consistent' for item in report['items']),
+            'simple_trigger_checks': sum(item['trigger_check']['state'] == 'consistent' and
+                                         item['trigger_check'].get('operator') == 'threshold_scan' for item in report['items']),
             'unassessed_trigger_count': sum(item['trigger_check']['state'] == 'unassessed' for item in report['items']),
             'scope': report['scope'], 'not_verified': report['not_verified']}
 
@@ -204,6 +241,8 @@ def for_saved_run(run):
     evidence = v.read(run / 'retrieval.json')['context']
     if evidence['incident']['id'] != answer['xai']['incident']['id']:
         raise ValueError('Saved answer and retrieved incident disagree')
+    added = add_dependencies(evidence, store)
     return {'run_id': run.name, 'audit_version': VERSION, 'new_api_calls': 0,
+            'dependency_sources_added_for_recheck': added,
             'answer_unchanged_sha256': v.digest((run / 'answer.json').read_bytes()),
             'decision_evidence': build(evidence, store)}

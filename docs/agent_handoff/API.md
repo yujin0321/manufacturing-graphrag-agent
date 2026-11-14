@@ -75,6 +75,8 @@
 
 자기수정 실행에서는 `verification`에 첫 거절과 두 번째 승인 모두 남을 수 있다. 각 항목의 `attempt`를 표시하고 최종 상태와 마지막 검토를 함께 읽는다. 과거 기록에는 새 구조 검사 필드가 없을 수 있다. 기존 결과는 수정하지 않고 `/api/decision-evidence/<ID>`로 무료 재점검한다. 이 응답의 `answer_unchanged_sha256`과 `audit_version`은 원래 답변과 별도 점검을 구분한다. 문서·KG 전용 실행은 사건 근거가 없어 이 재점검 경로에서 HTTP 400이다. 상세 [구조 검사 범위](DECISION_EVIDENCE.md).
 
+창 연산 확장에서는 `verified_trigger_count`가 지원되는 전체 발동 조건 수이고, `simple_trigger_checks`는 그중 기존 단순 임계값 조건 수다. 파생 감시의 원래 신호가 승격 후 파일에서 제거된 경우 `source_signal_reference_status`와 정확한 해시 복원 결과를 제공한다. 모델 컨텍스트에 추가로 조회한 의존 출처는 `xai.dependency_retrieval`, 과거 기록을 별도로 점검하며 추가한 출처는 `dependency_sources_added_for_recheck`에 표시한다. 과거 입력에 출처가 있었다고 소급 해석하지 않는다. 상세 [창 연산 검사](WINDOW_CHECKS.md).
+
 ## 상태와 오류
 
 | HTTP·상태 | UI 처리 |

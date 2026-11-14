@@ -9,7 +9,7 @@ from rdflib import RDF, URIRef
 
 from . import agent_contract as contract, agent_v4_1 as documents
 from . import comparison as c, event_explain, incident_tools as tools, routing_v4, vector as v
-from . import team_retrieval, team_runtime, decision_evidence
+from . import team_retrieval, team_runtime, decision_evidence, window_evidence
 
 VERSION = 'incident-agent-v2-20261114'
 INCIDENT_ID = r'inc3[0-9]?-[0-9a-f]{20}'
@@ -77,6 +77,7 @@ def answer(question, run_dir, call=v.api_call, *, store=None, detector_profile='
             'verification_sha256': v.digest(VERIFY.encode()), 'integration': integration.copy(),
             'team_runtime_sha256': v.digest(Path(team_runtime.__file__).read_bytes()),
             'decision_evidence_sha256': v.digest(Path(decision_evidence.__file__).read_bytes()),
+            'window_evidence_sha256': v.digest(Path(window_evidence.__file__).read_bytes()),
             'repair_incident': repair_incident,
             'automatic_transport_retries': False})
 
@@ -228,6 +229,10 @@ def answer(question, run_dir, call=v.api_call, *, store=None, detector_profile='
         event_node = store.event_node(incident_id)
         for class_node in sorted(store.overlay.objects(event_node, RDF.type), key=str):
             evidence['graph_paths'].append({'s': str(event_node), 'p': str(RDF.type), 'o': str(class_node), 'depth': 1})
+        dependencies = decision_evidence.add_dependencies(evidence, store)
+        if dependencies['dependency_rule_nodes']:
+            xai['dependency_retrieval'] = dependencies
+            v.write(run / 'dependency_retrieval.json', dependencies)
         proof = decision_evidence.build(evidence, store)
         xai['decision_evidence'] = proof
         v.write(run / 'decision_evidence.json', proof)

@@ -28,6 +28,8 @@ iMAKS(제조 공정 합성 데이터셋)로 지식그래프(KG)를 직접 구축
 
 ## 3. 확정된 결정 (임의로 바꾸지 말 것)
 
+- **창 연산 검사 확장(2026-11-14):** `rag/window_evidence.py`로 현재 저장 알람의 창·기울기·STUCK·변화량·파생 감시를 원시 관측/봉인 설정에서 재계산한다. 승격 후 제거된 원래 신호는 정확한 해시 재구성으로 확인한다. 발동 근거가 맞다는 것은 현장 이상 정답·인과·유형·회복·전체 자연어가 맞다는 뜻이 아니다. 탐지 정책은 변경하지 않고 해석 차이를 남긴다. 최신 범위와 집계는 `docs/agent_handoff/WINDOW_CHECKS.md`.
+
 - **사건 설명 근거 검사 보완(2026-11-14):** `rag/decision_evidence.py`는 봉인 알람·원본 관측·IR·원문을 묶고 지원되는 단순 발동 조건을 재계산한다. 복잡한 연산은 미검증으로 명시하며 전체 자연어·유형·인과 정확도를 보증하지 않는다. `repair_incident`는 기본 false, 명시 선택 시 거절 후 한 번만 보완한다. 두 번 연속 승인 수렴 하네스가 아니며 전송 실패는 재시도하지 않는다. `/api/decision-evidence/<ID>`는 과거 답변을 바꾸지 않는 무료 점검이다. 상세 `docs/agent_handoff/DECISION_EVIDENCE.md`.
 
 - **선택형 사건 Agent 인계(2026-11-14):** `scripts/run_xai_agent.py`는 v3.1 + 문서 auto를 기본값으로 사용한다. `team_runtime.DEFAULTS`와 `/api/team-config`에서 확인한다. 대안은 명시 선택하며 과거 점수를 앱 정확도로 승계하지 않는다. 미분류 스캐너 출력은 S2를 완화하지 않고 별도 `RuleMatchCandidate`와 전용 SHACL로 검사한다. UI 구현은 별도 담당자이며 API·복원·대표 사례 인계는 `docs/agent_handoff/`다. `--serve --read-only`는 키 없이 저장 결과만 제공한다. 공개 Git에는 코드·문서만 반영하고 원문·벡터·API 실행 기록은 별도 로컬 ZIP으로 전달한다. 이 제한된 Agent 연결을 2회 연속 승인 수렴 하네스 완료로 표현하지 않는다.

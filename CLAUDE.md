@@ -21,12 +21,14 @@ iMAKS(제조 공정 합성 데이터셋)로 지식그래프(KG)를 직접 구축
 | ⑥ | 센서 시계열 기반 공정 간 인과관계 추론: `causallyAffects` 후보 발굴 (likelihoodScore). 입력은 라벨 없는 raw 시계열이며 임계값 컬럼은 제외(4장) |
 | ⑦ | 탐지 결과를 AnomalyEvent로 KG에 추가. 대표 테스트케이스는 GT-0009 |
 | ⑧ | GraphRAG 검색: Sparse-Dense-Graph 하이브리드 + 자연어→Cypher + Graph-to-Text. 기존 v3 경로는 `rag/agent_v3.py`, 최신 개선 경로는 `scripts/run_agent_v4.py` (dense 명시 선택) |
-| ⑨ | Agent 답변: 2-에이전트(추론 생성 + 자기검증), Premise→Inference→Conclusion→Evidence 구조 |
+| ⑨ | Agent 답변: 문서의 기존 생성·자기검증 경로 보존. 사건 v3는 허용 주장 ID 선택→코드 조립→자기검증으로 근거를 연결한다(현재 범위). |
 | ⑩ | 평가: Baseline RAG vs GraphRAG ablation, RAGAS, 관계 유형별 Confusion Matrix |
 
 일정 기준: 10/1~10/7 전처리·온톨로지·SHACL, 10/8~10/14 KG 구축, 10/15~10/31 베이스라인·탐지기, 11/1~11/10 GraphRAG+Agent, 11/12~11/16 평가.
 
 ## 3. 확정된 결정 (임의로 바꾸지 말 것)
+
+- **사건 주장 연결(2026-11-14):** `rag/claim_binding.py`의 사건 v3는 관측/조건/조건부권고/해석범위 주장을 만들고 모델이ID만선택하면코드로조립한다. 자유문장·다른사건ID·없는근거는보류하며 게시상태와확인방법을반환한다. 문서자유답변/정형KG조회는미적용, 과거답변에소급하지않는다. 원문과KG의의미전체·현장승인·모델선택완전성을증명하지않으며 실제새성능은미측정이다. `/api/claim-catalog/<ID>`는과거사건에서현재허용목록만무료반환한다. `docs/agent_handoff/CLAIM_BINDING.md` 참조.
 
 - **창 연산 검사 확장(2026-11-14):** `rag/window_evidence.py`로 현재 저장 알람의 창·기울기·STUCK·변화량·파생 감시를 원시 관측/봉인 설정에서 재계산한다. 승격 후 제거된 원래 신호는 정확한 해시 재구성으로 확인한다. 발동 근거가 맞다는 것은 현장 이상 정답·인과·유형·회복·전체 자연어가 맞다는 뜻이 아니다. 탐지 정책은 변경하지 않고 해석 차이를 남긴다. 최신 범위와 집계는 `docs/agent_handoff/WINDOW_CHECKS.md`.
 

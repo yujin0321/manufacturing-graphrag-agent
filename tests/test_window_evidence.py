@@ -6,6 +6,7 @@ import tempfile
 import unittest
 
 from imaks_kg.rag import decision_evidence as d, window_evidence as w, team_runtime as runtime, vector as v
+from tests.claim_fixtures import selected_claims
 
 
 class WindowMetricTests(unittest.TestCase):
@@ -156,11 +157,11 @@ class MonitorDependencyTests(unittest.TestCase):
             if stage == 'plan':
                 text = json.dumps({'intent': 'explain', 'tool': 'get_incident_evidence', 'arguments': {'incident_id': incident['id']}})
             elif stage == 'draft':
+                text = selected_claims(json.loads(payload['messages'][-1]['content']))
+            else:
                 evidence = json.loads(payload['messages'][-1]['content'])['evidence']
                 self.assertTrue(any(source['chunk_id'] == 'SOP-002:p2:table6:chunk' for source in evidence['untrusted_reference_documents']))
                 self.assertEqual(evidence['decision_validation_summary']['unassessed_trigger_count'], 0)
-                text = '과거 감시 규칙에 일치한 후보이며 원인 확정이 아닙니다. [SOP-002:p2:table6:chunk]'
-            else:
                 text = json.dumps({'approved': True, 'issues': []})
             return {'model': payload['model'], 'choices': [{'finish_reason': 'stop', 'message': {'content': text}}]}, {'mock': True}
         for profile in ('main_v3_1', 'yujin_v3_2'):

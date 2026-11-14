@@ -23,6 +23,7 @@
 | GET `/api/history` | 최근 저장 실행 최대 50개, 각 실행의 선택 설정 | 없음 |
 | GET `/api/run/<ID>` | 아래의 화면 전달 응답 | 없음 |
 | GET `/api/decision-evidence/<ID>` | 저장 사건의 관측·규칙·출처와 지원되는 단순 발동 조건을 별도로 재점검. 원 답변 유지 | 없음 |
+| GET `/api/claim-catalog/<ID>` | 저장 사건에서 현재 허용되는 주장 목록. 과거 답변 문장의 검증 결과는 아님 | 없음 |
 | POST `/api/agent` | 질문→도구→답변→검토, 완료 후 응답 | 일반 서버에서 발생 가능 |
 
 `csrf_token`은 OpenAI 키가 아니다. 서버 재시작 후 새 토큰을 받아야 한다. 새 질문 요청에는 `Content-Type: application/json`, `X-Demo-Token: <csrf_token>` 헤더를 사용한다. 브라우저 Origin과 Host를 검사한다. 키는 백엔드 환경변수로만 관리한다.
@@ -70,8 +71,13 @@
 | `xai.document_retrieval` | 문서 방식, 선택 청크, 근거 완전성. 이 경로에서만 존재 |
 | `xai.kg_query` | 전수 질의 인자·전체 결과 개수·항목·방향 경로. 이 경로에서만 존재 |
 | `xai.decision_evidence` | 새 사건 실행의 구조적 근거 검사. 알람별 관측·규칙·출처 ID·지원되는 조건 재계산·명시적 미검증 범위. `consistent`는 이 범위의 일치이며 전체 자연어 정확도나 인과 확정이 아님 |
+| `claims` | 새 사건 답변에서 실제 게시한 주장. 각 문장의 `claim_id`, 종류·근거·확인 방식. 실패/보류·미적용·과거 기록은 빈 배열 |
+| `xai.claim_binding` | 사건 주장의 선택·조립 상태와 `published`, 시도·보류 사유·목록 해시. 게시 여부를 반드시 확인 |
+| `xai.claim_catalog_summary` | 전체 주장 수·선택용 입력 토큰·목록 해시 |
 
 자료가 없으면 `sources=[]`, `edges=[]`, `verification=[]`일 수 있다. 빈 검토 배열을 ‘통과’로 표시하지 않는다. `complete`는 실행 완료 상태이며 사실 정확도 100%를 뜻하지 않는다. 성호의 `UNCLASSIFIED`는 미분류, `severity_origin`이 표시용인 `ADVISORY`는 실제 심각도 판단이 아니다.
+
+Agent v3의 사건 답변은 모델이 허용 주장 ID를 선택하고 코드가 문장을 조립한다. `[CLM-...]`는 원문 인용과 구분되는 주장 식별자다. `validation.status=grounded`는 명시된 방법의 근거 연결이고 `scope_statement`는 한계 표현이다. 조건부 권고는 KG 저장 필드와 출처의 확인이며 현장 실행 승인·원문 의미 전체 검증은 아니다. 문서 자유답변과 정형 KG 조회는 `not_applied`, 과거 기록은 `not_recorded`로 표시한다. `/api/claim-catalog/<ID>`의 `past_answer_claim_binding=not_performed`는 과거 문장에 새 검증을 소급하지 않는다는 뜻이다. 상세 [주장 연결 계약](CLAIM_BINDING.md).
 
 자기수정 실행에서는 `verification`에 첫 거절과 두 번째 승인 모두 남을 수 있다. 각 항목의 `attempt`를 표시하고 최종 상태와 마지막 검토를 함께 읽는다. 과거 기록에는 새 구조 검사 필드가 없을 수 있다. 기존 결과는 수정하지 않고 `/api/decision-evidence/<ID>`로 무료 재점검한다. 이 응답의 `answer_unchanged_sha256`과 `audit_version`은 원래 답변과 별도 점검을 구분한다. 문서·KG 전용 실행은 사건 근거가 없어 이 재점검 경로에서 HTTP 400이다. 상세 [구조 검사 범위](DECISION_EVIDENCE.md).
 

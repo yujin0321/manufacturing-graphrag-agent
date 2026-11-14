@@ -5,6 +5,7 @@ import unittest
 from unittest.mock import patch
 
 from imaks_kg.rag import agent_contract, demo, incident_agent as agent, incident_tools, vector as v
+from tests.claim_fixtures import selected_claims
 
 
 class PlanTests(unittest.TestCase):
@@ -37,6 +38,7 @@ class IncidentAgentTests(unittest.TestCase):
                      'arguments': {'incident_id': self.incident_id}}
         self.bad_citation = False
         self.reject = False
+        self.extra_prose = False
 
     def tearDown(self):
         self.temp.cleanup()
@@ -48,18 +50,23 @@ class IncidentAgentTests(unittest.TestCase):
         if stage == 'plan':
             text = json.dumps(self.plan)
         elif stage == 'draft':
-            evidence = json.loads(payload['messages'][-1]['content'])['evidence']
+            content = json.loads(payload['messages'][-1]['content'])
+            self.assertTrue(content['claim_catalog'])
+            text = selected_claims(content, unknown=self.bad_citation)
+            if self.extra_prose:
+                selected = json.loads(text)
+                selected['answer'] = '관측값은 99999도이며 실제 비상정지를 완료했습니다.'
+                text = json.dumps(selected)
+        elif stage == 'verify':
+            content = json.loads(payload['messages'][-1]['content'])
+            evidence = content['evidence']
+            self.assertTrue(all(cid in content['answer'] for cid in content['claim_binding_summary']['claim_ids']))
             self.assertEqual(evidence['incident']['id'], self.incident_id)
             self.assertIn('execution_parameters', evidence)
             self.assertIn('implementation_policy', evidence)
             self.assertTrue(evidence['type_definitions'])
             self.assertTrue(any(row['chunk_id'] == 'SOP-002:p2:table6:chunk'
                                 for row in evidence['untrusted_reference_documents']))
-            cid = evidence['untrusted_reference_documents'][0]['chunk_id']
-            if self.bad_citation:
-                cid = 'SOP-999:p9:made_up'
-            text = '과거 규칙 일치 후보이며 실제 원인과 조치 수행은 확인할 수 없습니다. [' + cid + ']'
-        elif stage == 'verify':
             text = json.dumps({'approved': not self.reject, 'issues': ['원문 조건 오류'] if self.reject else []})
         else:
             raise AssertionError(stage)
@@ -81,6 +88,9 @@ class IncidentAgentTests(unittest.TestCase):
         self.assertEqual(shown['xai']['incident']['id'], self.incident_id)
         self.assertTrue(shown['verification'][0]['approved'])
         self.assertNotIn('plan_request', shown)
+        self.assertTrue(result['claims'])
+        self.assertTrue(result['xai']['claim_binding']['published'])
+        self.assertEqual(shown['claims'], result['claims'])
 
     def test_model_cannot_choose_an_unmentioned_incident(self):
         result = agent.answer('온도 사건을 설명해 주세요.', self.run, self.call, store=self.store)
@@ -106,11 +116,20 @@ class IncidentAgentTests(unittest.TestCase):
         self.assertEqual(result['candidate_ids'], [target['id']])
         self.assertEqual(len(v.read(self.run / 'tools/trace.json')['steps']), 3)
 
-    def test_unprovided_citation_blocks_the_answer(self):
+    def test_unknown_claim_blocks_the_answer(self):
         self.bad_citation = True
         result = agent.answer('사건 ' + self.incident_id + ' 설명', self.run, self.call, store=self.store)
         self.assertEqual(result['status'], 'insufficient_evidence')
         self.assertFalse(result['verification'][0]['approved'])
+
+    def test_valid_ids_with_extra_model_prose_are_withheld_before_ai_verification(self):
+        self.extra_prose = True
+        result = agent.answer('사건 ' + self.incident_id + ' 설명', self.run, self.call, store=self.store)
+        self.assertEqual(result['status'], 'insufficient_evidence')
+        self.assertEqual(result['reason'], 'claim_binding_failed')
+        self.assertEqual(self.stages, ['plan', 'draft'])
+        self.assertFalse(result['claims'])
+        self.assertNotIn('99999', result['answer'])
 
     def test_negative_model_verification_is_preserved(self):
         self.reject = True
@@ -131,6 +150,8 @@ class IncidentAgentTests(unittest.TestCase):
             result = agent.answer('MAINT-05의 조건은?', self.run, self.call, store=self.store)
         self.assertEqual(answer.call_args.args[0], 'MAINT-05의 조건은?')
         self.assertEqual(result['answer'], '문서 답변')
+        self.assertEqual(result['xai']['claim_binding']['status'], 'not_applied')
+        self.assertFalse(result['claims'])
 
 
 if __name__ == '__main__':

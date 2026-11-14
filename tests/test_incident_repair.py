@@ -6,6 +6,7 @@ import unittest
 from unittest.mock import patch
 
 from imaks_kg.rag import incident_agent as agent, incident_tools, vector as v
+from tests.claim_fixtures import selected_claims
 
 
 @unittest.skipUnless((incident_tools.ENGINE_OVERLAY / 'complete.json').exists(), 'restore runtime first')
@@ -42,10 +43,7 @@ class RepairTests(unittest.TestCase):
                 raise RuntimeError('synthetic transport failure')
             if stage == 'draft2':
                 self.repair_feedback = content['previous_verification_issues']
-            cid = content['evidence']['untrusted_reference_documents'][0]['chunk_id']
-            if stage == 'draft' and self.bad_citation:
-                cid = 'SOP-999:p9:invented'
-            text = stage + ': 과거 규칙 일치 후보이며 확정 원인은 아닙니다. [' + cid + ']'
+            text = selected_claims(content, all_conditions=stage == 'draft2', unknown=stage == 'draft' and self.bad_citation)
         else:
             if self.invalid_verifier:
                 text = 'invalid JSON'
@@ -64,7 +62,8 @@ class RepairTests(unittest.TestCase):
         self.assertEqual(self.stages, ['plan', 'draft', 'verify', 'draft2', 'verify2'])
         self.assertEqual([item['approved'] for item in result['verification']], [False, True])
         self.assertEqual(self.repair_feedback, ['조건 설명을 보완하세요.'])
-        self.assertTrue(result['answer'].startswith('draft2:'))
+        self.assertEqual(result['xai']['claim_binding']['attempt'], 2)
+        self.assertNotEqual(v.read(self.run / 'draft.json')['answer'], v.read(self.run / 'draft2.json')['answer'])
         self.assertTrue((self.run / 'draft.json').exists())
         self.assertTrue((self.run / 'draft2.json').exists())
         self.assertEqual(len(v.read(self.run / 'tools/trace.json')['steps']), 2)
@@ -77,13 +76,14 @@ class RepairTests(unittest.TestCase):
         self.assertEqual(self.stages, ['plan', 'draft', 'verify', 'draft2', 'verify2'])
         self.assertFalse((self.run / 'draft3.json').exists())
 
-    def test_invented_citation_cannot_be_overruled_by_ai_approval(self):
+    def test_invented_claim_cannot_be_overruled_by_ai_approval(self):
         self.bad_citation = True
         result = self.answer()
         self.assertEqual(result['status'], 'complete')
         self.assertFalse(result['verification'][0]['approved'])
-        self.assertTrue(any('outside' in issue for issue in self.repair_feedback))
-        self.assertNotIn('SOP-999', result['answer'])
+        self.assertTrue(any('Unknown' in issue for issue in self.repair_feedback))
+        self.assertNotIn('CLM-' + '0' * 16, result['answer'])
+        self.assertEqual(self.stages, ['plan', 'draft', 'draft2', 'verify2'])
 
     def test_transport_failure_is_not_retried(self):
         self.transport_failure = True

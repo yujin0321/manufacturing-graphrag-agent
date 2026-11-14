@@ -7,6 +7,7 @@ from unittest.mock import patch
 from rdflib import Literal, RDF
 
 from imaks_kg.rag import comparison as c, incident_agent, team_retrieval as retrieval, team_runtime as runtime, vector as v
+from tests.claim_fixtures import selected_claims
 
 
 class CompleteQueryTests(unittest.TestCase):
@@ -115,12 +116,12 @@ class DetectorAdapterTests(unittest.TestCase):
             if stage == 'plan':
                 text = json.dumps({'intent': 'explain', 'tool': 'get_incident_evidence', 'arguments': {'incident_id': incident_id}})
             elif stage == 'draft':
+                text = selected_claims(json.loads(payload['messages'][-1]['content']))
+            else:
                 evidence = json.loads(payload['messages'][-1]['content'])['evidence']
                 self.assertEqual(evidence['incident']['anomaly_type'], 'UNCLASSIFIED')
                 self.assertIn('표시용', evidence['incident']['severity_origin'])
                 self.assertTrue(all(rule['params']['confirm_observations'] == 2 for rule in evidence['execution_parameters']))
-                text = '원본의 규칙별 과거 후보이며 유형은 미분류입니다. [' + evidence['untrusted_reference_documents'][0]['chunk_id'] + ']'
-            else:
                 text = json.dumps({'approved': True, 'issues': []})
             return {'model': payload['model'], 'choices': [{'finish_reason': 'stop', 'message': {'content': text}}]}, {'mock': True}
         scratch = v.REPO_ROOT / 'kg_build/team_tests'

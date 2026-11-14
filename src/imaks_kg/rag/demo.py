@@ -47,6 +47,8 @@ def presentation(path):
         trace=v.read(path/'tools/trace.json') if (path/'tools/trace.json').is_file() else {'steps':[], 'evidence_tokens':0}
         edges=a['graph_paths'];nodes=sorted({str(e[k]) for e in edges for k in ('s','o')})
         tokens=sum(x.get('usage',{}).get('total_tokens',0) for x in a['usage'] if x['stage']!='embedding')
+        xai=dict(a.get('xai',{}))
+        xai.setdefault('claim_binding', {'status':'not_recorded','scope':'historical_or_other_agent','published':False})
         return {'id':path.name,'question':v.read(path/'input.json')['question'],'answer':a['answer'],
                 'model':lock['config']['generation_model'],'usage':{'total_tokens':tokens},
                 'context_tokens':a.get('xai',{}).get('context_tokens',trace['evidence_tokens']),
@@ -54,7 +56,7 @@ def presentation(path):
                 'warnings':a['limitations'],'uncovered_documents':[], 'visited_nodes':nodes,
                 'edges':edges,'source_links':{},'card_nodes':[], 'source_reasons':{},
                 'agent_status':a['status'],'agent_steps':trace['steps'],'candidate_ids':a['candidate_ids'],
-                'xai':a.get('xai',{}),'verification':a.get('verification',[])}
+                'xai':xai,'verification':a.get('verification',[]), 'claims':a.get('claims',[])}
     a=v.read(path/'answer.json');r=v.read(path/'retrieval.json')
     # Return a defined UI payload, never credentials, raw requests or arbitrary files.
     return {'id':path.name,'question':a['question'],'answer':a['answer'],
@@ -117,6 +119,13 @@ def make_server(port=8765, answer=live.answer, explain=event_explain.answer, age
                     return self.reply(200,decision_evidence.for_saved_run(run))
                 except FileNotFoundError:return self.reply(404,{'error':'저장된 사건 근거를 찾을 수 없습니다.'})
                 except (ValueError,KeyError,TypeError):return self.reply(400,{'error':'사건 근거와 봉인이 일치하는 저장 실행만 점검할 수 있습니다.'})
+            if path.startswith('/api/claim-catalog/'):
+                from . import claim_binding
+                try:
+                    run=saved_run(unquote(path[len('/api/claim-catalog/'):]))
+                    return self.reply(200,claim_binding.catalog_for_saved_run(run))
+                except FileNotFoundError:return self.reply(404,{'error':'저장된 사건 근거를 찾을 수 없습니다.'})
+                except (ValueError,KeyError,TypeError):return self.reply(400,{'error':'사건 근거와 봉인이 일치하는 실행만 주장 목록을 만들 수 있습니다.'})
             if path.startswith('/api/run/'):
                 try:return self.reply(200,presentation(saved_run(unquote(path[len('/api/run/'):]))))
                 except (ValueError,FileNotFoundError):return self.reply(404,{'error':'저장된 결과를 찾을 수 없습니다.'})

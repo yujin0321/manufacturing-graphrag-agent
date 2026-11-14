@@ -98,6 +98,16 @@ class TeamServerTests(unittest.TestCase):
         self.assertEqual(status, 400)
         self.assertFalse(self.calls)
 
+    def test_saved_claim_catalog_does_not_call_generation_or_relabel_old_answers(self):
+        from imaks_kg.rag import claim_binding
+        with patch.object(claim_binding, 'catalog_for_saved_run', return_value={'new_api_calls': 0, 'past_answer_claim_binding': 'not_performed'}):
+            status, body = self.request('GET', '/api/claim-catalog/safe_example')
+        self.assertEqual(status, 200)
+        self.assertEqual(json.loads(body)['past_answer_claim_binding'], 'not_performed')
+        status, _ = self.request('GET', '/api/claim-catalog/..%2Foutside')
+        self.assertEqual(status, 400)
+        self.assertFalse(self.calls)
+
     def test_free_config_and_selected_incident_store(self):
         status, body = self.request('GET', '/api/team-config')
         self.assertEqual(status, 200)

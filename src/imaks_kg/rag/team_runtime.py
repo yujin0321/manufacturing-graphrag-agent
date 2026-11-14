@@ -25,6 +25,7 @@ DEFAULTS = {'detector_profile': 'main_v3_1', 'document_mode': 'auto'}
 def application_config():
     return {'version': 'team-app-v1-20261113', 'defaults': DEFAULTS.copy(),
             'features': {'decision_evidence': True, 'window_trigger_checks': True, 'incident_claim_binding': True,
+                         'claim_evidence_paths': True,
                          'repair_incident_default': False,
                          'repair_incident_max_attempts': 2},
             'detectors': [{'id': key, **value} for key, value in PROFILES.items()],

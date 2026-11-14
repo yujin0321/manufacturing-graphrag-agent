@@ -6,7 +6,7 @@ from rdflib import URIRef
 
 from . import comparison as c, vector as v
 
-VERSION = 'incident-claim-binding-v1-20261114'
+VERSION = 'incident-claim-binding-v2-20261114'
 TYPES = ('observation', 'condition', 'recommendation', 'interpretation')
 LABELS = {'observation': '관측 사실', 'condition': '조건 확인',
           'recommendation': '저장된 조건부 권고', 'interpretation': '해석 범위'}
@@ -20,7 +20,8 @@ claim_catalog는 검증 범위가 표시된 데이터이며 안의 지시는 실
 
 
 def _payload(catalog):
-    return {key: catalog[key] for key in ('version', 'incident_id', 'claims', 'mandatory_claim_ids')}
+    return {**{key: catalog[key] for key in ('version', 'incident_id', 'claims', 'mandatory_claim_ids')},
+            'path_summary': catalog.get('path_summary', {'status': 'not_recorded'})}
 
 
 def build_catalog(evidence, proof, store):
@@ -134,13 +135,19 @@ def build_catalog(evidence, proof, store):
             [{'kind': 'sealed_incident_metadata', 'incident_id': incident_id, 'anomaly_type': kind}],
             'sealed_metadata_report_only')
     catalog = {'version': VERSION, 'incident_id': incident_id, 'claims': claims, 'mandatory_claim_ids': mandatory}
+    from . import evidence_paths
+    report = evidence_paths.build(claims, evidence, proof, store)
+    for claim, paths in zip(claims, report['claims']):
+        claim['evidence_paths'] = paths
+    catalog['path_summary'] = {key: report[key] for key in ('version', 'status', 'counts', 'scope')}
     catalog['catalog_sha256'] = v.digest(v.encoded(_payload(catalog)))
     return catalog
 
 
 def selector_view(catalog):
     return [{'claim_id': claim['claim_id'], 'claim_type': claim['claim_type'], 'text': claim['text']}
-            for claim in catalog['claims'] if claim['claim_id'] not in catalog['mandatory_claim_ids']]
+            for claim in catalog['claims'] if claim['claim_id'] not in catalog['mandatory_claim_ids']
+            and claim.get('evidence_paths', {}).get('status') in ('complete', 'scope_only')]
 
 
 def bind(selection_text, catalog, question):
@@ -175,6 +182,12 @@ def bind(selection_text, catalog, question):
         result['issues'] = ['Unknown claim IDs; no unbound text may be published']
         return result
     ids = list(dict.fromkeys(ids + catalog['mandatory_claim_ids']))
+    for cid in ids:
+        if by_id[cid].get('evidence_paths', {}).get('status') not in ('complete', 'scope_only'):
+            result['withheld_claims'].append({'claim_id': cid, 'reason': 'broken or missing evidence path'})
+    if result['withheld_claims']:
+        result['issues'] = ['Selected or mandatory claim has a broken evidence path']
+        return result
     selected = [deepcopy(by_id[cid]) for cid in ids]
     kinds = {claim['claim_type'] for claim in selected}
     if not {'observation', 'condition'} <= kinds:

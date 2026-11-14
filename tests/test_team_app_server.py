@@ -108,6 +108,16 @@ class TeamServerTests(unittest.TestCase):
         self.assertEqual(status, 400)
         self.assertFalse(self.calls)
 
+    def test_saved_path_endpoint_is_read_only_and_keeps_scope_explicit(self):
+        from imaks_kg.rag import evidence_paths
+        with patch.object(evidence_paths, 'for_saved_run', return_value={'new_api_calls': 0, 'past_answer_prose_revalidated': False}):
+            status, body = self.request('GET', '/api/claim-paths/safe_example')
+        self.assertEqual(status, 200)
+        self.assertFalse(json.loads(body)['past_answer_prose_revalidated'])
+        status, _ = self.request('GET', '/api/claim-paths/..%2Foutside')
+        self.assertEqual(status, 400)
+        self.assertFalse(self.calls)
+
     def test_free_config_and_selected_incident_store(self):
         status, body = self.request('GET', '/api/team-config')
         self.assertEqual(status, 200)

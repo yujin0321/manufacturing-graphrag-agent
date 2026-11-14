@@ -33,12 +33,13 @@ def citation_check(text,selected):
     return issues
 
 
-def answer(question,run_dir,call=v.api_call,*,use_dense=False,typed=True,verify=True):
+def answer(question,run_dir,call=v.api_call,*,use_dense=False,typed=True,verify=True,retriever=None):
     contract.validate_call('search_documents',{'question':question})
     run=Path(run_dir);run.mkdir(parents=True,exist_ok=False)
     cfg=v.read(v.CONFIG);usage=[];started=time.perf_counter();embeddings=0
     v.write(run/'input.json',{'question':question,'agent_version':VERSION,'dense_requested':use_dense,'typed':typed,'verify':verify})
-    v.write(run/'agent_lock.json',{'version':VERSION,'limits':LIMITS,'retrieval':retrieval.retrieval_lock(use_dense),
+    source_limit=retriever.max_tokens if retriever is not None else LIMITS['source_tokens']
+    v.write(run/'agent_lock.json',{'version':VERSION,'limits':{**LIMITS,'source_tokens':source_limit},'retrieval':retriever.lock() if retriever is not None else retrieval.retrieval_lock(use_dense),
         'code_sha256':v.digest(Path(__file__).read_bytes()),'document_instructions_sha256':v.digest(routing.DOCUMENT_INSTRUCTIONS.encode()),
         'verification_prompt_sha256':v.digest(VERIFY.encode()),'config':cfg,'gold_loaded':False,'automatic_transport_retries':False})
     sources=[];paths=[];plan={};checks=[];retrievals=[]
@@ -67,8 +68,8 @@ def answer(question,run_dir,call=v.api_call,*,use_dense=False,typed=True,verify=
         usage.append({'stage':'embedding','usage':raw.get('usage',{}),'transport':transport});return raw,transport
     def search(query):
         if len(retrievals)>=LIMITS['document_searches']:raise ValueError('Document search limit')
-        result=retrieval.source_packet(retrieval.retrieve(query,use_dense=use_dense,typed=typed,call=embed_call))
-        if result['context_tokens']>LIMITS['source_tokens']:raise ValueError('Context budget exceeded')
+        result=retriever.retrieve(query,embed_call) if retriever is not None else retrieval.source_packet(retrieval.retrieve(query,use_dense=use_dense,typed=typed,call=embed_call))
+        if result['context_tokens']>source_limit:raise ValueError('Context budget exceeded')
         retrievals.append(result);v.write(run/f'retrieval_{len(retrievals)}.json',result);v.write(run/'retrieval.json',result)
         return result
     try:

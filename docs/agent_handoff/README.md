@@ -1,5 +1,7 @@
 # Agent → End-to-End(XAI) 백엔드 인계
 
+main 통합 (2026-11-15): 사용자 요청으로 완료된 XAI 구현·문서·검증 결과를 main에 반영한다. 아래 실행 안내는 main 기준이다. 개발 이력은 `codex/agent-e2e-xai-20261113`에 보존하며, 마지막에 제안한 질문 필수 항목 누락 검사는 추가하지 않았다.
+
 최신 확장 (2026-11-15): [규칙 경계·사후 종료·문서 발췌 주장·XAI 평가](XAI_EXTENSIONS_20261115.md). 통합 Agent v5의 문서 경로는 원문 발췌 ID를 선택해 조립한다. 기존 독립 문서 Agent 기본 모드와 과거 결과는 보존한다.
 
 작성: 2026-11-14. 기준 main `020c863`. 공유 브랜치 `codex/agent-e2e-xai-20261113`.
@@ -33,7 +35,7 @@ v3.1은 고정 입력에서 준비·봉인·SHACL·사건 도구 연결을 검�
 
 ## UI 담당자에게 전달할 두 가지
 
-1. 이 개발 브랜치의 코드·문서.
+1. main의 코드·문서.
 2. 별도 파일 `imaks_agent_runtime_20261114.zip` (약 5.12 MB, 복원 후 약 28 MB).
 
 ZIP은 작성자 PC의 `kg_build/agent_handoff_20261114/`에 있다. 원문 청크·전처리 입력·기존 벡터·봉인 산출물·대표 실행 기록·토크나이저 캐시를 담았다. API 키와 모델 가중치는 없다. [패키지 영수증](package_receipt.json)으로 SHA-256을 확인한다. 프로젝트 공개 정책에 따라 원문·벡터·API 캐시는 Git에 올리지 않으므로 **브랜치만 내려받아서는 로컬 데이터가 준비되지 않는다**. ZIP을 팀원에게 별도 전달한다.
@@ -42,10 +44,10 @@ ZIP이 공개 서버나 Git에 업로드된다는 뜻은 아니다. 원본 PDF, 
 
 ## 팀원 PC 실행 순서
 
-Python 3.11 이상과 Git을 사용한다. 프로젝트 폴더를 가져오고 개발 브랜치를 선택한다.
+Python 3.11 이상과 Git을 사용한다. 프로젝트 폴더의 main을 가져온다.
 
 ```powershell
-git clone --branch codex/agent-e2e-xai-20261113 https://github.com/yujin0321/manufacturing-graphrag-agent.git
+git clone --branch main https://github.com/yujin0321/manufacturing-graphrag-agent.git
 cd manufacturing-graphrag-agent
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r docs/agent_handoff/requirements.txt

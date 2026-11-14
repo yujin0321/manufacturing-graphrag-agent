@@ -58,7 +58,7 @@ def calibration(rows, cfg, recorded, trigger_at):
             'train_samples': len(values), 'method': method, 'train_end': cfg['train_end']}
 
 
-def rule_proof(rows, trigger_at, rule, cfg, *, sigma=None):
+def rule_proof(rows, trigger_at, rule, cfg, *, sigma=None, feature_trace=False):
     p = rule['params']
     kind = rule.get('executor') or p.get('op')
     if p.get('op') == 'stuck_exact':
@@ -160,6 +160,10 @@ def rule_proof(rows, trigger_at, rule, cfg, *, sigma=None):
         cache[i] = (bool(ok), ready, metrics)
         return cache[i]
 
+    if feature_trace:
+        return {'operator': kind, 'states': [condition(i)[0] if condition(i)[1] else None
+                                            for i in range(len(frame.values))],
+                'scope': 'feature predicate only; no persistence, recovery or anomaly truth'}
     last = len(frame.values) - 1
     ok, ready, metrics = condition(last)
     if not ready:

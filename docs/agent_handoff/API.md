@@ -25,6 +25,8 @@
 | GET `/api/decision-evidence/<ID>` | 저장 사건의 관측·규칙·출처와 지원되는 단순 발동 조건을 별도로 재점검. 원 답변 유지 | 없음 |
 | GET `/api/claim-catalog/<ID>` | 저장 사건에서 현재 허용되는 주장 목록. 과거 답변 문장의 검증 결과는 아님 | 없음 |
 | GET `/api/claim-paths/<ID>` | 게시된 주장 또는 현재 허용 목록의 근거 경로. `path_scope`와 과거 문장 미검증 표시 확인 | 없음 |
+| GET `/api/rule-explanations/<ID>` | 과거 사건의 현재 규칙 경계·사후 종료 점검. 원 답변 보존 | 없음 |
+| GET `/api/document-claims/<ID>` | 저장 문서 검색의 현재 발췌 목록. 과거 자유문장 소급 검증 아님 | 없음 |
 | POST `/api/agent` | 질문→도구→답변→검토, 완료 후 응답 | 일반 서버에서 발생 가능 |
 
 `csrf_token`은 OpenAI 키가 아니다. 서버 재시작 후 새 토큰을 받아야 한다. 새 질문 요청에는 `Content-Type: application/json`, `X-Demo-Token: <csrf_token>` 헤더를 사용한다. 브라우저 Origin과 Host를 검사한다. 키는 백엔드 환경변수로만 관리한다.
@@ -77,6 +79,8 @@
 | `xai.claim_catalog_summary` | 전체 주장 수·선택용 입력 토큰·목록 해시 |
 | `claims[*].evidence_paths` | 주장의 실제 RDF·실행 참조·파일 참조 경로, 방향·분기·완료/단절 상태·이유 |
 | `xai.claim_path_summary` | 전체 허용 주장 경로의 `complete`·`scope_only`·`broken` 개수 |
+| `xai.rule_explanations` | 사건의 규칙 경계·시간 정책·사후 종료 검사. `machine_recovery_verified=false` |
+| `xai.document_answer_complete` | 새 문서 발췌 답변의 AI 검토 완전성 판단. 코드의 의미 인증이 아님 |
 
 자료가 없으면 `sources=[]`, `edges=[]`, `verification=[]`일 수 있다. 빈 검토 배열을 ‘통과’로 표시하지 않는다. `complete`는 실행 완료 상태이며 사실 정확도 100%를 뜻하지 않는다. 성호의 `UNCLASSIFIED`는 미분류, `severity_origin`이 표시용인 `ADVISORY`는 실제 심각도 판단이 아니다.
 
@@ -87,6 +91,8 @@ Agent v3의 사건 답변은 모델이 허용 주장 ID를 선택하고 코드�
 자기수정 실행에서는 `verification`에 첫 거절과 두 번째 승인 모두 남을 수 있다. 각 항목의 `attempt`를 표시하고 최종 상태와 마지막 검토를 함께 읽는다. 과거 기록에는 새 구조 검사 필드가 없을 수 있다. 기존 결과는 수정하지 않고 `/api/decision-evidence/<ID>`로 무료 재점검한다. 이 응답의 `answer_unchanged_sha256`과 `audit_version`은 원래 답변과 별도 점검을 구분한다. 문서·KG 전용 실행은 사건 근거가 없어 이 재점검 경로에서 HTTP 400이다. 상세 [구조 검사 범위](DECISION_EVIDENCE.md).
 
 창 연산 확장에서는 `verified_trigger_count`가 지원되는 전체 발동 조건 수이고, `simple_trigger_checks`는 그중 기존 단순 임계값 조건 수다. 파생 감시의 원래 신호가 승격 후 파일에서 제거된 경우 `source_signal_reference_status`와 정확한 해시 복원 결과를 제공한다. 모델 컨텍스트에 추가로 조회한 의존 출처는 `xai.dependency_retrieval`, 과거 기록을 별도로 점검하며 추가한 출처는 `dependency_sources_added_for_recheck`에 표시한다. 과거 입력에 출처가 있었다고 소급 해석하지 않는다. 상세 [창 연산 검사](WINDOW_CHECKS.md).
+
+Agent v5에서는 `xai.rule_explanations`로 경계·시간 조건·사후 종료를 제공한다. 저장 `recovered`는 규칙 조건 해제이며 실제 설비 회복이 아니다. 통합 문서 경로의 `DCL` 주장은 원문 발췌를 그대로 조립한다. 사건과 같은 `claims[*].evidence_paths.paths[*].steps` 구조이며 모든 문서 단계는 파일 참조다. `published`를 확인하고, `answer_complete`는 AI 검토 판단으로 취급한다. 독립 문서 Agent의 기존 기본 모드와 과거 답변에는 소급 적용하지 않는다. 상세 [XAI 확장](XAI_EXTENSIONS_20261115.md).
 
 ## 상태와 오류
 

@@ -128,6 +128,17 @@ class TeamServerTests(unittest.TestCase):
         self.assertEqual(self.profiles, ['seongho_two_point'])
         self.assertEqual(self.calls, [])
 
+    def test_rule_and_document_audits_are_read_only_and_reject_path_traversal(self):
+        from imaks_kg.rag import rule_explanations, document_claims
+        for route, module in [('rule-explanations',rule_explanations), ('document-claims',document_claims)]:
+            with patch.object(module,'for_saved_run',return_value={'new_api_calls':0,'past_answer_prose_revalidated':False}):
+                status,body=self.request('GET','/api/'+route+'/safe_example')
+            self.assertEqual(status,200)
+            self.assertEqual(json.loads(body)['new_api_calls'],0)
+            status,_=self.request('GET','/api/'+route+'/..%2Foutside')
+            self.assertEqual(status,400)
+        self.assertFalse(self.calls)
+
     def test_selected_modes_are_forwarded_and_invalid_modes_do_not_call_agent(self):
         status, page = self.request('GET', '/')
         self.assertEqual(status, 200)

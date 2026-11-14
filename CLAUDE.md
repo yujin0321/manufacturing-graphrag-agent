@@ -21,12 +21,14 @@ iMAKS(제조 공정 합성 데이터셋)로 지식그래프(KG)를 직접 구축
 | ⑥ | 센서 시계열 기반 공정 간 인과관계 추론: `causallyAffects` 후보 발굴 (likelihoodScore). 입력은 라벨 없는 raw 시계열이며 임계값 컬럼은 제외(4장) |
 | ⑦ | 탐지 결과를 AnomalyEvent로 KG에 추가. 대표 테스트케이스는 GT-0009 |
 | ⑧ | GraphRAG 검색: Sparse-Dense-Graph 하이브리드 + 자연어→Cypher + Graph-to-Text. 기존 v3 경로는 `rag/agent_v3.py`, 최신 개선 경로는 `scripts/run_agent_v4.py` (dense 명시 선택) |
-| ⑨ | Agent 답변: 문서의 기존 생성·자기검증 경로 보존. 사건 v4는 허용 주장 ID 선택→코드 조립→자기검증으로 근거를 연결하며, 각 주장의 실제 RDF/실행 참조/파일 참조 경로를 구분해 검사한다(현재 범위). |
+| ⑨ | Agent 답변: 통합 사건 v5는 주장 ID 선택→코드 조립→자기검증, 경계·사후 종료 점검, 문서 발췌 ID 선택을 연결한다. 독립 문서 Agent의 기존 기본 모드는 보존한다. 실제 RDF/실행 참조/파일 참조를 구분한다(현재 범위). |
 | ⑩ | 평가: Baseline RAG vs GraphRAG ablation, RAGAS, 관계 유형별 Confusion Matrix |
 
 일정 기준: 10/1~10/7 전처리·온톨로지·SHACL, 10/8~10/14 KG 구축, 10/15~10/31 베이스라인·탐지기, 11/1~11/10 GraphRAG+Agent, 11/12~11/16 평가.
 
 ## 3. 확정된 결정 (임의로 바꾸지 말 것)
+
+- **XAI 확장(2026-11-15):** `rag/rule_explanations.py`는 IR의 수학적 경계·시간 조건과 원시 관측의 사후 종료를 확인한다. 기본 1회/성호 2회 해제를 구분하고 공백·자료 끝을 회복으로 처리하지 않는다. 실제 설비 회복·조치 효과나 최소 개입이 아니다. 통합 Agent v5 문서 경로는 `document_claims.py` 발췌 ID→코드 조립→AI 검토를 사용하며 독립 문서 기본 모드는 유지한다. 원문 일치가 의미·완전성 인증은 아니며 새 실제 모델 성능은 미측정이다. 무료 점검 API와 범위는 `docs/agent_handoff/XAI_EXTENSIONS_20261115.md`, 개발 오류 실험은 `reports/xai_contract_evaluation_20261115_verify.md`.
 
 - **주장 경로 검사(2026-11-15):** `rag/evidence_paths.py`는 사건 v4의 주장별 방향·연결·문서 분기·봉인 파일 참조를 확인한다. 실제 RDF와 실행/파일 참조를 구분하며 단절 주장은 선택·게시를 보류한다. 완료 경로는 도메인 정답이나 인과 인증이 아니다. `/api/claim-paths/<ID>`는 무료이며 과거 주장 기록이 없으면 현재 허용 목록만 검사하고 과거 자유문장은 소급 검증하지 않는다. 원문 표 열은 기록 메타데이터 수준이고 PDF 시각 검증이 아니다. `docs/agent_handoff/EVIDENCE_PATHS.md` 참조.
 

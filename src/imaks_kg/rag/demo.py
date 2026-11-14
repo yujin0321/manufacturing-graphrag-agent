@@ -133,6 +133,20 @@ def make_server(port=8765, answer=live.answer, explain=event_explain.answer, age
                     return self.reply(200,evidence_paths.for_saved_run(run))
                 except FileNotFoundError:return self.reply(404,{'error':'저장된 사건 근거를 찾을 수 없습니다.'})
                 except (ValueError,KeyError,TypeError):return self.reply(400,{'error':'사건 근거와 봉인이 일치하는 실행만 경로를 점검할 수 있습니다.'})
+            if path.startswith('/api/rule-explanations/'):
+                from . import rule_explanations
+                try:
+                    run=saved_run(unquote(path[len('/api/rule-explanations/'):]))
+                    return self.reply(200,rule_explanations.for_saved_run(run))
+                except FileNotFoundError:return self.reply(404,{'error':'저장된 사건 근거를 찾을 수 없습니다.'})
+                except (ValueError,KeyError,TypeError):return self.reply(400,{'error':'사건 근거와 봉인이 일치하는 실행만 경계·종료를 점검할 수 있습니다.'})
+            if path.startswith('/api/document-claims/'):
+                from . import document_claims
+                try:
+                    run=saved_run(unquote(path[len('/api/document-claims/'):]))
+                    return self.reply(200,document_claims.for_saved_run(run))
+                except FileNotFoundError:return self.reply(404,{'error':'저장된 문서 검색 근거를 찾을 수 없습니다.'})
+                except (ValueError,KeyError,TypeError):return self.reply(400,{'error':'고정 원문과 일치하는 검색 기록만 문서 주장 목록을 만들 수 있습니다.'})
             if path.startswith('/api/run/'):
                 try:return self.reply(200,presentation(saved_run(unquote(path[len('/api/run/'):]))))
                 except (ValueError,FileNotFoundError):return self.reply(404,{'error':'저장된 결과를 찾을 수 없습니다.'})

@@ -1,0 +1,34 @@
+{
+  "new_api_calls": 0,
+  "generation_enabled": false,
+  "passed": true,
+  "results": [
+    {
+      "kind": "incident",
+      "run": "team_main_20261113_01",
+      "counts": {
+        "consistent": 4,
+        "inconsistent": 0,
+        "unassessed": 0
+      },
+      "answer_preserved": true
+    },
+    {
+      "kind": "incident",
+      "run": "team_seongho_20261113_01",
+      "counts": {
+        "consistent": 1,
+        "inconsistent": 0,
+        "unassessed": 0
+      },
+      "answer_preserved": true
+    },
+    {
+      "kind": "document",
+      "run": "team_document_20261113_01",
+      "extracts": 31,
+      "old_prose_revalidated": false,
+      "answer_preserved": true
+    }
+  ]
+}

@@ -1,0 +1,286 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>iMAKS — 센서 이상 탐지</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap');
+*{box-sizing:border-box}body{margin:0;background:#101017;color:#f3effc;font:14px Geist,"Noto Sans KR",sans-serif}header{border-bottom:1px solid #2c2838;padding:18px max(5vw,20px);display:flex;align-items:center;justify-content:space-between}header b{font-size:20px;letter-spacing:-.04em}header b span{color:#b6a0ff;margin-right:10px}small,.muted{color:#aca5bc}.pill{padding:5px 10px;border:1px solid #413556;border-radius:30px;color:#d4c2ff;font-size:12px}main{max-width:1150px;margin:auto;padding:54px 24px}h1{font-size:clamp(32px,5vw,53px);letter-spacing:-.065em;margin:12px 0}h2{margin:0 0 12px;font-size:23px}p{line-height:1.75}nav{display:flex;gap:10px;margin:32px 0;color:#a9a0b8;flex-wrap:wrap}nav span{padding:8px 13px;border:1px solid #312b40;border-radius:7px}nav .active{background:#29213f;color:#ddd0ff;border-color:#65509e}.grid{display:grid;grid-template-columns:2fr 1fr;gap:18px}.card{background:#191721;border:1px solid #332c43;border-radius:15px;padding:24px;margin-bottom:16px}.intro{background:radial-gradient(ellipse at right,#2c2051 0%,transparent 64%)}.drop{display:grid;place-items:center;text-align:center;border:1px dashed #7761a8;border-radius:12px;min-height:220px;background:#201a31;padding:20px;cursor:pointer}.drop.over{background:#392954}.icon{font-size:28px;color:#c4aaff}.drop strong{display:block;margin:8px}.actions{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}button{font:inherit;font-weight:600;cursor:pointer;border:1px solid #574672;border-radius:8px;padding:10px 15px;background:#272033;color:#eee5ff}button.primary{background:#bca4ff;border-color:#bca4ff;color:#211638}button:disabled{opacity:.45;cursor:default}button:focus-visible,.drop:focus-within{outline:2px solid #cebaff;outline-offset:3px}[hidden]{display:none!important}.scroll{overflow:auto}table{border-collapse:collapse;width:100%;text-align:left}th,td{padding:10px;border-bottom:1px solid #342d42;white-space:nowrap}th{color:#bfb2d7}.axis{height:54px;position:relative;margin:18px 0;background:repeating-linear-gradient(90deg,#242034 0,#242034 1px,transparent 1px,transparent 10%),#16141f;border-radius:8px}.marker{position:absolute;top:10px;height:34px;min-width:13px;padding:0;border:1px solid #ffacbd;background:#a74164;border-radius:4px}.marker[aria-pressed=true]{outline:2px solid #ffd3de;outline-offset:2px}.range{display:flex;justify-content:space-between;gap:12px}.alert{color:#ffadbe}.row{width:100%;text-align:left;margin:5px 0}.row[aria-pressed=true]{border-color:#c9aaff;background:#38284f}.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.facts div{background:#211b30;border-radius:8px;padding:12px}.facts b{display:block;margin-top:6px}section{scroll-margin-top:20px}@media(max-width:720px){main{padding-top:30px}.grid{grid-template-columns:1fr}.facts{grid-template-columns:1fr}.card{padding:18px}}
+#upload .drop{min-height:clamp(210px,32vh,320px);width:100%;background:radial-gradient(ellipse at center,#f1e8ff,#fbf8ff)}#upload .drop.over{background:#efe4ff}#filename{overflow-wrap:anywhere}#status.error{color:#9e2440;background:#fff1f2;padding:10px 14px;border-radius:8px}.view-tabs,.filters{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}.view-tabs [aria-pressed=true],.heat [aria-pressed=true]{background:#6940bc;color:#fff}.filters select{padding:7px;border:1px solid #d8c8ed;border-radius:6px}.heat button{background:#a92242;color:white;padding:6px}.evidence-grid{display:grid;gap:20px;grid-template-columns:3fr 2fr}.evidence-grid aside{background:#faf7ff;padding:16px;border-radius:10px}@media(max-width:760px){.evidence-grid{grid-template-columns:1fr}}.metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0}.metrics div{padding:15px 18px;border:1px solid #e4ddec;background:white;border-radius:10px}.metrics strong{display:block;font-size:26px;margin-top:5px;font-variant-numeric:tabular-nums}.metrics div:first-child strong{color:#9e2440}#count{border:0;background:transparent;padding:0;margin:0;color:#514260;font-size:13px}#detection>#count:not(.normal){display:none}.heat{border-collapse:separate;border-spacing:4px;text-align:center}.heat th:first-child{text-align:left}.heat td,.heat th{border:0}.heat button{background:color-mix(in srgb,#992345 calc(67% + var(--intensity,1)*6%),#f2dce4);min-width:38px}.heat button[aria-pressed=true]{outline:2px solid #593397;outline-offset:2px}#list table td{vertical-align:middle}#list .row{white-space:nowrap}#ruleEvidence{padding:0;list-style:none;display:grid;gap:8px}#ruleEvidence li{padding:9px 12px;background:#fff;border-left:3px solid #ac94db;border-radius:5px}#answer details{padding:8px 0;border-top:1px solid #ddd4eb}#answer summary{cursor:pointer}@media(max-width:560px){.metrics{gap:6px}.metrics div{padding:10px}.metrics strong{font-size:19px}}.heat tbody tr:hover{background:#faf7fd}.heat td{background:#f8f5fb;border-radius:5px}.heat td:has(button){background:transparent}.heat thead th{font-variant-numeric:tabular-nums}#list thead{background:#f7f3fb}#list tbody tr:hover{background:#faf7ff}#list .row{margin:0}.evidence-grid aside{min-width:0;overflow-wrap:anywhere}.range{font-variant-numeric:tabular-nums;flex-wrap:wrap}#answer p{margin:8px 0}#answer h4{margin:16px 0 3px}.chart-context{font-size:13px;line-height:1.5;padding:9px 12px;background:#fff0f3;color:#822442;border-radius:6px;overflow-wrap:anywhere}</style><style>
+:root{color-scheme:light}body{background:#f7f6fa;color:#221c32}header{border-color:#e5dfef;background:#fff}header b span{color:#7046ca}.pill{color:#6335ad;border-color:#ddd0f7}.muted,small,nav{color:#625971}.intro{background:radial-gradient(ellipse at right,#eee3ff 0%,transparent 70%);border-radius:18px;padding:16px 22px}main{max-width:1440px;padding-top:26px}.card{background:white;border-color:#e4ddec}.drop{background:#f9f5ff;border-color:#8c6bc4}.drop.over{background:#efe4ff}.icon{color:#6941ba}nav span{border-color:#e3ddeb}nav .active{background:#ede3ff;color:#51258d;border-color:#bb9dec}button{background:#fff;color:#54318a;border-color:#d8c8ed}button.primary{background:#6940bc;color:white;border-color:#6940bc}button:focus-visible{outline-color:#6940bc}.facts div{background:#f5efff}th,td{border-color:#eee8f5}th{color:#625971}.alert{color:#a82d43}.row[aria-pressed=true]{background:#f2e8ff;color:#4e287c}.axis{background:#f7f2fa;height:46px}.marker{background:#c5314d;border:1px solid #9c233c;top:8px;height:30px;min-width:11px}.marker[aria-pressed=true]{outline-color:#6b235a}.legend{display:flex;gap:18px;flex-wrap:wrap;color:#625971}.legend i{display:inline-block;width:12px;height:12px;margin-right:6px;border-radius:3px;background:#c5314d}.legend .purple{background:#7650c1}.report{background:#fff1f2;border-left:5px solid #c5314d;padding:14px 16px;border-radius:8px;font-weight:600;margin:12px 0}.report.normal{background:#f2f0fb;border-color:#7650c1}.chart{width:100%;height:clamp(210px,29vh,330px);display:block}.pagehead{display:flex;gap:12px;justify-content:space-between;align-items:center;flex-wrap:wrap;margin-bottom:14px}.resultgrid{align-items:start}.timeline-bins{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:3px;margin:12px 0 8px}.time-bin{display:grid;place-items:center;min-width:0;min-height:42px;padding:4px;background:#f0ebf7;border-radius:6px}.time-bin.alert-bin{background:#a92242;color:white;border-color:#a92242}.time-bin[aria-pressed=true]{outline:2px solid #6031aa;outline-offset:2px}.row{overflow-wrap:anywhere}.list-head{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;align-items:baseline}.resultgrid{display:grid;grid-template-columns:3fr 2fr;gap:16px}.data-links a{color:#5b31a0}.data-links a+a{margin-left:10px}@media(max-width:760px){.resultgrid{grid-template-columns:1fr}}
+</style>
+
+<header><b><span>◈</span>iMAKS</b></header>
+<main><div class="intro"><small>제조 공정 모니터링</small><h1>센서 이상 탐지</h1><p class="muted">센서 파일을 올리고 탐지된 경보의 판정 근거를 확인하세요.</p></div>
+<nav aria-label="진행 단계"><span id="stepA" class="active">01 파일 업로드</span><span id="stepB">02 탐지 결과</span><span id="stepC">03 경보 상세</span></nav>
+<section id="upload" aria-label="센서 파일 업로드"><div class="card"><h2>센서 파일 업로드</h2><label class="drop" id="drop"><div><span class="icon" aria-hidden="true">↑</span><strong>센서 CSV를 선택하거나 여기에 끌어 놓으세요</strong><span class="muted" id="filename">UTF-8 CSV</span></div><input id="file" type="file" accept=".csv,text/csv" style="position:absolute;opacity:0;width:1px;height:1px"></label><p id="status" role="status" class="muted" hidden></p><div id="preview" class="scroll" hidden></div><div class="actions"><button class="primary" id="run" disabled>탐지 실행</button><button id="sample">예제 데이터 불러오기</button><button id="resume" hidden>이전 탐지 결과 보기 →</button></div></div>
+</section>
+<section id="results" hidden>
+<div class="pagehead"><h2>탐지 결과</h2><button id="backUpload">← 업로드로</button></div>
+<div class="view-tabs"><button id="viewDetection" aria-pressed="true">탐지 결과</button><button id="viewEvaluation" aria-pressed="false">평가</button></div><div id="evaluation" class="card scroll" hidden><h2>평가</h2><h3>이번 실행</h3><p id="comparison" role="status"></p><label>정답 CSV <input id="gold" type="file" accept=".csv"></label> <button id="demoGold">시연용 정답과 비교</button><h3>기존 실험 결과</h3><p class="muted">탐지 수치는 개발 데이터의 결과입니다. QA 수치는 고정 문항에서 측정했으며 실제 Agent 통합 실행의 성능은 별도로 검증해야 합니다.</p><table><thead><tr><th>평가 항목</th><th>결과</th></tr></thead><tbody><tr><td>개발 데이터 탐지 구간 포착</td><td>14/14</td></tr><tr><td>개발 데이터 이상 유형 일치</td><td>12/14</td></tr><tr><td>정적 QA 완전 충족 (LLM / VectorRAG / GraphRAG)</td><td>0/80 · 48/80 · 72/80</td></tr><tr><td>GraphRAG 사건 설명 완전 충족 (AI 채점)</td><td>17/17</td></tr></tbody></table></div><div id="detection"><div id="count" class="report" role="status"></div>
+<p class="muted" id="summary"></p>
+<div id="metrics" class="metrics"></div><div class="filters"><label>센서 <select id="sensorFilter"></select></label><label>판정 유형 <select id="kindFilter"></select></label></div><div class="resultgrid" style="grid-template-columns:minmax(0,1fr)"><div class="card"><h2>센서별 탐지 분포</h2><div class="legend"><span><i></i>표의 숫자를 선택하면 해당 센서와 시간대의 결과가 표시됩니다.</span></div><div id="timeline" class="scroll" aria-label="시간대별 경보 건수"></div><div class="range muted" id="range"></div></div>
+<div class="card"><div class="list-head"><h2 id="listTitle">경보 목록</h2><button id="allEvents" hidden>전체 보기</button></div><p id="listPeriod" class="muted" hidden></p><div id="list" class="scroll"></div></div></div></div>
+</section>
+<section id="detail" class="card" hidden><div class="pagehead"><h2>선택한 경보</h2><button id="backResults">← 탐지 결과로</button></div><p id="eventId" class="muted"></p><div class="facts" id="facts"></div><div class="evidence-grid"><div><h3>경보 전후 센서 측정값</h3><p id="chartContext" class="chart-context"></p><canvas id="detailChart" class="chart" aria-label="선택한 경보 전후의 센서 측정값" role="img"></canvas></div><aside><h3>경보 판정 근거</h3><ol id="ruleEvidence"></ol><div class="actions"><button class="primary" id="explain">왜 경보가 발생했나요?</button></div><div id="answer" hidden aria-live="polite"></div></aside></div></section></main>
+<script>
+const $=id=>document.getElementById(id);
+const sensor='ST02_SEALING_TMP', low=175, high=195;
+const rules=[
+  {id:sensor,low:175,high:195,unit:'°C',rule_id:'RULE-ST02-01',source_id:'SOP-001'},
+  {id:'ST01_FILLING_PRS',low:2,high:4,unit:'bar',rule_id:'시연용 압력 규칙'},
+  {id:'ST04_PACKAGING_SPD',low:1,high:3,unit:'m/s',rule_id:'시연용 속도 규칙'}
+];
+let demo=false;
+const stamp=i=>'2026-01-06T08:'+String(i*2).padStart(2,'0')+':00';
+const fixture=['timestamp,sensor_id,value',...rules.flatMap((rule,j)=>Array.from({length:24},(_,i)=>[stamp(i),rule.id,i===5+j*5?(j===0?212.8202:j===2?rule.low-.3:rule.high+.7):(rule.low+rule.high)/2].join(',')))].join('\n');
+
+let rows=[], selected=null, fileRequest=0, tested=[], resultsReady=false;
+function showEvaluation(active){
+  $('evaluation').hidden=!active;
+  $('detection').hidden=active;
+  $('viewEvaluation').setAttribute('aria-pressed',String(active));
+  $('viewDetection').setAttribute('aria-pressed',String(!active));
+}
+$('viewDetection').onclick=()=>showEvaluation(false);
+$('viewEvaluation').onclick=()=>showEvaluation(true);
+const pages={upload:'stepA',results:'stepB',detail:'stepC'};
+function show(page, navigate=true){
+  if(!Object.hasOwn(pages,page))page='upload';
+  $('resume').hidden=!resultsReady;
+  if(page==='detail'&&!selected)page=resultsReady?'results':'upload';
+  if(page==='results'&&!resultsReady)page='upload';
+  for(const id of Object.keys(pages))$(id).hidden=id!==page;
+  step(pages[page]);
+  if(navigate&&location.hash!=='#'+page)location.hash=page;
+  window.scrollTo(0,0);
+  if(page==='detail')drawDetail();
+}
+window.addEventListener('hashchange',()=>show(location.hash.slice(1)||'upload',false));
+$('backUpload').onclick=()=>show('upload');
+$('resume').onclick=()=>show('results');
+$('backResults').onclick=()=>show('results');
+function draw(id,series){
+  if(!series.length)return;
+  const canvas=$(id), width=canvas.clientWidth,height=canvas.clientHeight;
+  if(!width||!height)return;
+  const ratio=window.devicePixelRatio||1;
+  canvas.width=width*ratio;canvas.height=height*ratio;
+  const ctx=canvas.getContext('2d');
+  ctx.scale(ratio,ratio);
+  const left=45,right=width-16,top=18,bottom=height-30;
+  const low=id==='detailChart'?selected.low:175,high=id==='detailChart'?selected.high:195;
+  let min=low,max=high;
+  for(const point of series){min=Math.min(min,point.value);max=Math.max(max,point.value);}
+  min-=4;max+=4;
+  const x=p=>left+(right-left)*(p.ms-series[0].ms)/Math.max(1,series.at(-1).ms-series[0].ms);
+  const y=value=>top+(bottom-top)*(max-value)/(max-min);
+  ctx.fillStyle='#eee6fc';ctx.fillRect(left,y(high),right-left,y(low)-y(high));
+  ctx.font='12px sans-serif';
+  for(const v of [high,low]){
+    ctx.fillStyle='#625971';ctx.fillText(v,8,y(v)+4);
+    ctx.strokeStyle='#9f84c9';ctx.setLineDash([4,4]);ctx.beginPath();ctx.moveTo(left,y(v));ctx.lineTo(right,y(v));ctx.stroke();
+  }
+  ctx.setLineDash([]);ctx.strokeStyle='#7650c1';ctx.lineWidth=1.6;
+  ctx.beginPath();series.forEach((p,i)=>i?ctx.lineTo(x(p),y(p.value)):ctx.moveTo(x(p),y(p.value)));ctx.stroke();
+  for(const p of series){
+    if(p.value>=low&&p.value<=high&&p.line!==selected?.line)continue;
+    ctx.fillStyle=p.line===selected?.line?'#861631':'#c5314d';
+    ctx.beginPath();ctx.arc(x(p),y(p.value),p.line===selected?.line?6:3,0,Math.PI*2);ctx.fill();
+  }
+  if(selected&&selected.ms>=series[0].ms&&selected.ms<=series.at(-1).ms){
+    const at=x(selected);
+    ctx.strokeStyle='#a92242';ctx.setLineDash([5,4]);ctx.beginPath();
+    ctx.moveTo(at,top);ctx.lineTo(at,bottom);ctx.stroke();ctx.setLineDash([]);
+  }
+  $('chartContext').textContent='최초 판정 '+selected.time+' · 단위 '+(selected.unit??'미제공')+
+    ' · '+([Number.isFinite(low)?'하한 '+low:null,Number.isFinite(high)?'상한 '+high:null].filter(Boolean).join(' / ')||'수치 임계값 미제공');
+  ctx.fillStyle='#625971';
+  const sameDay=series[0].time.slice(0,10)===series.at(-1).time.slice(0,10);
+  const format=p=>sameDay?p.time.slice(11,16)||p.time:p.time.slice(5,16).replace('T',' ');
+  ctx.fillText(format(series[0]),left,bottom+19);
+  if(series.length>1){const label=format(series.at(-1));ctx.fillText(label,right-ctx.measureText(label).width,bottom+19);}
+}
+function drawDetail(){
+  const series=tested.filter(x=>x.id===selected.id);
+  const at=series.findIndex(x=>x.line===selected.line);
+  draw('detailChart',series.slice(Math.max(0,at-12),at+13));
+}
+window.addEventListener('resize',()=>{if(!$('detail').hidden)drawDetail();});
+function node(tag,content){const el=document.createElement(tag);el.textContent=content;return el;}
+function step(id){for(const key of ['stepA','stepB','stepC']){const el=$(key);el.classList.toggle('active',key===id);if(key===id)el.setAttribute('aria-current','step');else el.removeAttribute('aria-current');}}
+function uploadStatus(message, error=false){
+  const status=$('status');
+  status.textContent=message;
+  status.hidden=!message;
+  status.classList.toggle('error',error);
+}
+function reset(){rows=[];selected=null;tested=[];resultsReady=false;$('run').disabled=true;$('preview').hidden=true;$('answer').hidden=true;show('upload');}
+function csv(text){
+  return text.replace(/^\uFEFF/,'').trim().split(/\r?\n/).map(line=>line.split(',').map(field=>field.trim().replace(/^"([^"]*)"$/,'$1')));
+}
+function load(text,name){
+  reset();$('filename').textContent=name;
+  try{
+    const [head,...body]=csv(text);
+    const indices=['timestamp','sensor_id','value'].map(key=>head.indexOf(key));
+    if(indices.includes(-1)||!body.length)throw Error('필수 열 3개와 데이터 행을 확인하세요.');
+    const parsed=body.map((fields,i)=>{
+      const [time,id,raw]=indices.map(j=>fields[j]??'');
+      const ms=Date.parse(time),value=Number(raw);
+      if(!time||!id||!raw||!Number.isFinite(ms)||!Number.isFinite(value))throw Error((i+2)+'행의 측정 시각, 센서 ID, 측정값을 확인하세요.');
+      return {time,id,value,ms,line:i+2};
+    });
+    if(!parsed.some(x=>x.id===sensor))throw Error('파일에 '+sensor+' 센서가 없습니다.');
+    rows=parsed;
+    const table=node('table',''),thead=table.createTHead(),tr=thead.insertRow();
+    for(const key of ['측정 시각','센서 ID','측정값'])tr.append(node('th',key));
+    const tbody=table.createTBody();
+    for(const row of rows.slice(0,5)){const tr=tbody.insertRow();for(const value of [row.time,row.id,row.value])tr.insertCell().textContent=value;}
+    $('preview').replaceChildren(table);$('preview').hidden=false;$('run').disabled=false;
+    const sensorCount=new Set(rows.map(x=>x.id)).size;
+    const period=rows.reduce(([first,last],x)=>[x.ms<first.ms?x:first,x.ms>last.ms?x:last],[rows[0],rows[0]]);
+    uploadStatus(rows.length+'개 측정값 · 센서 '+sensorCount+'개 · '+period[0].time+' ~ '+period[1].time);
+  }catch(error){uploadStatus(error.message,true);}
+}
+async function read(file){
+  if(!file)return;
+  demo=false;
+  const request=++fileRequest;reset();$('filename').textContent=file.name;uploadStatus('파일을 읽는 중입니다.');
+  try{if(!/\.csv$/i.test(file.name))throw Error('CSV 파일을 선택하세요.');
+    const text=await file.text();if(request===fileRequest)load(text,file.name);
+  }catch(error){if(request===fileRequest)uploadStatus(error.message,true);}
+}
+$('file').onchange=e=>{read(e.target.files[0]);e.target.value='';};
+$('drop').ondragover=e=>{e.preventDefault();$('drop').classList.add('over');};
+$('drop').ondragleave=()=>$('drop').classList.remove('over');
+$('drop').ondrop=e=>{e.preventDefault();$('drop').classList.remove('over');read(e.dataTransfer.files[0]);};
+$('sample').onclick=()=>{fileRequest++;demo=true;load(fixture,'예제 · multi-sensor.csv');};
+function pick(event,buttons){
+  if(selected!==event)$('answer').hidden=true;
+  selected=event;
+  $('chartContext').textContent='최초 판정 '+event.time+' · 단위 '+(event.unit??'미제공');
+  const evidence=[
+    '관측 · '+(event.value??'확인 불가')+' '+(event.unit??''),
+    '판정 조건 · '+(event.condition??'미제공'),
+    '실행 규칙 · '+(event.rule_id??'미제공'),
+    '판정 · '+event.kind,
+    '원문 · '+(event.source_id??'설명을 열어 출처 확인')
+  ];
+  $('ruleEvidence').replaceChildren(...evidence.map(text=>node('li',text)));
+
+  for(const el of buttons)el.setAttribute('aria-pressed',String(el.dataset.line===String(event.line)));
+  $('eventId').textContent=event.time+' · CSV '+event.line+'행';
+  $('facts').replaceChildren(...[['센서',event.id],['관측값',event.value+' '+event.unit],['판정',event.kind]].map(([k,v])=>{const el=node('div',k);el.append(node('b',v));return el;}));
+  show('detail');
+}
+function setupEvaluation(events){
+  $('comparison').textContent='정답 CSV를 선택해 구간을 비교하세요.';
+  $('demoGold').hidden=!demo;
+  function compare(labels){
+    const matches=(point,label)=>point.id===label.id&&point.ms>=label.start&&point.ms<=label.end;
+    const caught=labels.filter(label=>events.some(point=>matches(point,label))).length;
+    const extra=events.filter(point=>!labels.some(label=>matches(point,label))).length;
+    $('comparison').textContent='정답 구간 포착 '+caught+'/'+labels.length+' · 미탐지 '+(labels.length-caught)+'건 · 정답과 겹치지 않은 이탈 '+extra+'개 · 이상 유형 평가는 연결용 서버에서 제공합니다.';
+  }
+  $('demoGold').onclick=()=>compare(rules.map((rule,i)=>({id:rule.id,start:Date.parse(stamp(5+i*5)),end:Date.parse(stamp(5+i*5))})));
+  $('gold').onchange=async ({target})=>{
+    const file=target.files[0];if(!file)return;
+    try{
+      const [header,...rows]=csv(await file.text());
+      const [a,b,c]=['sensor_id','start','end'].map(key=>header.indexOf(key));
+      if(Math.min(a,b,c)<0||!rows.length)throw Error('센서 ID와 시작·종료 시각이 있는 정답 CSV를 선택하세요.');
+      const labels=rows.map(row=>({id:row[a],start:Date.parse(row[b]),end:Date.parse(row[c])}));
+      if(labels.some(x=>!x.id||!Number.isFinite(x.start)||!Number.isFinite(x.end)||x.end<x.start))throw Error('정답의 시간 구간을 확인하세요.');
+      compare(labels);
+    }catch(error){$('comparison').textContent=error.message;}
+    finally{target.value='';}
+  };
+}
+$('run').onclick=()=>{
+  const data=rows.filter(x=>demo||x.id===sensor).sort((a,b)=>a.ms-b.ms);
+  if(!data.length)return;
+  const events=data.flatMap(point=>{
+    const rule=rules.find(rule=>rule.id===point.id);
+    if(point.value>=rule.low&&point.value<=rule.high)return [];
+    return [{...point,...rule,condition:rule.low+'~'+rule.high+' '+rule.unit,kind:point.value>rule.high?'상한 초과':'하한 미달',start:point.time,end:point.time}];
+  });
+  setupEvaluation(events);
+
+  tested=data;selected=null;resultsReady=true;$('answer').hidden=true;
+  const start=data[0],end=data.at(-1),buttons=[];
+  $('timeline').replaceChildren();$('list').replaceChildren();$('detail').hidden=true;
+  $('count').textContent=events.length?'범위 이탈 '+events.length+'개 측정값':'범위 이탈 없음';$('count').classList.toggle('normal',!events.length);$('summary').textContent=(demo?'시연용 센서 3개':'밀봉 온도 규칙 데모')+' · '+data.length+'개 측정값 검사';
+  $('range').replaceChildren(node('span',start.time),node('span',end.time));
+  const unit=window.SensorAPI?'건':'개';
+  $('metrics').replaceChildren(...[
+    [window.SensorAPI?'탐지 사건':'범위 이탈 측정값',events.length+unit],
+    ['이상 감지 센서',new Set(events.map(event=>event.id)).size+'개'],
+    ['판정 유형',new Set(events.map(event=>event.kind)).size+'개']
+  ].map(([label,value])=>{const tile=node('div','');tile.append(node('small',label),node('strong',value));return tile;}));
+  const duration=Math.max(1,end.ms-start.ms);
+  const binOf=event=>Math.max(0,Math.min(7,Math.floor(8*(event.ms-start.ms)/duration)));
+  const kindOf=event=>event.kind??(event.value>high?'상한 초과':'하한 미달');
+  for(const [key,values] of [['sensorFilter',events.map(x=>x.id)],['kindFilter',events.map(kindOf)]]){
+    $(key).replaceChildren(new Option('전체',''),...[...new Set(values)].sort().map(v=>new Option(v,v)));
+  }
+  const label=ms=>new Intl.DateTimeFormat('ko-KR',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).format(ms);
+  let cell=null;
+  function render(){
+    const filtered=events.filter(x=>(!$('sensorFilter').value||x.id===$('sensorFilter').value)&&(!$('kindFilter').value||kindOf(x)===$('kindFilter').value));
+    const grid=node('table','');grid.className='heat';
+    const head=grid.createTHead().insertRow();head.append(node('th','센서'));
+    for(let i=0;i<8;i++)head.append(node('th',label(start.ms+i*duration/8)));
+    const body=grid.createTBody();
+    for(const id of [...new Set(filtered.map(x=>x.id))]){
+      const row=body.insertRow();row.append(node('th',id));
+      const counts=Array(8).fill(0);
+      for(const x of filtered)if(x.id===id)counts[binOf(x)]++;
+      counts.forEach((count,index)=>{
+        const td=row.insertCell();
+        if(!count){td.textContent='0';return;}
+        const button=node('button',String(count));
+        button.style.setProperty('--intensity',Math.min(count,5));
+        button.setAttribute('aria-label',id+' · '+label(start.ms+index*duration/8)+'부터 · '+count+'개');
+        button.setAttribute('aria-pressed',String(cell?.id===id&&cell?.index===index));
+        button.onclick=()=>{cell={id,index};render();$('allEvents').focus();};
+        td.append(button);
+      });
+    }
+    $('timeline').replaceChildren(filtered.length?grid:node('p','표시할 경보가 없습니다.'));
+    const visible=filtered.filter(x=>!cell||(x.id===cell.id&&binOf(x)===cell.index));
+    $('listTitle').textContent='경보 목록 · '+visible.length+(window.SensorAPI?'건':'개 측정값');
+    $('allEvents').hidden=!cell;$('listPeriod').hidden=!cell;
+    if(cell)$('listPeriod').textContent=cell.id+' · '+label(start.ms+cell.index*duration/8)+'부터';
+    buttons.length=0;
+    for(const event of visible){
+      const period=event.start&&event.end?event.start+' ~ '+event.end:event.time;
+      const row=node('button',period+' · '+event.id+' · '+kindOf(event));
+      row.className='row';row.dataset.line=String(event.event_id??event.line);
+      row.setAttribute('aria-pressed',String(selected===event));
+      row.onclick=()=>pick(event,buttons);buttons.push(row);
+    }
+    const table=node('table','');
+    const heading=table.createTHead().insertRow();
+    for(const title of ['시작 / 판정','종료','센서','이상 유형'])heading.append(node('th',title));
+    const eventBody=table.createTBody();
+    visible.forEach((event,index)=>{
+      const row=eventBody.insertRow();
+      buttons[index].textContent=event.start??event.time;
+      row.insertCell().append(buttons[index]);
+      for(const value of [event.end??'—',event.id,kindOf(event)])row.insertCell().textContent=value;
+    });
+    $('list').replaceChildren(buttons.length?table:node('p','조건에 해당하는 경보가 없습니다.'));
+
+  }
+  $('sensorFilter').onchange=$('kindFilter').onchange=()=>{cell=null;render();};
+  $('allEvents').onclick=()=>{cell=null;render();$('sensorFilter').focus();};
+  showEvaluation(false);render();
+  show('results');
+};
+$('explain').onclick=()=>{
+  if(!selected)return;
+  const source=node('details','');
+  source.append(node('summary',selected.source_id??'시연용 규칙'),node('p','적용 범위 '+selected.condition));
+  $('answer').replaceChildren(node('p','관측값 '+selected.value+' '+selected.unit+'은 '+selected.kind+'에 해당합니다.'),source,node('p','문서상 권고 · 예시 자료 없음'),node('p','실제 조치 기록 · 자료 없음'),node('p','전문가 확인 · 물리적 원인 확인 필요'));
+  $('answer').hidden=false;
+};
+show(location.hash.slice(1)||'upload',false);
+</script></html>
+

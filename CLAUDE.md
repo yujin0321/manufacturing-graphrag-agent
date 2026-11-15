@@ -34,6 +34,8 @@ iMAKS(제조 공정 합성 데이터셋)로 지식그래프(KG)를 직접 구축
 
 - **룰 탐지 엔진·⑦ 오버레이(2026-11-11):** `detection/engine/`이 KG 컴파일→실행→후처리를 설정(`configs/v3*.json`)으로 실행한다. 기존 v1~v3.1 탐지기는 보존하며 엔진의 v3·v3-literal·v3.1 설정은 기존 출력과 바이트 일치해야 한다. 사건은 `engine/overlay.py`로 별도 TTL 오버레이에 AnomalyEvent로 올리며 SHACL·적재 검사를 통과해야 한다. `likelihoodScore` 정의 전까지 CausalLink/`causallyAffects`는 만들지 않는다. Agent 도구는 `rag/incident_tools.py`. 탐지 결과가 바뀌는 개선은 새 설정으로 추가하고 라벨 없는 지표·합성 벤치마크로 먼저 평가한다. 상세 `docs/RULE_ENGINE_20261111.md`.
 
+- **센서 분석 결과 설명 Agent(2026-11-15):** UI 시작 화면은 "센서 데이터를 넣어 결과 도출"이다. 업로드 CSV → `analysis_agent/ingest`(라벨·임계값 컬럼 제거, 30초 간격 검사) → 룰 엔진 v3.1·오버레이(σ는 기준 입력 학습 구간 값으로 고정) → `analysis_agent/agent`(결정적 분류 우선, 모델 계획은 코드 검사 후 실행, 인용·시각 결정적 검사 + 검증 모델, 초안·검증 각 최대 2회). UI는 `analysis_agent/service.AnalysisService`만 호출한다. 생성 모델은 기존 OpenAI 설정이 기본이고 `--provider gemini`로 Gemini(OpenAI 호환 엔드포인트)를 고를 수 있다. 엔진·`incident_tools`·문서 검색 코드는 수정하지 않는다. 상세 `docs/ANALYSIS_AGENT_20261115.md`.
+
 - **Station(공정) 수준까지만 다룬다.** 내부 부품(Component) 계층은 만들지 않는다. 원본 Component 9개는 이름이 스테이션과 같으므로 Station으로 1:1 매핑한다.
 - **센서–스테이션 연결은 `hasSensor`(Station→Sensor) 단방향이다.** 원본 monitors 양방향 44줄(22쌍)은 하나로 정리한다.
 - **Person(작업자 44명)과 authorized_for(218개)는 만들지 않는다.** Zone 클래스도 만들지 않고 Station의 zone 속성으로 흡수한다(Main Entrance 불필요).

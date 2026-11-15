@@ -6,6 +6,7 @@ import io
 import json
 from pathlib import Path
 import sys
+import time
 from urllib.request import Request, urlopen
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -20,7 +21,14 @@ def main():
     args=parser.parse_args()
     base=f'http://127.0.0.1:{args.port}'
     def request(path,body=None,headers=None):
-        with urlopen(Request(base+path,data=body,headers=headers or {}),timeout=180) as response:return json.load(response)
+        with urlopen(Request(base+path,data=body,headers=headers or {}),timeout=180) as response:result=json.load(response)
+        if path=='/api/analyses' and body is not None:
+            deadline=time.monotonic()+180
+            while result.get('status') in ('queued','processing'):
+                if time.monotonic()>deadline:raise TimeoutError('Analysis is still running; inspect its ID instead of uploading again')
+                time.sleep(.2);result=request('/api/analyses/'+result['analysis_id'])
+            if result.get('status')!='complete':raise ValueError('Analysis failed: '+str(result.get('error')))
+        return result
     session=request('/api/session')
     if session['generation_enabled'] or not session.get('analysis_enabled'):
         raise ValueError('Run --serve --read-only --allow-local-analysis first')

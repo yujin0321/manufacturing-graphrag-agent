@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 import tempfile
 import threading
+import time
 import unittest
 from unittest.mock import patch
 
@@ -151,7 +152,7 @@ class AnalysisHTTPTests(unittest.TestCase):
         cls.port=cls.server.server_port
 
     @classmethod
-    def tearDownClass(cls):cls.server.shutdown();cls.server.server_close();cls.thread.join();cls.temp.cleanup()
+    def tearDownClass(cls):cls.server.shutdown();cls.server.server_close();cls.thread.join();cls.service.close();cls.temp.cleanup()
 
     def request(self,method,path,body=None,headers=None):
         connection=http.client.HTTPConnection('127.0.0.1',self.port,timeout=60)
@@ -163,7 +164,12 @@ class AnalysisHTTPTests(unittest.TestCase):
         self.assertFalse(session['generation_enabled']);self.assertTrue(session['analysis_enabled'])
         headers={'Content-Type':'text/csv','X-Demo-Token':session['csrf_token'],'X-Input-Kind':'historical_replay'}
         status,result=self.request('POST','/api/analyses',csv_data(),headers)
-        self.assertEqual(status,201);aid=result['analysis_id'];self.assertEqual(result['new_api_calls'],0)
+        self.assertEqual(status,202);aid=result['analysis_id'];self.assertEqual(result['new_api_calls'],0)
+        deadline=time.monotonic()+180
+        while result['status'] in ('queued','processing'):
+            self.assertLess(time.monotonic(),deadline)
+            time.sleep(.1);_,result=self.request('GET',f'/api/analyses/{aid}')
+        self.assertEqual(result['status'],'complete')
         status,series=self.request('GET',f'/api/analyses/{aid}/series?sensor_id={SID}&limit=2')
         self.assertEqual(status,200);self.assertEqual(len(series['points']),2)
         iid=result['incident_items'][0]['id']

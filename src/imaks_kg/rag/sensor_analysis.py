@@ -4,13 +4,16 @@ No labels, model calls, calibration fitting on uploads, or mutation of baseline 
 """
 from collections import Counter, defaultdict
 from copy import deepcopy
+from concurrent.futures import ThreadPoolExecutor
 import csv
 from datetime import datetime, timezone
 import io
 import json
 import math
+import os
 from pathlib import Path
 import re
+import threading
 import uuid
 
 from rdflib import RDF
@@ -19,14 +22,14 @@ from ..detection import rules
 from ..detection.engine import compiler, config, overlay, run as engine
 from . import comparison as c, decision_evidence as d, incident_tools, team_runtime, vector as v
 
-VERSION = 'sensor-analysis-v1-20261115'
+VERSION = 'sensor-analysis-v2-20261115'
 ROOT = v.REPO_ROOT / 'kg_build/sensor_analyses'
 MAX_BYTES, MAX_ROWS, MAX_POINTS = 4 * 1024 * 1024, 20000, 10000
 KINDS = ('historical_replay', 'uploaded_sensor_csv')
 ID = r'ana-[0-9a-f]{32}'
 WARNINGS = [
     '규칙 일치 후보이며 실제 고장 유형·원인·조치 효과를 확정하지 않습니다.',
-    '선택 구간 밖의 이력은 입력하지 않았습니다. 구간 시작·끝은 잘린 관측일 수 있습니다.',
+    '계산용 선행 구간과 분석 대상을 구분합니다. 입력보다 앞선 이력은 알 수 없으며 시작·끝은 잘린 관측일 수 있습니다.',
     '이상 없음은 실행 가능한 규칙에서 후보가 없다는 뜻이며 설비 정상 인증이 아닙니다.',
     'historical_replay는 과거 자료 재입력 시연이며 새로운 미노출 성능 평가가 아닙니다.']
 
@@ -130,6 +133,49 @@ def minimum_samples(rule, cfg):
     return duration
 
 
+def prepare_intervals(groups, metadata, analysis_start=None, analysis_end=None):
+    first=min(rows[0]['timestamp'] for rows in groups.values())
+    last=max(rows[-1]['timestamp'] for rows in groups.values())
+    start,end=analysis_start or first,analysis_end or last
+    if start<first or end>last or start>end:
+        raise InputError('analysis_interval_outside_upload','분석 구간은 업로드에 기록된 시간 범위 안이어야 합니다.')
+    original_rows=sum(map(len,groups.values()))
+    processing={sid:[row for row in rows if row['timestamp']<=end] for sid,rows in groups.items()}
+    processing={sid:rows for sid,rows in processing.items() if rows}
+    if not any(start<=row['timestamp']<=end for rows in processing.values() for row in rows):
+        raise InputError('empty_analysis_interval','분석 구간에 실제 관측값이 없습니다.')
+    stream=io.StringIO();writer=csv.DictWriter(stream,fieldnames=rules.FIELDS,lineterminator='\n');writer.writeheader()
+    for sid in sorted(processing):writer.writerows(processing[sid])
+    processing,normalized,quality=parse_csv(stream.getvalue().encode(),metadata)
+    sensors={}
+    for sid,rows in processing.items():
+        target=[i for i,row in enumerate(rows) if row['timestamp']>=start]
+        prior=0
+        if target:
+            index=target[0]
+            while index>0 and (timestamp(rows[index]['timestamp'])-timestamp(rows[index-1]['timestamp'])).total_seconds()==30:
+                prior+=1;index-=1
+        sensors[sid]={'warmup_samples':sum(row['timestamp']<start for row in rows),
+                      'analysis_samples':len(target),'contiguous_prior_samples_at_first_target':prior,
+                      'first_target_at':rows[target[0]]['timestamp'] if target else None,
+                      'last_target_at':rows[target[-1]]['timestamp'] if target else None}
+    intervals={'analysis':{'start':start,'end':end},'context':{
+        'start':min(rows[0]['timestamp'] for rows in processing.values()),'end':max(rows[-1]['timestamp'] for rows in processing.values())},
+        'upload':{'start':first,'end':last},'sensors':sensors,
+        'excluded_after_analysis_end_rows':original_rows-sum(map(len,processing.values())),
+        'scope':'prefix history is calculation context; observations after analysis end are never used'}
+    return processing,normalized,quality,intervals
+
+
+def in_interval(incident, interval):
+    return incident['end']>=interval['start'] and incident['start']<=interval['end']
+
+
+def incident_scope(incident, interval):
+    if not in_interval(incident,interval):return 'warmup_only'
+    return 'started_before_analysis' if incident['start']<interval['start'] else 'started_in_analysis'
+
+
 def package_check(folder):
     seal = v.read(folder / 'complete.json')
     required = {'upload.csv', 'input.csv', 'input_manifest.json', 'calibration.json', 'summary.json',
@@ -147,12 +193,21 @@ class AnalysisStore(incident_tools.IncidentStore):
     def __init__(self, folder):
         self.folder = folder
         self.package_seal = package_check(folder)
-        self.input_source = v.read(folder/'input_manifest.json')['input_source']
+        self.declared_input_source = v.read(folder/'input_manifest.json')['input_source']
+        declared=self.declared_input_source
+        origin=Path(declared['file'])
+        if (declared['analysis_id']!=folder.name or origin.is_absolute() or '..' in origin.parts or
+                '\\' in declared['file'] or not origin.parts or origin.parts[0]!='kg_build' or
+                origin.name!='input.csv' or origin.parent.name!=folder.name):
+            raise ValueError('Invalid declared analysis source')
         expected = (folder/'input.csv').relative_to(v.REPO_ROOT).as_posix()
-        if self.input_source['file'] != expected or self.input_source['sha256'] != self.package_seal['input.csv']:
+        if declared['sha256'] != self.package_seal['input.csv']:
             raise ValueError('Input source outside this analysis')
+        self.input_source={**declared,'file':expected}
+        if declared['file']!=expected:
+            self.input_source.update(origin_file=declared['file'],reference_resolution='hash_verified_local_restore')
         super().__init__(folder/'run', folder/'overlay')
-        if v.read(self.run_dir/'params.json')['input_source'] != self.input_source:
+        if v.read(self.run_dir/'params.json')['input_source'] != self.declared_input_source:
             raise ValueError('Run belongs to another input')
         self._groups = None
 
@@ -181,10 +236,104 @@ class AnalysisStore(incident_tools.IncidentStore):
 
 
 class AnalysisService:
-    def __init__(self, root=ROOT):
+    def __init__(self, root=ROOT, *, max_pending=3):
         self.root = Path(root).resolve()
         if not self.root.is_relative_to((v.REPO_ROOT/'kg_build').resolve()):
             raise ValueError('Analysis storage must stay inside local kg_build')
+        if type(max_pending) is not int or not 1<=max_pending<=8:raise ValueError('Invalid queue capacity')
+        self._slots=threading.BoundedSemaphore(max_pending)
+        self._jobs_lock=threading.Lock()
+        self._futures={}
+        self._executor=None
+        self._closed=False
+
+    def _state(self, analysis_id, status, phase, **extra):
+        file=self.folder(analysis_id)/'state.json'
+        previous=v.read(file) if file.exists() else {}
+        now=datetime.now(timezone.utc).isoformat()
+        history=previous.get('phase_history',[])+[{'status':status,'phase':phase,'at_utc':now}]
+        state={**previous,'analysis_id':analysis_id,'status':status,'phase':phase,
+               'created_at_utc':previous.get('created_at_utc',now),'updated_at_utc':now,'phase_history':history,**extra}
+        v.write(file,state)
+        return state
+
+    def _reserve(self, raw, input_kind, analysis_start=None, analysis_end=None):
+        if not isinstance(raw,bytes) or not 0<len(raw)<=MAX_BYTES:raise InputError('input_size_limit','입력 크기를 확인해 주세요.')
+        if input_kind not in KINDS:raise InputError('invalid_input_kind','입력 종류를 확인해 주세요.')
+        if (analysis_start is None)!=(analysis_end is None):raise InputError('incomplete_interval','분석 시작과 끝을 함께 지정해 주세요.')
+        if analysis_start is not None:
+            analysis_start,analysis_end=timestamp(analysis_start).isoformat(),timestamp(analysis_end).isoformat()
+            if analysis_start>analysis_end:raise InputError('reversed_interval','분석 시작이 끝보다 늦습니다.')
+        aid='ana-'+uuid.uuid4().hex;folder=self.folder(aid);folder.mkdir(parents=True,exist_ok=False)
+        (folder/'upload.csv').write_bytes(raw)
+        v.write(folder/'request.json',{'input_kind':input_kind,'upload_sha256':v.digest(raw),
+                                     'analysis_start':analysis_start,'analysis_end':analysis_end})
+        self._state(aid,'queued','queued')
+        return aid
+
+    def _run(self, analysis_id, *, propagate=False):
+        folder=self.folder(analysis_id)
+        try:
+            request=v.read(folder/'request.json');raw=(folder/'upload.csv').read_bytes()
+            if v.digest(raw)!=request['upload_sha256']:raise ValueError('Queued upload changed')
+            return self._execute(raw,request['input_kind'],analysis_id,
+                                 analysis_start=request['analysis_start'],analysis_end=request['analysis_end'])
+        except Exception as error:
+            self._state(analysis_id,'failed','failed',error={'code':error.code if isinstance(error,InputError) else 'analysis_failed',
+                'message':str(error) if isinstance(error,InputError) else '분석을 완료하지 못했습니다. 로컬 기록을 확인해 주세요.'})
+            if propagate:raise
+            return v.read(folder/'state.json')
+
+    def create(self, raw, input_kind='uploaded_sensor_csv', *, analysis_start=None, analysis_end=None):
+        aid=self._reserve(raw,input_kind,analysis_start,analysis_end)
+        return self._run(aid,propagate=True)
+
+    def submit(self, raw, input_kind='uploaded_sensor_csv', *, analysis_start=None, analysis_end=None):
+        if not self._slots.acquire(blocking=False):raise InputError('analysis_queue_full','분석 대기열이 가득 찼습니다. 진행 중인 작업을 확인해 주세요.')
+        aid=None
+        try:
+            with self._jobs_lock:
+                if self._closed:raise InputError('service_closed','분석 서버가 종료 중입니다.')
+                aid=self._reserve(raw,input_kind,analysis_start,analysis_end)
+                if self._executor is None:
+                    if os.name=='nt' and threading.stack_size()<8*1024*1024:threading.stack_size(8*1024*1024)
+                    self._executor=ThreadPoolExecutor(max_workers=1,thread_name_prefix='imaks-analysis')
+                future=self._executor.submit(self._run,aid)
+                self._futures[aid]=future
+            def done(_):
+                with self._jobs_lock:self._futures.pop(aid,None)
+                self._slots.release()
+            future.add_done_callback(done)
+            return {'analysis_id':aid,'status':'queued','phase':'queued','status_url':f'/api/analyses/{aid}','new_api_calls':0}
+        except Exception:
+            if aid is not None:self._state(aid,'failed','failed',error={'code':'queue_failed','message':'분석 작업을 시작하지 못했습니다.'})
+            self._slots.release()
+            raise
+
+    def recover_interrupted(self):
+        """Call once after binding the sole server for this storage root; never retry."""
+        with self._jobs_lock:
+            active=set(self._futures)
+        recovered=[]
+        for folder in self.root.glob('ana-*'):
+            if not re.fullmatch(ID,folder.name) or folder.name in active:continue
+            state_file=self.folder(folder.name)/'state.json'
+            if state_file.exists() and v.read(state_file).get('status') in ('queued','processing'):
+                self._state(folder.name,'interrupted','interrupted',error={'code':'server_restarted','message':'이전 서버 실행이 중단됐습니다. 자동 재실행하지 않습니다.'})
+                recovered.append(folder.name)
+        return recovered
+
+    def close(self):
+        with self._jobs_lock:self._closed=True;executor=self._executor
+        if executor is not None:executor.shutdown(wait=True)
+
+    def export_bundle(self, analysis_id):
+        from .analysis_archive import export_bundle
+        return export_bundle(self,analysis_id)
+
+    def import_bundle(self, raw):
+        from .analysis_archive import import_bundle
+        return import_bundle(self,raw)
 
     def folder(self, analysis_id):
         if not isinstance(analysis_id, str) or not re.fullmatch(ID, analysis_id):
@@ -195,15 +344,21 @@ class AnalysisService:
         return folder
 
     def store(self, analysis_id):
+        if v.read(self.folder(analysis_id)/'state.json')['status']!='complete':
+            raise InputError('analysis_not_ready','아직 완료되지 않은 분석입니다. 상태를 확인해 주세요.')
         return AnalysisStore(self.folder(analysis_id))
 
-    def create(self, raw, input_kind='uploaded_sensor_csv'):
+    def _execute(self, raw, input_kind, analysis_id, *, analysis_start=None, analysis_end=None):
+        folder=self.folder(analysis_id)
+        self._state(analysis_id,'processing','validating')
         if input_kind not in KINDS:
             raise InputError('invalid_input_kind', '입력 종류는 historical_replay 또는 uploaded_sensor_csv여야 합니다.')
         graph = c.load_graph()
         bundle, cfg = compiler.compile_ir(graph), config.load('v3_1')
         metadata = {sid:info for sid,info in schema(graph).items() if sid in bundle['sensors']}
         groups, normalized, quality = parse_csv(raw, metadata)
+        groups,normalized,quality,intervals=prepare_intervals(groups,metadata,analysis_start,analysis_end)
+        self._state(analysis_id,'processing','preparing_rules')
         base_store = team_runtime.store('main_v3_1')
         params_path = base_store.run_dir/'params.json'
         base_params = v.read(params_path)
@@ -226,10 +381,6 @@ class AnalysisService:
         pairs = [pair for pair in bundle['correlation_pairs'] if pair['cause_sensor'] in groups and pair['effect_sensor'] in groups]
         subset = {**bundle, 'rules':eligible, 'correlation_pairs':pairs,
                   'sensors':{sid:bundle['sensors'][sid] for sid in groups if sid in bundle['sensors']}}
-        analysis_id = 'ana-'+uuid.uuid4().hex
-        folder = self.folder(analysis_id)
-        folder.mkdir(parents=True, exist_ok=False)
-        v.write(folder/'state.json',{'analysis_id':analysis_id,'status':'processing'})
         try:
             (folder/'upload.csv').write_bytes(raw)
             (folder/'input.csv').write_bytes(normalized)
@@ -238,7 +389,8 @@ class AnalysisService:
             manifest = {'version':VERSION,'analysis_id':analysis_id,'input_source':source,
                         'upload_sha256':v.digest(raw),'normalization':'UTF-8, trimmed cells, ISO naive timestamps, sensor/time sort; values not interpolated',
                         'sensor_ids':sorted(groups),'rows':sum(map(len,groups.values())), 'quality':quality,
-                        'input_kind_is_caller_declared':True, 'created_at_utc':datetime.now(timezone.utc).isoformat()}
+                        'input_kind_is_caller_declared':True,'intervals':intervals,
+                        'created_at_utc':datetime.now(timezone.utc).isoformat()}
             v.write(folder/'input_manifest.json',manifest)
             _, frozen_sha = d.observations(next(iter(groups)))
             receipt = {'params_file':params_path.relative_to(v.REPO_ROOT).as_posix(),
@@ -246,6 +398,7 @@ class AnalysisService:
                        'input_sha256':frozen_sha,'train_end':cfg['train_end']}
             v.write(folder/'calibration.json',receipt)
             sigmas = {sid:deepcopy(base_params['sigma_by_sensor'][sid]) for sid in groups}
+            self._state(analysis_id,'processing','detecting')
             result, _ = engine.pipeline(groups, subset, cfg, sigmas=sigmas)
             if len(result['events']) > 10000 or len(result['incidents']) > 2000:
                 raise InputError('result_size_limit','분석 결과가 너무 많습니다. 더 짧은 구간으로 나누어 주세요.')
@@ -254,33 +407,51 @@ class AnalysisService:
             v.write(run/'ir.json',subset)
             for key, name in engine.OUTPUT_FILES.items():v.write(run/name,result[key])
             summary = {'version':VERSION,'analysis_id':analysis_id,'status':'complete','input_kind':input_kind,
-                       'rows':manifest['rows'],'sensors':sorted(groups),'incidents':len(result['incidents']),
-                       'alarms':len(result['events']),'incidents_by_type':dict(Counter(i['anomaly_type'] for i in result['incidents'])),
+                       'rows':manifest['rows'],'sensors':sorted(groups),
+                       'incidents':sum(in_interval(i,intervals['analysis']) for i in result['incidents']),
+                       'alarms':sum(a['last_positive_at']>=intervals['analysis']['start'] for a in result['events']),
+                       'processing_incidents':len(result['incidents']),'processing_alarms':len(result['events']),
+                       'incidents_by_type':dict(Counter(i['anomaly_type'] for i in result['incidents'] if in_interval(i,intervals['analysis']))),
+                       'intervals':intervals,
                        'scope':'v3.1 policy on this uploaded window; not independent accuracy or confirmed causes',
                        'coverage':{'eligible_rules':len(eligible),'skipped_rules':skipped,
                                    'excluded_pairs_missing_sensor':len(bundle['correlation_pairs'])-len(pairs),
                                    'unimplemented_rule_ids':[u['rule_id'] for u in bundle['unsupported']]},
                        'quality':quality,'input_source':source,'calibration':receipt,'warnings':WARNINGS,
                        'new_api_calls':0,'gold_loaded':False,'kg_sha256':bundle['kg_sha256']}
+            summary['coverage']['start_boundary_checks']=[{
+                'ir_id':rule['ir_id'],'required_prior_samples':minimum_samples(rule,cfg)-1,
+                'available_contiguous_prior_samples':intervals['sensors'][rule['sensor_id']]['contiguous_prior_samples_at_first_target'],
+                'sample_history_ready':intervals['sensors'][rule['sensor_id']]['first_target_at'] is not None and
+                    intervals['sensors'][rule['sensor_id']]['contiguous_prior_samples_at_first_target']>=minimum_samples(rule,cfg)-1,
+                'scope':'sample availability only; does not prove prior condition satisfaction or unseen history'} for rule in eligible]
             v.write(run/'summary.json',summary)
             v.write(run/'complete.json',{p.name:v.digest(p.read_bytes()) for p in run.iterdir() if p.is_file()})
+            self._state(analysis_id,'processing','validating_graph')
             overlay.load(run,folder/'overlay',base=graph)
+            self._state(analysis_id,'processing','sealing')
             v.write(folder/'summary.json',summary)
             v.write(folder/'complete.json',{p.relative_to(folder).as_posix():v.digest(p.read_bytes())
                     for p in folder.rglob('*') if p.is_file() and p.name!='state.json' and p!=folder/'complete.json'})
-            v.write(folder/'state.json',{'analysis_id':analysis_id,'status':'complete'})
+            self._state(analysis_id,'complete','complete')
             return self.summary(analysis_id)
-        except Exception as error:
-            v.write(folder/'state.json',{'analysis_id':analysis_id,'status':'failed','error_type':type(error).__name__})
-            raise
+        except Exception:raise
 
     def summary(self, analysis_id):
         folder = self.folder(analysis_id)
         state = v.read(folder/'state.json')
         if state['status'] != 'complete':return state
         store = self.store(analysis_id)
-        return {**v.read(folder/'summary.json'),'incident_items':store.incidents,
-                'correlation_candidates':store.correlations,'endpoints':{
+        result=v.read(folder/'summary.json')
+        interval=result.get('intervals',{}).get('analysis')
+        visible=[{**i,'window_scope':incident_scope(i,interval)} if interval else i for i in store.incidents
+                 if interval is None or in_interval(i,interval)]
+        ids={i['id'] for i in visible}
+        return {**result,'input_source':store.input_source,'origin_input_source':store.declared_input_source,
+                'job':state,'incident_items':visible,
+                'history_incident_ids':[i['id'] for i in store.incidents if i['id'] not in ids],
+                'correlation_candidates':[link for link in store.correlations if link['cause_incident'] in ids or link['effect_incident'] in ids],
+                'endpoints':{
                     'series':f'/api/analyses/{analysis_id}/series',
                     'incident_template':f'/api/analyses/{analysis_id}/incidents/{{incident_id}}'}}
 
@@ -288,14 +459,22 @@ class AnalysisService:
         ids = sorted((p for p in self.root.glob('ana-*') if re.fullmatch(ID,p.name)),key=lambda p:p.stat().st_mtime,reverse=True)[:50]
         return {'items':[v.read(self.folder(p.name)/'state.json') for p in ids if (p/'state.json').is_file()], 'limit':50}
 
-    def series(self, analysis_id, sensor_id, *, start=None, end=None, offset=0, limit=2000):
+    def series(self, analysis_id, sensor_id, *, start=None, end=None, offset=0, limit=2000, include_warmup=False):
         if type(offset) is not int or offset < 0 or type(limit) is not int or not 1 <= limit <= MAX_POINTS:
             raise InputError('invalid_pagination','offset는 0 이상, limit는 1~10,000이어야 합니다.')
+        if type(include_warmup) is not bool:raise InputError('invalid_warmup_flag','include_warmup은 boolean이어야 합니다.')
         if start: start=timestamp(start).isoformat()
         if end: end=timestamp(end).isoformat()
         if start and end and start>end:raise InputError('reversed_interval','시작 시각이 끝 시각보다 늦습니다.')
         store=self.store(analysis_id)
         rows,sha=store.observation_rows(sensor_id)
+        manifest=v.read(store.folder/'input_manifest.json')
+        intervals=manifest.get('intervals')
+        if intervals:
+            lower=intervals['context']['start'] if include_warmup else intervals['analysis']['start']
+            upper=intervals['analysis']['end']
+            start,end=start or lower,end or upper
+            if start<lower or end>upper:raise InputError('outside_analysis_interval','계산 구간 조회에는 include_warmup=true가 필요하며 분석 끝 이후는 조회하지 않습니다.')
         selected=[row for row in rows if (not start or row['timestamp']>=start) and (not end or row['timestamp']<=end)]
         page=selected[offset:offset+limit]
         source=v.read(store.folder/'input_manifest.json')
@@ -313,7 +492,8 @@ class AnalysisService:
                 'alarms':alarms,'incident_intervals':[i for i in store.incidents if i['sensor_id']==sensor_id and
                         (not start or i['end']>=start) and (not end or i['start']<=end)],
                 'markers_scope':'requested interval, not just the current points page; paginate points before drawing a continuous chart',
-                'input_sha256':sha,'new_api_calls':0,'warnings':WARNINGS}
+                'intervals':intervals,'include_warmup':include_warmup,
+                'input_source':store.input_source,'input_sha256':sha,'new_api_calls':0,'warnings':WARNINGS}
 
     def detail(self, analysis_id, incident_id):
         from . import claim_binding as cb, rule_explanations as rx
@@ -336,7 +516,9 @@ class AnalysisService:
             binding=cb.bind(json.dumps({'claim_ids':ids}),catalog,'관측 조건 조치 설명')
             binding['published']=binding['status']=='bound'
             if binding['published']:text=cb.render(binding)
-        return {'analysis_id':analysis_id,'incident_id':incident_id,'answer':text,
+        intervals=v.read(store.folder/'input_manifest.json').get('intervals')
+        return {'analysis_id':analysis_id,'incident_id':incident_id,'answer':text,'intervals':intervals,
+                'window_scope':incident_scope(store.by_id[incident_id],intervals['analysis']) if intervals else 'legacy_full_input',
                 'agent_status':'complete' if binding['published'] else 'insufficient_evidence',
                 'explanation_mode':'deterministic_evidence_summary_no_LLM','answer_complete':False,
                 'selection_policy':'at most four claims per kind plus mandatory limits; structured evidence contains all matched rules',
@@ -345,4 +527,4 @@ class AnalysisService:
                 'edges':evidence['graph_paths'],'xai':{'incident':evidence['incident'],'alarms':evidence['alarms'],
                     'matched_rules':evidence['matched_rules'],'decision_evidence':proof,'rule_explanations':checks,
                     'claim_binding':binding,'correlation_candidates':incident_tools.get_correlated_incidents(store,{'incident_id':incident_id})},
-                'input_source':store.input_source,'new_api_calls':0,'warnings':WARNINGS}
+                'input_source':store.input_source,'origin_input_source':store.declared_input_source,'new_api_calls':0,'warnings':WARNINGS}

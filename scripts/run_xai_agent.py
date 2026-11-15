@@ -72,12 +72,14 @@ def main():
         page = ROOT / 'src/imaks_kg/rag/xai_demo.html'
         display_path = ROOT / 'kg_build/xai_display.json'
         hidden_runs = v.read(display_path).get('hidden_run_ids', []) if display_path.exists() else []
+        analysis_service=AnalysisService() if args.allow_local_analysis else None
         server = demo.make_server(args.port, agent_answer=incident_agent.answer, page=page,
             hidden_run_ids=hidden_runs, incident_store_factory=team_runtime.store,
             agent_options={'detector_profile':set(team_runtime.PROFILES), 'document_mode':set(team_runtime.SEARCH_MODES),
                            'repair_incident': {True, False}},
             team_config=team_runtime.application_config, generation_enabled=not args.read_only,
-            analysis_service=AnalysisService() if args.allow_local_analysis else None)
+            analysis_service=analysis_service)
+        if analysis_service is not None:analysis_service.recover_interrupted()
         print(f'XAI demo http://127.0.0.1:{server.server_port}/', flush=True)
         try:
             server.serve_forever()
@@ -85,6 +87,7 @@ def main():
             pass
         finally:
             server.server_close()
+            if analysis_service is not None:analysis_service.close()
         return
     if not args.run_dir:
         parser.error('--question requires a new --run-dir')

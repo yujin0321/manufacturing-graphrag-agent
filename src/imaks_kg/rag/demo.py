@@ -81,11 +81,12 @@ def make_server(port=8765, answer=live.answer, explain=event_explain.answer, age
     token=secrets.token_urlsafe(32);busy=threading.Lock()
     class Handler(BaseHTTPRequestHandler):
         def log_message(self,*args):pass
-        def reply(self,status,data,kind='application/json; charset=utf-8'):
+        def reply(self,status,data,kind='application/json; charset=utf-8',download_name=None):
             body=data if isinstance(data,bytes) else json.dumps(data,ensure_ascii=False).encode()
             self.send_response(status)
             self.send_header('Content-Type',kind);self.send_header('Content-Length',str(len(body)))
             self.send_header('Cache-Control','no-store')
+            if download_name is not None:self.send_header('Content-Disposition','attachment; filename="'+download_name+'"')
             self.send_header('X-Content-Type-Options','nosniff')
             self.send_header('Content-Security-Policy',"default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'self'; frame-ancestors 'none'")
             self.end_headers();self.wfile.write(body)
@@ -116,17 +117,22 @@ def make_server(port=8765, answer=live.answer, explain=event_explain.answer, age
                     analysis_id=parts[0]
                     analysis_service.folder(analysis_id)
                     if len(parts)==1:return self.reply(200,analysis_service.summary(analysis_id))
+                    if len(parts)==2 and parts[1]=='export':
+                        return self.reply(200,analysis_service.export_bundle(analysis_id),'application/zip',analysis_id+'.zip')
                     if len(parts)==2 and parts[1]=='series':
                         query=parse_qs(urlparse(self.path).query,keep_blank_values=True)
-                        if (set(query)-{'sensor_id','start','end','offset','limit'} or
+                        if (set(query)-{'sensor_id','start','end','offset','limit','include_warmup'} or
                             any(len(values)!=1 for values in query.values()) or not query.get('sensor_id',[''])[0]):
                             raise InputError('invalid_series_query','센서 ID와 조회 인자를 확인해 주세요.')
+                        warmup=query.get('include_warmup',['false'])[0]
+                        if warmup not in ('true','false'):raise InputError('invalid_warmup_flag','include_warmup은 true 또는 false여야 합니다.')
                         result=analysis_service.series(analysis_id,query['sensor_id'][0],start=query.get('start',[None])[0],
-                            end=query.get('end',[None])[0],offset=int(query.get('offset',['0'])[0]),limit=int(query.get('limit',['2000'])[0]))
+                            end=query.get('end',[None])[0],offset=int(query.get('offset',['0'])[0]),limit=int(query.get('limit',['2000'])[0]),
+                            include_warmup=warmup=='true')
                         return self.reply(200,result)
                     if len(parts)==3 and parts[1]=='incidents':return self.reply(200,analysis_service.detail(analysis_id,parts[2]))
                     return self.reply(404,{'error':'분석 조회 경로를 확인해 주세요.'})
-                except InputError as error:return self.reply(400,{'error':str(error),'code':error.code})
+                except InputError as error:return self.reply(409 if error.code=='analysis_not_ready' else 400,{'error':str(error),'code':error.code})
                 except FileNotFoundError:return self.reply(404,{'error':'저장된 분석을 찾을 수 없습니다.'})
                 except (ValueError,KeyError,TypeError):return self.reply(400,{'error':'조회 형식 또는 분석 자료의 무결성을 확인할 수 없습니다.'})
             if path=='/api/team-config' and team_config is not None:
@@ -184,12 +190,28 @@ def make_server(port=8765, answer=live.answer, explain=event_explain.answer, age
             if (not self.local() or self.headers.get('X-Demo-Token')!=token or
                 origin not in (None,f'http://127.0.0.1:{self.server.server_port}')):
                 return self.reply(403,{'error':'요청 출처를 확인할 수 없습니다.'})
+            if self.path=='/api/analyses/import' and analysis_service is not None:
+                from .sensor_analysis import InputError
+                from .analysis_archive import MAX_ZIP_BYTES
+                try:
+                    size=int(self.headers.get('Content-Length','0'))
+                    if not 0<size<=MAX_ZIP_BYTES:return self.reply(413,{'error':'묶음은 1바이트~32 MiB여야 합니다.'})
+                    if self.headers.get('Content-Type','').split(';')[0].strip().lower()!='application/zip':
+                        return self.reply(415,{'error':'application/zip을 사용해 주세요.'})
+                    self.connection.settimeout(15);body=self.rfile.read(size);self.connection.settimeout(None)
+                    if len(body)!=size:raise InputError('incomplete_body','묶음 본문이 선언된 크기보다 짧습니다.')
+                    return self.reply(200,analysis_service.import_bundle(body))
+                except InputError as error:return self.reply(409 if error.code in ('analysis_conflict','dependency_mismatch') else 400,{'error':str(error),'code':error.code})
+                except TimeoutError:return self.reply(408,{'error':'묶음 전송 시간이 초과됐습니다.'})
+                except (ValueError,KeyError,TypeError,FileNotFoundError):return self.reply(400,{'error':'분석 묶음 또는 기존 런타임 자료를 확인해 주세요.'})
             if self.path=='/api/analyses' and analysis_service is not None:
                 from .sensor_analysis import InputError, MAX_BYTES
                 try:
                     size=int(self.headers.get('Content-Length','0'))
                     if not 0<size<=MAX_BYTES:return self.reply(413,{'error':'입력 본문은 1바이트~4 MiB여야 합니다.'})
                     kind=self.headers.get('X-Input-Kind','uploaded_sensor_csv')
+                    analysis_start=self.headers.get('X-Analysis-Start')
+                    analysis_end=self.headers.get('X-Analysis-End')
                     content_type=self.headers.get('Content-Type','').split(';')[0].strip().lower()
                     self.connection.settimeout(15)
                     body=self.rfile.read(size)
@@ -197,19 +219,18 @@ def make_server(port=8765, answer=live.answer, explain=event_explain.answer, age
                     if len(body)!=size:raise InputError('incomplete_body','입력 본문이 선언된 크기보다 짧습니다.')
                     if content_type=='application/json':
                         data=json.loads(body)
-                        if not isinstance(data,dict) or set(data)-{'csv','input_kind'} or not isinstance(data.get('csv'),str):
+                        if not isinstance(data,dict) or set(data)-{'csv','input_kind','analysis_start','analysis_end'} or not isinstance(data.get('csv'),str):
                             raise InputError('invalid_upload_json','csv 문자열과 선택적인 input_kind만 허용합니다.')
                         body=data['csv'].encode('utf-8');kind=data.get('input_kind',kind)
+                        analysis_start=data.get('analysis_start',analysis_start);analysis_end=data.get('analysis_end',analysis_end)
                     elif content_type not in ('text/csv','application/csv'):
                         return self.reply(415,{'error':'text/csv 또는 application/json 입력을 사용해 주세요.'})
                 except InputError as error:return self.reply(400,{'error':str(error),'code':error.code})
                 except TimeoutError:return self.reply(408,{'error':'CSV 본문 전송 시간이 초과됐습니다.'})
                 except (ValueError,TypeError,UnicodeError):return self.reply(400,{'error':'CSV 요청 형식을 확인해 주세요.'})
-                if not busy.acquire(blocking=False):return self.reply(409,{'error':'다른 작업을 처리 중입니다.'})
-                try:return self.reply(201,analysis_service.create(body,kind))
-                except InputError as error:return self.reply(400,{'error':str(error),'code':error.code})
+                try:return self.reply(202,analysis_service.submit(body,kind,analysis_start=analysis_start,analysis_end=analysis_end))
+                except InputError as error:return self.reply(409 if error.code in ('analysis_queue_full','service_closed') else 400,{'error':str(error),'code':error.code})
                 except Exception:return self.reply(500,{'error':'로컬 분석을 완료하지 못했습니다. 저장 기록을 확인해 주세요. 자동 재시도하지 않습니다.'})
-                finally:busy.release()
             if self.path not in ('/api/ask','/api/explain-event','/api/explain-incident','/api/agent'):return self.reply(404,{'error':'Not found'})
             if not generation_enabled:
                 return self.reply(503,{'error':'읽기 전용 서버입니다. 저장된 결과 조회만 가능합니다.','code':'read_only'})

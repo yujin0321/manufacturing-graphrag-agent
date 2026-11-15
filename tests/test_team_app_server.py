@@ -13,7 +13,7 @@ class TeamServerTests(unittest.TestCase):
     def setUp(self):
         self.start_server()
 
-    def start_server(self, generation_enabled=True, team_config=None):
+    def start_server(self, generation_enabled=True, team_config=None, analysis_service=None):
         self.calls = []
         self.profiles = []
         def answer(question, run, **options):
@@ -25,7 +25,7 @@ class TeamServerTests(unittest.TestCase):
             agent_options={'detector_profile': {'main_v3_1', 'seongho_two_point'},
                            'document_mode': {'auto', 'vector'}, 'repair_incident': {True, False}},
             team_config=team_config or (lambda: {'detectors': ['main_v3_1', 'seongho_two_point']}),
-            page=Path(demo.__file__).with_name('xai_demo.html'), generation_enabled=generation_enabled)
+            page=Path(demo.__file__).with_name('xai_demo.html'), generation_enabled=generation_enabled,analysis_service=analysis_service)
         self.thread = threading.Thread(target=self.server.serve_forever, daemon=True)
         self.thread.start()
         self.port = self.server.server_port
@@ -51,6 +51,39 @@ class TeamServerTests(unittest.TestCase):
         self.assertTrue(session['csrf_token'])
         self.assertTrue(session['generation_enabled'])
         self.assertEqual(self.calls, [])
+
+    def test_async_submission_passes_interval_and_returns_202_without_generation(self):
+        from unittest.mock import Mock
+        service=Mock();service.submit.return_value={'analysis_id':'ana-'+'a'*32,'status':'queued'}
+        self.tearDown();self.start_server(generation_enabled=False,analysis_service=service)
+        _,body=self.request('GET','/api/session');token=json.loads(body)['csrf_token']
+        request={'csv':'controlled','input_kind':'historical_replay','analysis_start':'2026-01-08T12:26:00','analysis_end':'2026-01-08T12:35:00'}
+        status,body=self.request('POST','/api/analyses',json.dumps(request),{'Content-Type':'application/json','X-Demo-Token':token})
+        self.assertEqual(status,202);self.assertEqual(json.loads(body)['status'],'queued')
+        service.submit.assert_called_once_with(b'controlled','historical_replay',analysis_start=request['analysis_start'],analysis_end=request['analysis_end'])
+        self.assertFalse(self.calls)
+
+    def test_export_download_and_import_use_binary_body_without_generation(self):
+        from unittest.mock import Mock
+        service=Mock();service.export_bundle.return_value=b'controlled zip'
+        service.import_bundle.return_value={'status':'restored','new_api_calls':0}
+        self.tearDown();self.start_server(generation_enabled=False,analysis_service=service)
+        _,body=self.request('GET','/api/session');token=json.loads(body)['csrf_token']
+        aid='ana-'+'a'*32
+        status,body=self.request('GET',f'/api/analyses/{aid}/export')
+        self.assertEqual(status,200);self.assertEqual(body,b'controlled zip')
+        status,body=self.request('POST','/api/analyses/import',b'controlled zip',{'Content-Type':'application/zip','X-Demo-Token':token})
+        self.assertEqual(status,200);self.assertEqual(json.loads(body)['status'],'restored')
+        service.import_bundle.assert_called_once_with(b'controlled zip');self.assertFalse(self.calls)
+
+    def test_warmup_flag_and_not_ready_status_are_not_silently_accepted(self):
+        from unittest.mock import Mock
+        from imaks_kg.rag.sensor_analysis import InputError
+        service=Mock();service.series.side_effect=InputError('analysis_not_ready','running')
+        self.tearDown();self.start_server(generation_enabled=False,analysis_service=service)
+        path='/api/analyses/ana-'+('a'*32)+'/series?sensor_id=S'
+        self.assertEqual(self.request('GET',path+'&include_warmup=yes')[0],400)
+        self.assertEqual(self.request('GET',path+'&include_warmup=true')[0],409)
 
     def test_real_registry_defaults_are_exposed_as_valid_json(self):
         from imaks_kg.rag import team_runtime

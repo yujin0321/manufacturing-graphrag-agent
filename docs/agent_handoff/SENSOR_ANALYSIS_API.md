@@ -1,5 +1,7 @@
 # 별도 CSV 재분석·시계열 API 인계
 
+최신 v2 계약: [비동기 분석·선행 구간·ZIP 내보내기/복원](ANALYSIS_WORKFLOW.md). HTTP 업로드는 아래와 같이 202 접수와 상태 조회를 사용한다. 입력 제한·기본 탐지·기존 결과는 유지한다.
+
 작성 2026-11-15. 공유 브랜치 `예원12`. 구현 `sensor-analysis-v1-20261115`.
 
 CSV 입력을 별도 분석으로 등록하고 기존 v3.1 규칙 엔진·KG 오버레이·근거 검사·주장 연결을 재사용한다. 시계열과 사건의 구조화된 설명은 로컬 코드로 생성하며 LLM·새 임베딩 호출이 없다. UI 화면은 변경하지 않았다. 일반 질문 Agent와 업로드 분석은 별도 경로다.
@@ -37,12 +39,12 @@ timestamp,zone,station_id,sensor_id,sensor_type,value,unit
 | 메서드 | 경로 | 반환 |
 |---|---|---|
 | GET | `/api/analyses` | 최근 분석 상태 최대 50개 |
-| POST | `/api/analyses` | 새 CSV 분석 실행. 완료 시 HTTP 201과 요약·사건 목록 |
+| POST | `/api/analyses` | HTTP 202로 분석 ID 접수. status_url을 조회해 완료 결과 확인 |
 | GET | `/api/analyses/{analysis_id}` | 상태·요약·사건 목록·관련 후보 |
 | GET | `/api/analyses/{analysis_id}/series?sensor_id=...` | 페이지 단위 원시 관측값·기준선·알람/사건·공백 |
 | GET | `/api/analyses/{analysis_id}/incidents/{incident_id}` | 해당 분석 사건의 원문·관계·XAI·코드 요약 |
 
-생성은 동기식이며 동시에 한 작업만 처리한다. 로딩을 표시하고 중복 전송을 막는다. 초기 SHACL 검사 등으로 시간이 걸릴 수 있으므로 로컬 요청/프록시 타임아웃에 여유를 둔다. 처리 중 다른 GET에서 상태를 확인할 수 있지만 POST 응답을 먼저 받을 때까지 분석 ID를 알 수 없으므로 완전한 비동기 작업 API는 아니다.
+분석은 백그라운드 작업자 1개에서 처리하고 실행+대기는 최대 3개다. 접수 후에는 같은 ID의 상태를 조회한다. 완료/실패/중단을 구분하고 자동 재업로드하지 않는다. 초기 SHACL 검사 등으로 시간이 걸릴 수 있다. CLI analyze와 Python create는 동기식을 유지한다.
 
 POST는 세션 토큰 헤더가 필요하다. 파일 경로·파일 이름을 서버 저장 경로로 받지 않는다.
 
@@ -58,16 +60,23 @@ const response = await fetch('/api/analyses', {
   },
   body: selectedFile // 파일 선택창의 UTF-8 CSV File 객체
 });
-const result = await response.json();
+let result = await response.json();
 if (!response.ok) throw new Error(result.error);
 const analysisId = result.analysis_id;
+while (['queued', 'processing'].includes(result.status)) {
+  await new Promise(resolve => setTimeout(resolve, 1000));
+  const statusResponse = await fetch(`/api/analyses/${analysisId}`);
+  result = await statusResponse.json();
+  if (!statusResponse.ok) throw new Error(result.error);
+}
+if (result.status !== 'complete') throw new Error(result.error?.message ?? result.status);
 ```
 
 일반 CSV는 `X-Input-Kind: uploaded_sensor_csv`를 사용한다. 이 종류 표시는 호출자 선언이며 파일이 실제 미노출 데이터라는 증명은 아니다. JSON 방식은 `Content-Type: application/json`, 본문 `{"csv":"...","input_kind":"historical_replay"}`로도 지원한다. multipart/form-data는 구현하지 않았으므로 File 객체를 위처럼 본문에 직접 보낸다.
 
 ### 시계열
 
-필수 `sensor_id`, 선택 `start`, `end`, `offset=0`, `limit=2000`(최대 10,000)을 받는다. start/end는 양 끝 포함이다. 같은 인자의 중복·거꾸로 된 구간·등록되지 않은 센서를 거절한다.
+필수 `sensor_id`, 선택 `start`, `end`, `offset=0`, `limit=2000`(최대 10,000), `include_warmup=false`를 받는다. start/end는 양 끝 포함이다. 기본은 지정한 분석 대상 구간이며 선행 계산 구간 조회는 include_warmup=true가 필요하다. 같은 인자의 중복·거꾸로 된 구간·등록되지 않은 센서를 거절한다.
 
 | 필드 | UI 사용 |
 |---|---|
@@ -93,7 +102,7 @@ const analysisId = result.analysis_id;
 
 ### 오류
 
-400은 입력 열/값/참조/무결성/조회 인자 문제, 403은 Host/Origin/토큰, 404는 없는 분석 또는 비활성화 API, 408은 본문 전송 시간 초과, 409는 다른 처리 진행 중, 413은 본문 크기 초과, 415는 지원하지 않는 MIME, 500은 분석 실패다. 실패 시 로컬 state.json에 실패 유형을 남긴다. 유료 답변 생성은 이 모드에서 여전히 503이다.
+400은 요청 형식/참조/무결성/조회 인자 문제, 403은 Host/Origin/토큰, 404는 없는 분석 또는 비활성화 API, 408은 본문 전송 시간 초과, 409는 대기열 초과·결과 미준비·복원 충돌, 413은 본문 크기 초과, 415는 지원하지 않는 MIME다. 접수 후 CSV 상세 검증·계산 실패는 status=failed와 error에 남는다. 유료 답변 생성은 이 모드에서 여전히 503이다.
 
 Windows에서 SHACL/SPARQL 파싱의 작업 스레드 스택 고갈을 피하도록, 로컬 분석 기능을 켠 서버는 이후 스레드에 최소 8 MiB 스택을 설정한다. [Python threading.stack_size 문서](https://docs.python.org/3/library/threading.html#threading.stack_size). 검사 규칙을 생략하는 방식은 사용하지 않았다.
 

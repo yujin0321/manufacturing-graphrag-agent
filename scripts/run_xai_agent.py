@@ -42,10 +42,13 @@ def main():
     parser.add_argument('--document-mode', choices=team_runtime.SEARCH_MODES, default=team_runtime.DEFAULTS['document_mode'])
     parser.add_argument('--reuse-embedding-cache', type=Path)
     parser.add_argument('--read-only', action='store_true', help='Serve saved results without a key; reject generation')
+    parser.add_argument('--allow-local-analysis', action='store_true', help='Explicitly enable CSV analysis APIs (local writes, no model calls)')
     parser.add_argument('--repair-incident', action='store_true', help='Opt in to one extra incident draft/verification for --question')
     args = parser.parse_args()
     if args.read_only and not args.serve:
         parser.error('--read-only requires --serve')
+    if args.allow_local_analysis and not args.serve:
+        parser.error('--allow-local-analysis requires --serve')
     if args.repair_incident and args.question is None:
         parser.error('--repair-incident requires --question')
     if args.prepare:
@@ -65,6 +68,7 @@ def main():
     if not args.read_only:
         load_local_key()
     if args.serve:
+        from imaks_kg.rag.sensor_analysis import AnalysisService
         page = ROOT / 'src/imaks_kg/rag/xai_demo.html'
         display_path = ROOT / 'kg_build/xai_display.json'
         hidden_runs = v.read(display_path).get('hidden_run_ids', []) if display_path.exists() else []
@@ -72,7 +76,8 @@ def main():
             hidden_run_ids=hidden_runs, incident_store_factory=team_runtime.store,
             agent_options={'detector_profile':set(team_runtime.PROFILES), 'document_mode':set(team_runtime.SEARCH_MODES),
                            'repair_incident': {True, False}},
-            team_config=team_runtime.application_config, generation_enabled=not args.read_only)
+            team_config=team_runtime.application_config, generation_enabled=not args.read_only,
+            analysis_service=AnalysisService() if args.allow_local_analysis else None)
         print(f'XAI demo http://127.0.0.1:{server.server_port}/', flush=True)
         try:
             server.serve_forever()

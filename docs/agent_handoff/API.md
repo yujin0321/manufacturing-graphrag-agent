@@ -1,5 +1,7 @@
 # UI 담당자를 위한 API 계약
 
+별도 업로드 CSV를 분석할 때는 [CSV·시계열 API](SENSOR_ANALYSIS_API.md)를 사용한다. 일반 질문 Agent와 별도이며 `--allow-local-analysis`로 명시 활성화한다. 일반 읽기 전용 실행·기존 저장 결과 계약은 아래와 같다.
+
 백엔드: `python scripts/run_xai_agent.py --serve --read-only --port 8770`.
 현재 서버는 단일 사용자 로컬 개발용이다. JSON은 UTF-8, 응답은 `Cache-Control: no-store`다. 외부 배포용 인증 서버·CORS 설정을 포함한 배포 구성은 별도 작업이다.
 

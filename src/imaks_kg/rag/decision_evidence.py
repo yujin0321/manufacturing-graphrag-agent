@@ -77,7 +77,10 @@ def threshold_proof(rows, trigger_at, params, *, confirm=1, sample_seconds=30):
             'scope': 'simple predicate, contiguous persistence, and first confirmation only'}
 
 
-def observations(sensor_id):
+def observations(sensor_id, store=None):
+    provider = getattr(store, 'observation_rows', None)
+    if provider is not None:
+        return provider(sensor_id)
     path = v.REPO_ROOT / rules.INPUT
     expected = v.read(v.REPO_ROOT / 'preprocessed/sensors/profile.json')['output_sha256'][rules.INPUT]
     if v.digest(path.read_bytes()) != expected:
@@ -105,7 +108,7 @@ def build(evidence, store, *, rows=None, input_sha256=None):
         issues.append('incident differs from authorized sealed incident')
     sensor_id = original['sensor_id'] if original else incident['sensor_id']
     if rows is None:
-        rows, input_sha256 = observations(sensor_id)
+        rows, input_sha256 = observations(sensor_id, store)
     by_time = {}
     for row in rows:
         by_time.setdefault(row['timestamp'], []).append(row)
@@ -180,7 +183,7 @@ def build(evidence, store, *, rows=None, input_sha256=None):
                         errors.append('recorded condition start differs from contiguous raw observations')
             if proof['state'] == 'unassessed':
                 if rule.get('executor') == 'slope':
-                    cal = windows.calibration(rows, cfg, params_bundle['sigma_by_sensor'][sensor_id], alarm['trigger_at'])
+                    cal = windows.calibration_for_store(rows, cfg, params_bundle['sigma_by_sensor'][sensor_id], alarm['trigger_at'], store, sensor_id)
                     proof = windows.rule_proof(rows, alarm['trigger_at'], rule, cfg, sigma=cal.get('sigma')) if cal['state'] == 'consistent' else cal
                     proof['calibration'] = cal
                 else:
@@ -214,7 +217,7 @@ def build(evidence, store, *, rows=None, input_sha256=None):
             'grounding_status': 'consistent' if not errors else 'inconsistent'})
         issues.extend(errors)
     return {'version': VERSION, 'status': 'inconsistent' if issues else 'consistent',
-            'input_file': rules.INPUT, 'input_sha256': input_sha256, 'items': items, 'issues': issues,
+            'input_file': getattr(store, 'input_source', {}).get('file', rules.INPUT), 'input_sha256': input_sha256, 'items': items, 'issues': issues,
             'scope': 'evidence grounding and supported trigger recomputation; not anomaly truth',
             'not_verified': ['event classification, grouping and recovery',
                              'all natural-language claims', 'causality or action execution']}

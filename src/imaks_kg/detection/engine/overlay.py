@@ -92,7 +92,22 @@ def build_overlay(run_dir: Path, base: Graph) -> tuple[Graph, dict]:
         rule_nodes.setdefault(r["rule_id"], set()).add(r["kg_node"])
     for p in ir["correlation_pairs"]:  # v3.1 monitor alarms carry "<first pair rule>:monitor"
         rule_nodes.setdefault(p["rule_ids"][0] + ":monitor", set()).update(p["kg_nodes"])
-    input_sha = v.digest((v.REPO_ROOT / v1.INPUT).read_bytes())
+    input_source = params.get('input_source')
+    input_file, namespace = v1.INPUT, ''
+    if input_source is not None:
+        analysis_id = input_source['analysis_id']
+        if not re.fullmatch(r'ana-[0-9a-f]{32}', analysis_id):
+            raise ValueError('Invalid analysis namespace')
+        path = (v.REPO_ROOT / input_source['file']).resolve()
+        if (not path.is_relative_to((v.REPO_ROOT / 'kg_build').resolve()) or
+                path.name != 'input.csv' or path.parent.name != analysis_id):
+            raise ValueError('Analysis input outside its declared package')
+        input_file, namespace = input_source['file'], analysis_id + '/'
+        input_sha = v.digest(path.read_bytes())
+        if input_sha != input_source['sha256']:
+            raise ValueError('Analysis observation hash mismatch')
+    else:
+        input_sha = v.digest((v.REPO_ROOT / v1.INPUT).read_bytes())
     g = Graph()
     g.bind("im", c.IM)
     g.bind("det", DET)
@@ -103,10 +118,11 @@ def build_overlay(run_dir: Path, base: Graph) -> tuple[Graph, dict]:
             skipped.append({"incident": inc["id"], "anomaly_type": inc["anomaly_type"],
                             "reason": "no SOP-002 AnomalyEvent subclass for this type"})
             continue
-        node = URIRef(EVENT + inc["id"])
+        node = URIRef(EVENT + namespace + inc["id"])
         mapped[inc["id"]] = node
         wid = window_id(inc["sensor_id"], inc["start"])
-        prov = URIRef(WINDOW + quote(wid, safe=""))
+        if namespace:wid = 'W-' + namespace[:-1] + '-' + wid[2:]
+        prov = URIRef(WINDOW + namespace + quote(wid, safe=""))
         g.add((node, RDF.type, c.IM[cls]))
         g.add((node, RDFS.label, Literal(f"{cls} candidate {inc['sensor_id']} {inc['start']}")))
         g.add((sensor_nodes[inc["sensor_id"]], c.IM.triggers, node))
@@ -115,7 +131,7 @@ def build_overlay(run_dir: Path, base: Graph) -> tuple[Graph, dict]:
         g.add((node, c.IM.hasProvenance, prov))
         g.add((prov, RDF.type, c.IM.Provenance))
         g.add((prov, c.IM.sourceKind, Literal("timeseries")))
-        g.add((prov, c.IM.fileName, Literal(v1.INPUT)))
+        g.add((prov, c.IM.fileName, Literal(input_file)))
         g.add((prov, c.IM.sensorId, Literal(inc["sensor_id"])))
         g.add((prov, c.IM.intervalStart, _dt(inc["onset_estimate"])))
         g.add((prov, c.IM.intervalEnd, _dt(inc["end"])))
@@ -144,7 +160,7 @@ def build_overlay(run_dir: Path, base: Graph) -> tuple[Graph, dict]:
         if cause is None or effect is None:
             skipped.append({"correlation": link, "reason": "cause or effect incident not mapped"})
             continue
-        node = URIRef(CORR + v.digest(v.encoded(link))[:20])
+        node = URIRef(CORR + namespace + v.digest(v.encoded(link))[:20])
         g.add((node, RDF.type, DET.CorrelationCandidate))
         g.add((node, DET.causeEvent, cause))
         g.add((node, DET.effectEvent, effect))

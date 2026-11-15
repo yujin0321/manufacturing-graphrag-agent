@@ -58,6 +58,16 @@ def calibration(rows, cfg, recorded, trigger_at):
             'train_samples': len(values), 'method': method, 'train_end': cfg['train_end']}
 
 
+def calibration_for_store(rows, cfg, recorded, trigger_at, store, sensor_id):
+    provider = getattr(store, 'calibration_rows', None)
+    if provider is None:
+        return calibration(rows, cfg, recorded, trigger_at)
+    baseline, receipt = provider(sensor_id, recorded, cfg)
+    result = calibration(baseline, cfg, recorded, trigger_at)
+    result['reference'] = receipt
+    return result
+
+
 def rule_proof(rows, trigger_at, rule, cfg, *, sigma=None, feature_trace=False):
     p = rule['params']
     kind = rule.get('executor') or p.get('op')
@@ -288,7 +298,7 @@ def monitor_proof(rows, alarm, store, bundle, params):
     ir = next((r for r in bundle['rules'] if r['rule_id'] == signal['rule_id'] and r['sensor_id'] == signal['sensor_id']), None)
     if ir is None or ir.get('executor') != 'slope':
         return {'state': 'inconsistent', 'reason': 'slope IR missing'}
-    cal = calibration(rows, cfg, params['sigma_by_sensor'][alarm['sensor_id']], signal['trigger_at'])
+    cal = calibration_for_store(rows, cfg, params['sigma_by_sensor'][alarm['sensor_id']], signal['trigger_at'], store, alarm['sensor_id'])
     if cal['state'] != 'consistent':
         return {**cal, 'operator': 'derived_monitor', 'calibration': cal}
     source_proof = rule_proof(rows, signal['trigger_at'], ir, cfg, sigma=cal['sigma'])

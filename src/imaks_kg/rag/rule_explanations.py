@@ -149,7 +149,7 @@ def build(store, incident_id, *, rows=None, input_sha256=None, trace_cache=None)
     params = w.checked_file(store, 'params.json')
     cfg = params['config']
     if rows is None:
-        rows, input_sha256 = d.observations(incident['sensor_id'])
+        rows, input_sha256 = d.observations(incident['sensor_id'], store)
     if any(row['sensor_id'] != incident['sensor_id'] for row in rows):
         raise ValueError('Mixed observation sensors')
     cache = trace_cache if trace_cache is not None else {}
@@ -169,7 +169,7 @@ def build(store, incident_id, *, rows=None, input_sha256=None, trace_cache=None)
         rule = rules[0]
         sigma = None
         if rule.get('executor') == 'slope':
-            cal = w.calibration(rows, cfg, params['sigma_by_sensor'][alarm['sensor_id']], alarm['trigger_at'])
+            cal = w.calibration_for_store(rows, cfg, params['sigma_by_sensor'][alarm['sensor_id']], alarm['trigger_at'], store, alarm['sensor_id'])
             if cal['state'] != 'consistent':
                 results.append({'alarm_id': aid, 'boundary': {'state': 'unassessed', 'reason': 'calibration unavailable'},
                                 'closure': {'state': 'unassessed', 'reason': 'calibration unavailable'}})

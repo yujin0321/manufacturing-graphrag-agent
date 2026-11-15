@@ -149,11 +149,6 @@ def get_incident_evidence(store: IncidentStore, args: dict) -> dict:
     edges, rules, chunk_ids = [], [], set()
     for sensor in store.overlay.subjects(c.IM.triggers, node):
         edges.append({"s": str(sensor), "p": str(c.IM.triggers), "o": str(node), "depth": 1})
-    for sensor in store.overlay.objects(node, URIRef(DET + "observedOnSensor")):
-        edges.append({"s": str(node), "p": DET + "observedOnSensor", "o": str(sensor), "depth": 1})
-    for predicate in (c.IM.hasProvenance, URIRef(DET + "sourceWindow")):
-        for provenance in store.overlay.objects(node, predicate):
-            edges.append({"s": str(node), "p": str(predicate), "o": str(provenance), "depth": 1})
     for rule in sorted(store.overlay.objects(node, URIRef(DET + "matchedRule")), key=str):
         edges.append({"s": str(node), "p": DET + "matchedRule", "o": str(rule), "depth": 1})
         rid = str(store.base.value(rule, c.IM.identifier)).rsplit("::", 1)[-1]

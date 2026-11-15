@@ -7,7 +7,6 @@ import re
 import time
 from . import agent_v3 as previous, agent_contract as contract, routing_v4 as routing
 from . import retrieval_v4_1 as retrieval, retrieval_v3 as r3, graph_v2 as cached, vector as v
-from . import document_claims
 
 VERSION='agent-v4.1-20261028'
 LIMITS={'source_tokens':4000,'document_searches':2,'query_embeddings':2,'drafts':2,'verifications':2,'planning_calls':1}
@@ -34,30 +33,20 @@ def citation_check(text,selected):
     return issues
 
 
-def answer(question,run_dir,call=v.api_call,*,use_dense=False,typed=True,verify=True,retriever=None,claim_mode=False):
-    if claim_mode and not verify:
-        raise ValueError('Document claim mode requires relevance verification')
+def answer(question,run_dir,call=v.api_call,*,use_dense=False,typed=True,verify=True):
     contract.validate_call('search_documents',{'question':question})
     run=Path(run_dir);run.mkdir(parents=True,exist_ok=False)
     cfg=v.read(v.CONFIG);usage=[];started=time.perf_counter();embeddings=0
-    v.write(run/'input.json',{'question':question,'agent_version':VERSION,'dense_requested':use_dense,'typed':typed,'verify':verify,'claim_mode':claim_mode})
-    source_limit=retriever.max_tokens if retriever is not None else LIMITS['source_tokens']
-    v.write(run/'agent_lock.json',{'version':VERSION,'limits':{**LIMITS,'source_tokens':source_limit},'retrieval':retriever.lock() if retriever is not None else retrieval.retrieval_lock(use_dense),
+    v.write(run/'input.json',{'question':question,'agent_version':VERSION,'dense_requested':use_dense,'typed':typed,'verify':verify})
+    v.write(run/'agent_lock.json',{'version':VERSION,'limits':LIMITS,'retrieval':retrieval.retrieval_lock(use_dense),
         'code_sha256':v.digest(Path(__file__).read_bytes()),'document_instructions_sha256':v.digest(routing.DOCUMENT_INSTRUCTIONS.encode()),
-        'verification_prompt_sha256':v.digest(VERIFY.encode()),'config':cfg,'gold_loaded':False,'automatic_transport_retries':False,
-        'document_claim_mode':claim_mode,'document_claims_version':document_claims.VERSION if claim_mode else None,
-        'document_claims_code_sha256':v.digest(Path(document_claims.__file__).read_bytes()) if claim_mode else None})
-    sources=[];paths=[];plan={};checks=[];retrievals=[];binding=None
+        'verification_prompt_sha256':v.digest(VERIFY.encode()),'config':cfg,'gold_loaded':False,'automatic_transport_retries':False})
+    sources=[];paths=[];plan={};checks=[];retrievals=[]
     def finish(status,text,reason=None):
         result={'status':status,'answer':text,'sources':sources,'graph_paths':paths,'candidate_ids':[],
             'agent_version':VERSION,'dense_requested':use_dense,'usage':usage,'reason':reason,
             'verification':checks,'answer_complete':checks[-1].get('answer_complete') if checks else None,'search_count':len(retrievals),'seconds':time.perf_counter()-started,
             'limitations':['문서 조건의 적용이며 실제 측정 확인·제어 실행을 뜻하지 않습니다.']}
-        if claim_mode:
-            published = bool(status=='complete' and binding and binding['status']=='bound')
-            result['claim_binding'] = {**(binding or {'version':document_claims.VERSION,'status':'not_applied','scope':'document_excerpts','claims':[]}), 'published':published}
-            result['claims'] = binding['claims'] if published else []
-            result['limitations'].append(document_claims.SCOPE)
         v.write(run/'answer.json',result);return result
     def chat(stage,instruction,content,json_mode=False):
         payload={'model':cfg['generation_model'],'store':False,'max_completion_tokens':2048 if json_mode else 4096,
@@ -78,8 +67,8 @@ def answer(question,run_dir,call=v.api_call,*,use_dense=False,typed=True,verify=
         usage.append({'stage':'embedding','usage':raw.get('usage',{}),'transport':transport});return raw,transport
     def search(query):
         if len(retrievals)>=LIMITS['document_searches']:raise ValueError('Document search limit')
-        result=retriever.retrieve(query,embed_call) if retriever is not None else retrieval.source_packet(retrieval.retrieve(query,use_dense=use_dense,typed=typed,call=embed_call))
-        if result['context_tokens']>source_limit:raise ValueError('Context budget exceeded')
+        result=retrieval.source_packet(retrieval.retrieve(query,use_dense=use_dense,typed=typed,call=embed_call))
+        if result['context_tokens']>LIMITS['source_tokens']:raise ValueError('Context budget exceeded')
         retrievals.append(result);v.write(run/f'retrieval_{len(retrievals)}.json',result);v.write(run/'retrieval.json',result)
         return result
     try:
@@ -109,27 +98,9 @@ def answer(question,run_dir,call=v.api_call,*,use_dense=False,typed=True,verify=
                 'retrieval_metadata':{'typed_queries':data['retrieval_trace']['typed_queries'],
                     'coverage_complete':data['coverage_complete'],'coverage_required_ids':data['coverage_required_ids']}}
             if checks:content['previous_verification_issues']=checks[-1]['issues']
-            if claim_mode:
-                catalog=document_claims.build(data,token_budget=source_limit)
-                v.write(run/f'claim_catalog_{attempt}.json',catalog)
-                select={'question':question,'claim_catalog':document_claims.selector_view(catalog)}
-                if checks:select['previous_verification_issues']=checks[-1]['issues']
-                raw=chat(f'draft{attempt}',document_claims.INSTRUCTIONS,select,True)
-                binding=document_claims.bind(raw,catalog)
-                v.write(run/f'claim_binding_{attempt}.json',binding)
-                if binding['status']!='bound':
-                    checks.append({'approved':False,'answer_complete':False,'issues':binding['issues'],'missing_queries':[],
-                                   'method':'deterministic_document_claim_rejection'})
-                    if attempt==LIMITS['drafts']:return finish('insufficient_evidence','문서 주장과 원문 연결을 확인하지 못해 답변을 보류합니다.','document_claim_binding_failed')
-                    continue
-                text=binding['answer']
-            else:
-                text=chat(f'draft{attempt}',routing.DOCUMENT_INSTRUCTIONS,content)
+            text=chat(f'draft{attempt}',routing.DOCUMENT_INSTRUCTIONS,content)
             v.write(run/f'draft{attempt}.json',{'answer':text,'selected_ids':data['selected_ids']})
-            # In claim mode every citation is code-rendered and checked by bind().
-            # A literal [SOP-...:table] inside the quoted title is source text,
-            # not a fabricated citation; parsing that text as markup is incorrect.
-            deterministic=[] if claim_mode else citation_check(text,data['selected_ids'])
+            deterministic=citation_check(text,data['selected_ids'])
             if not verify:
                 if deterministic:return finish('failed','인용 근거 검사를 통과하지 못했습니다.','invalid_citations')
                 return finish('complete',text)
@@ -142,8 +113,6 @@ def answer(question,run_dir,call=v.api_call,*,use_dense=False,typed=True,verify=
             if checked['approved'] and (checked['issues'] or checked['missing_queries']):raise ValueError('Inconsistent verification response')
             checked['issues']=deterministic+checked['issues']
             checked['approved']=checked['approved'] and not deterministic
-            if claim_mode and binding.get('catalog_truncated'):
-                checked['answer_complete']=False
             checks.append(checked);v.write(run/f'verification_{attempt}.json',checked)
             if checked['approved']:return finish('complete',text)
             if attempt==LIMITS['drafts']:return finish('insufficient_evidence','답변 초안의 근거 점검을 통과하지 못해 확정 답변을 보류합니다.','verification_failed')

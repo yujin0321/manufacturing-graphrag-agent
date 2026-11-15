@@ -21,26 +21,12 @@ iMAKS(제조 공정 합성 데이터셋)로 지식그래프(KG)를 직접 구축
 | ⑥ | 센서 시계열 기반 공정 간 인과관계 추론: `causallyAffects` 후보 발굴 (likelihoodScore). 입력은 라벨 없는 raw 시계열이며 임계값 컬럼은 제외(4장) |
 | ⑦ | 탐지 결과를 AnomalyEvent로 KG에 추가. 대표 테스트케이스는 GT-0009 |
 | ⑧ | GraphRAG 검색: Sparse-Dense-Graph 하이브리드 + 자연어→Cypher + Graph-to-Text. 기존 v3 경로는 `rag/agent_v3.py`, 최신 개선 경로는 `scripts/run_agent_v4.py` (dense 명시 선택) |
-| ⑨ | Agent 답변: 통합 사건 v5는 주장 ID 선택→코드 조립→자기검증, 경계·사후 종료 점검, 문서 발췌 ID 선택을 연결한다. 독립 문서 Agent의 기존 기본 모드는 보존한다. 실제 RDF/실행 참조/파일 참조를 구분한다(현재 범위). |
+| ⑨ | Agent 답변: 2-에이전트(추론 생성 + 자기검증), Premise→Inference→Conclusion→Evidence 구조 |
 | ⑩ | 평가: Baseline RAG vs GraphRAG ablation, RAGAS, 관계 유형별 Confusion Matrix |
 
 일정 기준: 10/1~10/7 전처리·온톨로지·SHACL, 10/8~10/14 KG 구축, 10/15~10/31 베이스라인·탐지기, 11/1~11/10 GraphRAG+Agent, 11/12~11/16 평가.
 
 ## 3. 확정된 결정 (임의로 바꾸지 말 것)
-
-- **main 통합(2026-11-15):** 사용자 요청으로 완료된 Agent/XAI 작업과 인계 문서·검증 집계를 main에 반영한다. 이전의 개발 브랜치만 공유한다는 기록은 당시 범위다. 마지막 제안인 질문 필수 항목 누락 검사는 적용하지 않는다. 원문·벡터·API 실행 기록 ZIP은 기존 정책대로 별도 전달한다.
-
-- **XAI 확장(2026-11-15):** `rag/rule_explanations.py`는 IR의 수학적 경계·시간 조건과 원시 관측의 사후 종료를 확인한다. 기본 1회/성호 2회 해제를 구분하고 공백·자료 끝을 회복으로 처리하지 않는다. 실제 설비 회복·조치 효과나 최소 개입이 아니다. 통합 Agent v5 문서 경로는 `document_claims.py` 발췌 ID→코드 조립→AI 검토를 사용하며 독립 문서 기본 모드는 유지한다. 원문 일치가 의미·완전성 인증은 아니며 새 실제 모델 성능은 미측정이다. 무료 점검 API와 범위는 `docs/agent_handoff/XAI_EXTENSIONS_20261115.md`, 개발 오류 실험은 `reports/xai_contract_evaluation_20261115_verify.md`.
-
-- **주장 경로 검사(2026-11-15):** `rag/evidence_paths.py`는 사건 v4의 주장별 방향·연결·문서 분기·봉인 파일 참조를 확인한다. 실제 RDF와 실행/파일 참조를 구분하며 단절 주장은 선택·게시를 보류한다. 완료 경로는 도메인 정답이나 인과 인증이 아니다. `/api/claim-paths/<ID>`는 무료이며 과거 주장 기록이 없으면 현재 허용 목록만 검사하고 과거 자유문장은 소급 검증하지 않는다. 원문 표 열은 기록 메타데이터 수준이고 PDF 시각 검증이 아니다. `docs/agent_handoff/EVIDENCE_PATHS.md` 참조.
-
-- **사건 주장 연결(2026-11-14):** `rag/claim_binding.py`의 사건 v3는 관측/조건/조건부권고/해석범위 주장을 만들고 모델이ID만선택하면코드로조립한다. 자유문장·다른사건ID·없는근거는보류하며 게시상태와확인방법을반환한다. 문서자유답변/정형KG조회는미적용, 과거답변에소급하지않는다. 원문과KG의의미전체·현장승인·모델선택완전성을증명하지않으며 실제새성능은미측정이다. `/api/claim-catalog/<ID>`는과거사건에서현재허용목록만무료반환한다. `docs/agent_handoff/CLAIM_BINDING.md` 참조.
-
-- **창 연산 검사 확장(2026-11-14):** `rag/window_evidence.py`로 현재 저장 알람의 창·기울기·STUCK·변화량·파생 감시를 원시 관측/봉인 설정에서 재계산한다. 승격 후 제거된 원래 신호는 정확한 해시 재구성으로 확인한다. 발동 근거가 맞다는 것은 현장 이상 정답·인과·유형·회복·전체 자연어가 맞다는 뜻이 아니다. 탐지 정책은 변경하지 않고 해석 차이를 남긴다. 최신 범위와 집계는 `docs/agent_handoff/WINDOW_CHECKS.md`.
-
-- **사건 설명 근거 검사 보완(2026-11-14):** `rag/decision_evidence.py`는 봉인 알람·원본 관측·IR·원문을 묶고 지원되는 단순 발동 조건을 재계산한다. 복잡한 연산은 미검증으로 명시하며 전체 자연어·유형·인과 정확도를 보증하지 않는다. `repair_incident`는 기본 false, 명시 선택 시 거절 후 한 번만 보완한다. 두 번 연속 승인 수렴 하네스가 아니며 전송 실패는 재시도하지 않는다. `/api/decision-evidence/<ID>`는 과거 답변을 바꾸지 않는 무료 점검이다. 상세 `docs/agent_handoff/DECISION_EVIDENCE.md`.
-
-- **선택형 사건 Agent 인계(2026-11-14):** `scripts/run_xai_agent.py`는 v3.1 + 문서 auto를 기본값으로 사용한다. `team_runtime.DEFAULTS`와 `/api/team-config`에서 확인한다. 대안은 명시 선택하며 과거 점수를 앱 정확도로 승계하지 않는다. 미분류 스캐너 출력은 S2를 완화하지 않고 별도 `RuleMatchCandidate`와 전용 SHACL로 검사한다. UI 구현은 별도 담당자이며 API·복원·대표 사례 인계는 `docs/agent_handoff/`다. `--serve --read-only`는 키 없이 저장 결과만 제공한다. 공개 Git에는 코드·문서만 반영하고 원문·벡터·API 실행 기록은 별도 로컬 ZIP으로 전달한다. 이 제한된 Agent 연결을 2회 연속 승인 수렴 하네스 완료로 표현하지 않는다.
 
 - **v4.1 문서 Agent 개선(2026-10-28):** `scripts/run_agent_v4.py`가 최신 실행 경로다. 상황값 질문/실제 조회를 분리하고, 문서 전용 지침·선택적 dense·유형별 구조 검색·초안/근거 검증을 사용한다. 최대 검색2회·초안2회·검증2회이며 전체 검색 미확인과 원문 오류를 구분한다. 기존 v3는 보존한다. 이 제한형 경로를 프로젝트 전체의 2회 연속 수렴 하네스 완료로 표현하지 않는다. 사용법과 개발 회귀 결과는 `docs/graphrag_v4/`에 기록한다.
 

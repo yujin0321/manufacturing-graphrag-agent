@@ -1,38 +1,30 @@
 # iMAKS UI 전달 안내
 
-- demo/index.html: 더블클릭 후 예제 데이터 불러오기 → 탐지 실행 → 경보 선택 → 설명. 밀봉 온도 한 규칙과 예시 설명으로 화면을 확인합니다.
-- 연결용 (integration/): main 탐지기와 Agent를 붙이기 위한 UI 소스입니다. 아래 인터페이스는 제안 규격입니다. 팀 서버 형식이 다르면 api.js에서 맞추면 됩니다. index.html과 api.js를 백엔드와 같은 HTTP 출처에서 제공하세요.
-- 26-2 폴더에 있는 timeseries_raw.csv는 탐지 입력, anomaly_events.csv는 탐지 이후 비교에 사용하는 정답입니다.
+- demo/index.html을 열고 예제 데이터 → 탐지 실행 → 경보 선택 순서로 시연합니다.
+- integration/serve-page.html은 예원12 서버와 같은 출처에서 제공하는 단일 HTML입니다. integration/index.html과 api.js는 분리된 편집 원본입니다.
+- 백엔드는 팀이 승인한 예원12 작업본 또는 해당 코드를 통합한 main을 사용합니다.
 
-## 연결용 인터페이스
+## 로컬 연동
 
-POST /api/detect — multipart/form-data의 file 필드. 응답 예시:
+예원 백엔드의 별도 시연용 체크아웃에서 기존 src/imaks_kg/rag/xai_demo.html을 백업한 뒤 serve-page.html의 내용으로 교체하세요. 현재 서버는 루트(/)에서 이 HTML을 제공하며 별도의 api.js 정적 경로가 없어 단일 파일을 사용합니다. 서버 실행 전에 원본 저장소의 런타임 및 의존성 준비 절차를 따르세요.
 
-```json
-{"run_id":"run-001","start":"2026-01-06T08:00:00+09:00","end":"2026-01-06T09:00:00+09:00","events":[{"event_id":"inc-example","id":"ST02_SEALING_TMP","time":"2026-01-06T08:30:00+09:00","value":212.82,"unit":"°C","kind":"상한 초과"}]}
+```powershell
+.\.venv\Scripts\python.exe scripts/run_xai_agent.py --serve --read-only --allow-local-analysis --port 8770
 ```
 
-event_id는 이 실행에서 사건을 다시 찾을 수 있는 안정된 ID입니다. id는 센서 ID, time은 판정 시각입니다. events가 비어도 실행 시간 범위를 반환하세요.
+브라우저에서 http://127.0.0.1:8770/ 을 엽니다.
 
-GET /api/runs/{run_id}/events/{event_id}/series — 경보 전후 시계열 조회. 범위 조건이 없으면 low/high를 null로 반환하세요.
+- CSV는 UTF-8, 최대 4 MiB, 20,000행이며 열은 timestamp,zone,station_id,sensor_id,sensor_type,value,unit 순서입니다.
+- 기존 timeseries_raw.csv도 UI에서 열 수 있습니다. 브라우저에서 서버용 7개 열과 선택 구간을 추출합니다. 큰 파일의 기본 구간은 최근 약 15,000행이며, 전송 한도 안에서 앞선 최대 30분의 관측을 포함합니다.
+- 세션 토큰을 가져와 CSV 본문을 POST /api/analyses로 보낸 뒤 완료까지 조회합니다.
+- 시간대 표와 목록의 사건은 incident_items를 사용합니다. 상세 화면은 같은 analysis_id와 incident_id로 시계열과 사건 근거를 읽습니다.
+- 그래프의 경고 기준선은 센서 메타데이터에서 옵니다. 실제 규칙 조건은 사건의 구조화된 근거에서 확인합니다.
+- 업로드 사건 설명은 로컬 코드가 근거로 구성합니다. 정답 14건 자동 비교와 업로드 사건 자유 질문은 이 서버 경로에 포함되지 않습니다.
 
-```json
-{"low":175,"high":195,"points":[{"time":"2026-01-06T08:30:00+09:00","value":212.82}]}
-```
+## 추가 화면 기능
+- 업로드에서 분석 시작·종료를 함께 지정하면 시작 전 원본 관측을 선행 계산에 사용합니다. 둘 다 비우면 전체 파일을 분석합니다.
+- 저장된 분석 조회와 ZIP 복원은 완료 결과를 다시 엽니다. 결과 화면의 ZIP 내보내기에는 원시 입력이 포함되므로 팀 내부에서 관리합니다.
+- 문서·KG 질문 창에서 저장된 질문 실행을 열 수 있습니다. 새 질문은 generation_enabled 서버에서만 가능하며 모델 호출 비용이 발생할 수 있습니다. 읽기 전용 실행에서는 저장 답변만 조회할 수 있습니다.
 
-POST /api/runs/{run_id}/events/{event_id}/explain — 같은 사건의 설명 요청. 응답 예시:
 
-```json
-{"status":"complete","answer":"관측값이 적용 규칙의 상한을 넘었습니다.","sources":[{"id":"SOP-001","text":"관련 원문 발췌"}],"limitations":["온도 상승의 물리적 원인은 추가 점검이 필요합니다."]}
-```
-
-오류는 HTTP 4xx/5xx에 {"message":"사용자에게 표시할 이유"}를 반환하세요. 설명 상태와 출처는 실제 Agent 결과에 맞춥니다. 화면에서 14건 정답 평가를 표시하려면 별도 평가 연동이 필요합니다.
-
-## 결과 및 근거 표시용 선택 필드
-
-- 탐지 응답: alarm_count(개별 경보 수), evaluation({caught,total,type_matches,unmatched_alarms}). evaluation은 정답을 탐지 이후 별도로 비교한 결과가 있을 때만 반환합니다.
-- 사건: start/end(사건 시작·종료), rule_id/condition(실제 실행 규칙과 조건). time은 최초 판정 시각입니다.
-- 설명: verification, recommendation, action_record, expert_check(각각 문자열 또는 null). 출처 원문은 sources[].text에 전달합니다.
-
-화면 확인용은 세 센서의 시연 데이터와 정답 비교를 제공합니다. 실제 센서 CSV는 화면 확인용에서 밀봉 온도만 검사합니다. 연결용 상세 화면은 사건의 선택 필드 source_id를 표시할 수 있습니다.
-출처 위치는 sources[].location에 페이지·절·표 행 등 사람이 찾아볼 수 있는 문자열로 전달할 수 있습니다.
+화면 확인용은 원본 CSV의 경고·위험 기준 이탈을 브라우저에서 확인할 수 있습니다. 프로젝트 사건 탐지 및 XAI는 예원 서버 연결용 화면을 사용합니다.

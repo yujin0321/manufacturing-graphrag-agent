@@ -1,0 +1,10 @@
+{
+  "file": "imaks_agent_runtime_20261114.zip",
+  "bytes": 5120417,
+  "sha256": "dfcf410f940a1be89405744f3c7ae3c8a7a1bc2cf08829072299f8fa54de3746",
+  "files": 173,
+  "uncompressed_bytes": 27976242,
+  "private_local_package": true,
+  "contains_api_key": false,
+  "publish_to_git": false
+}

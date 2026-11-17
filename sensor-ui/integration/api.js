@@ -83,7 +83,7 @@
     async explain(id,eventId) {
       const data=await request(root(id)+'/incidents/'+encodeURIComponent(eventId));
       return {
-        status:data.agent_status,answer:data.answer, warnings:data.warnings,
+        status:data.agent_status,answer:data.answer, warnings:data.warnings, claims:data.claims,
         sources:data.sources.map(s=>({id:s.chunk_id,text:s.text,location:s.page!=null?'p. '+s.page:null})),
         verification:data.xai?.decision_evidence?.status,
         binding:data.xai?.claim_binding?.status,

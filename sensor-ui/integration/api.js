@@ -41,6 +41,12 @@
       return request('/api/agent',{method:'POST',headers:{'Content-Type':'application/json','X-Demo-Token':settings.csrf_token},
         body:JSON.stringify({question})});
     },
+    async askIncident(analysisId,incidentId,question){
+      const settings=await session();
+      if(!settings.generation_enabled)throw Error('읽기 전용입니다. 저장된 답변을 조회할 수 있습니다.');
+      return request('/api/agent',{method:'POST',headers:{'Content-Type':'application/json','X-Demo-Token':settings.csrf_token},
+        body:JSON.stringify({question,analysis_id:analysisId,incident_id:incidentId})});
+    },
     async detect(file, onStatus = () => {}, range = {}) {
       if (file.size > 4 * 1024 * 1024) throw Error('CSV는 최대 4 MiB입니다. 분석할 시간 구간을 줄여 주세요.');
       const session = await request('/api/session');

@@ -2,6 +2,7 @@
 import argparse
 import json
 import os
+import re
 import secrets
 import threading
 import uuid
@@ -247,10 +248,33 @@ def make_server(port=8765, answer=live.answer, explain=event_explain.answer, age
                 if event_mode and q not in {e['id'] for e in detection_presentation()['events']}:raise ValueError()
                 if incident_mode and q not in {i['id'] for i in incident_presentation()['incidents']}:raise ValueError()
             except (ValueError,KeyError,TypeError):return self.reply(400,{'error':'질문은 1~8000 UTF-8 바이트로 입력해 주세요.'})
+            # 업로드 분석의 사건 질문: 그 분석의 봉인된 결과(store)를 Agent에 넘기고, 선택한 사건 ID를 질문에 연결한다.
+            scoped={}
+            if self.path=='/api/agent' and ('analysis_id' in data or 'incident_id' in data):
+                if analysis_service is None:
+                    return self.reply(400,{'error':'로컬 분석 기능이 꺼진 서버입니다. --allow-local-analysis로 실행해 주세요.','code':'analysis_disabled'})
+                analysis_id,incident_id=data.get('analysis_id'),data.get('incident_id')
+                if not isinstance(analysis_id,str) or not isinstance(incident_id,str):
+                    return self.reply(400,{'error':'분석 ID와 사건 ID를 함께 지정해 주세요.','code':'invalid_incident_scope'})
+                from .sensor_analysis import InputError
+                from .incident_agent import INCIDENT_ID
+                try:
+                    analysis_service.folder(analysis_id)
+                    store=analysis_service.store(analysis_id)
+                except InputError as error:return self.reply(409 if error.code=='analysis_not_ready' else 400,{'error':str(error),'code':error.code})
+                except FileNotFoundError:return self.reply(404,{'error':'저장된 분석을 찾을 수 없습니다.'})
+                except (ValueError,KeyError,TypeError):return self.reply(400,{'error':'분석 자료의 무결성을 확인할 수 없습니다.'})
+                if incident_id not in store.by_id:
+                    return self.reply(400,{'error':'이 분석에 속하지 않은 사건입니다.','code':'incident_not_in_analysis'})
+                mentioned=set(re.findall(INCIDENT_ID,q))
+                if mentioned-{incident_id}:
+                    return self.reply(400,{'error':'질문에 선택한 사건과 다른 사건 ID가 있습니다.','code':'conflicting_incident_id'})
+                if not mentioned:q=f'사건 {incident_id}: {q}'
+                scoped={'store':store}
             if not busy.acquire(blocking=False):return self.reply(409,{'error':'다른 질문을 처리 중입니다. 완료 후 다시 시도해 주세요.'})
             run=saved_run('ui_'+uuid.uuid4().hex)
             try:
-                if self.path=='/api/agent':agent_answer(q,run,**options)
+                if self.path=='/api/agent':agent_answer(q,run,**options,**scoped)
                 else:(explain if event_mode else explain_incident if incident_mode else answer)(q,run)
                 self.reply(200,presentation(run))
             except Exception:

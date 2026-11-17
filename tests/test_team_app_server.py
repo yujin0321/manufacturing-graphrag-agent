@@ -1,6 +1,5 @@
 import http.client
 import json
-import re
 import threading
 import unittest
 from pathlib import Path
@@ -173,9 +172,12 @@ class TeamServerTests(unittest.TestCase):
         self.assertFalse(self.calls)
 
     def test_selected_modes_are_forwarded_and_invalid_modes_do_not_call_agent(self):
-        status, page = self.request('GET', '/')
+        status, _ = self.request('GET', '/')
         self.assertEqual(status, 200)
-        token = re.search(r"const token = '([^']+)'", page.decode()).group(1)
+        # The sensor UI reads the CSRF token from /api/session instead of an inline page constant.
+        status, body = self.request('GET', '/api/session')
+        self.assertEqual(status, 200)
+        token = json.loads(body)['csrf_token']
         headers = {'X-Demo-Token': token, 'Content-Type': 'application/json'}
         payload = {'question': '후보 설명', 'detector_profile': 'seongho_two_point', 'document_mode': 'vector'}
         with patch.object(demo, 'presentation', return_value={'agent_status': 'complete'}):

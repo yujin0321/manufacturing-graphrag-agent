@@ -31,6 +31,12 @@
 4. **AI Agent 개발**
    * 사용자의 질의나 실시간 센서 이상에 대응하여 RAG를 호출하고 조치 가이드를 제공하는 지능형 에이전트 완성
 
+## 통합 Agent·XAI와 CSV 재분석 (예원12 → main, 2026-11-17)
+
+사건·문서·KG 도구 연결, 주장별 관측·규칙·원문·관계 경로 검사, 별도 CSV 비동기 분석·시계열·결과 ZIP 내보내기/복원을 통합했습니다. UI 담당자는 [실행·런타임 복원 안내](docs/agent_handoff/README.md), [Agent API](docs/agent_handoff/API.md), [CSV·시계열 API](docs/agent_handoff/SENSOR_ANALYSIS_API.md), [분석 작업 v2](docs/agent_handoff/ANALYSIS_WORKFLOW.md)를 참고하세요. 기본 설정은 v3.1 + 문서 auto이며 기존 문서 Agent 경로도 유지합니다.
+
+실행에는 main 코드 외에 별도 `imaks_agent_runtime_20261114.zip`이 필요합니다. `--read-only --allow-local-analysis`로 저장 결과 조회와 로컬 CSV 분석을 유료 API 없이 사용할 수 있습니다. UI는 별도 구현 대상이며, 근거 연결 검사를 전체 답변 정확도·설비 회복·인과 확정으로 해석하지 않습니다. [193개 개발 회귀 및 실제 API 검증 범위](reports/analysis_workflow_20261115_verify.md)를 확인하세요.
+
 ## GraphRAG v3 Agent (4th-yujin)
 
 문서 질문을 v3 검색에 연결한 실행 경로는 `python -m imaks_kg.rag.agent_v3`입니다. 무료 검색 확인과 생성 실행을 구분한 사용법은 [Agent v3 안내](docs/graphrag_v3/AGENT_V3.md)를 참고하세요. 기존 Agent 실행 경로도 유지됩니다.

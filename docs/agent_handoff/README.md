@@ -1,5 +1,7 @@
 # Agent → End-to-End(XAI) 백엔드 인계
 
+main 통합 (2026-11-17): 사용자 승인으로 `예원12`의 Agent/XAI와 CSV 분석 v2를 main에 통합한다. 현재 실행·UI 인계 기준은 **main**이다. 아래 2026-11-15의 통합 취소 안내는 당시 이력이다. 검증된 구현은 그대로 유지하며, 개발 회귀 193개 통과와 실제 API 점검 범위는 [최신 검증 보고서](../../reports/analysis_workflow_20261115_verify.md)를 따른다. 최종 UI와 최신 실제 LLM 답변 성능은 별도 확인 대상이다.
+
 분석 작업 v2 (2026-11-15): [비동기 상태·계산 이력/대상 구간 분리·분석 ZIP](ANALYSIS_WORKFLOW.md). 새 CSV 요청은 HTTP 202 접수 후 상태 조회로 연결한다. 별도 분석 ZIP은 팀 내부 전달용이며 기존 런타임과 구분한다.
 
 CSV 분석 확장 (2026-11-15): [별도 입력 재분석·시계열 API](SENSOR_ANALYSIS_API.md). `예원12`에서 기존 입력을 유지하며 새 CSV를 별도 분석하고, 유료 생성 없이 차트·사건 XAI 데이터를 반환한다. UI 구현은 별도 담당자 범위다.
@@ -39,7 +41,7 @@ v3.1은 고정 입력에서 준비·봉인·SHACL·사건 도구 연결을 검�
 
 ## UI 담당자에게 전달할 두 가지
 
-1. `예원12` 브랜치의 코드·문서.
+1. `main` 브랜치의 코드·문서 (`예원12` 구현 통합).
 2. 별도 파일 `imaks_agent_runtime_20261114.zip` (약 5.12 MB, 복원 후 약 28 MB).
 
 ZIP은 작성자 PC의 `kg_build/agent_handoff_20261114/`에 있다. 원문 청크·전처리 입력·기존 벡터·봉인 산출물·대표 실행 기록·토크나이저 캐시를 담았다. API 키와 모델 가중치는 없다. [패키지 영수증](package_receipt.json)으로 SHA-256을 확인한다. 프로젝트 공개 정책에 따라 원문·벡터·API 캐시는 Git에 올리지 않으므로 **브랜치만 내려받아서는 로컬 데이터가 준비되지 않는다**. ZIP을 팀원에게 별도 전달한다.
@@ -48,10 +50,10 @@ ZIP이 공개 서버나 Git에 업로드된다는 뜻은 아니다. 원본 PDF, 
 
 ## 팀원 PC 실행 순서
 
-Python 3.11 이상과 Git을 사용한다. 프로젝트 폴더의 `예원12` 브랜치를 가져온다.
+Python 3.11 이상과 Git을 사용한다. 프로젝트 폴더의 `main` 브랜치를 가져온다.
 
 ```powershell
-git clone --branch 예원12 https://github.com/yujin0321/manufacturing-graphrag-agent.git
+git clone --branch main https://github.com/yujin0321/manufacturing-graphrag-agent.git
 cd manufacturing-graphrag-agent
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r docs/agent_handoff/requirements.txt
@@ -64,12 +66,12 @@ python -m venv .venv
 ```powershell
 .\.venv\Scripts\python.exe scripts/agent_handoff.py restore "$env:USERPROFILE\Downloads\imaks_agent_runtime_20261114.zip"
 .\.venv\Scripts\python.exe scripts/agent_handoff.py audit
-.\.venv\Scripts\python.exe scripts/run_xai_agent.py --serve --read-only --port 8770
+.\.venv\Scripts\python.exe scripts/run_xai_agent.py --serve --read-only --allow-local-analysis --port 8770
 ```
 
 복원은 모든 파일 해시·상대 경로·기존 파일 충돌을 먼저 검사한다. 같은 파일은 유지하며, 내용이 다른 기존 파일은 덮어쓰지 않고 중단한다. `audit`은 외부 API 없이 저장 자료를 확인한다. 서버는 실행한 터미널을 닫으면 종료될 수 있으므로 인계 시 실행 방법도 안내한다.
 
-읽기 전용 서버는 API 키 없이 저장 결과를 제공하고 새 생성 요청은 HTTP 503으로 거절한다. UI 개발은 이 모드로 시작한다. `http://127.0.0.1:8770/api/team-config`와 `/api/history`, `/api/run/<ID>`를 사용할 수 있다.
+읽기 전용 서버는 API 키 없이 저장 결과를 제공하고 새 생성 요청은 HTTP 503으로 거절한다. `--allow-local-analysis`는 CSV 저장·로컬 재분석·분석 ZIP 복원만 추가로 허용하며 유료 생성을 켜지 않는다. UI 개발은 이 모드로 시작한다. `http://127.0.0.1:8770/api/team-config`와 `/api/history`, `/api/run/<ID>`, `/api/analyses`를 사용할 수 있다. CSV 요청은 HTTP 202 접수 후 상태를 조회한다. 상세 계약은 [분석 작업 v2](ANALYSIS_WORKFLOW.md)를 따른다.
 
 새 질문을 실제 생성할 때만 해당 팀원의 `OPENAI_API_KEY` 환경변수 또는 로컬 `.env`를 설정하고 `--read-only` 없이 실행한다. 이 경우 모델·질의 임베딩 비용이 발생할 수 있다. 키를 Git·ZIP·채팅에 넣지 않는다.
 

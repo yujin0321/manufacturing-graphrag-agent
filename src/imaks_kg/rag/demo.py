@@ -1,9 +1,15 @@
-"""Loopback-only demo UI. No external web dependencies or automatic paid calls."""
+"""Demo UI server. Loopback-only by default; public deployment is opt-in via IMAKS_* environment variables.
+
+No external web dependencies or automatic paid calls.
+"""
 import argparse
+import collections
+import hmac
 import json
 import os
 import secrets
 import threading
+import time
 import uuid
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -11,6 +17,98 @@ from urllib.parse import urlparse, unquote, parse_qs
 from . import live, vector as v, event_explain, agent
 
 PAGE = Path(__file__).with_name('demo.html')
+
+GENERATION_PATHS = ('/api/ask', '/api/explain-event', '/api/explain-incident', '/api/agent')
+UPLOAD_PATHS = ('/api/analyses', '/api/analyses/import')
+
+
+def _env_int(env, name):
+    raw = (env.get(name) or '').strip()
+    if not raw:
+        return 0
+    value = int(raw)
+    if value < 0:
+        raise ValueError(f'{name} must be >= 0')
+    return value
+
+
+class DeployConfig:
+    """Opt-in public deployment settings. With no IMAKS_* variables the server stays loopback-only.
+
+    IMAKS_BIND_HOST              listen address (default 127.0.0.1; use 0.0.0.0 inside a container)
+    IMAKS_PUBLIC_HOSTS           comma-separated public host names served behind HTTPS (e.g. imaks.example.com)
+    IMAKS_ACCESS_CODE            if set, generation requests must send it in X-Access-Code
+    IMAKS_GENERATION_DAILY_LIMIT max accepted generation requests per UTC day, all clients (0 = unlimited)
+    IMAKS_GENERATION_HOURLY_PER_IP  max accepted generation requests per client IP per hour (0 = unlimited)
+    IMAKS_UPLOAD_HOURLY_PER_IP   max CSV/ZIP uploads per client IP per hour (0 = unlimited)
+    IMAKS_TRUST_PROXY            1 when behind a reverse proxy that overwrites X-Forwarded-For (e.g. Caddy)
+    """
+
+    def __init__(self, bind_host='127.0.0.1', public_hosts=(), access_code='', daily_limit=0,
+                 hourly_per_ip=0, upload_hourly_per_ip=0, trust_proxy=False):
+        self.bind_host = bind_host
+        self.public_hosts = tuple(h for h in public_hosts if h)
+        for host in self.public_hosts:
+            if '/' in host or ':' in host or not host.strip() == host:
+                raise ValueError('IMAKS_PUBLIC_HOSTS takes bare host names such as imaks.example.com')
+        self.access_code = access_code
+        self.daily_limit = daily_limit
+        self.hourly_per_ip = hourly_per_ip
+        self.upload_hourly_per_ip = upload_hourly_per_ip
+        self.trust_proxy = trust_proxy
+
+    @classmethod
+    def from_env(cls, env=None):
+        env = os.environ if env is None else env
+        return cls(bind_host=(env.get('IMAKS_BIND_HOST') or '127.0.0.1').strip(),
+                   public_hosts=[h.strip().lower() for h in (env.get('IMAKS_PUBLIC_HOSTS') or '').split(',')],
+                   access_code=env.get('IMAKS_ACCESS_CODE') or '',
+                   daily_limit=_env_int(env, 'IMAKS_GENERATION_DAILY_LIMIT'),
+                   hourly_per_ip=_env_int(env, 'IMAKS_GENERATION_HOURLY_PER_IP'),
+                   upload_hourly_per_ip=_env_int(env, 'IMAKS_UPLOAD_HOURLY_PER_IP'),
+                   trust_proxy=(env.get('IMAKS_TRUST_PROXY') or '').strip() == '1')
+
+    def allowed_hosts(self, port):
+        return {f'127.0.0.1:{port}'} | set(self.public_hosts)
+
+    def allowed_origins(self, port):
+        return {f'http://127.0.0.1:{port}'} | {f'https://{h}' for h in self.public_hosts}
+
+
+class Limiter:
+    """In-memory request budget. Restarting the server resets the counters."""
+
+    def __init__(self, daily_limit=0, hourly_per_ip=0, clock=time.time):
+        self.daily_limit, self.hourly_per_ip, self.clock = daily_limit, hourly_per_ip, clock
+        self.lock = threading.Lock()
+        self.day, self.day_count = None, 0
+        self.per_ip = collections.defaultdict(collections.deque)
+
+    def take(self, ip):
+        """Reserve one request. Returns None when accepted, otherwise 'daily' or 'hourly'."""
+        now = self.clock()
+        with self.lock:
+            day = time.strftime('%Y-%m-%d', time.gmtime(now))
+            if day != self.day:
+                self.day, self.day_count = day, 0
+            window = self.per_ip[ip]
+            while window and window[0] <= now - 3600:
+                window.popleft()
+            if self.daily_limit and self.day_count >= self.daily_limit:
+                return 'daily'
+            if self.hourly_per_ip and len(window) >= self.hourly_per_ip:
+                return 'hourly'
+            self.day_count += 1
+            window.append(now)
+            return None
+
+    def remaining_today(self):
+        if not self.daily_limit:
+            return None
+        with self.lock:
+            today = time.strftime('%Y-%m-%d', time.gmtime(self.clock()))
+            used = self.day_count if self.day == today else 0
+            return max(0, self.daily_limit - used)
 
 
 def detection_presentation():
@@ -73,12 +171,16 @@ def presentation(path):
 
 def make_server(port=8765, answer=live.answer, explain=event_explain.answer, agent_answer=agent.answer,
                 explain_incident=event_explain.answer_incident, page=PAGE, hidden_run_ids=(),
-                incident_store_factory=None, agent_options=None, team_config=None, generation_enabled=True, analysis_service=None):
+                incident_store_factory=None, agent_options=None, team_config=None, generation_enabled=True, analysis_service=None,
+                deploy=None):
     # SHACL/SPARQL parsing uses deeply nested calls. Windows' default worker
     # stack can exhaust while loading/parsing it for the first upload.
     if analysis_service is not None and os.name=='nt' and threading.stack_size()<8*1024*1024:
         threading.stack_size(8*1024*1024)
     token=secrets.token_urlsafe(32);busy=threading.Lock()
+    deploy=deploy or DeployConfig.from_env()
+    generation_budget=Limiter(deploy.daily_limit,deploy.hourly_per_ip)
+    upload_budget=Limiter(0,deploy.upload_hourly_per_ip)
     class Handler(BaseHTTPRequestHandler):
         def log_message(self,*args):pass
         def reply(self,status,data,kind='application/json; charset=utf-8',download_name=None):
@@ -91,7 +193,20 @@ def make_server(port=8765, answer=live.answer, explain=event_explain.answer, age
             self.send_header('Content-Security-Policy',"default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'self'; frame-ancestors 'none'")
             self.end_headers();self.wfile.write(body)
         def local(self):
-            return self.headers.get('Host')==f'127.0.0.1:{self.server.server_port}'
+            # Name kept for compatibility: loopback host, or an explicitly configured public host.
+            return self.headers.get('Host','').lower() in deploy.allowed_hosts(self.server.server_port)
+        def client_ip(self):
+            if deploy.trust_proxy:
+                forwarded=[part.strip() for part in self.headers.get('X-Forwarded-For','').split(',') if part.strip()]
+                if forwarded:return forwarded[-1]
+            return self.client_address[0]
+        def over_budget(self,limiter):
+            reason=limiter.take(self.client_ip())
+            if reason is None:return False
+            message=('오늘 사용할 수 있는 질문 수를 모두 사용했습니다. 내일 다시 시도해 주세요.' if reason=='daily'
+                     else '요청이 너무 많습니다. 잠시 후 다시 시도해 주세요.')
+            self.reply(429,{'error':message,'code':'rate_limited_'+reason})
+            return True
         def do_GET(self):
             if not self.local():return self.reply(403,{'error':'로컬 주소로 접속해 주세요.'})
             path=urlparse(self.path).path
@@ -108,6 +223,9 @@ def make_server(port=8765, answer=live.answer, explain=event_explain.answer, age
             if path=='/api/session':
                 data={'csrf_token':token,'generation_enabled':generation_enabled}
                 if analysis_service is not None:data['analysis_enabled']=True
+                if generation_enabled and deploy.access_code:data['access_code_required']=True
+                remaining=generation_budget.remaining_today()
+                if generation_enabled and remaining is not None:data['generation_remaining_today']=remaining
                 return self.reply(200,data)
             if analysis_service is not None and (path=='/api/analyses' or path.startswith('/api/analyses/')):
                 from .sensor_analysis import InputError
@@ -188,8 +306,9 @@ def make_server(port=8765, answer=live.answer, explain=event_explain.answer, age
         def do_POST(self):
             origin=self.headers.get('Origin')
             if (not self.local() or self.headers.get('X-Demo-Token')!=token or
-                origin not in (None,f'http://127.0.0.1:{self.server.server_port}')):
+                (origin is not None and origin not in deploy.allowed_origins(self.server.server_port))):
                 return self.reply(403,{'error':'요청 출처를 확인할 수 없습니다.'})
+            if analysis_service is not None and self.path in UPLOAD_PATHS and self.over_budget(upload_budget):return
             if self.path=='/api/analyses/import' and analysis_service is not None:
                 from .sensor_analysis import InputError
                 from .analysis_archive import MAX_ZIP_BYTES
@@ -231,9 +350,11 @@ def make_server(port=8765, answer=live.answer, explain=event_explain.answer, age
                 try:return self.reply(202,analysis_service.submit(body,kind,analysis_start=analysis_start,analysis_end=analysis_end))
                 except InputError as error:return self.reply(409 if error.code in ('analysis_queue_full','service_closed') else 400,{'error':str(error),'code':error.code})
                 except Exception:return self.reply(500,{'error':'로컬 분석을 완료하지 못했습니다. 저장 기록을 확인해 주세요. 자동 재시도하지 않습니다.'})
-            if self.path not in ('/api/ask','/api/explain-event','/api/explain-incident','/api/agent'):return self.reply(404,{'error':'Not found'})
+            if self.path not in GENERATION_PATHS:return self.reply(404,{'error':'Not found'})
             if not generation_enabled:
                 return self.reply(503,{'error':'읽기 전용 서버입니다. 저장된 결과 조회만 가능합니다.','code':'read_only'})
+            if deploy.access_code and not hmac.compare_digest(self.headers.get('X-Access-Code','').encode(),deploy.access_code.encode()):
+                return self.reply(401,{'error':'접근 코드가 올바르지 않습니다.','code':'access_code_required'})
             event_mode=self.path=='/api/explain-event'
             incident_mode=self.path=='/api/explain-incident'
             try:
@@ -248,6 +369,8 @@ def make_server(port=8765, answer=live.answer, explain=event_explain.answer, age
                 if incident_mode and q not in {i['id'] for i in incident_presentation()['incidents']}:raise ValueError()
             except (ValueError,KeyError,TypeError):return self.reply(400,{'error':'질문은 1~8000 UTF-8 바이트로 입력해 주세요.'})
             if not busy.acquire(blocking=False):return self.reply(409,{'error':'다른 질문을 처리 중입니다. 완료 후 다시 시도해 주세요.'})
+            if self.over_budget(generation_budget):
+                busy.release();return
             run=saved_run('ui_'+uuid.uuid4().hex)
             try:
                 if self.path=='/api/agent':agent_answer(q,run,**options)
@@ -256,7 +379,7 @@ def make_server(port=8765, answer=live.answer, explain=event_explain.answer, age
             except Exception:
                 self.reply(500,{'error':'처리를 완료하지 못했습니다. 자동 재시도하지 않습니다. 로컬 실행 기록을 확인해 주세요.','run_id':run.name})
             finally:busy.release()
-    return ThreadingHTTPServer(('127.0.0.1',port),Handler)
+    return ThreadingHTTPServer((deploy.bind_host,port),Handler)
 
 
 if __name__=='__main__':

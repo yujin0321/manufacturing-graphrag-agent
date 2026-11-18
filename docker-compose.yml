@@ -1,0 +1,38 @@
+# Public deployment: Caddy (HTTPS, automatic certificates) -> iMAKS server (not exposed directly).
+# Usage: see docs/DEPLOY.md
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      IMAKS_BIND_HOST: 0.0.0.0
+      IMAKS_TRUST_PROXY: "1"
+    volumes:
+      - ./:/app
+    expose:
+      - "8770"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen(urllib.request.Request('http://127.0.0.1:8770/api/session', headers={'Host': '127.0.0.1:8770'}), timeout=5)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    environment:
+      IMAKS_PUBLIC_HOSTS: ${IMAKS_PUBLIC_HOSTS:?set IMAKS_PUBLIC_HOSTS in .env}
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - app
+
+volumes:
+  caddy_data:
+  caddy_config:

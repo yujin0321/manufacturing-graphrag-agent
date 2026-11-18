@@ -1,0 +1,21 @@
+# IMAKS_PUBLIC_HOSTS in .env must be the same single domain, e.g. imaks.example.com
+{$IMAKS_PUBLIC_HOSTS} {
+	encode gzip
+
+	# Agent answers can take a while (plan + tools + draft + review).
+	reverse_proxy app:8770 {
+		transport http {
+			read_timeout 300s
+		}
+	}
+
+	request_body {
+		max_size 33MB
+	}
+
+	header {
+		Strict-Transport-Security "max-age=31536000"
+		Referrer-Policy "no-referrer"
+		-Server
+	}
+}

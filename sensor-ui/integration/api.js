@@ -13,7 +13,7 @@
   const normalize=(data,id)=>{
     if(data.status!=='complete')throw Error('완료된 분석만 열 수 있습니다.');
       return {
-        run_id:id,start:data.intervals.analysis.start,end:data.intervals.analysis.end,alarm_count:data.alarms,
+        run_id:id,created:data.job?.created_at_utc,start:data.intervals.analysis.start,end:data.intervals.analysis.end,alarm_count:data.alarms,
         sensor_count:data.sensors?.length,gap_count:data.quality?.gaps?.length,intervals:data.intervals,warnings:data.warnings,coverage:data.coverage,correlations:data.correlation_candidates,
         events:data.incident_items.map(item => ({
           event_id:item.id,id:item.sensor_id,time:item.start,start:item.start,end:item.end,
@@ -38,8 +38,21 @@
     async question(question){
       const settings=await session();
       if(!settings.generation_enabled)throw Error('읽기 전용입니다. 저장된 답변을 조회할 수 있습니다.');
-      return request('/api/agent',{method:'POST',headers:{'Content-Type':'application/json','X-Demo-Token':settings.csrf_token},
-        body:JSON.stringify({question})});
+      const headers={'Content-Type':'application/json','X-Demo-Token':settings.csrf_token};
+      if(settings.access_code_required){
+        let code=null;
+        try{code=sessionStorage.getItem('imaksAccessCode');}catch(error){}
+        if(!code)code=(window.prompt('질문 기능 접근 코드를 입력해 주세요.')||'').trim();
+        if(!code)throw Error('접근 코드가 필요합니다.');
+        headers['X-Access-Code']=code;
+        try{sessionStorage.setItem('imaksAccessCode',code);}catch(error){}
+      }
+      try{
+        return await request('/api/agent',{method:'POST',headers,body:JSON.stringify({question})});
+      }catch(error){
+        if(/접근 코드/.test(error.message)){try{sessionStorage.removeItem('imaksAccessCode');}catch(e){}}
+        throw error;
+      }
     },
     async detect(file, onStatus = () => {}, range = {}) {
       if (file.size > 4 * 1024 * 1024) throw Error('CSV는 최대 4 MiB입니다. 분석할 시간 구간을 줄여 주세요.');
@@ -88,6 +101,7 @@
         verification:data.xai?.decision_evidence?.status,
         binding:data.xai?.claim_binding?.status,
         rules:data.xai?.matched_rules, checks:data.xai?.rule_explanations,
+        claims:data.claims, incident:data.xai?.incident, decisions:data.xai?.decision_evidence?.items,
         paths:data.edges
       };
     }

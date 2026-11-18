@@ -1,6 +1,7 @@
 """Prepare, inspect, or run the incident XAI agent using existing main components."""
 import argparse
 import json
+import os
 from pathlib import Path
 import sys
 
@@ -38,6 +39,8 @@ def main():
     action.add_argument('--question', help='One real model-routed question; API costs apply')
     parser.add_argument('--run-dir', type=Path)
     parser.add_argument('--port', type=int, default=8770)
+    parser.add_argument('--page', type=Path, default=None,
+                        help='HTML served at / (default: IMAKS_PAGE, else sensor-ui/integration/serve-page.html, else src/imaks_kg/rag/xai_demo.html)')
     parser.add_argument('--detector-profile', choices=team_runtime.PROFILES, default=team_runtime.DEFAULTS['detector_profile'])
     parser.add_argument('--document-mode', choices=team_runtime.SEARCH_MODES, default=team_runtime.DEFAULTS['document_mode'])
     parser.add_argument('--reuse-embedding-cache', type=Path)
@@ -69,7 +72,14 @@ def main():
         load_local_key()
     if args.serve:
         from imaks_kg.rag.sensor_analysis import AnalysisService
-        page = ROOT / 'src/imaks_kg/rag/xai_demo.html'
+        default_page = ROOT / 'sensor-ui/integration/serve-page.html'
+        if not default_page.is_file():
+            default_page = ROOT / 'src/imaks_kg/rag/xai_demo.html'
+        page = args.page or Path(os.environ.get('IMAKS_PAGE') or default_page)
+        if not page.is_absolute():
+            page = ROOT / page
+        if not page.is_file():
+            parser.error(f'--page not found: {page}')
         display_path = ROOT / 'kg_build/xai_display.json'
         hidden_runs = v.read(display_path).get('hidden_run_ids', []) if display_path.exists() else []
         analysis_service=AnalysisService() if args.allow_local_analysis else None
@@ -80,7 +90,8 @@ def main():
             team_config=team_runtime.application_config, generation_enabled=not args.read_only,
             analysis_service=analysis_service)
         if analysis_service is not None:analysis_service.recover_interrupted()
-        print(f'XAI demo http://127.0.0.1:{server.server_port}/', flush=True)
+        bind = server.server_address[0]
+        print(f'XAI demo http://127.0.0.1:{server.server_port}/' + (f' (listening on {bind})' if bind != '127.0.0.1' else ''), flush=True)
         try:
             server.serve_forever()
         except KeyboardInterrupt:

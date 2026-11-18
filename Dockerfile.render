@@ -15,7 +15,8 @@ RUN pip install --no-cache-dir -r /tmp/requirements.txt \
 
 COPY --chown=imaks:imaks . /app
 
-RUN chown imaks:imaks /app
+RUN mkdir -p /app/kg_build /app/preprocessed /app/reports \
+    && chown -R imaks:imaks /app
 
 USER imaks
 

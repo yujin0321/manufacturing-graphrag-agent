@@ -1,0 +1,83 @@
+@prefix im: <https://example.org/imaks/v1#> .
+@prefix inst: <https://example.org/imaks/id/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+im: a owl:Ontology ;
+    owl:versionInfo "1.0.0" ;
+    rdfs:comment "iMAKS 최소 온톨로지 v1. 원본 정적 KG, 문서 근거, 규칙과 관측 표본을 표현한다. OWL 선언은 의미 명세이며 필수값·건수·누출 정책은 shapes.ttl에서 검증한다."@ko .
+
+im:System a owl:Class ; rdfs:comment "원본 생산 시스템."@ko .
+im:Zone a owl:Class ; rdfs:comment "생산·지원 공간."@ko .
+im:Station a owl:Class ; rdfs:comment "원본 Component의 실제 의미에 맞춘 스테이션. 모터·베어링을 뜻하지 않는다."@ko .
+im:Sensor a owl:Class ; rdfs:comment "센서 인스턴스. identifier는 시계열 sensor_id와 대응한다."@ko .
+im:Person a owl:Class ; rdfs:comment "원본 등록 인물. 원본 name이 비어 있으므로 이름을 추정하지 않는다."@ko .
+im:Document a owl:Class ; rdfs:comment "출처 PDF와 원문 텍스트. 평가 정답 파일을 포함하지 않는다."@ko .
+im:Rule a owl:Class ; rdfs:comment "문서의 조건·조치를 출처와 함께 표현한 규칙. 정답 86건에서 가져온 인스턴스가 아니다."@ko .
+im:ThresholdRule a owl:Class ; rdfs:subClassOf im:Rule ;
+    rdfs:comment "센서 한 개에 적용되는 SOP 임계값 표의 규칙."@ko .
+im:Observation a owl:Class ; rdfs:comment "센서값과 시각을 가진 관측. 이 제출물에서는 센서마다 첫 행 하나씩만 확인용으로 변환한다."@ko .
+im:InputGraph a owl:Class ; rdfs:comment "해당 RDF 파일의 입력 프로필을 선언하는 검증 제어 노드. 여러 프로필 파일은 별도로 검증한다."@ko .
+im:InternalComponent a owl:Class ; rdfs:comment "미래 확장용 내부 부품 클래스. v1에 인스턴스는 없다."@ko .
+im:QualityDefect a owl:Class ; rdfs:comment "미래 확장용 관측 품질불량 클래스. v1에 인스턴스는 없다."@ko .
+
+im:contains a owl:ObjectProperty ;
+    rdfs:domain [ a owl:Class ; owl:unionOf (im:System im:Zone) ] ;
+    rdfs:range [ a owl:Class ; owl:unionOf (im:Zone im:Station) ] ;
+    rdfs:comment "원본 System→Zone 또는 Zone→Station의 포함 관계."@ko .
+im:partOf a owl:ObjectProperty ; rdfs:domain im:Station ; rdfs:range im:System ;
+    rdfs:comment "원본 Station→System. contains의 역관계로 선언하지 않는다."@ko .
+im:hasSensor a owl:ObjectProperty ; rdfs:domain im:Station ; rdfs:range im:Sensor ;
+    rdfs:comment "정규화한 스테이션→센서 관계. 원본 양방향 monitors 두 행의 lineage는 별도 기록한다."@ko .
+im:feedsInto a owl:ObjectProperty ; rdfs:domain im:Station ; rdfs:range im:Station ;
+    rdfs:comment "원본 공정 흐름의 방향을 보존한다. 자동 전이·역관계를 만들지 않는다."@ko .
+im:correlatesWith a owl:ObjectProperty ; rdfs:domain im:Sensor ; rdfs:range im:Sensor ;
+    rdfs:comment "원본 센서 간 문서 근거 관계. 원인·자동 대칭·시계열 신규 발견으로 해석하지 않는다."@ko .
+im:authorizedFor a owl:ObjectProperty ; rdfs:domain im:Person ; rdfs:range im:Zone ;
+    rdfs:comment "등록 인물의 구역 접근 권한. 이상 라벨이나 대응 사건이 아니다."@ko .
+im:locatedIn a owl:ObjectProperty ; rdfs:domain im:Station ; rdfs:range im:Zone ;
+    rdfs:comment "스테이션 zone 문자열을 원본 Zone 인스턴스에 대응해 생성한다."@ko .
+im:appliesToSensor a owl:ObjectProperty ; rdfs:domain im:Rule ; rdfs:range im:Sensor .
+im:monitorsSensor a owl:ObjectProperty ; rdfs:domain im:Rule ; rdfs:range im:Sensor ;
+    rdfs:comment "상관 규칙에서 추가로 확인할 센서. 규칙 적용 센서와 구분한다."@ko .
+im:actionTarget a owl:ObjectProperty ; rdfs:domain im:Rule ; rdfs:range im:Station ;
+    rdfs:comment "원문 조치의 대상 스테이션. 실제 조치 수행 이력은 아니다."@ko .
+im:sourceDocument a owl:ObjectProperty ; rdfs:domain im:Rule ; rdfs:range im:Document .
+im:observedBy a owl:ObjectProperty ; rdfs:domain im:Observation ; rdfs:range im:Sensor .
+
+im:identifier a owl:DatatypeProperty ; rdfs:range xsd:string ; rdfs:comment "외부 식별자. Sensor는 시계열 sensor_id, 나머지는 원본 또는 출처 기반 ID."@ko .
+im:name a owl:DatatypeProperty ; rdfs:range xsd:string .
+im:sourceLabel a owl:DatatypeProperty ; rdfs:range xsd:string ; rdfs:comment "원본 KG 노드 타입. Component→Station 매핑의 원본 의미를 보존한다."@ko .
+im:stationType a owl:DatatypeProperty ; rdfs:domain im:Station ; rdfs:range xsd:string .
+im:sensorType a owl:DatatypeProperty ; rdfs:domain im:Sensor ; rdfs:range xsd:string .
+im:unit a owl:DatatypeProperty ; rdfs:range xsd:string .
+im:personId a owl:DatatypeProperty ; rdfs:domain im:Person ; rdfs:range xsd:string .
+im:role a owl:DatatypeProperty ; rdfs:domain im:Person ; rdfs:range xsd:string .
+im:department a owl:DatatypeProperty ; rdfs:domain im:Person ; rdfs:range xsd:string .
+im:csiSubject a owl:DatatypeProperty ; rdfs:domain im:Person ; rdfs:range xsd:string .
+im:line a owl:DatatypeProperty ; rdfs:range xsd:string .
+im:sourcePath a owl:DatatypeProperty ; rdfs:range xsd:string ; rdfs:comment "출처 경로. Document는 원본 ZIP 내부 PDF 경로, Observation은 CSV 경로, 원본 관계의 RDF.Statement는 엣지 CSV 경로를 기록한다."@ko .
+im:sourceSha256 a owl:DatatypeProperty ; rdfs:domain im:Document ; rdfs:range xsd:string ; rdfs:comment "원본 PDF 바이너리 SHA-256."@ko .
+im:pageCount a owl:DatatypeProperty ; rdfs:domain im:Document ; rdfs:range xsd:positiveInteger .
+im:title a owl:DatatypeProperty ; rdfs:domain im:Document ; rdfs:range xsd:string .
+im:documentText a owl:DatatypeProperty ; rdfs:domain im:Document ; rdfs:range xsd:string ; rdfs:comment "출처 PDF에서 추출한 원문. rule_context만 사용한다."@ko .
+im:sourcePage a owl:DatatypeProperty ; rdfs:domain im:Rule ; rdfs:range xsd:positiveInteger .
+im:sourceTable a owl:DatatypeProperty ; rdfs:domain im:Rule ; rdfs:range xsd:string ; rdfs:comment "전처리 tables.json의 table ID. 문장 규칙에는 없을 수 있다."@ko .
+im:sourceRow a owl:DatatypeProperty ; rdfs:domain im:Rule ; rdfs:range xsd:positiveInteger ; rdfs:comment "저장한 표 cells의 실제 1-based 행 위치. 다음 페이지 연속표도 그 표의 행 위치를 사용한다."@ko .
+im:sourceQuote a owl:DatatypeProperty ; rdfs:domain im:Rule ; rdfs:range xsd:string ; rdfs:comment "표 규칙은 원문 셀 행 JSON, 문장 규칙은 원문 인용. 정답을 복사한 텍스트가 아니다."@ko .
+im:conditionText a owl:DatatypeProperty ; rdfs:domain im:Rule ; rdfs:range xsd:string .
+im:responseText a owl:DatatypeProperty ; rdfs:domain im:Rule ; rdfs:range xsd:string .
+im:extractionMethod a owl:DatatypeProperty ; rdfs:domain im:Rule ; rdfs:range xsd:string .
+im:nominal a owl:DatatypeProperty ; rdfs:domain im:ThresholdRule ; rdfs:range xsd:double ; rdfs:comment "nominal 표기의 중앙값. 원문 ± 범위는 nominalTolerance와 nominalText로 함께 보존한다."@ko .
+im:nominalTolerance a owl:DatatypeProperty ; rdfs:domain im:ThresholdRule ; rdfs:range xsd:double .
+im:nominalText a owl:DatatypeProperty ; rdfs:domain im:ThresholdRule ; rdfs:range xsd:string .
+im:warnHi a owl:DatatypeProperty ; rdfs:domain im:ThresholdRule ; rdfs:range xsd:double .
+im:critHi a owl:DatatypeProperty ; rdfs:domain im:ThresholdRule ; rdfs:range xsd:double .
+im:warnLo a owl:DatatypeProperty ; rdfs:domain im:ThresholdRule ; rdfs:range xsd:double .
+im:critLo a owl:DatatypeProperty ; rdfs:domain im:ThresholdRule ; rdfs:range xsd:double .
+im:timestamp a owl:DatatypeProperty ; rdfs:domain im:Observation ; rdfs:range xsd:dateTime ; rdfs:comment "원본 시간대 미지정 timestamp를 보존한다. UTC/KST를 추정하지 않는다."@ko .
+im:value a owl:DatatypeProperty ; rdfs:domain im:Observation ; rdfs:range xsd:double ; rdfs:comment "원본 센서 관측값. 이상값도 보존하고 임계값 범위 검사를 적용하지 않는다."@ko .
+im:inputProfile a owl:DatatypeProperty ; rdfs:domain im:InputGraph ; rdfs:range xsd:string .
+im:ruleReference a owl:DatatypeProperty ; rdfs:range xsd:string ; rdfs:comment "원본 엣지 ruleRef를 보존하는 참조 메타데이터. 실제 Rule 인스턴스와 자동 동일시하지 않는다."@ko .

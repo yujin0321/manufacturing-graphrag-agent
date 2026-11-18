@@ -1,0 +1,108 @@
+[
+  {
+    "question_id": "CQ1",
+    "rows": [
+      {
+        "stationId": "ST02_SEALING",
+        "zoneName": "Production Area",
+        "sensorId": "ST02_SEALING_CUR",
+        "sensorType": "CUR",
+        "unit": "A"
+      },
+      {
+        "stationId": "ST02_SEALING",
+        "zoneName": "Production Area",
+        "sensorId": "ST02_SEALING_PRS",
+        "sensorType": "PRS",
+        "unit": "bar"
+      },
+      {
+        "stationId": "ST02_SEALING",
+        "zoneName": "Production Area",
+        "sensorId": "ST02_SEALING_TMP",
+        "sensorType": "TMP",
+        "unit": "°C"
+      }
+    ],
+    "scope": "정적 소속·단위 조회; 실제 고장 원인 판정 아님"
+  },
+  {
+    "question_id": "CQ2",
+    "rows": [
+      {
+        "fromId": "ST02_SEALING_CUR",
+        "checkSensorId": "ST04_PACKAGING_SPD",
+        "ruleId": "RULE-ST02-04",
+        "docId": "SOP-001",
+        "page": "1",
+        "quote": "RULE-ST02-04: CUR drift at ST02_SEALING CORRELATES with speed reduction at ST04_PACKAGING due to\nshared electrical coupling. Monitor ST04_PACKAGING-SPD whenever ST02_SEALING-CUR triggers a\nWARNING."
+      }
+    ],
+    "scope": "문서가 지시한 추가 확인 센서; 실제 사건의 인과 확정 아님"
+  },
+  {
+    "question_id": "CQ3",
+    "rows": [
+      {
+        "measured": "212.0",
+        "limit": "210.0",
+        "targetId": "ST02_SEALING",
+        "ruleId": "RULE-ST02-02",
+        "response": "emergency stop ST02, ST03, ST04.",
+        "docId": "SOP-001",
+        "page": "1"
+      },
+      {
+        "measured": "212.0",
+        "limit": "210.0",
+        "targetId": "ST03_LABELLING",
+        "ruleId": "RULE-ST02-02",
+        "response": "emergency stop ST02, ST03, ST04.",
+        "docId": "SOP-001",
+        "page": "1"
+      },
+      {
+        "measured": "212.0",
+        "limit": "210.0",
+        "targetId": "ST04_PACKAGING",
+        "ruleId": "RULE-ST02-02",
+        "response": "emergency stop ST02, ST03, ST04.",
+        "docId": "SOP-001",
+        "page": "1"
+      }
+    ],
+    "scope": "212°C를 가정한 규칙 조회 예제; 실제 경보 입력·설비 제어 실행 아님"
+  },
+  {
+    "question_id": "CQ4",
+    "rows": [
+      {
+        "sensorId": "ST02_SEALING_CUR",
+        "unit": "A",
+        "nominal": "12.4",
+        "warnHi": "13.5",
+        "critHi": "15.0",
+        "sopId": "SOP-002",
+        "page": "1",
+        "datasheetId": "DS_ELECTRICAL_SENSORS",
+        "datasheetNote": " The sensor is rated for continuous operation up to 14 A. Operation between\n14 A and 20 A is permissible for short durations (< 60 seconds). Sustained operation above 14 A will cause\nprogressive accuracy drift. ElectroMeasure recommends that process alarm thresholds triggering corrective action be\nset no higher than the continuous overload rating.\n"
+      }
+    ],
+    "scope": "SOP와 일반 데이터시트 비교; 해당 모델의 실제 설치나 적용성을 단정하지 않음"
+  },
+  {
+    "question_id": "CQ5",
+    "rows": [
+      {
+        "personId": "P043",
+        "role": "security",
+        "zoneName": "Chemical Storage",
+        "conditionDocId": "SOP-001",
+        "condition": " Only personnel with hazmat training (technician/supervisor/manager role) are authorised to\nenter Chemical Storage. UNAUTHORIZED_ACCESS must be escalated within 2 minutes.\n",
+        "matrixDocId": "SOP-004",
+        "matrixExcerpt": "\nRole\nProd. Area\nServer Room\nGen. Warehous\ne\nMain Entranc\ne\nChem. Stora\nge\nR&D; Lab\nCafeteria\noperator\nYES\nNO\nYES\nYES\nNO\nNO\nYES\ntechnician\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nsupervisor\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nmanager\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nsecurity\nYES\nYES\nYES\nYES\nYES\nYES\nYES\nvisitor\nYES\nNO\nNO\nYES\nNO\nNO\nYES\n"
+      }
+    ],
+    "scope": "권한 기록 조회; 교육 이수 및 문서 조건 충돌 때문에 현재 입장 허용 여부는 미확정"
+  }
+]

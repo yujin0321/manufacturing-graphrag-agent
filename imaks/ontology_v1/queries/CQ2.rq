@@ -1,0 +1,11 @@
+PREFIX im: <https://example.org/imaks/v1#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT ?fromId ?checkSensorId ?ruleId ?docId ?page ?quote WHERE {
+        ?sensor im:identifier "ST02_SEALING_CUR"; im:identifier ?fromId; im:correlatesWith ?other.
+        ?other im:identifier ?checkSensorId.
+        ?statement rdf:subject ?sensor; rdf:predicate im:correlatesWith;
+                   rdf:object ?other; im:ruleReference ?ruleId.
+        ?rule a im:Rule; im:identifier ?ruleId; im:monitorsSensor ?other;
+              im:sourceDocument ?doc; im:sourcePage ?page; im:sourceQuote ?quote.
+        ?doc im:identifier ?docId.
+    }

@@ -1,0 +1,34 @@
+@prefix im: <https://example.org/imaks/v1#> .
+@prefix inst: <https://example.org/imaks/id/> .
+
+inst:N0013 a im:Station ;
+    im:hasSensor inst:N0014 ;
+    im:identifier "ST02_SEALING" ;
+    im:locatedIn inst:N0002 ;
+    im:name "ST02_SEALING" ;
+    im:partOf inst:N0001 ;
+    im:sourceLabel "Component" ;
+    im:stationType "SEALING" .
+
+im:InputData a im:InputGraph ;
+    im:gt_id "GT-0007" ;
+    im:inputProfile "ml_metadata" .
+
+inst:N0001 a im:System ;
+    im:identifier "N0001" ;
+    im:line "LineaA" ;
+    im:name "iMAKS" ;
+    im:sourceLabel "System" .
+
+inst:N0002 a im:Zone ;
+    im:identifier "N0002" ;
+    im:name "Production Area" ;
+    im:sourceLabel "Zone" .
+
+inst:N0014 a im:Sensor ;
+    im:identifier "ST02_SEALING_TMP" ;
+    im:name "ST02_SEALING_TMP" ;
+    im:sensorType "TMP" ;
+    im:sourceLabel "Sensor" ;
+    im:unit "°C" .
+
